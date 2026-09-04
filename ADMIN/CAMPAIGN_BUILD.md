@@ -2,7 +2,7 @@
 
 Operator-side world and campaign-system construction. Not PLAY. Not fiction. Nothing here is canon until explicit ACCEPT and ADMIN commit.
 
-Open this file only when NEW GAME's world/campaign-depth choice requests more than the sparse runnable core. It is a menu, not a questionnaire quota. Ask one selected domain at a time and omit the rest.
+The compact Campaign Contract pass below applies to every new v0.6 run, whether NEW GAME conducts it directly or opens this guide. Continue into the optional world/system passes only when the chosen depth requests more than the sparse runnable core. The optional passes are a menu, not a questionnaire quota: ask one selected domain at a time and omit the rest.
 
 ## Depth means selection, not volume
 
@@ -13,9 +13,30 @@ Open this file only when NEW GAME's world/campaign-depth choice requests more th
 
 Detailed does not mean encyclopedic. It does not authorize filler, mass NPC rosters, empty directory trees, or a larger resident PLAY payload. A domain not selected remains absent, provisional, or intentionally unfixed.
 
-## Ask four independent calibration questions
+## Campaign defaults and accepted run contract
 
-Do not let one answer silently control all four:
+Before optional domain authoring, ask for or propose one compact cluster, let the operator revise it, and require explicit acceptance. A quick setup may accept a complete proposed cluster at once; do not force a ten-question interview. Store the module-facing proposal under `POLICY.md` → `## Campaign defaults`, then compile the accepted run-scoped values into `INSTANCE/CAMPAIGN_CONTRACT.md` at bind.
+
+Establish:
+
+1. **Campaign promise** (`campaign_promise`) — the experience this campaign offers, including material tone and cadence.
+2. **Fit envelope** (`fit_envelope`) — material that belongs naturally, material that would turn it into another campaign, and the anti-attractors the GM must retain during routine play.
+3. **Structural direction** (`structural_direction`) — `reactive-sandbox`, `responsive-emergent`, `broad-trajectory`, `structured-scenario`, or `custom: ...`.
+4. **GM initiative** (`gm_initiative`) — `mostly-consequence-driven`, `balanced`, `proactive`, or `custom: ...`. `proactive` alone is not a creative mandate.
+5. **Pressure / incident density** (`pressure_incident_density`) — `quiet`, `variable`, `sustained`, or `custom: ...`; this is a cadence preference, never an encounter quota.
+6. **Time handling** (`time_handling`) — `moment-to-moment`, `selective-compression`, `broad-calendar-movement`, or `custom: ...`, including how any compression is authorized.
+7. **Development priorities** (`development_priorities`) — `none` or an accepted ordered selection from `relationships`, `profession-status`, `exploration`, `mystery`, `external-conflict`, `domestic-life`, `survival`, and `custom: ...`; never infer desire or consent from play style.
+8. **Guidance visibility** (`guidance_visibility`) — `natural` as the offered default, `explicit`, or `minimal`; every value still requires acceptance, and explicit guidance names nonexclusive courses rather than an action menu unless requested.
+9. **Creative mandate** (`creative_mandate`) — explicitly `off` by default. When `on`, state a kind-level `creative_mandate_scope` and eligible scene/session/calendar `creative_mandate_boundaries`; when `off`, both companion values are `none`. It never authorizes PC conduct or makes a prepared candidate entitled to appear.
+10. **REVIEW mode** (`review_mode`) — exactly `off` or `bearing-only`. The latter permits an explicit REVIEW after successful PERSIST and an optional, separately reported REVIEW after CLOSE. REVIEW may update provisional Bearing; it never changes fact authority or repairs a failed PERSIST.
+
+The six axes are independent. Do not derive initiative from pressure, a creative mandate from structural direction, or a numeric quota from any label. A broad fit envelope is compatibility, not warrant. MODULE defaults are proposals only: they are not operator acceptance, campaign facts, external warrant, prepared content, or a requirement to create incidents. PLAY takes its campaign authority from the accepted run contract.
+
+For a legacy module without `## Campaign defaults`, LOAD may ask the operator to supply or accept this complete contract before PLAY. Do not reconstruct it from the module's genre, old archives, or model behavior. LOAD also adds the v0.6 resume fields only to the candidate save from accepted T0 facts or operator clarification; it need not rewrite the legacy MODULE.
+
+## Ask four independent construction questions
+
+These choose authoring depth and storage precision, not campaign behavior. Do not let one answer silently control the others or overwrite the accepted run contract:
 
 1. **World detail** — sparse / focused / detailed / custom.
 2. **Campaign dynamics** — none beyond ordinary causality / selected systems / detailed interacting systems / custom.
@@ -31,6 +52,7 @@ For each selected domain or subsystem, establish only what is useful:
 - what can change and which causal events change it;
 - whether it is definition-only, dormant at T0, or initially implicated;
 - current-state authority after the first causal change;
+- whether private cross-boot discovery requires optional `declared_state_flags`, and how an operative condition is referenced without duplication from `causal_frontier`;
 - visibility to the PC/player;
 - what does **not** activate, advance, or imply it;
 - retirement or resolution condition, if any;
@@ -48,9 +70,9 @@ Before any optional pass, show a compact menu of the pass headings below and ask
 
 ### Campaign topology and time
 
-Choose, if useful: episodic, sandbox, arc/phase, or hybrid; mostly emergent or with a fixed broad trajectory; expected time scale; routine-compression preference; incident density; quiet-day permission; and how ordinary life relates to the main premise.
+Elaborate only the already proposed or accepted structural direction, pressure, time handling, and development priorities where useful: episodic, sandbox, arc/phase, or hybrid; mostly emergent or with a fixed broad trajectory; expected time scale; routine-compression procedure; and how ordinary life relates to the main premise. Changing an axis here requires the same explicit acceptance as the run contract.
 
-A broad trajectory may be fixed while timing, particular events, responsible actors, PC involvement, and outcome remain unfixed. OOC intent frames possibilities; it does not guarantee scenes.
+A broad trajectory may be fixed while timing, particular events, responsible actors, PC involvement, and outcome remain unfixed. OOC intent frames possibilities; it does not guarantee scenes. Quiet play and no-change beats remain legal under every topology.
 
 ### World model
 
@@ -78,7 +100,9 @@ A phase is an operating condition, not a chapter or mission list. For each phase
 
 Never assign the PC's allegiance, response, or required task. Never advance a phase merely because a planned scene or session was completed.
 
-POLICY contains only present-facing cadence, tone, genre boundaries, and any broad trajectory disclosure that genuinely must shape every scene. Do not put detailed future phase definitions or private transition logic there: POLICY is opened for first fiction and would make them permanently hot. Put public phase machinery behind the declared CLOCKS capability or private causal phase truth behind TRUTH, and move changed state through its selected current authority (normally NOW for detailed state). A single current phase needed on every resume may instead be a compact `declared_state_flags` value in CURRENT_SAVE; do not duplicate that same current value elsewhere.
+A phase describes campaign fit and changing conditions; it is not its own warrant for a scene. Its definition remains cold until the GM task requires it. When an established transition cause becomes due or occurs, the GM may steward the resulting world condition and PERSIST carries any still-operative transition or consequence in the causal frontier. Merely reading, reviewing, indexing, or preparing the phase does not activate it.
+
+POLICY contains only Campaign-default proposals, present-facing cadence, tone, genre boundaries, and any broad trajectory disclosure that genuinely belongs in those proposals. Do not put detailed future phase definitions or private transition logic there: POLICY is opened for voice and would make them permanently hot. Put public phase machinery behind the declared CLOCKS capability or private causal phase truth behind TRUTH, and move changed state through its selected current authority (normally NOW for detailed state). A single current phase needed on every resume may instead be a compact `causal_frontier` value in CURRENT_SAVE; do not duplicate that same current value elsewhere.
 
 ### Clocks, fronts, pressures, and tracks
 
@@ -94,11 +118,15 @@ For each selected tracker, define:
 
 Elapsed time may move a tracker only when elapsed time is itself an explicitly declared cause. Session endings, retrieval, dramatic convenience, and PC inattention do not tick it automatically. A tracker is not a morality meter unless explicitly designed as one.
 
+Keep clock definitions and noncurrent bodies cold. Only an established live process or due condition that must survive fresh boot receives a compact causal-frontier entry; a private process with no other discovery route uses the separate non-revelatory `declared_state_flags` cue and a nonduplicating frontier reference when operative. The GM may advance or resist that process when its declared cause actually occurs; REVIEW may discuss its significance but cannot tick it.
+
 ### Autonomous people, factions, and institutions
 
 Develop only actors whose independent existence matters. Useful dimensions include role/scope, goals, resources/capacity, constraints, pressures, knowledge and wrong suspicions, values/boundaries, ordinary schedule, internal disagreement, vulnerabilities, and how matters can progress or resolve without the PC.
 
 Also record what an institution or actor is **not** when genre assumptions would otherwise inflate it. Existence does not make an actor hot, scheduled, allied, hostile, or romantically relevant.
+
+Autonomous means the world need not wait to be poked by the PC: an actor or institution may act when established causality or a due calendar condition calls for it. An accepted bounded creative mandate may separately authorize a new discretionary consequential situation at an eligible boundary. Mere existence, goals, fit, inclusion in Bearing, or retrieval is not a warrant to found that process. Carry only genuinely operative consequences or due checks in the causal frontier; keep the rest cold.
 
 For each authored person who may be named in CURRENT_SAVE or receive an overlay, assign one stable portable `person_id`. The PEOPLE route, `hot_identifiers`, and future `INSTANCE/PEOPLE/<person_id>.md` must use the same id. Use an opaque non-revelatory id when necessary, and do not create mass ids or person stubs.
 
@@ -106,7 +134,7 @@ For each authored person who may be named in CURRENT_SAVE or receive an overlay,
 
 A possibility body may define contact conditions, fixed or deliberately unfixed truth, stakes, useful capabilities, independent resolution, dependencies, constraints, and possible tracker effects.
 
-Seeds are inactive by default. They are not quests, promises, a required sequence, or PC knowledge. Drafting, indexing, or retrieving one never activates it. Do not choose the most dramatic explanation merely because it exists.
+Seeds are inactive preparation by default. They are not quests, promises, a required sequence, PC knowledge, or Bearing. Drafting, indexing, reviewing, or retrieving one never activates it. Authority is checked independently of candidate text; only then may an eligible candidate be consulted. Do not choose the most dramatic explanation merely because it exists.
 
 ### Relationships and social structures
 
@@ -154,9 +182,11 @@ Before the starting scenario is proposed, trace material T0 changes through thei
 
 Stable definitions and immutable **as-of-T0 snapshots** live in declared MODULE bodies. They do not assert that their mutable values remain current forever. INSTANCE registers remain canonical empty at bind. A current value may follow from established continuity with one specifically named T0 snapshot only when no selected current authority or accepted current-chat transition supplies a later value and no declared causal transition has occurred or is due. PLAY keeps accepted changes in chat RAM and writes nothing. At the next explicit CHECKPOINT/CLOSE, a system whose selected authority is NOW materializes complete as-of-now status in an explicit `INSTANCE/NOW.md` route/shard and applies unsaved transitions once; a CURRENT_SAVE-owned value changes only in the candidate, and a PC-owned value changes only in its INSTANCE PC bundle. From that point the MODULE snapshot answers only “at T0”; the selected route answers “now,” so they are never competing current authorities. Do not initialize every seed, clock, faction, or person merely because its body exists.
 
-For every mutable subsystem, label the T0 state as **definition-only**, **dormant**, or **initially implicated**. An inactive possibility remains inactive. If an initially implicated private system could not be recognized later from the immediate scene, open matters, appointments, or another already-resident fact, add one compact nonsecret routing cue to T0 `declared_state_flags`: stable system id, the causal/due-check condition, and the declared capability/section route. The id and route are themselves non-revelatory; use an opaque stable id and neutral filename when a descriptive name would expose the secret. Do not put the hidden value, outcome, actor, or other lore in the cue. A cue permits a bounded check when its condition exists; it does not make the system hot, reveal it, activate it, or tick it. Dormant and definition-only systems receive no resident cue merely because they exist.
+The v0.6 T0 template supplies `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier`. Put only opening facts and operative T0 conditions in those fields. Do not place provisional direction, a possibility list, private values, or general setting machinery in the causal frontier. If a selected private mutable subsystem may later require independent discovery, separately reserve the optional `declared_state_flags: none` field even when no watch cue is initially live.
 
-If the selected campaign contains a private mutable system that may later become independently live, include `declared_state_flags` in T0 even when its opening value is `none`; this reserves the existing optional field without making a watcher active. At each CHECKPOINT/CLOSE, add or update a cue only when such a system remains causally live across fresh boot and no immediate scene, open matter, appointment, or other resident fact makes its bounded check discoverable. An initial cue may route to its declared MODULE snapshot; after current state materializes, update the cue to the selected current INSTANCE authority. Remove/demote the cue when the system retires or another resident fact supersedes it. Never retain a stale MODULE route to answer later current status.
+For every mutable subsystem, label the T0 state as **definition-only**, **dormant**, or **initially implicated**. An inactive possibility remains inactive. If an initially implicated private system could not be recognized later from the immediate scene, open matters, appointments, or another resident fact, add one compact nonsecret routing cue to T0 `declared_state_flags`: stable system id, the causal/due-check condition, and the declared capability/section route. The id and route are themselves non-revelatory; use an opaque stable id and neutral filename when a descriptive name would expose the secret. Do not put the hidden value, outcome, actor, prepared situation, or other lore in the cue. When its condition is operative at T0, `causal_frontier` may carry only a compact typed reference to that field/route. A cue permits a bounded check when its condition exists; it does not make the system hot, reveal it, activate it, tick it, or warrant a scene. Dormant and definition-only systems receive no live frontier entry merely because they exist.
+
+At each CHECKPOINT/CLOSE, add or update a `declared_state_flags` cue only when such a private system remains causally live across fresh boot and no immediate scene, open matter, appointment, or other resident fact makes its bounded check discoverable. Add, update, or retire its nonduplicating causal-frontier reference according to whether the condition is operative. An initial watch cue may route to its declared MODULE snapshot; after current state materializes, update it to the selected current INSTANCE authority. Remove/demote the cue when the system retires or another resident fact supersedes it. Never retain a stale MODULE route to answer later current status. REVIEW cannot perform any of these state or frontier updates.
 
 ## Cross-system interaction audit
 
@@ -167,7 +197,8 @@ For detailed interacting systems, trace each accepted initiating cause through a
 3. distinguish required effects from conditional checks;
 4. declare update order where one result is an input to another;
 5. apply the source event once, then write each resulting current value once;
-6. record the causal event once in the archive when CLOSE preserves it.
+6. add, update, or retire each affected causal-frontier entry and any required private `declared_state_flags` cue once, without duplication;
+7. record the causal event once in the archive when CLOSE preserves it.
 
 No implicit cascade, circular trigger, or double tick is allowed. A phase or threshold may enable new conditions, but it does not force a scene, mission, PC act, allegiance, or outcome. If two rules would apply the same cause twice, or a cycle has no explicit stopping rule, revise the design before ACCEPT.
 
@@ -185,7 +216,7 @@ A broad-category index that merely points to another multi-subject monolith has 
 
 ## Draft output
 
-Return to NEW GAME with a proposed manifest that labels each optional domain:
+Return to NEW GAME with the proposed `POLICY.md` Campaign defaults and the separately accepted run-contract values, including an explicit creative mandate and REVIEW mode. Then provide a manifest that labels each optional domain:
 
 - `OMITTED` — no capability/body exists and PLAY treats it as absent
 - `INTENTIONALLY UNFIXED — <authority route>` — the authoritative body preserves that a named fact is unfixed

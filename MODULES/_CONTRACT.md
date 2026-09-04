@@ -7,7 +7,7 @@ The OS does not know any campaign’s filenames beyond this contract.
 | Record | Purpose |
 |---|---|
 | `MODULE.md` | id, title, engine binding, capability list, pointers |
-| `POLICY.md` | **Required voice declaration**, cadence, tone, genre anti-attractors, relationship extras, stronger safety |
+| `POLICY.md` | **Required voice declaration**; v0.6 campaign-default proposals; cadence, tone, genre anti-attractors, relationship extras, stronger safety |
 | `CHAR/PC.md` | player character **baseline** |
 | `T0_SAVE.md` | template ADMIN copies into a new INSTANCE |
 
@@ -15,11 +15,27 @@ The OS does not know any campaign’s filenames beyond this contract.
 
 The bound ENGINE decides which mechanical fields, if any, are required before bind and which may be deferred. If a later mechanic requires a missing value, PLAY pauses rather than guessing.
 
+For a newly authored v0.6 module, `T0_SAVE.md` also supplies the opening `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier` fields required by the INSTANCE schema. `pc_declared_goals` contains only goals the player actually declared. `causal_frontier` contains only T0-established operative consequences, specific due conditions or obligations, live established processes, pending decisions, and non-revelatory routes to current state; use `none` when there are none. Reserve optional `declared_state_flags: none` separately when a selected private mutable subsystem may later require cross-boot discovery.
+
 ## Voice (required)
 
 For v0.4-and-later authoring, `POLICY.md` must contain the exact level-two heading `## Voice`; its body declares the narrative voice. The OS does not supply a fallback. If voice is absent, PLAY must not start fiction. Report: module not runnable.
 
 A pre-v0.4 module whose voice is clearly declared under another heading remains legacy-compatible, but VALIDATE reports that check as `INCOMPLETE` and noncanonical rather than silently pretending it matched the v0.4 grammar. Manual confirmation or descriptor-only conversion is required before claiming complete coverage.
+
+## Campaign defaults (v0.6)
+
+A newly authored v0.6 `POLICY.md` contains one compact exact heading `## Campaign defaults`. Its human-readable body proposes all of the following without turning them into front matter or a second rules engine:
+
+- `campaign_promise` — what kind of play the module is offering, including material tone and cadence;
+- `fit_envelope` — what belongs naturally, what would make this a different campaign, and material anti-attractors;
+- six independent axes: `structural_direction`, `gm_initiative`, `pressure_incident_density`, `time_handling`, `development_priorities`, and `guidance_visibility`;
+- `creative_mandate` — explicitly `off` by default, with `creative_mandate_scope: none` and `creative_mandate_boundaries: none`; or `on` with bounded kind-level scope and eligible scene/session/calendar boundaries in those two companion values;
+- `review_mode` — exactly `off` or `bearing-only`; the latter permits an explicit REVIEW after successful PERSIST and an optional separately reported REVIEW after CLOSE.
+
+Use the canonical Campaign Contract tokens defined by the INSTANCE schema so accepted values copy cleanly; a `custom: ...` value includes its short operator-approved text. Do not infer one axis from another. High pressure does not imply proactive initiative; a broad direction does not imply a plot; explicit guidance does not imply menus; and any setting may contain quiet, solitary, or no-change play.
+
+These MODULE values are proposals only. They are never run acceptance, campaign fact, factual authority, external warrant, prepared content, or a scene/incident quota. At NEW GAME or LOAD, the operator accepts or revises a complete run-scoped contract in `INSTANCE/CAMPAIGN_CONTRACT.md`. PLAY uses that accepted contract, not a MODULE proposal, when judging creative authority. A legacy module without `## Campaign defaults` remains loadable when the operator supplies and accepts the complete run contract before PLAY; do not guess the missing settings from tone, genre, archives, or prior model conduct.
 
 ## Machine-readable descriptor (v0.4)
 
@@ -60,7 +76,7 @@ Typical placement:
 
 | Material | Usual authority |
 |---|---|
-| voice, cadence, current-facing phase/genre policy, anti-attractors, module-imposed stronger safety | `POLICY.md` |
+| voice, campaign-default proposals, cadence, current-facing phase/genre policy, anti-attractors, module-imposed stronger safety | `POLICY.md` |
 | public world, geography, culture, economy, law | WORLD |
 | institutions and factions | INST, with private causal truth in TRUTH where needed |
 | stable people baselines | PEOPLE |
@@ -103,13 +119,13 @@ Stable definitions and accepted immutable **as-of-T0 snapshots** for phases, clo
 
 Each mutable system's one authoritative definition also preserves its stable id, T0 classification, causal triggers/non-triggers, selected post-change current-authority route, cue lifecycle if needed, and any cross-system dependency/order that definition owns. Public/private placement follows the declared capabilities; explicit pointers connect them without duplicating rules. A SETUP manifest may mirror this for acceptance, but the disposable manifest/chat is never runtime authority.
 
-INSTANCE registers remain canonical empty at bind. When a subsystem's current status is actually required, use accepted post-save transitions already established in the current chat first, then an explicit INSTANCE override. Only if neither exists **and no declared causal transition has occurred or is due** may current continuity be derived from one specifically named MODULE T0 snapshot. Do not scan the module or initialize every declared system.
+INSTANCE registers remain canonical empty at bind. When a subsystem's current status is actually required, use accepted post-save transitions already established in the current chat first, then an explicit INSTANCE override. Only if neither exists **and no declared causal transition has occurred or is due** may current continuity be derived from one specifically named MODULE T0 snapshot. Do not scan the module or initialize every declared system. Definitions, indexes, REVIEW, Bearing, retrieval, and compatibility with the campaign envelope never make a subsystem operative.
 
-PLAY never writes this transition. At the next explicit CHECKPOINT or CLOSE after the first accepted change, ADMIN follows the selected single current authority: a NOW-owned subsystem materializes complete as-of-now status—not its full lore or history—in an explicit NOW entry/shard; a CURRENT_SAVE-owned value changes only in the candidate; a PC-owned value changes only in the INSTANCE PC bundle. Apply every accepted post-save transition exactly once. Thereafter the MODULE snapshot remains authority only for T0 and stable definitions; the selected INSTANCE route answers current status. A clock, phase, seed, faction, institution, or resource track never changes merely because time passed, a session ended, or its body was retrieved unless that exact cause was declared in its design.
+PLAY never writes this transition. The GM may steward an already-operative process when its established cause or declared due condition calls for world action; it does not need to wait for the PC to inspect the process. An accepted creative mandate may separately authorize discretionary consequential material at its eligible boundaries, but no MODULE definition supplies that warrant. At the next explicit CHECKPOINT or CLOSE after the first accepted change, ADMIN follows the selected single current authority: a NOW-owned subsystem materializes complete as-of-now status—not its full lore or history—in an explicit NOW entry/shard; a CURRENT_SAVE-owned value changes only in the candidate; a PC-owned value changes only in the INSTANCE PC bundle. Apply every accepted post-save transition exactly once. Thereafter the MODULE snapshot remains authority only for T0 and stable definitions; the selected INSTANCE route answers current status. A clock, phase, seed, faction, institution, or resource track never changes merely because time passed, a session ended, REVIEW noticed it, or its body was retrieved unless that exact cause was declared in its design.
 
-Each mutable T0 system is marked definition-only, dormant, or initially implicated. If a private initially implicated system can become relevant without being named by another resident fact, T0 supplies one compact nonsecret watch/route cue in `declared_state_flags`. The cue contains only a stable system id, causal or due-check condition, and declared capability/section route. The id, route, filename, and heading are themselves non-revelatory; use opaque stable forms where needed. It does not contain the private value or activate the system. A system with no such cue is query-triggered or dormant, not silently autonomous.
+Each mutable T0 system is marked definition-only, dormant, or initially implicated. If a private initially implicated system can become relevant without being named by another resident fact, T0 supplies one compact nonsecret watch/route cue in `declared_state_flags`. The cue contains only a stable system id, causal or due-check condition, and declared capability/section route. The id, route, filename, and heading are themselves non-revelatory; use opaque stable forms where needed. It does not contain the private value, a prepared scene, or its own warrant, and does not by itself activate or advance the system. While that condition is genuinely operative, `causal_frontier` may carry a compact typed reference to this field rather than duplicate its detail. A private system with no such cue is query-triggered or dormant, not silently autonomous.
 
-If a private mutable system may become independently live later, T0 includes the optional `declared_state_flags` field even when its opening value is `none`. CHECKPOINT/CLOSE adds or updates a cue only while the system remains causally live across fresh boot and no other resident fact makes its check discoverable. An initial cue may name a MODULE snapshot; once current state materializes, its cue follows the selected current INSTANCE authority. Retire the cue with the system or when another resident route supersedes it. Never keep a stale MODULE route as if it pointed to current state.
+CHECKPOINT/CLOSE adds or updates a `declared_state_flags` cue only while the private system remains causally live across fresh boot and no other resident fact makes its check discoverable. An initial cue may name a MODULE snapshot; once current state materializes, its cue follows the selected current INSTANCE authority. Add, update, or retire the corresponding nonduplicating `causal_frontier` reference when the condition becomes operative or ceases to be. Retire the watch cue with the system or when another resident route supersedes it. Never keep a stale MODULE route as if it pointed to current state. REVIEW may interpret what an operative process means for campaign direction, but it cannot add either cue, activate or advance the process, or change its authoritative state.
 
 ## Person records (if PEOPLE exists)
 

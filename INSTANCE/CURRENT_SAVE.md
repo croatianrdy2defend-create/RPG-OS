@@ -29,7 +29,10 @@ No campaign run is bound.
 | declared_state_flags | none |
 | immediate_scene | none |
 | hot_identifiers | none |
+| scene_status | none |
+| uncommitted_time | none |
+| pc_declared_goals | none |
+| causal_frontier | none |
 
 PLAY: confirm ready and unbound. Do not begin a scene. Do not invent a world. Do not print filenames.
 Do not offer New Game unless the operator asks.
-State that no files beyond the four addressed paths were opened.

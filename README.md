@@ -1,445 +1,420 @@
-# RPG OS v0.5 — Universal Campaign Operating System
+# RPG OS v0.6 — a file-native AI GM runtime
 
 [![Structural validation](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml/badge.svg)](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml)
 [![Documentation: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 
-**In plain English:** RPG OS is a folder that helps an AI run and remember a solo tabletop RPG across new chats. The campaign is stored in readable files, while you keep control of your character's decisions.
+RPG OS is a folder of plain Markdown files that helps a capable large language model run a persistent solo tabletop campaign.
 
-It is not a standalone game or app. You need an AI workspace that can open files, save changes, and use the same folder in a fresh chat. You do **not** need to understand the internal architecture to play.
+The simple idea is:
 
-**Release:** v0.5 is a public test release. Setup, saving, fresh-chat resume, and narrow historical recall have been tested; very long campaigns have not.
+> **The GM imagines and judges. The rules constrain and clarify. The files remember.**
 
-**Start here:** [`QUICKSTART.md`](QUICKSTART.md) · [`INSTALLATION.md`](INSTALLATION.md) · [`COMMANDS.md`](COMMANDS.md) · [`ARCHITECTURE.md`](ARCHITECTURE.md) · [`CHANGELOG.md`](CHANGELOG.md)
+The chat is temporary working memory. The campaign's accepted present and history live in files. The design lets a fresh chat resume the same campaign without pasting the entire transcript—but the AI is still expected to act as a GM, not as a database waiting to be queried.
 
-Do not load this whole README during PLAY. It is the public project overview, not resident campaign context.
+**Release:** v0.6 public-testing build.  
+**Maturity:** experimental; not production-proven and not tested through 100 sessions.  
+**Contents:** an unbound kit, no campaign world, and the `freeform` engine only.
+
+Start with [QUICKSTART.md](QUICKSTART.md). For setup details, use [INSTALLATION.md](INSTALLATION.md). The short command list is [COMMANDS.md](COMMANDS.md).
+
+Do not load this README during PLAY. It explains the project to people; it is not runtime context.
 
 ---
 
-## Start here if you just want to play
+## What problem does it solve?
 
-You do not need to read LAW, contracts, schemas, archive rules, or the rest of this README before your first game. Most of those files are instructions for the AI.
+Long AI-run campaigns often break in two opposite ways:
 
-1. Download and extract one clean copy of RPG OS.
-2. Add the whole folder to an AI project or workspace that can **read and save files**.
-3. Start a new chat in that workspace and paste:
+1. **Amnesia:** a new chat forgets established details, relationships, resources, or unresolved consequences.
+2. **Context overload:** keeping every transcript and lore file loaded makes old material too salient, encourages accidental spoilers, and consumes the context window.
 
-   ```
-   Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md, and INSTANCE/CURRENT_SAVE.md.
-   Do not search or list the rest of the folder.
-   Confirm the runtime is ready. Do not start a scene.
-   ```
+An earlier RPG OS prototype solved much of the filing problem but revealed a third failure: the AI could become an excellent clerk and a passive GM. It would retrieve correctly, avoid invention, and wait for the player to supply every new situation.
 
-4. When the AI says the kit is ready but has no campaign, say **`New game`**. Answer its questions, review the proposed campaign, and say **`Accept`** only when you are satisfied.
-5. Wait for the AI to confirm a `campaign_id` and `save_id`. Then start a **fresh chat** in the same workspace and use the [play/resume message](INSTALLATION.md#5-play-in-a-new-chat).
-6. Say **`CHECKPOINT`** when taking a break and you need the current situation saved. Say **`CLOSE`** at session end when you also want detailed scenes and exact dialogue preserved. Wait for the new `save_id` before closing or deleting the chat.
+v0.6 is a GM-first redesign. It keeps the persistence and retrieval discipline, but the runtime now begins from:
 
-For the easiest first campaign, choose a **Sparse** world, a **Quick** or **Standard** character, and either **No full sheet** or **Minimum required** sheet. You can build more detail later.
+- where the campaign and current scene are;
+- what the player intends;
+- what the GM owes the table now;
+- what established causes or accepted permissions allow;
+- which facts or rules are actually needed.
 
-### The capitalized terms, in ordinary language
+Only then does it retrieve files.
 
-You normally type only `New game`, `Accept`, `CHECKPOINT`, and `CLOSE`. The other terms are internal labels that help the AI keep different jobs separate.
+The player should feel:
 
-| Term | Plain meaning |
+> *This is a GM who remembers.*
+
+Not:
+
+> *This is a database I must interrogate until it produces a scene.*
+
+---
+
+## The five ideas to understand
+
+| Term | Meaning in ordinary language |
 |---|---|
-| **BOOT** | Starting or resuming RPG OS in a fresh chat. |
-| **SETUP** | Creating the world and character. Nothing is played or made canon until you approve it. |
-| **PLAY** | The actual game. The AI runs the world; you decide your character's voluntary actions, words, thoughts, and consent. |
-| **ADMIN** | Out-of-game work such as saving, loading, checking, or archiving files. |
-| **LAW** | Fixed core instructions for agency, safety, authority, and retrieval. |
-| **ENGINE** | The rules used for dice or other uncertain outcomes. |
-| **MODULE** | The reusable campaign blueprint: world, style, starting material, and optional systems. |
-| **INSTANCE** | Your current playthrough: the live save and everything that changed during play. |
-| **CURRENT_SAVE** | The compact save file used to resume the current moment. |
-| **POLICY** | Campaign-specific tone, pacing, boundaries, and unwanted story tendencies. |
-| **RULES_HOOKS** | Optional guidance for applying the chosen rules; it is not a replacement ruleset. |
-| **CHECKPOINT** | Save the current situation without creating detailed historical evidence. |
-| **CLOSE** | Save the current situation and preserve indexed session evidence. |
+| **GM Core** | The runtime duties and limits: frame the situation, portray an autonomous world, judge consequences fairly, protect player authorship, and keep the campaign coherent |
+| **Campaign Contract** | The run you explicitly accepted: its promise, fit envelope, direction, initiative, pressure/time handling, priorities, visible guidance, and any bounded proactive mandate |
+| **Current Save** | The authoritative present: where and when the PC is, their current state, what just happened, and which established causes may still matter |
+| **Bearing** | An optional, revisable note about what the campaign may be becoming; useful orientation, never canon or a queued plot |
+| **PERSIST / REVIEW** | PERSIST records facts; REVIEW separately interprets the campaign without changing those facts |
 
-Full command details are in [`COMMANDS.md`](COMMANDS.md).
+### A few more terms
 
-### Can I use GURPS, D&D, or another game system?
-
-Yes. **Freeform is the only engine included and ready without extra setup, but RPG OS is not limited to Freeform.** It can be configured with a compact local engine adapter for systems such as:
-
-- GURPS Fourth Edition
-- Dungeons & Dragons 5e
-- Pathfinder
-- Call of Cthulhu or Basic Roleplaying
-- Savage Worlds
-- Fate
-- a specific Powered by the Apocalypse game
-- Ironsworn or another solo-oriented system
-- a solo oracle or GM emulator
-- your own homebrew rules
-
-An engine adapter is not a replacement rulebook. It is a small file telling the AI how this campaign resolves uncertainty, which character-sheet values matter, and which missing values require a question. You must provide or import the needed procedures, values, and character information from material you are entitled to use. If something required is unavailable, the AI must ask, defer it when allowed, or stop—it must not invent mechanics or reconstruct a copyrighted rulebook.
-
-The systems named above are examples, not bundled content, tested integrations, endorsements, or claims of official compatibility. RPG OS is not affiliated with their publishers, and their names and trademarks belong to their respective owners.
-
-Technical architecture begins below.
+- **Bound / unbound:** an unbound kit has no campaign. A bound folder belongs to one accepted run.
+- **PLAY:** fiction and adjudication. PLAY never writes files.
+- **SETUP:** the New Game interview. Drafts are not canon until ACCEPT.
+- **ADMIN:** explicit file-changing work such as CHECKPOINT, CLOSE, REVIEW, or RECALIBRATE.
+- **Causal frontier:** the compact list of established consequences, due conditions, live processes, pending decisions, and narrow current-state cues that could matter next. The Current Save keeps explicitly declared PC goals and leftover PC time in separate fields. None of these is a list of planned scenes.
+- **Cold file:** stored on disk but not normally loaded. Existence and retrieval do not grant narrative importance.
+- **Warrant:** an independent reason a particular consequential development may occur, such as an established cause, due condition, player goal, explicit request, or authorized procedure.
+- **Creative mandate:** an explicit Campaign Contract permission for proactive, campaign-consistent GM introductions at eligible boundaries. It permits; it never imposes a quota.
 
 ---
 
-## 1. What this is
+## What is in the folder?
 
-RPG OS is a **file-native operating system for solo tabletop play with a large language model as GM**.
+RPG OS retains five storage areas:
 
-The campaign does not live in the chat. The chat is a disposable working set. Persistence is a folder of Markdown files.
+| Area | Job |
+|---|---|
+| `OS/` | GM Core, authority, agency, safety, boot, and the cold task-first retrieval service |
+| `ENGINE/` | Swappable resolution procedures and character-sheet requirements |
+| `MODULES/` | Reusable world/genre/voice baselines and optional campaign capabilities |
+| `INSTANCE/` | This run's Contract, Current Save, character/current-state records, corrections, safety, and optional Bearing |
+| `ARCHIVE/` | Cold historical evidence and narrow routes to exact past details |
 
-Under the hood, four layers keep different kinds of information from becoming mixed together:
+`ADMIN/` contains setup, loading, one-time v0.5 migration, persistence, review, recalibration, validation, and tests. `TOOLS/` contains the optional read-only structural validator.
 
-| Layer | Plain-language job | Swappable? |
-|---|---|---|
-| **OS** | Fixed rules the AI must obey, including player agency, safety, and what it may retrieve | No. Its kernel is `OS/LAW.md`. |
-| **ENGINE** | The method used to resolve uncertainty: freeform judgment, dice, moves, or an oracle | Yes. |
-| **MODULE** | The reusable campaign blueprint: setting, tone, PC baseline, and optional world systems | Yes. |
-| **INSTANCE** | This particular playthrough: its current save, changes, and history | Yes. Use a separate folder copy for another run. |
-
-During the actual game, the AI keeps only **two files permanently in view**:
-
-1. `OS/LAW.md` — the fixed core rules
-2. `INSTANCE/CURRENT_SAVE.md` — the current playable situation (the clean download is **unbound**, meaning no campaign exists yet)
-
-Everything else is retrieved only when the *immediate* moment causally requires it.
-
-This public kit contains **no campaign world**. Every setting is a client of the contract, not part of the OS. You create a world with **New Game**.
+This public repository contains **no setting, adventure, or campaign world**. Tellus and other authored campaigns are not included.
 
 ---
 
-## 2. Purpose
+## How a campaign runs
 
-The purpose is to keep a **long, detailed persistent world** without stuffing that world into the model's context window.
+### 1. Technical boot
 
-Typical LLM campaigns fail because:
+Every new chat begins by opening exactly:
 
-- the adventure lives in an infinitely scrolling chat
-- the model forgets Tuesday and invents a quest on Wednesday
-- NPCs decide what the player character feels
-- one name lookup dumps the entire relationship basement
-- a new conversation is amnesia
-- “being helpful” fills blanks, completes schemas, and manufactures drama
+1. `OS/AGENTS.md`
+2. `OS/BOOTSTRAP.md`
+3. `OS/LAW.md`
+4. `INSTANCE/CURRENT_SAVE.md`
+5. `INSTANCE/CAMPAIGN_CONTRACT.md`
 
-RPG OS attacks those failure modes directly:
+For a bound run, the loader then opens only required safety and voice material. It may load `INSTANCE/BEARING.md` if review is enabled and that Bearing was built from the current save and Contract. A stale or absent Bearing never blocks play.
 
-- **Files are the disk. Chat is RAM.** Killing the thread is a feature if ADMIN compiled the save.
-- **Minimum necessary retrieval.** Zero extra files is valid. A retrieved bakery is not an encounter table.
-- **Retrieval locality.** Large domains expose compact indexes that route to independently useful authoritative records; the filesystem may be huge while the active context stays small.
-- **Player agency is law**, not a vibe. The GM does not author voluntary PC thoughts, attraction, consent, purchases, or first acts.
-- **Quiet days are legal.** Seeds are possibilities, not obligations.
-- **Archive is evidence**, not the living world. Exact SMS or an intimate scene can be recalled in session 15 *if* the present moment makes that recall causal. Sharing coffee with that person later does not reload the night.
-- **Any ruleset is a plugin.** Freeform is bundled. Other systems can be represented by compact local engine files at New Game — procedure + sheet fields, never a redistributed or reconstructed rulebook.
-- **Complexity is opt-in by domain.** Sparse campaigns and minimal PC baselines are valid. Detailed campaigns may add phases, causal clocks, institutions, private causality, resources, or house-rule calibration without putting those bodies into resident PLAY context.
+The archive, rule bodies, world lore, rosters, clocks, private truth, and other large records remain cold until a specific GM task needs them.
 
-The success criterion is **not** “can an LLM GM a session.” It is: **can Session 2 continue in a fresh chat from LAW + CURRENT_SAVE only, and can one exact old fact be retrieved without hauling the basement into the room?**
+### 2. New Game
 
-That test (fresh-chat resume + needle) has been run on one accepted play slice. The long-campaign claim remains deliberately unproven.
+`NEW GAME` is SETUP, not fiction. The AI asks one manageable cluster at a time about:
+
+- engine;
+- premise and campaign promise;
+- narrative voice, tone, and unwanted patterns;
+- safety boundaries before detailed drafting;
+- Campaign Contract axes;
+- optional world and campaign complexity;
+- PC profile depth and an independent mechanical-sheet choice;
+- the starting time, place, and playable situation.
+
+You can build:
+
+- a sparse freeform campaign with a short PC profile;
+- a detailed mechanical character;
+- a world with phases, clocks, institutions, resource rules, and private causality;
+- or any smaller selection between those extremes.
+
+“Detailed” means deeper only in the domains you chose. It does not authorize an encyclopedia, empty folder trees, a mass NPC roster, or a prewritten railroad.
+
+The AI displays a manifest. Nothing becomes canon until you explicitly say `ACCEPT`.
+
+### 3. PLAY: GM first, retrieval second
+
+For each player declaration, the runtime:
+
+1. orients to the campaign and current scene;
+2. understands player intent;
+3. identifies the GM task;
+4. checks what is required or authorized;
+5. retrieves facts or procedures sufficient and proportionate to that task;
+6. imagines and judges;
+7. portrays only the selected result;
+8. returns agency or closes the beat.
+
+This avoids both extremes:
+
+- **clerk failure:** “nothing was prewritten, so nothing happens”;
+- **railroad failure:** “this would fit the setting, so I will force it into play.”
+
+A quiet evening may genuinely contain no incident. It must still provide orientation, ordinary function when appropriate, and a clean chance to continue or advance time. A busy thriller may move established processes aggressively when the accepted Contract calls for it. Neither style creates a mandatory dilemma quota.
+
+### 4. PERSIST
+
+PERSIST is the umbrella term for two commands:
+
+| Command | Saves authoritative present | Saves exact historical evidence |
+|---|---:|---:|
+| `CHECKPOINT` | Yes | No |
+| `CLOSE` | Yes | Yes, through indexed scene shards |
+
+PERSIST records what became true and what accepted evidence was delivered. It cannot infer what the campaign “should” become, manufacture history, or save rejected ideas.
+
+Do not discard a chat containing accepted play until CHECKPOINT or CLOSE confirms a new `save_id`.
+
+### 5. REVIEW
+
+REVIEW is separate from saving. After a successful PERSIST it may examine the accepted Contract, current state, prior Bearing, and narrowly selected evidence to ask:
+
+- What has accumulated?
+- Which consequences or player goals remain active?
+- Is a recognizable pattern forming?
+- Which directions weakened, contradicted themselves, or ended?
+- Is “no stable pattern yet” the honest answer?
+
+Its only durable output is the optional provisional Bearing. REVIEW cannot edit the Current Save, history, people, clocks, safety, or Contract. If REVIEW fails, the saved campaign remains valid and playable.
+
+v0.6 ships **no durable GM-preparation bank**. Optional module seeds or possibilities may still exist as cold, nonauthoritative campaign material, but Bearing is not a hidden adventure queue. The GM may author a fresh realization when responsive duty, an external warrant, or the Contract's accepted creative mandate permits it; no prepared candidate is required.
+
+### 6. END SESSION
+
+`END SESSION` is the convenient normal sequence:
+
+1. run CLOSE;
+2. stop if CLOSE fails;
+3. if CLOSE succeeds and the Contract uses `review_mode: bearing-only`, run REVIEW;
+4. report the PERSIST and REVIEW results separately.
+
+### 7. RECALIBRATE
+
+Campaign preferences can change. `RECALIBRATE` drafts a prospective Contract change—for example, less pressure, more visible guidance, or a different GM-initiative setting. It applies only after explicit OOC acceptance, never rewrites earlier play, and makes older Bearing material stale.
+
+### 8. Migrating a bound v0.5 campaign
+
+`MIGRATE V0.5` is a one-time ADMIN conversion for an existing **bound** v0.5 campaign. It is not `LOAD MODULE`, a normal CHECKPOINT, or an automatic folder merge.
+
+Work only on a byte-for-byte backup after all accepted play has been saved by the old v0.5 runtime. Selectively install the v0.6 program, contracts, schemas, and blank Campaign Contract/Bearing templates while preserving the campaign's MODULE, Current Save and other INSTANCE authorities, and ARCHIVE evidence. Install the v0.6 shipped Freeform adapter when applicable; preserve and separately review a custom adapter. Then use the complete five-file migration boot prompt in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign); do not send the bare command by itself.
+
+The migration asks for and displays the first complete v0.6 Campaign Contract and explicit values for `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier`. It must not infer those values or reinterpret old play. On acceptance it creates checkpoint lineage from the old save, initializes a bound-empty Bearing, and publishes Current Save last. It does not reshard or rewrite the archive. See [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign) and [ADMIN/MIGRATE_V05.md](ADMIN/MIGRATE_V05.md).
 
 ---
 
-## 3. Origin and method
+## Player agency and world initiative
 
-RPG OS grew out of a detailed solo campaign whose world lore, rules, current state, private causality, and archive had become entangled. The redesign separated those concerns into OS, ENGINE, MODULE, and INSTANCE; then tested unbound refusal, SETUP-versus-PLAY separation, one accepted play slice, CHECKPOINT/CLOSE, fresh-chat resume, and one narrow historical retrieval.
+The player owns the PC's voluntary:
 
-Later releases closed cross-file authority gaps, made archives retrieval-local, added a read-only structural validator, and introduced optional character and complex-campaign builders. Multiple models served as compiler, auditor, and adversarial reviewer so the published Markdown would have to work without the original conversation.
+- actions and speech;
+- thoughts and feelings;
+- attraction and consent;
+- commitments, purchases, risks, messages, and political or moral choices.
 
-Early internal prototypes used a compact GURPS adapter while proving engine separation. The public v0.5 repository does **not** distribute that adapter or any campaign world; it ships Freeform and the generic contract for lawful local engines.
+The GM owns:
 
-See [CHANGELOG.md](CHANGELOG.md) for the full design and release history.
+- NPCs and institutions;
+- the environment and calendar;
+- consequences and established off-screen processes;
+- framing, pacing, adjudication, and campaign stewardship.
 
-## 4. What we chose *not* to be
+Player-driven does not mean the player must invent the world for the GM. Established NPCs and processes may act without waiting for the player to type a verb. A new consequential situation may also be authored when an independent warrant or explicitly accepted creative mandate permits it.
 
-- Not a dedicated app with SQLite, embeddings, and a custom NPC simulator (those exist; this is Markdown + an LLM with a folder).
-- Not “one long chat plus Memory Bank.”
-- Not event-sourcing in PLAY (replaying a chronicle recreates the bloat problem). ADMIN writes history; PLAY reads a compiled snapshot.
-- Not a setting-specific rules prompt with configurable lore. If one module's voice or assumptions survive into another, MODULE has leaked into OS.
-- Not legally a replacement for owning your rulebooks. Engine files are procedures.
+But compatibility is not permission by itself. “An ambush could happen in this setting” does not mean an ambush is authorized here. A retrieved seed, candidate, NPC file, or clock never activates merely because it was opened.
+
+Dice cannot create consent, love, friendship, ideological conversion, or the PC's will.
 
 ---
 
-## 5. How it works
+## Campaign complexity
 
-### 5.1 Operational modes
+Complex campaigns are supported without making complexity mandatory.
 
-```
-BOOT  →  SETUP (New Game)  →  ADMIN commit  →  PLAY  →  CHECKPOINT / CLOSE  →  fresh PLAY chat
-              \                 LOAD MODULE ↗
-```
+Optional systems may include:
 
-| Mode | May | May not |
-|---|---|---|
-| **BOOT** | Confirm ready | Invent a world |
-| **SETUP** | Ask, draft, show samples | Narrate a scene, write canon, play NPCs |
-| **ADMIN** | Write files, compile save, archive | Speak as fiction |
-| **PLAY** | Fiction + public footer | Write files |
+- changing phases or operating conditions;
+- causal clocks, fronts, pressures, and deadlines;
+- autonomous people, factions, and institutions;
+- calendars, travel, appointments, and selective time compression;
+- public and private information;
+- relationships with independently tracked dimensions;
+- resources, money, equipment, status, and logistics;
+- house-rule calibration and engine overrides;
+- large worlds split into narrow, independently retrievable files.
 
-SETUP may create possibilities. PLAY produces candidate events. ADMIN persists accepted history and canon.
+These systems obey the same state lifecycle:
 
-### 5.2 Boot (every new chat)
+- stable definitions and T0 baselines belong in MODULE;
+- changing authoritative state belongs in INSTANCE;
+- due or operative facts reach the Current Save's causal frontier when established;
+- archive evidence records what happened;
+- REVIEW may interpret a pattern but cannot advance a clock.
 
-Attach **only** this `RPG_OS` folder. First message: open four paths, do not list the repo:
+Reading a clock does not tick it. Ending a session does not tick it unless an accepted causal rule specifically makes that event a trigger. A phase describes changed conditions, not a compulsory story chapter.
 
-- `OS/AGENTS.md`
-- `OS/BOOTSTRAP.md`
-- `OS/LAW.md`
-- `INSTANCE/CURRENT_SAVE.md`
+---
 
-If unbound: ready only. “Begin play” and “just improvise” must fail closed.
+## Engines
 
-If bound: establish `CURRENT_SAVE` immediate scene, retrieve POLICY voice (and POLICY safety extras, SAFETY.md only if `safety_state` is `active`), hand back before the first voluntary PC act.
+The OS is not GURPS, D&D, or any other ruleset. ENGINE is a swappable service.
 
-### 5.3 New Game
+The public v0.6 kit bundles only **Freeform**, which uses fictional positioning and transparent GM judgment rather than a full numerical system.
 
-Interview, one cluster at a time:
+You may create a compact local adapter for a system you own or are entitled to use—for example GURPS, Dungeons & Dragons, Pathfinder, Call of Cthulhu, Fate, Savage Worlds, or your own design. These are examples of possible local engines, not bundled content, endorsements, or claims of affiliation.
 
-1. Rules engine — the method used for dice or other uncertain outcomes. Freeform is included; a compact local adapter may be drafted if needed, but the AI must not copy or reconstruct a copyrighted rulebook.
-2. Title and premise
-3. Narrative voice
-4. Tone and pacing
-5. Anti-attractors — themes or patterns you do not want the GM to force or overuse
-6. Optional safety boundaries, asked before detailed drafting
-7. World/campaign depth — Sparse, Focused, Detailed, or Custom. Detailed means deeper only in the areas you select.
-8. PC concept plus two independent choices: Quick/Standard/Detailed/Custom profile depth, and No full sheet/Minimum required/Guided full sheet/Import mechanical path. A completed sheet is optional.
-9. Starting time, place, and situation (`T0`)
-10. **Starting scenario** — 2–3 situations already in motion; pick one. The AI must not choose the PC's feelings or first action.
-11. Optional systems such as clocks, factions, institutions, private truths, or tracked resources — created only when you choose them and their supporting files will exist
-12. Manifest — a final summary of what will be created, omitted, or left undecided — followed by explicit **ACCEPT**, structural checks, and binding the campaign to this folder
+An engine adapter should contain only the minimum operating procedure and sheet fields needed for play. Do not ask the AI to reconstruct, copy, or redistribute a copyrighted rulebook. You still need lawful access to and knowledge of the game you use.
 
-Focused, Detailed, or Custom world construction uses `ADMIN/CAMPAIGN_BUILD.md`. Character construction uses `ADMIN/CHARACTER_BUILD.md`. These are questionnaire and file-building procedures, not part of the playable scene.
+Narrative flavor is not an engine override. A real change to resolution belongs in the ENGINE layer; campaign-specific presentation belongs in policy; later rulings belong in INSTANCE corrections.
 
-Optional campaign machinery can include phases, causal clocks, factions, hidden information, relationships, resources, and house-rule guidance. You decide which systems exist. The AI must define what can change them and where their current state is stored; it does not load every system merely because it exists.
+---
 
-If CURRENT_SAVE is already bound, New Game and LOAD **stop**. Use a separate folder for a second run.
+## Retrieval locality and archives
 
-At bind: copy the exact PC body/routed bundle to `INSTANCE/CHAR/`, with `PC.md` as the stable entrypoint. MODULE stays the immutable baseline.
+The filesystem may be large. Active context should not be.
 
-Then: **new chat** to play. Do not continue in the questionnaire.
-
-### 5.4 PLAY retrieval
-
-Open the **smallest sufficient set**. Default extra files: zero.
-
-A retrieved fact gains **no** narrative weight. Location ≠ roster. One name ≠ the relation ledger. Quiet Tuesday stays quiet.
-
-A tool may return a whole file. Treat only the addressed section as in play and discard the rest. That **mitigates**; it does not isolate tokens. If PRIVATE leaks, split the file physically. That is the escape hatch.
-
-#### Retrieval locality
-
-Persistent information should be addressable at approximately the granularity at which it is normally needed:
+RPG OS uses:
 
 ```text
-large domain → compact routing index → narrow authoritative record
+large domain -> compact index -> narrow authoritative record
 ```
 
-This can apply recursively to world lore, locations, institutions, mature NPCs, INSTANCE registers, engine extensions, equipment, or private material. A declared capability entrypoint may be the body itself while small, then remain as a compact index if independent retrieval later justifies splitting.
+Indexes answer “where should I look?” They do not duplicate the world, make their contents important, or authorize an encounter. Files split when their parts are normally needed independently—not merely when they cross a word count.
 
-Split by relevance, not a token threshold. A long cohesive file may be correct; a shorter file containing unrelated subjects may be wrong. Do not prebuild empty hierarchies. Indexes answer “where should I look?”, do not duplicate the bodies, and do not authorize repository-wide discovery. Explicit cross-links are routes, not automatic relevance.
+CLOSE archives accepted play as semantic scene shards with compact indexes and stable heading identifiers. A precise question can follow a ledger or index to one source heading instead of loading a whole campaign chronicle.
 
-### 5.5 CHECKPOINT vs CLOSE
-
-| | CHECKPOINT | CLOSE |
-|---|---|---|
-| Best used when | Taking a break or protecting current progress | Ending a session or before discarding a chat |
-| Saves the complete current situation | Yes — this **is** a real save | Yes |
-| Preserves detailed scene evidence and exact wording | No | Yes |
-| What you can resume later | The current moment and live state | The current moment, live state, and retrievable session details |
-
-Wait until ADMIN prints the new `save_id` before leaving. The next session can begin in a **new chat** because the files, not the old chat, hold the save. Technical write order is defined in `ADMIN/CLOSE_CONTRACT.md`.
-
-### 5.6 Archive (cold)
-
-```
-ARCHIVE/
-  _SCHEMA.md            hierarchical-scene-v1 contract
-  INDEX.md              sparse campaign-level router
-  MESSAGES_LEDGER.md    pointer to one exact-message heading
-  RELATION_LEDGER.md    pointer to one relationship-scene heading
-  sessions/sNN-dXX/
-    INDEX.md             compact routes for this closed slice
-    01_<scene>.md        detailed historical evidence
-    02_<scene>.md        another independently retrievable event
-```
-
-The archive compresses routing, not evidence. Scene shards preserve detailed accepted play; indexes only locate it. For an exact-detail question: campaign INDEX if the session is unknown → session INDEX → one shard/heading. If a trusted pointer already identifies the shard, skip the indexes. Stop when the evidence is sufficient.
-
-Indexes may answer a simple unambiguous existence fact. Exact wording, rolls, quantities, sequence, subtle relationship context, or disputed history must come from the source shard. Retrieval breadth follows question breadth.
-
-Pre-v0.3.2 DELTA/TRANSCRIPT/MESSAGES archives remain valid. They need not be migrated. Optional migration is partition + index, never rewrite + reinterpret.
-
-Needle: ledger or index → one source heading. Not the whole basement. Sharing bread with someone in session 15 does not load session 1’s intimate scene. Recalling exact embodied detail is legal only when that person is present, the topic arose, or the player invited it. Reading “might happen” in an old shard never makes it happen.
-
-### 5.7 Authority (when files disagree)
-
-1. LAW
-2. Explicit player rulings (including active SAFETY.md)
-3. Accepted saved play compiled into CURRENT_SAVE
-4. CURRENT_SAVE
-5. ENGINE + instance PC sheet
-6. MODULE baseline
-7. Private records, only if causally required
-8. ARCHIVE (historical, not automatically present)
-
-Never disguise a contradiction as an in-world twist.
-
-### 5.8 Agency (non-negotiable)
-
-The player owns voluntary PC: actions, words, thoughts, emotions, attraction, consent, purchases, risks, commitments, messages, weapon handling.
-
-The GM owns NPCs, world, camera, calendar, consequences, private causality.
-
-Dice cannot manufacture consent or relationships. They may resolve situational cooperation inside existing NPC boundaries.
-
-Sexual/erotic content: adults only. Ordinary children may exist in the world. The player may pause, veil, rewind without in-character penalty. MODULE may be stricter, never weaker.
-
-### 5.9 Operator commands (out of character)
-
-- `AUDIT` — files opened on the previous non-AUDIT turn, reasons, whether find/ls ran. No bodies.
-- `VALIDATE` — read-only ADMIN structural diagnostic. Prefer the shipped script; no-code inspection cannot certify the tree and is incomplete unless it finds a definite failure. It writes no certificate or campaign state.
-- `CHECKPOINT` — save present.
-- `CLOSE` — save present + archive.
-- Unsent UI suggested-reply chips are **not** player input.
+Archive is evidence, not the living present. Reading that someone “might call” in an old record does not make the call happen.
 
 ---
 
-## 6. Folder map
+## Strengths
 
-```
+- **Fresh-chat continuity by design:** the authoritative present lives outside the conversation and can be tested on each host.
+- **GM-first orientation:** campaign and intent come before repository navigation.
+- **Separation of truth and interpretation:** Current Save is canon; Bearing is provisional.
+- **Failure isolation:** REVIEW can fail without damaging a valid save.
+- **Player authorship:** PC interiority and voluntary decisions have explicit ownership.
+- **Autonomous world:** NPCs, institutions, time, and established processes need not wait to be poked.
+- **No preparation entitlement:** stored, retrieved, or fitting material is not automatically activated.
+- **Task-first retrieval:** exact facts and rules are fetched only when the GM work requires them.
+- **Retrieval locality:** large lore and archives remain addressable without becoming resident.
+- **Swappable rules:** Freeform ships; lawful local engines can be added.
+- **Human-readable persistence:** Markdown can be inspected, backed up, diffed, and version-controlled.
+- **Structural tooling:** deterministic format and route defects can be checked separately from narrative quality.
+
+---
+
+## Weaknesses and honest limits
+
+- **Instruction enforcement, not hard isolation.** On a normal host, one model context interprets the rules, reads files, judges, and narrates. It can still misunderstand, rationalize, leak filenames, or expose rejected material.
+- **No recovery of unsaved chat.** If the chat disappears before CHECKPOINT or CLOSE, RPG OS cannot reconstruct the missing accepted play.
+- **Non-atomic multi-file writes.** Writing Current Save last protects the main pointer, but an interrupted update may leave another INSTANCE or ARCHIVE file changed. Inspect or restore from backup before resuming.
+- **Host dependence.** Folder reads, durable writes, range/section behavior, and tool access vary. A model name or paid tier does not guarantee compatibility.
+- **Privacy is not guaranteed.** “PRIVATE” is an instruction and storage convention, not encryption or proof that a host did not ingest the file.
+- **Provider policy and account risk.** The OS cannot override content policies, moderation, terms, or account enforcement. Fictional or historical context is not a guarantee of acceptance. Do not bypass safeguards; change the material or use a lawful local/offline environment that permits it.
+- **Administrative work remains.** PLAY does not write. The user must run PERSIST, protect backups, and handle interrupted writes honestly.
+- **Structural validation is limited.** A passing script cannot prove good GMing, consent compliance, semantic fidelity, host persistence, or future behavior.
+- **Scale is unproven.** v0.6 has not demonstrated a 20-session or Session-100 campaign under this new architecture.
+- **No dedicated UI.** There is no map, character-sheet application, automated dice panel, or vector database.
+
+If saving files feels like too much overhead, this prototype may not suit you yet. If long-chat amnesia and lore saturation are the bigger problems, it may be worth testing.
+
+---
+
+## Validation and evidence
+
+`VALIDATE` runs a read-only structural diagnostic. With code execution, `TOOLS/validate.py` can check declared deterministic file invariants. Without code execution, a model inspection must label itself `MODEL-CHECKED` and disclose exactly what it examined.
+
+Keep four kinds of evidence separate:
+
+1. **STRUCTURAL:** mechanically checked paths, formats, identities, and references.
+2. **HOST OBSERVATION:** what one host/model/tool setup did at one time.
+3. **SEMANTIC:** human/model judgment about agency, warrants, archive fidelity, or GM behavior.
+4. **PLAYER-RATED:** whether the campaign actually felt coherent, alive, fair, and easy enough to operate.
+
+Do not average a clean filesystem into a claim of good play.
+
+The packaged v0.6 release tree is required to pass its shipped structural validator before publication. Re-run it after extraction or modification, use [ADMIN/TESTS.md](ADMIN/TESTS.md) for the broader fixtures, and report the actual result; a release-time pass is not a guarantee about a changed copy or future play.
+
+---
+
+## Folder map
+
+```text
 RPG_OS/
-  OS/           LAW, BOOTSTRAP, AGENTS          (kernel)
-  ENGINE/       _CONTRACT, freeform             (plugins)
-  MODULES/      _CONTRACT                       (empty until New Game)
-  INSTANCE/     CURRENT_SAVE, registers, CHAR/, PEOPLE/, SAFETY
-  ARCHIVE/      _SCHEMA, campaign INDEX, ledgers, session indexes/shards
-  ADMIN/        NEW_GAME, CHARACTER_BUILD, CAMPAIGN_BUILD, LOAD, CLOSE, VALIDATE, TESTS, ADD_ENGINE
-  TOOLS/        dependency-free read-only structural validator
-  QUICKSTART.md INSTALLATION.md COMMANDS.md README.md SHARE.md ARCHITECTURE.md
-  CHANGELOG.md CONTRIBUTING.md LICENSE .github/
+  OS/           GM Core, loader, boot, and cold retrieval service
+  ENGINE/       engine contract and bundled freeform engine
+  MODULES/      module contract; no campaign world in the public kit
+  INSTANCE/     Campaign Contract, Current Save, optional Bearing, live records
+  ARCHIVE/      historical schema, indexes, ledgers, and later scene shards
+  ADMIN/        New Game, Load, Migrate, Persist, Review, Recalibrate, Validate, tests
+  TOOLS/        read-only structural validator
+  README.md     project overview
+  QUICKSTART.md shortest route to play
+  INSTALLATION.md host setup and preflight
+  COMMANDS.md   command cheatsheet
+  ARCHITECTURE.md design and authority boundaries
+  CHANGELOG.md  version history
+  CONTRIBUTING.md reports and pull requests
+  SHARE.md      short public smoke test
 ```
 
-Do not edit `OS/LAW.md` for house rules. POLICY owns voice/cadence/boundaries; RULES_HOOKS may calibrate but not contradict ENGINE; a real mechanical override uses a distinct compact ENGINE id; later table rulings go in INSTANCE/CORRECTIONS.
-
 ---
 
-## 7. Strengths
+## Documentation map
 
-- **Persistence outside chat.** The interesting claim is fresh-resume-shaped: new conversation, same minute, one cold fact on demand.
-- **Salience control.** Most AI-GM projects add memory. This one subtracts it until needed.
-- **Retrieval locality.** Broad categories no longer imply broad reads; stable entrypoints route to the independently relevant authority.
-- **Checkable agency.** Authorship is an enumerated list, not “be a good GM.”
-- **Fail closed.** Unbound boot invents nothing. Missing voice is not runnable. Missing capability is absent, not faked.
-- **Modular boundary** forces honesty: genre, voice, and campaign-specific assumptions belong in MODULE/POLICY, not LAW. Different modules should feel genuinely different under the same OS.
-- **Exact recall without a fat prompt** via campaign routing, session indexes, scene shards, ledgers, and stable heading ids.
-- **Promotion/demotion** stops every bartender from becoming sticky.
-- **Portable Markdown.** You can read the save. You can grep it. You can keep it offline.
-- **Mechanical checks where judgment is unnecessary.** VALIDATE can catch broken identities, paths, PC route graphs/copies, archive pointers, save grammar, stale candidates, and initial-state contamination without claiming to assess story quality or every interrupted transaction.
-- **Honest labeling.** v0.5 is ready for public testing, not proof of a 100-session campaign. Known failure modes are listed.
-- **Cross-model compilation procedure.** One model writes; another boots. Markdown must not depend on the compiler’s private dialect.
-
----
-
-## 8. Weaknesses and known limits
-
-- **Narrative enforcement is prose.** VALIDATE checks deterministic structure only. It cannot prove that PLAY stayed read-only, a shard is coherent, history came only from accepted play, or agency was honored. Reliability still depends on model instruction-following plus operator discipline. AUDIT is useful self-report, not independent ground truth.
-- **You must close.** Skip ADMIN compile and you have chat amnesia. CHECKPOINT is a real present-save; CLOSE is required for exact wording.
-- **Platform fragility.** Needs a host/model combination that can read and persistently write a project folder. A naked chat will not do this. Product names and subscription tiers do not prove capability: P17/P18 decide. If the host changes folder behavior, fresh-chat resume can fail.
-- **Provider policy and account risk.** RPG OS does not override the host's terms, moderation systems, or changing content policies. Campaign material may be refused or interrupted, and material violating provider rules may lead to account restrictions or termination. Fictional, historical, private, or roleplaying context is not a guarantee of acceptance. Keep the canonical campaign folder and regular backups outside the provider. For material a cloud provider does not permit, change the material or use a lawful local/offline model; do not attempt to bypass provider safeguards.
-- **Whole-file injection.** Many hosts cannot range-read a heading. Unused tokens can still affect salience. Scene shards reduce the damage but do not prove isolation; split PRIVATE physically if tests leak. Heading-only quotes **cannot prove isolation** (P17).
-- **Write capability is not guaranteed** until P18: CHECKPOINT then a new chat must show the new `save_id`.
-- **Multi-file commits are not filesystem-atomic in v0.5.** CURRENT_SAVE-last protects the live save pointer, but an interruption after a separate INSTANCE body was overwritten can still require inspection or restoration. Keep an offline backup before ADMIN writes and do not resume after an interrupted CHECKPOINT/CLOSE until P19 consistency is restored. A versioned immutable state-manifest is a possible later structural solution, not a capability this release claims.
-- **Friction.** The operator becomes a part-time registrar. That tax is intentional: reducing it without equivalent safeguards can reintroduce drift, invented hooks, and incomplete saves.
-- **Suggested-reply chips** in some UIs are attractors. Ignore them.
-- **Filenames can bleed into prose.** Treat that as a runtime defect and report it.
-- **Copyright.** Engine drafts must stay procedures. You still need to know/own your system.
-- **One validated morning**, then architecture work. Not dozens of sessions, not a large archive under load, not Session 100. The architecture *predicts* a small PLAY working set over a huge archive. That is unproven at scale.
-- **No map UI, no automated dice window, no vector database.**
-- **Models may overuse `find`/`ls`.** Test 0 fails if they explore the repository instead of following explicit routes.
-
-If that chore list is a deal-breaker, this kit is not for you yet. If forgetting Tuesday is the deal-breaker, it might be.
-
----
-
-## 9. What “ready” means
-
-**READY WITH MINOR CHANGES** (v0.2 audit) meant:
-
-- structural P0 blockers closed (engine identity, commit order, bound-run protection, capability honesty, SAFETY load graph, overlays, retrieval budget, archive needles, compilation matrix, AUDIT window)
-- remaining issues are tester/platform detection, not authority or campaign-state holes
-- LAW was not edited to get there
-
-It does **not** mean:
-
-- Session 100
-- every model will obey
-- physical privacy isolation
-- any campaign world is included
-- an authored module should be regenerated with New Game rather than **LOAD**ed in a clean instance
-
-v0.5 is the **final-for-testing** build of this design pass: its declared deterministic structure is script-checkable, while the remaining campaign-scale claims must be established through use. “Final for testing” is not “production proven.”
-
----
-
-## 10. How to test (short)
-
-See `ADMIN/TESTS.md` for pass/fail lines.
-
-Minimum public path:
-
-1. Four-file boot → ready, unbound
-2. `VALIDATE` → SCRIPT-VERIFIED structural result if code runs; otherwise an honest MODEL-CHECKED `INCOMPLETE` or definite observed `FAIL`
-3. `Begin play` / `Just improvise` → refuse
-4. `New game` → SETUP only; starting scenario; ACCEPT; bind
-   - Test both Sparse + Quick profile + deferred sheet, and a selected Detailed campaign/profile + guided full-sheet path.
-5. Fresh chat → opening situation, handback
-6. Play a slice → CHECKPOINT → CLOSE into a session index plus scene shards
-7. Fresh chat → same present
-8. Ask one archived exact wording → one heading
-9. `AUDIT` when retrieval feels fat
-
-Useful bug reports: a forced sheet or encyclopedia; guessed PC values/persona; a phase treated as a mission list; a clock advanced without cause; duplicate resource totals; an engine override hidden in RULES_HOOKS; invented quest on a quiet day; GM chose PC feelings; new chat forgot the save; whole archive dumped for one name; LOAD wiped a live run; SAFETY quoted by an NPC.
-
----
-
-## 11. Release history
-
-v0.5 adds optional character construction, selective complex-campaign machinery, and the full T0-to-live persistence lifecycle on top of v0.4 validation and v0.3.2 retrieval-local archives. The public GitHub package ships Freeform and generic local-engine support only.
-
-See [`CHANGELOG.md`](CHANGELOG.md) for the complete version-by-version history.
-
-## 12. Documentation map
-
-| File | Use it for |
+| File | Read it for |
 |---|---|
-| [`QUICKSTART.md`](QUICKSTART.md) | The shortest path from download to first scene |
-| [`INSTALLATION.md`](INSTALLATION.md) | Extraction, host requirements, validation, and persistence preflight |
-| [`COMMANDS.md`](COMMANDS.md) | Human-facing command cheatsheet |
-| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Layer boundaries, retrieval locality, and validation limits |
-| [`ADMIN/TESTS.md`](ADMIN/TESTS.md) | Canonical adversarial pass/fail suite |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Bug reports, test evidence, and pull requests |
-| [`CHANGELOG.md`](CHANGELOG.md) | Complete prototype and release history |
+| [QUICKSTART.md](QUICKSTART.md) | Shortest path from download to play |
+| [INSTALLATION.md](INSTALLATION.md) | Host requirements, extraction, boot, validation, and write tests |
+| [COMMANDS.md](COMMANDS.md) | Operator command reference |
+| [ADMIN/MIGRATE_V05.md](ADMIN/MIGRATE_V05.md) | One-time bound v0.5→v0.6 migration contract |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | GM-first design, authority separation, retrieval, and limitations |
+| [ADMIN/TESTS.md](ADMIN/TESTS.md) | Canonical structural and semantic pass/fail fixtures |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Reproducible reports and pull requests |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
 
-Runtime authority remains in `OS/`, the relevant `_CONTRACT.md` / `_SCHEMA.md`, and `ADMIN/`; these public-facing guides summarize those files.
+Public guides summarize the runtime. If wording conflicts, `OS/`, the relevant `_CONTRACT.md` or `_SCHEMA.md`, and the applicable `ADMIN/` contract are authoritative.
 
-## 13. Credits and method
+---
+
+## Project status and version history
+
+v0.6 is the first GM-first implementation:
+
+- a separately authoritative run Campaign Contract;
+- an orienting Current Save with a causal frontier;
+- optional noncanonical Bearing;
+- PERSIST and REVIEW as separate operations;
+- RECALIBRATE and END SESSION;
+- explicit, fail-closed migration of backed-up bound v0.5 campaigns;
+- task-first retrieval;
+- no durable preparation subsystem.
+
+v0.5 remains the important memory-and-integrity prototype from which this redesign grew. Earlier releases introduced structural validation, scene-sharded archives, retrieval locality, provider-risk warnings, lifecycle safeguards, and the original file-native separation.
+
+See [CHANGELOG.md](CHANGELOG.md) for details.
+
+---
+
+## Credits and method
 
 Project author and maintainer: [`croatianrdy2defend-create`](https://github.com/croatianrdy2defend-create).
 
-Designed through a multi-model workflow (Grok as file compiler, ChatGPT/Sol MAX as cross-file auditor, Claude as adversarial tester/UX reviewer). Compiler ≠ runtime GM. A change set should be booted by a model that did not write it.
-
-For architectural compatibility, derivatives are encouraged to retain the four-layer names and keep campaign-specific material out of the kernel.
+RPG OS was developed through iterative campaign testing and adversarial multi-model review. A compiler, auditor, semantic critic, and runtime GM need not be the same model. The Markdown must work without the original design conversation.
 
 ---
 
-## 14. License and third-party material
+## License and third-party material
 
-Except where noted, the original Markdown documentation and protocol material is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE).
+Except where noted, original Markdown documentation and protocol material is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE).
 
-`TOOLS/validate.py` and repository configuration/automation are licensed under the [MIT License](TOOLS/LICENSE).
+`TOOLS/validate.py` and repository automation/configuration are licensed under the [MIT License](TOOLS/LICENSE).
 
-Preferred attribution: “RPG OS” by `croatianrdy2defend-create`, <https://github.com/croatianrdy2defend-create/RPG-OS>. Indicate if you changed the material.
+Preferred attribution: “RPG OS” by `croatianrdy2defend-create`, <https://github.com/croatianrdy2defend-create/RPG-OS>. Indicate if you modified the material.
 
-These licenses grant rights only in material the project is entitled to license. They do not grant rights in third-party rules, names, or trademarks, and they do not claim ownership of campaign content later created by users. The public package ships no third-party ruleset adapter or campaign world. Do not paste or redistribute copyrighted rulebooks through `ENGINE/`.
+These licenses cover only material the project is entitled to license. They do not grant rights in third-party games, rules, trademarks, settings, artwork, or user-created campaign content. The public package ships no third-party ruleset adapter.
 
 ---
 
-## 15. Immediate next step
+## Start
 
-Open `QUICKSTART.md`. Attach this folder. Four files. Ready. Validate. New Game. Accept. New chat. Play. Close.
+Open [QUICKSTART.md](QUICKSTART.md), make a backup, attach the folder, boot the five runtime files, run `NEW GAME`, review the manifest, `ACCEPT`, and begin PLAY in a fresh chat.

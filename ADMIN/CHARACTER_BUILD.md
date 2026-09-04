@@ -24,6 +24,8 @@ Ask both questions even when the operator has already supplied a character conce
 
 The choices are independent: a detailed persona can use deferred mechanics, and a complete mechanical sheet can use a quick profile. Any optional section may be skipped. Missing facts remain unspecified; SETUP does not fill a template by inference.
 
+They are also independent of the Campaign Contract. Its initiative, pressure, development priorities, guidance setting, or creative mandate cannot choose character depth, complete a sheet, supply persona, or authorize PC conduct. Character choices do not silently recalibrate those campaign settings.
+
 Before optional profile work, show the profile-pass headings below and ask which to build now, add as custom, or leave unspecified. Do not walk unselected passes. After each selected pass, offer revise / next selected pass / stop.
 
 ## Always establish
@@ -48,10 +50,11 @@ For Standard, Detailed, Custom, or a requested review, offer only relevant passe
 4. **Persona cues** — player-authored values, goals, habits, tastes, fears, flaws, boundaries, and portrayal cues.
 5. **Connections and obligations** — only relationships, dependents, duties, debts, appointments, or commitments the operator establishes.
 6. **Resources and possessions** — only at the campaign's chosen accounting precision; distinguish owned, stored, carried, equipped, available, owed, and estimated.
-7. **T0 status handoff** — health/condition, location, schedule, active effects, and other facts actually needed for the opening. Put immediate location, appointments, and other mutable present facts in `T0_SAVE.md`/CURRENT_SAVE, not redundantly in the stable PC baseline. Only sheet-owned mechanical condition belongs in `CHAR/PC.md`, and its current value must not compete with another authoritative total.
+7. **T0 status handoff** — health/condition, location, schedule, active effects, exact player-declared goals, and other facts actually needed for the opening. Put immediate location, appointments, `pc_declared_goals`, and other mutable present facts in `T0_SAVE.md`/CURRENT_SAVE, not redundantly in the stable PC baseline. Only sheet-owned mechanical condition belongs in `CHAR/PC.md`, and its current value must not compete with another authoritative total.
 8. **Intentionally unspecified** — facts that should remain open rather than being completed for neatness.
 
 Persona is descriptive input from the player, not standing permission for the GM to author the PC. A listed goal does not choose the next action. A preference does not create attraction or consent. A possession is not automatically carried, equipped, consumed, or used.
+A PC-declared goal and an OOC campaign preference are different claims: preserve the former exactly in the PC/current-state lane and the latter only in the accepted Campaign Contract or provisional REVIEW lane. Never infer either from observed conduct.
 A behavioral disadvantage, compulsion, self-control value, alignment, drive, or similar mechanic may establish a trigger or involuntary mechanical consequence only as the ENGINE permits. Accepting it never delegates the PC's voluntary conduct, interpretation, dialogue, attraction, consent, or decision.
 
 ## Engine-aware sheet procedure
@@ -65,6 +68,8 @@ For Minimum required, Guided full sheet, or a mechanically complete import:
 5. Derive a value only when both the procedure and its inputs are present. Show the derivation compactly when it matters.
 6. Do not reconstruct missing commercial rules, costs, tables, lists, or chapters. Ask the operator to provide the value, consult an owned source, import a sheet, choose another engine, or defer the field.
 7. Finish with an audit: supplied facts, accepted proposals, derived values, required unresolved fields, optional deferred fields, and intentionally unspecified facts.
+
+No campaign promise, fit judgment, initiative setting, or creative mandate can supply a missing ENGINE value or substitute for the engine's character procedure.
 
 An incomplete sheet may bind only if the ENGINE permits those missing fields to be deferred. If later adjudication requires a missing value, pause and ask; never guess it.
 
@@ -86,6 +91,7 @@ Before returning to NEW GAME, show:
 - proposed `CHAR/PC.md` section outline and storage shape: `ONE AUTHORITATIVE BODY` or `ROUTED SHARDS`;
 - if routed, the exact transitive bundle beginning at `CHAR/PC.md`, with every target under `CHAR/`, no unrelated siblings, and one representative listed-value route rehearsal;
 - mutable T0 facts handed back to NEW GAME for `T0_SAVE.md` rather than duplicated in the baseline.
+- exact player-declared goals handed to `T0_SAVE.md` as `pc_declared_goals`; OOC development preferences remain outside the PC record.
 
 Use one cohesive `CHAR/PC.md` while its material is normally retrieved together. If sheet mechanics, persona/background, or resource records are materially independent retrieval units—or a whole-file test shows leakage—`CHAR/PC.md` may instead be a compact routing index with scalar front matter exactly `class: character-routing-index`, pointing to narrow Markdown bodies under the same `CHAR/` tree. Do not shard merely because Detailed was selected. Indexes locate values and do not duplicate them.
 

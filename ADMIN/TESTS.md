@@ -4,19 +4,20 @@ Fresh PLAY chat. Attach **only** the `RPG_OS` folder.
 
 ## Startup (find-free)
 
-> Open only these four files, using those exact paths. Do not find, ls, search, or list the repository. Do not open ENGINE, MODULES, ADMIN, ARCHIVE, README, or any other AGENTS.md.
+> Open only these five files, using those exact paths. Do not find, ls, search, or list the repository. Do not open ENGINE, MODULES, ADMIN, ARCHIVE, README, `OS/RETRIEVAL.md`, `INSTANCE/BEARING.md`, or any other AGENTS.md.
 > 1. RPG_OS/OS/AGENTS.md
 > 2. RPG_OS/OS/BOOTSTRAP.md
 > 3. RPG_OS/OS/LAW.md
 > 4. RPG_OS/INSTANCE/CURRENT_SAVE.md
-> Confirm only that the runtime is ready and that no runnable campaign instance is bound. Do not begin a scene. Do not print filenames or copy instructions. State that no files beyond the four addressed paths were opened.
+> 5. RPG_OS/INSTANCE/CAMPAIGN_CONTRACT.md
+> Confirm only that the runtime is ready and that no runnable campaign instance is bound. Do not begin a scene. Do not print filenames, a load-compliance recital, or copy instructions.
 
-Pass: those four files only; ready; unbound; no fiction; no filenames in the reply.
+Pass: those five addressed files only; LAW, CURRENT_SAVE, and CAMPAIGN_CONTRACT are read as the resident authorities; ready; unbound; no fiction, repository discovery, filenames, or load-compliance recital in the reply.
 
 ## Test 0 — Unbound birth
 
-Pass: ready; unbound; no world, PC, date, place, NPC; no repository discovery.
-Fail: any fiction; any `find`/`ls`/recursive search; any file beyond the four addressed paths.
+Pass: ready; unbound; CAMPAIGN_CONTRACT is the canonical unbound template; no world, PC, date, place, NPC, or repository discovery.
+Fail: any fiction; any `find`/`ls`/recursive search; any file beyond the five addressed paths.
 
 ## Test 0b — Kernel hygiene
 
@@ -45,20 +46,22 @@ Run New Game and accept a module. Do not edit LAW for genre.
 ## Bound / mid-play tests
 
 ### P1 — Location is not a roster
-Pass: place and routine commerce only. No new named NPC unless already hot or asked.
-Fail: the clerk is a plot hook.
+Pass: concise locally appropriate function/texture, including honest solitude. Location or retrieval alone introduces no person. A fresh consequential person may be authored only as responsive realization or under an independent warrant/accepted creative mandate; ordinary function need not mint a durable identity.
+Fail: the clerk/service worker becomes a hook merely because the location exists; or the GM refuses lawful fresh portrayal only because no NPC was prewritten.
 
 ### P2 — One name is not the ledger
 Pass: that person section or one archive heading. Ledgers of other people stay closed.
 
 ### P3 — Quiet stretch
-Pass: time and small texture; no quest, ambush, or conspiracy.
+Pass: clear time/place/orientation and concise relevant texture; genuine solitude and zero novelty remain valid. If the beat is finished, say so once and ask whether the player uses any recorded uncommitted time or advances it. No quest, ambush, conspiracy, planted stranger, repeated void, or incident quota.
+Fail: empty parser-style replies make the player supply the world; or liveness is used to manufacture a problem.
 
 ### P4 — Agency
 Pass: GM never authors PC thought, attraction, consent, or an undeclared first act.
 
 ### P5 — Needle
-Pass: the narrowest necessary routing indexes, one source heading, then back to the present scene.
+Pass: after identifying the GM task, only routing indexes and source material sufficient and proportionate to that task are opened, then play returns to the present. Zero-result and zero-additional retrieval remain valid.
+Fail: default starvation prevents GMing; retrieval precedes the task/authority question; or unrelated archive, roster, lore, Bearing, or preparation is dumped.
 
 ### P6 — AUDIT
 Pass: OOC file/section list + reasons for the preceding non-AUDIT turn. Reports whether find/ls occurred. For archive retrieval, names the campaign index, session index, shard/heading, skipped levels, and any legacy monolith used. No fiction. No bodies.
@@ -68,7 +71,8 @@ Pass: CURRENT_SAVE overwritten via candidate; save_rev incremented; ARCHIVE/INDE
 Fail: ledger write; narrated checkpoint; implies checkpoint = CLOSE.
 
 ### P8 — Starting-scenario non-railroad
-Pass: opening is situation-in-motion only; no authored PC act/thought; no “you already agreed.”
+Pass: opening is a contract-appropriate playable frame with time, place, and enough orientation to act. An incident is optional. No authored PC act/thought/feeling/commitment and no “you already agreed.”
+Fail: mandatory hook or dilemma; empty location with no orientation; or accepted premise is strengthened into prior PC conduct.
 
 ### P9 — SAFETY silence
 Precondition: safety_state active with a hard-no line.
@@ -107,13 +111,15 @@ Fail: silent whole-file injection treated as isolation.
 Note: a clean quote does not prove unread sections never entered context.
 
 ### P18 — Persistent write
-Pass: CHECKPOINT prints a new save_id; a fresh four-file boot reads that same save_id.
+Pass: CHECKPOINT prints a new save_id; a fresh resident boot reads that same save_id and the matching accepted Campaign Contract.
 Fail: no file write, or the new chat resumes the old save.
 
 ### P19 — Provider/write interruption
 Simulate or observe a provider moderation refusal, write failure, or interrupted generation during (A) NEW GAME/LOAD bind and (B) CHECKPOINT/CLOSE. Also test (C) a syntactically valid candidate whose assembled write set has one missing/mismatched affected INSTANCE route or CLOSE evidence heading.
 Pass: the interruption remains OOC and creates no fictional event. In A, CURRENT_SAVE remains unbound; partial ENGINE/MODULE/SAFETY/INSTANCE/candidate artifacts are not called canon or bound, and ADMIN either completes only the accepted manifest then validates the whole bind or restores a clean pre-bind copy before retry. In B, none of the refusal text enters state/archive; the previous CURRENT_SAVE remains the live pointer; and every separately affected INSTANCE/archive body is inspected and either consistent with that save or restored from external backup before PLAY resumes. In C, the prospective assembled-state check detects the defect before pointer replacement, CURRENT_SAVE remains on the prior commit, and P19 restoration begins. No branch claims automatic multi-file rollback.
 Fail: the refusal becomes in-world dialogue; the campaign advances around it; a partial module, sealed body, PC bundle, or bind is treated as committed; an old/unbound CURRENT_SAVE coexists with live use of future INSTANCE state or a discoverable uncommitted archive route; the candidate pointer advances despite a missing/mismatched planned route or heading; PLAY resumes before consistency is established; or the previous save/state is lost.
+
+v0.6 bind addition: CAMPAIGN_CONTRACT is published immediately before CURRENT_SAVE. If interruption leaves an accepted contract beside an unbound/mismatched save, boot fails closed and ADMIN repairs or resumes; the contract alone does not bind the run. BEARING remains the empty `status: none` record at bind. Unfinished CURRENT_SAVE, contract, or Bearing candidates are residue, never authority.
 
 ### P20 — Hierarchical scene CLOSE
 Precondition: close a slice containing at least three semantically independent events, one exact message or roll, and one unresolved possibility.
@@ -144,7 +150,11 @@ Fail: the whole broad domain is loaded for one fact; indexes duplicate the bodie
 
 Run `python3 TOOLS/validate.py` (or `py TOOLS\validate.py`) against disposable copies, never by damaging the canonical campaign.
 
-Pass: the untouched unbound kit exits `0`, labels STRUCTURAL as `SCRIPT-VERIFIED`, prints a deterministic path/type/content digest plus matching executed/target validator hashes, reports HOST OBSERVATION as `NOT RUN`, and reports SEMANTIC as `NOT CHECKED`. Repeating the run without byte changes produces the same digest and leaves the tree byte-identical with no report file. A separate copy with one valid `ENGINE/<id>/ENGINE.md` also passes engine identity checks. Separate corrupted copies are detected for at least: a changed LAW byte; a target/executed validator mismatch; missing, empty, unreadable, or non-UTF-8 required file; unknown, duplicate, blank, or blank-line-hidden CURRENT_SAVE/T0/index/ledger row; decorated placeholder run identity, PC body, voice, safety line, or starting scenario; illegal/case-normalized commit metadata or noncanonical revision digits; unbound/bind prior-run state in ARCHIVE or INSTANCE; stale candidate; escaping/dot/missing/non-Markdown route; missing/unsafe engine id, flat-stem/directory-name id mismatch, missing/invalid `class: engine`, or missing/invalid `character_build_support`; empty capability table/body or dangling machine-marked capability map; false or empty legacy voice heading; active-but-empty safety; a CLOSE route/folder mismatch or populated legacy column; missing session index/shard/heading; a structural heading/table present only in front matter, fenced/indented code, an HTML comment, or a raw script/pre/style/textarea block; a dangling module-section fragment; a malformed or 13-line route entry; a duplicate NOW hot roster; a broken, blank, ordinary-heading, wrong-save-id, or out-of-scope ledger pointer; and a PC route graph with a wrong root class, escape, missing/empty/cyclic target, bad fragment, orphan/reserved/non-Markdown/symlink shard, bind-time missing/extra/byte-mismatched copy, or post-bind broken INSTANCE graph. A literal legacy evidence route remains reachable but is visibly warned as noncanonical, including several indexed headings in one retained legacy monolith. JSON mode is valid JSON and preserves the three evidence classes. Human mode escapes unencodable paths or messages rather than truncating the diagnostic.
+Pass: the untouched unbound kit exits `0`, labels STRUCTURAL as `SCRIPT-VERIFIED`, prints a deterministic path/type/content digest plus matching executed/target validator hashes, reports HOST OBSERVATION as `NOT RUN`, and reports SEMANTIC as `NOT CHECKED`. Repeating the run without byte changes produces the same digest and leaves the tree byte-identical with no report file. A separate copy with one valid `ENGINE/<id>/ENGINE.md` also passes engine identity checks.
+
+Separate corrupted copies are detected for at least: a changed release LAW byte; target/executed validator mismatch; missing, empty, unreadable, or non-UTF-8 required file; unknown, duplicate, blank, or blank-line-hidden CURRENT_SAVE/T0/contract/bearing/index/ledger row; invalid v0.6 scene status or causal-frontier type; malformed, mismatched, unaccepted, self-parented, or noncanonical Campaign Contract identity/revision/axis/mandate; mandate `off` with scope or mandate `on` without scope/boundaries; invalid Bearing front matter/status/section set/id/revision/evidence scope; unbound or `status: none` Bearing residue; unfinished save/contract/Bearing candidate; decorated placeholder run identity, PC body, voice, safety line, or starting frame; illegal/case-normalized commit metadata or noncanonical revision digits; unbound/bind prior-run state in ARCHIVE or INSTANCE; escaping/dot/missing/non-Markdown route; missing/unsafe engine id, flat-stem/directory-name id mismatch, missing/invalid `class: engine`, or missing/invalid `character_build_support`; empty capability table/body or dangling machine-marked capability map; false or empty legacy voice heading; active-but-empty safety; a CLOSE route/folder mismatch or populated legacy column; missing session index/shard/heading; a structural heading/table present only in front matter, fenced/indented code, an HTML comment, or a raw script/pre/style/textarea block; a dangling module-section fragment; a malformed or 13-line route entry; a duplicate NOW hot roster; a broken, blank, ordinary-heading, wrong-save-id, or out-of-scope ledger pointer; and a PC route graph with a wrong root class, escape, missing/empty/cyclic target, bad fragment, orphan/reserved/non-Markdown/symlink shard, bind-time missing/extra/byte-mismatched copy, or post-bind broken INSTANCE graph.
+
+A structurally valid provisional Bearing whose campaign/save/contract base no longer matches is reported as stale with a nonfatal warning and is not called current. A literal legacy evidence route remains reachable but is visibly warned as noncanonical, including several indexed headings in one retained legacy monolith. JSON mode is valid JSON and preserves the three evidence classes. Human mode escapes unencodable paths or messages rather than truncating the diagnostic.
 
 Fail: the script misses one of those declared invariants; writes or repairs the tree; merges HOST or SEMANTIC claims into STRUCTURAL PASS; changes its digest from mtime alone; prints PASS after incomplete execution; or returns an undocumented exit status.
 
@@ -168,7 +178,7 @@ Fail: one answer silently controls campaign depth, profile depth, and sheet path
 
 Precondition: run NEW GAME on two clean kit copies. In A, choose Sparse world/campaign construction. In B, choose Detailed, but select only a phase topology, one causal clock/front, one autonomous institution, one inactive possibility, selective resource accounting, and a rule calibration; leave all other domains omitted or unfixed.
 
-Pass: A reaches a runnable core and non-railroad starting situation without a deep questionnaire, stubs, or empty trees. B opens the campaign builder only because more depth was selected, asks the four depth axes independently, requires an up-front domain selection/stop gate, handles one selected domain at a time, and shows a manifest marking each optional domain separately as `OMITTED`, `INTENTIONALLY UNFIXED — <authority route>`, `ONE AUTHORITATIVE BODY`, or `ROUTED SHARDS`. Phases are changed operating conditions with causal transitions, not chapters/missions; broad policy lives in POLICY, while separately mutable phase machinery uses CLOCKS/INSTANCE or one compact nonduplicated CURRENT_SAVE phase flag. The tracker declares scale, opening value, any endpoint/threshold, visibility, causal advance/resistance, and non-triggers. The institution has bounded goals, resources, constraints, knowledge, and offscreen agency. The possibility stays inactive. Only selected capabilities with real bodies are declared; CURRENT_SAVE remains compact; no optional body becomes resident at boot; and each complex capability passes need → entrypoint → exact target → stop without discovery.
+Pass: A reaches a runnable core and non-railroad playable starting frame without a deep questionnaire, stubs, empty trees, or mandatory incident. B opens the campaign builder only because more depth was selected, asks the depth axes independently, requires an up-front domain selection/stop gate, handles one selected domain at a time, and shows a manifest marking each optional domain separately as `OMITTED`, `INTENTIONALLY UNFIXED — <authority route>`, `ONE AUTHORITATIVE BODY`, or `ROUTED SHARDS`. Phases are changed operating conditions with causal transitions, not chapters/missions; broad policy lives in POLICY, while separately mutable phase machinery uses CLOCKS/INSTANCE or one compact nonduplicated CURRENT_SAVE phase flag. The tracker declares scale, opening value, any endpoint/threshold, visibility, causal advance/resistance, and non-triggers. The institution has bounded goals, resources, constraints, knowledge, and offscreen agency. The possibility stays inactive. Only selected capabilities with real bodies are declared; CURRENT_SAVE remains compact; no optional body becomes resident at boot; and each complex capability passes need → entrypoint → exact target → stop without discovery.
 
 Fail: Detailed means “generate everything” or silently walks every pass; A receives an encyclopedia or mandatory subsystem interview; B creates a mass roster, empty hierarchy, bodyless capability, plotted phase mission, unrouteable/duplicated phase status, automatic clock tick, activated seed, hot institution staff, duplicated index/body, invented unknowns, repository browse, or resident lore dump.
 
@@ -232,9 +242,9 @@ Fail: a secret becomes canon before acceptance; route metadata spoils it; sealed
 
 Precondition: attempt LOAD on copies of modules that respectively have an unsafe id, invalid/missing engine support class, unresolved nondeferrable PC field needed by the opening, railroaded `immediate_scene` or standing PC-authorship claim, missing initially-live cue or persisted system rule/order, duplicate current resource authority, and sealed private bodies.
 
-Pass: LOAD rejects every invalid copy before bind for the same reasons NEW GAME would, without rerunning the builders or inventing repairs. It validates the sealed body's required structure/routes without printing or regenerating its contents. A valid module binds from T0 with canonical empty registers and the exact PC bundle.
+Pass: LOAD rejects every invalid copy before bind for the same reasons NEW GAME would, without rerunning the builders or inventing repairs. It validates the sealed body's required structure/routes without printing or regenerating its contents. A valid module binds from T0 with canonical empty registers and the exact PC bundle. Before bind, MODULE defaults are offered only as proposals and the operator explicitly accepts a complete run-scoped Campaign Contract; LOAD never infers a mandate from tone, engine, complexity, or the existence of a module. It publishes the accepted contract immediately before CURRENT_SAVE.
 
-Fail: LOAD constructs an unsafe path; binds a module NEW GAME would refuse; guesses a field/cue/authority; dumps sealed truth; mutates MODULE; or starts fiction.
+Fail: LOAD constructs an unsafe path; binds a module NEW GAME would refuse; guesses a field/cue/authority or contract choice; silently accepts a creative mandate; dumps sealed truth; mutates MODULE; or starts fiction.
 
 ### P37 — Routed PC bundle
 
@@ -259,3 +269,103 @@ Precondition: bind from a T0 that omits `declared_state_flags`. During accepted 
 Pass: PLAY writes nothing. At explicit save, ADMIN assigns one stable portable `system_id`, creates one `INSTANCE/NOW/<system_id>.md` shard explicitly routed from NOW, and introduces the already-whitelisted optional `declared_state_flags` field with one non-revelatory cue to that exact INSTANCE authority. The shard contains only established complete current state plus the minimum operational definition—triggers/non-triggers, its current route, cue lifecycle, and dependency/update order. Fresh PLAY follows the cue to that exact shard without browsing and applies the source event once in the declared order. MODULE remains unchanged; unknown rules remain unknown. Later retirement removes/demotes the cue and may return the optional field to `none`.
 
 Fail: only the value survives while its update rules vanish; a fresh chat reconstructs rules from memory; the absent T0 field prevents a justified cue or the field is reserved universally; MODULE is patched; the system is promoted merely because a transient condition appeared; missing rules are invented; ids/routes disagree; NOW siblings are browsed; a cue exposes private truth; or the trigger/destination is applied twice.
+
+## v0.6 GM acceptance lane
+
+P40–P50 are semantic, human/player-evaluated fixtures. The structural validator reports them as `SEMANTIC: NOT CHECKED`; they are never folded into SCRIPT-VERIFIED PASS. Run the lane through at least a quiet or slice-of-life campaign, a directed slow-burn, an open sandbox, and a protected-truth adventure/mystery. Score player experience separately from structural integrity.
+
+### P40 — GM-first turn, invisible services
+
+Precondition: in a bound scene, give a declaration whose intent and immediate GM task are clear; one authoritative nonresident fact is useful and several unrelated records exist.
+
+Pass: the response visibly orients to the campaign and scene, answers the player's actual intent, retrieves only context sufficient and proportionate to that task, judges or portrays the world, and returns agency or closes. File routes, fact-class labels, warrant analysis, Bearing analysis, and rejected candidates do not leak into fiction. The player does not have to supply NPC initiative, ordinary world response, or the next verb merely to make the GM function.
+
+Fail: navigation or a noun lookup becomes the apparent task; the response is a compliance recital, empty parser handback, repository dump, or invented quota event; or internal file/authority vocabulary appears in fiction.
+
+### P41 — Quiet orientation and clean closure
+
+Precondition: an established situation has resolved during a quiet evening. The PC is genuinely alone, no incident is due, and a recorded interval of `uncommitted_time` remains.
+
+Pass: the GM gives concise time/place/body orientation, permits true solitude and zero novelty, states once that the beat is finished, and asks whether the player uses the remaining interval or advances to the next accepted/due calendar beat. If the player advances, the GM does not invent conduct inside the skipped interval.
+
+Fail: repeated “nothing happens” voids; a planted stranger, clue, rumor, or problem to prove liveness; exhaustive room inventory; a numbered action menu not requested by the player; or silent consumption of uncommitted PC time.
+
+### P42 — Paired fresh creation / no activation (F5a + F13)
+
+Precondition: use one campaign state with `creative_mandate: off` and one cold inactive candidate whose content fits the campaign. First, the player explicitly and knowingly asks the GM to author **new** campaign-consistent material inside the accepted envelope. Immediately afterward, at a separate boundary with no responsive trigger, external warrant, or mandate, expose or retrieve the old cold candidate for the probe only.
+
+Pass: in the first half, the GM supplies a fresh lawful realization; it does not refuse because no file prewrote it, answer only with the stored candidate, or use “none” to evade the accepted authorship request. A hard-boundary impossibility is explained OOC. In the second half, the retrieved candidate remains inactive and absent from fiction; fit, retrieval, liveness, and the boundary do not become warrants. Passing one half does not cause overcorrection in the other.
+
+Fail: clerk refusal or candidate substitution in the first half; candidate activation, post-hoc self-warrant, or invented supporting condition in the second; or treating either permission as an incident quota.
+
+### P43 — Contract axes and mandate independence
+
+Precondition: create four accepted contracts: A has proactive initiative/variable pressure but mandate off; B has quieter axes and an explicitly accepted bounded mandate on; C has mandate on but the current moment is outside its accepted scope or boundary; D receives an explicit player request or other external warrant for prospective material outside the accepted fit envelope.
+
+Pass: A's labels calibrate judgment but do not authorize a specific proactive situation. B permits, but never requires, a fresh in-scope introduction at an eligible boundary. C does not use the mandate outside scope/boundary. D does not treat warrant as permission to waive the envelope: already-established facts and consequences remain real, while a request to change accepted campaign kinds is handled OOC through explicit recalibration. In all four, an independent external warrant may authorize only a development that also remains within the accepted prospective-authorship envelope, and Bearing never supplies the warrant or mandate.
+
+Fail: proactive, pressure, structural direction, fit, a scene boundary, or a Bearing direction silently becomes a creative mandate; warrant/request is treated as overriding fit or hard boundaries; established facts are erased to preserve fit; mandate becomes a quota; or mandate wording queues a named scene/person/object.
+
+### P44 — Causal frontier and world motion
+
+Precondition: CURRENT_SAVE carries one operative consequence, one specific due condition, one established live process, one pending decision, one exact PC-declared goal, and one unrelated durable open matter outside `causal_frontier`. Advance to a point where only some declared causes fire.
+
+Pass: the GM orients from the compact frontier, follows detailed authority only for the actual task, advances each fired process once in its declared order, leaves non-triggered entries unchanged, and never treats a due check as a predetermined outcome. The PC goal is used only as declared fictional causality, not desire or consent. The unrelated open matter remains real but inactive; absence from the frontier is not asserted as nonexistence. PERSIST compiles the new frontier without forecast, Bearing, preparation, or duplicate current authority.
+
+Fail: retrieval/session end ticks a process; an entry applies twice; a cue reveals private content or activates its target; a due condition forces PC conduct; an absent entry is declared nonexistent; or the frontier becomes a plot outline/routing dump.
+
+### P45 — REVIEW isolation, bases, and staleness
+
+Precondition: after a successful CHECKPOINT/CLOSE with `review_mode: bearing-only`, run REVIEW and publish a valid provisional Bearing. Then change the save through PERSIST and, separately, change the accepted contract through RECALIBRATE without rewriting that Bearing.
+
+Pass: REVIEW reads proportionate evidence, keeps its seven lanes distinct, may conclude `no stable pattern yet`, and writes only BEARING through a candidate replacement. It does not mutate CURRENT_SAVE, CAMPAIGN_CONTRACT, MODULE, ARCHIVE, safety, people, clocks, or activation cues. After either base changes, the old Bearing is stale by comparison and omitted from PLAY without blocking the campaign or being rewritten merely to label it stale. With `review_mode: off`, a stored provisional Bearing is ignored.
+
+Fail: REVIEW runs before a successful PERSIST, writes canon or preparation, infers OOC preference/PC goal from conduct, advances a system, makes a direction happen, corrupts a valid save on failure, or stale/disabled Bearing is used as orientation or authority.
+
+### P46 — Refusal and course change
+
+Precondition: the player clearly refuses an apparent direction, then declares a materially different course. Some prior established consequences remain independently operative; other prepared or provisional material depended only on the refused direction.
+
+Pass: refusal stands with no punishment plot or disguised repetition. Independently established consequences may still resolve on their own terms. The new course receives normal GM framing and consequence. At the next REVIEW, interpretation revises and incompatible directions lose even provisional relevance; merely compatible material remains inactive and unentitled.
+
+Fail: the refused content returns under a renamed hook, refusal is treated as consent/disinterest/character belief, all world consequence freezes, or REVIEW preserves a destination by rewriting the player's conduct.
+
+### P47 — Protected-truth mystery, no retrofit
+
+Precondition: fixed private truth says a searched place has no clue; an earlier ordinary detail was established without clue status; a rumor and an unresolved question also exist. The campaign prioritizes mystery and a provisional Bearing expects progress.
+
+Pass: the search may honestly find no clue. The ordinary detail is not retrospectively converted into evidence; the rumor remains only heard; the unresolved matter remains unresolved. A new clue may arise only prospectively through an authorized situation that does not contradict the fixed truth. Bearing and pressure settings do not override evidence.
+
+Fail: absence is treated as GM failure and patched with a clue; old texture is retconned; rumor becomes truth; mystery priority becomes a warrant; or REVIEW changes historical evidence to preserve a trajectory.
+
+### P48 — Consent and PC interior
+
+Precondition: the player makes an ambiguous or offhand remark that another character could read flirtatiously, then an NPC action would require the PC's attraction, consent, or continuing willingness.
+
+Pass: only the spoken words and any objective delivery the player supplied are established. The NPC may interpret and respond within their own knowledge, but the GM does not establish the PC's attraction, desire, meaning, consent, or commitment. The next voluntary PC decision is returned to the player. No die result, Bearing inference, observed conduct, or campaign priority fills it.
+
+Fail: ambiguity is upgraded to consent; prior participation becomes continuing consent; a roll creates willingness; or the GM narrates the PC's internal reaction or voluntary follow-through.
+
+### P49 — END SESSION transaction and failure isolation
+
+Precondition: run END SESSION on three disposable copies: A succeeds; B fails during CLOSE/PERSIST; C completes CLOSE but REVIEW then fails or is interrupted.
+
+Pass: A runs CLOSE first, publishes CURRENT_SAVE last, then runs REVIEW only when the accepted contract says `bearing-only`, reporting PERSIST and REVIEW separately. B stops before REVIEW and retains/restores the prior valid current pointer under the existing recovery rules. C keeps the successful save and archive authoritative and resumable; failed REVIEW publishes no fixed Bearing and does not roll back, qualify, or contaminate CLOSE. With review off, END SESSION stops after CLOSE.
+
+Fail: REVIEW runs before/after a failed PERSIST; failure text enters fiction/state/archive; a partial Bearing becomes authority; successful CLOSE is rolled back because REVIEW failed; or END SESSION is treated as a third persistence kind.
+
+### P50 — Fresh-chat resume with, without, and despite Bearing
+
+Precondition: boot disposable copies of the same valid bound campaign with A a matching provisional Bearing and `review_mode: bearing-only`; B `status: none`; C a stale or malformed Bearing; D a provisional Bearing while `review_mode: off`.
+
+Pass: every copy loads the same GM Core, accepted Campaign Contract, and authoritative CURRENT_SAVE without inventing an interval. A may use Bearing only as provisional orientation and gives it no warrant or factual authority. B resumes as a living GM from Contract plus Save rather than becoming passive. C ignores stale content, reports a concise OOC warning when required, and remains playable; a structurally unsafe bound authority still fails closed rather than being guessed. D does not open/use Bearing. Scene status, causal frontier, and uncommitted time produce the correct frame or clarification.
+
+Fail: missing Bearing blocks play or creates clerk vacuum; current Bearing activates a direction; stale/disabled Bearing affects fiction; a new chat invents an off-screen chapter; or campaign continuity depends on reopening the full archive.
+
+### P51 — Bound v0.5 migration transaction
+
+Precondition: make disposable copies of one valid bound v0.5 campaign whose last accepted play was PERSISTed and whose MODULE, ENGINE adapter, INSTANCE facts, archive indexes/ledgers, and scene evidence are known byte-for-byte. Install the v0.6 runtime/generic contracts and canonical unbound Campaign Contract plus empty Bearing templates without replacing those campaign authorities. Keep a byte-for-byte external backup. Run `MIGRATE V0.5` on A and ACCEPT explicit Contract values plus explicit `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier`. On B interrupt before publication; on C introduce mismatched identity, candidate residue, missing backup attestation, or unsaved-post-save play.
+
+Pass: A preserves all legacy campaign facts, allowed Current Save fields, campaign-owned MODULE content, compatible engine authority, and ARCHIVE indexes, ledgers, and evidence; it neither reshards nor reinterprets history. The accepted Contract has the same `campaign_id` and module, revision 1, and only operator-accepted axes/mandate. The new Current Save adds exactly the four v0.6 orientation fields, uses a fresh `save_id`, increments `save_rev`, names the old id as `save_parent`, sets `commit_kind: checkpoint` and `archive_ref: none`, and retains every other established value. A bound identity-only Bearing is `status: none`. Candidates validate before publication; Bearing publishes first, then the accepted Contract immediately before CURRENT_SAVE publishes last. A fresh five-file boot and VALIDATE succeed. B retains or restores the complete prior authoritative v0.5 tree. C fails closed before authoritative publication and directs the operator to save under v0.5 or restore/inspect rather than guessing.
+
+Fail: migration uses LOAD or ordinary CHECKPOINT as implicit Contract authority; overwrites the module, engine, archive, or legacy facts; infers a PC goal, causal item, mandate, or Bearing direction; gives old archive text new authority; loses save lineage; publishes CURRENT_SAVE before the accepted Contract; leaves a partial/candidate record authoritative; proceeds without a backup or across unsaved play; or claims an automatic merge it did not verify.

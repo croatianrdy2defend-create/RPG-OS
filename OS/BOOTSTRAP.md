@@ -1,140 +1,233 @@
 # RPG OS PLAY Bootstrap
 
-Loader only. Not a third body of campaign lore.
+Technical loader and command router. It is not a campaign brain, lore body, or third source of fiction.
 
-## Startup
+Loading resolves the resident authorities. Once they are available, GM cognition begins with orientation and intent as required by LAW—not with repository navigation.
 
-Before the first PLAY response in a fresh chat, load exactly:
+## Resident startup
+
+Before the first response in a fresh campaign chat, open exactly these addressed paths:
 
 1. `OS/AGENTS.md`
-2. this file
+2. `OS/BOOTSTRAP.md`
 3. `OS/LAW.md`
 4. `INSTANCE/CURRENT_SAVE.md`
+5. `INSTANCE/CAMPAIGN_CONTRACT.md`
 
-Do not preload ENGINE, MODULES, other INSTANCE registers, ARCHIVE, or ADMIN.
-Do not `find`, `ls`, recursively search, or otherwise discover the repository.
-Do not open packs or loaders outside this OS folder.
+Do not preload ENGINE, MODULE bodies, other INSTANCE registers, ARCHIVE, ADMIN, `OS/RETRIEVAL.md`, or preparation.
 
-Silently verify those two resident records (LAW + CURRENT_SAVE) were actually read. Do not claim unopened records were loaded.
+Do not run `find`, `ls`, recursive search, repository inventory, or neighbor discovery. Do not open packs or loaders outside this OS folder. Silently verify that LAW, CURRENT_SAVE, and CAMPAIGN_CONTRACT were actually read; never claim an unopened record was loaded.
 
-If unbound, the ready line must include: no files beyond the four addressed paths were opened.
+This mandatory load is the resident control surface:
 
-Do not open ARCHIVE/INDEX.md during the four-file boot. The close-mismatch check below runs only after CURRENT_SAVE has been read and only when `commit_kind` is `close`.
+- LAW supplies the GM Core and hard boundaries.
+- CURRENT_SAVE supplies authoritative present state and causal frontier.
+- CAMPAIGN_CONTRACT supplies the accepted run promise and GM calibration.
 
-## Bindings
+Campaign Bearing is optional and provisional. It is never a substitute for one of these three.
 
-Read from CURRENT_SAVE:
+## Read the bindings
 
-- `engine` — ruleset id (example: `freeform`)
-- `module` — campaign-module id
-- `pc_record` — path to the bound player character, if any
-- `commit_kind` — `unbound` / `bind` / `checkpoint` / `close`
+From CURRENT_SAVE, read at least:
+
+- `engine`
+- `module`
+- `pc_record`
+- `campaign_id`
 - `save_id`
+- `save_rev`
+- `save_parent`
+- `commit_kind`
 - `archive_ref`
 - `safety_state`
+- `status`
+- `datetime`
+- `place`
+- `scene_status`
+- `uncommitted_time`
+- `pc_declared_goals`
+- `causal_frontier`
 
-If `engine` or `module` is empty or `unbound`:
+These and only these other whitelisted CURRENT_SAVE fields may appear, with nonblank values: `tracked_resources`, `appointments`, `known_open_matters`, `declared_state_flags`, `immediate_scene`, and `hot_identifiers`. No duplicate or unknown field is playable authority.
 
-- Confirm the OS is ready and that no runnable campaign instance is bound.
-- State that no files beyond the four addressed paths were opened.
-- Do not begin a scene.
-- Do not invent a world, PC, or opening.
-- Do not print filenames, paths, or copy instructions.
-- Do not offer New Game or Load unprompted.
+From CAMPAIGN_CONTRACT, read:
 
-If the operator then explicitly requests **NEW GAME** or **create campaign**, leave PLAY idle and open `ADMIN/NEW_GAME.md`. That is SETUP, not PLAY.
+- `campaign_id`
+- `contract_id`
+- `contract_rev`
+- `contract_parent`
+- `status`
+- `module`
+- `campaign_promise`
+- `fit_envelope`
+- `structural_direction`
+- `gm_initiative`
+- `pressure_incident_density`
+- `time_handling`
+- `development_priorities`
+- `guidance_visibility`
+- `creative_mandate`
+- `creative_mandate_scope`
+- `creative_mandate_boundaries`
+- `review_mode`
 
-If the operator then explicitly requests **LOAD MODULE** and names an existing module, leave PLAY idle and open `ADMIN/LOAD.md`. That is ADMIN bind, not PLAY.
+Do not infer a missing field from genre, module prose, or a previous chat.
 
-## Bound boot extras (after the four files)
+## Legacy bound-run migration dispatch
 
-If bound and `commit_kind` is `close`: open `ARCHIVE/INDEX.md` only to confirm a row whose `save_id` equals CURRENT_SAVE `save_id`, whose folder equals `archive_ref`, and whose `session_index` field is a nonempty path inside that folder. If missing or mismatched, report the defect and do not invent the missing interval. Do not open the session index or other archive bodies during this check.
+The sole exception to normal v0.6 bound validation is an explicit **MIGRATE V0.5** request while CURRENT_SAVE is an operator-attested, already-bound v0.5 save and CAMPAIGN_CONTRACT is still the canonical unbound v0.6 template. Leave PLAY idle and open `ADMIN/MIGRATE_V05.md` before applying the v0.6 contract or four-orientation-field checks. This authorizes only that migration preflight and transaction; it does not make the legacy save valid for PLAY under v0.6.
 
-If `safety_state` is `active`, retrieve `INSTANCE/SAFETY.md` entries (real Hard-no / Fade sentences, not headings) before first fiction. Honor quietly. Never put those lines in NPC mouths.
-Do **not** retrieve SAFETY merely because the file exists or contains headings.
+Do not infer legacy provenance from a mismatch or migrate automatically. Without the explicit command, or if the resident files show a v0.6-native, unbound, already migrated, ambiguous, or partial state, follow the ordinary checks below and fail closed.
 
-If bound, open no module or engine file until the immediate declaration requires it.
+## Unbound state
 
-The first request that requires fiction also requires:
+The run is unbound when CURRENT_SAVE declares an unbound engine/module and no campaign identity. CAMPAIGN_CONTRACT must also be its canonical unbound template. If only one resident authority appears bound, report the mismatch and stop.
 
-- the bound module’s declared **voice** section in `POLICY.md`
-- that module’s **Safety extras** section in the same POLICY file, if present
+For a valid unbound state:
 
-Voice is not permanently resident in LAW. If the voice section is missing, fail closed: the module is not runnable; do not begin the scene.
+- confirm that RPG OS is ready and no runnable campaign is bound;
+- do not begin fiction;
+- do not invent a world, PC, date, place, NPC, contract, or opening;
+- do not print paths or setup instructions unless asked;
+- do not offer New Game or Load unprompted.
 
-## Retrieval
+If the operator explicitly requests **NEW GAME** or **create campaign**, leave PLAY idle and open `ADMIN/NEW_GAME.md`. This is SETUP, not PLAY.
 
-Resident LAW + CURRENT_SAVE first.
-Open the smallest sufficient set. Default is zero extra files. Every extra section needs its own immediate causal reason.
-A routing index plus one target counts as one bounded lookup.
-A tool may return a whole file; treat only the addressed section as retrieved and discard the rest immediately. This mitigates leakage; it does not isolate tokens. If a test shows PRIVATE/CANON leakage from whole-file reads, split that record physically.
-Zero additional retrieval is valid.
-A retrieved fact gains no narrative weight.
-Do not browse neighbors.
+If the operator explicitly requests **LOAD MODULE** and names an existing module, leave PLAY idle and open `ADMIN/LOAD.md`. This is ADMIN bind, not PLAY.
 
-A declared capability or canonical route file may be either the authoritative body or a compact index pointing to narrower bodies. Follow only explicit file/section pointers. Recurse through another index only when it materially narrows the target; skip known levels and stop at the smallest sufficient authoritative unit. An index or cross-link does not authorize global search, sibling browsing, or retrieval without immediate causal need.
+## Bound-run match
 
-If a fact is unknown or unfixed, leave it so.
-If a capability is not listed in the bound `MODULE.md`, it is absent.
+Before fiction, a bound run must pass all of these:
 
-Archive indexes are maps, not fine-detail authority. A compact index may answer a simple unambiguous routing/existence question. Exact wording, rolls, quantities, sequence, subtle relationship context, or disputed history require the pointed source shard or legacy source heading.
+1. CURRENT_SAVE has bound `engine`, `module`, `campaign_id`, and `save_id` values using portable safe tokens: ASCII letters, digits, `.`, `_`, and `-` only, beginning with a letter or digit. `pc_record` is exactly `INSTANCE/CHAR/PC.md`.
+2. CURRENT_SAVE has a positive ASCII-integer `save_rev`; `commit_kind` is `bind`, `checkpoint`, or `close`; `safety_state` is `floor-only` or `active`; and datetime, place, and status are substantive. Bind has `save_parent: none`; checkpoint/close names a different portable parent id. Bind/checkpoint has `archive_ref: none`; close has a safe relative POSIX archive folder with no traversal.
+3. CURRENT_SAVE contains every universally required field listed above exactly once, no unknown field, and nonblank `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier`. `scene_status` is one of `opening`, `active`, `paused`, `resolved`, `between-scenes`, or `unknown`; `causal_frontier` is `none` or contains only semicolon-separated `consequence:`, `due:`, `process:`, `decision:`, and `cue:` entries.
+4. CAMPAIGN_CONTRACT has canonical front matter `id: instance.campaign_contract`, `class: campaign-contract`, and `temperature: resident`.
+5. CAMPAIGN_CONTRACT has every field listed above exactly once, no unknown field or blank value, `status: accepted`, a portable `contract_id`, and a positive ASCII-integer `contract_rev`. Revision one has `contract_parent: none`; a later revision names a different portable parent id.
+6. Contract `campaign_id` exactly equals CURRENT_SAVE `campaign_id`, and Contract `module` exactly equals CURRENT_SAVE `module`.
+7. Each categorical axis uses one of these exact tokens or a nonblank `custom: ...` value: `structural_direction` = `reactive-sandbox`, `responsive-emergent`, `broad-trajectory`, or `structured-scenario`; `gm_initiative` = `mostly-consequence-driven`, `balanced`, or `proactive`; `pressure_incident_density` = `quiet`, `variable`, or `sustained`; `time_handling` = `moment-to-moment`, `selective-compression`, or `broad-calendar-movement`.
+8. `development_priorities` is `none` or a substantive accepted compact selection; `guidance_visibility` is `natural`, `explicit`, or `minimal`; `review_mode` is `off` or `bearing-only`.
+9. `campaign_promise` and `fit_envelope` are substantive. `creative_mandate` is exactly `off` or `on`; when off, scope and boundaries are `none`, and when on, both are substantive accepted limits.
 
-For historical retrieval, open `ARCHIVE/INDEX.md` only when the relevant session/slice is not already known; then its session `INDEX.md`; then one or a few addressed scene shards. Skip a higher index when a trusted current pointer or the operator already identifies the target. Stop as soon as sufficient authoritative evidence is found. Question breadth governs retrieval breadth.
+If any check fails, report the mismatch OOC and stop. Never choose one authority by convenience, infer a contract, or begin fiction under a mismatched run.
 
-Reading an archived possibility, intention, seed, or unresolved condition does not activate it or make it current. Preserve *might*, *suspected*, *conditional*, *unknown*, and *not decided* exactly.
+### CLOSE integrity check
 
-## Route table
+Only when CURRENT_SAVE `commit_kind` is `close`, open `ARCHIVE/INDEX.md` to confirm one row whose `save_id` equals CURRENT_SAVE `save_id`, whose folder equals `archive_ref`, and whose `session_index` is a nonempty path inside that folder.
 
-Paths are relative to the bound ENGINE / MODULE / INSTANCE. Do not hard-code a campaign name.
+If missing or mismatched, report the defect and do not invent the missing interval. Do not open the session index or an archive body during this boot check. CHECKPOINT and bind do not require an archive row.
 
-| Required fact | Open |
-|---|---|
-| Listed PC value | bound `pc_record` (INSTANCE overlay), smallest named section or explicitly pointed shard under `INSTANCE/CHAR/`; never browse sibling shards |
-| Mechanic beyond LAW | On the first mechanic in a fresh chat, inspect compact `INSTANCE/CORRECTIONS.md` scope/index first and retrieve a matching ruling if any; then check the two deterministic candidates `ENGINE/<id>.md` and `ENGINE/<id>/ENGINE.md` without listing/searching, require exactly one to exist, and open that entrypoint for the bound ENGINE procedure. If neither or both exist, fail closed. Inspect bound `MODULE.md` for RULES_HOOKS and, if hook scope is not known, only its compact entrypoint/routing metadata; retrieve only a matching target/section (a cohesive one-body entrypoint may necessarily supply both scope and body). A current correction outranks lower sources; ENGINE wins any contradiction with a MODULE hook. |
-| Saved ruling or correction | `INSTANCE/CORRECTIONS.md`, then only its explicit pointed shard if it has become an index; consult ENGINE only if the present ruling does not settle the question |
-| Module cadence, tone, voice, anti-attractors, relationship extras, module safety extras | bound `POLICY.md`, named section |
-| Module identity / capability list | bound `MODULE.md` |
-| Learned instance fact | `INSTANCE/KNOWN.md`, then one explicitly pointed shard if it has become an index |
-| Exact past event | `ARCHIVE/INDEX.md` if session unknown → that session `INDEX.md` → one scene shard/heading; follow a legacy pointer as written |
-| Exact message wording | `ARCHIVE/MESSAGES_LEDGER.md` → one scene-shard exact-message heading; follow a legacy `MESSAGES.md` pointer as written |
-| Embodied / intimacy recall | `ARCHIVE/RELATION_LEDGER.md` → one scene-shard heading; follow a legacy `TRANSCRIPT.md` pointer as written |
-| Cross-session historical development | current relation/state first, then only the selected archive indexes and shards proportionate to the question |
-| Public setting / place / institution function | declared module WORLD or INST entrypoint → one explicit authoritative section/file, if that capability exists |
-| Private now of a person already present, scheduled, or implicated | Use accepted post-save change already established in this chat; otherwise try the deterministic INSTANCE person entrypoint → `## NOW` or its explicit shard; only if neither exists derive continuity from that person's named MODULE as-of-T0 `## NOW`; never browse for a person |
-| Relation/current state with the PC | Use accepted post-save change already established in this chat; otherwise try the deterministic INSTANCE person entrypoint → `## PC` or its explicit shard; only if neither exists derive continuity from that person's named MODULE as-of-T0 `## PC`; use ARCHIVE separately only for exact history |
-| Stable established person identity | Deterministic INSTANCE person entrypoint → `## CANON` only for an emergent promoted person; otherwise MODULE person entrypoint → `## CANON` or its explicit shard |
-| Hidden private life | INSTANCE or MODULE person entrypoint → `## PRIVATE` or its explicit shard, only if causally required |
-| Phase, clock/front, seed, faction/institution, or other mutable subsystem *status* | Accepted post-save transition in this chat first → selected explicit current authority (resident CURRENT_SAVE value/flag when selected, otherwise `INSTANCE/NOW.md`/shard) → only if none exists and no declared transition is due, one specifically named MODULE as-of-T0 snapshot named by an immediate fact or compact cue; never browse siblings or load all trackers |
-| Preauthored subsystem operational definition | its explicitly named declared MODULE authority/section only, reached from the immediate fact or compact cue; never scan the capability or load all systems |
-| Emergent durable subsystem definition/current state | exact `INSTANCE/NOW/<system_id>.md` shard reached through its explicit NOW route, immediate fact, or compact cue; never browse NOW siblings |
-| Seed or truth *body* | that one module file, only if capability present and already active/implicated or ADMIN explicitly browses |
-| Visual interpretation | module VISUAL, then one image if the image itself is required |
-| Current private registers | `INSTANCE/NOW.md`, then one explicitly pointed shard if it has become an index |
-| `person_id` for an already named established emergent person | exact `INSTANCE/CAST_STATUS.md` mapping only; never browse it or use the roster to introduce someone |
-| Promotion roster / discovery | `INSTANCE/CAST_STATUS.md` — ADMIN; PLAY never opens it to find someone to introduce |
-| Operator safety list | `INSTANCE/SAFETY.md` only when `safety_state` is `active` |
+## Before first fiction
 
-Missing files: say the record is not in this skeleton. Do not invent. Do not substitute another campaign pack.
+Complete these bounded extras without loading `OS/RETRIEVAL.md`.
 
-For a mutable subsystem or person, MODULE status is an immutable as-of-T0 snapshot, not a permanent current claim. Use it for current continuity only while neither an INSTANCE override nor an accepted post-save transition in this chat exists **and no declared causal transition has occurred or is due**. If a cue/known condition says a transition may be due, retrieve and resolve only its declared route; do not assume the T0 value persisted. PLAY keeps unsaved changes in chat RAM and never writes. Once an explicit INSTANCE route exists, it answers current status; the older MODULE value answers T0 only. MODULE may still supply stable definitions and CANON when separately required. A subsystem first established after bind has no MODULE authority: after its first explicit save, its one routed INSTANCE/NOW shard supplies both the established operational definition and current state.
+### Active safety
 
-## Opening
+If CURRENT_SAVE `safety_state` is `active`, open `INSTANCE/SAFETY.md` and retrieve the real operator Hard-no and Fade/veil sentences. Headings, placeholders, comments, and examples are not active entries.
 
-If CURRENT_SAVE has an immediate-scene block, establish only that, then return control before any voluntary PC act.
-If CURRENT_SAVE is unbound, stop after the ready confirmation.
+Do not open SAFETY merely because the file exists. Honor active entries quietly; never put them in NPC dialogue.
 
-## Operator commands (not fiction)
+### Module voice
 
-If the operator says **AUDIT** (or "what did you open?"):
-do not narrate. Report the immediately preceding **non-AUDIT** player turn: paths/sections opened, one-line reasons, and whether any list/search/find/discovery ran. No bodies. For archive retrieval, identify which campaign index, session index, and shard/heading were used, which levels were skipped, and whether a legacy monolithic source was opened.
+Open the bound module's `POLICY.md` and read its required `## Voice` section before producing fiction. Read `## Safety extras` in the same file if present.
 
-If the operator says **VALIDATE**:
-leave PLAY. Open `ADMIN/VALIDATE.md` and follow it. This explicitly authorizes a structural repository inventory for ADMIN only. Prefer the shipped read-only script when code execution exists; otherwise label the inspection `MODEL-CHECKED` with exact coverage and never report complete PASS. Report OOC and stop. Do not write a validation result into any campaign file.
+If the required voice is missing or unreadable, report that the module is not runnable and stop. Do not inherit a literary style from LAW or another campaign. Do not load other POLICY sections merely because the file was opened.
 
-If the operator says **CHECKPOINT**:
-leave PLAY. Follow ADMIN/CLOSE_CONTRACT.md section Checkpoint only (save overwrite, no archive). Then stop.
+### Optional current Bearing
 
-If the operator says **CLOSE**:
-leave PLAY. Follow the full close contract, including the compilation matrix in INSTANCE/_SCHEMA.md.
+Only when the accepted CAMPAIGN_CONTRACT has `review_mode: bearing-only`, make at most one direct attempt to open `INSTANCE/BEARING.md` before first fiction; do not search for a substitute. When `review_mode` is `off`, do not open it.
 
-Unsent UI suggested-reply chips are not player input. Ignore them.
+Use it only when all are true:
+
+- front matter is `id: instance.campaign_bearing`, `class: campaign-bearing`, and `temperature: warm`;
+- the accepted CAMPAIGN_CONTRACT has `review_mode: bearing-only`;
+- its table contains exactly `campaign_id`, `base_save_id`, `base_save_rev`, `base_contract_id`, `base_contract_rev`, `status`, and `evidence_scope`, with substantive evidence scope;
+- the exact level-two sections `Established references`, `PC-declared goals`, `OOC preferences`, `Observed conduct`, `Provisional interpretation`, `Directions`, and `Questions` each occur once and contain `none` or a substantive body;
+- `status` is `provisional`;
+- its `campaign_id` equals CURRENT_SAVE `campaign_id`;
+- its `base_save_id` equals CURRENT_SAVE `save_id`;
+- its `base_save_rev` equals CURRENT_SAVE `save_rev`;
+- its `base_contract_id` equals CAMPAIGN_CONTRACT `contract_id`;
+- its `base_contract_rev` equals CAMPAIGN_CONTRACT `contract_rev`;
+- it contains no preparation bank, queued candidate, activation instruction, warrant claim, new fact, or state/clock advance.
+
+A missing, empty, stale, malformed, nonmatching, or contract-disabled Bearing is nonfatal and must not block PLAY. When `review_mode` is `off`, skip and ignore Bearing even if its stored status and bases otherwise appear usable. If a file claims `status: provisional` but fails any eligibility check, give a concise OOC warning; do not repair it during PLAY.
+
+A matching Bearing supplies provisional orientation only. It never establishes facts, supplies a warrant, activates a possibility, ticks a process, or gains priority because it was loaded. Do not open preparation.
+
+## First fiction and fresh-chat resume
+
+Do not invent an interval.
+
+Orient from the accepted Campaign Contract, CURRENT_SAVE, and a matching optional Bearing. Use the compact causal frontier to recognize operative consequences and due checks; retrieve a detailed authority only when the actual GM task requires it.
+
+- If `scene_status` is `opening`, `active`, or `paused`, frame or resume the saved immediate situation without repeating a compliance recital or authoring a voluntary PC act.
+- If `scene_status` is `resolved` or `between-scenes` and `uncommitted_time` remains, orient the player and ask whether they use that time or advance it. Do not spend it silently.
+- If `scene_status` is `unknown`, preserve that uncertainty and ask only for the clarification required to resume; do not invent the missing interval.
+- If the next beat or calendar advance was already accepted and is named in the save, frame it when PLAY is requested.
+- If no fiction is requested, give only a concise OOC ready confirmation.
+
+The opening is a playable frame, not a mandatory hook. It may contain no incident, but it must provide enough orientation to understand where and when the PC is and what established matter, if any, remains in motion.
+
+## Retrieval after startup
+
+For each player declaration, follow LAW's GM-first operating order. Identify the GM task and authority question before any nonresident lookup.
+
+If the task requires a nonresident fact, exact record, current private state, or mechanical procedure, open the relevant section of `OS/RETRIEVAL.md` and follow its deterministic route. Do not load that manual speculatively. A direct explicit pointer already resident in CURRENT_SAVE may be followed without browsing.
+
+Retrieve enough context sufficient and proportionate to GM the task. Zero additional retrieval and a zero-result lookup remain valid. Missing retrieval is not a virtue when the GM genuinely needs an authoritative fact or procedure.
+
+Retrieval does not choose the camera, make content important, or authorize activation. Do not browse neighbors.
+
+## Operator commands
+
+Commands are OOC. Stop fiction while executing them.
+
+### AUDIT
+
+If the operator says **AUDIT** or asks what was opened, report the immediately preceding non-AUDIT player turn:
+
+- paths and addressed sections opened;
+- one-line reason for each;
+- whether list/search/find/discovery ran;
+- for archive retrieval, the campaign index, session index, shard/heading, skipped levels, and any legacy monolith opened.
+
+Report only the access self-audit, not file bodies. AUDIT is useful self-report, not independent proof of host isolation.
+
+### VALIDATE
+
+If the operator says **VALIDATE**, leave PLAY and open `ADMIN/VALIDATE.md`. This authorizes structural repository inventory for ADMIN only. Prefer the shipped read-only script when code execution exists; otherwise label the result `MODEL-CHECKED`, state exact coverage, and never report a complete structural PASS. Validation does not score GM quality and writes no campaign register.
+
+### CHECKPOINT
+
+If the operator says **CHECKPOINT**, leave PLAY and follow only the Checkpoint section of `ADMIN/CLOSE_CONTRACT.md`: persist present state without archive evidence, publish CURRENT_SAVE last, report, and stop.
+
+### CLOSE
+
+If the operator says **CLOSE**, leave PLAY and follow the full `ADMIN/CLOSE_CONTRACT.md`, including the INSTANCE compilation matrix. Report and stop. CLOSE persists state plus archive evidence; it does not perform REVIEW.
+
+### REVIEW
+
+If the operator says **REVIEW**, leave PLAY and open `ADMIN/REVIEW.md`. REVIEW may run only against a successful current PERSIST and writes provisional Bearing only. Its failure or omission must leave the valid save untouched. Report and stop; do not resume fiction in the same response.
+
+### RECALIBRATE
+
+If the operator says **RECALIBRATE**, leave PLAY and open `ADMIN/RECALIBRATE.md`. Contract changes require explicit OOC acceptance, apply prospectively, and make prior Bearing stale. A draft or refused change has no authority.
+
+### END SESSION
+
+If the operator says **END SESSION**:
+
+1. Leave PLAY and run the full CLOSE procedure in `ADMIN/CLOSE_CONTRACT.md`.
+2. If CLOSE fails, stop. Do not run REVIEW.
+3. If CLOSE succeeds, report the PERSIST/CLOSE result separately.
+4. If the accepted Campaign Contract has `review_mode: bearing-only`, open `ADMIN/REVIEW.md` and run REVIEW against the newly published save.
+5. Report REVIEW separately. REVIEW failure does not roll back or qualify the successful CLOSE.
+6. If `review_mode` is `off`, stop after CLOSE and state that REVIEW is disabled.
+7. Any other `review_mode` is invalid. Preserve the successful CLOSE, report the contract defect, and do not run REVIEW.
+
+Do not invent a third persistence operation. CHECKPOINT and CLOSE are the PERSIST operations.
+
+## Input boundary
+
+Unsent UI suggested-reply chips are not player input. Ignore them. They cannot establish intent, consent, OOC preference, accepted contract settings, or campaign state.

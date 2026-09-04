@@ -1,9 +1,10 @@
 # Engine contract
 
-An ENGINE is a ruleset plugin. It is not the OS and not a campaign.
+An ENGINE is a ruleset plugin. It is not the OS, a campaign, or the Campaign Contract.
 
 The OS does not assume any particular commercial, open, oracle-driven, or freeform system.
 A playable bound run names an installed engine in CURRENT_SAVE. If that file is missing, the instance is not runnable.
+Campaign promise, structural direction, initiative, pressure, time handling, development priorities, guidance, creative mandate, and REVIEW mode never come from ENGINE. Conversely, none of those contract settings changes an ENGINE resolution procedure, supplies a missing character value, or authorizes the GM to decide the PC's voluntary conduct.
 
 ## Required file
 
@@ -60,7 +61,7 @@ PLAY opens only the mechanic required by the present adjudication. It does not b
 
 `MODULE.md` names `engine: <id>`. ADMIN will not bind a module to an engine that is not installed.
 
-A MODULE `RULES_HOOKS` capability may clarify or calibrate use of the bound ENGINE but cannot contradict it. A real change to resolution or character rules uses a distinct compact ENGINE id. Later explicit table rulings live in `INSTANCE/CORRECTIONS.md`.
+A MODULE `RULES_HOOKS` capability may clarify or calibrate use of the bound ENGINE but cannot contradict it. Neither MODULE Campaign defaults nor the accepted run contract can override it. A real change to resolution or character rules uses a distinct compact ENGINE id. Later explicit table rulings live in `INSTANCE/CORRECTIONS.md`.
 
 ## Copyright / compactness
 

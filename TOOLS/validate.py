@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v0.5.
+"""Read-only structural validator for RPG OS v0.6.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.
@@ -23,8 +23,8 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v1"
-LAW_SHA256 = "83732b7b8a4b94db8c730db3b660701d0a9418a934236b9e732d85d2505278ae"
+VALIDATOR_VERSION = "VALIDATE-v2"
+LAW_SHA256 = "5456b40224ee4a5eb254f812fe30172ec6d2c47b96ffd8f508b31ad1f9e2a09c"
 
 CURRENT_SAVE_FIELDS = (
     "engine",
@@ -46,22 +46,70 @@ CURRENT_SAVE_FIELDS = (
     "declared_state_flags",
     "immediate_scene",
     "hot_identifiers",
+    "scene_status",
+    "uncommitted_time",
+    "pc_declared_goals",
+    "causal_frontier",
 )
 
 # These two fields are permitted to be absent when the bound engine/module does
 # not define them.  The clean skeleton keeps them explicitly as ``none``.
 OPTIONAL_SAVE_FIELDS = {"tracked_resources", "declared_state_flags"}
 
+CONTRACT_FIELDS = (
+    "campaign_id",
+    "contract_id",
+    "contract_rev",
+    "contract_parent",
+    "status",
+    "module",
+    "campaign_promise",
+    "fit_envelope",
+    "structural_direction",
+    "gm_initiative",
+    "pressure_incident_density",
+    "time_handling",
+    "development_priorities",
+    "guidance_visibility",
+    "creative_mandate",
+    "creative_mandate_scope",
+    "creative_mandate_boundaries",
+    "review_mode",
+)
+
+BEARING_FIELDS = (
+    "campaign_id",
+    "base_save_id",
+    "base_save_rev",
+    "base_contract_id",
+    "base_contract_rev",
+    "status",
+    "evidence_scope",
+)
+
+BEARING_SECTIONS = (
+    "Established references",
+    "PC-declared goals",
+    "OOC preferences",
+    "Observed conduct",
+    "Provisional interpretation",
+    "Directions",
+    "Questions",
+)
+
 REQUIRED_FILES = (
     "OS/AGENTS.md",
     "OS/BOOTSTRAP.md",
     "OS/LAW.md",
+    "OS/RETRIEVAL.md",
     "ENGINE/_CONTRACT.md",
     "ENGINE/freeform.md",
     "MODULES/_CONTRACT.md",
     "MODULES/README.md",
     "INSTANCE/_SCHEMA.md",
     "INSTANCE/CURRENT_SAVE.md",
+    "INSTANCE/CAMPAIGN_CONTRACT.md",
+    "INSTANCE/BEARING.md",
     "INSTANCE/SAFETY.md",
     "INSTANCE/KNOWN.md",
     "INSTANCE/NOW.md",
@@ -78,7 +126,10 @@ REQUIRED_FILES = (
     "ADMIN/CHARACTER_BUILD.md",
     "ADMIN/CLOSE_CONTRACT.md",
     "ADMIN/LOAD.md",
+    "ADMIN/MIGRATE_V05.md",
     "ADMIN/NEW_GAME.md",
+    "ADMIN/REVIEW.md",
+    "ADMIN/RECALIBRATE.md",
     "ADMIN/TESTS.md",
     "ADMIN/VALIDATE.md",
     "TOOLS/validate.py",
@@ -557,6 +608,7 @@ class Validator:
         self.metrics: dict[str, Any] = {}
         self._text_cache: dict[Path, str] = {}
         self.current: dict[str, str] = {}
+        self.contract: dict[str, str] = {}
         self.bound = False
         self.engine_ids: dict[str, list[Path]] = defaultdict(list)
         self.archive_rows: list[dict[str, Any]] = []
@@ -674,6 +726,47 @@ class Validator:
                     index + 1 + line_offset,
                 )
         return rows
+
+    def exact_field_record(
+        self,
+        text: str,
+        relative: str,
+        fields: tuple[str, ...],
+        code: str,
+    ) -> Optional[dict[str, str]]:
+        """Parse one exact Field/Value record and reject missing or extra keys."""
+
+        rows = self.find_table(text, ["Field", "Value"], relative, code + "_TABLE")
+        if rows is None:
+            return None
+        values: dict[str, str] = {}
+        allowed = set(fields)
+        for row in rows:
+            field = strip_code_ticks(row["field"]).strip()
+            value = strip_code_ticks(row["value"]).strip()
+            if field in values:
+                self.add("ERROR", code + "_DUPLICATE_FIELD", relative, f"duplicate field {field!r}", row["_line"])
+                continue
+            if field not in allowed:
+                self.add("ERROR", code + "_UNKNOWN_FIELD", relative, f"unknown field {field!r}", row["_line"])
+                continue
+            if not value:
+                self.add("ERROR", code + "_EMPTY_FIELD", relative, f"field {field!r} is blank", row["_line"])
+            values[field] = value
+        for field in fields:
+            if field not in values:
+                self.add("ERROR", code + "_MISSING_FIELD", relative, f"missing required field {field!r}")
+        return values
+
+    @staticmethod
+    def canonical_revision(value: str) -> Optional[int]:
+        if not re.fullmatch(r"0|[1-9][0-9]*", value):
+            return None
+        return int(value)
+
+    @staticmethod
+    def choice_or_custom(value: str, choices: set[str]) -> bool:
+        return value in choices or bool(re.fullmatch(r"custom:\s+\S(?:.*\S)?", value))
 
     def safe_path(
         self,
@@ -825,6 +918,10 @@ class Validator:
                 "hot_identifiers",
                 "tracked_resources",
                 "declared_state_flags",
+                "scene_status",
+                "uncommitted_time",
+                "pc_declared_goals",
+                "causal_frontier",
             )
             for field in unbound_none_fields:
                 if field not in values and field in OPTIONAL_SAVE_FIELDS:
@@ -844,7 +941,7 @@ class Validator:
                 self.add("ERROR", "SAVE_BIND_REVISION", "INSTANCE/CURRENT_SAVE.md", "bind requires save_rev 1")
             if commit in {"checkpoint", "close"} and revision < 2:
                 self.add("ERROR", "SAVE_POSTBIND_REVISION", "INSTANCE/CURRENT_SAVE.md", f"{commit} requires save_rev >= 2")
-            for field in ("campaign_id", "save_id", "pc_record", "immediate_scene"):
+            for field in ("campaign_id", "save_id", "pc_record"):
                 if is_sentinel(values.get(field, "")) or is_placeholder(values.get(field, "")):
                     self.add("ERROR", "SAVE_BOUND_VALUE", "INSTANCE/CURRENT_SAVE.md", f"bound save requires {field}")
             for field in ("engine", "module"):
@@ -875,6 +972,29 @@ class Validator:
                 self.add("ERROR", "SAVE_ARCHIVE_REF", "INSTANCE/CURRENT_SAVE.md", f"{commit} requires archive_ref none")
             if commit == "close" and is_sentinel(values.get("archive_ref", "")):
                 self.add("ERROR", "SAVE_ARCHIVE_REF", "INSTANCE/CURRENT_SAVE.md", "close requires a nonempty archive_ref")
+            scene_status = values.get("scene_status", "")
+            scene_states = {"opening", "active", "paused", "resolved", "between-scenes", "unknown"}
+            if scene_status not in scene_states:
+                self.add(
+                    "ERROR",
+                    "SAVE_SCENE_STATUS",
+                    "INSTANCE/CURRENT_SAVE.md",
+                    f"bound scene_status must be one of {', '.join(sorted(scene_states))}; found {scene_status!r}",
+                )
+            if scene_status in {"opening", "active", "paused", "resolved"} and (
+                is_sentinel(values.get("immediate_scene", "")) or is_placeholder(values.get("immediate_scene", ""))
+            ):
+                self.add("ERROR", "SAVE_IMMEDIATE_SCENE", "INSTANCE/CURRENT_SAVE.md", f"scene_status {scene_status!r} requires an immediate_scene")
+            frontier = values.get("causal_frontier", "")
+            if frontier != "none":
+                for entry in (item.strip() for item in frontier.split(";")):
+                    if not re.match(r"^(?:consequence|due|process|decision|cue):\s*\S", entry):
+                        self.add(
+                            "ERROR",
+                            "SAVE_CAUSAL_FRONTIER",
+                            "INSTANCE/CURRENT_SAVE.md",
+                            f"causal_frontier entry lacks a permitted type and nonempty body: {entry!r}",
+                        )
             pc_record = values.get("pc_record", "")
             if not is_sentinel(pc_record):
                 pc_path = self.safe_path(pc_record, self.root, self.root, "SAVE_PC_PATH", "INSTANCE/CURRENT_SAVE.md")
@@ -891,6 +1011,262 @@ class Validator:
         candidate = self.root / "INSTANCE/CURRENT_SAVE.candidate.md"
         if candidate.exists() or candidate.is_symlink():
             self.add("ERROR", "SAVE_STALE_CANDIDATE", "INSTANCE/CURRENT_SAVE.candidate.md", "unfinished candidate exists; validator will not delete it")
+
+    def check_campaign_contract(self) -> None:
+        relative = "INSTANCE/CAMPAIGN_CONTRACT.md"
+        path = self.root / relative
+        text = self.read_text(path, "CONTRACT_READ")
+        if text is None:
+            return
+        frontmatter, errors = extract_frontmatter(text)
+        for error in errors:
+            self.add("ERROR", "CONTRACT_FRONTMATTER", relative, error)
+        expected_frontmatter = {
+            "id": "instance.campaign_contract",
+            "class": "campaign-contract",
+            "temperature": "resident",
+        }
+        for field, expected in expected_frontmatter.items():
+            if frontmatter.get(field) != expected:
+                self.add(
+                    "ERROR",
+                    "CONTRACT_FRONTMATTER_VALUE",
+                    relative,
+                    f"front-matter {field} must be {expected!r}",
+                )
+        values = self.exact_field_record(text, relative, CONTRACT_FIELDS, "CONTRACT")
+        if values is None:
+            return
+        self.contract = values
+        status = values.get("status", "")
+        if status not in {"unbound", "accepted"}:
+            self.add("ERROR", "CONTRACT_STATUS", relative, f"fixed contract status must be unbound or accepted; found {status!r}")
+
+        revision_raw = values.get("contract_rev", "")
+        revision = self.canonical_revision(revision_raw)
+        if revision is None:
+            self.add("ERROR", "CONTRACT_REVISION", relative, f"contract_rev is not a canonical nonnegative ASCII integer: {revision_raw!r}")
+            revision = -1
+
+        candidate = self.root / "INSTANCE/CAMPAIGN_CONTRACT.candidate.md"
+        if candidate.exists() or candidate.is_symlink():
+            self.add("ERROR", "CONTRACT_STALE_CANDIDATE", self.relative(candidate), "unfinished contract candidate exists; validator will not delete it")
+
+        if not self.bound:
+            expected = {
+                "campaign_id": "none",
+                "contract_id": "none",
+                "contract_rev": "0",
+                "contract_parent": "none",
+                "status": "unbound",
+                "module": "unbound",
+                "campaign_promise": "none",
+                "fit_envelope": "none",
+                "structural_direction": "none",
+                "gm_initiative": "none",
+                "pressure_incident_density": "none",
+                "time_handling": "none",
+                "development_priorities": "none",
+                "guidance_visibility": "none",
+                "creative_mandate": "off",
+                "creative_mandate_scope": "none",
+                "creative_mandate_boundaries": "none",
+                "review_mode": "off",
+            }
+            for field, expected_value in expected.items():
+                if values.get(field) != expected_value:
+                    self.add("ERROR", "CONTRACT_UNBOUND_VALUE", relative, f"unbound contract requires {field}: {expected_value}")
+            return
+
+        if status != "accepted":
+            self.add("ERROR", "CONTRACT_BOUND_STATUS", relative, "bound run requires an accepted fixed-path contract")
+        for field in ("campaign_id", "module"):
+            if values.get(field) != self.current.get(field):
+                self.add(
+                    "ERROR",
+                    "CONTRACT_BINDING_MISMATCH",
+                    relative,
+                    f"contract {field} {values.get(field)!r} != CURRENT_SAVE {self.current.get(field)!r}",
+                )
+        contract_id = values.get("contract_id", "")
+        contract_parent = values.get("contract_parent", "")
+        if not SAFE_ID.fullmatch(contract_id) or is_placeholder(contract_id):
+            self.add("ERROR", "CONTRACT_ID_FORMAT", relative, f"contract_id is not a portable non-placeholder token: {contract_id!r}")
+        if revision < 1:
+            self.add("ERROR", "CONTRACT_BOUND_REVISION", relative, "accepted contract requires contract_rev >= 1")
+        if revision == 1:
+            if contract_parent != "none":
+                self.add("ERROR", "CONTRACT_INITIAL_PARENT", relative, "contract_rev 1 requires contract_parent none")
+        elif revision > 1:
+            if not SAFE_ID.fullmatch(contract_parent) or is_placeholder(contract_parent):
+                self.add("ERROR", "CONTRACT_PARENT_FORMAT", relative, "recalibrated contract requires a portable prior contract_id")
+            elif contract_parent == contract_id:
+                self.add("ERROR", "CONTRACT_PARENT_SELF", relative, "contract_id must not equal contract_parent")
+
+        for field in ("campaign_promise", "fit_envelope"):
+            value = values.get(field, "")
+            if is_placeholder(value) or is_sentinel(value):
+                self.add("ERROR", "CONTRACT_REQUIRED_VALUE", relative, f"accepted contract requires substantive {field}")
+        scalar_axes = {
+            "structural_direction": {"reactive-sandbox", "responsive-emergent", "broad-trajectory", "structured-scenario"},
+            "gm_initiative": {"mostly-consequence-driven", "balanced", "proactive"},
+            "pressure_incident_density": {"quiet", "variable", "sustained"},
+            "time_handling": {"moment-to-moment", "selective-compression", "broad-calendar-movement"},
+        }
+        for field, choices in scalar_axes.items():
+            value = values.get(field, "")
+            if not self.choice_or_custom(value, choices):
+                self.add("ERROR", "CONTRACT_AXIS_VALUE", relative, f"invalid {field}: {value!r}")
+        priorities = values.get("development_priorities", "")
+        if priorities != "none" and (is_placeholder(priorities) or is_sentinel(priorities)):
+            self.add("ERROR", "CONTRACT_PRIORITIES", relative, "development_priorities must be none or a substantive accepted selection")
+        if values.get("guidance_visibility") not in {"natural", "explicit", "minimal"}:
+            self.add("ERROR", "CONTRACT_GUIDANCE", relative, f"invalid guidance_visibility {values.get('guidance_visibility')!r}")
+        mandate = values.get("creative_mandate", "")
+        if mandate not in {"off", "on"}:
+            self.add("ERROR", "CONTRACT_MANDATE", relative, f"accepted creative_mandate must be off or on; found {mandate!r}")
+        scope = values.get("creative_mandate_scope", "")
+        boundaries = values.get("creative_mandate_boundaries", "")
+        if mandate == "off":
+            if scope != "none" or boundaries != "none":
+                self.add("ERROR", "CONTRACT_MANDATE_OFF_DETAIL", relative, "mandate off requires scope and boundaries none")
+        elif mandate == "on":
+            if is_placeholder(scope) or is_sentinel(scope):
+                self.add("ERROR", "CONTRACT_MANDATE_SCOPE", relative, "mandate on requires a substantive accepted scope")
+            if is_placeholder(boundaries) or is_sentinel(boundaries):
+                self.add("ERROR", "CONTRACT_MANDATE_BOUNDARIES", relative, "mandate on requires substantive accepted boundaries")
+        if values.get("review_mode") not in {"off", "bearing-only"}:
+            self.add("ERROR", "CONTRACT_REVIEW_MODE", relative, f"invalid review_mode {values.get('review_mode')!r}")
+        self.metrics["contract_rev"] = revision
+        self.metrics["creative_mandate"] = mandate
+        self.metrics["review_mode"] = values.get("review_mode", "")
+
+    def check_bearing(self) -> None:
+        relative = "INSTANCE/BEARING.md"
+        path = self.root / relative
+        text = self.read_text(path, "BEARING_READ")
+        if text is None:
+            return
+        frontmatter, errors = extract_frontmatter(text)
+        for error in errors:
+            self.add("ERROR", "BEARING_FRONTMATTER", relative, error)
+        expected_frontmatter = {
+            "id": "instance.campaign_bearing",
+            "class": "campaign-bearing",
+            "temperature": "warm",
+        }
+        for field, expected in expected_frontmatter.items():
+            if frontmatter.get(field) != expected:
+                self.add(
+                    "ERROR",
+                    "BEARING_FRONTMATTER_VALUE",
+                    relative,
+                    f"front-matter {field} must be {expected!r}",
+                )
+        values = self.exact_field_record(text, relative, BEARING_FIELDS, "BEARING")
+        if values is None:
+            return
+        candidate = self.root / "INSTANCE/BEARING.candidate.md"
+        if candidate.exists() or candidate.is_symlink():
+            self.add("ERROR", "BEARING_STALE_CANDIDATE", self.relative(candidate), "unfinished bearing candidate exists; validator will not delete it")
+
+        status = values.get("status", "")
+        if status not in {"none", "provisional"}:
+            self.add("ERROR", "BEARING_STATUS", relative, f"fixed bearing status must be none or provisional; found {status!r}")
+        headings = [(line, title) for line, level, title in iter_literal_headings(text) if level == 2]
+        actual_sections = [title for _line, title in headings]
+        if actual_sections != list(BEARING_SECTIONS):
+            self.add(
+                "ERROR",
+                "BEARING_SECTION_SET",
+                relative,
+                "level-two sections must occur once and in schema order: " + ", ".join(BEARING_SECTIONS),
+            )
+        section_bodies: dict[str, str] = {}
+        for section in BEARING_SECTIONS:
+            body, line, count = section_text(text, section, 2)
+            if count != 1:
+                self.add("ERROR", "BEARING_SECTION_COUNT", relative, f"expected exactly one level-two {section!r} section; found {count}")
+                continue
+            compact = (body or "").strip()
+            section_bodies[section] = compact
+            if compact != "none" and not self.meaningful_payload(body or ""):
+                self.add("ERROR", "BEARING_SECTION_EMPTY", relative, f"section {section!r} must contain 'none' or substantive text", line)
+
+        if status == "none":
+            expected_campaign = self.current.get("campaign_id", "none") if self.bound else "none"
+            expected = {
+                "campaign_id": expected_campaign,
+                "base_save_id": "none",
+                "base_save_rev": "0",
+                "base_contract_id": "none",
+                "base_contract_rev": "0",
+                "status": "none",
+                "evidence_scope": "none",
+            }
+            for field, expected_value in expected.items():
+                if values.get(field) != expected_value:
+                    self.add("ERROR", "BEARING_NONE_VALUE", relative, f"empty bearing requires {field}: {expected_value}")
+            for section, body in section_bodies.items():
+                if body != "none":
+                    self.add("ERROR", "BEARING_NONE_SECTION", relative, f"empty bearing requires section {section!r} to contain only 'none'")
+            self.metrics["bearing_status"] = "none"
+            return
+
+        if not self.bound:
+            self.add("ERROR", "BEARING_UNBOUND_PROVISIONAL", relative, "unbound tree cannot contain a provisional bearing")
+            return
+        malformed = False
+        for field in ("campaign_id", "base_save_id", "base_contract_id"):
+            value = values.get(field, "")
+            if not SAFE_ID.fullmatch(value) or is_placeholder(value):
+                malformed = True
+                self.add("ERROR", "BEARING_ID_FORMAT", relative, f"{field} is not a portable non-placeholder token: {value!r}")
+        revisions: dict[str, int] = {}
+        for field in ("base_save_rev", "base_contract_rev"):
+            raw = values.get(field, "")
+            parsed = self.canonical_revision(raw)
+            if parsed is None or parsed < 1:
+                malformed = True
+                self.add("ERROR", "BEARING_REVISION", relative, f"{field} must be a canonical positive ASCII integer: {raw!r}")
+            else:
+                revisions[field] = parsed
+        if is_placeholder(values.get("evidence_scope", "")) or is_sentinel(values.get("evidence_scope", "")):
+            self.add("ERROR", "BEARING_EVIDENCE_SCOPE", relative, "provisional bearing requires substantive exact evidence scope")
+
+        expected_bases = {
+            "campaign_id": self.current.get("campaign_id", ""),
+            "base_save_id": self.current.get("save_id", ""),
+            "base_save_rev": self.current.get("save_rev", ""),
+            "base_contract_id": self.contract.get("contract_id", ""),
+            "base_contract_rev": self.contract.get("contract_rev", ""),
+        }
+        stale_fields = [field for field, expected in expected_bases.items() if values.get(field) != expected]
+        stale = bool(stale_fields)
+        if stale and not malformed:
+            self.add(
+                "WARNING",
+                "BEARING_STALE_BASE",
+                relative,
+                "provisional bearing is stale and must be omitted from PLAY orientation; mismatched fields: " + ", ".join(stale_fields),
+            )
+        disabled = self.contract.get("review_mode") == "off"
+        if disabled:
+            self.add(
+                "WARNING",
+                "BEARING_CONTRACT_DISABLED",
+                relative,
+                "provisional bearing is disabled by review_mode off and must be omitted from PLAY orientation",
+            )
+        if stale and disabled:
+            observed_status = "stale-and-contract-disabled"
+        elif stale:
+            observed_status = "stale"
+        elif disabled:
+            observed_status = "contract-disabled"
+        else:
+            observed_status = "provisional-current"
+        self.metrics["bearing_status"] = observed_status
 
     def check_engines(self) -> None:
         engine_root = self.root / "ENGINE"
@@ -975,11 +1351,13 @@ class Validator:
                     "ERROR",
                     "INSTANCE_INITIAL_REGISTER",
                     relative,
-                    f"{phase} state requires the canonical structurally empty v0.5 register template; prior-run or uncommitted content is present",
+                    f"{phase} state requires the distributed structurally empty register template; prior-run or uncommitted content is present",
                 )
         allowed = {
                 "_SCHEMA.md",
                 "CURRENT_SAVE.md",
+                "CAMPAIGN_CONTRACT.md",
+                "BEARING.md",
                 "SAFETY.md",
                 "KNOWN.md",
                 "NOW.md",
@@ -2099,6 +2477,8 @@ class Validator:
         self.check_required_files()
         self.check_law()
         self.check_current_save()
+        self.check_campaign_contract()
+        self.check_bearing()
         self.check_initial_instance()
         self.check_now_roster()
         self.check_engines()
@@ -2162,8 +2542,10 @@ def make_report(
             "result": structural_result,
             "provenance": "SCRIPT-VERIFIED",
             "coverage": [
-                "required release files, executed/target validator identity, whole-tree path types/case, and frozen LAW bytes",
-                "CURRENT_SAVE grammar, exact commit state, canonical hot roster, PC overlay, and candidate residue",
+                "required release files, executed/target validator identity, whole-tree path types/case, and release LAW bytes",
+                "CURRENT_SAVE grammar, causal-frontier syntax, scene state, exact commit state, canonical hot roster, PC overlay, and candidate residue",
+                "accepted Campaign Contract identity, binding, revision, axes, mandate shape, and candidate residue",
+                "Bearing identity, required lanes, provisional base/staleness observation, empty state, and candidate residue",
                 "clean unbound/bind INSTANCE registers and overlay paths",
                 "installed engine identity, safe ids, and declared character-build support",
                 "bound module using v0.4 descriptor grammar, capabilities/routes, voice, closed PC routing bundles, and T0/bind consistency where machine-parseable",

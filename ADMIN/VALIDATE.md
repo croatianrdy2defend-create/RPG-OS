@@ -17,7 +17,7 @@ The script is read-only. It emits an ephemeral point-in-time diagnostic and writ
 
 Exit status:
 
-- `0` — the complete declared v1 structural surface was scanned and no structural violation was found;
+- `0` — the complete declared v2 structural surface was scanned and no structural violation was found;
 - `1` — the scan completed and found one or more structural violations;
 - `2` — declared coverage is incomplete because of invocation/access failure, validator failure, a tree change during the scan, an unsupported legacy descriptor, or another declared machine-readable surface that could not be completely parsed or scanned. Never report PASS.
 
@@ -61,7 +61,7 @@ A model may report a definite defect it observed. Absence of an observed defect 
 
 ## Structural scope
 
-The script checks only deterministic file invariants declared by its output, including release files and executed/target-validator identity, frozen-LAW bytes, CURRENT_SAVE fields and commit metadata, clean unbound/bind INSTANCE registers, canonical hot-roster placement, safe engine identity and character-build support, the bound module using v0.4 descriptor grammar where machine-parseable, closed MODULE/INSTANCE PC route graphs and bind-copy bytes, safety flag consistency, archive routes, session-index budgets, stable literal headings, ledger pointers, path containment, a stale CURRENT_SAVE candidate, initial archive contamination, and routed orphan sessions. It cannot identify every interrupted transaction after all intermediate files happen to be structurally valid.
+The script checks only deterministic file invariants declared by its output, including required release and ADMIN-contract files (including the v0.5 migration contract), executed/target-validator identity, release-LAW bytes, CURRENT_SAVE fields, scene status, causal-frontier syntax and commit metadata, the accepted Campaign Contract's identity/binding/revision/axis/mandate shape, the Bearing's identity/required lanes/base references and stale-base observation, clean unbound/bind INSTANCE registers, canonical hot-roster placement, safe engine identity and character-build support, the bound module descriptor where machine-parseable, closed MODULE/INSTANCE PC route graphs and bind-copy bytes, safety flag consistency, archive routes, session-index budgets, stable literal headings, ledger pointers, path containment, unfinished candidate residue, initial archive contamination, and routed orphan sessions. A well-formed but stale Bearing is reported as a warning and must be omitted from PLAY; it does not invalidate the accepted save or contract. The script cannot identify every interrupted transaction after all intermediate files happen to be structurally valid.
 
 It may report archive size and routing metrics. Metrics are evidence, not automatic split thresholds.
 
@@ -70,15 +70,23 @@ It may report archive size and routing metrics. Metrics are evidence, not automa
 VALIDATE does not establish:
 
 - semantic coherence or completeness of scene shards;
+- whether the GM oriented before retrieving, supplied a playable frame, or closed a quiet beat well;
+- whether a particular external warrant, responsive duty, or accepted creative mandate existed;
+- whether contract language, Bearing interpretation, or fresh creation stayed within its semantic authority;
+- whether a causal-frontier entry duplicates another authority or captures the right established cause;
+- whether REVIEW inferred preference, prepared a railroad, or correctly identified a campaign pattern;
+- whether `MIGRATE V0.5` preserved every source fact, used a complete backup, or received truthful operator-supplied orientation and Contract values;
 - whether archived text came only from accepted PLAY;
 - whether an exact id was narratively warranted;
 - whether an index became a plot summary in meaning;
-- agency, salience, quiet-day, consent, or nonactivation compliance;
+- agency, salience, quiet-day, consent, refusal, no-retrofit, or nonactivation compliance;
 - truth, quality, or copyright status of a capability body;
 - host section isolation, persistent-write behavior, moderation behavior, or model identity;
 - future correctness after the reported tree digest changes.
 
 Those remain tests, observations, or judgment. Never merge them into STRUCTURAL PASS.
+
+The GM-quality fixtures in `ADMIN/TESTS.md`, including P40–P50, are a separate semantic/player-evaluated lane. Passing this script does not run or score them.
 
 ## Stop condition
 

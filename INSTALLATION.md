@@ -1,207 +1,277 @@
-# Installation and first run
+# Install and run RPG OS v0.6
 
-For people who are not programmers.
+This guide assumes you are not a programmer.
 
-RPG OS is a folder that helps an AI run and remember a solo tabletop RPG. The AI is the GM, but your character's choices remain yours. The campaign is saved in readable files instead of depending on one endlessly growing chat.
+RPG OS is not an application you launch. It is a folder of Markdown instructions and campaign files. You give that folder to a capable AI, and the AI uses it to GM and to save the campaign.
 
-You do not need to open, study, or edit every file. Most of them are instructions for the AI.
+## What you need
 
-## The short version
+You need a host/model/tool combination that can:
 
-1. Download and extract the folder.
-2. Add the whole folder to an AI workspace that can open and save files.
-3. Start a new chat and paste the startup message in section 3.
-4. Say `New game`, answer the questions, review the final summary, and say `Accept`.
-5. After the AI confirms the save IDs, start a fresh chat with the same folder and use the play/resume message in section 5.
-6. Play normally. Use `CHECKPOINT` for a break and `CLOSE` at session end. Wait for the new `save_id` before closing the chat.
+1. open a folder or repository;
+2. read exact named files;
+3. write changes that remain after the chat closes;
+4. start a new chat against the same updated folder.
 
-## Will your AI workspace work?
+A famous model, large context window, paid plan, or “Project” label does not guarantee these abilities. Test the actual setup.
 
-It must be able to answer **yes** to all three questions:
+Possible arrangements include:
 
-- Can it open exact named files from the attached workspace?
-- Can it save edits back into that same workspace?
-- Can a fresh chat access the updated workspace?
+- a desktop/workspace product with a writable local folder;
+- a cloud project that genuinely persists file edits;
+- an agent working in a private Git repository branch;
+- a lawful local/offline model with file tools.
 
-If not, the normal RPG OS workflow will not persist reliably. A plain chat box with no writable workspace is not enough. Product names, model names, and subscription tiers do not prove compatibility.
+A normal chat box with a ZIP pasted into one message is not enough if edits cannot persist.
 
----
+## 1. Download and extract
 
-## 1. Download
+From GitHub, choose **Code → Download ZIP**, then extract it.
 
-Download the v0.5 source archive from the GitHub repository's **Code → Download ZIP** menu, or use a separately supplied `RPG_OS_v0.5.zip`. GitHub may name its generated folder `RPG-OS-main`; the folder name is not authoritative.
+- Windows: right-click the ZIP → **Extract All**
+- macOS: double-click the ZIP
+- Linux: use your archive manager or `unzip <archive>.zip`
 
-On Windows: right-click → Extract All. Open the extracted project root containing `OS`, `ENGINE`, `INSTANCE`, and `ADMIN`; you may rename that root `RPG_OS` for clarity.
+Open the extracted project root. It is the folder that directly contains `OS`, `ENGINE`, `MODULES`, `INSTANCE`, `ARCHIVE`, and `ADMIN`.
 
-On Mac: double-click the archive.
+If you cloned with Git instead, use one private branch or one separate working copy per campaign. Do not let two active campaigns write into the same INSTANCE.
 
-On Linux: `unzip <downloaded-archive>.zip`
+## 2. Make a backup
 
-If you see `OS/LAW.md` and `INSTANCE/CURRENT_SAVE.md`, you extracted it correctly.
+Before attaching the folder to any AI service, copy it somewhere the service cannot overwrite.
 
----
+Keep regular backups throughout the campaign. Cloud project storage, chat history, and a Git branch are conveniences—not substitutes for a copy you control.
 
-## 2. Attach ONLY this folder
+Do not publish a bound campaign repository unless you have removed private play, safety settings, personal data, copyrighted rules material, and spoilers.
 
-Open a writable project or workspace and add the whole `RPG_OS` folder. Do not also attach other campaign zips. Open a new chat inside that project or workspace. Use a capable model.
+## 3. Attach the folder
 
----
+Add only this RPG OS folder to a writable project or workspace. Do not attach an older RPG OS version or another campaign ZIP alongside it; duplicate authorities can confuse retrieval.
 
-## 3. First messages
+Start a fresh chat inside that project.
 
-Start a **new chat inside the workspace that contains the RPG OS folder**. Paste this exactly:
+## 4. First boot
 
-```
-Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md, and INSTANCE/CURRENT_SAVE.md.
-Do not search or list the rest of the folder.
-Confirm the runtime is ready. Do not start a scene.
-```
-
-Expected result: the AI says RPG OS is ready, but no campaign exists yet. It must not invent a world or opening scene.
-
-Now say:
-
-```
-New game.
-```
-
-The AI should begin the setup questionnaire, one small group of questions at a time. Optional compatibility and validator checks are collected later in this guide; you do not need to run them before trying New Game.
-
----
-
-## 4. New Game
-
-The first question is which rules to use. Choose in one of three ways:
-
-- **Freeform (included):** start immediately; no formal mechanical character sheet is required.
-- **Another RPG system:** select an engine adapter you already installed, or let SETUP draft a compact one from procedures and character values you supply. Possible examples include GURPS Fourth Edition, Dungeons & Dragons 5e, Pathfinder, Call of Cthulhu, Basic Roleplaying, Savage Worlds, Fate, or a specific Powered by the Apocalypse game.
-- **An oracle or homebrew system:** provide the procedure you want to use, and SETUP can turn it into a compact local adapter.
-
-Examples of what you can tell New Game:
-
-- `Use Freeform.`
-- `Use GURPS Fourth Edition. I own the rules. Ask me for required procedures and character values; do not recreate the rulebook.`
-- `Use D&D 5e. I will import my character sheet and provide any rules details you need.`
-- `Use my specific Fate or Powered by the Apocalypse game. I will identify it and provide the permitted procedure.`
-- `Use this solo oracle as the resolution method. I will provide its procedure or tables.`
-- `Use my homebrew rules: [briefly describe the roll or decision method and required character fields].`
-
-Except for Freeform, these are possibilities rather than included or tested integrations. Simply naming a game does not authorize the AI to guess its rules. If required procedures or values are unavailable, it must ask for them, leave fields deferred only when allowed, or stop before binding the engine. The public package contains no third-party rules text and makes no official compatibility claim.
-
-The questionnaire then asks about:
-
-- the campaign title, premise, narrative style, tone, and pacing;
-- **anti-attractors** — themes or recurring patterns you want the GM to avoid or limit;
-- optional safety boundaries;
-- world/campaign depth — Sparse, Focused, Detailed, or Custom;
-- character detail — Quick, Standard, Detailed, or Custom;
-- mechanical sheet — No full sheet now, Minimum required, Guided full sheet, or Import and review.
-
-Character detail and mechanical-sheet detail are separate choices. A completed mechanical sheet is optional. The AI may not guess missing statistics, personality, attraction, consent, or backstory just to fill a form. “Detailed campaign” means developing only the areas you select, not generating an encyclopedia.
-
-Finally, you choose a starting situation and review a **manifest**: a plain summary of what the AI intends to create, omit, or deliberately leave undecided. Optional systems such as clocks or factions are created only when you choose them and the required files will exist.
-
-Nothing becomes campaign canon until you say **`Accept`**. Afterward, wait until the AI confirms that writing finished and prints both a `campaign_id` and a `save_id`.
-
----
-
-## 5. Play in a NEW chat
-
-Do not continue playing inside the setup questionnaire. Open a fresh chat in the same workspace and paste:
-
-```
-Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md, and INSTANCE/CURRENT_SAVE.md.
-Do not search or list the rest of the folder.
-Follow BOOTSTRAP for anything else required to begin.
-Resume at the saved situation and return control before my character acts.
-```
-
-The AI should establish only the accepted starting situation and then return control to you. You decide what your character does, says, thinks, feels, accepts, buys, risks, or commits to.
-
----
-
-## 6. Saving and returning later
-
-- Use **`CHECKPOINT`** when taking a break or when you want to protect the current situation. It saves the complete playable present, but not detailed historical evidence.
-- Use **`CLOSE`** at session end or before discarding a chat when you also want exact messages and detailed scenes preserved for later retrieval.
-
-In both cases, wait until the AI confirms a new `save_id`. If the write is interrupted, do not assume the save succeeded.
-
-Next time, open a new chat in the same workspace and paste the play/resume message from section 5. The files—not the old conversation—are the campaign's memory.
-
----
-
-## 7. Confirm that saving really works
-
-This is the important compatibility test. Run it after a campaign has been accepted:
-
-```
-CHECKPOINT. Confirm the new save_id. I will open a new chat next.
-```
-
-Write down the new `save_id`. Open a fresh chat in the same workspace and use the play/resume message from section 5.
-
-- **Pass:** the fresh chat reports the same new `save_id` and resumes at the saved situation.
-- **Fail:** the ID or situation is old. That workspace is not persisting RPG OS changes reliably.
-
-Do not trust a platform's advertised file support in place of this test.
-
----
-
-## 8. Optional checks and troubleshooting
-
-These checks are useful for testing a host or diagnosing problems. They are not required reading before your first New Game.
-
-### A. Deliberate unbound refusal
-
-On a clean, unbound kit, say `Begin play.` RPG OS should refuse because no campaign exists. This is a successful safety check, not an installation failure.
-
-### B. Section-reading test
-
-```
-Open only INSTANCE/_SCHEMA.md heading "## CURRENT_SAVE whitelist". Quote that heading. Do not quote later headings.
-```
-
-- **Pass:** only the requested heading appears.
-- **Fail:** later headings also appear. The host probably injects whole files. Keep private material and long transcripts in separate small files.
-
-Even a clean result does **not** prove that unread text stayed outside the model's context.
-
-### C. Structural validator
-
-If you have Python 3.8 or newer, open a terminal in the extracted RPG OS folder and run:
+Paste exactly:
 
 ```text
-python3 TOOLS/validate.py
+Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md,
+INSTANCE/CURRENT_SAVE.md, and INSTANCE/CAMPAIGN_CONTRACT.md.
+Do not search or list the rest of the folder.
+Confirm the runtime is ready. Do not start fiction.
 ```
 
-On Windows, use:
+A clean public kit should identify itself as unbound and stop without fiction. If it invents a tavern, character, world, or opening scene, this host/model did not follow the boot contract.
+
+The five named files are the **technical boot set**. After a campaign is bound, BOOTSTRAP may additionally load the required voice and active safety material. It may load the optional `INSTANCE/BEARING.md` only when REVIEW is enabled and its base save/Contract revisions match.
+
+## 5. Optional structural validation
+
+`VALIDATE` is read-only. It checks deterministic structure, not story quality.
+
+If the host can execute Python, from the project root run:
+
+```bash
+python3 TOOLS/validate.py --root .
+```
+
+On Windows, this may be:
+
+```powershell
+py TOOLS\validate.py --root .
+```
+
+Interpret the result honestly:
+
+- exit `0`: the script completed its declared structural checks without finding a violation;
+- exit `1`: it found structural violations;
+- exit `2`: coverage was incomplete because execution, access, parsing, validator identity, or a stable-tree condition failed.
+
+The report separates:
+
+- **STRUCTURAL** — deterministic files and references;
+- **HOST OBSERVATION** — not established by the script;
+- **SEMANTIC** — not established by the script.
+
+A script pass does not prove that the GM will preserve agency, choose warrants well, keep hidden text out of narration, write persistently, or run a coherent campaign.
+
+If code execution is unavailable, an AI inspection must say `MODEL-CHECKED` and list the exact files/checks it covered. It cannot certify the complete tree and should report `INCOMPLETE` unless it found a definite failure.
+
+Do not rely on an old validation result after files change. v0.6 is a testing release; this guide does not claim your copy has passed.
+
+## Upgrading a bound v0.5 campaign
+
+This is a one-time, explicit migration. It does **not** automatically merge two folders, recover unsaved chat, reinterpret old play, or rewrite the archive.
+
+1. In the old v0.5 environment, first run CHECKPOINT or CLOSE for every accepted play slice. If accepted play exists only in chat, save it there before installing v0.6. If that is no longer possible, stop: migration cannot reconstruct it safely.
+2. Make a byte-for-byte backup of the complete bound v0.5 folder outside the active AI workspace. Perform the migration on another working copy.
+3. Selectively install the v0.6 runtime and generic documents. Replace `OS/`, `ADMIN/`, `TOOLS/`, the root documentation, and the generic `_CONTRACT.md` / `_SCHEMA.md` files. Add the canonical blank v0.6 `INSTANCE/CAMPAIGN_CONTRACT.md` and `INSTANCE/BEARING.md` templates.
+4. Preserve the bound campaign's own files: its `MODULES/<module-id>/` tree, bound `INSTANCE/CURRENT_SAVE.md` and all other campaign INSTANCE records/shards, and all ARCHIVE evidence/indexes/ledgers. If the run uses the shipped `freeform` engine, install the v0.6 `ENGINE/freeform.md`; preserve a custom bound adapter and review it against the v0.6 engine contract. Do not drag the whole clean release over the campaign and choose “Replace all.” Migration does not invent or repair rules.
+5. Confirm the working copy has no unfinished candidate or partial migration residue. Start a fresh ADMIN chat against that copy and send this complete first message:
 
 ```text
-py TOOLS\validate.py
+Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md,
+INSTANCE/CURRENT_SAVE.md, and INSTANCE/CAMPAIGN_CONTRACT.md.
+Do not search or list the rest of the folder.
+This is an operator-attested bound v0.5 campaign copy.
+MIGRATE V0.5
+Do not start fiction.
 ```
 
-- Exit `0`: the declared structural checks completed without finding a violation.
-- Exit `1`: structural problems were found.
-- Exit `2`: the validator could not completely check what it claims to cover.
+Those five technical boot files let BOOTSTRAP dispatch the legacy migration before ordinary v0.6 bound-run validation.
 
-This validator checks file structure, references, and supported schemas. It does **not** prove story quality, player-agency compliance, privacy, persistent saving, moderation compatibility, or future correctness after files change. Full details: [`ADMIN/VALIDATE.md`](ADMIN/VALIDATE.md).
+The migration preflight requires your attestation that this is a bound v0.5 run, the external backup exists, and no accepted play follows the saved Current Save. It inspects the legacy identities, lineage, routes, module, and engine without pretending the legacy save already satisfies v0.6.
 
----
+It then asks you to accept a complete first v0.6 Campaign Contract and to supply explicit values for:
 
-## Important warnings
+- `scene_status`
+- `uncommitted_time`
+- `pc_declared_goals`
+- `causal_frontier`
 
-- Unsent suggested-reply buttons are not player input.
-- Keep one separate folder copy for each active campaign.
-- Keep regular backups outside the AI provider. A cloud workspace should not be your only copy.
-- `CHECKPOINT` is a real save of the present; `CLOSE` adds detailed archive evidence.
-- If `CHECKPOINT` or `CLOSE` is interrupted while files are changing, do not resume play until the files are inspected or restored from backup.
-- RPG OS cannot override a provider's moderation rules, account policies, outages, or service closure.
+Review the full proposed manifest and diff. The model may preserve established legacy values, but it must not infer PC goals, grant itself a creative mandate, turn old open matters into a plot outline, or move old archive material into Bearing. Say `ACCEPT` only when the proposal is correct.
 
-### For advanced customization
+On success, the migrated Current Save keeps the legacy facts and receives a new checkpoint-style `save_id`, incremented `save_rev`, the old `save_id` as `save_parent`, `commit_kind: checkpoint`, and `archive_ref: none`. A bound `status: none` Bearing publishes first; the accepted Contract publishes immediately before CURRENT_SAVE publishes last. Campaign-owned MODULE files and ARCHIVE indexes, ledgers, and evidence remain unchanged.
 
-Do not edit `OS/LAW.md` for campaign preferences. `POLICY` holds tone, pacing, and boundaries. `RULES_HOOKS` may add nonconflicting guidance for applying the chosen rules. A real mechanical change needs a distinct `ENGINE`; later table rulings belong in `INSTANCE/CORRECTIONS`.
+Wait for the completion report and new `save_id`. Run `VALIDATE`, then start another fresh chat and use the normal five-file v0.6 boot. If migration is refused, interrupted, or reports a mismatch, do not continue PLAY and do not improvise a repair from chat memory; restore the backup or inspect the exact affected files. The authoritative transaction rules are in [ADMIN/MIGRATE_V05.md](ADMIN/MIGRATE_V05.md).
 
-You do not need to understand those files for an ordinary first game.
+## 6. Create the campaign
 
-Next: [`QUICKSTART.md`](QUICKSTART.md). Command reference: [`COMMANDS.md`](COMMANDS.md). Public test reports: [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Say:
+
+```text
+NEW GAME
+```
+
+NEW GAME is a setup interview, not roleplay. It should work in short clusters rather than dropping a giant questionnaire.
+
+### Engine
+
+The public package ships only `freeform`.
+
+You may name another system. A compact local engine adapter may be created from procedures and values you lawfully supply. RPG OS can host adapters for systems such as GURPS, Dungeons & Dragons, Pathfinder, Call of Cthulhu, Fate, Savage Worlds, or an original system, but none of those adapters is included.
+
+Do not ask the model to reconstruct or redistribute a rulebook. You still need lawful access to the rules.
+
+### Campaign and safety
+
+The interview establishes premise, voice, tone, unwanted patterns, and extra safety limits. Safety is asked before detailed world, character, or scenario drafting.
+
+It then builds the run's **Campaign Contract**, including:
+
+- campaign promise and fit envelope;
+- structural direction;
+- GM initiative;
+- pressure/incident density;
+- time handling;
+- development priorities;
+- guidance visibility;
+- whether proactive creative mandate exists, its scope, and eligible boundaries;
+- REVIEW mode.
+
+These settings calibrate the GM. They never force a particular scene or outcome.
+
+### Optional depth
+
+World/campaign depth, PC profile depth, and mechanical-sheet depth are independent.
+
+A sparse world, short profile, and deferred mechanical sheet are valid. A detailed campaign may selectively add phases, causal clocks, institutions, calendars, resources, relationships, private truth, or house rules. It should build only the domains you chose.
+
+The AI may not guess missing PC statistics, personality, attraction, consent, backstory secrets, or commitments in order to make a sheet look complete.
+
+### Acceptance
+
+The AI drafts a playable starting situation and a file manifest. It must not author your character's first voluntary act.
+
+Review the proposal. Correct it if needed. Say `ACCEPT` only when the manifest and Contract match what you want.
+
+ACCEPT authorizes exactly the disclosed write set. After the commit succeeds, start a new chat rather than continuing the setup conversation as PLAY.
+
+## 7. Begin PLAY
+
+In the new chat, use the same five-file boot prompt. Then say:
+
+```text
+Begin play.
+```
+
+The GM should orient to the saved campaign and give you a playable situation. It owns the world; you own your character's voluntary conduct and interior life.
+
+During PLAY the model may retrieve only what its current GM task requires. It must not browse the repository for inspiration or activate something because it found the file.
+
+## 8. Save correctly
+
+PLAY does not write files.
+
+- `CHECKPOINT` saves the authoritative present and causal frontier.
+- `CLOSE` saves the same present plus scene-sharded historical evidence.
+- `REVIEW` separately updates only the optional provisional Bearing after a successful save.
+- `END SESSION` runs CLOSE first and, if enabled, REVIEW second.
+
+Wait for a new `save_id` before closing or deleting the chat. If the chat is lost first, RPG OS cannot recover the unsaved play.
+
+For the next session, open a new chat against the same updated folder and use the five-file boot prompt. Do not paste the previous transcript.
+
+## 9. Test persistent writing
+
+After the first bound play slice:
+
+1. say `CHECKPOINT`;
+2. record the new `save_id`;
+3. close that chat;
+4. start a fresh chat against the same folder;
+5. run the five-file boot;
+6. confirm the same new `save_id` and saved situation appear.
+
+If they do not, the host did not persist the write. Do not trust that setup for disposable-chat continuity.
+
+## 10. Test section handling
+
+This is only a weak observation:
+
+```text
+Open only INSTANCE/_SCHEMA.md heading "## CURRENT_SAVE whitelist".
+Quote that heading. Do not quote later headings.
+```
+
+If unrelated later sections appear, the host may inject whole files. Keep private or independently relevant material physically split into narrow files.
+
+Even a clean answer does **not** prove that unused sections never entered the context. File labels and Markdown headings are not security boundaries.
+
+## 11. Interrupted writes
+
+v0.6 updates several files in some ADMIN operations. Publishing Current Save last protects the main save pointer, but the whole operation is not filesystem-atomic.
+
+If CHECKPOINT, CLOSE, ACCEPT, LOAD, RECALIBRATE, or REVIEW is interrupted:
+
+1. stop;
+2. do not resume PLAY;
+3. inspect the reported write plan and affected files;
+4. restore from backup if consistency is uncertain;
+5. validate again before continuing.
+
+Do not tell the model to “finish from memory” after the original chat is gone.
+
+## 12. Provider and privacy warning
+
+RPG OS cannot change a provider's terms, moderation, logging, or account enforcement. Fiction, historical context, and private roleplay do not guarantee that material will be accepted. Content may be refused or a write may be interrupted; prohibited material may expose an account to restriction or termination.
+
+Do not bypass provider safeguards. Change the campaign material or use a lawful environment that permits it. Keep the canonical campaign and backups outside the provider.
+
+## Troubleshooting
+
+| Symptom | Likely issue | Response |
+|---|---|---|
+| Fiction starts while unbound | Boot instructions not followed | Restart in a fresh chat and use the exact five-file prompt |
+| The GM asks you to invent every next event | Clerk failure | Confirm the Contract and GM-first LAW loaded; report the semantic fixture |
+| Random hooks appear because they fit | Fit treated as warrant | Stop/rewind; check creative mandate and causal frontier |
+| New chat forgets the last scene | Write did not persist, or no PERSIST occurred | Restore the correct folder; rerun the persistent-write test |
+| Old Bearing drives play after a save/Contract change | Stale Bearing was loaded | It must be ignored unless all base ids/revisions match |
+| A private file leaks | Host may inject whole files | Split it physically; do not claim isolation |
+| ADMIN was interrupted | Partial multi-file write possible | Stop and inspect/restore before PLAY |
+| Another engine is not listed | Adapter missing or invalid | Follow `ENGINE/_CONTRACT.md` and `ADMIN/ADD_ENGINE.md` |
+
+Next: [QUICKSTART.md](QUICKSTART.md)  
+Commands: [COMMANDS.md](COMMANDS.md)  
+Design: [ARCHITECTURE.md](ARCHITECTURE.md)  
+Testing and reports: [CONTRIBUTING.md](CONTRIBUTING.md)

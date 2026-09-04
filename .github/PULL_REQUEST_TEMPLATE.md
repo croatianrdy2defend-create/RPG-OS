@@ -7,14 +7,21 @@ Describe the smallest owning-contract change and the failure it addresses.
 - [ ] STRUCTURAL
 - [ ] HOST OBSERVATION
 - [ ] SEMANTIC
+- [ ] PLAYER-RATED
 
-Relevant test or issue: 
+Relevant test, fixture, or issue:
+
+## GM behavior boundary
+
+- [ ] This does not make the GM a passive clerk
+- [ ] This does not make fit, retrieval, preparation, Bearing, or liveness into authority for a railroad
+- [ ] Player ownership, safety, protected uncertainty, and fact classes remain intact
+- [ ] PERSIST and REVIEW remain separate
 
 ## Verification
 
-- [ ] `python3 TOOLS/validate.py --root .` exits `0`
+- [ ] I ran `python3 TOOLS/validate.py --root .` and included the actual result
 - [ ] Cross-file references and Markdown links were checked
 - [ ] No private campaign, account, safety, credential, or unlicensed third-party material is included
-- [ ] `OS/LAW.md` is byte-identical, or the proposed cross-module kernel hole is explicitly demonstrated
+- [ ] Any `OS/LAW.md` edit identifies a cross-campaign kernel defect and adds two-sided semantic coverage
 - [ ] Documentation/protocol contributions are submitted under CC BY 4.0 and code/configuration contributions under MIT
-

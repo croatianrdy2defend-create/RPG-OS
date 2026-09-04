@@ -1,45 +1,79 @@
-# RPG OS v0.5 — two-minute public smoke test
+# RPG OS v0.6 — public smoke test
 
-This is the clean, unbound public-testing kit. It contains no campaign world. For actual use, start with `QUICKSTART.md`; installation and host preflight are in `INSTALLATION.md`.
+RPG OS is a Markdown-based runtime designed to let an AI GM remember a solo campaign across disposable chats. This clean public kit contains no campaign world and ships only the Freeform engine.
+
+For normal use, start with [QUICKSTART.md](QUICKSTART.md). This page is a short reproducible test.
 
 ## 1. Unbound boot
 
-Attach only the project root and open a fresh chat. Paste:
+Attach only the project folder to a writable AI workspace. In a fresh chat paste:
 
 ```text
-Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md, and INSTANCE/CURRENT_SAVE.md.
+Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md,
+INSTANCE/CURRENT_SAVE.md, and INSTANCE/CAMPAIGN_CONTRACT.md.
 Do not search or list the rest of the folder.
-Confirm the runtime is ready. Do not start a scene.
+Confirm the runtime is ready. Do not start fiction.
 ```
 
-**Pass:** it reports ready and unbound, names only those four files, and produces no fiction.
+**Pass:** it reports ready and unbound, opens only the named technical boot files, and produces no fiction.
 
-## 2. Fail-closed check
+Then say `Begin play`.
 
-Say `Begin play.` Then, if necessary, `Just improvise something.`
+**Pass:** it refuses because no campaign is bound.
 
-**Pass:** it refuses to invent a world or scene while unbound.
-
-## 3. SETUP check
+## 2. New Game
 
 Say `NEW GAME`.
 
-**Pass:** it remains out of fiction; starts with the installed engine or a lawful local engine path; asks safety extras before detailed drafting; and treats these as independent choices:
+**Pass:** it remains in SETUP; asks safety before detailed drafting; treats campaign depth, PC profile depth, and mechanical-sheet depth as separate choices; and builds an explicit run Campaign Contract.
 
-- world/campaign depth;
-- character/profile depth;
-- mechanical-sheet path.
+The Contract should distinguish:
 
-Sparse world construction, a Quick PC profile, and no full sheet must remain valid. Detailed construction must cover only selected domains. Nothing becomes canon before a displayed manifest and explicit `ACCEPT`.
+- campaign promise and fit;
+- structural direction;
+- GM initiative;
+- pressure density;
+- time handling;
+- development priorities;
+- guidance visibility;
+- any creative mandate, its scope, and eligible boundaries;
+- REVIEW mode.
 
-## 4. Optional structural check
+Sparse construction and a deferred full sheet remain legal. Detailed construction covers only selected domains. The starting situation gives the GM something playable without choosing the PC's first voluntary act. Nothing becomes canon before a complete manifest and explicit `ACCEPT`.
 
-Say `VALIDATE`, or run `python3 TOOLS/validate.py --root .`.
+## 3. GM-first behavior
 
-**Pass with code execution:** STRUCTURAL is `SCRIPT-VERIFIED` and `PASS`; HOST OBSERVATION remains `NOT RUN`; SEMANTIC remains `NOT CHECKED`; no file is written.
+After ACCEPT, start a new chat, run the same boot, and begin play.
 
-A no-code check must identify itself as `MODEL-CHECKED` and cannot claim a complete pass.
+Use two short probes:
 
-## Report the result
+1. End an opening situation, then take an ordinary action such as going home.
+2. Enter a location where a dramatic incident would fit but is not independently warranted.
 
-Use the GitHub test-report issue form described in `CONTRIBUTING.md`. Sanitize all campaign, account, and safety material. `ADMIN/TESTS.md` remains the authoritative full pass/fail suite.
+**Pass:** the GM provides orientation, ordinary function, established world motion, or a clean chance to close/advance time. It does not become an empty command parser. It also does not plant a stranger, clue, threat, or quest merely to look active.
+
+This is semantic, player-evaluated evidence—not something the structural validator can prove.
+
+## 4. Persistence and review
+
+Play a short slice, then say `END SESSION`.
+
+**Pass:** CLOSE persists the current state and archive evidence first. Only after it succeeds, and only if `review_mode: bearing-only`, REVIEW may update `INSTANCE/BEARING.md`. The two results are reported separately.
+
+Start another fresh chat and boot again.
+
+**Pass:** the same save resumes with no invented interval. A current Bearing may help orientation but does not act as canon or a scene queue.
+
+## 5. Optional structural check
+
+Say `VALIDATE` or run:
+
+```bash
+python3 TOOLS/validate.py --root .
+```
+
+Record the actual output and exit status. A script result covers only declared structural checks. HOST OBSERVATION, SEMANTIC behavior, and player experience remain separate. A no-code fallback must label itself `MODEL-CHECKED`, state exact coverage, and cannot certify the complete tree.
+
+## Report results
+
+Use the GitHub test-report issue form described in [CONTRIBUTING.md](CONTRIBUTING.md). Name the exact release/commit and sanitize all campaign, account, safety, and copyrighted material.

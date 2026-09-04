@@ -1,63 +1,239 @@
-# RPG OS — locked boundary
+# RPG OS v0.6 architecture
 
-Status: RPG OS v0.5 final-for-testing package. Prototype maturity; initial lifecycle validated, not Session-100-proven. LAW frozen.
+## The short version
 
-Layers: OS → ENGINE → MODULE → INSTANCE.
+RPG OS is built around one priority:
 
-Resident PLAY: OS/LAW.md + INSTANCE/CURRENT_SAVE.md (this kit ships unbound).
+> **The GM imagines and judges. The rules constrain and clarify. The files remember.**
 
-This public kit contains no campaign world. Testers use New Game.
+Earlier prototypes proved that a campaign could be stored outside a disposable chat, but their runtime could act like a careful clerk: retrieve, answer narrowly, wait. v0.6 changes the center of gravity. The AI must first understand the campaign and the player's intent, decide what GM work is owed, and only then retrieve the facts or procedure needed to do that work.
 
-P0/P1 execution contradictions from the prior audit are closed in ADMIN/BOOTSTRAP/SCHEMA. P17 documents the section-isolation limit; P18 tests persistent writes; P19 tests provider interruption during ADMIN. `ARCHIVE/_SCHEMA.md` defines hierarchical-scene-v1; P20–P23 test semantic sharding, source authority, nonactivation, and legacy compatibility; P24 tests general retrieval locality. P25–P26 test executable validation and an honest no-code fallback. P27–P39 test optional character construction, selective campaign complexity, T0-to-live state, preauthored and emergent people/systems, resource authority, house-rule placement, interacting systems, private-system cues, spoiler modes, LOAD parity, and routed PC bundles. No LAW edit.
+The architecture separates four different kinds of information so that they cannot quietly borrow authority from each other:
 
-## Optional construction depth
+| Object | Plain-language job | Authority |
+|---|---|---|
+| **GM Core** | How the AI must GM: orient, frame, portray, judge, preserve agency, and close or return a playable situation | Runtime law |
+| **Campaign Contract** | The campaign you explicitly accepted: its promise, boundaries, style axes, and any permission for proactive GM initiative | Durable run authority |
+| **Current Save** | What is true now, including the immediate situation and established causes that can still matter | Canonical present |
+| **Bearing** | A revisable reading of what the campaign may be becoming | Optional and noncanonical |
 
-NEW GAME always asks separately for world/campaign depth, character/profile depth, and mechanical-sheet path. A sparse campaign, Quick profile, and deferred full sheet are first-class valid outcomes. A completed character sheet is optional; a substantive operator-approved PC baseline is required.
+Rules, world files, character records, private state, and archive evidence sit below this control layer as services. They are opened when the GM task needs them.
 
-Focused or detailed construction opens separate ADMIN guidance and builds only selected domains. The standard campaign vocabulary can express phases/arcs, causal clocks/fronts, autonomous institutions and factions, inactive possibilities, generic and intimate relationship dimensions, resource/accounting precision, private-truth disclosure modes, and house-rule calibration without making any of them universal requirements.
+## Core terms
 
-Stable definitions and immutable as-of-T0 snapshots remain in declared MODULE bodies. They do not compete with later current state. PLAY keeps accepted post-save transitions in chat RAM and writes nothing; the next explicit CHECKPOINT/CLOSE applies each transition once in the selected single authority—CURRENT_SAVE candidate, NOW/person route, or PC bundle. A durable subsystem first established after bind instead receives one routed INSTANCE/NOW shard containing its established minimum operating definition and current state; MODULE remains untouched. A private system that must remain independently live across fresh boot gets a compact non-revelatory watch cue only when no other resident fact makes its check discoverable; explicit saves update or demote that cue with its lifecycle. This avoids preactivating every tracker or copying an entire world into the live instance.
+- **Campaign Contract:** the accepted agreement for one run. A reusable module may suggest defaults, but the bound run owns its actual Contract.
+- **Causal frontier:** the compact part of Current Save that names established consequences, due conditions, live processes, pending decisions, and narrow current-state cues that may matter next. Separate Current Save fields preserve explicitly declared PC goals and uncommitted PC time. None is a plot queue.
+- **Bearing:** an optional REVIEW output based on a particular save and Contract revision. It may describe provisional patterns or questions. It is never evidence that those interpretations are true.
+- **PERSIST:** the fact-recording side of administration. CHECKPOINT saves the present; CLOSE saves the present and archive evidence.
+- **REVIEW:** a separate campaign-level look back. It may revise Bearing but may not edit canon.
+- **RECALIBRATE:** an explicitly accepted, prospective change to the Campaign Contract.
+- **Cold:** not part of normal resident context. Cold material may exist on disk without gaining importance, authority, or permission to appear.
 
-The PC entrypoint may likewise remain one cohesive body or become a compact routing index when sheet/profile/resource parts are independently useful. Bind copies only its exact transitive route closure into INSTANCE; detailed construction does not force sharding.
+## Runtime stack
 
-House-rule authority is explicit: POLICY controls presentation/cadence/boundaries; RULES_HOOKS may calibrate but not contradict ENGINE; a real rules override uses a distinct compact ENGINE id; later table rulings live in INSTANCE/CORRECTIONS.
+The storage directories remain familiar:
 
-## Retrieval locality — design axiom
+| Layer | Responsibility |
+|---|---|
+| `OS/` | GM Core, loader, boot, agency, safety, runtime authority, and the cold task-first retrieval service |
+| `ENGINE/` | Resolution procedures and mechanical sheet requirements |
+| `MODULES/` | Reusable world baseline, voice, definitions, and optional capability bodies |
+| `INSTANCE/` | One run's Contract, Current Save, PC/person overlays, current systems, corrections, safety, and optional Bearing |
+| `ARCHIVE/` | Accepted historical evidence and exact-recall routes |
+| `ADMIN/` | Setup, loading, persistence, review, recalibration, validation, and tests |
 
-> Large information domain → compact routing/index layer → narrowly scoped authoritative shards.
+The conceptual direction is:
 
-Persistent information should be stored at approximately the smallest practical authoritative granularity likely to be independently relevant during play. No large file should exist merely because all of its contents belong to the same broad category.
+```mermaid
+flowchart TD
+    L["Technical loader"] --> G["GM Core"]
+    C["Campaign Contract"] --> G
+    S["Current Save"] --> G
+    B["Optional Bearing"] -. "orientation, never authority" .-> G
+    G --> P["Player-facing play"]
+    G --> X["Rules, world, and memory services"]
+    P --> R["PERSIST"]
+    R --> V["REVIEW"]
+    V -. "provisional only" .-> B
+```
 
-Split by retrieval locality, not by an arbitrary token or word threshold. A cohesive long file may be correct when most queries need most of it. A shorter file containing unrelated facts is a poor unit when those facts are normally retrieved separately.
+## Boot and resident context
 
-When independent retrieval becomes useful:
+The fixed technical boot set is:
 
-1. preserve a stable declared entrypoint;
-2. make that entrypoint a compact routing index or capability map;
-3. route through explicit file/section pointers to narrower authoritative records;
-4. recurse only where another level materially reduces unrelated retrieval;
-5. stop when the requested authoritative unit has been reached.
+1. `OS/AGENTS.md`
+2. `OS/BOOTSTRAP.md`
+3. `OS/LAW.md`
+4. `INSTANCE/CURRENT_SAVE.md`
+5. `INSTANCE/CAMPAIGN_CONTRACT.md`
 
-Indexes answer “where should I look?” They do not duplicate the bodies they route to and do not become global summaries. Cross-links name likely dependencies; they are not permission to browse neighbors or retrieve material without an immediate causal reason.
+For a bound run, boot then follows declared routes for active safety and required voice. It loads `INSTANCE/BEARING.md` only when the Contract enables `review_mode: bearing-only` and the Bearing's `base_save_id`, `base_save_rev`, `base_contract_id`, and `base_contract_rev` match the current authorities. Missing or stale Bearing is nonfatal.
 
-Do not shard prematurely. A small NPC, engine, institution, location, or register remains one file. If it later grows so that CANON, current state, relationship history, private state, geography, culture, equipment, rules, or other parts are routinely needed independently, retain a compact entrypoint and split only those authoritative parts.
+Archive bodies, rosters, rule bodies, private truth, clocks, seeds, and other capabilities remain cold until the current GM task calls for them. The important bound is not an arbitrary number of files; it is context sufficient and proportionate to GM well.
 
-This axiom applies to ARCHIVE, MODULE world/lore/people/institutions, INSTANCE registers and overlays, ENGINE extensions, rules hooks, equipment catalogs, bestiaries, timelines, relationships, and private GM material.
+## The GM-first loop
 
-The filesystem may be huge. The active context should not be.
+For each turn, the runtime works in this order:
 
-## Validation boundary
+1. **Orient:** where the body, scene, and campaign are; what is already in motion.
+2. **Understand intent:** distinguish an in-character act or goal from OOC preference, correction, or ADMIN command.
+3. **Identify the task:** perception, portrayal, adjudication, transition, closure, retrieval, or administration.
+4. **Check authority:** is this a required response, established consequence, authorized procedure, external warrant, or accepted creative mandate?
+5. **Retrieve enough:** open only facts and procedures sufficient and proportionate to that task.
+6. **Imagine and judge.**
+7. **Portray only the selected result.**
+8. **Return agency or close the beat.**
 
-`VALIDATE` is an ADMIN-only, OOC, read-only diagnostic. When code execution exists, `TOOLS/validate.py` mechanically checks only deterministic structural invariants: required release files and validator identity, frozen-LAW bytes, CURRENT_SAVE grammar and commit state, clean initial INSTANCE registers, safe engine identity/support metadata, the bound module using v0.4 descriptor grammar where machine-parseable, PC route closure and bind-copy integrity, safety flags, archive routes and heading targets, route-entry budgets, ledger pointers, path containment, stale candidate residue, initial archive contamination, and routed orphan sessions. It does not prove that every structurally complete archive write belongs to a completed transaction; P19 remains the interruption test.
+This order is an instruction-level control inside one model context. v0.6 does not require hidden chain-of-thought, multiple agents, or a physically isolated renderer pass. That portability is useful, but it also means file-route or rejected-candidate leakage remains possible and must be tested semantically.
 
-Its report is ephemeral. It is not a campaign register, is never resident at boot, and must not be written into CURRENT_SAVE. A deterministic digest identifies the scanned path/type/content snapshot for that one run; it is not a continuing certificate.
+## Creation without railroading
 
-The report keeps three evidence classes visibly separate:
+Unauthored material is not automatically forbidden. The GM may supply concise texture and ordinary function, frame transitions, and portray established NPCs and world processes. Consequential new situations need independent authority:
 
-- **STRUCTURAL** — `SCRIPT-VERIFIED` when the shipped script actually ran; otherwise `MODEL-CHECKED` and necessarily `INCOMPLETE` unless a definite defect was observed.
-- **HOST OBSERVATION** — not run by structural validation. Section isolation, persistent writes, provider interruption, and model identity require separate observations.
-- **SEMANTIC** — not checked. Shard coherence and source fidelity, agency, salience, uncertainty preservation, and copyright judgment remain prose tests or human review.
+- an operative established cause;
+- a specific due condition;
+- a PC-declared goal;
+- an explicit OOC request;
+- an authorized procedure; or
+- an explicitly accepted creative mandate at an eligible boundary.
 
-Archive metrics are observations, not fixed split triggers. Do not add host profiles, recursive campaign-index machinery, or repartition metadata merely to make the specification appear complete; add them only if campaign evidence establishes the need.
+General setting fit is only compatibility. It does not authorize a specific incident. A prepared or retrieved idea cannot manufacture its own justification. The GM may choose no discretionary development, and quiet or solitary play remains valid; it still must supply enough orientation for the player to act or cleanly close the beat.
 
-CURRENT_SAVE-last protects the authoritative save pointer but does not make several separately overwritten INSTANCE bodies a filesystem-atomic transaction. P19 therefore remains a real fault-injection test for hosts and complex campaigns. Keep an external backup before ADMIN writes; after any interrupted multi-file CHECKPOINT/CLOSE, do not resume PLAY until the current save and all affected INSTANCE/archive bodies have been inspected or restored. An immutable commit-manifest design is a possible later structural change, not silently claimed by v0.5.
+Warrant and fit are conjunctive for prospective authorship: a warrant or responsive request does not waive the accepted fit envelope or hard boundaries. Already-established facts and consequences remain real; a requested change to the accepted kind of campaign is handled OOC through RECALIBRATE.
+
+The public v0.6 kit ships **no durable GM-preparation bank**. A module may still contain cold seeds or possibilities under the ordinary nonactivation rules. Bearing may hold provisional interpretation and questions, but not a queue of scenes waiting for activation. Fresh lawful realization remains available without preparation; authority is still required, and selecting no discretionary development remains valid.
+
+## Campaign Contract
+
+`INSTANCE/CAMPAIGN_CONTRACT.md` is a compact, run-scoped authority accepted during NEW GAME or LOAD. It records:
+
+- campaign promise and fit envelope;
+- structural direction;
+- GM initiative;
+- pressure or incident density;
+- time handling;
+- development priorities;
+- guidance visibility;
+- the scope and eligible boundaries of any creative mandate;
+- REVIEW mode.
+
+Those axes calibrate style and frequency. They do not impose scene quotas or authorize a particular person, clue, complication, or outcome. Changing them requires RECALIBRATE and explicit acceptance. The change applies prospectively, gets a new Contract identity, and makes an older Bearing stale.
+
+## Current Save and causal frontier
+
+`INSTANCE/CURRENT_SAVE.md` remains the canonical present. In addition to time, place, body, resources, and the immediate situation, v0.6 gives it a compact causal frontier through:
+
+- `scene_status`;
+- `uncommitted_time`;
+- `pc_declared_goals`;
+- `causal_frontier`.
+
+These fields help a fresh GM recognize what is operative instead of treating a new chat as an isolated request. Only established material belongs there. A possibility, inferred player desire, or REVIEW hypothesis cannot be promoted into the frontier.
+
+Absence from the frontier means “not currently carried here,” not “nothing exists in the campaign.”
+
+## Bearing
+
+`INSTANCE/BEARING.md` is warm rather than resident: boot may load it for orientation when it is enabled and current.
+
+It can separate:
+
+- established developments by reference;
+- PC-declared goals;
+- explicit OOC preferences;
+- observed conduct without inferred desire;
+- provisional pattern or trajectory hypotheses;
+- active, weakening, contradicted, or retired directions;
+- questions worth watching;
+- “no stable pattern yet.”
+
+It cannot establish facts, tick clocks, change relationships, prove player interest, supply a warrant, or outrank the Contract or Current Save. A failed or skipped REVIEW therefore cannot corrupt a valid campaign.
+
+## PERSIST, REVIEW, and END SESSION
+
+PERSIST and REVIEW answer different questions:
+
+| Operation | Question | May write |
+|---|---|---|
+| CHECKPOINT | What is true now? | Current authoritative INSTANCE state and Current Save |
+| CLOSE | What is true now, and what exact evidence should be retained? | The same present plus archive shards, indexes, and ledgers |
+| REVIEW | What may this campaign be becoming? | Current provisional Bearing only |
+
+PERSIST never infers a preferred trajectory. REVIEW never changes state, history, clocks, people, safety, or Contract.
+
+`END SESSION` sequences the operations safely: CLOSE first; only after it succeeds, and only when the Contract enables bearing review, REVIEW second. Results are reported separately. If REVIEW fails, the successful save remains valid.
+
+## Task-first retrieval and retrieval locality
+
+RPG OS does not load a lore bible merely because the campaign has one. After the GM identifies the task, it follows explicit routes to the smallest authoritative unit that is sufficient:
+
+```text
+large domain -> compact routing index -> narrow authoritative record
+```
+
+Split by independent retrieval relevance, not an arbitrary word count. A cohesive long file may be correct. A shorter file mixing unrelated subjects may be wrong. Do not prebuild empty hierarchies.
+
+Indexes answer “where should I look?” They do not duplicate content, grant narrative importance, authorize an event, or invite sibling browsing. A whole-file tool response can still inject unrelated text into one model context; physical sharding reduces that risk but does not prove isolation.
+
+## Complex campaigns
+
+The architecture can support phases, causal clocks or fronts, autonomous people and institutions, resources, calendars, relationships, private truth, house rules, and large retrieval-local worlds.
+
+These systems remain optional and domain-specific:
+
+- stable definitions and T0 baselines live in MODULE;
+- changing authoritative state lives in INSTANCE;
+- due or operative state reaches the causal frontier only when established;
+- reading a clock does not tick it;
+- a session ending does not tick it unless the accepted rule says so;
+- a phase describes changed operating conditions, not a compulsory chapter;
+- a seed or possibility remains inactive merely because it exists.
+
+Complex machinery supplies world causality. It does not replace GM judgment or create a plot quota.
+
+## Engines
+
+ENGINE is a rules service, not the OS. The public kit bundles only `freeform`.
+
+A user may install a compact local adapter for GURPS, Dungeons & Dragons, Pathfinder, Call of Cthulhu, Fate, Savage Worlds, another owned system, or original house rules if it follows `ENGINE/_CONTRACT.md`. Those examples are not bundled, endorsed, or reproduced by this project. An adapter records the minimum procedures and sheet fields needed to run; it must not reconstruct or redistribute a copyrighted rulebook.
+
+House flavor and narration belong in campaign policy. A genuine resolution change belongs in an ENGINE adapter or explicit engine-level override, not in hidden prose.
+
+## Archive and evidence
+
+The archive is evidence, not the living world. CLOSE stores accepted play in semantic scene shards with compact indexes and stable headings. Exact wording, rolls, quantities, and disputed history come from the source shard; an index only routes there.
+
+Retrieving old evidence does not make it currently relevant and cannot activate an NPC, seed, clock, event, or possibility. Legacy monolithic archives may remain readable. Migration is lossless partition and routing, never historical rewriting.
+
+## Integrity and validation
+
+`VALIDATE` and `TOOLS/validate.py` check deterministic structural conditions. They can help find malformed identities, routes, save fields, archive pointers, and other mechanically checkable drift.
+
+They cannot prove:
+
+- good GM judgment;
+- correct warrant selection;
+- agency or consent compliance;
+- semantic archive fidelity;
+- true host isolation;
+- persistent write behavior;
+- provider acceptance;
+- a long campaign's future coherence.
+
+Structural, host-observation, semantic, and player-rated evidence must remain separate. A green structural check is not a score for play quality.
+
+## Known architectural limits
+
+- **Single-context prose enforcement:** on ordinary hosts, the same model interprets controls, retrieves files, judges, and narrates. Instructions reduce but do not mechanically prevent leakage or rationalization.
+- **No recovery of unsaved chat:** accepted play disappears if the chat is lost before CHECKPOINT or CLOSE.
+- **Non-atomic multi-file writes:** publishing Current Save last protects the main pointer, but an interruption after another file was overwritten may still require inspection or backup restoration.
+- **Host dependence:** folder reads, durable writes, and section handling vary by platform and can change.
+- **Privacy limits:** file labels and headings are not security boundaries.
+- **Provider limits:** RPG OS cannot override moderation, terms, or account enforcement.
+- **Scale unproven:** v0.6 is not Session-100 evidence.
+
+## Why the other designs were not chosen
+
+A single resident mega-frame was rejected because it would place canon, interpretation, and possible future material on one permanent salience surface. A mandatory compiled session packet was rejected because it must predict relevance before the player acts and can become a stale second save.
+
+A one-file packet may later be useful as a noncanonical export adapter for hosts without folders. It is not the v0.6 source of truth.

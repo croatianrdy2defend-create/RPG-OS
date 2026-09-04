@@ -6,6 +6,25 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.6 — GM-first runtime and separated campaign stewardship
+
+- Reframed the runtime around a positive GM Core: orient to campaign and intent, identify the GM task and authority, then retrieve enough to imagine, judge, portray, and return agency or close
+- Added a separately authoritative, run-scoped `INSTANCE/CAMPAIGN_CONTRACT.md` for the accepted campaign promise, fit envelope, six calibration axes, explicit creative-mandate scope/boundaries, and `review_mode`
+- Expanded `INSTANCE/CURRENT_SAVE.md` with `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier` so a fresh chat receives an established causal present rather than only ledger state
+- Added optional warm `INSTANCE/BEARING.md` as a provisional, noncanonical reading of campaign direction; it is usable only when its base save and Contract identities/revisions match
+- Separated **PERSIST** from **REVIEW**: CHECKPOINT/CLOSE record authoritative state and evidence, while REVIEW may update only Bearing after a successful PERSIST
+- Added `RECALIBRATE` for explicitly accepted prospective Campaign Contract changes; recalibration never rewrites history and invalidates older Bearing
+- Added explicit `MIGRATE V0.5` ADMIN conversion for backed-up bound v0.5 campaigns; it preserves campaign authorities and archive evidence, accepts the first v0.6 Contract and four orientation fields, and publishes a checkpoint-lineage save rather than pretending normal LOAD or CHECKPOINT can perform the upgrade
+- Added `END SESSION` as CLOSE first, then REVIEW only after CLOSE succeeds and only when `review_mode: bearing-only`
+- Made retrieval task-first and sufficient/proportionate rather than default-zero as a virtue; retrieval still never activates content
+- Distinguished responsive GM duties from discretionary introductions, and compatibility (“fit”) from independent warrant or accepted creative mandate
+- Preserved quiet play, solitude, refusal, honest no-change outcomes, and player ownership while requiring playable orientation and an autonomous world
+- Retained OS / ENGINE / MODULE / INSTANCE / ARCHIVE storage boundaries, retrieval-local archives, optional campaign machinery, and structural validation as supporting services
+- The public package still contains no campaign world and bundles only Freeform; other systems may use lawful compact local adapters but are not shipped
+- Durable preparation is deliberately not included in v0.6. Bearing is not a hidden plot queue, and fresh lawful realization remains available
+- Known limits remain explicit: single-context prose enforcement, no recovery of unsaved chat, non-atomic multi-file writes, host/provider dependence, and no Session-100 proof
+- This entry describes the v0.6 testing design; it is not a claim that final structural, semantic, host, or long-campaign validation has passed
+
 ## v0.5 — optional construction and complex-campaign lifecycle
 
 - Added separate optional character and campaign builders: Quick/Standard/Detailed/Custom profile depth, independent deferred/minimum/full/import sheet paths, and Sparse/Focused/Detailed/Custom campaign depth
