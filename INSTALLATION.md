@@ -71,7 +71,22 @@ The AI should begin the setup questionnaire, one small group of questions at a t
 
 ## 4. New Game
 
-The first question is which rules to use. The public pack includes **Freeform**, which lets the AI judge uncertain outcomes without a detailed game system. You may name another system, but RPG OS may store only a compact adapter based on procedures and values you provide or are entitled to use. It must not reconstruct or redistribute a copyrighted rulebook.
+The first question is which rules to use. Choose in one of three ways:
+
+- **Freeform (included):** start immediately; no formal mechanical character sheet is required.
+- **Another RPG system:** select an engine adapter you already installed, or let SETUP draft a compact one from procedures and character values you supply. Possible examples include GURPS Fourth Edition, Dungeons & Dragons 5e, Pathfinder, Call of Cthulhu, Basic Roleplaying, Savage Worlds, Fate, or a specific Powered by the Apocalypse game.
+- **An oracle or homebrew system:** provide the procedure you want to use, and SETUP can turn it into a compact local adapter.
+
+Examples of what you can tell New Game:
+
+- `Use Freeform.`
+- `Use GURPS Fourth Edition. I own the rules. Ask me for required procedures and character values; do not recreate the rulebook.`
+- `Use D&D 5e. I will import my character sheet and provide any rules details you need.`
+- `Use my specific Fate or Powered by the Apocalypse game. I will identify it and provide the permitted procedure.`
+- `Use this solo oracle as the resolution method. I will provide its procedure or tables.`
+- `Use my homebrew rules: [briefly describe the roll or decision method and required character fields].`
+
+Except for Freeform, these are possibilities rather than included or tested integrations. Simply naming a game does not authorize the AI to guess its rules. If required procedures or values are unavailable, it must ask for them, leave fields deferred only when allowed, or stop before binding the engine. The public package contains no third-party rules text and makes no official compatibility claim.
 
 The questionnaire then asks about:
 
