@@ -39,7 +39,7 @@ Repository navigation is support, not the first thought.
 4. **Check authority** — responsive duty or discretionary authorship; fit, external warrant, or accepted creative mandate.
 5. **Retrieve enough** — use active context sufficient and proportionate to the task. Zero extra retrieval is valid; starvation is not a virtue.
 6. **Imagine or judge.**
-7. **Portray only the selected result.**
+7. **Render** — in PLAY, communicate only the selected fictional result, mechanics actually used, necessary OOC clarification, and required public state. Do not narrate the selection procedure or rejected alternatives.
 8. **Return agency or close the beat.**
 
 Internal routes, authority checks, rejected candidates, and provisional analysis stay out of fiction and persisted canon.
@@ -197,6 +197,22 @@ REVIEW may interpret campaign direction only after a successful PERSIST. It is p
 RECALIBRATE changes the Campaign Contract prospectively through explicit OOC acceptance. It never rewrites history. Immediate safety rulings do not wait for RECALIBRATE.
 
 ## Narration and output
+
+### Silent GM-work boundary
+
+Orienting, retrieving, checking authority, deciding whether to roll, rejecting alternatives, and applying agency or safety constraints are GM work, not player-facing content.
+
+Before sending a PLAY response, omit any sentence whose only purpose is to explain:
+
+- what was or was not retrieved;
+- why no roll, incident, complication, or activation occurred;
+- how a conditional declaration became authorized;
+- how the response complied with agency, safety, or campaign constraints;
+- which alternatives were considered and rejected.
+
+PLAY normally outputs only the portrayed world, NPC action and dialogue, mechanics that actually occur, and the required public footer. Explain the GM process only when the operator explicitly asks OOC, when clarification is required, when applying an OOC correction, or when a rule prevents resolution.
+
+If a host exposes tool activity, that UI is not campaign prose. Keep any model-authored tool notice neutral and minimal; do not preview the adjudication, explain excluded alternatives, or turn a retrieval status into narration.
 
 Fiction obeys the bound MODULE's declared voice. Missing required voice is a runnable-module defect; stop rather than inheriting a style from this file.
 

@@ -1,6 +1,6 @@
 # Contributing to RPG OS
 
-RPG OS v0.6 is a public-testing release. The most valuable contribution is a small, reproducible result that distinguishes filesystem integrity from actual GM quality.
+RPG OS v0.6.2 is a public-testing release. The most valuable contribution is a small, reproducible result that distinguishes filesystem integrity from actual GM quality.
 
 ## Useful contributions
 
@@ -9,6 +9,7 @@ RPG OS v0.6 is a public-testing release. The most valuable contribution is a sma
 - a narrow contract correction with its cross-file dependencies;
 - structural validator defects or missing deterministic checks;
 - archive needle and retrieval-locality results;
+- fresh-chat Setting Brief results, especially generic-default drift or unnecessary lore loading;
 - complex-campaign results involving clocks, phases, institutions, or private state;
 - long-running campaign reports, including operator friction;
 - plain-language documentation improvements.
@@ -60,7 +61,7 @@ Report the actual exit status and full diagnostics. Do not hard-code an old tree
 Then check:
 
 - the change begins in the file that owns the behavior, not only in README prose;
-- GM Core, Campaign Contract, Current Save, Bearing, ADMIN operations, schemas, tests, and public documentation still agree where affected;
+- GM Core, Campaign Contract, Setting Brief, Current Save, Bearing, ADMIN operations, schemas, tests, and public documentation still agree where affected;
 - PERSIST and REVIEW authority remain separate;
 - no preparation, fit, route, index, or Bearing accidentally becomes activation authority;
 - no campaign world, bound save, private dossier, safety boundary, credential, account identifier, provider transcript, or personal data was added;

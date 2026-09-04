@@ -1,10 +1,12 @@
-# RPG OS v0.6 quickstart
+# RPG OS v0.6.2 quickstart
 
 RPG OS lets an AI run a solo tabletop campaign while ordinary Markdown files preserve the campaign between disposable chats. The AI is still expected to act as a GM: it frames and portrays the world, judges consequences, and follows the developing campaign. The files support that work; they do not replace it.
 
 This public kit contains no world and only the `freeform` engine.
 
-Already have a **bound v0.5 campaign**? Do not run NEW GAME or overwrite its campaign folders. Make a byte-for-byte backup, save any accepted play with the old v0.5 runtime, selectively install the v0.6 program/templates, then use the complete migration boot prompt in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign). The bare command by itself is not the boot procedure.
+Already have a **bound v0.6 or v0.6.1 campaign**? Persist all accepted play, make a byte-for-byte backup, install the v0.6.2 runtime and generic files while preserving campaign-owned content, then use the complete `UPGRADE SETTING BRIEF` procedure in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v06-or-v061-campaign). Do not use normal LOAD or PLAY to improvise the upgrade.
+
+Already have a **bound v0.5 campaign**? Do not run NEW GAME or overwrite its campaign folders. Make a byte-for-byte backup, save any accepted play with the old v0.5 runtime, then use the complete migration instructions in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign). Migration must show and obtain acceptance for a compact Setting Brief if the old module does not have one. The bare command by itself is not the boot procedure.
 
 ## 1. Prepare the folder
 
@@ -44,6 +46,7 @@ The setup interview asks about:
 - campaign premise, voice, safety, and unwanted patterns;
 - the **Campaign Contract**: what kind of campaign you want and how proactive the GM may be;
 - optional world complexity, character detail, and mechanical sheet depth;
+- a compact Setting Brief that records what kind of world this is and what is ordinarily true;
 - a playable starting situation.
 
 Sparse worldbuilding and an incomplete character sheet are valid. Nothing becomes canon until the AI shows the proposed manifest and you say `ACCEPT`.
@@ -54,7 +57,9 @@ After ACCEPT succeeds, leave setup and start a **new chat**.
 
 Use the same five-file boot prompt, then say `Begin play`.
 
-The runtime also loads only the required voice/safety material and may load a current optional Bearing when REVIEW is enabled and its bases match. A **Bearing** is a short, provisional note about what the campaign may be becoming. It is not canon, a plot queue, or permission to force an event.
+The five named files remain the complete technical boot set. Before first fiction, the runtime follows active safety, loads the bound module's compact `SETTING_BRIEF.md` once, then loads required voice material; it may load a current optional Bearing when REVIEW is enabled and its bases match.
+
+The Setting Brief tells the GM the public identity of the world, what is ordinary there, and what deeper domains exist. It is deliberately small: detailed lore, rosters, clocks, phases, seeds, private truth, and archives remain cold. A **Bearing** is a short, provisional note about what the campaign may be becoming. It is not canon, a plot queue, or permission to force an event.
 
 You write your character's voluntary actions, speech, thoughts, feelings, attraction, consent, and commitments. The GM runs the world.
 
@@ -75,7 +80,7 @@ Next session: new chat, same folder, same five-file boot. Do not paste the old t
 - File writes are not guaranteed to be atomic across several files. If an ADMIN write is interrupted, inspect or restore the folder before continuing.
 - Some hosts inject whole files even when one section was requested. Physical sharding reduces exposure but does not prove isolation.
 - Cloud providers may refuse content or restrict accounts under their policies. Keep your own local backup.
-- v0.6 is a testing release, not proof of a 100-session campaign.
+- v0.6.2 is a testing release, not proof of a 100-session campaign.
 
 Full installation and capability checks: [INSTALLATION.md](INSTALLATION.md)  
 Commands: [COMMANDS.md](COMMANDS.md)  

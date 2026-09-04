@@ -65,13 +65,16 @@ When a required value is absent, ask once or proceed without a mechanical succes
 | Needed authority | Deterministic route |
 |---|---|
 | Campaign promise, fit envelope, axes, creative mandate, guidance, REVIEW mode | Resident `INSTANCE/CAMPAIGN_CONTRACT.md`. Do not replace an accepted run setting with a MODULE default. |
+| Broad stable setting assumptions and ordinary public reality | The pre-fiction-loaded `MODULES/<module>/SETTING_BRIEF.md`. Do not reopen it every turn or treat `Available depth` as a reading assignment. |
 | Narrative voice or module safety extras | Bound `POLICY.md`, named section. BOOTSTRAP loads these before first fiction. |
 | Other module cadence, tone, anti-attractor, or relationship policy | Bound `POLICY.md`, only the named section required by the task. |
 | Module identity or capability list | Bound `MODULE.md`, descriptor or `## Capabilities` only. |
 | Public setting, place, culture, or institution function | Bound MODULE capability WORLD or INST → one explicit authoritative target/section. |
 | Visual interpretation | Declared VISUAL entrypoint → one target; open an image only if the image itself is required. |
 
-Campaign Contract settings calibrate authorship but never prove a specific person, event, clue, or opportunity exists. A public world description supplies fit and facts at its scope; general world logic remains fit, not warrant.
+Campaign Contract settings calibrate authorship but never prove a specific person, event, clue, or opportunity exists. The Setting Brief supplies broad public defaults at its scope, including which foundational features are ordinary; it does not identify the occupants of a particular place or settle exact, local, quantitative, disputed, private, or causally material detail. Route those questions to the narrow WORLD or INST authority when the task actually needs them.
+
+A public world description supplies fit and facts at its scope; general world logic remains fit, not warrant. Neither the Setting Brief nor a detailed public authority creates an incident, activates a person, or imposes a representative quota.
 
 ## Current state and causal systems
 

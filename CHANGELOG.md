@@ -6,6 +6,24 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.6.2 — session-start setting awareness
+
+- Added one required compact `MODULES/<module-id>/SETTING_BRIEF.md` for every bound module
+- Kept the five-file technical boot unchanged; BOOTSTRAP loads the Setting Brief once before first fiction
+- Defined three narrow contents: world identity, foundational facts describing what is ordinary, and available cold depth
+- Explicitly excluded current mutable state, named rosters, seeds, clock or phase bodies, private truth, prepared scenes, detailed lore, and plot queues
+- Kept detailed world material cold and task-retrieved; loading the brief grants no activation authority
+- Updated setup, loading, migration, structural validation, and semantic fixture P40b for keyword-free setting awareness without lore dumping or forced showcase scenes
+- Added backup-first `UPGRADE SETTING BRIEF` for existing bound v0.6/v0.6.1 campaigns; it displays the complete brief and, after exact `ACCEPT SETTING BRIEF`, writes only the previously absent module file
+- The public package remains unbound, contains no campaign world, and bundles only Freeform
+
+## v0.6.1 — silent GM-work rendering
+
+- Added an explicit render boundary between internal GM work and player-facing PLAY output
+- Required PLAY to omit retrieval narration, authority checks, rejected alternatives, absent-mechanics explanations, and self-certifying compliance prose unless OOC clarification is actually needed
+- Added semantic fixture P40a for silent resolution of ordinary established activity
+- No campaign world, save, archive, or engine content changed
+
 ## v0.6 — GM-first runtime and separated campaign stewardship
 
 - Reframed the runtime around a positive GM Core: orient to campaign and intent, identify the GM task and authority, then retrieve enough to imagine, judge, portray, and return agency or close

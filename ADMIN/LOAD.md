@@ -11,12 +11,13 @@ Open only after an explicit **LOAD MODULE** request naming a module that already
    This guard authorizes one bounded ADMIN inventory of `ARCHIVE/` and `INSTANCE/` only; it does not authorize PLAY discovery or a repository-wide lore scan.
    Before resolving the operator-named module path, require a portable safe module id: ASCII letters, digits, `.`, `_`, and `-` only, beginning with a letter or digit; no slash, backslash, whitespace, absolute path, or traversal. Otherwise stop without constructing a path.
 
-1. Confirm `MODULE.md`, `POLICY.md` (voice declared), `CHAR/PC.md`, `T0_SAVE.md` exist. Prefer the v0.4 descriptor grammar and exact `## Voice` heading. If the shipped script inspects a legacy descriptor, its provenance remains `SCRIPT-VERIFIED` and its result remains `INCOMPLETE`; any separate manual confirmation is `MODEL-CHECKED` and cannot upgrade that script result into a complete PASS.
+1. Confirm `MODULE.md`, `SETTING_BRIEF.md`, `POLICY.md` (voice declared), `CHAR/PC.md`, and `T0_SAVE.md` exist. Require the Setting Brief's exact scalar `id: <module>.setting_brief`, scalar `class: setting-brief`, and once-only level-two headings `World identity`, `What is ordinary`, and `Available depth` in that order. Prefer the v0.4 descriptor grammar and exact `## Voice` heading. If the shipped script inspects a legacy descriptor, its provenance remains `SCRIPT-VERIFIED` and its result remains `INCOMPLETE`; any separate manual confirmation is `MODEL-CHECKED` and cannot upgrade that script result into a complete PASS.
 2. Confirm the engine id in MODULE.md is itself a portable safe id and equals an installed engine with exact scalar `class: engine`, whose scalar front-matter `id` matches the flat filename stem in `ENGINE/<id>.md` or the containing directory name in `ENGINE/<id>/ENGINE.md`. Require scalar front matter `character_build_support: self-contained`, `operator-values-required`, or `no-mechanical-sheet`. Do not treat aliases or pointers as engines.
-3. If voice is missing: not runnable. Stop.
+3. If voice or a valid substantive Setting Brief is missing: not runnable. Stop. Do not synthesize a brief during LOAD or substitute a lore file.
 4. Open MODULES/_CONTRACT.md, ENGINE/_CONTRACT.md, and INSTANCE/_SCHEMA.md. Run the validation checklist:
 
    - required module files present
+   - Setting Brief front matter matches the module id and exact class; its three required headings occur once in order and contain concise substantive public orientation rather than placeholders, a roster, current mutable state, private truth, seeds/clocks/phases, preparation, plot summary, or detailed lore
    - exact `## Voice` heading present; for a legacy heading, manual confirmation is recorded while scripted coverage stays `INCOMPLETE`
    - v0.4 MODULE scalar front matter and exact capability table parse; for a legacy descriptor, manually confirm identity and every declared capability while scripted coverage stays `INCOMPLETE`
    - engine id resolves to exactly one file
@@ -49,7 +50,7 @@ Open only after an explicit **LOAD MODULE** request naming a module that already
 11. Validate both Campaign Contract and CURRENT_SAVE candidates against INSTANCE/_SCHEMA.md, including matching campaign/module identity, contract enums, whitelist, overlay, safety, and present/orientation fields. If either is invalid, do not replace CURRENT_SAVE. Otherwise set the publishable contract to `status: accepted`, recheck it, publish it immediately before replacing CURRENT_SAVE, then replace CURRENT_SAVE with its candidate last and remove both candidate files.
    If any write, provider response, or generation is interrupted before replacement, the unbound save remains authoritative but partial contract/SAFETY/INSTANCE/candidate artifacts may exist. Do not call the module bound and do not start PLAY. Either complete only the already accepted load operation and validate the entire bind, or inspect and restore the clean pre-bind copy required by P19 before retrying. Do not claim automatic rollback.
 12. Do **not** clear ARCHIVE. Step 0 requires an empty run archive before bind; prior history belongs in its original folder.
-13. Tell the operator to start PLAY in a **fresh** chat with the accepted Campaign Contract and Current Save. A matching Bearing does not exist yet and is not required. Confirm `contract_id` and `save_id`.
+13. Tell the operator to start PLAY in a **fresh** chat with the accepted Campaign Contract and Current Save. BOOTSTRAP will load the required Setting Brief once before first fiction, alongside voice and applicable safety; it does not load the detailed world merely because depth is available. A matching Bearing does not exist yet and is not required. Confirm `contract_id` and `save_id`.
 
 Do not regenerate the module from a questionnaire.
 Load only a module that already exists under MODULES/. This clean kit starts with none.

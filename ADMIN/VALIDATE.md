@@ -61,7 +61,7 @@ A model may report a definite defect it observed. Absence of an observed defect 
 
 ## Structural scope
 
-The script checks only deterministic file invariants declared by its output, including required release and ADMIN-contract files (including the v0.5 migration contract), executed/target-validator identity, release-LAW bytes, CURRENT_SAVE fields, scene status, causal-frontier syntax and commit metadata, the accepted Campaign Contract's identity/binding/revision/axis/mandate shape, the Bearing's identity/required lanes/base references and stale-base observation, clean unbound/bind INSTANCE registers, canonical hot-roster placement, safe engine identity and character-build support, the bound module descriptor where machine-parseable, closed MODULE/INSTANCE PC route graphs and bind-copy bytes, safety flag consistency, archive routes, session-index budgets, stable literal headings, ledger pointers, path containment, unfinished candidate residue, initial archive contamination, and routed orphan sessions. A well-formed but stale Bearing is reported as a warning and must be omitted from PLAY; it does not invalidate the accepted save or contract. The script cannot identify every interrupted transaction after all intermediate files happen to be structurally valid.
+The script checks only deterministic file invariants declared by its output, including required release and ADMIN-contract files (including the v0.5 migration contract), executed/target-validator identity, release-LAW bytes, CURRENT_SAVE fields, scene status, causal-frontier syntax and commit metadata, the accepted Campaign Contract's identity/binding/revision/axis/mandate shape, the Bearing's identity/required lanes/base references and stale-base observation, clean unbound/bind INSTANCE registers, canonical hot-roster placement, safe engine identity and character-build support, the bound module descriptor and required Setting Brief where machine-parseable, stale Setting Brief candidates, closed MODULE/INSTANCE PC route graphs and bind-copy bytes, safety flag consistency, archive routes, session-index budgets, stable literal headings, ledger pointers, path containment, unfinished candidate residue, initial archive contamination, and routed orphan sessions. A well-formed but stale Bearing is reported as a warning and must be omitted from PLAY; it does not invalidate the accepted save or contract. The script cannot identify every interrupted transaction after all intermediate files happen to be structurally valid.
 
 It may report archive size and routing metrics. Metrics are evidence, not automatic split thresholds.
 
@@ -86,7 +86,7 @@ VALIDATE does not establish:
 
 Those remain tests, observations, or judgment. Never merge them into STRUCTURAL PASS.
 
-The GM-quality fixtures in `ADMIN/TESTS.md`, including P40–P50, are a separate semantic/player-evaluated lane. Passing this script does not run or score them.
+The GM-quality fixtures P40–P50 and the ADMIN transaction fixtures P51–P52 in `ADMIN/TESTS.md` are separate model/operator-evaluated lanes. Passing this script does not run or score them.
 
 ## Stop condition
 

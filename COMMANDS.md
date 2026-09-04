@@ -1,4 +1,4 @@
-# RPG OS v0.6 command cheatsheet
+# RPG OS v0.6.2 command cheatsheet
 
 These are player/operator commands, written out of character. The runtime and ADMIN contracts are authoritative if this summary ever differs.
 
@@ -8,6 +8,7 @@ These are player/operator commands, written out of character. The runtime and AD
 |---|---|---|---|
 | `NEW GAME` | Clean, unbound folder | Starts the setup interview and drafts a new module, run contract, PC baseline, and starting situation | Does not begin fiction or make a draft canon |
 | `LOAD MODULE <id>` | Clean, unbound folder with that module installed | Validates and binds an existing module into a new run | Does not merge campaigns or overwrite a bound run |
+| `UPGRADE SETTING BRIEF` | Inside the complete upgrade boot prompt from `INSTALLATION.md`, against a backed-up bound v0.6/v0.6.1 campaign after all accepted play was persisted | Drafts, displays, and—only after `ACCEPT SETTING BRIEF`—adds the one missing compact module Setting Brief | Does not run through normal LOAD/PLAY; overwrite a malformed brief; or change the save, Contract, archive, engine, or other campaign files |
 | `MIGRATE V0.5` | Inside the complete migration boot prompt from `INSTALLATION.md`, against a backed-up bound v0.5 campaign copy after all accepted play was saved under v0.5 | Runs the one-time v0.5→v0.6 ADMIN conversion, with an accepted first Campaign Contract and explicit values for the four new Current Save fields | Does not work as a context-free bare command; merge folders; recover unsaved chat; reinterpret history; or migrate archives |
 | `ACCEPT` | After SETUP shows the complete manifest | Authorizes exactly the disclosed files and settings | Does not approve unlisted additions |
 | `Begin play` / `Continue` | Bound run | Orients the GM to the saved campaign and resumes fiction | Does not choose the PC's first voluntary act |
@@ -37,7 +38,7 @@ Do not search or list the rest of the folder.
 Confirm the runtime is ready. Do not start fiction.
 ```
 
-For a bound game, say `Begin play` after boot. Required safety and voice material are loaded through the declared routes before fiction; a current optional `INSTANCE/BEARING.md` is loaded only when REVIEW is enabled and its bases match.
+For a bound game, say `Begin play` after boot. The five named files remain the technical boot set. Before first fiction, BOOTSTRAP follows active safety, loads the module's compact Setting Brief once, then loads required voice material; a current optional `INSTANCE/BEARING.md` is loaded only when REVIEW is enabled and its bases match. Detailed lore remains cold until a specific GM task needs it.
 
 ## Normal session
 
@@ -48,4 +49,4 @@ For a bound game, say `Begin play` after boot. Required safety and voice materia
 5. Wait for the new `save_id` and separate REVIEW result.
 6. Start the next session in a fresh chat.
 
-Unsent suggested-reply buttons are not commands or player input. There are no standard `SAVE`, `RESUME`, or `UNDO` aliases in v0.6.
+Unsent suggested-reply buttons are not commands or player input. There are no standard `SAVE`, `RESUME`, or `UNDO` aliases in v0.6.2.

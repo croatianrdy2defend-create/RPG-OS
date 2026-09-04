@@ -31,13 +31,15 @@ Separately show and require explicit acceptance of the four v0.6 CURRENT_SAVE or
 
 Use accepted records plus operator clarification. Preserve uncertainty. Never infer a PC goal from conduct, turn a possibility into a causal item, manufacture an outstanding decision, or derive Bearing from repeated events. `scene_status: unknown` and `none` in the other fields are valid when honest.
 
+Also require a valid v0.6.2 module `SETTING_BRIEF.md`. If the legacy module already has one, validate it against `MODULES/_CONTRACT.md` and do not alter it. If it has none, draft the three compact public sections only from stable public module facts plus operator clarification, show the complete draft, and require explicit acceptance. This one compatibility addition is not permission to rewrite the module, summarize its lore, or infer ordinary facts from genre. If a fixed but malformed brief already exists, stop and repair that module defect separately rather than overwriting it inside migration.
+
 No draft is authoritative. Refusal or revision writes nothing.
 
 ## Staged transaction
 
 After acceptance:
 
-1. Re-read the legacy CURRENT_SAVE and confirm its `save_id` and `save_rev` still match the accepted migration base. If they changed, stop and restart from preflight.
+1. Re-read the legacy CURRENT_SAVE and confirm its `save_id` and `save_rev` still match the accepted migration base. If they changed, stop and restart from preflight. When an accepted Setting Brief must be added, stage it as `MODULES/<id>/SETTING_BRIEF.candidate.md`, validate its exact module-scoped id, class, section order, and substantive bodies, and confirm no other MODULE path will change.
 2. Build `INSTANCE/CAMPAIGN_CONTRACT.candidate.md`:
    - preserve the existing `campaign_id` and `module` exactly;
    - assign a new portable `contract_id`;
@@ -50,7 +52,7 @@ After acceptance:
    - assign a new unique portable `save_id`, set `save_rev` to exactly the legacy revision plus one, set `save_parent` to the legacy `save_id`, set `commit_kind: checkpoint`, and set `archive_ref: none`;
    - contain only the v0.6 CURRENT_SAVE whitelist.
 4. Build `INSTANCE/BEARING.candidate.md` as an identity-only bound-empty record: canonical Bearing front matter, the existing `campaign_id`, base ids and evidence scope `none`, base revisions `0`, every required section `none`, and no interpretation, direction, question, preparation, activation, or inferred preference. It may use `status: candidate` while staged.
-5. Validate all three staged records against `INSTANCE/_SCHEMA.md`, their shared campaign/module identity, exact field sets, revision lineage, contract enums, PC route, safety state, and the unchanged INSTANCE/archive authorities. Confirm the migration writes no MODULE or ARCHIVE file and loses no legacy fact.
+5. Validate all three staged records against `INSTANCE/_SCHEMA.md`, their shared campaign/module identity, exact field sets, revision lineage, contract enums, PC route, safety state, and the unchanged INSTANCE/archive authorities. Confirm the migration writes no ARCHIVE file, loses no legacy fact, and changes no MODULE path except the explicitly accepted new Setting Brief when required.
 6. Finalize the staged Bearing to `status: none` and the staged Contract to `status: accepted`; validate both finalized candidate bodies again. The Current Save candidate remains the new checkpoint.
 
 If any validation fails, publish nothing. Remove no accepted record and report the exact defect.
@@ -59,10 +61,11 @@ If any validation fails, publish nothing. Remove no accepted record and report t
 
 After all final candidate bodies pass:
 
-1. replace `INSTANCE/BEARING.md` with the finalized identity-only bound-empty Bearing;
-2. replace `INSTANCE/CAMPAIGN_CONTRACT.md` with the finalized accepted Contract;
-3. immediately replace `INSTANCE/CURRENT_SAVE.md` **last** with the checkpoint candidate;
-4. remove the candidate files only after the fixed records re-open and validate together.
+1. when required, publish the accepted `MODULES/<id>/SETTING_BRIEF.md` from its candidate; otherwise leave the existing valid brief byte-identical;
+2. replace `INSTANCE/BEARING.md` with the finalized identity-only bound-empty Bearing;
+3. replace `INSTANCE/CAMPAIGN_CONTRACT.md` with the finalized accepted Contract;
+4. immediately replace `INSTANCE/CURRENT_SAVE.md` **last** with the checkpoint candidate;
+5. remove the candidate files only after the fixed records re-open and validate together.
 
 Run the full read-only v0.6 structural validator only after the three fixed records are published; candidate-only checks before publication do not claim that the still-legacy fixed tree already passes v0.6.
 
@@ -73,7 +76,7 @@ Any interruption or partial replacement is fail-stop. Do not enter PLAY, improvi
 ## What migration does not do
 
 - It does not rewrite, repartition, re-index, or add to ARCHIVE.
-- It does not rewrite MODULE, ENGINE, the PC bundle, people, clocks, ledgers, safety sentences, or other INSTANCE facts.
+- It does not rewrite MODULE, ENGINE, the PC bundle, people, clocks, ledgers, safety sentences, or other INSTANCE facts. The sole MODULE exception is adding an explicitly accepted required Setting Brief when the legacy module has none.
 - It does not create Bearing interpretation or durable preparation.
 - It does not infer PC goals, consent, preferences, trajectory, mandate, causes, or pending opportunities.
 - It does not convert unsaved chat into evidence.

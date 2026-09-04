@@ -26,6 +26,8 @@ This mandatory load is the resident control surface:
 
 Campaign Bearing is optional and provisional. It is never a substitute for one of these three.
 
+The five addressed paths above remain the technical boot set. A bound run then performs the bounded pre-fiction loads below, including the module's compact Setting Brief. Do not ask the operator to add that file to the boot prompt.
+
 ## Read the bindings
 
 From CURRENT_SAVE, read at least:
@@ -72,6 +74,12 @@ From CAMPAIGN_CONTRACT, read:
 - `review_mode`
 
 Do not infer a missing field from genre, module prose, or a previous chat.
+
+## Bound Setting Brief upgrade dispatch
+
+The sole exception to normal v0.6 bound validation for an already-bound v0.6 or v0.6.1 campaign is an explicit **UPGRADE SETTING BRIEF** request when the operator attests that the fixed module Setting Brief is absent. Leave PLAY idle and open `ADMIN/ADD_SETTING_BRIEF.md` before applying the required-Setting-Brief check. This authorizes only that compatibility preflight and one-file transaction; it does not make the campaign playable while the brief is absent.
+
+Do not infer the source version or launch this procedure merely because a brief is missing. A fixed but malformed Setting Brief, a stale Setting Brief candidate, an unbound or v0.5 run, a resident mismatch, unsaved accepted PLAY, or another structural defect is not this upgrade path. Without the explicit command and required operator attestations, follow the ordinary checks below and fail closed.
 
 ## Legacy bound-run migration dispatch
 
@@ -127,6 +135,20 @@ If CURRENT_SAVE `safety_state` is `active`, open `INSTANCE/SAFETY.md` and retrie
 
 Do not open SAFETY merely because the file exists. Honor active entries quietly; never put them in NPC dialogue.
 
+### Module setting awareness
+
+Open `MODULES/<module>/SETTING_BRIEF.md`, using the already validated bound module token directly. Do not list, search, or browse for it.
+
+Use it only when all are true:
+
+- front matter is exactly `id: <module>.setting_brief` and `class: setting-brief`;
+- the exact level-two sections `World identity`, `What is ordinary`, and `Available depth` each occur once, in that order, and contain substantive text;
+- it remains a compact, stable, public orientation rather than current mutable state, a cast roster, detailed lore, private truth, a seed or tracker body, preparation, or a plot queue.
+
+If the file is missing, malformed, empty, or belongs to another module, report that the module is not runnable and stop before fiction. Do not reconstruct it from generic knowledge or by opening WORLD files.
+
+The Setting Brief establishes the broad world assumptions the GM must remember from the first fictional line, especially ordinary facts that generic model priors would erase. It does not override CURRENT_SAVE, CAMPAIGN_CONTRACT, accepted post-save play, or narrower authority. `Available depth` announces that colder authority exists; it is not permission to load it. Never recite the brief or its route in fiction.
+
 ### Module voice
 
 Open the bound module's `POLICY.md` and read its required `## Voice` section before producing fiction. Read `## Safety extras` in the same file if present.
@@ -159,7 +181,7 @@ A matching Bearing supplies provisional orientation only. It never establishes f
 
 Do not invent an interval.
 
-Orient from the accepted Campaign Contract, CURRENT_SAVE, and a matching optional Bearing. Use the compact causal frontier to recognize operative consequences and due checks; retrieve a detailed authority only when the actual GM task requires it.
+Orient from the accepted Campaign Contract, CURRENT_SAVE, the module Setting Brief, and a matching optional Bearing. The Setting Brief prevents generic-world defaulting; it does not supply current state or an incident. Use the compact causal frontier to recognize operative consequences and due checks; retrieve a detailed authority only when the actual GM task requires it.
 
 - If `scene_status` is `opening`, `active`, or `paused`, frame or resume the saved immediate situation without repeating a compliance recital or authoring a voluntary PC act.
 - If `scene_status` is `resolved` or `between-scenes` and `uncommitted_time` remains, orient the player and ask whether they use that time or advance it. Do not spend it silently.

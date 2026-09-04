@@ -1,4 +1,4 @@
-# RPG OS v0.6 architecture
+# RPG OS v0.6.2 architecture
 
 ## The short version
 
@@ -19,9 +19,12 @@ The architecture separates four different kinds of information so that they cann
 
 Rules, world files, character records, private state, and archive evidence sit below this control layer as services. They are opened when the GM task needs them.
 
+A compact **Setting Brief** is the one deliberate exception to purely task-triggered world retrieval. It is a bound module's small, stable public baseline, loaded once before first fiction so generic model assumptions do not erase the world's ordinary reality. It orients the GM; it does not summarize the campaign or activate content.
+
 ## Core terms
 
 - **Campaign Contract:** the accepted agreement for one run. A reusable module may suggest defaults, but the bound run owns its actual Contract.
+- **Setting Brief:** a compact module authority containing the world's identity, foundational facts that define what is ordinary, and a map of available cold depth. It contains no current mutable state or future-event entitlement.
 - **Causal frontier:** the compact part of Current Save that names established consequences, due conditions, live processes, pending decisions, and narrow current-state cues that may matter next. Separate Current Save fields preserve explicitly declared PC goals and uncommitted PC time. None is a plot queue.
 - **Bearing:** an optional REVIEW output based on a particular save and Contract revision. It may describe provisional patterns or questions. It is never evidence that those interpretations are true.
 - **PERSIST:** the fact-recording side of administration. CHECKPOINT saves the present; CLOSE saves the present and archive evidence.
@@ -49,6 +52,7 @@ flowchart TD
     L["Technical loader"] --> G["GM Core"]
     C["Campaign Contract"] --> G
     S["Current Save"] --> G
+    Q["Setting Brief"] --> G
     B["Optional Bearing"] -. "orientation, never authority" .-> G
     G --> P["Player-facing play"]
     G --> X["Rules, world, and memory services"]
@@ -67,9 +71,17 @@ The fixed technical boot set is:
 4. `INSTANCE/CURRENT_SAVE.md`
 5. `INSTANCE/CAMPAIGN_CONTRACT.md`
 
-For a bound run, boot then follows declared routes for active safety and required voice. It loads `INSTANCE/BEARING.md` only when the Contract enables `review_mode: bearing-only` and the Bearing's `base_save_id`, `base_save_rev`, `base_contract_id`, and `base_contract_rev` match the current authorities. Missing or stale Bearing is nonfatal.
+For a bound run, boot follows the active-safety route, loads the module's required `SETTING_BRIEF.md` once, then follows the required-voice route before first fiction. It loads `INSTANCE/BEARING.md` only when the Contract enables `review_mode: bearing-only` and the Bearing's `base_save_id`, `base_save_rev`, `base_contract_id`, and `base_contract_rev` match the current authorities. Missing or stale Bearing is nonfatal.
 
-Archive bodies, rosters, rule bodies, private truth, clocks, seeds, and other capabilities remain cold until the current GM task calls for them. The important bound is not an arbitrary number of files; it is context sufficient and proportionate to GM well.
+The Setting Brief is intentionally narrow:
+
+- **World identity:** the public premise and broad frame.
+- **What is ordinary:** foundational public facts that generic model priors might otherwise erase.
+- **Available depth:** broad cold domains the GM can retrieve later when an actual task needs precision.
+
+It excludes named rosters, current mutable state, active seeds, clock or phase bodies, private truth, prepared scenes, detailed lore, and plot queues. Current Save and narrower authoritative records still control details that change or require precision. Loading the brief never activates an event, person, or possibility.
+
+Detailed world files, archive bodies, rosters, rule bodies, private truth, clocks, seeds, and other capabilities remain cold until the current GM task calls for them. The important bound is not an arbitrary number of files; it is context sufficient and proportionate to GM well.
 
 ## The GM-first loop
 
@@ -81,10 +93,10 @@ For each turn, the runtime works in this order:
 4. **Check authority:** is this a required response, established consequence, authorized procedure, external warrant, or accepted creative mandate?
 5. **Retrieve enough:** open only facts and procedures sufficient and proportionate to that task.
 6. **Imagine and judge.**
-7. **Portray only the selected result.**
+7. **Render:** communicate only the selected fictional result, mechanics actually used, necessary OOC clarification, and required public state; omit internal routes, checks, rejected alternatives, and compliance explanations.
 8. **Return agency or close the beat.**
 
-This order is an instruction-level control inside one model context. v0.6 does not require hidden chain-of-thought, multiple agents, or a physically isolated renderer pass. That portability is useful, but it also means file-route or rejected-candidate leakage remains possible and must be tested semantically.
+This order is an instruction-level control inside one model context. v0.6.2 does not require hidden chain-of-thought, multiple agents, or a physically isolated renderer pass. That portability is useful, but it also means file-route, adjudication-rationale, or rejected-candidate leakage remains possible and must be tested semantically.
 
 ## Creation without railroading
 
@@ -101,7 +113,7 @@ General setting fit is only compatibility. It does not authorize a specific inci
 
 Warrant and fit are conjunctive for prospective authorship: a warrant or responsive request does not waive the accepted fit envelope or hard boundaries. Already-established facts and consequences remain real; a requested change to the accepted kind of campaign is handled OOC through RECALIBRATE.
 
-The public v0.6 kit ships **no durable GM-preparation bank**. A module may still contain cold seeds or possibilities under the ordinary nonactivation rules. Bearing may hold provisional interpretation and questions, but not a queue of scenes waiting for activation. Fresh lawful realization remains available without preparation; authority is still required, and selecting no discretionary development remains valid.
+The public v0.6.2 kit ships **no durable GM-preparation bank**. A module may still contain cold seeds or possibilities under the ordinary nonactivation rules. Bearing may hold provisional interpretation and questions, but not a queue of scenes waiting for activation. Fresh lawful realization remains available without preparation; authority is still required, and selecting no discretionary development remains valid.
 
 ## Campaign Contract
 
@@ -165,7 +177,7 @@ PERSIST never infers a preferred trajectory. REVIEW never changes state, history
 
 ## Task-first retrieval and retrieval locality
 
-RPG OS does not load a lore bible merely because the campaign has one. After the GM identifies the task, it follows explicit routes to the smallest authoritative unit that is sufficient:
+Apart from the compact Setting Brief loaded for session-start awareness, RPG OS does not load a lore bible merely because the campaign has one. After the GM identifies the task, it follows explicit routes to the smallest authoritative unit that is sufficient:
 
 ```text
 large domain -> compact routing index -> narrow authoritative record
@@ -193,7 +205,7 @@ Complex machinery supplies world causality. It does not replace GM judgment or c
 
 ## Engines
 
-ENGINE is a rules service, not the OS. The public kit bundles only `freeform`.
+ENGINE is a rules service, not the OS. The public v0.6.2 kit bundles only `freeform`.
 
 A user may install a compact local adapter for GURPS, Dungeons & Dragons, Pathfinder, Call of Cthulhu, Fate, Savage Worlds, another owned system, or original house rules if it follows `ENGINE/_CONTRACT.md`. Those examples are not bundled, endorsed, or reproduced by this project. An adapter records the minimum procedures and sheet fields needed to run; it must not reconstruct or redistribute a copyrighted rulebook.
 
@@ -230,10 +242,10 @@ Structural, host-observation, semantic, and player-rated evidence must remain se
 - **Host dependence:** folder reads, durable writes, and section handling vary by platform and can change.
 - **Privacy limits:** file labels and headings are not security boundaries.
 - **Provider limits:** RPG OS cannot override moderation, terms, or account enforcement.
-- **Scale unproven:** v0.6 is not Session-100 evidence.
+- **Scale unproven:** v0.6.2 is not Session-100 evidence.
 
 ## Why the other designs were not chosen
 
 A single resident mega-frame was rejected because it would place canon, interpretation, and possible future material on one permanent salience surface. A mandatory compiled session packet was rejected because it must predict relevance before the player acts and can become a stale second save.
 
-A one-file packet may later be useful as a noncanonical export adapter for hosts without folders. It is not the v0.6 source of truth.
+A one-file packet may later be useful as a noncanonical export adapter for hosts without folders. It is not the v0.6.2 source of truth.

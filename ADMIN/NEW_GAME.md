@@ -37,6 +37,7 @@ Draft, then on accept write:
 
 - `ENGINE/<id>.md` if this run chose a ruleset that was not already installed
 - `MODULES/<id>/MODULE.md` (v0.4 descriptor: scalar front matter + exact `## Capabilities` section)
+- `MODULES/<id>/SETTING_BRIEF.md` (required compact public session-start orientation; exact setting-brief front matter and headings)
 - `MODULES/<id>/POLICY.md` (must declare voice under exact heading `## Voice` and complete proposed run settings under exact heading `## Campaign defaults`)
 - `MODULES/<id>/CHAR/PC.md` (substantive operator-approved entrypoint; one body or a compact index with its exact routed PC bundle; a completed mechanical sheet is optional)
 - `MODULES/<id>/T0_SAVE.md`
@@ -46,7 +47,7 @@ Draft, then on accept write:
 
 At bind, reset `INSTANCE/BEARING.md` to the schema's bound-empty shape: the new run's `campaign_id`, `status: none`, empty base/evidence values, and all sections `none`. This identity-only reset is not REVIEW content. A contract with `review_mode: bearing-only` permits a later REVIEW; it does not create an opening interpretation or preparation.
 
-If voice is missing after accept, the module is not runnable. Do not bind.
+If voice or a valid substantive Setting Brief is missing after accept, the module is not runnable. Do not bind.
 
 ## Stage B — optional authoring
 
@@ -85,6 +86,7 @@ Ask one cluster at a time.
    - **Detailed:** develop selected domains step by step, including their causal operation and retrieval routes.
    - **Custom:** operator chooses depth separately for world detail, campaign dynamics, bookkeeping, and rule calibration.
    Focused, Detailed, or Custom opens `ADMIN/CAMPAIGN_BUILD.md`. Detailed never means “generate everything.” Omitted areas stay absent or unfixed; do not create filler, mass rosters, or empty trees.
+   At every depth, derive one concise `SETTING_BRIEF.md` from the world facts the operator has already accepted. It must identify the world, state the few public ordinary facts generic model priors would erase, and name the broad cold depth available. Do not turn this into another lore interview: ask one small clarification only if the accepted premise cannot supply a required section. Do not put named cast, current state, private truth, seeds, clocks/phases, preparation, plot summary, or detailed lore into the brief.
 9. **PC concept, agency split, character/profile depth, and mechanical-sheet path — always ask.** Open `ADMIN/CHARACTER_BUILD.md`.
    - Profile depth: Quick / Standard / Detailed / Custom.
    - Mechanical sheet: No full sheet now / Minimum required / Guided full sheet / Import and review.
@@ -98,7 +100,7 @@ Ask one cluster at a time.
    Forbidden: violating anti-attractors; choosing the PC's feelings or first move; a three-act quest; unprovided prior PC promises, crimes, intimacy, purchases, or risk acceptance. If a frame depends on a prior PC fact, list that fact separately for explicit acceptance.
    Record the accepted frame into T0 `immediate_scene` and compile its actual open/closed state and remaining player-owned time into the new T0 fields.
 12. Optional capabilities: declare only those that will have a real authoritative body at commit. The declared target may be that body or a compact routing index pointing to it. Write the exact MODULES/_CONTRACT.md capability table; sparse setup writes `none` under `## Capabilities`.
-13. Proposed manifest including the complete draft run contract, construction depth, character/profile depth, mechanical-sheet path and state (`not built/deferred`, `minimum`, `complete`, `imported`, or `partial`), PC storage shape and exact routed bundle if any, separately labeled omitted and intentionally unfixed domains, private-truth disclosure mode/routes if used, mutable-system T0 classifications and cue lifecycle, cross-system update order where applicable, retrieval-route rehearsal for every complex capability, and the single accepted starting frame. Explicit accept or revise.
+13. Proposed manifest including the complete draft run contract, the exact required `SETTING_BRIEF.md`, construction depth, character/profile depth, mechanical-sheet path and state (`not built/deferred`, `minimum`, `complete`, `imported`, or `partial`), PC storage shape and exact routed bundle if any, separately labeled omitted and intentionally unfixed domains, private-truth disclosure mode/routes if used, mutable-system T0 classifications and cue lifecycle, cross-system update order where applicable, retrieval-route rehearsal for every complex capability, and the single accepted starting frame. Explicit accept or revise.
 
 If the operator asks to start a scene before accept, refuse.
 
@@ -107,6 +109,7 @@ If the operator asks to start a scene before accept, refuse.
 Before any write, open MODULES/_CONTRACT.md, ENGINE/_CONTRACT.md, and INSTANCE/_SCHEMA.md. Confirm:
 
 - exact `## Voice` heading declared
+- `SETTING_BRIEF.md` has exact scalar `id: <module>.setting_brief` and `class: setting-brief`; exact once-only `## World identity`, `## What is ordinary`, and `## Available depth` headings in that order; concise substantive public orientation; and none of the prohibited roster, current-state, private, seed/clock/phase, preparation, plot-summary, or detailed-lore material
 - exact `## Campaign defaults` heading declared in the newly authored POLICY, with a compact nonblank proposal for `campaign_promise`, `fit_envelope`, all six independent axes, `creative_mandate` plus its scope/boundaries, and `review_mode` using the canonical INSTANCE/_SCHEMA.md values; these remain MODULE proposals and are not substituted for the separately accepted run contract
 - the run contract has a compact campaign promise and fit envelope; all six axes are present and independently accepted; `creative_mandate` is separately explicit; `review_mode` is exactly `off` or `bearing-only`; it contains no plot destination, current-state claim, inferred player desire, or prepared scene
 - MODULE scalar front matter and exact `## Capabilities` section present
@@ -135,7 +138,7 @@ If any file write, provider response, or generation is interrupted before CURREN
 ## After commit
 
 Start PLAY in a **fresh** chat.
-Resident orientation: LAW/GM Core + accepted CAMPAIGN_CONTRACT + new CURRENT_SAVE; a matching BEARING may join only after a later successful REVIEW. Load POLICY voice and applicable safety before fiction.
+Resident orientation: LAW/GM Core + accepted CAMPAIGN_CONTRACT + new CURRENT_SAVE; a matching BEARING may join only after a later successful REVIEW. Before first fiction, load applicable safety, the required SETTING_BRIEF once, and POLICY voice; use them silently rather than reciting them.
 First fiction: the single accepted T0 `immediate_scene`, with its established causal frontier and uncommitted-time state. Do not add a second situation because SETUP discussed or rejected an alternative. Unaccepted proposals die with the interview chat and never enter BEARING or canon.
 
 This clean kit has no pre-authored world. New Game is how a campaign is born.

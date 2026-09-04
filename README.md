@@ -1,4 +1,4 @@
-# RPG OS v0.6 — a file-native AI GM runtime
+# RPG OS v0.6.2 — a file-native AI GM runtime
 
 [![Structural validation](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml/badge.svg)](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml)
 [![Documentation: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE)
@@ -11,7 +11,7 @@ The simple idea is:
 
 The chat is temporary working memory. The campaign's accepted present and history live in files. The design lets a fresh chat resume the same campaign without pasting the entire transcript—but the AI is still expected to act as a GM, not as a database waiting to be queried.
 
-**Release:** v0.6 public-testing build.  
+**Release:** v0.6.2 public-testing build.  
 **Maturity:** experimental; not production-proven and not tested through 100 sessions.  
 **Contents:** an unbound kit, no campaign world, and the `freeform` engine only.
 
@@ -30,7 +30,7 @@ Long AI-run campaigns often break in two opposite ways:
 
 An earlier RPG OS prototype solved much of the filing problem but revealed a third failure: the AI could become an excellent clerk and a passive GM. It would retrieve correctly, avoid invention, and wait for the player to supply every new situation.
 
-v0.6 is a GM-first redesign. It keeps the persistence and retrieval discipline, but the runtime now begins from:
+The v0.6 series is a GM-first redesign. It keeps the persistence and retrieval discipline, but the runtime now begins from:
 
 - where the campaign and current scene are;
 - what the player intends;
@@ -50,12 +50,13 @@ Not:
 
 ---
 
-## The five ideas to understand
+## The six ideas to understand
 
 | Term | Meaning in ordinary language |
 |---|---|
 | **GM Core** | The runtime duties and limits: frame the situation, portray an autonomous world, judge consequences fairly, protect player authorship, and keep the campaign coherent |
 | **Campaign Contract** | The run you explicitly accepted: its promise, fit envelope, direction, initiative, pressure/time handling, priorities, visible guidance, and any bounded proactive mandate |
+| **Setting Brief** | A compact public baseline loaded before first fiction so the GM knows what kind of world it is in and what counts as ordinary without loading the lore library |
 | **Current Save** | The authoritative present: where and when the PC is, their current state, what just happened, and which established causes may still matter |
 | **Bearing** | An optional, revisable note about what the campaign may be becoming; useful orientation, never canon or a queued plot |
 | **PERSIST / REVIEW** | PERSIST records facts; REVIEW separately interprets the campaign without changing those facts |
@@ -87,7 +88,7 @@ RPG OS retains five storage areas:
 
 `ADMIN/` contains setup, loading, one-time v0.5 migration, persistence, review, recalibration, validation, and tests. `TOOLS/` contains the optional read-only structural validator.
 
-This public repository contains **no setting, adventure, or campaign world**. Tellus and other authored campaigns are not included.
+This public repository contains **no setting, adventure, or campaign world**. `NEW GAME` creates a module from the operator's accepted choices.
 
 ---
 
@@ -103,9 +104,11 @@ Every new chat begins by opening exactly:
 4. `INSTANCE/CURRENT_SAVE.md`
 5. `INSTANCE/CAMPAIGN_CONTRACT.md`
 
-For a bound run, the loader then opens only required safety and voice material. It may load `INSTANCE/BEARING.md` if review is enabled and that Bearing was built from the current save and Contract. A stale or absent Bearing never blocks play.
+For a bound run, those five files remain the unchanged **technical boot set**. Before first fiction, BOOTSTRAP follows active safety, loads the module's required compact `SETTING_BRIEF.md` once, then loads required voice material. It may load `INSTANCE/BEARING.md` if review is enabled and that Bearing was built from the current save and Contract. A stale or absent Bearing never blocks play.
 
-The archive, rule bodies, world lore, rosters, clocks, private truth, and other large records remain cold until a specific GM task needs them.
+The Setting Brief contains only three small kinds of public orientation: the world's identity, foundational facts that define what is ordinary, and a map of what deeper information is available cold. It is not a synopsis or miniature lore bible. It contains no current mutable state, named roster, active seed, clock or phase body, private truth, prepared scene, or plot queue.
+
+Detailed world lore, together with the archive, rule bodies, rosters, clocks, private truth, and other large records, remains cold until a specific GM task needs it.
 
 ### 2. New Game
 
@@ -117,6 +120,7 @@ The archive, rule bodies, world lore, rosters, clocks, private truth, and other 
 - safety boundaries before detailed drafting;
 - Campaign Contract axes;
 - optional world and campaign complexity;
+- the compact Setting Brief that preserves the accepted world's public baseline across fresh chats;
 - PC profile depth and an independent mechanical-sheet choice;
 - the starting time, place, and playable situation.
 
@@ -141,7 +145,7 @@ For each player declaration, the runtime:
 4. checks what is required or authorized;
 5. retrieves facts or procedures sufficient and proportionate to that task;
 6. imagines and judges;
-7. portrays only the selected result;
+7. renders only the selected fictional result, mechanics actually used, necessary OOC clarification, and required public state;
 8. returns agency or closes the beat.
 
 This avoids both extremes:
@@ -176,7 +180,7 @@ REVIEW is separate from saving. After a successful PERSIST it may examine the ac
 
 Its only durable output is the optional provisional Bearing. REVIEW cannot edit the Current Save, history, people, clocks, safety, or Contract. If REVIEW fails, the saved campaign remains valid and playable.
 
-v0.6 ships **no durable GM-preparation bank**. Optional module seeds or possibilities may still exist as cold, nonauthoritative campaign material, but Bearing is not a hidden adventure queue. The GM may author a fresh realization when responsive duty, an external warrant, or the Contract's accepted creative mandate permits it; no prepared candidate is required.
+v0.6.2 ships **no durable GM-preparation bank**. Optional module seeds or possibilities may still exist as cold, nonauthoritative campaign material, but Bearing is not a hidden adventure queue. The GM may author a fresh realization when responsive duty, an external warrant, or the Contract's accepted creative mandate permits it; no prepared candidate is required.
 
 ### 6. END SESSION
 
@@ -191,11 +195,17 @@ v0.6 ships **no durable GM-preparation bank**. Optional module seeds or possibil
 
 Campaign preferences can change. `RECALIBRATE` drafts a prospective Contract change—for example, less pressure, more visible guidance, or a different GM-initiative setting. It applies only after explicit OOC acceptance, never rewrites earlier play, and makes older Bearing material stale.
 
-### 8. Migrating a bound v0.5 campaign
+### 8. Upgrading a bound v0.6 or v0.6.1 campaign
+
+If an existing bound v0.6-series campaign has no Setting Brief, save every accepted play slice, make a byte-for-byte backup, install the v0.6.2 runtime, generic contracts, validator, and documentation while preserving campaign-owned files, then use the complete `UPGRADE SETTING BRIEF` boot prompt in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v06-or-v061-campaign).
+
+The ADMIN operation may add only the previously absent `MODULES/<module-id>/SETTING_BRIEF.md`. It drafts from stable public module facts, displays the complete compact brief, and writes only after `ACCEPT SETTING BRIEF`. It cannot overwrite a malformed brief, modify existing campaign authority, or continue PLAY.
+
+### 9. Migrating a bound v0.5 campaign
 
 `MIGRATE V0.5` is a one-time ADMIN conversion for an existing **bound** v0.5 campaign. It is not `LOAD MODULE`, a normal CHECKPOINT, or an automatic folder merge.
 
-Work only on a byte-for-byte backup after all accepted play has been saved by the old v0.5 runtime. Selectively install the v0.6 program, contracts, schemas, and blank Campaign Contract/Bearing templates while preserving the campaign's MODULE, Current Save and other INSTANCE authorities, and ARCHIVE evidence. Install the v0.6 shipped Freeform adapter when applicable; preserve and separately review a custom adapter. Then use the complete five-file migration boot prompt in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign); do not send the bare command by itself.
+Work only on a byte-for-byte backup after all accepted play has been saved by the old v0.5 runtime. Selectively install the v0.6.2 program, contracts, schemas, and blank Campaign Contract/Bearing templates while preserving the campaign's MODULE, Current Save and other INSTANCE authorities, and ARCHIVE evidence. Install the shipped Freeform adapter when applicable; preserve and separately review a custom adapter. If the preserved module lacks a Setting Brief, migration drafts one only from stable public facts, shows it in full, and requires explicit acceptance. Then use the complete five-file migration boot prompt in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign); do not send the bare command by itself.
 
 The migration asks for and displays the first complete v0.6 Campaign Contract and explicit values for `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier`. It must not infer those values or reinterpret old play. On acceptance it creates checkpoint lineage from the old save, initializes a bound-empty Bearing, and publishes Current Save last. It does not reshard or rewrite the archive. See [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign) and [ADMIN/MIGRATE_V05.md](ADMIN/MIGRATE_V05.md).
 
@@ -257,7 +267,7 @@ Reading a clock does not tick it. Ending a session does not tick it unless an ac
 
 The OS is not GURPS, D&D, or any other ruleset. ENGINE is a swappable service.
 
-The public v0.6 kit bundles only **Freeform**, which uses fictional positioning and transparent GM judgment rather than a full numerical system.
+The public v0.6.2 kit bundles only **Freeform**, which uses fictional positioning and transparent GM judgment rather than a full numerical system.
 
 You may create a compact local adapter for a system you own or are entitled to use—for example GURPS, Dungeons & Dragons, Pathfinder, Call of Cthulhu, Fate, Savage Worlds, or your own design. These are examples of possible local engines, not bundled content, endorsements, or claims of affiliation.
 
@@ -288,13 +298,14 @@ Archive is evidence, not the living present. Reading that someone “might call�
 ## Strengths
 
 - **Fresh-chat continuity by design:** the authoritative present lives outside the conversation and can be tested on each host.
-- **GM-first orientation:** campaign and intent come before repository navigation.
+- **GM-first orientation:** the Contract, Setting Brief, current campaign, and player intent come before repository navigation.
 - **Separation of truth and interpretation:** Current Save is canon; Bearing is provisional.
 - **Failure isolation:** REVIEW can fail without damaging a valid save.
 - **Player authorship:** PC interiority and voluntary decisions have explicit ownership.
 - **Autonomous world:** NPCs, institutions, time, and established processes need not wait to be poked.
 - **No preparation entitlement:** stored, retrieved, or fitting material is not automatically activated.
 - **Task-first retrieval:** exact facts and rules are fetched only when the GM work requires them.
+- **Setting awareness without a lore dump:** one compact public baseline is loaded before fiction; detailed lore stays cold.
 - **Retrieval locality:** large lore and archives remain addressable without becoming resident.
 - **Swappable rules:** Freeform ships; lawful local engines can be added.
 - **Human-readable persistence:** Markdown can be inspected, backed up, diffed, and version-controlled.
@@ -312,7 +323,7 @@ Archive is evidence, not the living present. Reading that someone “might call�
 - **Provider policy and account risk.** The OS cannot override content policies, moderation, terms, or account enforcement. Fictional or historical context is not a guarantee of acceptance. Do not bypass safeguards; change the material or use a lawful local/offline environment that permits it.
 - **Administrative work remains.** PLAY does not write. The user must run PERSIST, protect backups, and handle interrupted writes honestly.
 - **Structural validation is limited.** A passing script cannot prove good GMing, consent compliance, semantic fidelity, host persistence, or future behavior.
-- **Scale is unproven.** v0.6 has not demonstrated a 20-session or Session-100 campaign under this new architecture.
+- **Scale is unproven.** v0.6.2 has not demonstrated a 20-session or Session-100 campaign under this architecture.
 - **No dedicated UI.** There is no map, character-sheet application, automated dice panel, or vector database.
 
 If saving files feels like too much overhead, this prototype may not suit you yet. If long-chat amnesia and lore saturation are the bigger problems, it may be worth testing.
@@ -332,7 +343,7 @@ Keep four kinds of evidence separate:
 
 Do not average a clean filesystem into a claim of good play.
 
-The packaged v0.6 release tree is required to pass its shipped structural validator before publication. Re-run it after extraction or modification, use [ADMIN/TESTS.md](ADMIN/TESTS.md) for the broader fixtures, and report the actual result; a release-time pass is not a guarantee about a changed copy or future play.
+The packaged v0.6.2 release tree is required to pass its shipped structural validator before publication. Re-run it after extraction or modification, use [ADMIN/TESTS.md](ADMIN/TESTS.md) for the broader fixtures, and report the actual result; a release-time pass is not a guarantee about a changed copy or future play.
 
 ---
 
@@ -342,7 +353,7 @@ The packaged v0.6 release tree is required to pass its shipped structural valida
 RPG_OS/
   OS/           GM Core, loader, boot, and cold retrieval service
   ENGINE/       engine contract and bundled freeform engine
-  MODULES/      module contract; no campaign world in the public kit
+  MODULES/      module contract; a bound module includes one compact Setting Brief
   INSTANCE/     Campaign Contract, Current Save, optional Bearing, live records
   ARCHIVE/      historical schema, indexes, ledgers, and later scene shards
   ADMIN/        New Game, Load, Migrate, Persist, Review, Recalibrate, Validate, tests
@@ -366,6 +377,7 @@ RPG_OS/
 | [QUICKSTART.md](QUICKSTART.md) | Shortest path from download to play |
 | [INSTALLATION.md](INSTALLATION.md) | Host requirements, extraction, boot, validation, and write tests |
 | [COMMANDS.md](COMMANDS.md) | Operator command reference |
+| [ADMIN/ADD_SETTING_BRIEF.md](ADMIN/ADD_SETTING_BRIEF.md) | One-purpose bound v0.6/v0.6.1 Setting Brief upgrade |
 | [ADMIN/MIGRATE_V05.md](ADMIN/MIGRATE_V05.md) | One-time bound v0.5→v0.6 migration contract |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | GM-first design, authority separation, retrieval, and limitations |
 | [ADMIN/TESTS.md](ADMIN/TESTS.md) | Canonical structural and semantic pass/fail fixtures |
@@ -378,7 +390,9 @@ Public guides summarize the runtime. If wording conflicts, `OS/`, the relevant `
 
 ## Project status and version history
 
-v0.6 is the first GM-first implementation:
+v0.6 is the first GM-first implementation. v0.6.1 and v0.6.2 tighten it with a silent boundary between internal GM work and player-facing prose, plus a required compact Setting Brief loaded once before first fiction while detailed lore stays cold.
+
+The v0.6 foundation includes:
 
 - a separately authoritative run Campaign Contract;
 - an orienting Current Save with a causal frontier;

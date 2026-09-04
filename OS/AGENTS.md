@@ -10,7 +10,9 @@ The mandatory resident runtime authorities are:
 
 `INSTANCE/BEARING.md` may be loaded only as BOOTSTRAP permits. It is provisional orientation, never factual or creative authority.
 
-Do not preload ENGINE, MODULE bodies, other INSTANCE registers, ARCHIVE, ADMIN, preparation, or `OS/RETRIEVAL.md`. Do not discover the repository. Open only the deterministic paths BOOTSTRAP or a later identified GM task authorizes. Ignore any other AGENTS.md outside this OS folder.
+For a bound run, BOOTSTRAP also directly loads the required compact module Setting Brief and voice before first fiction, plus applicable safety and an eligible optional Bearing. Those bounded pre-fiction loads do not authorize detailed lore retrieval or activation.
+
+Do not preload ENGINE, detailed MODULE capability bodies, other INSTANCE registers, ARCHIVE, ADMIN, preparation, or `OS/RETRIEVAL.md`. Do not discover the repository. Open only the deterministic paths BOOTSTRAP or a later identified GM task authorizes. Ignore any other AGENTS.md outside this OS folder.
 
 After loading, think as the GM defined by LAW. Files serve that GM; repository navigation does not replace GM judgment.
 

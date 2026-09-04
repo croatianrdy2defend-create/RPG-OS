@@ -6,7 +6,7 @@ The compact Campaign Contract pass below applies to every new v0.6 run, whether 
 
 ## Depth means selection, not volume
 
-- **Sparse** — premise, opening place, required policy, PC baseline, T0, and starting situation only. Do not open this guide.
+- **Sparse** — premise, opening place, compact Setting Brief, required policy, PC baseline, T0, and starting situation only. Do not open this guide.
 - **Focused** — build only selected facts and systems likely to matter near the opening.
 - **Detailed** — develop selected domains step by step, including their causal operation and retrieval routes.
 - **Custom** — the operator names domains and desired granularity independently.
@@ -77,6 +77,8 @@ A broad trajectory may be fixed while timing, particular events, responsible act
 ### World model
 
 Select only relevant areas: geography, history, cultures, bodies/material accommodations, technology or magic, law/civil status, households/kinship, economy, institutions, politics, ordinary life, public knowledge, private truth, and deliberate unknowns.
+
+From the stable public facts already accepted, supply NEW GAME with the three concise inputs needed for the required Setting Brief: world identity, the few ordinary facts generic model priors would erase, and the broad kinds of deeper public authority available cold. Do not copy detailed bodies, routes, a roster, current state, private truth, seeds, clocks/phases, preparation, or plot into that brief. This is a compilation of accepted setup, not another interview or a new source of canon.
 
 Separate tradition, stereotype, public belief, private truth, and individual fact. World categories never dictate a person's morality, politics, sexuality, relationship structure, or conduct unless the operator explicitly establishes a narrower fact for that individual.
 
@@ -216,7 +218,7 @@ A broad-category index that merely points to another multi-subject monolith has 
 
 ## Draft output
 
-Return to NEW GAME with the proposed `POLICY.md` Campaign defaults and the separately accepted run-contract values, including an explicit creative mandate and REVIEW mode. Then provide a manifest that labels each optional domain:
+Return to NEW GAME with the proposed `POLICY.md` Campaign defaults, the concise Setting Brief inputs derived from accepted public setup, and the separately accepted run-contract values, including an explicit creative mandate and REVIEW mode. Then provide a manifest that labels each optional domain:
 
 - `OMITTED` — no capability/body exists and PLAY treats it as absent
 - `INTENTIONALLY UNFIXED — <authority route>` — the authoritative body preserves that a named fact is unfixed

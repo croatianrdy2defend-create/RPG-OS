@@ -1,4 +1,4 @@
-# RPG OS v0.6 — public smoke test
+# RPG OS v0.6.2 — public smoke test
 
 RPG OS is a Markdown-based runtime designed to let an AI GM remember a solo campaign across disposable chats. This clean public kit contains no campaign world and ships only the Freeform engine.
 
@@ -39,7 +39,7 @@ The Contract should distinguish:
 - any creative mandate, its scope, and eligible boundaries;
 - REVIEW mode.
 
-Sparse construction and a deferred full sheet remain legal. Detailed construction covers only selected domains. The starting situation gives the GM something playable without choosing the PC's first voluntary act. Nothing becomes canon before a complete manifest and explicit `ACCEPT`.
+Sparse construction and a deferred full sheet remain legal. Detailed construction covers only selected domains. Every accepted bound module receives one compact Setting Brief describing the world's identity, what is ordinary there, and what deeper information exists cold. The starting situation gives the GM something playable without choosing the PC's first voluntary act. Nothing becomes canon before a complete manifest and explicit `ACCEPT`.
 
 ## 3. GM-first behavior
 
@@ -51,6 +51,10 @@ Use two short probes:
 2. Enter a location where a dramatic incident would fit but is not independently warranted.
 
 **Pass:** the GM provides orientation, ordinary function, established world motion, or a clean chance to close/advance time. It does not become an empty command parser. It also does not plant a stranger, clue, threat, or quest merely to look active.
+
+Then ask a generic perception question about an ordinary public scene without supplying the campaign's distinctive vocabulary.
+
+**Pass:** the GM respects the Setting Brief's foundational public reality without requiring a keyword from the player, opening the full lore library, reciting the brief, or turning the distinctive feature into a mandatory showcase or incident. Exact or local detail is retrieved only if the current task genuinely needs it.
 
 This is semantic, player-evaluated evidence—not something the structural validator can prove.
 

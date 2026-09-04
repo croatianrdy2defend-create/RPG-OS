@@ -7,6 +7,7 @@ The OS does not know any campaign’s filenames beyond this contract.
 | Record | Purpose |
 |---|---|
 | `MODULE.md` | id, title, engine binding, capability list, pointers |
+| `SETTING_BRIEF.md` | compact stable public orientation loaded once before first fiction |
 | `POLICY.md` | **Required voice declaration**; v0.6 campaign-default proposals; cadence, tone, genre anti-attractors, relationship extras, stronger safety |
 | `CHAR/PC.md` | player character **baseline** |
 | `T0_SAVE.md` | template ADMIN copies into a new INSTANCE |
@@ -16,6 +17,33 @@ The OS does not know any campaign’s filenames beyond this contract.
 The bound ENGINE decides which mechanical fields, if any, are required before bind and which may be deferred. If a later mechanic requires a missing value, PLAY pauses rather than guessing.
 
 For a newly authored v0.6 module, `T0_SAVE.md` also supplies the opening `scene_status`, `uncommitted_time`, `pc_declared_goals`, and `causal_frontier` fields required by the INSTANCE schema. `pc_declared_goals` contains only goals the player actually declared. `causal_frontier` contains only T0-established operative consequences, specific due conditions or obligations, live established processes, pending decisions, and non-revelatory routes to current state; use `none` when there are none. Reserve optional `declared_state_flags: none` separately when a selected private mutable subsystem may later require cross-boot discovery.
+
+## Setting brief (required)
+
+Every runnable module has `SETTING_BRIEF.md`. It is the compact, stable, public session-start orientation that keeps the GM aware of what kind of world it is operating in without loading the module's detailed lore. It is read once before first fiction in each fresh PLAY chat and used silently as background orientation. It is not an optional capability, a routing index, current state, or factual permission to activate anything.
+
+The file begins with exactly these two simple scalar front-matter fields and no others:
+
+```yaml
+---
+id: <module>.setting_brief
+class: setting-brief
+---
+```
+
+`<module>` exactly matches the module directory id. The body contains each of these exact level-two headings once, in this order:
+
+```markdown
+## World identity
+## What is ordinary
+## Available depth
+```
+
+- `World identity` states the broad public premise and the few foundational facts generic model priors would otherwise erase or replace.
+- `What is ordinary` states public everyday norms needed across many scenes. It may correct a generic default without making the difference a spectacle, quota, clue, encounter, or hook.
+- `Available depth` names only the broad kinds of authoritative detail available cold through declared capabilities. It does not reproduce their contents or turn its references into a reading assignment.
+
+Keep the brief concise and broadly reusable across the module's scenes. It contains no named cast roster, current mutable state, private truth, seeds, clock or phase bodies, prepared possibility, plot summary, detailed lore, queued scene, or campaign forecast. Exact, local, quantitative, disputed, private, or causally material detail remains cold and is retrieved only when the current GM task requires it. CURRENT_SAVE and INSTANCE current authorities outrank any later-changing public fact accidentally left in the brief. Loading or reading the brief never activates a person, event, process, clock, seed, or possibility.
 
 ## Voice (required)
 
@@ -115,7 +143,7 @@ Before ACCEPT, rehearse at least one representative lookup for every complex cap
 
 ## Mutable subsystem baselines
 
-Stable definitions and accepted immutable **as-of-T0 snapshots** for phases, clocks/fronts, factions/institutions, inactive possibilities, economy/logistics, or other selected systems live in their declared MODULE bodies. A T0 snapshot asserts what was true at T0; it is not an enduring present-tense claim. MODULE files never mutate after bind.
+Stable definitions and accepted immutable **as-of-T0 snapshots** for phases, clocks/fronts, factions/institutions, inactive possibilities, economy/logistics, or other selected systems live in their declared MODULE bodies. A T0 snapshot asserts what was true at T0; it is not an enduring present-tense claim. MODULE files never mutate after bind. The sole compatibility exception is an explicit authorized **MIGRATE V0.5** or **UPGRADE SETTING BRIEF** transaction adding one previously absent, complete, operator-accepted required `SETTING_BRIEF.md`; it may not alter any existing MODULE authority or overwrite a malformed brief.
 
 Each mutable system's one authoritative definition also preserves its stable id, T0 classification, causal triggers/non-triggers, selected post-change current-authority route, cue lifecycle if needed, and any cross-system dependency/order that definition owns. Public/private placement follows the declared capabilities; explicit pointers connect them without duplicating rules. A SETUP manifest may mirror this for acceptance, but the disposable manifest/chat is never runtime authority.
 

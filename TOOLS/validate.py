@@ -23,8 +23,8 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v2"
-LAW_SHA256 = "5456b40224ee4a5eb254f812fe30172ec6d2c47b96ffd8f508b31ad1f9e2a09c"
+VALIDATOR_VERSION = "VALIDATE-v2.1"
+LAW_SHA256 = "397eb4c52b4d034ff1d7060b06a79a1f11cfac037cf37d0bfd221b3777e5373f"
 
 CURRENT_SAVE_FIELDS = (
     "engine",
@@ -97,6 +97,12 @@ BEARING_SECTIONS = (
     "Questions",
 )
 
+SETTING_BRIEF_SECTIONS = (
+    "World identity",
+    "What is ordinary",
+    "Available depth",
+)
+
 REQUIRED_FILES = (
     "OS/AGENTS.md",
     "OS/BOOTSTRAP.md",
@@ -122,6 +128,7 @@ REQUIRED_FILES = (
     "ARCHIVE/MESSAGES_LEDGER.md",
     "ARCHIVE/RELATION_LEDGER.md",
     "ADMIN/ADD_ENGINE.md",
+    "ADMIN/ADD_SETTING_BRIEF.md",
     "ADMIN/CAMPAIGN_BUILD.md",
     "ADMIN/CHARACTER_BUILD.md",
     "ADMIN/CLOSE_CONTRACT.md",
@@ -1796,6 +1803,16 @@ class Validator:
                 self.add("INCOMPLETE", "PC_BIND_COPY_READ", self.relative(instance_files[relative]), f"could not compare bind PC copy: {exc}")
 
     def check_module(self) -> None:
+        modules_root = self.root / "MODULES"
+        if modules_root.is_dir():
+            for candidate in sorted(modules_root.glob("*/SETTING_BRIEF.candidate.md")):
+                if candidate.exists() or candidate.is_symlink():
+                    self.add(
+                        "ERROR",
+                        "SETTING_BRIEF_STALE_CANDIDATE",
+                        self.relative(candidate),
+                        "unfinished setting-brief candidate exists; validator will not delete it",
+                    )
         if not self.bound:
             self.metrics["bound_module"] = "skipped (unbound)"
             return
@@ -1804,7 +1821,7 @@ class Validator:
             self.add("ERROR", "MODULE_ID_UNSAFE", "INSTANCE/CURRENT_SAVE.md", f"unsafe module id {module_id!r}")
             return
         module_dir = self.root / "MODULES" / module_id
-        required = ("MODULE.md", "POLICY.md", "CHAR/PC.md", "T0_SAVE.md")
+        required = ("MODULE.md", "SETTING_BRIEF.md", "POLICY.md", "CHAR/PC.md", "T0_SAVE.md")
         for relative in required:
             required_path = module_dir / relative
             if not required_path.is_file():
@@ -1818,6 +1835,73 @@ class Validator:
         pc_path = module_dir / "CHAR/PC.md"
         pc_text = self.read_text(pc_path, "MODULE_PC_READ") if pc_path.is_file() else None
         self.check_pc_bundle(module_dir, pc_text)
+        setting_brief_path = module_dir / "SETTING_BRIEF.md"
+        setting_brief_text = self.read_text(setting_brief_path, "SETTING_BRIEF_READ") if setting_brief_path.is_file() else None
+        if setting_brief_text is not None:
+            setting_frontmatter, setting_errors = extract_frontmatter(setting_brief_text)
+            for error in setting_errors:
+                self.add("ERROR", "SETTING_BRIEF_FRONTMATTER", self.relative(setting_brief_path), error)
+            unexpected_setting_fields = sorted(set(setting_frontmatter) - {"id", "class"})
+            if unexpected_setting_fields:
+                self.add(
+                    "ERROR",
+                    "SETTING_BRIEF_FRONTMATTER_FIELDS",
+                    self.relative(setting_brief_path),
+                    f"setting brief front matter contains unexpected fields: {', '.join(unexpected_setting_fields)}",
+                )
+            expected_setting_id = f"{module_id}.setting_brief"
+            if setting_frontmatter.get("id") != expected_setting_id:
+                self.add(
+                    "ERROR",
+                    "SETTING_BRIEF_IDENTITY",
+                    self.relative(setting_brief_path),
+                    f"setting brief id must be {expected_setting_id!r}",
+                )
+            if setting_frontmatter.get("class") != "setting-brief":
+                self.add(
+                    "ERROR",
+                    "SETTING_BRIEF_CLASS",
+                    self.relative(setting_brief_path),
+                    "setting brief class must be 'setting-brief'",
+                )
+
+            section_lines: list[int] = []
+            for section in SETTING_BRIEF_SECTIONS:
+                body, start, count = section_text(setting_brief_text, section, 2)
+                if count == 0:
+                    self.add(
+                        "ERROR",
+                        "SETTING_BRIEF_SECTION_MISSING",
+                        self.relative(setting_brief_path),
+                        f"missing exact level-two section {section!r}",
+                    )
+                    continue
+                if count > 1:
+                    self.add(
+                        "ERROR",
+                        "SETTING_BRIEF_SECTION_DUPLICATE",
+                        self.relative(setting_brief_path),
+                        f"exact level-two section {section!r} occurs {count} times",
+                    )
+                    continue
+                if start is not None:
+                    section_lines.append(start)
+                if body is None or not self.meaningful_payload(body):
+                    self.add(
+                        "ERROR",
+                        "SETTING_BRIEF_SECTION_EMPTY",
+                        self.relative(setting_brief_path),
+                        f"section {section!r} has no substantive body",
+                        start,
+                    )
+            if len(section_lines) == len(SETTING_BRIEF_SECTIONS) and section_lines != sorted(section_lines):
+                self.add(
+                    "ERROR",
+                    "SETTING_BRIEF_SECTION_ORDER",
+                    self.relative(setting_brief_path),
+                    "setting brief sections must appear in contract order",
+                )
+            self.metrics["setting_brief"] = "checked"
         module_path = module_dir / "MODULE.md"
         module_text = self.read_text(module_path, "MODULE_READ") if module_path.is_file() else None
         if module_text is not None:
@@ -2548,7 +2632,7 @@ def make_report(
                 "Bearing identity, required lanes, provisional base/staleness observation, empty state, and candidate residue",
                 "clean unbound/bind INSTANCE registers and overlay paths",
                 "installed engine identity, safe ids, and declared character-build support",
-                "bound module using v0.4 descriptor grammar, capabilities/routes, voice, closed PC routing bundles, and T0/bind consistency where machine-parseable",
+                "bound module using v0.4 descriptor grammar, required setting-brief identity/sections and candidate residue, capabilities/routes, voice, closed PC routing bundles, and T0/bind consistency where machine-parseable",
                 "SAFETY flag and entry presence",
                 "campaign/session archive routing, entry budgets, source reachability, and literal headings",
                 "message/relation ledger pointer scope and resolution",
