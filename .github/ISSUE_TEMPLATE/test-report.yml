@@ -1,0 +1,109 @@
+name: RPG OS test report
+description: Report a reproducible structural, host-observation, or semantic result.
+title: "[Test]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Privacy first:** use a sanitized fixture. Do not post private campaign prose, safety boundaries, credentials, account data, prohibited material, or copyrighted rulebook text.
+
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Evidence class
+      options:
+        - STRUCTURAL
+        - HOST OBSERVATION
+        - SEMANTIC
+    validations:
+      required: true
+
+  - type: input
+    id: release
+    attributes:
+      label: RPG OS release or commit
+      placeholder: v0.5 or commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Host, model, operating system, and Python version
+      description: Use only operator-attested or host-exposed identity; write unknown where necessary.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: clean_copy
+    attributes:
+      label: Started from a clean unbound copy?
+      options:
+        - "Yes"
+        - "No"
+        - Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: law_modified
+    attributes:
+      label: Was OS/LAW.md modified?
+      options:
+        - "No"
+        - "Yes"
+        - Unknown
+    validations:
+      required: true
+
+  - type: input
+    id: test_id
+    attributes:
+      label: Relevant P-number or command
+      placeholder: P19, NEW GAME, CLOSE, VALIDATE...
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: List exact steps and only the files needed to reproduce the result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: validator
+    attributes:
+      label: Validator output and exit status
+      description: Required for structural reports; write not run when it does not apply.
+      render: shell
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized supporting evidence
+      description: Include AUDIT output or a minimal excerpt only when useful; self-reports are evidence, not independent proof.
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Public-report checks
+      options:
+        - label: I removed private, identifying, prohibited, and unlicensed third-party material.
+          required: true
+        - label: I have not represented MODEL-CHECKED or one host observation as universal proof.
+          required: true
+

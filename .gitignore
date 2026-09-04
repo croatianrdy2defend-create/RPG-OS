@@ -1,0 +1,16 @@
+# Python validation artifacts
+__pycache__/
+*.py[cod]
+
+# Operating-system and editor debris
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+
+# Locally packaged releases and private campaign workspaces
+*.zip
+LOCAL_CAMPAIGNS/
+private-campaigns/
+

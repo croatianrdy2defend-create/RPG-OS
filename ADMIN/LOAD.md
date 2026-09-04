@@ -1,0 +1,46 @@
+# LOAD — bind an existing module
+
+Operator-side. Not PLAY. Not New Game.
+
+Open only after an explicit **LOAD MODULE** request naming a module that already exists under `MODULES/`.
+
+## Procedure
+
+0. If CURRENT_SAVE `engine`/`module` is not unbound, **stop**. Do not overwrite a live run. Operator must use a separate folder/instance. Never empty ARCHIVE.
+   If CURRENT_SAVE is unbound but ARCHIVE contains any campaign row, ledger row, session folder, or other prior-run evidence, or INSTANCE contains non-template registers/overlays or an unexpected path, also stop. Use a clean separate kit copy; never clear or inherit prior-run state.
+   This guard authorizes one bounded ADMIN inventory of `ARCHIVE/` and `INSTANCE/` only; it does not authorize PLAY discovery or a repository-wide lore scan.
+   Before resolving the operator-named module path, require a portable safe module id: ASCII letters, digits, `.`, `_`, and `-` only, beginning with a letter or digit; no slash, backslash, whitespace, absolute path, or traversal. Otherwise stop without constructing a path.
+
+1. Confirm `MODULE.md`, `POLICY.md` (voice declared), `CHAR/PC.md`, `T0_SAVE.md` exist. Prefer the v0.4 descriptor grammar and exact `## Voice` heading. If the shipped script inspects a legacy descriptor, its provenance remains `SCRIPT-VERIFIED` and its result remains `INCOMPLETE`; any separate manual confirmation is `MODEL-CHECKED` and cannot upgrade that script result into a complete PASS.
+2. Confirm the engine id in MODULE.md is itself a portable safe id and equals an installed engine with exact scalar `class: engine`, whose scalar front-matter `id` matches the flat filename stem in `ENGINE/<id>.md` or the containing directory name in `ENGINE/<id>/ENGINE.md`. Require scalar front matter `character_build_support: self-contained`, `operator-values-required`, or `no-mechanical-sheet`. Do not treat aliases or pointers as engines.
+3. If voice is missing: not runnable. Stop.
+4. Open MODULES/_CONTRACT.md, ENGINE/_CONTRACT.md, and INSTANCE/_SCHEMA.md. Run the validation checklist:
+
+   - required module files present
+   - exact `## Voice` heading present; for a legacy heading, manual confirmation is recorded while scripted coverage stays `INCOMPLETE`
+   - v0.4 MODULE scalar front matter and exact capability table parse; for a legacy descriptor, manually confirm identity and every declared capability while scripted coverage stays `INCOMPLETE`
+   - engine id resolves to exactly one file
+   - the engine's required/deferred/optional character field groups and support class are readable; every nondeferrable bind field exists in the PC entrypoint/bundle, and every deferred field is both permitted by the engine and unnecessary to the accepted opening mechanics
+   - every declared optional capability has an existing target entrypoint and at least one real authoritative body; an empty index does not pass
+   - T0_SAVE contains whitelist fields needed for bind (`engine`, `module`, `immediate_scene`)
+   - T0 `immediate_scene` is a live situation with handback before any voluntary PC act and does not smuggle an unaccepted prior promise, crime, intimacy, purchase, risk, or commitment
+   - PC persona/background grants no standing GM authorship; every fact/value is supplied/accepted or explicitly unspecified, and mutable opening status agrees with T0 rather than duplicating a competing present
+   - every `declared_state_flags` live-system cue names only a compact nonsecret id, causal/due-check condition, and resolvable declared capability/section route; any mutable capability marked initially implicated but not otherwise recognizable has such a cue, and a campaign with later independently live private systems reserves the optional field even if its T0 value is `none`
+   - every mutable-system authoritative body stores readable triggers/non-triggers, selected post-change current route, cue lifecycle where applicable, and any dependency/update order it owns; any RULES_HOOKS declaration remains calibration rather than an ENGINE contradiction
+   - detailed current resources, schedules, and mutable sheet values have one selected authority and no competing total
+   - any machine-marked PC routing index reaches only non-placeholder Markdown bodies under that module's `CHAR/` tree; the exact transitive bundle contains no unrelated sibling
+   - private bodies are checked only for required structure and reachable payload without printing their contents; sealed authoring never authorizes regeneration or disclosure during LOAD
+
+   If any required check fails, or a legacy field lacks manual confirmation: not runnable. Do not bind. Manual confirmation may establish that a legacy module is runnable; it does not convert the script's structural result into PASS.
+
+5. Copy T0 into `INSTANCE/CURRENT_SAVE.candidate.md`. Assign a new unique portable `campaign_id` for this run and a new safe `save_id`; set `save_rev=1`, `save_parent=none`, `commit_kind=bind`, and `archive_ref=none`.
+6. Copy the exact PC bundle rooted at `MODULES/<id>/CHAR/PC.md` to matching paths under `INSTANCE/CHAR/`, preserving bytes and relative paths. Point `pc_record` to `INSTANCE/CHAR/PC.md`. Do not copy unrelated CHAR siblings.
+7. Initialize the canonical empty instance registers (NOW, KNOWN, CAST_STATUS, CORRECTIONS). Do not bulk-copy opening clocks, seeds, factions, institutions, people, or other optional bodies into INSTANCE, and do not create undiscoverable standalone status files. Accepted MODULE mutable baselines are immutable as-of-T0 snapshots, not permanent current claims. One specifically named snapshot may support current continuity only when the selected current authority and chat have no later value and no declared causal transition has occurred or is due. PLAY keeps later accepted change in chat RAM. At the next explicit CHECKPOINT/CLOSE, ADMIN applies unsaved transitions exactly once in the selected destination: NOW/person route, CURRENT_SAVE candidate, or PC bundle, and maintains only the cross-boot cues still required. A MODULE person's `## NOW` / `## PC` follows the same temporal rule. Do not activate or promote merely because a baseline exists.
+8. Ask whether this run has operator-specific safety extras beyond LAW. Write only explicitly accepted Hard-no/Fade sentences into INSTANCE/SAFETY.md and set `safety_state` accordingly (`active` only with at least one real sentence). Module-imposed stronger restrictions remain in POLICY and are not copied into the per-run safety file.
+9. Validate the complete candidate against INSTANCE/_SCHEMA.md, including identity, whitelist, overlay, safety, and present fields. If invalid, do not replace CURRENT_SAVE. Otherwise replace CURRENT_SAVE with the candidate last.
+   If any write, provider response, or generation is interrupted before replacement, the unbound save remains authoritative but partial SAFETY/INSTANCE/candidate artifacts may exist. Do not call the module bound and do not start PLAY. Either complete only the already accepted load operation and validate the entire bind, or inspect and restore the clean pre-bind copy required by P19 before retrying. Do not claim automatic rollback.
+10. Do **not** clear ARCHIVE. Step 0 requires an empty run archive before bind; prior history belongs in its original folder.
+11. Tell the operator to start PLAY in a **fresh** chat with Test 1 semantics. Confirm `save_id`.
+
+Do not regenerate the module from a questionnaire.
+Load only a module that already exists under MODULES/. This clean kit starts with none.
