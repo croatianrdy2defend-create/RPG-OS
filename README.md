@@ -3,11 +3,59 @@
 [![Structural validation](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml/badge.svg)](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/validate.yml)
 [![Documentation: CC BY 4.0](https://img.shields.io/badge/docs-CC%20BY%204.0-lightgrey.svg)](LICENSE)
 
-**Release:** v0.5 public testing. **Maturity:** file-native prototype; initial lifecycle validated, not Session-100-proven. This release retains hierarchical scene-sharded archives and the cross-domain retrieval-locality doctrine, adds optional guided character and complex-campaign construction, and includes an executable read-only structural validator with explicit evidence boundaries. **LAW is frozen.** It is not a video game, virtual tabletop, or product of any RPG publisher.
+**In plain English:** RPG OS is a folder that helps an AI run and remember a solo tabletop RPG across new chats. The campaign is stored in readable files, while you keep control of your character's decisions.
+
+It is not a standalone game or app. You need an AI workspace that can open files, save changes, and use the same folder in a fresh chat. You do **not** need to understand the internal architecture to play.
+
+**Release:** v0.5 is a public test release. Setup, saving, fresh-chat resume, and narrow historical recall have been tested; very long campaigns have not.
 
 **Start here:** [`QUICKSTART.md`](QUICKSTART.md) · [`INSTALLATION.md`](INSTALLATION.md) · [`COMMANDS.md`](COMMANDS.md) · [`ARCHITECTURE.md`](ARCHITECTURE.md) · [`CHANGELOG.md`](CHANGELOG.md)
 
 Do not load this whole README during PLAY. It is the public project overview, not resident campaign context.
+
+---
+
+## Start here if you just want to play
+
+You do not need to read LAW, contracts, schemas, archive rules, or the rest of this README before your first game. Most of those files are instructions for the AI.
+
+1. Download and extract one clean copy of RPG OS.
+2. Add the whole folder to an AI project or workspace that can **read and save files**.
+3. Start a new chat in that workspace and paste:
+
+   ```
+   Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md, and INSTANCE/CURRENT_SAVE.md.
+   Do not search or list the rest of the folder.
+   Confirm the runtime is ready. Do not start a scene.
+   ```
+
+4. When the AI says the kit is ready but has no campaign, say **`New game`**. Answer its questions, review the proposed campaign, and say **`Accept`** only when you are satisfied.
+5. Wait for the AI to confirm a `campaign_id` and `save_id`. Then start a **fresh chat** in the same workspace and use the [play/resume message](INSTALLATION.md#5-play-in-a-new-chat).
+6. Say **`CHECKPOINT`** when taking a break and you need the current situation saved. Say **`CLOSE`** at session end when you also want detailed scenes and exact dialogue preserved. Wait for the new `save_id` before closing or deleting the chat.
+
+For the easiest first campaign, choose a **Sparse** world, a **Quick** or **Standard** character, and either **No full sheet** or **Minimum required** sheet. You can build more detail later.
+
+### The capitalized terms, in ordinary language
+
+You normally type only `New game`, `Accept`, `CHECKPOINT`, and `CLOSE`. The other terms are internal labels that help the AI keep different jobs separate.
+
+| Term | Plain meaning |
+|---|---|
+| **BOOT** | Starting or resuming RPG OS in a fresh chat. |
+| **SETUP** | Creating the world and character. Nothing is played or made canon until you approve it. |
+| **PLAY** | The actual game. The AI runs the world; you decide your character's voluntary actions, words, thoughts, and consent. |
+| **ADMIN** | Out-of-game work such as saving, loading, checking, or archiving files. |
+| **LAW** | Fixed core instructions for agency, safety, authority, and retrieval. |
+| **ENGINE** | The rules used for dice or other uncertain outcomes. |
+| **MODULE** | The reusable campaign blueprint: world, style, starting material, and optional systems. |
+| **INSTANCE** | Your current playthrough: the live save and everything that changed during play. |
+| **CURRENT_SAVE** | The compact save file used to resume the current moment. |
+| **POLICY** | Campaign-specific tone, pacing, boundaries, and unwanted story tendencies. |
+| **RULES_HOOKS** | Optional guidance for applying the chosen rules; it is not a replacement ruleset. |
+| **CHECKPOINT** | Save the current situation without creating detailed historical evidence. |
+| **CLOSE** | Save the current situation and preserve indexed session evidence. |
+
+Full command details are in [`COMMANDS.md`](COMMANDS.md). Technical architecture begins below.
 
 ---
 
@@ -17,19 +65,19 @@ RPG OS is a **file-native operating system for solo tabletop play with a large l
 
 The campaign does not live in the chat. The chat is a disposable working set. Persistence is a folder of Markdown files.
 
-Four layers:
+Under the hood, four layers keep different kinds of information from becoming mixed together:
 
-| Layer | Job | Swappable? |
+| Layer | Plain-language job | Swappable? |
 |---|---|---|
-| **OS** | How an LLM is allowed to run any campaign: agency, retrieval, privacy, PLAY vs ADMIN, situation-before-fiction | No. Frozen kernel (`OS/LAW.md`). |
-| **ENGINE** | How uncertainty is resolved: dice, moves, an oracle, or freeform judgment | Yes. Plugin under `ENGINE/`. |
-| **MODULE** | What world this is: voice, tone, PC baseline, lore, optional PEOPLE/WORLD/SEEDS | Yes. Born via New Game or loaded. |
-| **INSTANCE** | This particular run: compiled present + cold archive | Yes. One module can seed separate runs, each in its own folder copy. |
+| **OS** | Fixed rules the AI must obey, including player agency, safety, and what it may retrieve | No. Its kernel is `OS/LAW.md`. |
+| **ENGINE** | The method used to resolve uncertainty: freeform judgment, dice, moves, or an oracle | Yes. |
+| **MODULE** | The reusable campaign blueprint: setting, tone, PC baseline, and optional world systems | Yes. |
+| **INSTANCE** | This particular playthrough: its current save, changes, and history | Yes. Use a separate folder copy for another run. |
 
-Resident PLAY payload after boot is **two files only**:
+During the actual game, the AI keeps only **two files permanently in view**:
 
-1. `OS/LAW.md` — immutable execution law
-2. `INSTANCE/CURRENT_SAVE.md` — compiled present (this kit ships **unbound**)
+1. `OS/LAW.md` — the fixed core rules
+2. `INSTANCE/CURRENT_SAVE.md` — the current playable situation (the clean download is **unbound**, meaning no campaign exists yet)
 
 Everything else is retrieved only when the *immediate* moment causally requires it.
 
@@ -122,22 +170,22 @@ If bound: establish `CURRENT_SAVE` immediate scene, retrieve POLICY voice (and P
 
 Interview, one cluster at a time:
 
-1. Rules engine (list installed when scalar front matter has exact `class: engine` and `id` matches the flat filename stem or the containing directory name for `<id>/ENGINE.md`; skip aliases/pointers). Draft a compact engine if missing.
+1. Rules engine — the method used for dice or other uncertain outcomes. Freeform is included; a compact local adapter may be drafted if needed, but the AI must not copy or reconstruct a copyrighted rulebook.
 2. Title and premise
-3. Narrative voice (required; OS does not pick close-third)
-4. Tone and cadence
-5. Anti-attractors
-6. Extra safety → `INSTANCE/SAFETY.md` + flag, before detailed drafting
-7. World/campaign depth — Sparse, Focused, Detailed, or Custom. Detailed means deeper only in selected domains.
+3. Narrative voice
+4. Tone and pacing
+5. Anti-attractors — themes or patterns you do not want the GM to force or overuse
+6. Optional safety boundaries, asked before detailed drafting
+7. World/campaign depth — Sparse, Focused, Detailed, or Custom. Detailed means deeper only in the areas you select.
 8. PC concept plus two independent choices: Quick/Standard/Detailed/Custom profile depth, and No full sheet/Minimum required/Guided full sheet/Import mechanical path. A completed sheet is optional.
-9. T0 time/place plus dependency and interaction audits where needed
-10. **Starting scenario** — 2–3 live hooks; pick one. No idle “you stand in front of the house.” No authored first PC act. No smuggled “you already agreed.”
-11. Optional capabilities only if a real body and route will exist
-12. Manifest → explicit ACCEPT → validation checklist (`MODULES/_CONTRACT.md`, `ENGINE/_CONTRACT.md`, `INSTANCE/_SCHEMA.md`) → bind
+9. Starting time, place, and situation (`T0`)
+10. **Starting scenario** — 2–3 situations already in motion; pick one. The AI must not choose the PC's feelings or first action.
+11. Optional systems such as clocks, factions, institutions, private truths, or tracked resources — created only when you choose them and their supporting files will exist
+12. Manifest — a final summary of what will be created, omitted, or left undecided — followed by explicit **ACCEPT**, structural checks, and binding the campaign to this folder
 
-Focused/Detailed/Custom world construction uses `ADMIN/CAMPAIGN_BUILD.md`. Character construction uses `ADMIN/CHARACTER_BUILD.md`. Both are SETUP-only and conditional; neither becomes resident PLAY context.
+Focused, Detailed, or Custom world construction uses `ADMIN/CAMPAIGN_BUILD.md`. Character construction uses `ADMIN/CHARACTER_BUILD.md`. These are questionnaire and file-building procedures, not part of the playable scene.
 
-The campaign builder can model an emergent sandbox, episodes, a broad phase trajectory, causal clocks/fronts, autonomous factions or institutions, inactive possibilities, multidimensional relationships, selective/exact resources, bounded private-truth modes, and compact house-rule calibration. Each is optional. Complex interactions receive an explicit cause/update-order audit; private systems that remain independently live across fresh boot receive a minimal non-revelatory watch cue only when needed, updated or demoted at explicit saves.
+Optional campaign machinery can include phases, causal clocks, factions, hidden information, relationships, resources, and house-rule guidance. You decide which systems exist. The AI must define what can change them and where their current state is stored; it does not load every system merely because it exists.
 
 If CURRENT_SAVE is already bound, New Game and LOAD **stop**. Use a separate folder for a second run.
 
@@ -169,12 +217,12 @@ Split by relevance, not a token threshold. A long cohesive file may be correct; 
 
 | | CHECKPOINT | CLOSE |
 |---|---|---|
-| Present (time, place, resources, pending act) | Yes — this **is** a real save of the present | Yes |
-| Exact wording, scene evidence, ledgers | No | Yes |
-| Write order | Candidate + plan → preflight → selected INSTANCE bodies → assembled-state check → CURRENT_SAVE last | Candidate + plan → preflight → selected INSTANCE bodies → archive shards/indexes/ledgers → assembled-state check → CURRENT_SAVE last |
-| `commit_kind` | `checkpoint` | `close` |
+| Best used when | Taking a break or protecting current progress | Ending a session or before discarding a chat |
+| Saves the complete current situation | Yes — this **is** a real save | Yes |
+| Preserves detailed scene evidence and exact wording | No | Yes |
+| What you can resume later | The current moment and live state | The current moment, live state, and retrievable session details |
 
-Do not leave until ADMIN prints the new `save_id`. Next session is a **new chat**. The save is memory.
+Wait until ADMIN prints the new `save_id` before leaving. The next session can begin in a **new chat** because the files, not the old chat, hold the save. Technical write order is defined in `ADMIN/CLOSE_CONTRACT.md`.
 
 ### 5.6 Archive (cold)
 
