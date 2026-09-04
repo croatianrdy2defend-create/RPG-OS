@@ -85,7 +85,7 @@ Auditor of previous zip: STILL BLOCKED on execution contradictions. v0.2 closed:
 - CLOSE follows `_SCHEMA` compilation matrix; `hot_identifiers` only on the save
 - AUDIT = previous non-AUDIT turn
 - Section preflight (honestly weak); physical context isolation remains unproven
-- Bojan / setting residue removed from the clean kit
+- Campaign-specific names and setting residue removed from the clean kit
 
 Auditor: **READY WITH MINOR CHANGES.** LAW byte/semantic freeze requested; kernel not reopened for genre.
 
@@ -105,15 +105,14 @@ Auditor: **READY WITH MINOR CHANGES.** LAW byte/semantic freeze requested; kerne
 - Optional capabilities; module-declared voice; no LAW literary fallback.
 - Unbound Test 0 / 0b / 0c / adversarial improvise.
 - SETUP / New Game wizard.
-- Tellus as first contract client (later removed from the public kit).
+- First authored campaign used as a contract client, then removed from the public kit.
 - Session 1 play, ADMIN close, and fresh-chat resume with one targeted archive recall.
 - Archive grain: session deltas, message/relation ledgers.
 - Engine-agnostic: any RPG as ENGINE plugin.
-- Clean kit: Tellus stripped; testers start New Game.
+- Clean kit: campaign world stripped; testers start New Game.
 
 
 ## Unversioned research (pre-OS)
 
-- Tellus v1 campaign pack: detailed world, mixed live state, chronicle attractors, legacy loaders.
+- Original v1 campaign pack: detailed world, mixed live state, chronicle attractors, legacy loaders.
 - Evaluation of that pack as a campaign OS; decision to stop retrofitting.
-
