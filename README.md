@@ -55,7 +55,28 @@ You normally type only `New game`, `Accept`, `CHECKPOINT`, and `CLOSE`. The othe
 | **CHECKPOINT** | Save the current situation without creating detailed historical evidence. |
 | **CLOSE** | Save the current situation and preserve indexed session evidence. |
 
-Full command details are in [`COMMANDS.md`](COMMANDS.md). Technical architecture begins below.
+Full command details are in [`COMMANDS.md`](COMMANDS.md).
+
+### Can I use GURPS, D&D, or another game system?
+
+Yes. **Freeform is the only engine included and ready without extra setup, but RPG OS is not limited to Freeform.** It can be configured with a compact local engine adapter for systems such as:
+
+- GURPS Fourth Edition
+- Dungeons & Dragons 5e
+- Pathfinder
+- Call of Cthulhu or Basic Roleplaying
+- Savage Worlds
+- Fate
+- a specific Powered by the Apocalypse game
+- Ironsworn or another solo-oriented system
+- a solo oracle or GM emulator
+- your own homebrew rules
+
+An engine adapter is not a replacement rulebook. It is a small file telling the AI how this campaign resolves uncertainty, which character-sheet values matter, and which missing values require a question. You must provide or import the needed procedures, values, and character information from material you are entitled to use. If something required is unavailable, the AI must ask, defer it when allowed, or stop—it must not invent mechanics or reconstruct a copyrighted rulebook.
+
+The systems named above are examples, not bundled content, tested integrations, endorsements, or claims of official compatibility. RPG OS is not affiliated with their publishers, and their names and trademarks belong to their respective owners.
+
+Technical architecture begins below.
 
 ---
 
