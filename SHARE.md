@@ -1,4 +1,4 @@
-# A short v0.7.1 playtest
+# A short v0.7.2 playtest
 
 Use a clean copy and record observed results. These are proposed behavioral checks, not a claim that the release passed a live campaign.
 
@@ -14,3 +14,5 @@ Use a clean copy and record observed results. These are proposed behavioral chec
 Also compare explicit versus absent structural-opacity grants, ironman versus rewind-enabled valid outcomes, and permitted versus denied hard cuts using the behavioral fixtures. Error correction and stopping/changing depiction must remain available. Treat the resulting actual play observations separately from clause-presence or filesystem checks.
 
 Record player effort, corrections, pacing, continuity, and retrieval/write observations separately from structural validation. See CONTRIBUTING.md for reporting.
+
+For the original v0.7.2 continuity trial, use [ADMIN/PLAYTEST_V072](ADMIN/PLAYTEST_V072.md). A run from identical prepared facts checks runtime/save behavior; evaluating the optional preparation aids also requires observing setup and the resulting player experience.

@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.7.1
+# Validation and behavioral fixtures — v0.7.2
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -20,13 +20,13 @@ Failure-branch tests deliberately change only disposable validator copies to che
 
 ## Behavioral evidence protocol
 
-The following are proposed v0.7.1 acceptance fixtures. They test the current readable agreements and state representation. All behavioral and model-led maintenance fixtures are NOT RUN until actual outputs and observations are collected; automated fixture simulations do not change that status.
+The following are proposed acceptance fixtures for the current readable agreements and state representation. All behavioral and model-led maintenance fixtures are NOT RUN until actual outputs and observations are collected; automated fixture simulations do not change that status. The optional cold [v0.7.2 paired pilot protocol](PLAYTEST_V072.md) specifies an original small campaign, fixed player inputs, fresh-context continuation and file-based scoring. It is coordinator material, never a normal GM startup dependency.
 
 Use clean copies, supplied original lore, comparable model/settings and player wording, and real read/write traces where the host exposes them. Record package identity and available evidence. Run opposing grants against identical material where the question concerns authority. Keep actual causal state fixed unless causal status is the variable being tested: an established due event still occurs in a referee game.
 
 Score the fictional output and observed operations. Keep factual/epistemic error, authority error, activation/continuation error, persistence error, and process-language leakage separate. Preserving a posture at an interruption instant is not automatically a voluntary nonresponse; consuming a material choice or attributing a decision is. Strong prose cannot average away a serious authority error, and terse inactivity cannot win merely by avoiding mistakes.
 
-Include at least three turns per surviving fixture, meaningful player input and one fresh-chat recovery. Positive scores assess sufficient orientation, responsive NPCs, consequences, appropriate initiative, natural dialogue and enjoyable pace. Collect any AUDIT explanation after the scored sequence as supplemental self-report. Prefer independent blinded scoring; record disagreements and adjudication. One model across fresh contexts is not cross-provider evidence. Sample sizes and further replication remain experiment decisions, not product control fields.
+Include at least three turns per surviving fixture, meaningful player input and one fresh-chat recovery. Positive scores assess sufficient orientation, responsive NPCs, consequences, appropriate initiative, natural dialogue and usable pacing. Model ratings of those properties do not establish player enjoyment; obtain that separately from human players. Collect any AUDIT explanation after the scored sequence as supplemental self-report. Prefer independent blinded scoring; record disagreements and adjudication. One model across fresh contexts is not cross-provider evidence. Sample sizes and further replication remain experiment decisions, not product control fields.
 
 ## Play fixtures
 

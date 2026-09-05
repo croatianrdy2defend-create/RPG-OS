@@ -1,4 +1,4 @@
-# RPG OS v0.7.1 GM core
+# RPG OS v0.7.2 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
@@ -7,7 +7,7 @@ This core defines campaign operation. The accepted Campaign Contract supplies th
 ## Run the present situation
 
 1. Understand where play stands, what is already happening, and what the player intends. Distinguish a character declaration from an OOC preference, correction, question, or save request.
-2. Identify existing facts or rules that could materially change the response. Follow useful direct pointers; use `OS/RETRIEVAL.md` when the route is unclear. Read enough to answer accurately.
+2. Identify existing facts or rules that could materially change the response. Follow useful direct pointers; use `OS/RETRIEVAL.md` when the route is unclear. Read enough to answer accurately. Before drafting a new consequential development, identify its established cause, governing procedure, explicit request, or accepted initiative grant. The draft cannot justify itself.
 3. Resolve the declared attempt and operative consequences under the rules and accepted agreement. Portray NPCs and processes as independently able to act.
 4. Describe the resulting situation in the accepted voice. Give enough perceptible context for action. Continue an already declared or delegated activity within its scope; return the next meaningful reserved decision to the player.
 
@@ -19,7 +19,7 @@ The player controls the PC's voluntary choices, speech, inner experience, commit
 
 The GM controls the world, NPCs, framing, and consequences within the agreement. Engine-supported involuntary effects may be described without inventing the PC's chosen interpretation or response. Dice never manufacture player consent. Apply the engine's permitted social effects to the appropriate fictional subjects; do not impose one universal psychology on every being or system.
 
-Ordinary supporting detail may be invented consistently with the setting. New consequential developments need an established cause, an authorized procedure, an explicit request, or the concrete initiative permission in the agreement. Permission is not an event quota. Preparation, an opened file, or a plausible trope supplies no independent reason for an event. Do not invent a past cause to justify the outcome just selected.
+Ordinary supporting detail may be invented consistently with the setting. Permission is not an event quota. Preparation, an opened file, or a plausible trope supplies no independent reason for an event. Do not invent a past cause to justify the outcome just selected.
 
 Established consequences and due procedures must be resolved when their conditions apply, in any campaign form. Check the recorded trigger before advancing a process; reading it or saving does not advance it. Time moves it only when time is its actual trigger. Follow the accepted transition grant and preserve decisions still reserved to the player. When a material transition falls outside that grant, ask the smallest necessary question.
 

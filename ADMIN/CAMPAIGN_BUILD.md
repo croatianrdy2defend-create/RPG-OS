@@ -8,6 +8,8 @@ Offer a short relevant selection: world/ordinary life; places and exploration; p
 
 World detail, dynamics, accounting precision, and mechanical complexity are independent. Detailed means depth inside a selection, not every domain, massive rosters, or a larger resident prompt. Keep one cohesive body until independent retrieval would benefit from a split.
 
+The optional portrayal and investigation notes below help only when recurring people or consequential hidden facts need preparation. Select them by relevance and accepted depth/authoring grants. They add no required fields, files, interview rounds, or normal-startup reads; a short paragraph in an existing authoritative body is enough. Examples illustrate drafting, not facts to import into a campaign.
+
 ## The actual agreement
 
 Return material decisions to the five-section run proposal: Campaign promise, Player control, GM initiative, Time and transitions, Presentation. Retain the required named clauses from NEW_GAME in their assigned sections: Play form, Retcon, Form selection, Cuts, Structure disclosure. They are short readable terms within the existing proposal, not five additional interview passes. Include what may be authored, applicable conditions/limits, what must proceed once established, and actual routine/cut grants. Do not infer a grant from a genre or label.
@@ -68,11 +70,31 @@ Once a delegated selection creates an operative structural commitment, preserve 
 
 A filename, heading, index gist, or watch cue can spoil a secret; use non-revelatory ids/routes. Workspace privacy is not encryption and cannot conceal files from their owner. Do not promise hidden tools, another agent, or guaranteed secrecy. If the host echoes writes, offer reviewed or unfixed preparation. No private envelope supplies undelegated PC history, decisions, commitments, or mechanical values.
 
+#### Optional note for a consequential hidden fact
+
+When useful, record what is fixed and what remains unresolved; which relevant people know, infer, misbelieve, or deliberately misstate it; and what available evidence could distinguish those claims. Explain the basis of knowledge or belief only where it matters. Confidence, agreement, repetition, and a player's proposed explanation do not establish truth. Preserve both an important false statement and its actual status so a later GM does not mistake a lie or belief for confirmation.
+
+Use the existing TRUTH, WORLD, or person body that owns the fact. Later changed knowledge, deception, or world state belongs in its selected INSTANCE record; refer to other owners rather than copying their current values. A compact note does not replace evidence or fix an unresolved fact by being written. Fixed new content still needs the accepted authoring authority; optional REVIEW cannot establish it.
+
+**Example — an accepted opening with a partly unresolved event:** Kesh's manual override opened the service hatch before the blackout; no impact caused that opening. Kesh remembers doing it but says the hatch stayed closed to conceal an unauthorized repair: a deliberate lie. Venn heard the alarm but saw no opening, and sincerely believes an impact burst the hatch: a mistaken belief, not deception. The cause of the blackout remains deliberately unfixed; neither account nor a player's sabotage theory settles it. A battery-backed hatch log records local opening before power loss, but says nothing about motive or the blackout's cause. That evidence becomes available only through actual access to the log, not because this note exists.
+
+For a campaign promising a solvable factual investigation, check that its important conclusions have workable discovery paths and that witnesses can be wrong without accidentally making progress impossible. Do not impose physical-evidence requirements, a clue count, a single solution, or a fixed answer on every mystery. Testimony-only inquiry, competing interpretations, and deliberate unknowability can fit an explicitly accepted experience. Keep genuinely unfixed matters open until their agreed resolution process requires determination; do not choose truth to reward or defeat a guess.
+
 ### People, factions, and institutions
 
 Develop actors whose recurrence or independent action matters: motives, resources, constraints, knowledge/misbeliefs, relationships, characteristic behavior, and the next applicable action or condition. Include distinctive dialogue/portrayal cues where useful. Do not prebuild everyone.
 
 An established actor can act when due without waiting for PC attention. An invented actor's existence is not a requirement to feature them. A scheduled battle can start without assuming the PC joins it. Use one stable person id for routing and later INSTANCE overlays.
+
+#### Optional portrayal anchor for a recurring person
+
+If an important person is likely to become generic in play, add a small usable anchor: their recurring priority, usual conversational approach, one representative line or other mode of expression, a relevant constraint, and how pressure may change their response. Select only useful details. Speech, human body language, individual psychology, and a particular number of quirks are not requirements.
+
+Ground an existing person's anchor in accepted facts or actual prior portrayal. A sample line is an illustration, not historical dialogue or a phrase to repeat in every scene. Stable anchors stay with the existing baseline; a current objective, attitude, resource, or relationship stays in its one current authority. Retrieve that current context when it matters rather than duplicating it in the anchor. Supported changes can override an old baseline; do not freeze a person forever to preserve a voice note.
+
+**Example — a maintenance swarm:** Rill usually weighs actions by whether a damaged system can recover. Its speech names a cause and then the likely result: “Seal that joint and the rest can keep breathing.” Under immediate pressure it gives the urgent instruction first: “Close the feed. I can explain once it holds.” It will not knowingly conceal a diagnosed structural hazard. Whether Rill currently trusts the PC, controls that feed, or is assigned to this repair is answered by its existing current record, not invented from this anchor. The same aid could instead describe light patterns or collective expression in a setting without speech.
+
+Do not make a roster, checklist before every line, mandatory mannerisms, or a new file for every transient extra. The anchor helps portray a person already relevant to the situation; it does not summon them, grant them knowledge, or schedule their next appearance.
 
 ### Conditions, phases, clocks, and fronts
 

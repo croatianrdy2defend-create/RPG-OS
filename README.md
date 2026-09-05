@@ -1,26 +1,21 @@
-# RPG OS v0.7.1
+# RPG OS v0.7.2
 
 RPG OS helps one commercial LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the model retrieves references and saves the campaign into the workspace.
 
 **Experimental release.** This kit contains no campaign world and bundles only the Freeform engine. Other systems need an appropriate local rules adapter and character values. No API subscription, custom application, database, or required script is part of the design.
 
-Start with [QUICKSTART](QUICKSTART.md). See [INSTALLATION](INSTALLATION.md) for workspace requirements and older campaigns, [COMMANDS](COMMANDS.md) for everyday requests, [v0.7.1 changes](V0.7.1_CHANGES.md) for this repair release, [v0.7 changes](V0.7_CHANGES.md) for the redesign, and [VERIFICATION](VERIFICATION.md) for checks actually run.
+Start with [QUICKSTART](QUICKSTART.md). See [INSTALLATION](INSTALLATION.md) for workspace requirements and older campaigns, [COMMANDS](COMMANDS.md) for everyday requests, [v0.7.2 changes](V0.7.2_CHANGES.md) for this release, and [VERIFICATION](VERIFICATION.md) for checks actually run. Earlier [v0.7.1 repairs](V0.7.1_CHANGES.md) and the [v0.7 redesign](V0.7_CHANGES.md) remain documented.
 
 ## What changed
 
-v0.7.1 repairs agreement omissions, recovery directory cleanup, and validator diagnostics in the v0.7 redesign. It adds explicit form-selection/disclosure, hard-cut, and retcon clauses while retaining five readable sections. Setup proposes the defaults in its existing compact review; it does not require five extra interview rounds.
+v0.7.2 adds two optional aids to campaign preparation: usable portrayal notes for recurring NPCs, and notes separating hidden truth, beliefs, lies, and possible evidence. Original examples show how to use existing records without building another system.
 
-- A shorter GM core and startup path.
-- A concrete five-part campaign agreement instead of mandatory calibration axes.
-- A readable present situation with separate pointers to detailed state and historical evidence.
-- "Save" and "End session" both perform the complete ordinary save.
-- Recovery copies and a pending-operation marker before multi-file changes.
-- An adaptive universal NEW GAME with Quick start, Guided, and Detailed paths.
-- Targeted search when an exact needed reference cannot be found through its pointers.
-- Optional review notes stay outside normal startup.
-- Ordinary language works for starting, continuing, saving, correcting, and changing the game.
+- NEW GAME uses the aids only when relevant to the selected premise, depth, and authoring grants.
+- The GM core explicitly checks authority before drafting a new consequential development.
+- Saving and correction preserve who said a misleading claim, who heard it, and what is actually established as distinct facts.
+- A reproducible [controlled trial protocol](ADMIN/PLAYTEST_V072.md) covers quiet play, NPC portrayal, deception, fresh-context continuation, correction, and interrupted-save restoration. [Observed results](V0.7.2_TRIALS.md) report the bounded runs and their limits.
 
-The model still supplies judgment, prose, and file operations. These changes reduce repeated procedural decisions; they do not make the model infallible.
+The five-section agreement, compact current save, targeted retrieval, and recovery procedure remain the operating model. Valid v0.7.1 campaigns need no record-format migration. The model still supplies judgment, prose, and file operations; optional notes and successful checks do not make it infallible.
 
 ## Start playing
 
@@ -52,6 +47,8 @@ NEW GAME separates choices that do not imply each other:
 - Optional detailed systems and private preparation.
 
 A quick freeform campaign can begin with a short profile and opening. A mechanical game still needs whatever values its opening actually uses. Detailed setup develops selected domains; it does not automatically build every world system.
+
+Recurring people may benefit from a motive, expression example, and pressure response. An investigation may benefit from distinguishing truth from testimony and checking its discovery paths. These are optional prose aids within existing records, with no extra mandatory interview, cast dossier, clue quota, or startup reading.
 
 The questions adapt to fantasy, historical, contemporary, science-fiction, domestic, investigative, military, surreal, nonhuman, or custom premises. They do not require human anatomy, Earth dates, money, romance, combat, a central plot, or a conventional adventuring party. A novel perspective still needs a clear statement of what the player controls.
 
@@ -90,6 +87,8 @@ The startup packet is a collection of authoritative records, not a compiled snap
 ## Credits and rights
 
 Project author and maintainer: [croatianrdy2defend-create](https://github.com/croatianrdy2defend-create). RPG OS developed through iterative campaign work and LLM-assisted design and review; the files must remain usable without the original design conversation.
+
+Design reference for the v0.7.2 discussion of optional NPC and investigation preparation: [Claude Corpus Engine by galliard5](https://github.com/galliard5/claude-corpus-engine/tree/7be53247635d41dad80b8dfb74dc96ae44852998). RPG OS's guidance and worked examples use original wording and its existing authority model.
 
 Original documentation and protocol material are licensed under [CC BY 4.0](LICENSE); code and repository automation/configuration under [MIT](TOOLS/LICENSE). Preferred attribution: "RPG OS" by croatianrdy2defend-create, with a link to [this repository](https://github.com/croatianrdy2defend-create/RPG-OS). Indicate modifications.
 

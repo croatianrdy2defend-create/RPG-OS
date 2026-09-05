@@ -53,7 +53,7 @@ New POLICY files retain `## Voice` and `## Campaign defaults`. Voice proposes po
 - Time and transitions: declared-sequence continuation, stopping points, and `Cuts:`.
 - Presentation: voice, dialogue/narration balance, guidance, status display, and `Structure disclosure:`.
 
-These are plain-language proposals, not axis enums or a second rule engine. New/bound v0.7.1 agreements require each named clause once, with substantive free text, in its assigned section. NEW_GAME supplies their proposed defaults; acceptance remains run-specific and requires no additional questionnaire or mandatory A-E label. No retired creative-mandate scalar or review-mode field is required. Detailed machinery belongs in capabilities.
+These are plain-language proposals, not axis enums or a second rule engine. New/bound v0.7.1-and-later agreements require each named clause once, with substantive free text, in its assigned section. NEW_GAME supplies their proposed defaults; acceptance remains run-specific and requires no additional questionnaire or mandatory A-E label. No retired creative-mandate scalar or review-mode field is required. Detailed machinery belongs in capabilities.
 
 Form selection and permission to withhold structural selection are separate grants. Default general form is known while plot remains hidden; optional opacity records its true selection/disclosure envelope without forcing a concealed choice into the review, metadata, or a false form claim. Defaults preserve lived continuity with declared/delegated routine compression; hardcuts need bounded permission. Retcon defaults to OOC rewind, with optional ironman for valid outcomes and distinct error/depiction/stop handling. Existing v0.7 agreements missing clauses use focused accepted RECALIBRATE supplementation, not implicit defaults or state migration.
 
@@ -88,6 +88,14 @@ Typical homes: public world in WORLD; actors/institutions in PEOPLE/INST; candid
 Private filenames, headings, ids, index gists, and watch cues must be non-revelatory when secrecy matters. Separate unrelated private subjects when whole-file reads would expose them. This is spoiler hygiene, not encryption or guaranteed host secrecy.
 
 Rehearse one representative need → declared entrypoint → smallest sufficient body → stop lookup for every complex capability before bind. A pointer is a route, not an instruction to read everything linked.
+
+### Optional portrayal and investigation notes
+
+The cold examples in `ADMIN/CAMPAIGN_BUILD.md` may be used at selected preparation depth. These notes are optional prose inside existing authority, not new capabilities, required headings, tables, or files. They add no automatic startup load or requirement to complete an existing campaign retrospectively.
+
+A recurring person's stable portrayal anchor belongs with their PEOPLE baseline during setup or, for an emergent person, their established INSTANCE record. It may give a useful priority, expression sample, constraint, or pressure response without a mannerism quota. Current motives, relationships, and resources retain their selected current owner; the anchor links rather than duplicating them. Samples are illustrative unless they quote an actual sourced exchange. They grant no new actions, knowledge, or PC authority. A bound MODULE remains immutable: derive a temporary reminder from existing content or persist an accepted change through its selected INSTANCE authority, rather than rewriting the baseline to add this aid.
+
+A consequential hidden-fact note belongs with its existing TRUTH/WORLD/person authority. Distinguish fixed content, deliberate uncertainty, beliefs, and lies; identify relevant evidence paths when the accepted experience needs them. Later changes follow the selected INSTANCE authority, preserving what was said separately from what is established. Do not duplicate complete knowledge records or require every mystery to have a fixed answer or clue quota. Writing a proposal does not establish its truth, and REVIEW cannot turn an interpretation into canon. Private headings and routes remain non-revelatory where needed, within the host's actual disclosure capabilities.
 
 ## Opening template
 

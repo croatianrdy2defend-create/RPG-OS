@@ -1,4 +1,4 @@
-# Start with RPG OS v0.7.1
+# Start with RPG OS v0.7.2
 
 1. Extract the kit into a separate folder for one campaign.
 2. Give your LLM workspace access to read and write that folder.
@@ -11,6 +11,8 @@ Add your idea if you have one. The model asks one small group of relevant questi
 Review the proposed world brief, character, campaign agreement, and opening. Accept them in ordinary language or request changes. The model creates the campaign files and confirms completion. You may continue in that chat if its context is suitable, or start fresh.
 
 The proposal includes the play form, who chooses it, what structural information is disclosed, allowed cuts, and rewind/ironman policy. Defaults are offered together; you only need to change what matters to you. Choosing a form and allowing it to be concealed are separate permissions.
+
+When useful, setup can prepare a few NPC portrayal cues or clarify the truth, beliefs, and evidence behind a mystery. These fit the same proposal; Quick start does not require an extra preparation interview.
 
 ## Resume
 

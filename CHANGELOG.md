@@ -6,6 +6,15 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.7.2 — optional portrayal and hidden-information preparation (2026-09-05)
+
+- Added two optional cold preparation aids with original examples: recurring-person portrayal anchors and consequential hidden-fact/investigation notes.
+- Integrated them selectively into NEW GAME without new required fields, files, interview rounds, or normal-startup reads.
+- Made the consequential-authority check explicit before drafting while preserving ordinary invention and accepted continuation.
+- Clarified preservation of misleading utterances, actual audiences, established private truth, and qualified NPC beliefs through saves and corrections.
+- Added a reproducible controlled trial protocol; observed results and limitations belong in VERIFICATION, separately from proposed fixtures and structural checks.
+- Retained the v0.7.1 save/contract shape and existing optional validator. Existing campaigns need no record-format migration or retrospective preparation.
+
 ## v0.7.1 — agreement and recovery repairs (2026-09-05)
 
 - Added five required named prose clauses within the existing agreement sections, preserving plain-language grants and optional A–E presets.

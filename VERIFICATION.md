@@ -1,31 +1,33 @@
-# v0.7.1 verification — 2026-09-05
+# v0.7.2 verification — 2026-09-05
 
-This report records checks actually performed during the v0.7.1 repair. It is separate from proposed playtests. The kit remains an experimental candidate pending observed campaign use.
+This report records observed checks on the isolated public kit and original disposable fixtures. The kit remains experimental. [Observed trials](V0.7.2_TRIALS.md) and [the cold trial protocol](ADMIN/PLAYTEST_V072.md) distinguish completed operations from proposed work and player-experience claims.
 
 | Check | Observed result |
 |---|---|
-| Optional structural validator on the revised unbound kit | PASS; no findings; initial/final tree stable; executed and target validator bytes match |
-| Synthetic structural regression suite | 44 tests passed; all original 32 retained |
-| Local documentation links | No missing file targets found |
-| Integration review | Checked clause persistence and supplementation, selection/disclosure separation, cuts and retcon boundaries, recovery directory ownership, and candidate cleanup before marker removal |
-| Live campaign / fresh-chat GM behavior | NOT RUN |
-| Model-operated interruption recovery | NOT RUN; automated fixture simulations only |
-| Cross-provider host compatibility | NOT RUN |
-| Tellus migration | NOT RUN |
+| Optional structural validator on the unbound candidate | PASS; zero findings; stable tree; executed and target validator bytes match |
+| Existing structural regression suite | All 44 tests passed on Python 3.11.9 / Windows |
+| Local Markdown file links | No missing targets found during release inspection |
+| Focused release review | No actionable runtime/setup/schema regression found against the preserved v0.7.1 kit |
+| Paired model-operated play/save/resume/correction | See the bounded observations and artifact routes in V0.7.2_TRIALS.md |
+| Candidate-only staged restoration | Original campaign file and directory manifests restored exactly; validator PASS; recovery evidence retained |
+| Candidate-only preparation probe | A 292-word original draft respected the supplied nonhuman portrayal and knowledge distinctions; no comparison baseline |
+| Human campaign enjoyment / sustained live play | NOT RUN |
+| Cross-provider compatibility | NOT RUN |
+| Tellus migration | NOT RUN; release built separately from the live workspace campaign |
 | Long-campaign quality or semantic losslessness | NOT ESTABLISHED |
 
-The automated checks used Python 3.11.9 on Windows and original synthetic campaign fixtures. They made no model/API calls and did not bind the distributed kit. Test-created fixtures are isolated from campaign state. The validator is read-only; the test runner creates disposable fixtures. Run them sequentially when validating a parent folder that contains those fixtures.
+The structural suite makes no model/API calls. It uses disposable synthetic fixtures and does not bind the distributed kit. Its existing coverage includes clean and contaminated kits, agreement clauses, source routes and path escapes, save/checkpoint evidence boundaries, provenance diagnostics, recovery-directory ownership, and preservation of unrelated nonempty directories. The validator and its 44-test suite are unchanged from v0.7.1; new prose guidance is assessed separately, not represented as new structural test coverage. Run validation and fixture creation sequentially when they share a scanned parent directory.
 
-The new regressions check the five required prose clauses for presence, section, uniqueness, and substantive content; both previously malformed provenance failure branches; and interrupted-save directory cleanup. The recovery simulation demonstrates that restoring file bytes alone leaves an orphan finding, then verifies that removing recorded, operation-created empty directories restores structural validity. It also tests preservation of pre-existing/nonempty directories and rejection of unsafe or protected paths. This is evidence about the procedure's fixture logic, not proof that a commercial LLM will execute it correctly.
+The controlled trials did use fresh collaboration-agent contexts and actual file operations. The reviewer inspected public replies, saved authorities, historical evidence, validation reports and file manifests. These observations are distinct from the validator's own `host_observation: NOT RUN` and `semantic: NOT CHECKED` fields, which correctly describe the script's narrower scope. Model-operated results do not upgrade that script into a semantic checker.
 
-The retained cases cover clean and contaminated kits, character/opening consistency, agreement identity, source routes and path escapes, private watch pointers, active recovery, optional notes, real limit entries, complete-save/checkpoint evidence boundaries, legacy T0 preservation, and read-only validator provenance. Clause checks do not certify informed acceptance or semantic conformity.
+Release packaging checks preserve the original v0.7 and v0.7.1 ZIPs, exclude trial/live campaign records, verify local link targets, test archive CRCs, and compare every packaged file with the clean source and validation copy. The generated companion `package_verification_v072.json` records the final file manifest and ZIP hash; the final packaged-tree validator report is retained outside the kit. Those generated hashes are not self-certification of meaning.
 
-## Scope of the simplification
+## Size and operating limits
 
-The entry point, startup guide, and GM core total 2,105 whitespace-separated words in v0.7.1, compared with 5,458 in v0.6.3: about 61.4% fewer. The original v0.7 total was 1,605 words; these repairs add explicit operating boundaries. Counts exclude campaign-specific agreement, current save, setting brief, active limits, and cold retrieval instructions. This is a reproducible text-size observation, not a measured token cost or proof of better play.
+AGENTS, BOOTSTRAP and LAW total **2,107 whitespace-separated words**, compared with 2,105 in v0.7.1, 1,605 in v0.7 and 5,458 in v0.6.3. The change from v0.7.1 is two words. These counts exclude the campaign agreement, current save, setting brief, active limits and cold retrieval/preparation material. They are text-size observations, not measured token costs or evidence of better play.
 
-Detailed rules, world records, current character/person/system state, PC knowledge, corrections, and historical evidence retain separate authority. The startup packet is not an immutable revision-bound capsule: arbitrary engine, module, agreement, or mutable-record version swaps generally cannot be detected.
+The resident packet and record formats remain unchanged. Optional preparation uses existing authorities. Valid v0.7.1 campaigns need no record-format migration. The startup packet still does not pin every engine, module, agreement or mutable-record revision; plausible file-version swaps can evade detection.
 
-## Remaining playtesting
+## Work still requiring evidence
 
-Use ADMIN/TESTS.md to observe universal setup, natural continuation, player control, source fidelity, exact recall, private processes, interruption recovery, and ordinary corrections in actual commercial hosts. New proposed fixtures specifically cover structural opacity, ironman/error correction, permitted and denied hard cuts, and off-premise handling. Score player experience separately from file correctness. No structural pass certifies faithful model-written saves, concealment of private files, successful execution of recovery instructions, or consistent behavior across models.
+Use ADMIN/TESTS.md for broader scenarios, including full universal NEW GAME, opacity, ironman/error correction, permitted and denied hard cuts, off-premise conduct, long historical recall and user experience. These were not all exercised by the bounded v0.7.2 pilot. The single staged recovery restoration did not test an actual crash, all save stages, or the optional adverse branch. No result guarantees private-file concealment, complete memory, faithful future model writes or compatibility with every commercial workspace.

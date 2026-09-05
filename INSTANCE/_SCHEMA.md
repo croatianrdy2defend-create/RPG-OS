@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.7.1
+# INSTANCE schema — v0.7.2
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -88,7 +88,7 @@ One current authority per value. This is a semantic check, not something a table
 | Full PC/profile and other mutable sheet/build values | INSTANCE/CHAR/PC.md or its explicit shards |
 | What the PC learned, with rumor/belief/uncertainty and sources | KNOWN |
 | Private conditions and mutable campaign/world-system state | NOW or explicit shards routed from NOW |
-| Current person/relationship state | PEOPLE/<person_id>.md or its explicit shards |
+| Current person/relationship state, including materially established NPC beliefs | PEOPLE/<person_id>.md or its explicit shards |
 | Stable emergent-person identity | Minimal established CANON in that person's INSTANCE record |
 | Stable person-id and route mapping | CAST_STATUS |
 | Accepted rulings and corrections | CORRECTIONS, with a resume pointer when currently relevant |
@@ -100,9 +100,13 @@ MODULE baseline files remain stable. Before any later transition or current over
 
 An emergent person with durable causal state receives one stable person_id, minimal established CANON, complete current mutable state, and a CAST_STATUS route. A transient extra need not be promoted. An emergent durable system receives one stable system_id and `INSTANCE/NOW/<system_id>.md`, explicitly routed from NOW. Preserve its complete established current state and the minimum operating definition needed to continue: triggers/non-triggers, dependencies/order, and cue lifecycle when relevant. Missing rules stay unknown; do not invent them for completeness.
 
+Optional portrayal anchors belong with the person's existing stable canon or current state according to what they describe. Keep one authority; they require no additional record or fields.
+
 When a private process remains live across fresh chats and no other resident fact makes its check discoverable, retain one non-revelatory condition/id/route in Active processes. Before an INSTANCE current record exists, that save pointer targets the existing MODULE baseline/definition body; the planned future INSTANCE destination belongs inside the definition. Once current state materializes, redirect the save pointer to that INSTANCE authority. Remove or demote a cue when it retires. Retrieval, review, and saving never advance a process. Elapsed time advances it only when its established rule says so.
 
 Known-to-PC, private truth, exact fidelity, authorship ownership, and provisional interpretation are different distinctions, not mutually exclusive labels. Preserve the qualification needed for each fact. Hearing a rumor establishes that it was heard. Exact wording can be private. Missing historical evidence does not establish an event or make it available to invent retrospectively.
+
+Across saving and correction, preserve a materially misleading claim as something its speaker said to its actual audience, separately from established private truth and any materially established NPC belief. An accepted utterance need not be true; do not infer that its speaker knew it was false. Retain belief uncertainty and source where established. Correcting the claim's assessed truth does not erase the utterance or tell its audience the correction unless that disclosure actually occurred.
 
 ## Optional review
 

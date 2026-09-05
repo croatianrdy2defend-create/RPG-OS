@@ -1,4 +1,4 @@
-# RPG OS v0.7.1 startup
+# RPG OS v0.7.2 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 

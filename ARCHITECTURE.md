@@ -1,4 +1,4 @@
-# RPG OS v0.7.1 architecture
+# RPG OS v0.7.2 architecture
 
 ## Operating environment
 
@@ -13,6 +13,8 @@ OS/AGENTS -> OS/BOOTSTRAP -> LAW + CURRENT_SAVE + CAMPAIGN_CONTRACT.
 A bound run also reads its compact SETTING_BRIEF and active SAFETY. It checks RECOVERY/ACTIVE directly before play. POLICY, full schemas, retrieval instructions, reference bodies, and optional Bearing are cold. The agreement contains the accepted presentation, so ordinary startup does not open a large policy file for one voice section.
 
 During a turn the GM understands the situation and intent, retrieves materially relevant authority, resolves consequences, and presents the result. A direct pointer needs no preliminary route traversal. A bounded subject search can recover a missing route.
+
+Authority for a new consequential development is identified before drafting it. A candidate cannot create its own warrant. This is an operating instruction, not an independently enforced boundary around model reasoning.
 
 ## Authority and storage
 
@@ -45,6 +47,8 @@ Quick start, Guided, and Detailed are interview-depth choices. They share one ac
 An accepted agreement has five prose sections: Campaign promise, Player control, GM initiative, Time and transitions, Presentation. They include five named free-text clauses: Play form, Form selection, Structure disclosure, Cuts, Retcon. These make material omissions structurally detectable; their actual meaning, informed acceptance, and compatibility still need review. Form selection and disclosure are separate grants; fixed structure and bounded cuts operate only within the agreement. A–E presets remain optional descriptions, not required enums.
 
 New Game never clears an existing run. Upgrade preserves old material and maps it explicitly. Correction distinguishes a mistake from a newly requested revision and repairs only dependent consequences. Review is explicit, optional, and cannot alter facts or authorize a plot.
+
+Optional recurring-person and hidden-fact notes are cold authoring aids inside existing records. They add neither an authority layer nor a resident file. Stable anchors and current beliefs keep their existing owners; testimony, private truth, and what an audience learned remain distinct across saves and corrections.
 
 ## Validation boundary
 

@@ -23,7 +23,7 @@ body:
     id: release
     attributes:
       label: RPG OS release or commit
-      placeholder: v0.7.1 or commit SHA
+      placeholder: v0.7.2 or commit SHA
     validations:
       required: true
 

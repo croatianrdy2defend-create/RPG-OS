@@ -1,4 +1,4 @@
-# VALIDATE — v0.7.1 structural inspection
+# VALIDATE — v0.7.2 structural inspection
 
 VALIDATE is read-only ADMIN work. It inspects an explicitly selected RPG_OS tree, reports what it observed, and stops. It does not repair, save, recover, accept an agreement, or start PLAY. Normal PLAY does not preload this file or the validator.
 
