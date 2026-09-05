@@ -1,15 +1,10 @@
-# Add an engine
+# ADMIN — Add a rules engine
 
-ADMIN / SETUP. Not PLAY.
+An engine is a compact rules adapter, independent of setting and campaign style. Use for an explicit addition or an accepted NEW GAME proposal requiring it.
 
-Two ways:
+1. Read `ENGINE/_CONTRACT.md`. Choose a safe id using ASCII letters, digits, `.`, `_`, `-`, beginning with a letter or digit, without separators/traversal. Check both `ENGINE/<id>.md` and `ENGINE/<id>/ENGINE.md`; reject any collision. Aliases are not engines.
+2. Review the supplied adapter or draft resolution, required/deferrable/optional character fields, a supported creation procedure, and honest source limitations. State whether support is `self-contained`, `operator-values-required`, or `no-mechanical-sheet`. For dice/oracles, identify an available real randomizer or player-supplied results; no mandatory script is required, and invented model numbers are not verified rolls.
+3. Obtain ordinary acceptance of the concrete adapter unless already supplied/accepted for installation. Do not reproduce a commercial rulebook, bulk tables, or catalogues. Missing procedures require supplied rules/values or an accepted alternative.
+4. Before writing, use `ADMIN/RECOVERY.md`. NEW GAME includes this addition in its single bind operation. Verify identity, paths, references, support, and content after writing; complete recovery only after readback.
 
-A. Operator drops a finished flat `ENGINE/<id>.md` or directory entrypoint `ENGINE/<id>/ENGINE.md` that matches ENGINE/_CONTRACT.md (exact scalar `class: engine`; safe flat filename stem or containing directory name = scalar front-matter `id`; exact scalar `character_build_support`). Before adding it, directly check both deterministic forms for that id and reject the addition if either form already exists; never create a flat/directory collision.
-
-B. New Game: operator names a system and confirms a portable safe id before any path is constructed. If no file exists, SETUP drafts one (resolution + required/deferred/optional sheet field groups + exact `self-contained` / `operator-values-required` / `no-mechanical-sheet` support class, no setting, no pirated manual). On ACCEPT, ADMIN writes `ENGINE/<id>.md` then the module that binds it.
-
-If a campaign needs a genuine change to an installed engine's resolution or character rules, create a distinct safe engine id. Do not hide the override in lower-authority MODULE RULES_HOOKS. If the procedure is unavailable, ask the operator to supply it; do not reconstruct a commercial rules source.
-
-Later additions to an engine file follow the same no-copyrighted-manual rule.
-
-LAW does not change.
+A changed resolution/character system uses a distinct id, not a hidden MODULE override. Installing it does not switch a bound campaign or convert its sheet. Such a change needs an explicit reviewed transition. LAW is not edited to teach new mechanics.

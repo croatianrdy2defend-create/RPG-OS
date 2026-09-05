@@ -1,10 +1,8 @@
 # RELATION LEDGER
 
-Cold index of embodied / intimacy / promise-level interpersonal facts.
-PLAY does not load this at boot.
-Pointer must identify one scene shard by a POSIX path relative to `ARCHIVE/` and a literal stable heading id. Existing pointers to legacy `TRANSCRIPT.md` headings remain valid.
-The ledger stores a routing gist, not the scene.
-The machine-readable table uses outer `|` delimiters and one contiguous row block. Every row supplies `when`, `persons`, `gist`, and `pointer`; use an explicit `unknown` where necessary rather than a blank.
+Optional cold shortcut to consequential relationship evidence: promises, conflicts, intimacy, or another exchange whose source may matter later. It may remain empty; no relationship category requires special archival treatment.
+
+Pointer: safe POSIX source path relative to ARCHIVE plus its literal stable heading. Existing legacy TRANSCRIPT.md pointers remain valid. Store a routing gist, not the scene. Keep outer pipes and a contiguous row block; use `unknown` for genuinely missing values. An old exchange does not create a present obligation or permission.
 
 | when | persons | gist | pointer |
 |---|---|---|---|

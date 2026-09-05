@@ -6,6 +6,39 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.7 — simpler operation and universal progressive setup (2026-09-05)
+
+- Retained rules, world, current-state, knowledge/private-state, and historical-evidence separation.
+- Rewrote the GM core, ordinary startup, and targeted retrieval instructions.
+- Replaced mandatory calibration axes with a concrete five-section campaign agreement.
+- Replaced the current-save state-field cluster with five readable sections and independent present/evidence metadata.
+- Made SAVE, CLOSE, and END SESSION the same complete ordinary save; CHECKPOINT retains the preceding evidence boundary.
+- Added recovery records, verified prior copies, an active-operation marker, and operational restoration instructions.
+- Added natural-language correction and simplified prospective agreement changes.
+- Made NEW GAME progressive through Quick start, Guided, or Detailed setup while keeping world, rules, profile depth, mechanical readiness, and authority independent.
+- Resolved accepted voice/source expectations and module limits at bind so ordinary PLAY need not load POLICY.
+- Made Bearing cold and optional, with no automatic review after saving.
+- Allowed bounded subject search when an exact needed route is missing; kept source evidence and current-state precedence.
+- Added explicit older-campaign upgrade mapping and preserved legacy archive readability.
+- Updated the read-only validator and synthetic regression tests for the changed records and recovery boundary.
+- Remains an experimental unbound kit with Freeform only; structural testing does not establish live GM performance.
+
+## v0.6.3 — world calibration and portrayal routing
+
+- Expanded the existing three-heading Setting Brief semantics without adding a resident file or changing its schema
+- Made world identity scope-aware: original/homebrew, historical/real-world, source-bound, or hybrid basis; opening operating scope; and foundational differences generic model priors could erase
+- Made “what is ordinary” a creative prior with contextual variation and optional qualitative prevalence, not a requirement to display one example of every world category in each scene
+- Distinguished incidental background portrayal, which may use the resident brief, from materially concrete module-defined portrayal, which retrieves the smallest governing cold authority
+- Required fixed individual traits to survive type-level lore retrieval and prohibited generic genre defaults when relevant module authority is available
+- Reworked NEW GAME around one adaptive World Operating Baseline covering reality, scope, personhood, variation, generic-default hazards, and fidelity boundaries across radically different campaign types
+- Extended source-policy questions from historical campaigns to externally defined/source-bound settings while keeping copyrighted sourcebooks and unsupported model reconstruction out of the build
+- Strengthened campaign construction around what may be improvised, what requires exact authority, what remains unfixed, and the smallest retrieval route
+- Added paired semantic fixtures for natural background variety versus checklist portrayal, narrow on-demand lore retrieval, established-person preservation, and lawful homebrew improvisation
+- Added optional backup-first `REFINE SETTING BRIEF` for a valid bound campaign; after exact `ACCEPT REFINED SETTING BRIEF`, it may replace only that brief using already-authoritative stable public module facts and cannot create new canon
+- Existing valid v0.6.2 Setting Briefs remain structurally compatible; refinement is optional
+- Kept LAW, the five-file technical boot, Campaign Contract and Current Save field schemas, engine architecture, archives, clocks, phases, Bearing, and NPC promotion unchanged
+- The public package remains unbound, contains no campaign world, and bundles only Freeform
+
 ## v0.6.2 — session-start setting awareness
 
 - Added one required compact `MODULES/<module-id>/SETTING_BRIEF.md` for every bound module

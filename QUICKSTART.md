@@ -1,87 +1,35 @@
-# RPG OS v0.6.2 quickstart
+# Start with RPG OS v0.7
 
-RPG OS lets an AI run a solo tabletop campaign while ordinary Markdown files preserve the campaign between disposable chats. The AI is still expected to act as a GM: it frames and portrays the world, judges consequences, and follows the developing campaign. The files support that work; they do not replace it.
+1. Extract the kit into a separate folder for one campaign.
+2. Give your LLM workspace access to read and write that folder.
+3. Start a chat with:
 
-This public kit contains no world and only the `freeform` engine.
+> Open OS/AGENTS.md. Start a new campaign with me using Quick start.
 
-Already have a **bound v0.6 or v0.6.1 campaign**? Persist all accepted play, make a byte-for-byte backup, install the v0.6.2 runtime and generic files while preserving campaign-owned content, then use the complete `UPGRADE SETTING BRIEF` procedure in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v06-or-v061-campaign). Do not use normal LOAD or PLAY to improvise the upgrade.
+Add your idea if you have one. The model asks one small group of relevant questions at a time. You can choose Guided or Detailed setup instead, supply existing material, or leave nonessential details undecided.
 
-Already have a **bound v0.5 campaign**? Do not run NEW GAME or overwrite its campaign folders. Make a byte-for-byte backup, save any accepted play with the old v0.5 runtime, then use the complete migration instructions in [INSTALLATION.md](INSTALLATION.md#upgrading-a-bound-v05-campaign). Migration must show and obtain acceptance for a compact Setting Brief if the old module does not have one. The bare command by itself is not the boot procedure.
+Review the proposed world brief, character, campaign agreement, and opening. Accept them in ordinary language or request changes. The model creates the campaign files and confirms completion. You may continue in that chat if its context is suitable, or start fresh.
 
-## 1. Prepare the folder
+## Resume
 
-1. Extract the download.
-2. Keep a backup outside the AI service.
-3. Attach only the extracted `RPG_OS` folder to a writable AI project or workspace.
-4. Start a fresh chat.
+In a fresh chat with the same folder accessible:
 
-Your host must be able to read named files and persist edits. A model name or subscription tier does not prove either capability.
+> Open OS/AGENTS.md and continue my saved campaign.
 
-## 2. Boot the empty kit
+The model resumes at the recorded moment. It should not invent an interval or require a second command to begin.
 
-Paste:
+## Stop
 
-```text
-Open only OS/AGENTS.md, OS/BOOTSTRAP.md, OS/LAW.md,
-INSTANCE/CURRENT_SAVE.md, and INSTANCE/CAMPAIGN_CONTRACT.md.
-Do not search or list the rest of the folder.
-Confirm the runtime is ready. Do not start fiction.
-```
+> Save the campaign and end the session.
 
-The kit should report that it is ready and unbound. It must not invent a campaign.
+Wait for a completed save. This preserves the present and the accepted evidence still available to the model. If a save is interrupted, say "Recover the interrupted save" before playing again.
 
-Optional: run `VALIDATE`. It checks deterministic file structure only. It does not certify GM quality, agency, host persistence, privacy, or provider policy compliance.
+## Change something
 
-## 3. Create a campaign
+- "That is wrong; we already spent those supplies."
+- "I want less pressure and more room for ordinary life."
+- "You may skip uneventful travel, but stop before choosing how I handle an encounter."
 
-Say:
+Corrections preserve unaffected play. Changes to standing preferences are shown as concrete agreement changes before they apply.
 
-```text
-NEW GAME
-```
-
-The setup interview asks about:
-
-- rules engine;
-- campaign premise, voice, safety, and unwanted patterns;
-- the **Campaign Contract**: what kind of campaign you want and how proactive the GM may be;
-- optional world complexity, character detail, and mechanical sheet depth;
-- a compact Setting Brief that records what kind of world this is and what is ordinarily true;
-- a playable starting situation.
-
-Sparse worldbuilding and an incomplete character sheet are valid. Nothing becomes canon until the AI shows the proposed manifest and you say `ACCEPT`.
-
-After ACCEPT succeeds, leave setup and start a **new chat**.
-
-## 4. Begin play
-
-Use the same five-file boot prompt, then say `Begin play`.
-
-The five named files remain the complete technical boot set. Before first fiction, the runtime follows active safety, loads the bound module's compact `SETTING_BRIEF.md` once, then loads required voice material; it may load a current optional Bearing when REVIEW is enabled and its bases match.
-
-The Setting Brief tells the GM the public identity of the world, what is ordinary there, and what deeper domains exist. It is deliberately small: detailed lore, rosters, clocks, phases, seeds, private truth, and archives remain cold. A **Bearing** is a short, provisional note about what the campaign may be becoming. It is not canon, a plot queue, or permission to force an event.
-
-You write your character's voluntary actions, speech, thoughts, feelings, attraction, consent, and commitments. The GM runs the world.
-
-## 5. Save and end sessions
-
-- `CHECKPOINT` — saves the current present. It does not archive exact scene evidence.
-- `CLOSE` — saves the present and writes indexed historical evidence.
-- `REVIEW` — after a successful save, considers campaign patterns and may update the noncanonical Bearing. It cannot change canon.
-- `END SESSION` — runs CLOSE first; only if CLOSE succeeds, runs REVIEW when the Campaign Contract enables it.
-
-Do not discard a chat containing accepted play until CHECKPOINT or CLOSE prints the new `save_id`. Unsaved chat cannot be recovered by RPG OS.
-
-Next session: new chat, same folder, same five-file boot. Do not paste the old transcript.
-
-## Important limits
-
-- Enforcement is instructions interpreted by one model context, not hard-coded game logic.
-- File writes are not guaranteed to be atomic across several files. If an ADMIN write is interrupted, inspect or restore the folder before continuing.
-- Some hosts inject whole files even when one section was requested. Physical sharding reduces exposure but does not prove isolation.
-- Cloud providers may refuse content or restrict accounts under their policies. Keep your own local backup.
-- v0.6.2 is a testing release, not proof of a 100-session campaign.
-
-Full installation and capability checks: [INSTALLATION.md](INSTALLATION.md)  
-Commands: [COMMANDS.md](COMMANDS.md)  
-How the design works: [ARCHITECTURE.md](ARCHITECTURE.md)
+If the model can only read attachments, use the export instructions in [INSTALLATION](INSTALLATION.md). Uploading a ZIP does not itself give a host durable writable memory.

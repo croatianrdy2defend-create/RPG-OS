@@ -1,10 +1,10 @@
 # SAFETY
 
-safety_state: floor-only
+Accepted operator content limits, including hard-no and fade/veil boundaries. Ordinary voice, response length, guidance, and status-display preferences belong in the agreement's Presentation section. CURRENT_SAVE alone owns the safety_state flag: `active` only when at least one real accepted sentence appears beneath or beside a label below. Empty labels keep `floor-only`. Normal startup reads this file before fiction when active; new limits apply immediately in the current conversation.
 
-Set CURRENT_SAVE safety_state to `active` only if at least one entry below is a real operator sentence. Use a bullet beneath `Hard no:`/`Hard-no:` or `Fade / veil:`, or put the sentence on the same line as that label.
-Headings alone keep floor-only. PLAY retrieves this file before fiction only when safety_state is active.
-These lines are player rulings. Never spoken by NPCs.
+Use bullets beneath `Hard no:`/`Hard-no:` or `Fade / veil:`, or a sentence on the label's line. Accepted stronger module limits may be copied here with their origin identified. Do not infer a limit from genre, fictional morality, or character conduct. These limits do not define PC delegation or NPC beliefs. External provider restrictions remain separate and do not become fictional events.
+
+Durable changes use ADMIN/CORRECT.md and ADMIN/RECOVERY.md, including a matching save flag. Never put file wording into NPC dialogue.
 
 Hard no:
 

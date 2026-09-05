@@ -11,6 +11,7 @@ Thumbs.db
 
 # Locally packaged releases and private campaign workspaces
 *.zip
+.work/
+.release/
 LOCAL_CAMPAIGNS/
 private-campaigns/
-

@@ -7,20 +7,18 @@ character_build_support: no-mechanical-sheet
 
 # ENGINE — Freeform
 
-No formal RPG ruleset. Use only when the operator chose it.
+Use only when the operator selects it. There is no formal attribute list, hidden stat block, or compulsory dice system.
 
-Resolve uncertainty by GM judgment after stakes are clear, or by a method the player names in the moment (coin, d6, oracle). The accepted Campaign Contract calibrates world initiative and discretionary creation; it does not create a hidden mechanic, decide an uncertain outcome, or authorize PC conduct.
-There is no default attribute list. If a PC file lists a value, use it. If not, do not invent a stat block.
-LAW agency and safety still apply. Do not roll (or judge) attraction, consent, or the PC's voluntary conduct.
+Resolve uncertain outcomes by GM judgment from established capabilities, circumstances, opposition, and clear stakes. If the player requests a coin, die, or oracle, agree the method and outcome meanings before resolution. Do not claim a random result came from a tool that was not used. If the host cannot obtain the requested result, ask for the player's roll or agree an available method.
+
+The agreement governs initiative and PC control; it does not predetermine uncertain outcomes. A resolution outcome is not permission to invent voluntary PC conduct outside the declared/delegated scope.
 
 ## Character creation
 
-No mechanical field is required before bind. NEW GAME may create an operator-approved profile at Quick, Standard, Detailed, or Custom depth. Record only supplied or explicitly accepted facts. Skipped categories remain unspecified.
+No mechanical fields are required before bind. Create an accepted playable concept and relevant starting facts at the chosen depth. Optional identity/form, capabilities, limits, history, connections, resources, and portrayal cues remain unspecified when not supplied or accepted.
 
-Character-build support is `no-mechanical-sheet`. If the operator selects Guided full sheet, say that this engine has no mechanical sheet and offer No full sheet now, an optional profile, an operator-defined ad hoc field set, or another engine. Do not invent a formal stat block merely to satisfy the selected UI path.
+Creation support is `no-mechanical-sheet`. Offer a profile, minimum opening facts, an accepted custom field set, or a different engine if the player wants a formal sheet. Do not present a profile as a mechanically complete sheet.
 
-Campaign complexity does not change that support class. Clocks, phases, institutions, Bearing, or a creative mandate remain campaign services and never become an implied Freeform character sheet or resolution table.
+Campaign clocks, factions, phases, and accounting are selected world systems, not implied Freeform attributes or resolution tables. Exact supplied values remain exact; qualitative capability remains qualitative.
 
-Optional field groups: identity/presentation, background/role, capabilities and limits, player-authored persona cues, connections/obligations, resources, current status, and intentionally unspecified facts. None creates a hidden stat or standing permission to author the PC.
-
-Retrieve this file only when a mechanical question exists. Most freeform fiction needs no retrieve.
+Open this adapter when resolving uncertainty or answering a rules question. Ordinary dialogue and established consequences normally need no repeat retrieval.

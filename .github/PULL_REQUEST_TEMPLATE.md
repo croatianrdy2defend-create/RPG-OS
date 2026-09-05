@@ -21,7 +21,8 @@ Relevant test, fixture, or issue:
 ## Verification
 
 - [ ] I ran `python3 TOOLS/validate.py --root .` and included the actual result
+- [ ] I ran `python3 TOOLS/test_validate.py` separately and reported any unrun behavioral fixtures
 - [ ] Cross-file references and Markdown links were checked
 - [ ] No private campaign, account, safety, credential, or unlicensed third-party material is included
-- [ ] Any `OS/LAW.md` edit identifies a cross-campaign kernel defect and adds two-sided semantic coverage
+- [ ] Core/setup changes preserve different campaign forms, concrete player grants, and useful GM continuation
 - [ ] Documentation/protocol contributions are submitted under CC BY 4.0 and code/configuration contributions under MIT

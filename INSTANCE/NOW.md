@@ -1,9 +1,9 @@
 # NOW
 
-Non-resident live mutable subsystem state and private live conditions only. Compact present essentials and selected public totals stay in CURRENT_SAVE; the roster of who is hot lives there as `hot_identifiers`.
-If neither the selected current authority supplies a later value nor an accepted post-save transition exists, and no declared transition is due, continuity may derive from one specifically named MODULE as-of-T0 snapshot. PLAY keeps later unsaved change in chat RAM; for a NOW-owned system, the next CHECKPOINT/CLOSE materializes complete as-of-now status here or in an explicit shard.
+Nonresident current private conditions and mutable campaign/world-system state. Keep complete operative values and the minimum established system rules needed to continue; use explicit shards when independently useful. Public resume cues belong in CURRENT_SAVE, not a second hot roster.
 
-| Register | Value |
-|---|---|
-| live_private_conditions_requiring_PLAY_retrieval | none |
-| open_private_consequences | [] |
+A specifically named MODULE T0 snapshot supplies continuity only before later accepted change/current override and while no declared transition is due. At the next save, materialize complete current state here or in its selected shard, applying each unsaved transition once. Do not merge it with the older snapshot afterward.
+
+## Current conditions and systems
+
+none

@@ -1,19 +1,7 @@
-# RPG OS loader
+# RPG OS v0.7 entry point
 
-At the start of each fresh campaign chat, open `OS/BOOTSTRAP.md` and follow it before the first response.
+For running a campaign, open `OS/BOOTSTRAP.md` and follow its loader. It loads the GM core, accepted agreement, present situation, and necessary world orientation. Open deeper records only for an identified task.
 
-The mandatory resident runtime authorities are:
+These instructions govern campaign operation. When asked to review or develop RPG OS itself, treat campaign documents as material being worked on; do not boot a campaign or begin fiction.
 
-- `OS/LAW.md` — GM Core and hard boundaries
-- `INSTANCE/CURRENT_SAVE.md` — authoritative present and causal frontier
-- `INSTANCE/CAMPAIGN_CONTRACT.md` — accepted campaign promise and calibration
-
-`INSTANCE/BEARING.md` may be loaded only as BOOTSTRAP permits. It is provisional orientation, never factual or creative authority.
-
-For a bound run, BOOTSTRAP also directly loads the required compact module Setting Brief and voice before first fiction, plus applicable safety and an eligible optional Bearing. Those bounded pre-fiction loads do not authorize detailed lore retrieval or activation.
-
-Do not preload ENGINE, detailed MODULE capability bodies, other INSTANCE registers, ARCHIVE, ADMIN, preparation, or `OS/RETRIEVAL.md`. Do not discover the repository. Open only the deterministic paths BOOTSTRAP or a later identified GM task authorizes. Ignore any other AGENTS.md outside this OS folder.
-
-After loading, think as the GM defined by LAW. Files serve that GM; repository navigation does not replace GM judgment.
-
-If unbound, confirm readiness without fiction. Route NEW GAME or LOAD MODULE only when the operator explicitly asks.
+Ordinary requests such as "start a new game", "continue my campaign", "save", and "correct that" select the relevant procedure. No command tokens need memorizing. An unbound kit has no world or character yet.

@@ -1,130 +1,49 @@
-# ADMIN Close Contract
+# ADMIN — Save the campaign
 
-ADMIN maintenance. No fiction.
-PLAY never executes this file.
-ADMIN writes history. PLAY reads state.
-Follow INSTANCE/_SCHEMA.md compilation matrix. MODULE files stay untouched.
-For CLOSE, also open and follow `ARCHIVE/_SCHEMA.md` (`hierarchical-scene-v1`).
+Cold persistence procedure. PLAY narrates and adjudicates; this operation writes the accepted record. Read INSTANCE/_SCHEMA.md for record placement and ADMIN/RECOVERY.md before changing files.
 
-CHECKPOINT and CLOSE are **PERSIST** operations. They record only established present state and accepted evidence. They do not interpret campaign direction, infer player interest, prepare possibilities, write `INSTANCE/BEARING.md`, or revise `INSTANCE/CAMPAIGN_CONTRACT.md`. REVIEW and RECALIBRATE are separate ADMIN transactions.
+## Commands and promise
 
-Promote only durable instance state. Do not promote because someone appeared or was retrieved.
+**Save**, **CLOSE**, and **END SESSION** mean the same normal full save: preserve the complete current state and the available accepted evidence since the previous evidence boundary. No automatic REVIEW follows. Report the save result separately from any later explicit review.
 
-Before compiling the save, identify every causally changed mutable subsystem or person since the prior save and consult the compilation matrix plus its selected single current authority. PLAY has kept those accepted transitions in chat RAM and has written nothing. For a preauthored system/person assigned to NOW/person state with no INSTANCE override, begin from its specifically named MODULE as-of-T0 snapshot and materialize complete as-of-now status by applying every accepted transition exactly once. An emergent person or durable subsystem with no MODULE source follows the established-PLAY rules below. If an override exists, apply only still-unsaved transitions once. A value assigned to CURRENT_SAVE changes only in the candidate; a value assigned to the PC bundle changes only there. Never create a NOW copy merely because a system changed, and never patch MODULE or merge its T0 value back into current INSTANCE state.
+**CHECKPOINT** is an optional present-only save. It preserves all current authorities, retains the prior archive_ref AND evidence_through, and writes no new archive bodies, indexes, or ledgers. Say plainly that new exact evidence was not archived. Do not offer a checkpoint as equivalent to a full save before discarding chat.
 
-Compile the compact orientation fields from accepted play at the same boundary: `scene_status`, `uncommitted_time`, exact `pc_declared_goals`, and `causal_frontier`. A PC goal is persisted only when the player declared it in fiction; an OOC preference is not converted into one. The causal frontier contains only the five schema-authorized kinds a fresh-chat GM may need to check: operative established `consequence:`, specific `due:` obligations/world conditions, established live `process:`, pending `decision:`, and compact non-revelatory current-state `cue:` entries/routes. It contains no forecast, inferred pattern, prepared candidate, or statement of what the campaign “should” become. Closing a scene never silently erases uncommitted player-owned time.
+Saving never advances fiction, resolves an unanswered choice, activates preparation, or interprets campaign direction. Preserve accepted post-save changes already in chat; do not infer goals, preferences, hidden events, or missing rules.
 
-Compile private-system watch cues into the candidate at the same time. If a system remains causally live across fresh boot and no other resident fact makes its bounded check discoverable, add/update one non-revelatory `declared_state_flags` cue to its selected current authority. ADMIN may introduce that already-whitelisted optional field here when an accepted emergent durable private subsystem first requires it; no universal reservation is required. If state just materialized, replace any MODULE-snapshot route with the current INSTANCE route. Remove/demote the cue when the system retires or another resident fact supersedes it. Do not add a cue for every dormant system.
+## Compile what changed
 
-## Write order (CHECKPOINT and CLOSE)
+Identify accepted transitions since CURRENT_SAVE and the single current authority for each affected value. Begin from its current INSTANCE record; for a first change with no override, use only the specifically named MODULE as-of-T0 snapshot. Apply every still-unsaved change once, preserving the complete current mutable surface. MODULE files remain unchanged.
 
-Never overwrite CURRENT_SAVE first.
+Carry forward unaffected accepted facts and detailed record sections. Do not shorten, silently omit, or reinterpret them merely because this is a new save. For each accepted change, identify its selected current destination and, on a full save, its surviving evidence source. Compare the proposed changes with the prior records and available accepted play before publication. A same-model compilation and reread remain fallible; a structural check cannot prove semantic completeness or losslessness. Report an actual source/verification limitation when one remains rather than claiming stronger coverage.
 
-1. Build a **candidate** at `INSTANCE/CURRENT_SAVE.candidate.md` (new unique `save_id`, incremented `save_rev`, `save_parent`, `commit_kind`, `archive_ref`, whitelist fields only, including the four orientation fields) and prepare the compilation plan for every selected INSTANCE authority.
-2. Preflight the candidate's whitelist/commit metadata and check that every changed fact has exactly one planned destination. Do not claim full assembled-state validation before those bodies and, for CLOSE, archive routes exist. If this preflight fails, leave all live bodies untouched.
-3. Write the selected non-save INSTANCE bodies: NOW/shards (including any first-save emergent-system shard), person overlays, PC entrypoint/shards, KNOWN, CAST_STATUS, and CORRECTIONS only where the compilation matrix requires them. Do not write Campaign Contract or Bearing.
-4. **CLOSE only:** write semantic scene shards with stable heading ids, then the session/slice `INDEX.md`, then the campaign `ARCHIVE/INDEX.md` row (`save_id`, `commit_kind=close`, `folder`, `session_index`). Write ledger pointers last among archive records.
-5. Before replacement, perform one bounded prospective consistency check over the candidate and the assembled write set now on disk: candidate fields/metadata satisfy INSTANCE/_SCHEMA.md; every planned INSTANCE body exists at its exact route; each changed fact has one authority; and, for CLOSE, archive/session/ledger routes and headings resolve and agree with the candidate `save_id`/`archive_ref`. The live CURRENT_SAVE still names the prior commit, so this is not a whole-tree VALIDATE PASS. If any check fails, stop and follow P19 restoration; do not replace CURRENT_SAVE.
-6. Replace CURRENT_SAVE with the candidate last (delete candidate after success).
-7. Confirm the new `save_id` and `commit_kind` to the operator.
+Prepare the five readable resume sections. Preserve actual ongoing action, meaningful unresolved decisions, remaining time where relevant, selected public conditions/resources, explicit live goals/obligations, operative processes, and exact useful routes. Follow the accepted agreement's continuation rules; a save boundary does not impose a new PC choice or erase one.
 
-If a write fails before replacement, the previous CURRENT_SAVE remains the live pointer, but separately overwritten INSTANCE bodies may already be ahead of it. Stop; do not resume PLAY. Inspect or restore every affected body and archive route from the external backup required by P19, remove a stale candidate only after its diagnostic value is no longer needed, and retry only after consistency is established. Do not claim multi-file rollback or atomicity.
-A provider moderation/refusal response or interrupted generation during ADMIN counts as a failed step: keep it OOC, do not treat refusal text as fiction or campaign data, and follow the same P19 inspection/restoration rule.
+Preserve full PC details under CHAR, what the PC learned under KNOWN, private/system state under NOW, person/relationship progression under PEOPLE, id mappings under CAST_STATUS, and accepted rulings under CORRECTIONS. Do not replace detailed authority with a vague resume summary or duplicate a live total. If an emergent durable person/system first needs persistence, follow the schema's established-only record rules. Keep a non-revelatory process cue only when needed for fresh-chat discovery.
 
-## CLOSE contents — hierarchical-scene-v1
+For historical evidence, the boundary is the prior **evidence_through**, not necessarily the prior checkpoint. Gather only accepted source actually available from that boundary forward. A checkpoint may already have applied its state transitions; archiving those transitions now must not apply them to state again. Identify source gaps explicitly; a summary is not the missing dialogue or roll record.
 
-Present only in CURRENT_SAVE: time, place, compact selected resource totals, pending act, durable flags, `hot_identifiers`, clean scene state, uncommitted player-owned time, exact declared PC goals, and the compact causal frontier. Detailed current inventory, finance, calendar, clock, faction, institution, or other subsystem state has one explicit INSTANCE authority; do not duplicate competing totals. Campaign interpretation belongs nowhere in PERSIST.
+## Full save evidence
 
-The `archive_ref` session/slice folder contains:
+Use ARCHIVE/_SCHEMA.md and preserve existing history. Create one new `ARCHIVE/sessions/<close-folder>/` with an INDEX and one or more coherent accepted-evidence bodies. One episode may use one detailed body. Split when independently useful for retrieval, not to meet a quota. Keep exact consequential wording, declarations, outcomes, quantities, chronology, learned facts and uncertainties that are actually available. Exclude rejected/rewound fiction, provider/OOC ADMIN responses, unsent suggestions, and internal preparation.
 
-```text
-INDEX.md                    compact routing entries
-01_<semantic-slug>.md       detailed accepted historical evidence
-02_<semantic-slug>.md       another independently retrievable event, if any
-...
-```
+If a full source is unavailable, archive only what the authoritative available record supports. Mark the missing span/detail and its limits explicitly in the evidence body; do not reconstruct it from model memory, current summaries, old hints, or expected continuity. A current private value may be defensible while its historical cause is unavailable; preserve that distinction. The public save report discloses a material source gap without leaking private content.
 
-Partition by coherent events likely to be retrieved independently: a particular conversation, journey, work problem, meeting, investigation, purchase, combat, message exchange, intimate scene, or similar causal unit. Do not impose fixed time-of-day buckets when several independent events occurred. Do not shard every micro-action. One coherent closed slice may have one shard.
+Indexes locate, source bodies establish detail. The campaign INDEX row carries the new save_id, close kind, folder, and session-index path. Keep routing terms compact and non-revelatory. A ledger entry is optional when it provides a useful direct route to exact wording or relationship evidence; ordinary relationships and intimacy do not require a special ledger entry. Never duplicate a complete exchange in a ledger or create a duplicate full-session transcript after faithful sharding. If safe partition is uncertain, retain a detailed coherent source and route to it.
 
-Derive shards only from accepted PLAY actually available in the just-closed slice. Do not reconstruct scenes from model memory, CURRENT_SAVE summaries, archive hints, or examples. If exact source text is unavailable, preserve only what the authoritative record establishes and mark missing detail as unavailable.
+## Protected write order
 
-Together, the scene shards preserve the complete accepted PLAY evidence for the closed slice at the same fidelity the former monolithic transcript would have held. Do not aggressively summarize them. Rejected/rewound material, unsent UI suggestions, OOC ADMIN/provider responses, internal candidate generation, and undelivered preparation are not accepted PLAY. Preserve exact consequential wording, accepted declarations, dialogue, messages, promises, rolls and margins, times, places, participants, sequence, resource/equipment changes, facts learned, established incidental details, unresolved matters, and uncertainty when present. Disk size is not the optimization target; retrieval size is. Record what occurred, not what it supposedly means for the campaign or what the player supposedly wants.
+1. Build the intended complete save and affected record changes in working context. Assign a unique save_id, increment save_rev, and set save_parent to the accepted prior id. Full save uses commit_kind `close`, new archive_ref, and evidence_through equal to the new save_id. CHECKPOINT uses `checkpoint` and copies both prior evidence metadata values unchanged.
+2. Follow ADMIN/RECOVERY.md: record the entire write set, preserve and verify all existing-file preimages, list new archive/candidate/body paths, and create the active marker before campaign writes. Protect safety/PC/index files too if affected. If this fails, leave campaign files untouched.
+3. Write `INSTANCE/CURRENT_SAVE.candidate.md` and the selected complete current bodies. Do not write the agreement or Bearing. Only an explicitly requested safety/correction change may add its separately authorized affected files to this operation.
+4. Full save only: write evidence bodies, session INDEX, campaign INDEX row, then any useful ledger pointers. CHECKPOINT writes none of these.
+5. Inspect the candidate and actual assembled write set. Confirm each changed fact has one current destination, accepted transitions were applied once, required sections and metadata are complete, every affected path resolves, and archive/evidence identity agrees. Confirm gaps/uncertainty were preserved. The current pointer still names the earlier save, so do not report a whole-tree structural PASS at this intermediate stage.
+6. Replace CURRENT_SAVE last. Read it and the affected routes again. Verify new id/revision, parent, evidence boundary, and the intended state. Finish the recovery record and remove its active marker only after successful checking. Preserve preimages and recovery history.
+7. Confirm OOC: full save or checkpoint, new save_id, where exact evidence now reaches, and any material source limitation. No fictional time passes. An explicit REVIEW request is separate.
 
-Every shard has a unique stable evidence heading such as `## E-<save_id>-01`. Exact messages, consequential promises, rolls, transactions, identifiers, or other retrieval-sensitive records may use stable subheadings inside that shard when future exact recall is plausible. Do not mint IDs for every trivial utterance or action.
+If anything fails before or after pointer replacement, keep the active marker and follow ADMIN/RECOVERY.md. An older CURRENT_SAVE alongside separately overwritten newer bodies is not a playable old save. A new CURRENT_SAVE beside missing bodies is not a successful new save. Neither the candidate nor CURRENT_SAVE-last provides atomicity or automatic rollback.
 
-The session/slice `INDEX.md` contains one compact routing entry per shard: file, evidence heading, known time, established people/places, topics, and no more than one or two notable routing facts. Each entry is at most 12 nonblank lines. It does not duplicate the scene.
+## Historical corrections and later maintenance
 
-The campaign INDEX row must include the same `save_id` as CURRENT_SAVE after CLOSE, the same folder as `archive_ref`, the full `session_index` path, and compact non-revelatory `route_terms`. Use enough neutral established people, places, institutions, objects, or topics to cover every independently retrievable subject likely to be queried; one discriminator may cover several shards. Do not expose private outcomes, mechanically enumerate every shard, or turn the row into a recap. If adequate coverage cannot remain compact, report evidence for later router redesign rather than dropping the route. These are POSIX paths relative to `ARCHIVE/`, as defined by ARCHIVE/_SCHEMA.md. New rows leave legacy `event_heading` empty. Do not turn the campaign index into a global summary.
+Never silently rewrite immutable accepted history to make a later correction look as though no error occurred. Use ADMIN/CORRECT.md to preserve a narrow superseding correction and repair the affected present. Rejected fictional material is not reintroduced as an event. Optional archive reindexing or lossless partition is a separate protected maintenance operation; retain original source whenever equivalence is uncertain.
 
-Indexes locate evidence. They may answer a simple unambiguous existence fact, but exact wording, quantities, sequence, rolls, subtle context, or disputed history require the source shard.
-
-If a message had exact wording: store it under a stable heading in the relevant shard and add a MESSAGES_LEDGER pointer. Live save stores at most: “nothing waiting” / “N unread” / “open thread with X”.
-
-If accepted play included intimacy or other embodied detail: scene-shard heading; RELATION_LEDGER row; INSTANCE person overlay `## PC` pointer only. Never write progression into MODULES/. Prior intimacy is a fact, not an obligation to start or continue a romance.
-
-On the first CHECKPOINT/CLOSE after person promotion or durable change, create `INSTANCE/PEOPLE/<person_id>.md` as the complete as-of-now mutable surface (`NOW`, `PC`, and only affected current PRIVATE state), applying each accepted transition once. The PEOPLE/CAST_STATUS route, `hot_identifiers` when hot, and record use the same stable portable id. For a preauthored person, keep stable CANON and unrelated PRIVATE lore in MODULE. For an emergent promoted person with no MODULE record, the INSTANCE record also receives only established minimal CANON and CAST_STATUS receives the id/record mapping. Never invent missing identity or promote a transient appearance. PC sheet changes go only to the INSTANCE PC entrypoint or its explicit shards.
-
-On the first CHECKPOINT/CLOSE after an emergent non-person subsystem gains durable causal state, assign one stable portable `system_id` and create exactly one `INSTANCE/NOW/<system_id>.md` shard routed from NOW. Store only its established complete current state and the minimum operational definition needed to continue it after fresh boot: triggers/non-triggers, current-state route, cue lifecycle if needed, and dependency/update order if needed. Do not invent missing operating rules, promote a transient condition for drama, or patch MODULE. Later saves update that same shard. Add a compact non-revelatory cue only if the ordinary cross-boot cue conditions require one.
-
-For a clock, phase, front, faction, institution, economy, resource, or similar mutable system, record the exact established transition and cause in the relevant scene shard when historical evidence matters; keep the resulting current value only in its selected INSTANCE authority. Do not advance a tracker because the session ended, CLOSE ran, its body was retrieved, or time passed unless elapsed time is an explicitly declared cause.
-
-Archive a private/offscreen transition or its cause only if it was explicitly established in the accepted just-closed PLAY context. If the source detail never entered the available accepted record, persist only the defensible current private state and mark the missing historical cause/detail unavailable or unfixed. Never reconstruct hidden history from model memory at CLOSE. Whether repeated use later justifies a separate provenance-bearing private-event record is a testing question, not a license to invent one now.
-
-Do not duplicate all archive detail into NPC overlays. Store only compact durable present state and a direct pointer when current retrieval needs one.
-
-## Checkpoint (cheap)
-
-Overwrite via the same candidate write-order, `commit_kind: checkpoint`, `archive_ref: none`.
-Do not write ARCHIVE, indexes, ledgers, or scene shards.
-
-After CHECKPOINT, say plainly: the present (time/place/resources/pending act) is saved. Exact wording since last CLOSE is **not** in the archive.
-
-Suggest checkpoint in the footer as `checkpoint available` — never as fiction. Do not nag every turn.
-
-CHECKPOINT is a complete save of the present. CLOSE adds archival evidence and exact recall. Do a full CLOSE before ending the day if wording must survive.
-
-A successful PERSIST makes any prior Bearing stale when its `base_save_id`/`base_save_rev` no longer match. Do not edit Bearing merely to mark that fact. Stale or missing Bearing is nonfatal; PLAY remains available from the accepted Contract and Current Save.
-
-## END SESSION
-
-`END SESSION` is an operator convenience sequence, not a third persistence kind:
-
-1. Run **CLOSE** completely and report its result, including the new `save_id`.
-2. Only if CLOSE succeeded, read the accepted Campaign Contract's `review_mode`.
-3. If it is `bearing-only`, run `ADMIN/REVIEW.md` as a separate transaction and report that result separately. If it is `off`, stop after CLOSE.
-
-If CLOSE fails, do not run REVIEW. A REVIEW failure never downgrades, rolls back, or obscures the successful CLOSE. Never report the pair as one atomic success.
-
-## Grain
-
-One folder per closed slice, not one row per cigarette. Within it, one shard per coherent independently retrievable event, not one file per action.
-The session index stays short. Shards stay detailed.
-Weeks later, exact wording → ledger or campaign index → session index → one source heading. Not the whole basement.
-
-PLAY retrieves that heading only when the present situation makes recall causally natural.
-
-## Legacy archives
-
-Existing `DELTA.md`, `TRANSCRIPT.md`, `MESSAGES.md`, or other monolithic archives remain valid. Do not migrate them merely because this schema exists. A session `INDEX.md` may point to stable headings or addressed sections in those files.
-
-Optional migration is partition + index, never rewrite + reinterpret. Preserve exact wording, rolls, times, resources, uncertainty, and contradictions. Invent nothing. Retain the original source whenever exact equivalence is uncertain. Archive migration never changes CURRENT_SAVE, campaign canon, or save identity.
-
-Do not combine adoption of this schema with legacy migration during active play. Migrate later as a separate ADMIN maintenance job on a backup/copy, and only when useful.
-
-If safe sharding cannot be completed during a future CLOSE, preserve the detailed accepted source in one legacy-compatible file with stable headings, add a session index that routes to it, and report the fallback. Never destroy evidence to force the preferred layout.
-
-## Forbidden
-
-- Boot-loading transcripts
-- Copying transcript prose into CURRENT_SAVE
-- One ever-growing CHRONICLE.md
-- One giant campaign index that summarizes every scene
-- Treating index metadata as authority for exact or disputed detail
-- Creating a duplicate full-session transcript after detailed shards were successfully written
-- Activating an archived possibility merely because it was retrieved or indexed
-- Rewriting or interpreting legacy history during partition
-- Patching MODULE CHAR or MODULE PEOPLE
-- Clearing ARCHIVE
-- Setting safety_state active without a real Hard-no/Fade sentence
-- Writing or revising Campaign Contract or Bearing during CHECKPOINT/CLOSE
-- Putting campaign interpretation, inferred player preference, or prepared possibilities into CURRENT_SAVE, NOW, or archive evidence
+A full save requires no campaign interpretation, new plot, general repository audit, or exhaustive lore rereading. Use the available accepted source and exact changed authorities, and preserve what is unknown.

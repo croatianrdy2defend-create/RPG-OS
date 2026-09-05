@@ -24,3 +24,4 @@ jobs:
           kit_dir="$(mktemp -d)"
           git archive --format=tar HEAD | tar -xf - -C "$kit_dir"
           python3 "$kit_dir/TOOLS/validate.py" --root "$kit_dir"
+          python3 "$kit_dir/TOOLS/test_validate.py"

@@ -1,76 +1,38 @@
 # Engine contract
 
-An ENGINE is a ruleset plugin. It is not the OS, a campaign, or the Campaign Contract.
+An ENGINE supplies rules, not a setting, narrative voice, or campaign agreement. Any commercial, open, oracle-driven, or freeform system can be used when its required procedures and values are available. The kit ships only Freeform.
 
-The OS does not assume any particular commercial, open, oracle-driven, or freeform system.
-A playable bound run names an installed engine in CURRENT_SAVE. If that file is missing, the instance is not runnable.
-Campaign promise, structural direction, initiative, pressure, time handling, development priorities, guidance, creative mandate, and REVIEW mode never come from ENGINE. Conversely, none of those contract settings changes an ENGINE resolution procedure, supplies a missing character value, or authorizes the GM to decide the PC's voluntary conduct.
+## Identity and contents
 
-## Required file
+Use exactly one `ENGINE/<id>.md` or `ENGINE/<id>/ENGINE.md`. Scalar front matter includes:
 
-`ENGINE/<id>.md` or `ENGINE/<id>/ENGINE.md`
+- `id`, matching the flat filename stem or containing directory.
+- `class: engine` exactly.
+- `character_build_support`: `self-contained`, `operator-values-required`, or `no-mechanical-sheet`.
 
-Must state scalar front matter `id`, `class: engine`, and `character_build_support`:
+Ids use ASCII letters, digits, `.`, `_`, `-`, begin with a letter or digit, and contain no separators/traversal. Never install both forms for the same id or count aliases as engines.
 
-- `id` (example: `dice_pool`, `oracle`, `pbta`, `freeform`)
-- `class: engine` (exact; pointer/alias files are not engines)
-- how uncertainty is resolved (dice, moves, oracle, none)
-- which PC-sheet fields exist and must be retrieved, never guessed
-- which character field groups are required before bind, which may be deferred until a subsystem enters play, and which are optional
-- a compact guided-build order, or an explicit statement that creation procedures/values must be supplied by the operator
-- `character_build_support`: exactly `self-contained`, `operator-values-required`, or `no-mechanical-sheet`
-- when this file should be opened
-- that it contains no setting, no NPC names, no literary voice
+The body states:
 
-## Character creation support
+- How uncertainty is resolved and which procedures are actually supplied.
+- How genuinely random results are obtained when required: an available real randomizer or player-provided results. No compulsory helper script; never report an invented model number as an actual roll.
+- Character fields required before bind, permitted deferrals with their conditions, and optional fields.
+- A compact creation order, or where the operator must supply procedures/values.
+- When to retrieve this adapter or its specific subprocedures.
+- Any relevant source/version and honest coverage limits.
 
-A completed mechanical sheet is optional during NEW GAME unless the selected ENGINE explicitly requires one before the chosen kind of play can begin. The stable `CHAR/PC.md` baseline is still required and must contain substantive operator-approved material.
+A self-contained adapter supplies the advertised creation procedure and inputs/options needed for that scope. Operator-values-required may guide the order without claiming unavailable costs/tables. No-mechanical-sheet offers a profile instead of a fictitious full sheet.
 
-If the operator chooses a guided or full build, SETUP follows only this engine's declared field groups and procedure, one group at a time. It may derive a value only when both the procedure and inputs are present. It never invents values, silently chooses options, or reconstructs missing rules.
+## Setup and play
 
-The engine must distinguish:
+A substantive accepted PC record is always required, but a full mechanical sheet is required only when this engine and the opening need it. Values may be derived only from available procedures and inputs. Missing later-required values prompt narrow clarification instead of invention.
 
-- fields required before bind;
-- fields that may remain deferred until a named subsystem enters play;
-- optional character/profile fields.
+Campaign depth, GM initiative, routine delegation, compression, and presentation do not change resolution or supply missing stats. Conversely a rule does not grant unrelated authority over the PC. Involuntary effects and voluntary choices remain distinguished by the accepted rules and agreement.
 
-If later adjudication requires a deferred value, pause and ask rather than guess. For a commercial system whose creation rules are not lawfully present, request operator-supplied values, an imported sheet, or reference to an owned source; do not reproduce its tables or catalogues.
+MODULE names the installed engine. RULES_HOOKS may clarify compatible usage; an actual change to resolution or character rules needs a distinct engine id. Later explicit rulings remain in INSTANCE/CORRECTIONS.md.
 
-NEW GAME's initial engine summary states the support class and what that means before the operator chooses a sheet path. `operator-values-required` may guide the order but cannot supply missing costs/tables; `no-mechanical-sheet` must say that Guided full sheet is unavailable rather than pretending to build one.
+## Locality and sources
 
-## Identity
+Keep a compact adapter in one entrypoint. Split independently needed mechanics into explicit narrow routes under `ENGINE/<id>/` when useful; do not create empty hierarchies or duplicate procedures in indexes. Retrieve only the procedure relevant now.
 
-For a flat engine, the filename stem in `ENGINE/<id>.md` must equal the scalar front-matter `id`. For a directory engine, the containing directory name in `ENGINE/<id>/ENGINE.md` must equal that `id`.
-New ids are portable safe tokens: ASCII letters, digits, `.`, `_`, and `-` only, beginning with a letter or digit. No slash, backslash, whitespace, absolute path, or traversal segment.
-Do not list alias, pointer, or README files as engines.
-The bundled public-release engine is `freeform` → `ENGINE/freeform.md`.
-
-## Optional
-
-`ENGINE/<id>/` extra sections (combat, magic, vehicles) retrieved only when that question exists.
-
-## Retrieval locality
-
-Keep a compact engine in its required root file. If mechanics or extensions become large and are normally needed independently, the root file remains the declared entrypoint/capability map and points explicitly to narrower authoritative files or named sections under `ENGINE/<id>/`.
-
-Split by independent retrieval relevance, not by an arbitrary size threshold. Do not prebuild empty rules hierarchies. An index routes to procedure; it does not duplicate the procedure, and a cross-link does not authorize unrelated retrieval.
-
-PLAY opens only the mechanic required by the present adjudication. It does not browse neighboring rule files.
-
-## Bound module
-
-`MODULE.md` names `engine: <id>`. ADMIN will not bind a module to an engine that is not installed.
-
-A MODULE `RULES_HOOKS` capability may clarify or calibrate use of the bound ENGINE but cannot contradict it. Neither MODULE Campaign defaults nor the accepted run contract can override it. A real change to resolution or character rules uses a distinct compact ENGINE id. Later explicit table rulings live in `INSTANCE/CORRECTIONS.md`.
-
-## Copyright / compactness
-
-Procedure + sheet fields only. Do **not** paste a copyrighted rulebook.
-This constraint applies to the initial draft **and every later addition** to an engine file.
-If uncertain, ask the operator; do not reconstruct a book.
-No bulk spell lists, equipment catalogs, or chapter reconstructions.
-
-## Bundled examples
-
-This public pack ships `ENGINE/freeform.md` only.
-You may add a compact engine for another ruleset the same way you add a module, using procedures and values you are entitled to use. Do not edit LAW to teach the new dice, and do not redistribute third-party rule text without permission.
+Keep adapters to compact procedures and field requirements. Do not paste or reconstruct commercial books, chapters, bulk spell/equipment lists, or source tables. Use supplied values and accessible owned sources honestly; installation does not imply permission to redistribute third-party text. Missing source support stays visible rather than being replaced by model confidence.

@@ -19,20 +19,27 @@ No campaign run is bound.
 | save_parent | none |
 | commit_kind | unbound |
 | archive_ref | none |
+| evidence_through | none |
 | safety_state | floor-only |
-| status | OS ready; no instance |
 | datetime | none |
 | place | none |
-| tracked_resources | none |
-| appointments | none |
-| known_open_matters | none |
-| declared_state_flags | none |
-| immediate_scene | none |
-| hot_identifiers | none |
-| scene_status | none |
-| uncommitted_time | none |
-| pc_declared_goals | none |
-| causal_frontier | none |
 
-PLAY: confirm ready and unbound. Do not begin a scene. Do not invent a world. Do not print filenames.
-Do not offer New Game unless the operator asks.
+## Situation
+
+none
+
+## Character state
+
+none
+
+## Open matters
+
+none
+
+## Active processes
+
+none
+
+## Relevant records
+
+none

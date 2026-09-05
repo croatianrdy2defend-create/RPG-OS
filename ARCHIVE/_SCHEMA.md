@@ -7,154 +7,82 @@ temperature: cold
 
 # ARCHIVE schema — hierarchical-scene-v1
 
-ADMIN maintenance contract. No fiction.
-
-ARCHIVE stores accepted historical evidence. It is not the living present and is never resident at boot.
-
-Core rules:
-
-> Compress the routing layer, not the historical source.
-
-> Index to locate; source shard to establish detail.
-
-## Authority
-
-- `CURRENT_SAVE` and current INSTANCE records govern what is true now.
-- ARCHIVE establishes what happened or was known at a past moment.
-- An index is routing metadata. It may answer a simple, unambiguous existence question, but it is not preferred authority for exact wording, quantities, sequence, rolls, subtle context, or disputed facts.
-- Reading an old possibility, intention, seed, or unresolved matter does not activate it.
-- Preserve uncertainty exactly: *might*, *suspected*, *conditional*, *not decided*, and *unknown* must not become facts or future commitments.
+Cold ADMIN reference. ARCHIVE preserves historical evidence; INSTANCE records govern the present. Indexes locate sources. They may answer simple unambiguous existence questions, but exact wording, quantities, sequence, rolls, subtle context, or disputed history require the pointed source.
 
 ## Layout
-
-Use the existing campaign-level router and ledgers:
 
 ```text
 ARCHIVE/
   _SCHEMA.md
   INDEX.md
-  MESSAGES_LEDGER.md
-  RELATION_LEDGER.md
+  MESSAGES_LEDGER.md       optional useful exact-record routes; may remain empty
+  RELATION_LEDGER.md       optional useful relationship routes; may remain empty
   sessions/<close-folder>/
     INDEX.md
-    01_<semantic-slug>.md
-    02_<semantic-slug>.md
-    ...
+    01_<episode>.md
+    02_<episode>.md        only if another useful retrieval boundary exists
 ```
 
-`archive_ref` points to the closed session/slice folder. A folder may represent one full table session or one closed slice; do not relabel established session identities merely to fit the example.
+A full Save/CLOSE/END SESSION creates one folder per closed available slice. A CHECKPOINT creates no evidence folder and retains the earlier archive_ref/evidence_through. The latter pair identifies the latest archived close, not necessarily the current save id.
 
-For v0.4-and-later writes, `archive_ref`, campaign INDEX `folder`/`session_index`, and ledger pointers are POSIX-style paths relative to `ARCHIVE/`: for example, `sessions/s01-d001` and `sessions/s01-d001/INDEX.md`. Session INDEX `File` values are filenames or paths relative to that session INDEX directory. Do not store absolute paths, backslashes, `.`/`..` traversal, or symlink routes. An older route prefixed with `ARCHIVE/` may remain reachable with a noncanonical warning; absolute, backslash, traversal, and symlink forms fail validation rather than receiving legacy status.
+Use safe POSIX paths relative to ARCHIVE for archive_ref, campaign folder/session_index, and ledger pointers. Session INDEX File values are relative to that index's folder. New folders are direct children of sessions/. No absolute path, backslash, traversal, or symlink route. Existing `ARCHIVE/`-prefixed legacy routes remain readable with a noncanonical warning. Stable pointer fragments name literal heading text, not host-generated slugs.
 
-## Semantic shards
+## Accepted source and fidelity
 
-Each future CLOSE partitions accepted PLAY evidence into coherent events likely to be retrieved independently. Good boundaries include a particular conversation, journey, work problem, meeting, investigation, purchase, combat, message exchange, intimate scene, or return home.
+Preserve the accepted evidence actually available since the previous evidence boundary. A prior checkpoint may have saved the resulting state without archiving its source; include that source if still available, without applying its state transitions twice. Preserve consequential declarations/dialogue, exact promises/messages, rolls and margins, quantities and resource changes, chronology, participants, learned facts, choices and uncertainties when present.
 
-Shard only from accepted PLAY actually available in the just-closed slice. Do not reconstruct an omitted scene from model memory, a save summary, an older archive, or an example. If the accepted source is unavailable, preserve that absence and report the fallback.
+One coherent episode can be one detailed body. Split only at independently useful retrieval boundaries such as a conversation, journey, purchase, battle, investigation, or return. Do not require one file per action, time-of-day category, person, or romantic exchange. Together the bodies preserve available accepted source at its original fidelity; they are not aggressively compressed summaries.
 
-Do not impose fixed morning/afternoon/evening categories when several independent events occurred. Do not split every micro-action into its own file. A short closed slice containing one coherent event may have one shard.
+Each new evidence body has a unique stable heading such as `## E-<save_id>-01`. Useful exact records may use subheadings such as `### M-<save_id>-01`, `### ROLL-<save_id>-01`, or `### TX-<save_id>-01`. Ids are aids, not a quota.
 
-Use ordered, concise, filesystem-safe Markdown filenames such as `01_arrival.md` or `04_cafe_conversation.md`. Source shards and legacy sources routed by a session index use the `.md` extension. Do not put campaign-specific categories into this universal contract.
+Do not reconstruct unavailable source from model memory, CURRENT_SAVE, an old index, or a genre expectation. Record a source gap explicitly: what span/detail is unavailable, what surviving authority establishes, and what remains uncertain. `evidence_through` does not certify a complete transcript. A defensible private current value does not prove its unrecorded historical cause. Do not invent private events while saving.
 
-Each shard must contain a unique stable evidence heading such as:
+Rejected/rewound fiction, unsent suggestions, hidden candidate generation, and OOC ADMIN/provider responses are not accepted fictional evidence. An explicitly accepted correction may be stored as a clearly labeled record correction, identifying what it supersedes; it must not be narrated as a new fictional event. Keep the unaffected original evidence and its uncertainty.
 
-```markdown
-## E-<save_id>-01
-```
-
-Together, the shards preserve the complete accepted PLAY evidence for the closed slice at the same fidelity the former monolithic transcript would have held. Do not aggressively summarize. Rejected/rewound material, unsent UI suggestions, and OOC ADMIN/provider responses are not accepted PLAY. Preserve, when present and relevant:
-
-- accepted player declarations and consequential NPC dialogue;
-- exact promises, commitments, messages, formal statements, and important wording;
-- rolls, effective values, results, and margins actually recorded;
-- timestamps, places, participants, actions, consequences, and sequence;
-- purchases, money, equipment, and tracked-resource changes;
-- facts learned, unresolved matters created, and choices rejected when historically relevant;
-- relationship-affecting exchanges and established incidental physical details;
-- uncertainty and missing information as uncertainty and missing information.
-
-Disk size is not the optimization target. Retrieval size is. The shards together preserve the evidence; do not also create a duplicate monolithic transcript for a successfully sharded CLOSE.
+Do not create a duplicate full-session transcript after a faithful partition. If partition equivalence is uncertain, preserve the original detailed source and route to it. Disk duplication during a protected recovery operation is a backup, not a second canonical evidence record.
 
 ## Session INDEX
 
-Every hierarchical session/slice folder contains a compact `INDEX.md`. It routes to evidence and does not retell the session.
-
-Use one entry per shard:
+Retain the existing compact entry grammar so old readers and routes remain usable. One route per new evidence shard:
 
 ```markdown
 ## R-<save_id>-01 — concise label
-File: `01_<semantic-slug>.md`
+File: `01_<episode>.md`
 Evidence: `E-<save_id>-01`
 Time: known span or `unknown`
-People: established participants only
-Places: established locations only
+People: established participants or `none`
+Places: established locations or `unknown`
 Topics: compact search terms
 Notable:
-- one or two routing facts only
+- one or two routing facts, including a source-gap warning when relevant
 ```
 
-For v0.4-and-later entries, keep the seven fields exactly once and in the shown order. `Time`, `People`, `Places`, and `Topics` require an explicit value; write `unknown` or `none` when that is the preserved truth rather than leaving a blank. Several routes may point to different headings in one retained legacy monolith, but each new `E-*` semantic shard has one route entry.
-
-Do not copy whole dialogue or scene summaries into the index. If exact or nuanced detail is requested, open the pointed source shard.
-
-Keep each shard entry at no more than 12 nonblank lines. Count from its `## R-...` heading through the line before the next level-two heading, including the route heading and every nonblank metadata/bullet line. If routing cannot fit, shorten the metadata; do not turn the index into a second chronicle.
+For hierarchical-scene-v1 writes use those seven fields once and in that order; keep the entry at no more than 12 nonblank lines. Indexes route rather than retell. Several legacy route entries may address different stable headings in one retained source. New evidence shards have one route each. Source bodies use .md files, and pointed headings are unique within their file.
 
 ## Campaign INDEX
 
-`ARCHIVE/INDEX.md` is the sparse campaign-level router. One row per CLOSE identifies the likely session/slice by compact names/search terms, folder, and full path to its session index (for example, `sessions/s01-d001/INDEX.md`). Keep `route_terms` non-revelatory: use enough neutral established people/places/institutions/objects/topics to locate every independently retrievable subject likely to be queried, while one discriminator may cover several shards. Do not expose private outcomes, mechanically enumerate every shard, or retell events. The session INDEX performs finer routing. The campaign INDEX answers “which session should I inspect?”, not “what exactly happened?” If adequate subject coverage cannot remain compact, report evidence for a later router redesign rather than omitting the route or turning this row into a recap. Keep `notes` terse and operational or fallback-only, never a plot recap. The retained `event_heading` field is an optional legacy route, not a requirement for new shards.
+Keep one row per archived close using the existing columns:
 
-Do not turn it into a campaign bible or duplicate every shard summary. If the exact session or shard is already identified by CURRENT_SAVE, an INSTANCE pointer, a ledger, or the operator, skip unnecessary higher routing levels.
+`save_id | commit_kind | session | span | place | route_terms | notes | folder | session_index | event_heading`
 
-## Exact records and ledgers
+commit_kind is `close`; folder and session_index identify the new folder and its INDEX. New writes leave legacy event_heading blank. Preserve established session identities. route_terms contain compact neutral names/subjects sufficient to locate likely requested evidence; they do not enumerate every scene or reveal private outcomes. notes is terse operational information, including a meaningful source gap or superseding correction route where needed, never a plot recap.
 
-Use stable subheadings inside the relevant shard only when future exact retrieval is plausibly useful, for example:
+The table uses outer pipes and one contiguous row block. Do not add rows after a blank line. Skip campaign-level routing when a current record, the operator, or a ledger already identifies the exact session/source. If campaign routing becomes unwieldy, improve its explicit indexes in separate maintenance rather than turning it into a campaign bible.
 
-```markdown
-### M-<save_id>-01
-### ROLL-<save_id>-01
-### TX-<save_id>-01
-```
+## Optional direct ledgers
 
-`MESSAGES_LEDGER.md` and `RELATION_LEDGER.md` point directly to the shard and stable heading. Pointer fragments name the literal stable heading text, not a host-generated Markdown slug, and new ids use the owning CLOSE `save_id`. Ledger routing columns are explicit rather than blank. Do not copy the entire exchange into the ledger. Existing pointers to legacy `MESSAGES.md` or `TRANSCRIPT.md` headings remain valid.
+MESSAGES_LEDGER may point directly to useful exact wording. RELATION_LEDGER may point to relationship-affecting evidence. These are optional shortcuts: a complete save does not require an entry in either just because a message, intimacy, or relationship occurred.
 
-Do not mint exact-record ids for every greeting, trivial action, or disposable line. Stable ids are retrieval aids, not a telemetry quota.
+Keep existing column grammar and POSIX source-file-plus-literal-heading pointers when adding a row. Preserve unknown values explicitly, and store only a compact routing gist. Do not copy the exchange. Existing MESSAGES.md, TRANSCRIPT.md, and other legacy source pointers remain valid. A current person record may carry the same useful source pointer without copying its scene.
 
-## Retrieval
+## Retrieval, history, and maintenance
 
-Use the narrowest sufficient route:
+Current questions begin with current INSTANCE authority. Historical questions use the narrowest sufficient route: campaign INDEX only if needed, selected session INDEX, then the relevant source body/heading. A broad cross-session question may justify several selected sources. One small fact does not justify loading every scene about a person.
 
-```text
-ARCHIVE/INDEX.md, only if the session is not already known
-→ session/slice INDEX.md
-→ one or a few source shards/headings
-→ answer and return to the present
-```
+Preserve recorded scope, time, modality and knowledge: suspected, conditional, not decided, unknown, rumor, and private belief do not become outcome. Reading old preparation or an unresolved possibility never activates it. Later current state does not retroactively rewrite what was known then.
 
-Stop when sufficient authoritative evidence is found. A broad cross-session question may justify several selected indexes or shards; one small fact does not.
+Archive evidence is immutable. Routing metadata and lossless partitions may be changed only by a separate protected ADMIN operation that retains reachable original evidence whenever equivalence is uncertain. Use ADMIN/RECOVERY.md before modifying existing indexes/ledgers. Reindexing never changes CURRENT_SAVE, save identity, history, or facts. Corrections use ADMIN/CORRECT.md and explicit supersession rather than silent historical editing.
 
-Do not automatically load every session involving a person, an entire dossier, all relationship history, or neighboring shards. Current authoritative state should answer current-state questions without archive retrieval when sufficient.
+Legacy DELTA.md, TRANSCRIPT.md, MESSAGES.md and prior hierarchical-scene-v1 sources remain readable. No forced migration or deletion accompanies schema adoption. Exact wording, sequence, quantities, ambiguity, contradictions, and original identifiers survive any optional partition.
 
-Sharding reduces irrelevant whole-file retrieval; it does not prove that a host injected only the addressed section. Section-addressability preflight and AUDIT remain the evidence available to the operator.
-
-## Legacy compatibility and migration
-
-Pre-v0.3.2 `DELTA.md`, `TRANSCRIPT.md`, `MESSAGES.md`, or other monolithic session records remain valid evidence. Do not require immediate conversion. A new session `INDEX.md` may point to a stable heading or addressed section in a legacy file.
-
-Optional migration is **partition + index**, never rewrite + reinterpret:
-
-- preserve exact wording, rolls, times, resources, uncertainty, and contradictions;
-- invent no connective material and resolve no ambiguity silently;
-- retain the original legacy source whenever exact equivalence is uncertain;
-- do not alter CURRENT_SAVE, canon, or save identity merely because the archive schema changed.
-
-Schema adoption and legacy migration are separate ADMIN operations. Do not rewrite old sessions in the same turn that adopts this schema. If migration later becomes useful, perform it on a backup or copy and validate the routes before replacing any established source.
-
-Archive evidence is immutable. Routing metadata and lossless partitions may be revised in a later, separate ADMIN maintenance operation when retrieval improves, provided the original evidence remains reachable and no wording, uncertainty, sequence, or meaning changes. This applies to an awkward hierarchical-scene-v1 boundary as well as a legacy monolith; it is permission to reroute or partition, never to reinterpret.
-
-If safe sharding cannot be completed at a future CLOSE, preserve the detailed source in one legacy-compatible file with stable headings, create a session index that routes to it, and report the fallback. Never discard evidence merely to satisfy the preferred layout.
-
-## Live-state boundary
-
-Archive detail stays in ARCHIVE. Promote only durable, presently causal state into CURRENT_SAVE or INSTANCE overlays. Do not inflate NPC records with complete conversations. A person overlay may retain a compact durable fact and direct pointer; the shard retains the scene.
-
-When accepted play changes a phase, clock/front, faction/institution, economy/resource track, or other mutable subsystem, the source shard preserves the established causal event and exact transition when relevant. Its resulting current value belongs in the selected INSTANCE authority. Closing, indexing, retrieving, or merely ending a session never advances it.
+Physical sharding helps selective reading but does not prove a host returned only an addressed section. Inspect actual host behavior; do not treat an instruction to ignore visible neighboring text as isolation.

@@ -1,98 +1,56 @@
 # SETUP — Character Build
 
-Operator-side character construction. Not PLAY. Not fiction. Nothing here is canon until explicit ACCEPT and ADMIN commit.
+Use during NEW GAME or its accepted draft preparation. A substantive player-approved PC baseline is required; a complete mechanical sheet is not universally required. Reuse supplied concepts/imports instead of interviewing the player again.
 
-Open this file only when NEW GAME reaches the character-building choice. A complete mechanical sheet is optional. A substantive, operator-approved `CHAR/PC.md` baseline is required so the bound `pc_record` is never an empty placeholder.
+## Choose detail independently of mechanics
 
-## Choose profile depth and sheet path separately
+If unknown, offer a brief choice: quick concept, guided useful detail, or selected detailed/custom sections. Separately establish the mechanical path: minimum needed now, guided full build, import/review, or deferred mechanics where the engine permits. A detailed profile can have minimal mechanics and a quick profile a complete sheet.
 
-Ask both questions even when the operator has already supplied a character concept.
+Explain the selected engine's creation support before offering unavailable paths. Freeform has no formal sheet to complete. Optional fields may be skipped; a chosen depth does not select every profile section.
 
-**Character/profile detail:**
+## Establish the playable minimum
 
-1. **Quick** — concept, agency boundary, starting facts, and intentionally unspecified facts.
-2. **Standard** — add only the most useful identity, background, capability, persona, obligation, resource, and status cues.
-3. **Detailed** — work through operator-selected profile sections one small cluster at a time.
-4. **Custom** — operator names the sections and depth independently.
+- Who or what is controlled, from what perspective, and how decisions belong to the player. Individual, nonhuman, collective, organization, and custom forms are allowed when representation and agency are clear.
+- Accepted concept and facts needed to understand the opening.
+- Actual standing grants from the agreement, if any, and reserved meaningful decisions. A persona or background does not grant control.
+- Required mechanical values for bind and the opening; explicitly deferred/unknown fields where permitted.
+- Important intentionally unspecified facts.
 
-**Mechanical sheet:**
+Do not force human anatomy, age, gender, pronouns, biography, possessions, money, romance, alignment, or a conventional stat block onto an incompatible character.
 
-1. **No full sheet now** — keep mechanics deferred except any nondeferrable ENGINE minimum.
-2. **Minimum required** — complete only fields the selected or in-memory draft ENGINE requires for bind or the opening's intended mechanics.
-3. **Guided full sheet** — follow the selected or in-memory draft ENGINE's declared field groups step by step.
-4. **Import and review** — preserve an existing sheet, check it against the selected or in-memory draft ENGINE, and ask about conflicts or missing required fields.
+## Optional useful depth
 
-The choices are independent: a detailed persona can use deferred mechanics, and a complete mechanical sheet can use a quick profile. Any optional section may be skipped. Missing facts remain unspecified; SETUP does not fill a template by inference.
+Ask only selected/relevant clusters:
 
-They are also independent of the Campaign Contract. Its initiative, pressure, development priorities, guidance setting, or creative mandate cannot choose character depth, complete a sheet, supply persona, or authorize PC conduct. Character choices do not silently recalibrate those campaign settings.
+- Identity/presentation and physical or other form.
+- History, role, training, membership, and what those actually establish.
+- Capabilities, limitations, powers, tools, and known unknowns.
+- Player-authored values, habits, voice, and portrayal cues.
+- Connections, promises, dependents, obligations, or rivalries.
+- Resources at the accepted precision.
+- Opening condition, location/order in time, ongoing declared activity, and unresolved choices.
 
-Before optional profile work, show the profile-pass headings below and ask which to build now, add as custom, or leave unspecified. Do not walk unselected passes. After each selected pass, offer revise / next selected pass / stop.
+Preserve declared goals as such in Open matters; never infer them from background or campaign preferences. OOC preferences belong in the agreement. Proposed past commitments require acceptance. Ownership of a resource does not imply it was used.
 
-## Always establish
+A behavioral mechanic may impose only its defined accepted effects. It does not expand unrelated PC-control grants. Resolve a declared act within its scope; do not demand repeated consent for the same declaration or originate additional meaningful participation.
 
-Every path establishes only operator-supplied or explicitly accepted material:
+## Engine-aware mechanics
 
-- a concise character concept and role;
-- facts required to understand the T0 body/state and immediate situation;
-- the authorship boundary: the player owns voluntary PC acts, words, thoughts, emotions, attraction, consent, commitments, purchases, risks, messages, and conduct;
-- any ENGINE-required fields needed before the chosen kind of play can begin, or an explicit statement that those fields are deferred;
-- intentionally unspecified facts where omission matters.
+1. Open the selected engine's creation/field-group procedure or use its reviewed new draft.
+2. Distinguish required-before-bind, deferrable-until-needed, and optional values. Opening requirements override an otherwise permitted deferral.
+3. For a guided build, work one group at a time. Offer options as proposals; do not silently select, optimize, or complete them.
+4. Derive a value only from available inputs and a known procedure. State consequential derivations compactly.
+5. For missing rules or costs, request supplied values, an accessible owned reference, an import, or an accepted alternative/deferment. Never reconstruct commercial tables or claim unsupported completeness.
+6. Check conflicting values, unresolved required fields, and accepted/deferred facts before returning to the campaign draft.
 
-Quick profile detail stops here unless the operator asks for more.
+No agreement clause supplies a missing mechanic. Later play needing an unresolved required value pauses for that value/procedure rather than guessing.
 
-## Optional profile passes
+## Import and storage
 
-For Standard, Detailed, Custom, or a requested review, offer only relevant passes and ask one small cluster at a time:
+Preserve imported values and wording unless a change is accepted. Flag conflicts, missing requirements, unclear editions, and competing totals; do not silently rebalance.
 
-1. **Identity and presentation** — name, pronouns, age where relevant, body/appearance, culture, languages, and public presentation.
-2. **Background and role** — origin, training, work, social position, affiliations, important history, and limits on what that history grants.
-3. **Capabilities** — competencies, weaknesses, powers, equipment access, and areas deliberately left unknown.
-4. **Persona cues** — player-authored values, goals, habits, tastes, fears, flaws, boundaries, and portrayal cues.
-5. **Connections and obligations** — only relationships, dependents, duties, debts, appointments, or commitments the operator establishes.
-6. **Resources and possessions** — only at the campaign's chosen accounting precision; distinguish owned, stored, carried, equipped, available, owed, and estimated.
-7. **T0 status handoff** — health/condition, location, schedule, active effects, exact player-declared goals, and other facts actually needed for the opening. Put immediate location, appointments, `pc_declared_goals`, and other mutable present facts in `T0_SAVE.md`/CURRENT_SAVE, not redundantly in the stable PC baseline. Only sheet-owned mechanical condition belongs in `CHAR/PC.md`, and its current value must not compete with another authoritative total.
-8. **Intentionally unspecified** — facts that should remain open rather than being completed for neatness.
+Use one cohesive `MODULES/<id>/CHAR/PC.md` while it is normally retrieved together. Split only independently useful detail. A routed PC entrypoint declares scalar `class: character-routing-index`; its exact transitive Markdown routes stay under that module's CHAR tree. Do not include unrelated siblings or use reserved `CHAR/README.md`.
 
-Persona is descriptive input from the player, not standing permission for the GM to author the PC. A listed goal does not choose the next action. A preference does not create attraction or consent. A possession is not automatically carried, equipped, consumed, or used.
-A PC-declared goal and an OOC campaign preference are different claims: preserve the former exactly in the PC/current-state lane and the latter only in the accepted Campaign Contract or provisional REVIEW lane. Never infer either from observed conduct.
-A behavioral disadvantage, compulsion, self-control value, alignment, drive, or similar mechanic may establish a trigger or involuntary mechanical consequence only as the ENGINE permits. Accepting it never delegates the PC's voluntary conduct, interpretation, dialogue, attraction, consent, or decision.
+Stable accepted PC description lives in the baseline. Mutable opening facts go in T0's Situation, Character state, or Open matters unless a detailed sheet value owns them. Choose one authority for each exact current value; other records point to it. At bind the exact PC bundle is copied to INSTANCE and becomes the run's character authority.
 
-## Engine-aware sheet procedure
-
-For Minimum required, Guided full sheet, or a mechanically complete import:
-
-1. Open only the selected ENGINE's character-creation/field-group section, or use the accepted in-memory draft if the engine file has not yet been written.
-2. State the build method or budget only if the ENGINE or operator supplies it.
-3. Distinguish **required before bind**, **required only when that subsystem enters play**, and **optional** fields.
-4. Show the declared field groups and their required/deferred/optional status, then work through one selected or required group at a time. After each group offer revise / next / skip if permitted / stop as partial. Offer choices as proposals, never silent selections.
-5. Derive a value only when both the procedure and its inputs are present. Show the derivation compactly when it matters.
-6. Do not reconstruct missing commercial rules, costs, tables, lists, or chapters. Ask the operator to provide the value, consult an owned source, import a sheet, choose another engine, or defer the field.
-7. Finish with an audit: supplied facts, accepted proposals, derived values, required unresolved fields, optional deferred fields, and intentionally unspecified facts.
-
-No campaign promise, fit judgment, initiative setting, or creative mandate can supply a missing ENGINE value or substitute for the engine's character procedure.
-
-An incomplete sheet may bind only if the ENGINE permits those missing fields to be deferred. If later adjudication requires a missing value, pause and ask; never guess it.
-
-## Import rules
-
-- Preserve supplied values and wording unless the operator accepts a change.
-- Flag contradictions, duplicate totals, unclear editions, and missing ENGINE-required fields.
-- Do not silently rebalance, optimize, normalize, or complete the character.
-- Treat external sheets and rule text as operator-provided reference, not permission to copy a rulebook into ENGINE or MODULE.
-
-## Draft output
-
-Before returning to NEW GAME, show:
-
-- character/profile depth and mechanical-sheet path;
-- sheet state: `not built/deferred`, `minimum`, `complete`, `imported`, or `partial`;
-- required unresolved fields, if any;
-- intentionally unspecified areas;
-- proposed `CHAR/PC.md` section outline and storage shape: `ONE AUTHORITATIVE BODY` or `ROUTED SHARDS`;
-- if routed, the exact transitive bundle beginning at `CHAR/PC.md`, with every target under `CHAR/`, no unrelated siblings, and one representative listed-value route rehearsal;
-- mutable T0 facts handed back to NEW GAME for `T0_SAVE.md` rather than duplicated in the baseline.
-- exact player-declared goals handed to `T0_SAVE.md` as `pc_declared_goals`; OOC development preferences remain outside the PC record.
-
-Use one cohesive `CHAR/PC.md` while its material is normally retrieved together. If sheet mechanics, persona/background, or resource records are materially independent retrieval units—or a whole-file test shows leakage—`CHAR/PC.md` may instead be a compact routing index with scalar front matter exactly `class: character-routing-index`, pointing to narrow Markdown bodies under the same `CHAR/` tree. Do not shard merely because Detailed was selected. Indexes locate values and do not duplicate them.
-
-Do not write the file here. NEW GAME includes it in the proposed manifest, and only explicit ACCEPT authorizes the ADMIN commit.
+Return to NEW GAME with the concise PC proposal, sheet state (minimal/complete/imported/partial/deferred as appropriate), unresolved requirements, intentional omissions, exact bundle routes, and accepted opening facts. Do not write here; one accepted proposal and recoverable bind commit the work.

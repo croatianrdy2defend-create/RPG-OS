@@ -1,37 +1,29 @@
-# ADMIN Validate Contract
+# VALIDATE — v0.7 structural inspection
 
-ADMIN maintenance. No fiction.
-Open only after an explicit **VALIDATE** request. VALIDATE inspects structure; it never repairs, rewrites, deletes, migrates, binds, checkpoints, closes, or advances the campaign.
+VALIDATE is read-only ADMIN work. It inspects an explicitly selected RPG_OS tree, reports what it observed, and stops. It does not repair, save, recover, accept an agreement, or start PLAY. Normal PLAY does not preload this file or the validator.
 
-## Preferred execution
+## Run
 
-If code execution is available, run the dependency-free validator against this `RPG_OS` root:
+When Python is available, run the validator supplied with the target kit:
 
 ```text
-python3 TOOLS/validate.py
+python -B TOOLS/validate.py --root .
+python -B TOOLS/validate.py --root . --json
 ```
 
-On Windows, `py TOOLS\validate.py` is equivalent. Invoke the file that exists in this folder; do not recreate its logic from memory. Return its report and exit status without upgrading or softening any result.
+`VALIDATE-v3.0` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
 
-The script is read-only. It emits an ephemeral point-in-time diagnostic and writes no report file. Do not put validation fields in CURRENT_SAVE or any campaign register.
+Exit 0 means structural PASS or PASS WITH WARNINGS; exit 1 means a definite structural failure; exit 2 means incomplete execution or coverage. If errors and incomplete coverage coexist, the result remains INCOMPLETE and the definite errors remain listed. Warnings do not change the exit status.
 
-Exit status:
+## Evidence classes
 
-- `0` — the complete declared v2 structural surface was scanned and no structural violation was found;
-- `1` — the scan completed and found one or more structural violations;
-- `2` — declared coverage is incomplete because of invocation/access failure, validator failure, a tree change during the scan, an unsupported legacy descriptor, or another declared machine-readable surface that could not be completely parsed or scanned. Never report PASS.
-
-Warnings and metrics do not change exit status. A warning is not proof that the warned condition is safe.
-
-## Required evidence classes
-
-Keep these blocks separate:
+Keep the report's classes separate:
 
 ```text
 STRUCTURAL
 Result: PASS / PASS WITH WARNINGS / FAIL / INCOMPLETE
-Provenance: SCRIPT-VERIFIED / MODEL-CHECKED
-Coverage: explicit scope
+Provenance: SCRIPT-VERIFIED
+Coverage: checks actually executed
 
 HOST OBSERVATION
 Result: NOT RUN
@@ -40,54 +32,38 @@ SEMANTIC
 Result: NOT CHECKED
 ```
 
-`SCRIPT-VERIFIED` means the shipped script actually executed. The report hashes the executed validator and the target tree's validator separately; if they differ, coverage is `INCOMPLETE`. Do not use that label for an LLM checklist, an asserted command, or reconstructed output.
+SCRIPT-VERIFIED means this script actually ran. Its output identifies the executed and target validator bytes, observed LAW digest, initial and final tree digests, and findings. Different executed/target validator bytes or a tree changed during the run make coverage incomplete. An observed LAW digest is provenance, not an immutable required prompt hash. A validator upgrade may legitimately accompany a core rewrite.
 
-The tree digest identifies the scanned path/type/content snapshot for that run, including directory paths and symlink targets as well as file bytes. It is not a persistent certification and becomes historical as soon as the tree changes.
+The tree digest includes scanned paths, file bytes, directory entries and link targets. It is a point-in-time observation, not certification of future correctness. A warning is not proof that the warned condition is harmless.
 
-## No-code fallback
+## Structural coverage
 
-If the script cannot execute, a model may perform a read-only structural inspection only after saying that code execution is unavailable.
+The script checks:
 
-Label it:
+- Required kit files, including RECOVERY, CORRECT, UPGRADE_V07 and the regression suite; portable path containment, symlink routes, case collisions, UTF-8 and unfinished fixed-path candidates.
+- CURRENT_SAVE required metadata, readable section presence, portable identity, commit lineage shape, bound PC route, and archive_ref/evidence_through agreement. Extension metadata warns; duplicate identity/control fields remain errors.
+- Accepted CAMPAIGN_CONTRACT identity, revision, binding and five substantive agreement sections. It does not require the retired calibration axes or a magic acceptance phrase.
+- Explicit backticked Markdown record routes in the save, including non-revelatory private watch pointers and exact literal target headings. Ordinary prose and whether a cue has the correct trigger are semantic checks.
+- Unbound/bind instance/archive contamination, installed engine identity and declared character-build support, bound module/brief structure, capability routes, character routing closure, and accepted v0.7 T0/bind consistency where parseable. Supported legacy T0 tables remain unchanged; their identity/opening shape is checked and the unverified semantic mapping into new sections is reported as a warning.
+- Optional POLICY source voice structure. POLICY is setup material; the accepted agreement owns the runtime presentation choice. Structural inspection is broader than the normal boot read set.
+- Active safety flag and entry presence. This verifies shape, not the truth or sufficiency of limits.
+- Archive index/session/source reachability, literal evidence identifiers, duplicate routes and stable heading scope. Existing hierarchical-scene-v1 routes remain supported. One coherent episode body is valid; there is no shard-count quota. Optional ledgers are checked only when present.
+- Optional cold BEARING provenance/staleness as warnings. There is no mandatory seven-section layout or normal boot dependency.
+- Any existing RECOVERY/ACTIVE.md as a pending recovery error, even if its text says complete. Successful recovery/completion removes the active marker only after verification and retains the operation record/preimages. The validator does not perform recovery.
+- Initial/final tree and executed-validator stability.
 
-```text
-STRUCTURAL
-Result: INCOMPLETE or FAIL
-Provenance: MODEL-CHECKED
-Coverage: exact files and checks actually inspected
-```
+A CHECKPOINT may point to an older archived save. It must not claim its own new evidence, mismatch an archived id/folder, or clear an existing evidence boundary. Static inspection cannot prove the values were retained unchanged from a previous current save unless that prior state is supplied and compared separately.
 
-A model may report a definite defect it observed. Absence of an observed defect is never a complete PASS unless the script ran successfully. Do not imply that a sample covered unopened files.
+## Not established by PASS
 
-## Structural scope
+The validator cannot establish that an agreement was actually accepted; that its grants are clear or faithfully performed; that ordinary world authorship, reserved choices, due processes, compression, scene cuts or operator limits were handled correctly; or that any output was enjoyable. It cannot prove lore accuracy, appropriate retrieval, narrator/NPC knowledge separation, preservation of player wording, or whether a private cue is sufficient and non-revelatory in meaning.
 
-The script checks only deterministic file invariants declared by its output, including required release and ADMIN-contract files (including the v0.5 migration contract), executed/target-validator identity, release-LAW bytes, CURRENT_SAVE fields, scene status, causal-frontier syntax and commit metadata, the accepted Campaign Contract's identity/binding/revision/axis/mandate shape, the Bearing's identity/required lanes/base references and stale-base observation, clean unbound/bind INSTANCE registers, canonical hot-roster placement, safe engine identity and character-build support, the bound module descriptor and required Setting Brief where machine-parseable, stale Setting Brief candidates, closed MODULE/INSTANCE PC route graphs and bind-copy bytes, safety flag consistency, archive routes, session-index budgets, stable literal headings, ledger pointers, path containment, unfinished candidate residue, initial archive contamination, and routed orphan sessions. A well-formed but stale Bearing is reported as a warning and must be omitted from PLAY; it does not invalidate the accepted save or contract. The script cannot identify every interrupted transaction after all intermediate files happen to be structurally valid.
+It does not prove that archived prose came from accepted available play, that an exact transcript was available, that summaries preserve all consequential qualifications, or that SAVE/CORRECT/UPGRADE used complete preimages and the accepted scope. No active marker is not proof that no interrupted write happened. Current file shape cannot certify a past transaction or multi-file atomicity.
 
-It may report archive size and routing metrics. Metrics are evidence, not automatic split thresholds.
+It does not execute a GM, test fresh-chat behavior, validate provider restrictions, or observe the host's read/write isolation. AUDIT self-report does not establish those results. Use the separate behavioral and maintenance fixtures in ADMIN/TESTS.md.
 
-## Explicitly not checked
+## Without Python
 
-VALIDATE does not establish:
+One capable model with readable/writable files can still operate RPG OS. If code execution is unavailable, inspect the relevant files manually and label the result MODEL-CHECKED with exact observed coverage. Report a definite defect as FAIL; otherwise report INCOMPLETE, not SCRIPT-VERIFIED PASS. Do not imply unopened paths were checked or pretend to have executed code.
 
-- semantic coherence or completeness of scene shards;
-- whether the GM oriented before retrieving, supplied a playable frame, or closed a quiet beat well;
-- whether a particular external warrant, responsive duty, or accepted creative mandate existed;
-- whether contract language, Bearing interpretation, or fresh creation stayed within its semantic authority;
-- whether a causal-frontier entry duplicates another authority or captures the right established cause;
-- whether REVIEW inferred preference, prepared a railroad, or correctly identified a campaign pattern;
-- whether `MIGRATE V0.5` preserved every source fact, used a complete backup, or received truthful operator-supplied orientation and Contract values;
-- whether archived text came only from accepted PLAY;
-- whether an exact id was narratively warranted;
-- whether an index became a plot summary in meaning;
-- agency, salience, quiet-day, consent, refusal, no-retrofit, or nonactivation compliance;
-- truth, quality, or copyright status of a capability body;
-- host section isolation, persistent-write behavior, moderation behavior, or model identity;
-- future correctness after the reported tree digest changes.
-
-Those remain tests, observations, or judgment. Never merge them into STRUCTURAL PASS.
-
-The GM-quality fixtures P40–P50 and the ADMIN transaction fixtures P51–P52 in `ADMIN/TESTS.md` are separate model/operator-evaluated lanes. Passing this script does not run or score them.
-
-## Stop condition
-
-Report the categorized result OOC and stop. Do not resume fiction. Any repair requires a separate, explicit ADMIN instruction and must preserve the existing authority and write-order rules.
+Report OOC and stop. Authorized repair uses the relevant ADMIN procedure and preserves evidence. Pending recovery is resolved through ADMIN/RECOVERY.md before ordinary PLAY.
