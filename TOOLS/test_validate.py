@@ -86,11 +86,11 @@ class StructuralValidationTests(unittest.TestCase):
         })
         self.contract.update(campaign_id="brine-01", contract_id="agreement-01", contract_rev="1", status="accepted", module="brine")
         self.contract_sections.update({
-            "Campaign promise": "Quiet exploration in an original tidal world; no imported franchise lore.",
-            "Player control": "Player chooses Iri's voluntary conduct and commitments. No routine authorship delegated.",
-            "GM initiative": "GM portrays the world and NPCs, resolves live processes, and may invent ordinary compatible texture.",
-            "Time and transitions": "Carry declared sequences until a meaningful new choice; no undeclared hard cuts.",
-            "Presentation": "Clear sensory prose with brief public status. Optional guidance in ordinary prose.",
+            "Campaign promise": "Play form: Quiet emergent exploration in an original tidal world; no imported franchise lore.",
+            "Player control": "Player chooses Iri's voluntary conduct and commitments. No routine authorship delegated.\n\nRetcon: OOC rewind is available; stopping, ending, presentation changes and correction of genuine errors remain distinct.",
+            "GM initiative": "GM portrays the world and NPCs, resolves live processes, and may invent ordinary compatible texture.\n\nForm selection: The operator accepts the stated form; selection is not delegated.",
+            "Time and transitions": "Carry declared sequences until a meaningful new choice.\n\nCuts: Lived continuity; compress declared or explicitly delegated routine only. No cinematic jumps are granted.",
+            "Presentation": "Clear sensory prose with brief public status. Optional guidance in ordinary prose.\n\nStructure disclosure: General form is known, plot details stay hidden; do not repeatedly explain structure.",
         })
         self.flush()
         self.write("MODULES/brine/MODULE.md", "---\nid: brine\ntitle: Brine Observatory\nengine: freeform\n---\n# Brine\n\n## Capabilities\n\nnone\n")
@@ -124,6 +124,114 @@ class StructuralValidationTests(unittest.TestCase):
     def assert_code(self, code: str, severity: str = "ERROR") -> None:
         findings = self.check().findings
         self.assertTrue(any(item.code == code and item.severity == severity for item in findings), findings)
+
+    def run_report(self, module=validate) -> tuple[int, dict]:
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            code = module.main(["--root", str(self.root), "--json"])
+        return code, json.loads(output.getvalue())
+
+    def replace_clause(self, label: str, replacement: str) -> str:
+        section = validate.CONTRACT_CLAUSES[label]
+        lines = self.contract_sections[section].splitlines()
+        original = next(line for line in lines if line.startswith(label + ":"))
+        self.contract_sections[section] = "\n".join(replacement if line == original else line for line in lines)
+        return original
+
+    def remove_recorded_empty_directories(self, records: list[tuple[str, bool, bool]]) -> list[str]:
+        """Fixture-only simulation of the documented manual recovery step.
+
+        Records hold exact path, recorded preexistence, and verified creation
+        by this operation. This is not a runtime recovery implementation or
+        proof a model follows it.
+        """
+        removed: list[str] = []
+        for relative, preexisting, created_by_operation in sorted(records, key=lambda item: len(Path(item[0]).parts), reverse=True):
+            if preexisting or not created_by_operation:
+                continue
+            pure = Path(relative)
+            if not pure.parts or pure.drive or pure.is_absolute() or "\\" in relative or any(part in {".", ".."} for part in pure.parts):
+                raise ValueError("unsafe recorded directory")
+            target = self.root / pure
+            resolved = target.resolve()
+            resolved.relative_to(self.root.resolve())
+            if resolved == self.root.resolve() or pure.parts[0].casefold() == "recovery":
+                raise ValueError("recovery material and workspace root are protected")
+            probe = target
+            while probe != self.root:
+                if probe.is_symlink():
+                    raise ValueError("symlink directory route is protected")
+                probe = probe.parent
+            if target.is_dir() and not any(target.iterdir()):
+                target.rmdir()  # Nonrecursive: unexpected content prevents removal.
+                removed.append(relative)
+        return removed
+
+    def test_required_clause_omissions(self) -> None:
+        self.bind()
+        accepted = dict(self.contract_sections)
+        for label in validate.CONTRACT_CLAUSES:
+            with self.subTest(clause=label):
+                self.contract_sections = dict(accepted)
+                self.replace_clause(label, "")
+                self.flush()
+                self.assert_code("CONTRACT_CLAUSE_MISSING")
+
+    def test_clause_in_wrong_section_is_rejected(self) -> None:
+        self.bind()
+        accepted = dict(self.contract_sections)
+        for label, intended in validate.CONTRACT_CLAUSES.items():
+            with self.subTest(clause=label):
+                self.contract_sections = dict(accepted)
+                clause = self.replace_clause(label, "")
+                other = next(section for section in validate.CONTRACT_SECTIONS if section != intended)
+                self.contract_sections[other] += "\n\n" + clause
+                self.flush()
+                self.assert_code("CONTRACT_CLAUSE_SECTION")
+
+    def test_clause_duplicates_are_rejected(self) -> None:
+        self.bind()
+        accepted = dict(self.contract_sections)
+        for label, section in validate.CONTRACT_CLAUSES.items():
+            with self.subTest(clause=label):
+                self.contract_sections = dict(accepted)
+                clause = next(line for line in accepted[section].splitlines() if line.startswith(label + ":"))
+                self.contract_sections[section] += "\n\n- " + clause
+                self.flush()
+                self.assert_code("CONTRACT_CLAUSE_DUPLICATE")
+
+    def test_clause_placeholders_and_blank_values_are_rejected(self) -> None:
+        self.bind()
+        accepted = dict(self.contract_sections)
+        for label in validate.CONTRACT_CLAUSES:
+            for placeholder in ("", "none", "TBD", "<accepted wording>", "[]"):
+                with self.subTest(clause=label, value=placeholder):
+                    self.contract_sections = dict(accepted)
+                    self.replace_clause(label, label + ": " + placeholder)
+                    self.flush()
+                    self.assert_code("CONTRACT_CLAUSE_EMPTY")
+
+    def test_clause_bullets_and_free_text_are_accepted_without_enums(self) -> None:
+        self.bind()
+        for label in validate.CONTRACT_CLAUSES:
+            self.replace_clause(label, "- " + label + ": A custom accepted arrangement described in ordinary language.")
+        self.flush()
+        self.assert_valid()  # This certifies structure, not the wording's adequacy.
+
+    def test_required_clause_cannot_hide_in_code_comment_or_quote(self) -> None:
+        self.bind()
+        original = self.replace_clause("Retcon", "")
+        self.contract_sections["Player control"] += "\n\n```text\n" + original + "\n```\n<!-- " + original + " -->\n> " + original
+        self.flush()
+        self.assert_code("CONTRACT_CLAUSE_MISSING")
+
+    def test_clause_outside_section_is_not_accepted(self) -> None:
+        self.bind()
+        original = self.replace_clause("Cuts", "")
+        self.flush()
+        text = self.read("INSTANCE/CAMPAIGN_CONTRACT.md")
+        self.write("INSTANCE/CAMPAIGN_CONTRACT.md", text.replace("# CAMPAIGN_CONTRACT\n", "# CAMPAIGN_CONTRACT\n\n" + original + "\n"))
+        self.assert_code("CONTRACT_CLAUSE_SECTION")
 
     def test_clean_unbound(self) -> None:
         self.assert_valid()
@@ -290,6 +398,75 @@ class StructuralValidationTests(unittest.TestCase):
         self.write("RECOVERY/operation-01/RECORD.md", "# Recovery\n\nstatus: complete\n")
         self.assert_valid()
 
+    def test_interrupted_save_directory_recovery_roundtrip(self) -> None:
+        self.bind()
+        self.archive_close()
+        self.assert_valid()
+        protected = ("INSTANCE/CURRENT_SAVE.md", "ARCHIVE/INDEX.md")
+        before = {relative: (self.root / relative).read_bytes() for relative in protected}
+        operation = "interrupted-save-03"
+        session_directory = f"ARCHIVE/sessions/{operation}"
+        nested_directory = session_directory + "/parts"
+        new_files = (session_directory + "/INDEX.md", nested_directory + "/episode.md")
+        directory_records = [("ARCHIVE/sessions", True, False), (session_directory, False, True), (nested_directory, False, True)]
+        self.write(f"RECOVERY/{operation}/OPERATION.md", "# Recovery\n\nstatus: started\n\n" +
+                   "\n".join(f"Directory: {path}; existed before: {old}; created by operation: {created}" for path, old, created in directory_records))
+        self.write("RECOVERY/ACTIVE.md", f"operation_id: {operation}\nrecord: RECOVERY/{operation}/OPERATION.md\n")
+        for relative, data in before.items():
+            preimage = self.root / f"RECOVERY/{operation}/before/{relative}"
+            preimage.parent.mkdir(parents=True, exist_ok=True)
+            preimage.write_bytes(data)
+            self.assertEqual(data, preimage.read_bytes())
+        self.write(new_files[0], "# Incomplete session index\n")
+        self.write(new_files[1], "# Failed staged evidence\n")
+        self.write("INSTANCE/CURRENT_SAVE.md", "# Interrupted partial save\n")
+        self.assert_code("RECOVERY_PENDING")
+
+        for relative in protected:
+            (self.root / relative).write_bytes((self.root / f"RECOVERY/{operation}/before/{relative}").read_bytes())
+        for relative in new_files:
+            target = (self.root / relative).resolve()
+            target.relative_to(self.root.resolve())
+            preserved = self.root / f"RECOVERY/{operation}/failed/{relative}"
+            preserved.parent.mkdir(parents=True, exist_ok=True)
+            preserved.write_bytes(target.read_bytes())
+            target.unlink()
+        self.assert_code("ARCHIVE_ORPHAN_SESSION")
+        self.assertTrue((self.root / "RECOVERY/ACTIVE.md").exists())
+        self.assertTrue((self.root / session_directory).is_dir())
+        self.assertEqual([], list((self.root / nested_directory).iterdir()))
+        self.assertTrue(all((self.root / relative).read_bytes() == data for relative, data in before.items()))
+
+        removed = self.remove_recorded_empty_directories(directory_records)
+        self.assertEqual([nested_directory, session_directory], removed)
+        self.assertTrue((self.root / "ARCHIVE/sessions").is_dir())
+        self.assertTrue((self.root / "ARCHIVE/sessions/save-02/episode.md").is_file())
+        self.assertTrue((self.root / f"RECOVERY/{operation}/failed/{new_files[1]}").is_file())
+        self.assertTrue(all((self.root / f"RECOVERY/{operation}/before/{relative}").read_bytes() == data for relative, data in before.items()))
+        remaining = self.check().findings
+        self.assertEqual({"RECOVERY_PENDING"}, {finding.code for finding in remaining if finding.severity in {"ERROR", "INCOMPLETE"}})
+        self.write(f"RECOVERY/{operation}/OPERATION.md", "# Recovery\n\nstatus: restored\n\nProtected files and prior routes verified; listed empty new directories removed.\n")
+        (self.root / "RECOVERY/ACTIVE.md").unlink()
+        self.assert_valid()
+
+    def test_recovery_preserves_preexisting_nonempty_and_uncreated_directories(self) -> None:
+        records = [("scratch/preexisting", True, False), ("scratch/occupied", False, True), ("scratch/uncreated", False, False)]
+        for relative, _old, _created in records:
+            (self.root / relative).mkdir(parents=True)
+        self.write("scratch/occupied/unexpected.md", "# Unrelated evidence\n\nPreserve this content.\n")
+        (self.root / "scratch/unlisted").mkdir()
+        self.assertEqual([], self.remove_recorded_empty_directories(records))
+        self.assertTrue(all((self.root / relative).is_dir() for relative, _old, _created in records))
+        self.assertTrue((self.root / "scratch/unlisted").is_dir())
+        self.assertEqual("# Unrelated evidence\n\nPreserve this content.\n", self.read("scratch/occupied/unexpected.md"))
+
+    def test_recovery_directory_cleanup_rejects_escapes_and_protected_material(self) -> None:
+        self.write("RECOVERY/operation-01/OPERATION.md", "# Retained operation record\n")
+        for relative in ("../outside", str(self.root), "RECOVERY/operation-01"):
+            with self.subTest(path=relative), self.assertRaises(ValueError):
+                self.remove_recorded_empty_directories([(relative, False, True)])
+        self.assertTrue((self.root / "RECOVERY/operation-01/OPERATION.md").is_file())
+
     def test_optional_bearing_staleness_warns(self) -> None:
         self.bind()
         values = dict(campaign_id="brine-01", base_save_id="older-save", base_contract_id="agreement-01", status="provisional")
@@ -351,6 +528,59 @@ class StructuralValidationTests(unittest.TestCase):
         self.assertTrue(report["target_validator_matches_executed"])
         self.assertEqual("NOT RUN", report["host_observation"]["result"])
         self.assertEqual("NOT CHECKED", report["semantic"]["result"])
+
+    def test_target_validator_mismatch_has_valid_diagnostic_fields(self) -> None:
+        self.bind()
+        target = self.root / "TOOLS/validate.py"
+        target.write_text(target.read_text(encoding="utf-8") + "\n# Different disposable target bytes.\n", encoding="utf-8")
+        before, _ = validate.snapshot_tree(self.root)
+        code, report = self.run_report()
+        after, _ = validate.snapshot_tree(self.root)
+        self.assertEqual(2, code)
+        self.assertEqual("INCOMPLETE", report["structural"]["result"])
+        self.assertFalse(report["target_validator_matches_executed"])
+        self.assertTrue(report["tree_stable_during_run"])
+        self.assertEqual(before, after)
+        finding = next(item for item in report["findings"] if item["code"] == "VALIDATOR_TARGET_MISMATCH")
+        self.assertEqual("the target validator was not byte-identical to the executed validator for the full run", finding["message"])
+        self.assertEqual("TOOLS/validate.py", finding["path"])
+        self.assertIsNone(finding["line"])
+
+    def test_changed_executed_validator_has_valid_diagnostic_fields(self) -> None:
+        self.bind()
+        module_name = "disposable_validator_" + self.root.name.replace("-", "_")
+        spec = importlib.util.spec_from_file_location(module_name, self.root / "TOOLS/validate.py")
+        assert spec and spec.loader
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        self.addCleanup(sys.modules.pop, module_name, None)
+        spec.loader.exec_module(module)
+        original_run = module.Validator.run
+        production_bytes = (HERE / "validate.py").read_bytes()
+
+        def mutate_only_disposable_file(checker, initial_snapshot):
+            original_run(checker, initial_snapshot)
+            path = Path(module.__file__).resolve()
+            path.relative_to(self.root.resolve())
+            path.write_text(path.read_text(encoding="utf-8") + "\n# Disposable file changed during execution.\n", encoding="utf-8")
+
+        module.Validator.run = mutate_only_disposable_file
+        code, report = self.run_report(module)
+        self.assertEqual(2, code)
+        self.assertEqual("INCOMPLETE", report["structural"]["result"])
+        self.assertFalse(report["tree_stable_during_run"])
+        self.assertFalse(report["target_validator_matches_executed"])
+        expected_messages = {
+            "VALIDATOR_CHANGED_DURING_RUN": "the executed validator file changed while validation ran",
+            "VALIDATOR_TARGET_MISMATCH": "the target validator was not byte-identical to the executed validator for the full run",
+        }
+        for diagnostic, message in expected_messages.items():
+            finding = next(item for item in report["findings"] if item["code"] == diagnostic)
+            self.assertEqual(message, finding["message"])
+            self.assertEqual("TOOLS/validate.py", finding["path"])
+            self.assertIsNone(finding["line"])
+        self.assertTrue(all(item["line"] is None or type(item["line"]) is int for item in report["findings"]))
+        self.assertEqual(production_bytes, (HERE / "validate.py").read_bytes())
 
 
 if __name__ == "__main__":

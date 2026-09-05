@@ -16,6 +16,8 @@ Explain the selected engine's creation support before offering unavailable paths
 - Required mechanical values for bind and the opening; explicitly deferred/unknown fields where permitted.
 - Important intentionally unspecified facts.
 
+Keep the agreement's `Retcon:` clause in Player control: propose OOC rewind for new setup or accept a clear ironman/no-retcon choice for valid outcomes. This is part of the existing compact campaign proposal, not a separate character interview. Error correction, stopping/ending play, and depiction changes remain distinct; an unwanted valid result is not thereby an error.
+
 Do not force human anatomy, age, gender, pronouns, biography, possessions, money, romance, alignment, or a conventional stat block onto an incompatible character.
 
 ## Optional useful depth
@@ -32,7 +34,7 @@ Ask only selected/relevant clusters:
 
 Preserve declared goals as such in Open matters; never infer them from background or campaign preferences. OOC preferences belong in the agreement. Proposed past commitments require acceptance. Ownership of a resource does not imply it was used.
 
-A behavioral mechanic may impose only its defined accepted effects. It does not expand unrelated PC-control grants. Resolve a declared act within its scope; do not demand repeated consent for the same declaration or originate additional meaningful participation.
+A behavioral mechanic may impose only its defined accepted effects. It does not expand unrelated PC-control grants. Resolve a declared act within its scope; do not demand repeated consent for the same declaration or originate additional meaningful participation. Form-selection, opacity, fixed-destination, and hardcut grants do not silently delegate reserved PC choices. A cut can skip only the agreed continuity and outcomes; preserve any meaningful decision still owned by the player.
 
 ## Engine-aware mechanics
 

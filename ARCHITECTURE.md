@@ -1,4 +1,4 @@
-# RPG OS v0.7 architecture
+# RPG OS v0.7.1 architecture
 
 ## Operating environment
 
@@ -34,7 +34,7 @@ Current values replace corresponding mutable starting values; stable background 
 
 SAVE/CLOSE/END SESSION performs one complete save. Current-save metadata carries the latest present identity separately from the latest archived evidence boundary. CHECKPOINT changes the former while retaining the latter.
 
-The operator/model preserves preimages, records the affected set and new paths, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
+The operator/model preserves preimages, records affected files and newly created directories with their prior existence, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Restoration removes only verified operation-created empty directories after file reconciliation, using exact nonrecursive removal. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
 
 A coherent episode can occupy one evidence body. Split scenes or records when they will be retrieved independently. Preserve consequential wording and missing-source qualifications. Optional indexes locate evidence; they do not replace it.
 
@@ -42,10 +42,12 @@ A coherent episode can occupy one evidence body. Split scenes or records when th
 
 Quick start, Guided, and Detailed are interview-depth choices. They share one acceptance and binding procedure. World, rules, PC perspective, player control, source fidelity, and construction depth are independently considered only as needed.
 
-An accepted agreement has five prose sections: Campaign promise, Player control, GM initiative, Time and transitions, Presentation. It states concrete grants rather than requiring the GM to infer them from multiple enum labels.
+An accepted agreement has five prose sections: Campaign promise, Player control, GM initiative, Time and transitions, Presentation. They include five named free-text clauses: Play form, Form selection, Structure disclosure, Cuts, Retcon. These make material omissions structurally detectable; their actual meaning, informed acceptance, and compatibility still need review. Form selection and disclosure are separate grants; fixed structure and bounded cuts operate only within the agreement. A–E presets remain optional descriptions, not required enums.
 
 New Game never clears an existing run. Upgrade preserves old material and maps it explicitly. Correction distinguishes a mistake from a newly requested revision and repairs only dependent consequences. Review is explicit, optional, and cannot alter facts or authorize a plot.
 
 ## Validation boundary
 
 The read-only validator observes structure and references. Model readback checks selected semantic consistency fallibly. Player-rated sessions assess agency, pacing, coherence, and correction burden. Evidence from these activities is reported separately.
+
+The startup packet is not a revision-bound compiled capsule. Save/contract lineage and paths are checked at their documented scope, but the system does not pin every engine/module/body to exact immutable content. A plausible replacement may escape detection. Recovery protects a recorded change set; it does not establish global version coherence or semantic correctness across arbitrary manual swaps.

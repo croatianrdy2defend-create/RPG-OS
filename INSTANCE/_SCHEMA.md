@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.7
+# INSTANCE schema — v0.7.1
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -52,13 +52,31 @@ At bind, archive_ref/evidence_through are both `none`, KNOWN/NOW/CAST_STATUS/COR
 
 Use exactly these five substantive level-two sections:
 
-- **Campaign promise:** accepted experience, scope, fit, exclusions, and source/fidelity expectations; no guaranteed fictional outcome.
-- **Player control:** meaningful choices and identity-scale domains reserved to the player, plus any explicit standing grants to the GM. Specify scope and limits. A brutal world, adult content, obedient role, or observed behavior does not supply delegation.
-- **GM initiative:** concrete things the GM may and must do, their relevant conditions and limits. Preparation and compatible content do not activate themselves; permission is not a quota. Include positive continuation responsibilities appropriate to the accepted form.
-- **Time and transitions:** actual framing, declared-sequence compression, routine authorship, interruption, and handback agreement. A player's declared sequence and standing delegation are distinct grounds for continuation.
-- **Presentation:** accepted narrative voice, guidance, and useful status display. Copy accepted module voice/defaults here so ordinary PLAY need not load POLICY. Real operator content limits remain SAFETY, not this section.
+- **Campaign promise:** accepted experience, scope, fit, exclusions, source/fidelity expectations, and the Play form clause. Knowingly accepted structural destinations or fixed outcomes may exist within their actual granted scope; do not present those as open resolution or override still-reserved PC decisions.
+- **Player control:** meaningful choices and identity-scale domains reserved to the player, explicit standing grants, and the Retcon clause. Specify scope and limits. A brutal world, adult content, obedient role, or observed behavior does not supply delegation.
+- **GM initiative:** concrete things the GM may and must do, their relevant conditions and limits, and the Form selection clause. Preparation and compatible content do not activate themselves; permission is not a quota. Include positive continuation responsibilities appropriate to the accepted form.
+- **Time and transitions:** actual framing, declared-sequence compression, routine authorship, interruption, handback agreement, and the Cuts clause. Lived continuity is the default; an accepted bounded cut may skip authorized time or unfinished continuity but does not itself decide reserved PC choices. A player's declared sequence and standing delegation are distinct grounds for continuation.
+- **Presentation:** accepted narrative voice, guidance, useful status display, and the Structure disclosure clause. Copy accepted module voice/defaults here so ordinary PLAY need not load POLICY. Real operator content limits remain SAFETY, not this section.
 
 Every bound section is substantive, even if it states that no optional grant is made. Unbound sections are `none`; ids are `none`, revision `0`, status/module `unbound`. No mandatory calibration-axis enum, creative-mandate switch, review-mode gate, or magic acceptance phrase is required. Show the complete concrete proposal and obtain ordinary explicit acceptance. Unaccepted preferences remain proposals. RECALIBRATE changes the agreement prospectively, never historical facts.
+
+### Five named prose clauses
+
+New v0.7.1 bound agreements include each of these labels exactly once, as a plain or bullet line in the stated section, followed on that line by a substantive free-text value. These are short readable clauses, not another calibration table or mandatory A–E enum. Code examples, comments, blank values, and placeholders do not satisfy them. Other prose/bullets may accompany them.
+
+| Section | Exact clause label | Meaning and proposed default |
+|---|---|---|
+| Campaign promise | Play form: | Record the actual accepted form/promise, mixed/custom if needed, or truthfully state bounded delegated selection. Never falsely call fixed directed play an unqualified sandbox. |
+| GM initiative | Form selection: | Default: operator accepts the stated form. Optional GM selection requires explicit scope; it does not imply permission to conceal the choice. |
+| Presentation | Structure disclosure: | Default: operator knows the general form; plot secrets stay hidden and PLAY need not recite structure. Optional concealment of the selected structure needs a separate knowing grant and truthful control record. |
+| Time and transitions | Cuts: | Default: lived continuity, compress only declared/delegated routine, no cinematic jump. Any hard-cut exception specifies scope and conditions while preserving reserved PC decisions. |
+| Player control | Retcon: | Default: OOC rewind available. Optional ironman/no-retcon constrains revising valid accepted outcomes, not stop/end, depiction changes, or correction of genuine errors. |
+
+SETUP proposes these defaults within its single compact agreement; it need not ask five extra questions. A–E presets may help describe supported play, but the actual promise and grants govern. Structural validation checks label placement, occurrence, and substantive text, not acceptance, clarity, semantic compatibility, or GM compliance.
+
+If structural selection/disclosure is delegated, the reviewable proposal shows the true delegation and its boundaries. It need not expose a secret selected structure or plot. Once a selection creates operative commitments, retain them in their proper current/private record and route them from the control record as needed; do not silently reselect after a fresh chat. Operator access to files and host disclosure limits still apply.
+
+Existing v0.7 agreements missing these clauses receive focused supplementation through ADMIN/RECALIBRATE.md. Preserve established accepted terms; ask for unresolved material choices and show proposed wording/defaults before acceptance. An incomplete starting agreement is eligible for that repair. Do not reset current state, convert history, or infer old permissions from behavior. Older field-only records still use the full upgrade procedure.
 
 ## Current records and compilation
 

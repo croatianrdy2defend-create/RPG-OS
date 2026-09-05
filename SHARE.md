@@ -1,4 +1,4 @@
-# A short v0.7 playtest
+# A short v0.7.1 playtest
 
 Use a clean copy and record observed results. These are proposed behavioral checks, not a claim that the release passed a live campaign.
 
@@ -10,5 +10,7 @@ Use a clean copy and record observed results. These are proposed behavioral chec
 6. Save, then open a new chat. Compare the present and important wording against the original. Note any unavailable evidence instead of allowing reconstruction.
 7. In a disposable test copy, simulate an interrupted save as described in ADMIN/TESTS.md. A pending recovery marker should prevent ordinary resumption.
 8. Repeat setup with a very different premise: a collective nonhuman protagonist, a historical setting, or a rules-heavy campaign with imported character values.
+
+Also compare explicit versus absent structural-opacity grants, ironman versus rewind-enabled valid outcomes, and permitted versus denied hard cuts using the behavioral fixtures. Error correction and stopping/changing depiction must remain available. Treat the resulting actual play observations separately from clause-presence or filesystem checks.
 
 Record player effort, corrections, pacing, continuity, and retrieval/write observations separately from structural validation. See CONTRIBUTING.md for reporting.

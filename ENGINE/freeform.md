@@ -11,7 +11,7 @@ Use only when the operator selects it. There is no formal attribute list, hidden
 
 Resolve uncertain outcomes by GM judgment from established capabilities, circumstances, opposition, and clear stakes. If the player requests a coin, die, or oracle, agree the method and outcome meanings before resolution. Do not claim a random result came from a tool that was not used. If the host cannot obtain the requested result, ask for the player's roll or agree an available method.
 
-The agreement governs initiative and PC control; it does not predetermine uncertain outcomes. A resolution outcome is not permission to invent voluntary PC conduct outside the declared/delegated scope.
+The agreement governs initiative, PC control, and any explicitly accepted fixed structural scope. Do not offer a fixed destination or outcome as an open judgment/roll. Outcomes left uncertain still follow this engine's resolution procedure. A resolution outcome is not permission to invent voluntary PC conduct outside the declared/delegated scope.
 
 ## Character creation
 

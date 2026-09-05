@@ -29,6 +29,8 @@ A substantive accepted PC record is always required, but a full mechanical sheet
 
 Campaign depth, GM initiative, routine delegation, compression, and presentation do not change resolution or supply missing stats. Conversely a rule does not grant unrelated authority over the PC. Involuntary effects and voluntary choices remain distinguished by the accepted rules and agreement.
 
+An explicitly accepted fixed outcome or structured destination defines what is already settled within its scope; do not offer that result as an open roll or judgment. Resolve genuinely open matters with this engine. A fixed-scope agreement is not permission to falsify a roll, silently change a resolution procedure, or decide a reserved PC choice. Genuine mechanical errors remain correctable under ironman; dissatisfaction with a valid outcome is not an error.
+
 MODULE names the installed engine. RULES_HOOKS may clarify compatible usage; an actual change to resolution or character rules needs a distinct engine id. Later explicit rulings remain in INSTANCE/CORRECTIONS.md.
 
 ## Locality and sources

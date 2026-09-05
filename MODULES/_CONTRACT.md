@@ -47,13 +47,17 @@ Keep the brief concise and stable across scenes. No named cast roster, current m
 
 New POLICY files retain `## Voice` and `## Campaign defaults`. Voice proposes portrayal; Campaign defaults proposes the five run-agreement areas:
 
-- Campaign promise, fit, exclusions, and source/fidelity expectations.
-- Player control and any proposed routine grants.
-- GM initiative: permitted kinds, conditions, obligations, and limits.
-- Time and transitions: declared-sequence continuation, compression/cuts, and stopping points.
-- Presentation: voice, dialogue/narration balance, guidance, and status display.
+- Campaign promise, fit, exclusions, source/fidelity expectations, and `Play form:`.
+- Player control, proposed routine grants, and `Retcon:`.
+- GM initiative: permitted kinds, conditions, obligations, limits, and `Form selection:`.
+- Time and transitions: declared-sequence continuation, stopping points, and `Cuts:`.
+- Presentation: voice, dialogue/narration balance, guidance, status display, and `Structure disclosure:`.
 
-These are plain-language proposals, not axis enums or a second rule engine. No retired creative-mandate scalar or review-mode field is required. Detailed machinery belongs in capabilities.
+These are plain-language proposals, not axis enums or a second rule engine. New/bound v0.7.1 agreements require each named clause once, with substantive free text, in its assigned section. NEW_GAME supplies their proposed defaults; acceptance remains run-specific and requires no additional questionnaire or mandatory A-E label. No retired creative-mandate scalar or review-mode field is required. Detailed machinery belongs in capabilities.
+
+Form selection and permission to withhold structural selection are separate grants. Default general form is known while plot remains hidden; optional opacity records its true selection/disclosure envelope without forcing a concealed choice into the review, metadata, or a false form claim. Defaults preserve lived continuity with declared/delegated routine compression; hardcuts need bounded permission. Retcon defaults to OOC rewind, with optional ironman for valid outcomes and distinct error/depiction/stop handling. Existing v0.7 agreements missing clauses use focused accepted RECALIBRATE supplementation, not implicit defaults or state migration.
+
+Accepted fixed destinations/outcomes are allowed within scope, without fake open rolls or overwritten reserved PC decisions. Optional seeds remain candidates; a specifically accepted structural obligation has its own governing authority. Off-premise choices require an OOC return, recalibration, or ending rather than invented physical impossibility or compulsory NPC authority.
 
 At NEW GAME/LOAD, copy accepted operational clauses and voice into CAMPAIGN_CONTRACT. Every fidelity/source constraint affecting PLAY belongs in that agreement/brief or a real source-authority body reached by an exact contract/descriptor route, never solely in POLICY. The brief still uses domain/trigger/capability wording rather than body filenames. Copy accepted stronger module limits into SAFETY under canonical labels, with their origin labeled. Actual acceptance is required; defaults never become active by loading. Ordinary PLAY does not load POLICY. A legacy module's missing POLICY/defaults can be supplied in the reviewed run proposal without modifying its source; new authored modules still include POLICY. If no voice was supplied, offer the concrete-prose default in NEW_GAME for acceptance.
 

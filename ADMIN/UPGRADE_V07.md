@@ -1,6 +1,8 @@
-# Upgrade an existing campaign to v0.7
+# Upgrade an existing campaign to the v0.7 series
 
 Cold ADMIN procedure. Upgrading preserves a campaign; it never starts a new one or resets history. Support standard v0.6-series records and explicitly mapped older/custom records. Do not claim an unexamined private format is automatically compatible.
+
+For an already-bound v0.7 save with readable sections, use ADMIN/RECALIBRATE.md to supplement the five required v0.7.1 agreement clauses in a protected copy. Preserve its present and archive unchanged; do not run the state conversion below. An incomplete v0.7 agreement is eligible for that focused repair.
 
 ## Before changing files
 
@@ -30,7 +32,7 @@ Assign a new save id, increment the prior save revision, and name its prior id a
 
 ## Map the agreement
 
-Present one concrete five-section agreement. Preserve existing accepted commitments while translating their expression:
+Present one concrete five-section agreement with the named v0.7.1 clauses from INSTANCE/_SCHEMA.md. Preserve existing accepted commitments while translating their expression:
 
 - Campaign promise: prior promise, scope/fit, exclusions, material development preferences, and source policy.
 - Player control: prior ownership boundaries and actual explicit delegations. A character profile or campaign-form label supplies no new grant.
@@ -38,7 +40,7 @@ Present one concrete five-section agreement. Preserve existing accepted commitme
 - Time and transitions: existing compression and continuation permissions, and where the GM must stop for a decision.
 - Presentation: accepted voice, guidance, cadence, and state-display preference, using old policy only for actual accepted defaults.
 
-Old axis labels can be ambiguous. Show the concrete interpretation and ask only for unresolved material choices. This review is the acceptance point for the v0.7 wording; do not silently broaden authority. Preserve agreement lineage when present; an older campaign without an accepted contract receives its first explicitly accepted agreement.
+Old axis labels can be ambiguous. Show the concrete interpretation and ask only for unresolved material choices. Explicitly settle Play form, Form selection, Structure disclosure, Cuts, and Retcon from prior accepted terms or a reviewed proposal; do not infer opacity, hard cuts, or ironman from genre or observed conduct. Where selection/disclosure is delegated, display the true delegation envelope without requiring the concealed selection or plot to be exposed. This review is the acceptance point for the v0.7.1 wording; do not silently broaden authority. Preserve agreement lineage when present; an older campaign without an accepted contract receives its first explicitly accepted agreement.
 
 Copy applicable module-imposed stronger restrictions into SAFETY with their origin distinguished from personal limits. Preserve all existing real operator limits. Update safety_state accordingly. Never infer a limit from a character's beliefs or a world's morality.
 

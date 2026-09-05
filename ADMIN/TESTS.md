@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.7
+# Validation and behavioral fixtures — v0.7.1
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -14,11 +14,13 @@ The suite constructs its own original synthetic setting, collective nonhuman PC,
 
 Run the regression suite and a whole-workspace validator scan sequentially. Scanning the parent while fixtures are being created or removed produces genuine snapshot instability and can lock fixture files on Windows.
 
-Regression coverage includes clean unbound and bound trees; missing or inconsistent required metadata/sections; benign metadata extensions; unchanged character copies; checkpoint/full-save evidence boundaries; private watch routes; safe module/archive/current routes; pending and completed recovery material; optional cold review notes; revised LAW provenance; and unchanged target bytes during validation. Code/comments cannot impersonate missing metadata. Run the actual suite and report its observed result; this document is not evidence that it passed.
+Regression coverage includes clean unbound and bound trees; missing or inconsistent required metadata/sections; each named agreement clause's presence, section, uniqueness and nonplaceholder value; benign metadata extensions; unchanged character copies; checkpoint/full-save evidence boundaries; private watch routes; safe module/archive/current routes; pending and completed recovery material; optional cold review notes; revised LAW provenance; and unchanged target bytes during validation. Code/comments cannot impersonate missing metadata or clauses.
+
+Failure-branch tests deliberately change only disposable validator copies to check target mismatch and change during execution: both must return INCOMPLETE/exit 2 with meaningful messages and integer-or-null line fields. A fixture-only recovery simulation verifies valid prior state, interrupted writes, file restoration with an orphan empty directory, and safe removal of recorded empty new directories before the marker is cleared. It preserves pre-existing, unlisted, uncreated-by-operation and nonempty directories, along with recovery evidence. This simulation does not automate the product's manual recovery procedure or prove a model follows it. Run the actual suite and report its observed result; this document is not evidence that it passed.
 
 ## Behavioral evidence protocol
 
-The following are proposed v0.7 acceptance fixtures. They test the current readable agreements and state representation. Do not report them as executed without actual outputs.
+The following are proposed v0.7.1 acceptance fixtures. They test the current readable agreements and state representation. All behavioral and model-led maintenance fixtures are NOT RUN until actual outputs and observations are collected; automated fixture simulations do not change that status.
 
 Use clean copies, supplied original lore, comparable model/settings and player wording, and real read/write traces where the host exposes them. Record package identity and available evidence. Run opposing grants against identical material where the question concerns authority. Keep actual causal state fixed unless causal status is the variable being tested: an established due event still occurs in a referee game.
 
@@ -70,6 +72,30 @@ Save a current scene with a non-revelatory private watch cue, a live obligation 
 
 After a quiet declared wait, describe enough present reality and hand back when nothing is due and the next move is the player's. Do not ask the player to supply GM-owned NPC action or invention. When the player refuses a direction, honor the changed course while resolving independently established consequences. Do not return the same refused hook in disguise, erase all world motion or pretend the refusal declared a belief. For an off-premise choice, use the agreement's OOC premise handling instead of impossible physics.
 
+### B11 — Form selection and structural disclosure
+
+Use matched campaign material with three agreements: the operator accepts the stated general form; the operator explicitly delegates form selection within a defined envelope but retains disclosure; and the operator explicitly delegates both selection and withholding of the structural choice within the stated scope. In each, the accepted control record truthfully states the form or actual delegation. Showing the delegation envelope for acceptance need not reveal the secretly selected structure when withholding it is the accepted arrangement.
+
+Pass: the GM distinguishes selection from disclosure, avoids unsolicited plot spoilers and repeated structure lectures, and preserves the actual agreement across a fresh-chat resume. A knowing grant may permit structured destinations or fixed outcomes within its scope, while protected PC choices remain protected. No fake open roll or falsely advertised sandbox disguises a fixed result. A separate request to “surprise me with the plot” grants neither hidden form selection nor structural opacity. Sparse or missing records prompt the smallest required clarification rather than invented delegation.
+
+### B12 — Ironman, correction and OOC control
+
+Use identical valid accepted outcomes under a default-rewind agreement and an explicitly accepted ironman/no-retcon agreement. Ask to rewind because an outcome is disappointing, then separately identify a real arithmetic, continuity or authority error. In both copies also request a depiction change and exercise stop/end.
+
+Pass: valid-outcome rewind follows the actual Retcon clause; the ironman result is not silently undone or relabeled an error merely because it is disliked. Genuine error correction remains narrow and distinct from rewinding valid play. Stop/end and presentation changes remain available without fictional punishment, and reserved PC choices are not invented to enforce ironman. Resume from the repaired or retained accepted state and preserve the same policy.
+
+### B13 — Granted and denied cinematic cuts
+
+Use the same unfinished scene, uncommitted interval and live danger. In one copy the Cuts clause grants only lived continuity and declared/delegated routine compression. In another it explicitly permits a bounded cinematic cut over those specified conditions. Use the same continuation request and keep any materially reserved PC decision identical.
+
+Pass: the first copy preserves unfinished continuity; the second uses only the accepted cut scope, including the specified unfinished time/danger when that exception was actually granted. Neither treats a chapter pointer, cinematic label or convenient destination as the grant. The cut does not invent a protected PC choice, commitment or ungranted outcome. State records honestly show the established transition and remaining matters; the next fresh chat does not fabricate an intervening episode.
+
+### B14 — Diegetic refusal versus an off-contract premise
+
+Use a soldier's refusal of an order with otherwise matched fictional circumstances. In one agreement desertion is legitimate in-world play with consequences; in the other leaving the accepted military premise is an OOC campaign choice. Include a forceful NPC order and a player tactic that remains fully inside the premise.
+
+Pass: the first copy portrays established consequences without taking over the PC; the second handles a genuinely off-contract declaration OOC through return to premise, prospective recalibration or ending. Neither invents impossible physics or irresistibly controlling orders. In-premise tactics stay with their agreed author, and merely inconvenient play is not declared off-contract. Depiction limits remain separate from NPC conduct and the world's morality.
+
 ## Persistence, recovery and setup fixtures
 
 ### M01 — Full save, checkpoint and evidence completeness
@@ -78,7 +104,9 @@ Use an available accepted conversation with a materially exact statement and a k
 
 ### M02 — Interrupted multi-file write
 
-On disposable copies, interrupt after verified preimages/active marker creation, after a dependent write, and before CURRENT_SAVE publication. Each pending marker stops ordinary boot. Compare every changed existing file and planned new path with the recovery record; complete or restore only the affected operation. Completed/restored verification permits removal of the active marker; preserve preimages and operation records. Do not claim atomicity, automatic rollback or success from writing the current pointer alone. An interrupted REVIEW or RECALIBRATE leaves unrelated state untouched.
+On disposable copies, interrupt after verified preimages/active marker creation, after a dependent write, and before CURRENT_SAVE publication. Each pending marker stops ordinary boot. Compare every changed existing file, planned new file and recorded directory preexistence/creation with the recovery record; complete or restore only the affected operation. After file restoration, verify that any remaining unindexed new session directory still fails validation. Remove only recorded directories verified as created by this operation and now empty, deepest first, using exact nonrecursive removal. Preserve pre-existing directories, unexpected contents, recovery records and preimages. A directory with unexpected content keeps recovery pending until resolved; never silence orphan detection to declare success.
+
+Completed/restored checks permit removal of the active marker only after the prior state and routes agree. Compare the final protected files with the verified preimages, then check the restored tree. Do not claim atomicity, automatic rollback or success from writing the current pointer alone. An interrupted REVIEW or RECALIBRATE leaves unrelated state untouched.
 
 ### M03 — Narrow correction and prospective recalibration
 

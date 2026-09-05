@@ -6,6 +6,18 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.7.1 — agreement and recovery repairs (2026-09-05)
+
+- Added five required named prose clauses within the existing agreement sections, preserving plain-language grants and optional A–E presets.
+- Separated form selection from structure disclosure; preserved truthful opacity envelopes and operative concealed selections across restarts.
+- Clarified accepted fixed structure, lived-continuity defaults, scoped hard cuts, ironman versus genuine error repair, and OOC off-premise handling.
+- Separated product/host depiction restrictions, operator limits, PC authorship, and fictional morality/NPC conduct.
+- Recorded newly created directories during recoverable operations and added safe empty-directory restoration without recursive deletion or weaker orphan checks.
+- Fixed two malformed validator provenance diagnostics and added failure-path, directory-restoration, and agreement-clause regressions.
+- Added proposed opacity, ironman, cut, and premise behavioral fixtures; live-play results remain unrun.
+- Restored project attribution and third-party-rights scope; documented the absence of complete referenced-record version pinning.
+- Kept the v0.7 save layout; existing v0.7 agreements use focused accepted supplementation rather than current-state migration.
+
 ## v0.7 — simpler operation and universal progressive setup (2026-09-05)
 
 - Retained rules, world, current-state, knowledge/private-state, and historical-evidence separation.

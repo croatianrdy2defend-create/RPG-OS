@@ -1,4 +1,4 @@
-# RPG OS v0.7 targeted reference
+# RPG OS v0.7.1 targeted reference
 
 Cold lookup guide. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 

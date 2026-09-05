@@ -6,7 +6,7 @@ temperature: resident
 
 # CAMPAIGN_CONTRACT
 
-No campaign agreement is accepted. SETUP replaces this template only with the displayed, explicitly accepted agreement.
+No campaign agreement is accepted. SETUP replaces this template only with the displayed, explicitly accepted agreement, including the five named prose clauses required by INSTANCE/_SCHEMA.md. Empty sections here grant no permission.
 
 | Field | Value |
 |---|---|

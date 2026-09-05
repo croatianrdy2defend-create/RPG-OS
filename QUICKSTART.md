@@ -1,4 +1,4 @@
-# Start with RPG OS v0.7
+# Start with RPG OS v0.7.1
 
 1. Extract the kit into a separate folder for one campaign.
 2. Give your LLM workspace access to read and write that folder.
@@ -9,6 +9,8 @@
 Add your idea if you have one. The model asks one small group of relevant questions at a time. You can choose Guided or Detailed setup instead, supply existing material, or leave nonessential details undecided.
 
 Review the proposed world brief, character, campaign agreement, and opening. Accept them in ordinary language or request changes. The model creates the campaign files and confirms completion. You may continue in that chat if its context is suitable, or start fresh.
+
+The proposal includes the play form, who chooses it, what structural information is disclosed, allowed cuts, and rewind/ironman policy. Defaults are offered together; you only need to change what matters to you. Choosing a form and allowing it to be concealed are separate permissions.
 
 ## Resume
 

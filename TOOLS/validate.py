@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v0.7.
+"""Read-only structural validator for RPG OS v0.7.1.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.
@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v3.0"
+VALIDATOR_VERSION = "VALIDATE-v3.0.1"
 
 CURRENT_SAVE_FIELDS = (
     "engine", "module", "pc_record", "campaign_id", "save_id", "save_rev",
@@ -39,6 +39,13 @@ CONTRACT_FIELDS = (
 CONTRACT_SECTIONS = (
     "Campaign promise", "Player control", "GM initiative", "Time and transitions", "Presentation",
 )
+CONTRACT_CLAUSES = {
+    "Play form": "Campaign promise",
+    "Form selection": "GM initiative",
+    "Structure disclosure": "Presentation",
+    "Cuts": "Time and transitions",
+    "Retcon": "Player control",
+}
 
 SETTING_BRIEF_SECTIONS = (
     "World identity",
@@ -916,6 +923,42 @@ class Validator:
         if candidate.exists() or candidate.is_symlink():
             self.add("ERROR", "SAVE_STALE_CANDIDATE", self.relative(candidate), "unfinished candidate exists; validator will not delete it")
 
+    def check_contract_clauses(self, text: str, relative: str) -> None:
+        """Check named prose clauses, never their accepted semantic meaning."""
+        lines = text.splitlines()
+        visible, structural = structural_markdown_lines(lines)
+        headings = {line: (level, title) for line, level, title in iter_literal_headings(text)}
+        pattern = re.compile(r"^\s*(?:[-*+]\s+)?(" + "|".join(re.escape(label) for label in CONTRACT_CLAUSES) + r"):\s*(.*?)\s*$")
+        current_section: Optional[str] = None
+        occurrences: dict[str, list[int]] = defaultdict(list)
+        for number, line in enumerate(structural, 1):
+            if number in headings:
+                level, title = headings[number]
+                if level <= 2:
+                    current_section = title if level == 2 else None
+            if not visible[number - 1]:
+                continue
+            match = pattern.fullmatch(line)
+            if match is None:
+                continue
+            label, value = match.groups()
+            occurrences[label].append(number)
+            expected_section = CONTRACT_CLAUSES[label]
+            if current_section != expected_section:
+                self.add("ERROR", "CONTRACT_CLAUSE_SECTION", relative,
+                         f"{label!r} belongs in {expected_section!r}, not {current_section or 'outside a section'!r}", number)
+            if is_placeholder(value) or is_sentinel(value) or not self.meaningful_payload(value):
+                self.add("ERROR", "CONTRACT_CLAUSE_EMPTY", relative,
+                         f"{label!r} requires substantive accepted wording, not a blank or placeholder", number)
+        for label, expected_section in CONTRACT_CLAUSES.items():
+            found = occurrences[label]
+            if not found:
+                self.add("ERROR", "CONTRACT_CLAUSE_MISSING", relative,
+                         f"missing {label!r} clause in {expected_section!r}; an existing agreement needs accepted supplementation through RECALIBRATE")
+            elif len(found) > 1:
+                self.add("ERROR", "CONTRACT_CLAUSE_DUPLICATE", relative,
+                         f"{label!r} must occur exactly once; found {len(found)}", found[1])
+
     def check_campaign_contract(self) -> None:
         relative = "INSTANCE/CAMPAIGN_CONTRACT.md"
         text = self.read_text(self.root / relative, "CONTRACT_READ")
@@ -951,6 +994,7 @@ class Validator:
             return
         if values.get("status") != "accepted":
             self.add("ERROR", "CONTRACT_BOUND_STATUS", relative, "bound run requires status accepted")
+        self.check_contract_clauses(text, relative)
         for field in ("campaign_id", "module"):
             if values.get(field) != self.current.get(field):
                 self.add("ERROR", "CONTRACT_BINDING_MISMATCH", relative, f"contract {field} does not match CURRENT_SAVE")
@@ -2299,7 +2343,7 @@ def make_report(
             "coverage": [
                 "required release files, executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
                 "CURRENT_SAVE metadata/readable sections, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
-                "accepted Campaign Contract identity, binding, revision, required readable terms, and candidate residue",
+                "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
                 "optional cold Bearing provenance and staleness warnings; active recovery marker",
                 "clean unbound INSTANCE paths and bound PC overlay",
                 "installed engine identity, safe ids, and declared character-build support",
@@ -2437,11 +2481,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         target_validator_hash = target_descriptor.rpartition(":")[2] if target_descriptor.startswith("F:") else "unavailable"
         if executed_validator_hash != executed_validator_final_hash:
             validator.add(
-                "INCOMPLETE",
-                "VALIDATOR_CHANGED_DURING_RUN",
-                "TOOLS/validate.py",
-    "TOOLS/test_validate.py",
-                "the executed validator file changed while validation ran",
+                severity="INCOMPLETE",
+                code="VALIDATOR_CHANGED_DURING_RUN",
+                path="TOOLS/validate.py",
+                message="the executed validator file changed while validation ran",
             )
         validator_identity_matches = (
             executed_validator_hash
@@ -2451,11 +2494,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         if not validator_identity_matches:
             validator.add(
-                "INCOMPLETE",
-                "VALIDATOR_TARGET_MISMATCH",
-                "TOOLS/validate.py",
-    "TOOLS/test_validate.py",
-                "the target validator was not byte-identical to the executed validator for the full run",
+                severity="INCOMPLETE",
+                code="VALIDATOR_TARGET_MISMATCH",
+                path="TOOLS/validate.py",
+                message="the target validator was not byte-identical to the executed validator for the full run",
             )
         report, exit_code = make_report(
             root,
