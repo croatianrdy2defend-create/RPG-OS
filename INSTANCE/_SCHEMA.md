@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.7.2
+# INSTANCE schema — v0.7.3
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -115,6 +115,8 @@ BEARING is cold, optional, and never loaded at normal startup. Its notes cite ca
 Separate established references, explicit player preferences, observed conduct, and provisional interpretation wherever those appear. Newer state/agreement makes old notes historical interpretation, not current authority. Missing/stale/malformed review notes do not invalidate a playable save; ignore them and address the optional defect only if REVIEW is requested. Review never supplies facts, a continuation obligation, prepared-scene priority, or an inferred desire.
 
 ## Mutation and recovery
+
+Scene handovers are optional operational records outside INSTANCE, governed by `ADMIN/SCENE_HANDOVER.md`. `HANDOVER/ACTIVE.md` pauses source play; the package's CONVERSATION and GM_STATE files are frozen transport copies, not competing current authorities. No new CURRENT_SAVE metadata or commit kind is introduced. CHECKPOINT still retains its evidence boundary. An accepted return is compiled into the existing current authorities and full-save evidence once; its retained RECEIPT identifies the result. Normal startup checks only the active marker, never old packages. Installing the handover procedure alone creates no marker, package, person or fictional progress.
 
 PLAY writes no campaign files. Explicit Save/CLOSE/END SESSION uses ADMIN/CLOSE_CONTRACT.md; CHECKPOINT uses its reduced-evidence path. REVIEW writes only optional notes. RECALIBRATE writes only an explicitly accepted prospective agreement. CORRECT follows ADMIN/CORRECT.md for narrow current and historical repair. Safety changes take effect in the conversation immediately; durable changes use the recovery procedure and matching save flag.
 

@@ -15,3 +15,7 @@ Thumbs.db
 .release/
 LOCAL_CAMPAIGNS/
 private-campaigns/
+HANDOVER/
+RECOVERY/
+output/
+TEST_RUN.md

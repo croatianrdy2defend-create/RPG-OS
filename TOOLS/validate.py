@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v0.7.1.
+"""Read-only structural validator for RPG OS v0.7.3.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.
@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v3.0.1"
+VALIDATOR_VERSION = "VALIDATE-v3.0.2"
 
 CURRENT_SAVE_FIELDS = (
     "engine", "module", "pc_record", "campaign_id", "save_id", "save_rev",
@@ -88,10 +88,15 @@ REQUIRED_FILES = (
     "ADMIN/REFINE_SETTING_BRIEF.md",
     "ADMIN/REVIEW.md",
     "ADMIN/RECALIBRATE.md",
+    "ADMIN/SCENE_HANDOVER.md",
     "ADMIN/TESTS.md",
     "ADMIN/VALIDATE.md",
     "TOOLS/validate.py",
     "TOOLS/test_validate.py",
+    "TOOLS/handover.py",
+    "TOOLS/test_handover.py",
+    "TOOLS/package_release.py",
+    "TOOLS/test_package_release.py",
     "TOOLS/LICENSE",
     "QUICKSTART.md",
     "INSTALLATION.md",
@@ -99,6 +104,9 @@ REQUIRED_FILES = (
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "ARCHITECTURE.md",
+    "MECHANICS.md",
+    "VERSION",
+    "V0.7.3_CHANGES.md",
     "README.md",
     "SHARE.md",
     "LICENSE",
@@ -1040,6 +1048,23 @@ class Validator:
         if marker.exists() or marker.is_symlink():
             self.add("ERROR", "RECOVERY_PENDING", "RECOVERY/ACTIVE.md",
                      "active recovery marker exists; inspect ADMIN/RECOVERY.md and finish or restore before PLAY; validator makes no repairs")
+
+    def check_handover(self) -> None:
+        relative = "HANDOVER/ACTIVE.md"
+        marker = self.root / relative
+        # Check ancestors before the marker; never follow a linked package tree.
+        for probe in (marker.parent, marker):
+            if probe.is_symlink():
+                self.add("ERROR", "PATH_SYMLINK", relative, "authoritative path crosses a symlink")
+                return
+        if not marker.exists():
+            return
+        if self.bound:
+            self.add("WARNING", "HANDOVER_PAUSED", relative,
+                     "active handover marker exists; source PLAY is paused; the standalone TOOLS/handover.py checker and ADMIN/SCENE_HANDOVER.md reconciliation are required; this validator does not inspect the package")
+        else:
+            self.add("ERROR", "HANDOVER_UNBOUND", relative,
+                     "an unbound kit cannot have an active scene handover; preserve transfer records and use a clean separate kit")
 
     def check_engines(self) -> None:
         engine_root = self.root / "ENGINE"
@@ -2280,6 +2305,7 @@ class Validator:
         self.check_bearing()
         self.check_initial_instance()
         self.check_recovery()
+        self.check_handover()
         self.check_engines()
         self.check_module()
         self.check_safety()
@@ -2344,7 +2370,7 @@ def make_report(
                 "required release files, executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
                 "CURRENT_SAVE metadata/readable sections, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
                 "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
-                "optional cold Bearing provenance and staleness warnings; active recovery marker",
+                "optional cold Bearing provenance and staleness warnings; active recovery and handover marker presence (handover package integrity requires its separate checker)",
                 "clean unbound INSTANCE paths and bound PC overlay",
                 "installed engine identity, safe ids, and declared character-build support",
                 "bound module using v0.4 descriptor grammar, required setting-brief identity/sections and candidate residue, capabilities/routes, optional POLICY source voice, closed PC routing bundles, and T0/bind consistency where machine-parseable",

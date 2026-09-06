@@ -19,6 +19,11 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 | Request | Meaning |
 |---|---|
 | CHECKPOINT | Save the present only; historical evidence since the last complete save remains unarchived |
+| Prepare a scene handover / SCENE HANDOVER | Pause the current scene; checkpoint its state and export available conversation plus the GM briefing |
+| Receive this handover | Become the receiving GM for the named package and continue with the player at its pending decision |
+| Prepare the scene return | Receiving GM records non-graphic events, consequences, private changes and the next decision |
+| Import this scene return / RETURN SCENE | Check the matching starting state, save accepted changes once and resume |
+| Cancel the handover | Resolve the transfer without silently discarding accepted receiving play |
 | REVIEW | Optional cold reflection; no automatic follow-up to saving |
 | VALIDATE / check the files | Read-only structural inspection, with limits stated |
 | AUDIT | Report actually observed loading/actions; no claim to unobserved context |

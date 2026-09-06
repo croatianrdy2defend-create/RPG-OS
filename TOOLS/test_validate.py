@@ -393,6 +393,21 @@ class StructuralValidationTests(unittest.TestCase):
         self.write("RECOVERY/ACTIVE.md", "operation_id: synthetic\nstatus: complete\n")
         self.assert_code("RECOVERY_PENDING")
 
+    def test_active_handover_warns_bound_without_certifying_package(self) -> None:
+        self.bind()
+        self.write("HANDOVER/retained/RECEIPT.md", "status: imported\n")
+        self.assert_valid()
+        self.write("HANDOVER/ACTIVE.md", "status: complete\n")
+        checker = self.assert_valid()
+        finding = next(item for item in checker.findings if item.code == "HANDOVER_PAUSED")
+        self.assertEqual("WARNING", finding.severity)
+        self.assertIn("standalone TOOLS/handover.py checker", finding.message)
+        self.assertIn("does not inspect the package", finding.message)
+
+    def test_active_handover_rejected_in_unbound_kit(self) -> None:
+        self.write("HANDOVER/ACTIVE.md", "")
+        self.assert_code("HANDOVER_UNBOUND")
+
     def test_retained_completed_recovery_does_not_block(self) -> None:
         self.bind()
         self.write("RECOVERY/operation-01/RECORD.md", "# Recovery\n\nstatus: complete\n")

@@ -1,0 +1,94 @@
+name: Publish fresh-install release
+
+on:
+  push:
+    branches: [main]
+    paths: [VERSION]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Require the main branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/main || { echo 'Releases may only be published from main.' >&2; exit 1; }
+
+      - name: Check out the triggering commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run structural, handover, and packaging regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B TOOLS/test_validate.py
+          python3 -B TOOLS/test_handover.py
+          python3 -B TOOLS/test_package_release.py
+
+      - name: Package and verify the committed fresh install
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B TOOLS/package_release.py
+          (cd .release && sha256sum --check SHA256SUMS)
+
+      - name: Publish version assets without replacement
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat VERSION)"
+          [[ "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          tag="v$version"
+          notes="V${version}_CHANGES.md"
+          archive=".release/RPG_OS_v${version}.zip"
+          test -f "$notes" && test -f "$archive"
+
+          # A pre-existing tag must identify this exact commit, even if no release exists yet.
+          remote_tag="$(git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}")"
+          if [ -n "$remote_tag" ]; then
+            git fetch --no-tags origin "refs/tags/$tag:refs/tags/$tag"
+            tag_commit="$(git rev-parse "$tag^{commit}")"
+            test "$tag_commit" = "$GITHUB_SHA" || { echo 'Version tag belongs to a different commit.' >&2; exit 1; }
+          fi
+
+          # Do not replace releases or upload assets again. Only an identical tagged commit is a no-op.
+          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > "$RUNNER_TEMP/rpg-os-existing-release.json" 2> "$RUNNER_TEMP/rpg-os-release-error.txt"; then
+            test -n "$remote_tag" || { echo 'Existing release has no matching version tag.' >&2; exit 1; }
+            python3 - "$RUNNER_TEMP/rpg-os-existing-release.json" "$(basename "$archive")" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+
+          release = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if release.get("draft") is not False or release.get("prerelease") is not False or not release.get("published_at"):
+              raise SystemExit("Existing release is not a published full release; leaving it unchanged for maintainer review.")
+          for name in (sys.argv[2], "SHA256SUMS"):
+              assets = [asset for asset in release.get("assets", []) if asset.get("name") == name]
+              if len(assets) != 1 or assets[0].get("state") != "uploaded" or assets[0].get("size", 0) <= 0:
+                  raise SystemExit(f"Existing release has incomplete asset {name}; leaving it unchanged for maintainer review.")
+          PY
+            echo "Release $tag already exists for this commit; leaving it unchanged."
+            exit 0
+          elif ! grep -q 'HTTP 404' "$RUNNER_TEMP/rpg-os-release-error.txt"; then
+            cat "$RUNNER_TEMP/rpg-os-release-error.txt" >&2
+            exit 1
+          fi
+
+          gh release create "$tag" "$archive" .release/SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "RPG OS $tag" --notes-file "$notes" --latest

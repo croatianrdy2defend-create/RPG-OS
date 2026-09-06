@@ -10,7 +10,7 @@ Distinguish:
 
 - correction of an actual factual, recording, rules, or authorship error from dissatisfaction with a valid accepted outcome or a prospective creative change;
 - an OOC rewind of a valid outcome, governed by Retcon, from a fictional event or ordinary error repair;
-- an operator content limit or fade/veil boundary from PC authorship, NPC behavior, fictional morality, or an external provider restriction;
+- an operator content limit or fade/veil boundary from PC authorship, NPC behavior or fictional morality;
 - a requested saved-record repair from a correction that currently exists only in chat.
 
 Changing the accepted ongoing authority allocation or play form uses RECALIBRATE. Ordinary voice, response length, guidance, and status-display preferences belong in the agreement's Presentation section, not SAFETY; apply a clear current instruction immediately, and use RECALIBRATE for an explicitly accepted durable agreement change without requiring a special phrase. A clear immediate content limit takes effect now even if persistence is not yet requested. A change to immutable MODULE canon is a separate explicitly scoped authoring/upgrade decision, not permission to quietly rewrite MODULE here; a run-specific accepted ruling can live in CORRECTIONS.
@@ -23,7 +23,7 @@ Correct genuine errors narrowly, including wrong recorded values, incorrectly ap
 
 Stop, pause, end, and changes to permitted depiction remain available under ironman. A depiction change can omit or veil content without silently changing a valid fictional outcome. Keep those acts OOC and apply no fictional punishment. Where a requested outcome change goes beyond depiction or error repair, follow Retcon rather than treating a content limit as an unstated rewind grant. An explicitly authorized rewind remains an OOC record revision, never a new event explaining away the past.
 
-Operator limits and applicable host/product restrictions constrain permitted content and presentation; they are not universal laws of NPC conduct or fictional morality. Portray the accepted world's permitted facts and wrongdoing within those limits, without inventing the PC's reserved voluntary response. Do not create retrospective wrongdoing or a moral reaction merely because a limit was invoked, and do not bypass an applicable host restriction.
+Presentation choices do not establish universal laws of NPC conduct or fictional morality. Preserve the accepted world's established facts and NPC conduct without inventing the PC's reserved voluntary response. Do not create retrospective wrongdoing or a moral reaction merely because the operator changed presentation.
 
 ## Persist when requested or already authorized
 
@@ -43,7 +43,7 @@ Update affected current pointers and routing/ledger metadata where needed so lat
 
 Apply new or changed limits immediately in chat. When the user requests/authorizes saving them, protect SAFETY, CURRENT_SAVE and other affected save paths through recovery. Place real accepted sentences under Hard no or Fade / veil, preserving unrelated limits and noting a module origin when applicable. Do not silently remove a stronger existing limit or infer a weakening from genre or fictional behavior.
 
-Set CURRENT_SAVE safety_state to `active` exactly when a real accepted entry remains; otherwise use `floor-only`. Publish the matching save last and verify both records. No new fictional time or event follows from changing a limit. Explain a provider limitation separately when necessary; never store a provider refusal as an NPC reaction or campaign fact.
+Set CURRENT_SAVE safety_state to `active` exactly when a real accepted entry remains; otherwise use `floor-only`. Publish the matching save last and verify both records. No new fictional time or event follows from changing a limit. Keep OOC administrative responses separate from NPC reactions and campaign facts.
 
 ## Result
 

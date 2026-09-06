@@ -25,6 +25,8 @@ ARCHIVE/
 
 A full Save/CLOSE/END SESSION creates one folder per closed available slice. A CHECKPOINT creates no evidence folder and retains the earlier archive_ref/evidence_through. The latter pair identifies the latest archived close, not necessarily the current save id.
 
+An outgoing scene handover creates transport records under HANDOVER, not an archived close. On accepted return, preserve the available non-graphic return account through the normal full-save evidence layout, identifying its coverage and original package/return source. Do not claim omitted raw dialogue was archived or apply already-imported state changes again. Retained handover copies are provenance, not another current authority or a replacement for required archive bodies and indexes. `ADMIN/SCENE_HANDOVER.md` owns return identity and receipt checks.
+
 Use safe POSIX paths relative to ARCHIVE for archive_ref, campaign folder/session_index, and ledger pointers. Session INDEX File values are relative to that index's folder. New folders are direct children of sessions/. No absolute path, backslash, traversal, or symlink route. Existing `ARCHIVE/`-prefixed legacy routes remain readable with a noncanonical warning. Stable pointer fragments name literal heading text, not host-generated slugs.
 
 ## Accepted source and fidelity

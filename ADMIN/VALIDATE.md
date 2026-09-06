@@ -1,4 +1,4 @@
-# VALIDATE — v0.7.2 structural inspection
+# VALIDATE — v0.7.3 structural inspection
 
 VALIDATE is read-only ADMIN work. It inspects an explicitly selected RPG_OS tree, reports what it observed, and stops. It does not repair, save, recover, accept an agreement, or start PLAY. Normal PLAY does not preload this file or the validator.
 
@@ -11,7 +11,9 @@ python -B TOOLS/validate.py --root .
 python -B TOOLS/validate.py --root . --json
 ```
 
-`VALIDATE-v3.0.1` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
+`VALIDATE-v3.0.2` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
+
+Scene handovers have an optional separate integrity checker: `python -B TOOLS/handover.py check --root . --package HANDOVER/<id>`; add `--return` when checking SCENE_RETURN.md. `python -B TOOLS/handover.py snapshot --root .` emits the outgoing snapshot recipe. These commands are read-only. Normal VALIDATE does not certify a handover's identities, source coverage, matching snapshot or return; consult the separate report and `ADMIN/SCENE_HANDOVER.md`. Its synthetic tests run with `python -B TOOLS/test_handover.py`.
 
 Exit 0 means structural PASS or PASS WITH WARNINGS; exit 1 means a definite structural failure; exit 2 means incomplete execution or coverage. If errors and incomplete coverage coexist, the result remains INCOMPLETE and the definite errors remain listed. Warnings do not change the exit status.
 
@@ -51,6 +53,7 @@ The script checks:
 - Optional cold BEARING provenance/staleness as warnings. There is no mandatory seven-section layout or normal boot dependency.
 - Any existing RECOVERY/ACTIVE.md as a pending recovery error, even if its text says complete. Successful recovery/completion removes the active marker only after verification and retains the operation record/preimages. Empty unindexed session directories remain orphan errors. Restoring an interrupted operation includes exact nonrecursive removal of its recorded, verified operation-created directories only when empty; see ADMIN/RECOVERY.md. The validator does not perform recovery.
 - Initial/final tree and executed-validator stability.
+- Active handover marker presence: a bound campaign receives `HANDOVER_PAUSED` as a warning requiring the dedicated handover check; an unbound kit receives `HANDOVER_UNBOUND` as an error. This presence check does not validate the package or authorize resumption.
 
 A CHECKPOINT may point to an older archived save. It must not claim its own new evidence, mismatch an archived id/folder, or clear an existing evidence boundary. Static inspection cannot prove the values were retained unchanged from a previous current save unless that prior state is supplied and compared separately.
 
@@ -60,7 +63,7 @@ The validator cannot establish that an agreement was actually accepted; that its
 
 It does not prove that archived prose came from accepted available play, that an exact transcript was available, that summaries preserve all consequential qualifications, or that SAVE/CORRECT/UPGRADE used complete preimages and the accepted scope. No active marker is not proof that no interrupted write happened. Current file shape cannot certify a past transaction or multi-file atomicity.
 
-It does not execute a GM, test fresh-chat behavior, validate provider restrictions, or observe the host's read/write isolation. AUDIT self-report does not establish those results. Use the separate behavioral and maintenance fixtures in ADMIN/TESTS.md.
+It does not execute a GM, test fresh-chat behavior, or observe the host's read/write isolation. AUDIT self-report does not establish those results. Use the separate behavioral and maintenance fixtures in ADMIN/TESTS.md.
 
 ## Without Python
 

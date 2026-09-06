@@ -2,7 +2,7 @@
 
 ## A new campaign
 
-Extract the v0.7.2 kit into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [QUICKSTART](QUICKSTART.md).
+Extract the [v0.7.3 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.7.3) into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [QUICKSTART](QUICKSTART.md). The release contains blank, unbound templates and only the Freeform engine; it carries no campaign module, character, or artwork.
 
 The normal workflow requires the host to:
 
@@ -21,7 +21,7 @@ Do not begin from a folder containing another campaign's INSTANCE, ARCHIVE, or p
 
 1. Complete the latest save using the old compatible runtime.
 2. Keep a restorable copy of the entire old campaign and its original runtime.
-3. Work in a separate upgrade copy. Install the v0.7.2 OS, ADMIN, generic contracts/schemas, documentation, and optional tools there. Preserve campaign-owned MODULES, ENGINE adapters, INSTANCE records, ARCHIVE, and recovery material.
+3. Work in a separate upgrade copy. Install the v0.7.3 OS, ADMIN, generic contracts/schemas, documentation, and optional tools there. Preserve campaign-owned MODULES, ENGINE adapters, INSTANCE records, ARCHIVE, and recovery material.
 4. Say: "Open ADMIN/UPGRADE_V07.md and prepare this campaign's upgrade."
 5. Review the mapped present, concrete agreement, presentation, limits, and any missing brief. Accept the proposal before publication.
 6. Resume only after the resulting records and references have been checked.
@@ -33,6 +33,14 @@ For an already-bound v0.7 campaign, the save format is unchanged. In a protected
 The runtime does not pin every referenced record to an immutable version. Preserve a coherent campaign copy; do not interchange engine, module, or current-state files solely because their names match.
 
 For a valid v0.7.1 campaign, v0.7.2 keeps the same record format and agreement clauses. Apply generic instructions/schemas in a protected copy while retaining campaign-owned files. Optional portrayal or investigation notes need no retrospective completion and do not authorize rewriting a bound module baseline. Accepted later changes use the existing current-state and maintenance procedures.
+
+v0.7.3 retains the valid v0.7.1/v0.7.2 current-state and agreement formats. Its scene-handover extension is optional. Install its generic instructions and optional helpers together in a protected copy; never replace campaign records with fresh templates. Accept any standing handover grant prospectively through RECALIBRATE. Complete or cancel an active transfer before changing its pinned authorities; an update during transfer invalidates the original snapshot and requires reconciliation.
+
+## Moving a live scene between GMs
+
+Use the [scene-handover procedure](ADMIN/SCENE_HANDOVER.md) when continuity must include the unfinished scene and established private GM state. Both GMs need the same coherent workspace baseline, required references, and explicit transfer records. A different host needs a deliberate copy of that workspace; the mechanism does not grant access or send files to an external service.
+
+Only one GM continues the scene. The source stays paused while the receiver works. Preserve the sealed conversation and GM briefing unchanged, then return the factual scene result for checked import. The snapshot includes referenced module assets, but it cannot transfer unavailable conversation, unrecorded facts, inaccessible files, or model-internal reasoning. Private files are spoiler separation, not encryption.
 
 ## Hosts without direct workspace writes
 

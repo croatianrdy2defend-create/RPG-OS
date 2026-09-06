@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+"""Regression tests for clean public release exports; uses isolated synthetic Git repos."""
+from __future__ import annotations
+
+import hashlib
+import importlib.util
+from pathlib import Path
+import shutil
+import stat
+import sys
+import unittest
+import zipfile
+
+sys.dont_write_bytecode = True
+HERE = Path(__file__).resolve().parent
+
+
+def load_module(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+pack = load_module("rpg_os_package_release", HERE / "package_release.py")
+validator = load_module("rpg_os_release_validator", HERE / "validate.py")
+
+
+def record(title: str, values: dict[str, str], sections: tuple[str, ...], identity: str, kind: str) -> str:
+    rows = "\n".join(f"| {key} | {value} |" for key, value in values.items())
+    bodies = "\n\n".join(f"## {section}\n\nnone" for section in sections)
+    return (f"---\nid: {identity}\nclass: {kind}\ntemperature: resident\n---\n\n"
+            f"# {title}\n\n| Field | Value |\n|---|---|\n{rows}\n\n{bodies}\n")
+
+
+@unittest.skipUnless(shutil.which("git"), "Git is required for release packaging")
+class PackageTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temporary = pack.isolated_directory()
+        self.base = self.temporary.__enter__()
+        self.addCleanup(self.temporary.__exit__, None, None, None)
+        self.root = self.base / "repo"
+        self.root.mkdir()
+        for relative in validator.REQUIRED_FILES:
+            self.write(relative, "# Synthetic fixture\n\nFor release regression only.\n")
+        for relative, content in validator.EMPTY_INSTANCE_TEMPLATES.items():
+            self.write(relative, content)
+        self.write("TOOLS/validate.py", (HERE / "validate.py").read_text(encoding="utf-8"))
+        self.write("VERSION", "0.7.3\n")
+        self.write("V0.7.3_CHANGES.md", "# v0.7.3\n\nSynthetic release notes.\n")
+        self.write(".gitignore", ".release/\n.work/\n")
+        self.write("ENGINE/freeform.md", "---\nid: freeform\nclass: engine\ncharacter_build_support: no-mechanical-sheet\n---\n# Freeform\n\nResolve declared intent using accepted fictional stakes.\n")
+        self.write("ARCHIVE/_SCHEMA.md", "---\narchive_schema: hierarchical-scene-v1\n---\n# Archive\n\nAccepted evidence only.\n")
+        self.write("ARCHIVE/INDEX.md", "---\narchive_schema: hierarchical-scene-v1\n---\n# Archive index\n\n| save_id | commit_kind | session | span | place | route_terms | notes | folder | session_index | event_heading |\n|---|---|---|---|---|---|---|---|---|---|\n")
+        self.write("INSTANCE/SAFETY.md", "# SAFETY\n\nHard no:\n\nFade / veil:\n")
+        self.write("INSTANCE/CURRENT_SAVE.md", record("CURRENT_SAVE", pack.SAVE_VALUES, validator.SAVE_SECTIONS, "instance.current_save", "live-checkpoint"))
+        self.write("INSTANCE/CAMPAIGN_CONTRACT.md", record("CAMPAIGN_CONTRACT", pack.CONTRACT_VALUES, validator.CONTRACT_SECTIONS, "instance.campaign_contract", "campaign-contract"))
+        pack.git(self.root, "init", "-q")
+        for key, value in {
+            "user.name": "RPG OS release tests", "user.email": "rpg-os-tests@example.invalid",
+            "commit.gpgsign": "false", "core.autocrlf": "false", "core.safecrlf": "false",
+            "core.hooksPath": str(self.base / "no-hooks"),
+        }.items():
+            pack.git(self.root, "config", key, value)
+        self.commit()
+
+    def write(self, relative: str, content: str) -> None:
+        target = self.root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8", newline="\n")
+
+    def commit(self) -> None:
+        pack.git(self.root, "add", "-A")
+        pack.git(self.root, "commit", "-qm", "Synthetic fixture")
+
+    def test_clean_export_matches_committed_tree_and_checksum(self) -> None:
+        self.write(".work/private/notes.md", "Untracked private scene, not for publication.\n")
+        self.write(".release/old.zip", "Untracked old artifact.\n")
+        self.write("untracked-secret.md", "Not in Git.\n")
+        archive, sums = pack.package(self.root)
+        self.assertEqual(archive.parent, self.root / ".release")
+        checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
+        self.assertEqual(sums.read_text(), f"{checksum}  RPG_OS_v0.7.3.zip\n")
+        with zipfile.ZipFile(archive) as result:
+            self.assertIsNone(result.testzip())
+            files = {item.filename.removeprefix("RPG_OS_v0.7.3/") for item in result.infolist() if not item.is_dir()}
+            self.assertEqual(files, set(pack.tracked_manifest(self.root, "HEAD")))
+            self.assertEqual(result.read("RPG_OS_v0.7.3/VERSION"), b"0.7.3\n")
+            self.assertNotIn("untracked-secret.md", files)
+
+    def test_existing_output_is_preserved_until_explicit_overwrite(self) -> None:
+        archive, sums = pack.package(self.root, self.base / "output")
+        original = archive.read_bytes(), sums.read_bytes()
+        with self.assertRaisesRegex(pack.PackageError, "Output exists"):
+            pack.package(self.root, self.base / "output")
+        self.assertEqual((archive.read_bytes(), sums.read_bytes()), original)
+        pack.package(self.root, self.base / "output", overwrite=True)
+        self.assertEqual((archive.read_bytes(), sums.read_bytes()), original)
+
+    def test_dirty_tracked_tree_is_rejected(self) -> None:
+        self.write("README.md", "Uncommitted change\n")
+        with self.assertRaisesRegex(pack.PackageError, "Tracked tree"):
+            pack.package(self.root)
+        pack.git(self.root, "add", "README.md")
+        with self.assertRaisesRegex(pack.PackageError, "Tracked tree"):
+            pack.package(self.root)
+        self.assertFalse((self.root / ".release").exists())
+
+    def test_bound_identity_is_rejected(self) -> None:
+        save = dict(pack.SAVE_VALUES, campaign_id="private-campaign", save_rev="1")
+        self.write("INSTANCE/CURRENT_SAVE.md", record("CURRENT_SAVE", save, validator.SAVE_SECTIONS, "instance.current_save", "live-checkpoint"))
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "Fresh install requires"):
+            pack.package(self.root)
+
+    def test_accepted_contract_is_rejected(self) -> None:
+        values = dict(pack.CONTRACT_VALUES, contract_id="private-agreement", contract_rev="1", status="accepted")
+        self.write("INSTANCE/CAMPAIGN_CONTRACT.md", record("CAMPAIGN_CONTRACT", values, validator.CONTRACT_SECTIONS, "instance.campaign_contract", "campaign-contract"))
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "Fresh install requires"):
+            pack.package(self.root)
+
+    def test_live_state_in_permitted_register_fails_structural_validation(self) -> None:
+        self.write("INSTANCE/NOW.md", validator.EMPTY_INSTANCE_TEMPLATES["INSTANCE/NOW.md"].replace("\nnone\n", "\nPrivate faction clock: 3.\n"))
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "Frozen fresh-install validation failed"):
+            pack.package(self.root)
+
+    def test_real_module_is_rejected(self) -> None:
+        self.write("MODULES/example_world/MODULE.md", "# Private campaign module\n")
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "Campaign/module content"):
+            pack.package(self.root)
+
+    def test_private_paths_and_additional_bodies_are_rejected(self) -> None:
+        for relative in (
+            "RECOVERY/operation/preimage.md", "HANDOVER/export/GM_STATE.md",
+            "INSTANCE/CHAR/PC.md", "INSTANCE/PEOPLE/liv.md", "ARCHIVE/sessions/test/scene.md",
+            "ENGINE/gurps.md", "TEST_RUN.md", "secret/notes.md", ".work/private.md",
+            "TOOLS/.release/private.zip",
+        ):
+            with self.subTest(path=relative):
+                with self.assertRaises(pack.PackageError):
+                    pack.assert_public_paths({relative})
+
+    def test_missing_required_document_fails_frozen_validator(self) -> None:
+        (self.root / "OS/LAW.md").unlink()
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "Frozen fresh-install validation failed"):
+            pack.package(self.root)
+
+    def test_git_export_attributes_cannot_silently_omit_committed_files(self) -> None:
+        self.write("TOOLS/.gitattributes", "validate.py export-ignore\n")
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "exactly the committed files"):
+            pack.package(self.root)
+
+    def test_tracked_symlink_is_rejected_without_needing_os_symlink_support(self) -> None:
+        self.write("TOOLS/link", "../../outside\n")
+        pack.git(self.root, "add", "TOOLS/link")
+        blob = pack.git(self.root, "rev-parse", ":TOOLS/link").decode().strip()
+        pack.git(self.root, "update-index", "--cacheinfo", "120000", blob, "TOOLS/link")
+        pack.git(self.root, "commit", "-qm", "Synthetic symlink contamination")
+        with self.assertRaisesRegex(pack.PackageError, "symlinks, submodules or special files"):
+            pack.tracked_manifest(self.root, "HEAD")
+
+    def test_zip_traversal_links_and_collisions_are_rejected_before_extraction(self) -> None:
+        cases = [
+            ("RPG_OS_v0.7.3/../../escaped.txt", 0),
+            ("/absolute.txt", 0),
+            ("RPG_OS_v0.7.3/C:/escaped.txt", 0),
+            ("RPG_OS_v0.7.3/back\\slash.txt", 0),
+            ("RPG_OS_v0.7.3/NUL.txt", 0),
+            ("RPG_OS_v0.7.3/link", stat.S_IFLNK | 0o777),
+        ]
+        for number, (name, mode) in enumerate(cases):
+            with self.subTest(path=name):
+                archive = self.base / f"unsafe-{number}.zip"
+                with zipfile.ZipFile(archive, "w") as output:
+                    info = zipfile.ZipInfo(name)
+                    info.filename = name  # Preserve hostile backslashes on Windows too.
+                    info.create_system = 3
+                    info.external_attr = mode << 16
+                    output.writestr(info, "../../outside")
+                destination = self.base / f"unpacked-{number}"
+                with self.assertRaises(pack.PackageError):
+                    pack.safe_extract(archive, destination, "RPG_OS_v0.7.3")
+                self.assertFalse(destination.exists())
+        archive = self.base / "collision.zip"
+        with zipfile.ZipFile(archive, "w") as output:
+            output.writestr("RPG_OS_v0.7.3/README.md", "first")
+            output.writestr("RPG_OS_v0.7.3/readme.md", "second")
+        with self.assertRaisesRegex(pack.PackageError, "case-colliding"):
+            pack.safe_extract(archive, self.base / "collision", "RPG_OS_v0.7.3")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

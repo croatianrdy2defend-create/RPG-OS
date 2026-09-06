@@ -8,6 +8,8 @@ Cold persistence procedure. PLAY narrates and adjudicates; this operation writes
 
 **CHECKPOINT** is an optional present-only save. It preserves all current authorities, retains the prior archive_ref AND evidence_through, and writes no new archive bodies, indexes, or ledgers. Say plainly that new exact evidence was not archived. Do not offer a checkpoint as equivalent to a full save before discarding chat.
 
+**Scene handover** is a separate operation in `ADMIN/SCENE_HANDOVER.md`. It may checkpoint the complete present, then export the available conversation and GM briefing without claiming a new archive boundary. Check `HANDOVER/ACTIVE.md` before ordinary save/play: an active transfer is returned, cancelled or reconciled through that procedure, not advanced by a second GM. Importing an accepted return uses this full-save procedure and a retained receipt so later evidence preservation cannot apply the same changes again.
+
 Saving never advances fiction, resolves an unanswered choice, activates preparation, or interprets campaign direction. Preserve accepted post-save changes already in chat; do not infer goals, preferences, hidden events, or missing rules.
 
 ## Compile what changed

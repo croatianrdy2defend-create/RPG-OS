@@ -30,7 +30,7 @@ For relevant domains establish:
 - The few generic model assumptions that would distort this world.
 - What the GM may invent from the brief, what existing exact authority must be retrieved, and what is deliberately unfixed.
 
-A category does not automatically determine individual conduct. Explicitly established species, collective, social, or physical facts may constrain it; do not replace an accepted alien reality with universal human individualism or substitute stereotypes for source facts. Separate claims, beliefs, private truth, and observations. Host depiction restrictions and operator limits do not become fictional moral laws or invented causal prohibitions. NPC wrongdoing can exist within the accepted world and available depiction constraints without granting undelegated PC participation.
+A category does not automatically determine individual conduct. Explicitly established species, collective, social, or physical facts may constrain it; do not replace an accepted alien reality with universal human individualism or substitute stereotypes for source facts. Separate claims, beliefs, private truth, and observations. Presentation choices do not become fictional moral laws or invented causal prohibitions. NPC wrongdoing can exist within the accepted world without granting undelegated PC participation.
 
 Produce the public Setting Brief under the three required headings. Keep named cast, mutable state, detailed lore, private truth, preparation, and future events cold. Available depth names real capabilities and when their detail is needed, not a compulsory reading list. Local variation need not display every world category.
 

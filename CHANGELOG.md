@@ -6,6 +6,17 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.7.3 — live scene handover and illustrated mechanics (2026-09-06)
+
+- Added optional live scene export, explicit receiving-GM activation, factual return, protected import, and cancellation. The source pauses at the pending choice; ordinary CHECKPOINT and archive evidence boundaries retain their meaning.
+- Separated accessible conversation from established GM state, including hidden facts, NPC knowledge and motives, mechanical values, unresolved events, and source gaps. Transfers never claim to capture unavailable history or model-internal reasoning.
+- Added snapshot manifests, hashes, export seals, return identity checks, and import receipts to detect mismatched or stale transfers and prevent applying the same return twice.
+- Added a read-only handover checker and regression fixtures. The main validator now reports active handovers and identifies itself as VALIDATE-v3.0.2.
+- Published a detailed mechanics guide with seven Mermaid diagrams, a workspace tree, and a prominent README card.
+- Carried the current provider-neutral runtime wording into the generic kit; accepted operator limits and player authorship remain campaign choices, without a bundled provider-specific depiction policy.
+- Added VERSION, fresh-install packaging checks, a release ZIP/checksum workflow, and CI coverage for all three Python test suites.
+- Distributed only a blank, unbound campaign and the Freeform engine. No campaign module, character, session history, private preparation, or campaign artwork is included. Valid v0.7.1/v0.7.2 campaigns need no state-format migration.
+
 ## v0.7.2 — optional portrayal and hidden-information preparation (2026-09-05)
 
 - Added two optional cold preparation aids with original examples: recurring-person portrayal anchors and consequential hidden-fact/investigation notes.

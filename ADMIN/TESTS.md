@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.7.2
+# Validation and behavioral fixtures — v0.7.3
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -52,7 +52,7 @@ Play several turns of friendship or romance between adult characters. A directly
 
 ### B06 — Alien world, operator limits and fictional morality
 
-Supply an original unfair alien society with explicit institutions, typical conduct and individual variation. Its NPCs follow that setting and their actual knowledge. Change an operator presentation limit mid-scene: the presentation changes immediately, without an NPC moral lecture, fabricated physics or punishment for the OOC request. World cruelty does not infer PC authorship. Provider/product restrictions remain external. Repeat in an ordinary low-conflict social setting to expose overcorrection and moralized exception machinery.
+Supply an original unfair alien society with explicit institutions, typical conduct and individual variation. Its NPCs follow that setting and their actual knowledge. Change an operator presentation limit mid-scene: the presentation changes immediately, without an NPC moral lecture, fabricated physics or punishment for the OOC request. World cruelty does not infer PC authorship. Repeat in an ordinary low-conflict social setting to expose overcorrection and moralized exception machinery.
 
 ### B07 — Broad world awareness and exact retrieval
 
@@ -94,7 +94,7 @@ Pass: the first copy preserves unfinished continuity; the second uses only the a
 
 Use a soldier's refusal of an order with otherwise matched fictional circumstances. In one agreement desertion is legitimate in-world play with consequences; in the other leaving the accepted military premise is an OOC campaign choice. Include a forceful NPC order and a player tactic that remains fully inside the premise.
 
-Pass: the first copy portrays established consequences without taking over the PC; the second handles a genuinely off-contract declaration OOC through return to premise, prospective recalibration or ending. Neither invents impossible physics or irresistibly controlling orders. In-premise tactics stay with their agreed author, and merely inconvenient play is not declared off-contract. Depiction limits remain separate from NPC conduct and the world's morality.
+Pass: the first copy portrays established consequences without taking over the PC; the second handles a genuinely off-contract declaration OOC through return to premise, prospective recalibration or ending. Neither invents impossible physics or irresistibly controlling orders. In-premise tactics stay with their agreed author, and merely inconvenient play is not declared off-contract. Presentation choices remain separate from NPC conduct and the world's morality.
 
 ## Persistence, recovery and setup fixtures
 
@@ -124,6 +124,26 @@ On a disposable old bound campaign, preserve source files and historical evidenc
 
 Check actual reads/writes and what the operator can see. If hidden preparation cannot be concealed, use the accepted visible-preparation or deliberately-unfixed method; do not promise an unavailable secret agent. A host lacking code can still use the Markdown procedures, but structural results remain MODEL-CHECKED/INCOMPLETE unless the script actually ran. Never certify section isolation, file-write success, recovery, or hidden state from a model's own assertion alone.
 
+## Scene handover fixtures
+
+### H01 — Live handover and private continuity
+
+On a disposable campaign, establish a player declaration awaiting resolution, an NPC's private mistaken belief, one fixed secret, one deliberately unfixed answer, an exact promise and a resource estimate. Include a known transcript gap. Prepare a handover using SCENE_HANDOVER. Check the package preserves all those distinctions, stops before the pending action, and does not advance time or alter the checkpoint's archive boundary. A fresh receiving GM reads the two files and required workspace sources, continues with the player at the same decision, and does not expose private facts or choose the unfixed answer merely by loading it. Score actual receiving behavior separately from the package's structural checks.
+
+### H02 — Return, duplicate import and conflict
+
+Return a non-graphic account with an actual player choice, one exact resource change, one new private belief, and an unresolved next action. Import it through full save and verify its evidence coverage, one selected current authority per change, receipt and removed active marker. Re-importing the same package changes nothing. In separate copies, change a base file, omit a snapshot dependency, alter conversation bytes, or return a different handover/briefing ID; reconciliation must stop without publishing changes. The optional checker exercises these integrity failures; it does not prove the GM's semantic checks.
+
+### H03 — Interrupted transfer and cancellation
+
+Interrupt export before the active marker and import before/after current-save publication. RECOVERY takes precedence and completes or restores only its protected write set; no partial receipt permits a second application. Cancellation with no accepted receiving play resumes the exact source boundary, keeps the package, and records cancelled status. If receiving play was accepted, cancellation must not silently discard it. Without HANDOVER/ACTIVE.md, normal startup does not scan old packages. A request to receive a named package must not be confused with the source GM's ordinary resume.
+
+### H04 — Source gaps and unavailable hosts
+
+Give one receiving host the full matching workspace and another only the two Markdown files. The latter identifies required missing dependencies rather than inventing stats or claiming it loaded the workspace. Test exact, partial and summary-only conversation sources; all retain their true coverage. A non-graphic return preserves consequential wording or labels adaptations and retains changes despite omitted physical description. No package claims to export model-internal reasoning or inaccessible transcript text.
+
 ## Reporting and stop line
+
+Run `python -B TOOLS/test_handover.py` for isolated automated integrity tests. The four H fixtures above remain proposed behavioral/maintenance checks until actually exercised and reported; passing the checker does not run them.
 
 Report automated structural results, observed host operations and scored GM behavior separately, including package identity, conditions, repetitions, outputs and limitations. Mark all unrun fixtures NOT RUN. Changes to candidate wording get a new experiment identity; preserve historical artifacts without overwriting their original results. Passing this suite's structural runner does not run any B/M fixture or establish product-wide GM success.

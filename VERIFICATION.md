@@ -1,33 +1,40 @@
-# v0.7.2 verification — 2026-09-05
+# v0.7.3 verification — 2026-09-06
 
-This report records observed checks on the isolated public kit and original disposable fixtures. The kit remains experimental. [Observed trials](V0.7.2_TRIALS.md) and [the cold trial protocol](ADMIN/PLAYTEST_V072.md) distinguish completed operations from proposed work and player-experience claims.
+This report distinguishes observed checks on the isolated public release candidate from proposed playtests. The kit remains experimental. Historical [v0.7.2 trials](V0.7.2_TRIALS.md) retain their original scope; they are not new v0.7.3 or cross-provider handover results.
 
 | Check | Observed result |
 |---|---|
-| Optional structural validator on the unbound candidate | PASS; zero findings; stable tree; executed and target validator bytes match |
-| Existing structural regression suite | All 44 tests passed on Python 3.11.9 / Windows |
-| Local Markdown file links | No missing targets found during release inspection |
-| Focused release review | No actionable runtime/setup/schema regression found against the preserved v0.7.1 kit |
-| Paired model-operated play/save/resume/correction | See the bounded observations and artifact routes in V0.7.2_TRIALS.md |
-| Candidate-only staged restoration | Original campaign file and directory manifests restored exactly; validator PASS; recovery evidence retained |
-| Candidate-only preparation probe | A 292-word original draft respected the supplied nonhuman portrayal and knowledge distinctions; no comparison baseline |
+| Structural validator on the unbound candidate | PASS; zero findings, stable tree, matching executed/target validator bytes |
+| Structural regression suite | 46 tests passed on Python 3.11 / Windows |
+| Handover regression suite | 35 tests run: 34 passed, one OS-symlink fixture skipped because the host disallows symlink creation; the separate simulated Windows reparse-point check passed |
+| Packaging regression suite | 12 tests passed on Python 3.11 / Windows |
+| Mechanics guide diagrams | All seven parsed and rendered with Mermaid 10.9.3 in headless Chrome and were visually inspected |
+| Local documentation links and public inventory | 63 local links resolved; 70-file candidate; empty current/archive templates preserved; only Freeform and generic module contracts included |
+| Live exchange between different external providers | NOT RUN |
 | Human campaign enjoyment / sustained live play | NOT RUN |
-| Cross-provider compatibility | NOT RUN |
-| Tellus migration | NOT RUN; release built separately from the live workspace campaign |
 | Long-campaign quality or semantic losslessness | NOT ESTABLISHED |
 
-The structural suite makes no model/API calls. It uses disposable synthetic fixtures and does not bind the distributed kit. Its existing coverage includes clean and contaminated kits, agreement clauses, source routes and path escapes, save/checkpoint evidence boundaries, provenance diagnostics, recovery-directory ownership, and preservation of unrelated nonempty directories. The validator and its 44-test suite are unchanged from v0.7.1; new prose guidance is assessed separately, not represented as new structural test coverage. Run validation and fixture creation sequentially when they share a scanned parent directory.
+The main validator identifies itself as `VALIDATE-v3.0.2`. Its additions check required extension files and active handover marker presence. A bound marker produces a warning requiring the separate handover check; an unbound marker is an error. The structural validator does not certify package contents or authorize resumption.
 
-The controlled trials did use fresh collaboration-agent contexts and actual file operations. The reviewer inspected public replies, saved authorities, historical evidence, validation reports and file manifests. These observations are distinct from the validator's own `host_observation: NOT RUN` and `semantic: NOT CHECKED` fields, which correctly describe the script's narrower scope. Model-operated results do not upgrade that script into a semantic checker.
+The handover suite uses disposable synthetic files. It exercises export/return identities, sealed briefing and conversation hashes, changed/added/omitted snapshot files, unsafe routes, malformed manifests, coverage gaps, required headings, receipts, and repeated event identifiers. The checker is read-only: it does not execute an external GM or import campaign changes.
 
-Release packaging checks preserve the original v0.7 and v0.7.1 ZIPs, exclude trial/live campaign records, verify local link targets, test archive CRCs, and compare every packaged file with the clean source and validation copy. The generated companion `package_verification_v072.json` records the final file manifest and ZIP hash; the final packaged-tree validator report is retained outside the kit. Those generated hashes are not self-certification of meaning.
+The packaging suite tests clean committed exports and checksums, tracked dirt, bound state, populated registers, extra modules and private paths, missing required files, Git export omissions, Git-index symlinks, and hostile ZIP paths/collisions. The release workflow runs all three suites again on Linux before publishing assets; its run logs are the authority for the hosted result.
 
-## Size and operating limits
+## Reproduce the checks
 
-AGENTS, BOOTSTRAP and LAW total **2,107 whitespace-separated words**, compared with 2,105 in v0.7.1, 1,605 in v0.7 and 5,458 in v0.6.3. The change from v0.7.1 is two words. These counts exclude the campaign agreement, current save, setting brief, active limits and cold retrieval/preparation material. They are text-size observations, not measured token costs or evidence of better play.
+```text
+python -B TOOLS/validate.py --root .
+python -B TOOLS/test_validate.py
+python -B TOOLS/test_handover.py
+python -B TOOLS/test_package_release.py
+```
 
-The resident packet and record formats remain unchanged. Optional preparation uses existing authorities. Valid v0.7.1 campaigns need no record-format migration. The startup packet still does not pin every engine, module, agreement or mutable-record revision; plausible file-version swaps can evade detection.
+Run validation separately from operations modifying the measured tree. Tests use temporary synthetic fixtures; they make no model/API calls. On a clean committed public checkout, `python -B TOOLS/package_release.py` validates a frozen Git export and verifies every packaged file against its Git blob, ZIP CRCs, and the written SHA-256 checksum. See [Contributing](CONTRIBUTING.md) for publishing steps.
 
-## Work still requiring evidence
+## What remains unproven
 
-Use ADMIN/TESTS.md for broader scenarios, including full universal NEW GAME, opacity, ironman/error correction, permitted and denied hard cuts, off-premise conduct, long historical recall and user experience. These were not all exercised by the bounded v0.7.2 pilot. The single staged recovery restoration did not test an actual crash, all save stages, or the optional adverse branch. No result guarantees private-file concealment, complete memory, faithful future model writes or compatibility with every commercial workspace.
+Hash and identity checks detect specified byte changes and lineage mismatches. They cannot prove that a conversation was complete, an NPC's motive was recorded faithfully, a player accepted a choice, or a return preserved every meaningful consequence. A manifest is not a cryptographic identity for its author.
+
+Recovery remains a model-operated procedure with verified preimages, not an atomic filesystem guarantee. The handover marker is a protocol pause, not an operating-system lock. Hidden records are not encrypted. The ordinary startup packet still does not pin every referenced revision; only an active handover's specified snapshot is frozen.
+
+Use [ADMIN/TESTS](ADMIN/TESTS.md) and [the short playtest](SHARE.md) for observed agency, pacing, retrieval, save, correction, and handover behavior. A passing structural suite does not establish these outcomes. No claim of universal model-host compatibility or a fully lossless transfer is made.

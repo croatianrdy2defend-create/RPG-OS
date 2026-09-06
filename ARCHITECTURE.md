@@ -1,4 +1,4 @@
-# RPG OS v0.7.2 architecture
+# RPG OS v0.7.3 architecture
 
 ## Operating environment
 
@@ -29,6 +29,7 @@ Authority for a new consequential development is identified before drafting it. 
 | Historical evidence | ARCHIVE |
 | Optional provisional interpretation | Cold BEARING |
 | Recoverable changes | ADMIN procedures and operation-specific RECOVERY records |
+| Pending GM transfer and retained transport/return provenance | HANDOVER active marker and named package; SCENE_HANDOVER procedure |
 
 Current values replace corresponding mutable starting values; stable background remains reusable. Known-to-PC, private, unfixed, and provisional states remain distinct. A summary cannot silently supersede evidence outside its scope.
 
@@ -39,6 +40,12 @@ SAVE/CLOSE/END SESSION performs one complete save. Current-save metadata carries
 The operator/model preserves preimages, records affected files and newly created directories with their prior existence, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Restoration removes only verified operation-created empty directories after file reconciliation, using exact nonrecursive removal. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
 
 A coherent episode can occupy one evidence body. Split scenes or records when they will be retrieved independently. Preserve consequential wording and missing-source qualifications. Optional indexes locate evidence; they do not replace it.
+
+## Scene handover
+
+The optional scene-handover-v1 extension wraps CHECKPOINT with two transport files: ordered available CONVERSATION and a GM_STATE briefing containing the exact stop point, established public/private state, source map and frozen workspace hashes. It does not change save commit kinds or archive semantics. Normal startup checks HANDOVER/ACTIVE once after recovery; a present marker pauses source play and routes to the cold handover procedure. No marker or package is created merely by installing the feature.
+
+The receiving GM is explicitly selected, continues with the player from the pending decision, and returns a factual non-graphic account plus state changes. A matching-base check and retained imported/cancelled receipt prevent stale or repeated application. Source authorities have one writer; imports use protected full save and retain honest evidence gaps. This is procedural coordination with an optional read-only integrity checker, not a filesystem lock or transfer of model-internal context. Full engine/module/current-state hashes are pinned for this temporary transfer only; ordinary startup remains as described below.
 
 ## Setup and maintenance
 
