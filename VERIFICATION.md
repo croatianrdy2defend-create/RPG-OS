@@ -1,5 +1,32 @@
 # RPG OS experimental verification
 
+## v8.1.1 direct-attention baseline — 2026-09-07
+
+This incremental release starts from canonical public v0.8.1, commit `6177772108c8c0b61350670e71a7c97cb491e667`. Direct attention or interaction now requires a minimal current individual basis before focused portrayal or reception. Existing state, engine authority, private/public distinctions and requested-save boundaries remain intact. The observation that motivated the change was a supplied campaign audit; it does not independently authenticate that conversation's tool history.
+
+All three regression suites ran sequentially on the versioned candidate after the instruction and documentation changes. Whole-tree validation ran separately after fixture mutation stopped. No tool code, record format or release-version parser changed.
+
+| Check | Observed result |
+|---|---|
+| Structural regression suite | 48 passed on Windows / Python 3.11 |
+| Handover regression suite | 35 passed; one native-symlink case skipped because this host does not permit symlink creation; separate Windows reparse-point case passed |
+| Packaging regression suite | 15 passed |
+| Total automated regression cases | 99 discovered: 98 passed, 1 platform skip |
+| Whole-tree structural validator | PASS; zero findings, stable measured tree and matching executed/target validator bytes |
+| Documentation links | 101 relative destinations/anchors checked; zero failures |
+| Issue form | YAML parses; unique field IDs and correctly nested v8.1.1 placeholder |
+| Mechanics diagrams | All nine parsed and rendered with Mermaid 10.9.3; revised individual-state diagram visually inspected |
+| Independent static behavior review | Direct-attention trigger, routine contact, undeclared intent, perception, reuse, bounded depth and existing resolution/persistence rules reviewed; no actionable issue found |
+| B16 first-contact and fresh-chat diagnostics | Six optional manual cases documented, NOT RUN |
+| Model-operated update of a played campaign | NOT RUN |
+| NPC-capacity or long-campaign behavioral benchmark | NOT RUN |
+
+The final committed exporter must verify the public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and written SHA-256 before publication. The [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) repeats regression and packaging checks on the published commit; consult it and the [v8.1.1 assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v8.1.1) for publication evidence. This source report does not claim a completed external run in advance.
+
+These engineering results do not prove that a GM establishes its baseline before responding, retains unsaved private state, or portrays a large cast consistently. B16 asks for available factual state and operation evidence while leaving unavailable ordering unverified; private model reasoning is not required. New baselines remain best-effort conversation state until an authorized save succeeds. The release creates no running AI worker per NPC, full-cast scan, new schema or automatic write.
+
+The sections below retain the scope and observations of earlier versions.
+
 This report distinguishes engineering checks from human campaign observations and identifies the build each result describes. The v0.8.1 release tree starts from canonical public main, commit `40f8c021059b3f5a3f0f761441da117591871ae6`, with the reviewed simple fallback changes. The checks below were observed on the versioned release candidate. Historical [v0.7.2 trials](V0.7.2_TRIALS.md) retain their original scope; they are not evidence of new agent-state behavior.
 
 ## v0.8.1 release checks — 2026-09-07

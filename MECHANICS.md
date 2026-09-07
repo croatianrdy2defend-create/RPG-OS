@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.8.1 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v8.1.1 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -140,26 +140,44 @@ The [retrieval guide](OS/RETRIEVAL.md) preserves these distinctions. It also pro
 
 ## Independent people and other agents
 
-An agent's relevant state gives the GM a basis for its decisions: what it can do, what it believes, what it wants and how it currently regards the matter at hand. People, creatures, machines and collectives need different kinds of description. There is no universal list of emotions or a numerical relationship meter.
+An agent's relevant state gives the GM a basis for its decisions: what it is doing, what it can perceive, what it wants and how it currently regards the matter at hand. People, creatures, machines and collectives need different kinds of description. There is no universal list of emotions or a numerical relationship meter.
 
 “Agent” means one of these fictional actors, including a decision-making system. The same GM portrays them through selectively retrieved facts; there are no separate AI workers running each NPC or continuously simulating the whole cast.
 
-The GM first uses established facts. A deliberately unfixed property follows its agreed trigger. A missing source is a retrieval problem, not permission to invent a convenient answer. Only an eligible new detail is established through the accepted procedure before it affects a consequential response. The [cold agent-state procedure](OS/AGENT_STATE.md) supplies this detail when needed; it is not another file loaded at every startup.
+**Direct attention brings an individual into focus.** When the player singles someone out for attention or interaction, or an NPC directly engages the PC, the GM retrieves or establishes a minimal current individual baseline before portraying the response or resolving a reaction. “I approach her” already supplies that trigger. The GM need not ask whether the PC wants directions, company or flirtation, and cannot choose that purpose on the player's behalf. Quietly observing someone can trigger preparation without that person noticing the PC.
+
+| Depth | What the GM needs |
+|---|---|
+| Background people | Ordinary setting-consistent portrayal. A crowd does not require separate individual baselines. |
+| An individual receives direct attention | A few relevant current facts, such as activity or purpose, mood or orientation, manner and practical constraints. Reuse an existing baseline; establish only eligible gaps before responding. |
+| Actual developments make more detail matter | Deepen the affected person as play supplies causes, disclosures or new needs. Retain durable consequences through the existing person/system owner when continuity requires them. |
+
+These are layers of useful detail, not new record types or required fields. A directly engaged clerk may need only “finishing a receipt, brisk but available, closing soon.” A full biography, marital history or sexuality inventory is not a prerequisite. The baseline describes this individual now: finishing the task or receiving relevant news can change their orientation, while another line of dialogue alone does not reset it. It is neither a permanent mood nor a reason to refuse supported change.
+
+Established facts come first, including private facts the PC has not learned. A deliberately unfixed property keeps its agreed trigger. A missing source remains a retrieval problem. Eligible new details follow the accepted authoring or generation method; direct attention does not authorize replacing inaccessible facts or selecting an unaccepted random method. The [cold agent-state procedure](OS/AGENT_STATE.md) supplies the operating detail when needed and adds no unconditional startup read.
+
+The NPC perceives only what is actually available to it: the PC's observable approach, words and conduct, plus any legitimately held prior knowledge. It may form a mistaken inference; that belief does not establish the PC's intent. Resolve the reaction from both the individual baseline and the applicable ENGINE procedure. The baseline supplies context, not arbitrary mechanical modifiers or permission to bypass a required reaction check. Do not resolve the same reaction twice, roll away fixed state, or invent a prior motive after seeing the result.
 
 ```mermaid
 flowchart TD
-    agentNeed["A response needs an individual fact"] --> agentSource{"What is its source status?"}
-    agentSource -->|"Established"| agentUse["Recover the actual fact and its scope"]
-    agentSource -->|"Missing authority"| agentFind["Retrieve or keep the decision pending"]
-    agentSource -->|"Unfixed; trigger not reached"| agentOpen["Preserve the unresolved property"]
-    agentSource -->|"Eligible under accepted procedure"| agentEstablish["Establish from judgment or actual random input"]
+    agentFocus["Player singles out an individual, or NPC directly engages PC"] --> agentSource{"Relevant individual facts?"}
+    agentSource -->|"Established"| agentUse["Retrieve and reuse the current baseline"]
+    agentSource -->|"Eligible gaps"| agentEstablish["Establish only the minimal current baseline"]
+    agentSource -->|"Missing source or protected unknown"| agentGap["Retrieve or preserve the gap; pause only dependent resolution"]
     agentEstablish --> agentUse
-    agentUse --> agentPortray["Portray from capabilities, knowledge and aims"]
-    agentPortray --> agentCause["Apply only supported changes and due consequences"]
+    agentUse --> agentPerceive["Use what the NPC can perceive; its inference is not PC intent"]
+    agentPerceive --> agentResolve["Resolve and portray from the baseline and applicable ENGINE"]
+    agentResolve --> agentCause["Apply supported changes; deepen only where developments matter"]
     agentCause --> agentChat["New state remains unsaved in conversation"]
     agentChat --> agentSave["Requested save: compile complete present into existing owners"]
     agentSave --> agentResume["Fresh GM retrieves retained state without regenerating it"]
 ```
+
+### Example: “I approach her”
+
+In a synthetic station scene, the player singles out a woman beside a departure board and says, “I approach her.” Before her response, the GM uses the accepted authoring method to establish that she is checking a delayed train, has a few minutes to spare and is distracted by the changing display. These are her present circumstances; they do not decide why the PC approached or how she will react.
+
+If she can see the approach, she may turn toward the PC or respond according to the applicable reaction procedure. She might assume a traveler needs help, but that remains her inference. The player can speak, wait, leave or reveal a different purpose. The GM does not require a motive declaration merely to make her an individual, and it does not generate a new baseline when the PC next speaks. A later announcement or an actual exchange can change her attention or willingness at the relevant scope.
 
 ### Example: a coworker, a mistaken belief, and a fresh GM
 
@@ -167,7 +185,7 @@ In this illustrative station scene, coworker Mara values safe maintenance. She t
 
 | Stage | What happens and what remains true |
 |---|---|
-| **Before the encounter** | The opening records establish Mara's mixed relationship and mistaken belief. The GM can portray courteous, cautious cooperation. Neither the PC's wish for friendship nor Mara's wrong information changes the hatch's actual condition. |
+| **Before the encounter** | Direct attention retrieves Mara's already established relationship and mistaken belief; it does not initialize her again. The GM can portray courteous, cautious cooperation. Neither the PC's wish for friendship nor Mara's wrong information changes the hatch's actual condition. |
 | **A relevant event** | The player declares that the PC inspects the hatch and shows Mara the open latch. Mara looks and acknowledges the discrepancy. Direct observation changes her belief; this careful check gives her a reason to trust the PC's thoroughness more. Her personal distance remains unchanged. |
 | **The player requests a full save** | The complete relevant current relationship and belief, with their cause, go into Mara's person record. The PC's observation goes into KNOWN. Available declarations and dialogue go into ARCHIVE. The unchanged hatch fact keeps its existing world owner; the save's useful pointers locate current records. No additional action or attitude change occurs during saving. |
 | **A fresh GM resumes** | The new GM retrieves Mara's current record: greater professional trust, continued personal distance, and knowledge that the hatch is open. It does not replay the discovery, restore her old belief, or infer friendship. A later request for help is judged from these facts and the actual circumstances. |
@@ -176,7 +194,7 @@ The valid change is as important as the continuity. Ignoring the observation wou
 
 This example uses established facts and Freeform judgment, so it requires no random draw. If an eligible unknown instead uses a selected random procedure, its context and outcome meanings must be settled before obtaining real input. The result is then retained at its actual scope; repeated attempts or a new GM do not authorize another draw.
 
-Stable background stays in MODULE; later mutable individual state uses PEOPLE, and collective/system state uses its selected NOW authority. Until the requested save succeeds, the encounter's new state remains in conversation. A full save preserves available evidence; a checkpoint preserves current state without adding that evidence. Neither can reconstruct a lost quotation or hidden determination.
+Stable background stays in MODULE; later mutable individual state uses PEOPLE, and collective/system state uses its selected NOW authority. Direct attention does not itself create a file or require durable promotion. A promise, consequential disclosure or continuing interaction may make retention necessary; a brief service exchange may leave nothing needing its own person record. Until the requested save succeeds, the encounter's new state remains in conversation. A full save preserves available evidence; a checkpoint preserves current state without adding that evidence. Neither can reconstruct a lost quotation or hidden determination.
 
 Three distinctions keep the procedure honest:
 
@@ -192,9 +210,9 @@ The player does not operate this procedure turn by turn. Narration and dialogue 
 
 ### Random fallback for unresolved outcomes
 
-Sometimes a relevant outcome is open and the NPC has too little established detail for grounded judgment. The GM can frame the question and roll instead of inventing a personality first or assuming nothing happens. Facts and applicable ENGINE procedures take priority. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each later use.
+A minimal individual baseline does not settle every later opportunity. Whether someone sends a message, fulfills a promise or passes on a secret may remain open after the encounter. First use the retained baseline, actual developments and applicable ENGINE procedures. If an eligible outcome still lacks enough basis for grounded judgment, the GM can frame the question and use the selected fallback without expanding a sparse person into a dossier or assuming nothing happens. This later outcome resolution does not replace the baseline required when the person first receives direct attention, or add a second roll for an already resolved reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.8.1 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v8.1.1 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 

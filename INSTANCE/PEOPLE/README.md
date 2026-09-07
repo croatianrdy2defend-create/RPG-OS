@@ -1,4 +1,4 @@
-# INSTANCE/PEOPLE — v0.8.1
+# INSTANCE/PEOPLE — v8.1.1
 
 Current individual-agent and relationship records. Existing person_id routes include nonhuman individual actors; no path migration is needed. Use one stable portable person_id and exact route per promoted agent. A shared collective/controller variable may instead belong to its existing NOW system owner, never both. At the first durable accepted change, materialize the complete as-of-now mutable surface: NOW, PC relationship state, and only affected current PRIVATE state. Preserve consequential detail and uncertainty; do not reduce a relationship to an unsupported attitude label.
 
@@ -8,7 +8,7 @@ For an emergent agent without a MODULE source, keep only established minimal CAN
 
 Stance is part of this state at its actual target/context scope, not a separate register. Optional prose can retain relevant aims, orientation, capabilities or constraints, the cause of a material change, and an actual generation method/result reference. Use only supported dimensions: duty, personal regard and cooperation can differ; a machine need not have human feelings. No mandatory heading, relationship score, field vector or complete social graph is required. Preserve exact promises and unresolved dimensions rather than replacing them with labels.
 
-The cold `OS/AGENT_STATE.md` governs a materially unresolved establishment/change task. Preserve authorized private facts without inventing the PC's knowledge, and distinguish them from provisional interpretation and deliberately unfixed answers. A missing record is not evidence of a neutral or favorable stance. Later versions of a generator or group description do not rerandomize an established individual.
+The cold `OS/AGENT_STATE.md` governs a minimal baseline on direct attention or a materially unresolved establishment/change task. Direct attention or engagement requires a sufficient current individual basis before focused portrayal or reception, even when the PC's purpose is undeclared; it does not automatically promote a transient individual into this directory. Keep only the relevant established baseline and subsequent developments that continuity needs at a requested save, without creating a mandatory profile. Preserve authorized private facts without inventing the PC's knowledge, and distinguish them from provisional interpretation and deliberately unfixed answers. A missing record is not evidence of a neutral or favorable stance. Later versions of a generator or group description do not rerandomize an established individual.
 
 Retain useful direct archive pointers rather than complete conversations. Historical evidence remains in ARCHIVE; present state remains here. Split an independently useful part only behind explicit routes, and protect edits with the save/recovery procedure. Mere retrieval or a past intimate exchange grants no present obligation or permission.
 

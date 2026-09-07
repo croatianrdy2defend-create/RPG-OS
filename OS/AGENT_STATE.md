@@ -1,6 +1,6 @@
-# Independent agent state — v0.8.1
+# Independent agent state — v8.1.1
 
-Cold procedure for a materially unresolved establishment, change or initiative opportunity. Do not load it at every startup or before every line of dialogue. Existing individual state and ordinary role-consistent function often suffice. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
+Cold procedure for establishing a minimal individual baseline on direct attention, or a materially unresolved change or initiative opportunity. Do not load it at every startup or before every line of dialogue. Reuse sufficient established individual state. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
 
 ## Identify the actual decision
 
@@ -13,6 +13,14 @@ Use only dimensions supported by the entity and setting. A person may distinguis
 Follow the relevant current person/system record, then any materially needed stable source. Use `OS/RETRIEVAL.md` if the route is unclear. Existing individual facts and hard capability constraints outrank group defaults. The Setting Brief can support ordinary portrayal; retrieve a narrow species, culture, faction or role source only when it can materially change this decision. Do not infer a custom from appearance or reopen settled group lore every turn.
 
 Distinguish fixed private truth, an answer deliberately open until its trigger, unknown-to-PC information, an unauthored eligible detail, an inapplicable dimension and a missing required source. An unread or broken route is not permission to regenerate a person. A friendly label cannot replace exact promises, disagreements or qualifications already established.
+
+## Establish a minimal baseline on direct attention
+
+When the player singles out an individual for direct attention or interaction, or an NPC directly engages the PC, recover or establish a minimal current individual baseline before portraying that individual's focused behavior or resolving their reception. "I approach them" suffices without an explanation of purpose. Singling out is a GM establishment trigger: it adds no PC approach, speech or intention, and does not make an NPC notice unperceived attention. Use only what the agent can actually perceive; its interpretation remains a possibly mistaken belief, not the PC's declared purpose.
+
+Keep the baseline brief and relevant to the agent and situation: current activity or purpose, mood or operating orientation, manner, or an immediate constraint may suffice. These are examples, not required fields. A directly engaged clerk or passerby can need only a few facts; do not initialize a crowd or require names, full attributes, personal histories or a relationship-status inventory. Reuse existing individual facts rather than regenerating them. Distinguish pre-existing circumstances and preferences from a first impression or willingness formed in response to a particular interaction; none automatically settles the others.
+
+Establish eligible missing facts under the following generation rules before the resolution they affect. Never choose motives, mood or status afterward to explain the selected result. Applicable ENGINE procedures still govern uncertainty; a prose trait supplies no automatic numerical modifier. Do not resolve the same reception once as a baseline determination and again as a reaction roll. The baseline supports ordinary individual portrayal without requiring a new roll or a dossier before every answer.
 
 ## Establish eligible gaps
 
@@ -29,6 +37,8 @@ An authorized GM-created private fact can be established without the PC learning
 Use the agent's actual perceptions, knowledge, beliefs, aims and constraints. Expression need not disclose its full state: courtesy can coexist with dislike, and cooperation can follow duty. Do not leak an unperceived OOC wish or another record's secrets into the agent's knowledge. A mistaken belief remains a belief.
 
 Meaningful conversation, new evidence, completed obligations, treatment and changed circumstances may alter state. Retain a short cause for a material change at the affected dimension; no psychological essay is required. A tired reply need not change a relationship. Repetition alone earns neither progress nor forced resistance. Favorable outcomes and independent initiative are as legitimate as refusal or indifference when supported.
+
+Deepen individual state only as actual developments require additional facts. A relevant unknown may be established prospectively under its procedure; do not invent a past motive to explain behavior already resolved. Keep established facts and their scope, while allowing current conditions such as mood to change for supported reasons. Additional dialogue does not compel a biography or a new initialization.
 
 Preserve PC authorship and actual declarations. Attraction, trust, cooperation, commitment and present voluntary participation are not interchangeable. Ordinary declared conduct needs no extra permission ritual; an unchosen commitment remains with its author. Follow the accepted campaign's presentation and operator limits.
 
@@ -50,7 +60,7 @@ Importance to the campaign does not exempt an eligible uncertain outcome from th
 
 ## Retain, save and transfer honestly
 
-Retain a compact basis with established current state: relevant orientation and constraints, meaningful change causes, unresolved dimensions and any actual generation method/result reference. PEOPLE owns individual state; an existing NOW owner may govern a collective or controller. A brief consequential witness can need persistence; a routine cashier need not acquire a biography. No separate stance register is created.
+Retain a compact basis with established current state: relevant orientation and constraints, meaningful change causes, unresolved dimensions and any actual generation method/result reference. PEOPLE owns individual state; an existing NOW owner may govern a collective or controller. Direct attention and a tiny baseline do not automatically require a durable person record. Promote by continuing causal significance under the existing save rules: a brief consequential witness can need persistence, while a routine cashier need not acquire a biography. No separate stance register is created.
 
 PLAY remains read-only. Unsaved private facts have best-effort retention in available context, not an independently recoverable hidden commitment. A requested Save or CHECKPOINT uses the complete-present and recovery procedure in `ADMIN/CLOSE_CONTRACT.md`; a checkpoint keeps its prior archive evidence boundary. This protocol initiates no automatic establishment checkpoint, background save or private scratch file.
 

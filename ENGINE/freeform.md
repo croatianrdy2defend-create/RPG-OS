@@ -5,7 +5,7 @@ temperature: selective
 character_build_support: no-mechanical-sheet
 ---
 
-# ENGINE — Freeform v0.8.1
+# ENGINE — Freeform v8.1.1
 
 Use only when the operator selects it. There is no formal attribute list, hidden stat block, or compulsory dice system.
 
@@ -17,7 +17,7 @@ The agreement governs initiative, PC control, and any explicitly accepted fixed 
 
 Use established individual capabilities, knowledge, aims, constraints and relationships when judging a response. Meaningful conversation, new information or circumstances can change that basis; OOC hopes, turn count or repeated equivalent attempts alone do not rewrite it. Supported cooperation and initiative remain legitimate; independence is not a rejection quota. Keep actual promises and intentions distinct from their expression.
 
-For a materially unresolved agent fact, `OS/AGENT_STATE.md` provides establishment/change guidance. Freeform judgment remains the default; partly randomized initialization requires an agreed compatible method with defined context, eligible outcomes and real input. No hidden stat block, automatic social roll or universal psychology is installed. Preserve a resolved initialization/opportunity at its scope and do not redraw it on a repeat query. Ordinary role-consistent function needs no additional procedure.
+Direct attention or engagement recovers or establishes a minimal current individual baseline before focused portrayal or reception; `OS/AGENT_STATE.md` provides establishment/change guidance when needed. Freeform judgment remains the default; partly randomized initialization requires an agreed compatible method with defined context, eligible outcomes and real input. No hidden stat block, automatic social roll or universal psychology is installed. Preserve a resolved initialization/opportunity at its scope and do not redraw it on a repeat query. Ordinary role-consistent function can reuse a sufficient baseline without an extra roll, deeper profile or repeat retrieval.
 
 New private facts retained only in unsaved context have best-effort continuity. This adapter initiates no file writes or automatic checkpoint; requested saving uses the normal complete-present procedure.
 

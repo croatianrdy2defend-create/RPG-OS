@@ -27,7 +27,7 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 | REVIEW | Optional cold reflection; no automatic follow-up to saving |
 | VALIDATE / check the files | Read-only structural inspection, with limits stated |
 | AUDIT | Report actually observed loading/actions; no claim to unobserved context |
-| Upgrade this campaign to v0.8 | Follow ADMIN/UPGRADE_V08.md in a protected copy; older formats route through the existing mapping |
+| Upgrade this campaign | Follow ADMIN/UPGRADE_V08.md in a protected copy; older formats route through the existing mapping |
 | Add an engine | Follow ADMIN/ADD_ENGINE.md |
 | Add/refine the setting brief | Follow the corresponding ADMIN procedure |
 | Recover an interrupted operation | Follow ADMIN/RECOVERY.md before resuming |

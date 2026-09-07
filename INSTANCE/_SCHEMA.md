@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.8.1
+# INSTANCE schema — v8.1.1
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
 

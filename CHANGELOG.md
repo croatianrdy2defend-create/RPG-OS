@@ -6,6 +6,14 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 No changes currently listed.
 
+## v8.1.1 — individual baselines on direct attention (2026-09-07)
+
+- Establish or retrieve a minimal current individual baseline when the player singles out an NPC for direct attention or interaction, or an NPC directly engages the PC, before focused portrayal or reaction resolution. A bare approach requires no inferred or declared PC purpose.
+- Separate pre-existing individual circumstances from what the NPC perceives and the first impression or response formed now. Attention creates no additional PC conduct or automatic NPC awareness; private state remains distinct from PC knowledge.
+- Reuse existing individuals and deepen only as actual developments require. Tiny service encounters require no full profile, mandatory field inventory, crowd initialization or automatic durable record.
+- Preserve ENGINE authority and the selected fallback. Descriptive traits supply no invented numerical modifiers; one reaction is not resolved twice, and motives are not invented after a result to explain it.
+- Update the nine-diagram mechanics guide, setup/upgrade guidance and optional B16 human diagnostics. This is an incremental instruction update from v0.8.1; save, agreement, archive, handover and person/system formats remain unchanged. See V8.1.1_CHANGES.md and VERIFICATION.md for scope and evidence.
+
 ## v0.8.1 — simple standing random fallback (2026-09-07)
 
 - Add a simple standing fallback oracle for eligible unauthored outcomes with too little basis for grounded judgment: frame a bounded question and use actual random input. The supplied convention is one d6, 1–3 No and 4–6 Yes; facts, applicable rules and other accepted methods retain priority.

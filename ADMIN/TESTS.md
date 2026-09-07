@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.8.1 experimental
+# Validation and behavioral fixtures — v8.1.1 experimental
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -121,6 +121,21 @@ Optional manual diagnostic, NOT RUN. Use disposable original campaign copies whe
 | Audit omission | Audit a branch that asserted an outcome without judgment or a required fallback. Report the omission honestly; a later plausible motive or fabricated roll is not evidence of prior resolution. Use the existing correction procedure for dependent errors while preserving unaffected accepted play. |
 
 Record actual outputs and available operations if exercised. Structural checks and audit self-report do not prove these behaviors; supported quiet and active outcomes are both legitimate.
+
+### B16 — Individual baseline before a direct response
+
+v8.1.1 diagnostic, NOT RUN. These six optional manual cases use disposable original campaign copies; none certifies model behavior or adds a normal PLAY checklist. Direct attention or interaction triggers a tiny current individual baseline before the response or reaction, even when the player has not declared a purpose.
+
+| Case | Expected behavior |
+|---|---|
+| Attention and initiative | Compare "I approach her" for an incidental stranger, direct attention to a clerk, and an NPC initiating contact with the PC. Retrieve or establish the tiny relevant baseline before focused portrayal, initiating engagement or resolving its reaction. Do not infer company, flirting, a request or other undeclared PC purpose, or require such a purpose before the trigger applies. Quiet observation adds no approach or NPC awareness. A crowd glance does not initialize every face. |
+| Current individual and knowledge | Use supported current circumstances and only the individual detail needed now; a routine role encounter gets at most a tiny relevant baseline, not a personal-life inventory. Distinguish what the NPC can perceive or know about the PC from hidden PC values and OOC wishes. An ENGINE can use required actual values without making them NPC knowledge. Neither an assumed player goal nor a selected outcome supplies a retrospective motive. |
+| Existing and protected state | Reuse an established person's current baseline. Separately supply an eligible unauthored detail, an inaccessible established fact and a deliberately unfixed answer. Establish only the eligible scope; retrieve the missing source or preserve the protected trigger. Neither a new approach nor a sparse record permits regenerating the person. |
+| Baseline before resolution | Observe the baseline's establishment before any response/reaction draw or outcome it governs. Applicable ENGINE procedures and established constraints come first. If an eligible question remains too sparse for judgment, use the standing accepted oracle with its framed scope and actual input; the supplied d6 mapping is 1–3 No, 4–6 Yes. No per-roll permission or compulsory baseline roll is added. Keep initialization distinct from reaction, preserve its scope, and do not resolve the same question again under another label. |
+| Development and reuse | Continue the encounter and revisit without a material change: reuse the baseline and any scoped resolved reaction. A meaningful new development can deepen or change relevant state with a supported cause; turn count alone cannot. Do not fill unrelated biography or create an all-cast scan, timer or new fields. |
+| Save and fresh chat | Verify a requested full save and resume the same person in a fresh chat. Existing person/system owners preserve consequential current baseline facts, unresolved distinctions and any actual method/result needed for continuity. The resumed GM reuses them without inventing missing history or rerolling. Initial establishment itself writes no file and starts no automatic save. |
+
+If exercised, retain actual declarations, responses, available factual state and operation evidence sufficient to assess ordering. A later explanation cannot prove the baseline preceded the result; unavailable evidence stays unverified. Keep private facts with authorized reviewers and out of public reports or PC knowledge; do not request private model reasoning. All six cases remain NOT RUN until observations are collected.
 
 ## Persistence, recovery and setup fixtures
 

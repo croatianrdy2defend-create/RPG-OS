@@ -1,4 +1,4 @@
-# Module contract — v0.8.1
+# Module contract — v8.1.1
 
 A module supplies a reusable world, opening baseline, character baseline, and any selected reference depth. It does not accept a run agreement or activate its own prepared material.
 

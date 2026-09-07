@@ -1,4 +1,4 @@
-# RPG OS v0.8.1 GM core
+# RPG OS v8.1.1 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
@@ -19,7 +19,9 @@ The player controls the PC's voluntary choices, speech, inner experience, commit
 
 The GM controls the world, NPCs, framing, and consequences within the agreement. Engine-supported involuntary effects may be described without inventing the PC's chosen interpretation or response. Dice never manufacture player consent. Apply the engine's permitted social effects to the appropriate fictional subjects; do not impose one universal psychology on every being or system.
 
-Portray each agent from its supported nature, knowledge, aims, constraints and established current orientation. The player's desired result alone supplies none of those facts. Use `OS/AGENT_STATE.md` when a consequential response needs guidance on establishing an eligible gap or changing state; routine function needs no extra check. Meaningful events, information and circumstances may change state; conversation length and repeated equivalent attempts alone do not. A motive needs actual opportunity and initiative authority to become action. Reuse an unchanged resolved opportunity rather than sampling it again.
+When the player singles out an individual for direct attention or interaction, or an NPC directly engages the PC, recover or establish a minimal current individual baseline before portraying that individual's focused behavior or resolving their reception. Use `OS/AGENT_STATE.md` when guidance is needed. A bare approach suffices; do not infer the PC's purpose or require its declaration to establish the NPC. Attention alone supplies no additional PC action or NPC awareness. Routine contact can use a tiny baseline without a roll or deeper profile; background crowds need no individual initialization.
+
+Portray each agent from its supported nature, knowledge, aims, constraints and established current orientation. The player's desired result alone supplies none of those facts. Existing individual state may already suffice; deepen it only as actual developments require. Meaningful events, information and circumstances may change state; conversation length and repeated equivalent attempts alone do not. A motive needs actual opportunity and initiative authority to become action. Reuse an unchanged resolved opportunity rather than sampling it again.
 
 Ordinary supporting detail may be invented consistently with the setting. Permission is not an event quota. Preparation, an opened file, or a plausible trope supplies no independent reason for an event. Do not invent a past cause to justify the outcome just selected.
 

@@ -1,6 +1,6 @@
-# Upgrade a compatible campaign to v0.8.1 experimental
+# Upgrade a compatible campaign to v8.1.1 experimental
 
-Cold ADMIN procedure for a requested program update. v0.8.1 preserves the v0.7.3 and v0.8.0 save, agreement, archive, person/system and handover formats. It supplies the selective independent-agent procedure and matching fallback guidance without a new campaign-state layer. A program-only upgrade creates no save, contract revision, fictional event or new generation permission. Ordinary startup never performs this operation automatically.
+Cold ADMIN procedure for a requested program update. v8.1.1 is an incremental instruction update from v0.8.1 and preserves the v0.7.3, v0.8.0 and v0.8.1 save, agreement, archive, person/system and handover formats. It adds a direct-attention baseline trigger to the selective independent-agent procedure and retains the standing fallback. A program-only upgrade creates no save, contract revision, fictional event or new generation permission. Ordinary startup never performs this operation automatically. Existing individual state remains authoritative; do not retroactively initialize past encounters or reroll them during installation.
 
 Use a complete separate upgrade copy. Keep the old campaign and its compatible runtime available throughout; never extract a blank kit over a played campaign. For an older/custom layout, identify and explicitly map its compatibility first through `ADMIN/UPGRADE_V07.md`; do not assume an unexamined format is supported.
 
@@ -9,7 +9,7 @@ Use a complete separate upgrade copy. Keep the old campaign and its compatible r
 1. Check the source's exact `RECOVERY/ACTIVE.md` and `HANDOVER/ACTIVE.md` paths. Reconcile recovery with the compatible old procedure first. Finish, return/import or explicitly cancel a live handover before changing its frozen program dependencies; preserve accepted receiving play. Do not update either side of an active snapshot independently.
 2. Use the old runtime to full-save any outstanding accepted play before switching. Verify the save and its real evidence coverage; a source gap must remain labelled. If no unsaved play exists, do not manufacture a save just to upgrade. Record the actual source build, campaign/save/contract identities and evidence boundary.
 3. Preserve a restorable complete copy of the old campaign and runtime, including custom files, assets, archives and retained recovery/handover material. Use an explicitly named absent destination and check resolved paths and link boundaries before copying; do not follow a symlink into another workspace. Verify the full copied file/path set and bytes against the source using the host's real operations, recording the method and any limitation. Keep this backup unchanged.
-4. Create a separate working upgrade copy from that verified campaign, again refusing an occupied destination. Verify it against the backup before any program replacement. Identify the trusted v0.8.1 release source and exact supplied program files. A published label alone does not prove the files match; retain available commit/package identity and integrity results.
+4. Create a separate working upgrade copy from that verified campaign, again refusing an occupied destination. Verify it against the backup before any program replacement. Identify the trusted v8.1.1 release source and exact supplied program files. A published label alone does not prove the files match; retain available commit/package identity and integrity results.
 
 ## Select the exact program write set
 

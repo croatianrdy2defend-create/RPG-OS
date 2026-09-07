@@ -1,6 +1,6 @@
-# Play and share useful findings — v0.8.1 experimental
+# Play and share useful findings — v8.1.1 experimental
 
-Start from [Quick start](QUICKSTART.md), or use [Upgrade to v0.8](ADMIN/UPGRADE_V08.md) in a separate copy of an existing campaign. Play an actual campaign normally. There is no required scripted trial schedule before playing.
+Start from [Quick start](QUICKSTART.md), or use [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md) in a separate copy. Play an actual campaign normally. There is no required scripted trial schedule before playing.
 
 The [real-campaign playtest guide](ADMIN/PLAYTEST_V08.md) explains completed-save model switching, mid-scene handover and optional incident notes. A note such as "the relationship changed after switching models" is enough to start an investigation; preserve the relevant conversation and saved files when possible.
 

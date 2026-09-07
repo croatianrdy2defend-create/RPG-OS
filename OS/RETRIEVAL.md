@@ -1,4 +1,4 @@
-# RPG OS v0.8.1 targeted reference
+# RPG OS v8.1.1 targeted reference
 
 Cold lookup guide. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 
@@ -13,6 +13,7 @@ Ask what existing fact or procedure could materially change the answer. Use the 
 | Resolution rule | Applicable CORRECTIONS, then bound ENGINE and named procedure; relevant module RULES_HOOKS |
 | Learned fact and qualification | `INSTANCE/KNOWN.md`, then cited evidence if exactness matters |
 | Current system or private condition | `INSTANCE/NOW.md` or exact current pointer; only the relevant system |
+| Player singles out an individual for direct attention/interaction, or NPC directly engages PC | Recover that individual's current baseline before focused portrayal or reception; `OS/AGENT_STATE.md` if establishment guidance is needed; no inferred PC purpose, automatic awareness, crowd scan or new record merely from attention |
 | Individual agent's condition, stance or relationship | Exact INSTANCE/PEOPLE record; CAST_STATUS maps identity when needed; relevant stable MODULE CANON separately; shared controller state remains with its selected NOW owner |
 | Agent initiative during elapsed time or a declared wait | Relevant Open matters, Active processes and accepted play, then the implicated person/system records; a stopping condition identifies relevance, not a guaranteed event; no cast-wide scan |
 | Materially unresolved agent establishment, change or initiative opportunity | `OS/AGENT_STATE.md` only when guidance is needed, then the applicable engine/source procedure; no automatic startup or per-dialogue read |
