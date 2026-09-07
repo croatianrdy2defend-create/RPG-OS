@@ -1,4 +1,4 @@
-# Optional source access — v9.0.0
+# Optional source access — v0.9.0
 
 Cold tool contract for a requested lookup, audit or host configuration check. Direct source pointers remain the first route. These helpers are optional standard-library Python tools; ordinary file access remains usable when they are unavailable. They do not adjudicate fiction, discover encounters for the GM, or write campaign state.
 

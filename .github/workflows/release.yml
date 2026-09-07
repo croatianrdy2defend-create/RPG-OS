@@ -95,3 +95,64 @@ jobs:
           gh release create "$tag" "$archive" .release/SHA256SUMS \
             --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
             --title "RPG OS $tag" --notes-file "$notes" --latest
+
+      - name: Retire the erroneous v9.0.0 label after verifying v0.9.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          if Path("VERSION").read_text().strip() != "0.9.0":
+              raise SystemExit(0)
+          repository = os.environ["GITHUB_REPOSITORY"]
+          if repository != "croatianrdy2defend-create/RPG-OS":
+              raise SystemExit("The numbering correction is restricted to its original repository.")
+          prefix = f"repos/{repository}/"
+          expected = os.environ["GITHUB_SHA"]
+          old_commit = "3d6ad58c920691929295fdc19ba185029a38dbbe"
+
+          def api(path, method="GET", missing_ok=False):
+              result = subprocess.run(["gh", "api", prefix + path, "--method", method], capture_output=True, text=True)
+              if result.returncode:
+                  if missing_ok and "HTTP 404" in result.stderr:
+                      return None
+                  raise SystemExit(f"GitHub request failed: {result.stderr.strip()}")
+              return json.loads(result.stdout) if result.stdout.strip() else None
+
+          def require_commit(ref, sha):
+              return ref is not None and ref.get("object", {}).get("type") == "commit" and ref["object"].get("sha") == sha
+
+          new_ref = api("git/ref/tags/v0.9.0")
+          release = api("releases/tags/v0.9.0")
+          if not require_commit(new_ref, expected) or release.get("tag_name") != "v0.9.0" or release.get("target_commitish") != expected:
+              raise SystemExit("The corrected release and tag must identify this exact verified commit.")
+          if release.get("draft") is not False or release.get("prerelease") is not False or not release.get("published_at"):
+              raise SystemExit("The corrected release must be fully published before retiring the wrong number.")
+          for name in ("RPG_OS_v0.9.0.zip", "SHA256SUMS"):
+              data = (Path(".release") / name).read_bytes()
+              assets = [asset for asset in release.get("assets", []) if asset.get("name") == name]
+              digest = "sha256:" + hashlib.sha256(data).hexdigest()
+              if len(assets) != 1 or assets[0].get("state") != "uploaded" or assets[0].get("size") != len(data) or assets[0].get("digest") != digest:
+                  raise SystemExit(f"The published corrected asset must match the validated package: {name}")
+
+          old_ref = api("git/ref/tags/v9.0.0", missing_ok=True)
+          old_release = api("releases/tags/v9.0.0", missing_ok=True)
+          if old_ref is None and old_release is None:
+              print("The erroneous release and tag are already absent.")
+              raise SystemExit(0)
+          if not require_commit(old_ref, old_commit):
+              raise SystemExit("The old tag does not match the specific numbering error; refusing retirement.")
+          if old_release is not None:
+              if old_release.get("id") != 384336484 or old_release.get("tag_name") != "v9.0.0" or old_release.get("target_commitish") != old_commit:
+                  raise SystemExit("The old release does not match the specific numbering error; refusing retirement.")
+              api("releases/384336484", method="DELETE")
+          # Check again immediately before tag deletion, including a resumed partial cleanup.
+          if not require_commit(api("git/ref/tags/v9.0.0"), old_commit):
+              raise SystemExit("The old tag changed during retirement; leaving it untouched.")
+          api("git/refs/tags/v9.0.0", method="DELETE")
+          print("Retired only the erroneous v9.0.0 release/tag; commit history remains available.")

@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v9.0.0 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.9.0 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -214,7 +214,7 @@ The player does not operate this procedure turn by turn. Narration and dialogue 
 
 A minimal individual baseline does not settle every later opportunity. Whether someone sends a message, fulfills a promise or passes on a secret may remain open after the encounter. First use the retained baseline, actual developments and applicable ENGINE procedures. If an eligible outcome still lacks enough basis for grounded judgment, the GM can frame the question and use the selected fallback without expanding a sparse person into a dossier or assuming nothing happens. This later outcome resolution does not replace the baseline required when the person first receives direct attention, or add a second roll for an already resolved reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v9.0.0 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.0 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
@@ -360,7 +360,7 @@ The host must provide actual file reads, durable writes, and readback for the no
 
 ## Exact retrieval and evidence audits
 
-At forty sessions, the difficulty is finding the relevant original and distinguishing a real change from an error. v9.0.0 adds optional tools for those tasks while keeping the ordinary campaign records as memory.
+At forty sessions, the difficulty is finding the relevant original and distinguishing a real change from an error. v0.9.0 adds optional tools for those tasks while keeping the ordinary campaign records as memory.
 
 An exact reader can return a whole file, a named section or original lines with their source hash. A search cache can locate likely passages, including text late in a document and known identity aliases. Its results are candidates: current records, T0 world baselines, history, raw captures and rules have distinct scopes. The GM fetches the current original before using a match. A changed or unavailable cache does not become evidence that the person or fact never existed. See [Source access](ADMIN/SOURCE_ACCESS.md).
 
@@ -406,6 +406,6 @@ The optional [validator](TOOLS/validate.py) checks its documented structural sco
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
 
-For v9.0.0, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
+For v0.9.0, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

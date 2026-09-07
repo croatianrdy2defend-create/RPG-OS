@@ -1,4 +1,4 @@
-# Raw evidence — optional v9.0.0 layer
+# Raw evidence — optional v0.9.0 layer
 
 This directory has no campaign content in a fresh install. Authorized imports may create `captures/<id>/` packages containing the exact available raw transcript and a manifest. `TOOLS/evidence.py` creates and checks those packages. Existing captures are never overwritten to make a later correction look original.
 

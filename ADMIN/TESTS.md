@@ -199,7 +199,7 @@ Run `python -B TOOLS/test_handover.py` for isolated automated integrity tests. T
 
 Report automated structural results, observed host operations and scored GM behavior separately, including package identity, conditions, repetitions, outputs and limitations. Mark all unrun fixtures NOT RUN. Changes to candidate wording get a new experiment identity; preserve historical artifacts without overwriting their original results. Passing this suite's structural runner does not run any B/M fixture or establish product-wide GM success.
 
-## v9.0.0 optional evidence diagnostics
+## v0.9.0 optional evidence diagnostics
 
 These are proposed semantic diagnostics, NOT RUN merely by executing the Python suites. Use disposable synthetic copies and score the actual review separately from package/citation checks.
 

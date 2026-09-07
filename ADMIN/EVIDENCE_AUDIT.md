@@ -1,4 +1,4 @@
-# Evidence capture and campaign consistency audit — v9.0.0
+# Evidence capture and campaign consistency audit — v0.9.0
 
 Cold maintenance procedure for a requested source capture, consistency check or selected audit-on-save option. Ordinary `AUDIT` of tool activity remains an observed-actions report; a request to compare campaign state against evidence selects this procedure. Do not begin fiction, resolve an open outcome, or change current records while auditing.
 

@@ -1,4 +1,4 @@
-# RPG OS v9.0.0 — experimental playtest release
+# RPG OS v0.9.0 — experimental playtest release
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
@@ -12,9 +12,9 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 </td></tr>
 </table>
 
-[Get v9.0.0](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V9.0.0_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.9.0](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.0_CHANGES.md) · [Verification](VERIFICATION.md)
 
-**New in v9.0.0:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. The existing independent-agent baseline and random fallback continue unchanged. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [release notes](V9.0.0_CHANGES.md).
+**New in v0.9.0:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. The existing independent-agent baseline and random fallback continue unchanged. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [release notes](V0.9.0_CHANGES.md).
 
 The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
@@ -110,4 +110,4 @@ Ask: “Preserve this actual session export and audit the save against it and th
 
 You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
 
-The v9.0.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.
+The v0.9.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.

@@ -1,6 +1,8 @@
 # RPG OS experimental verification
 
-## v9.0.0 source and evidence tools — 2026-09-08
+## v0.9.0 source and evidence tools — 2026-09-08
+
+The source-access implementation was initially published as v9.0.0 at commit `3d6ad58c920691929295fdc19ba185029a38dbbe`. v0.9.0 corrects that release number and adds a narrow Windows Python 3.12 source-reader compatibility fix. Path/handle identity metadata is compared across APIs, while each API's full before/after signature retains its own ctime check. Four added regressions cover different API timestamp representations, same-API timestamp mutation and actual same-size/same-mtime file replacement before opening or after reading. The corrected release workflow repeats the regression and committed-package checks, then retires only the mistaken release/tag after verifying the corrected publication.
 
 This experimental release starts from public v8.1.1, commit `e297c3f29debfda2bc610ccf08acbddd48f66242`. It adds optional source reading, scoped lexical search and evidence capture/report checks. Existing save/record formats and the direct-attention NPC procedure remain compatible. Verification below concerns this implementation; it does not establish long-campaign reliability.
 
@@ -9,10 +11,10 @@ This experimental release starts from public v8.1.1, commit `e297c3f29debfda2bc6
 | Structural regression suite | 48 passed |
 | Handover regression suite | 35 passed, 1 platform skip |
 | Packaging regression suite | 15 passed, including new raw-capture exclusion and required-tool inventory checks |
-| Exact source reader | 24 passed, 3 platform skips |
+| Exact source reader | 28 passed, 3 platform skips, including the four compatibility/mutation regressions |
 | Scoped lexical search | 32 passed, 1 platform skip |
 | Evidence capture and report checker | 31 passed, 2 platform skips |
-| Total | 192 discovered: 185 passed, 7 platform skips on Windows / Python 3.11.9 |
+| Total | 196 discovered: 189 passed, 7 platform skips on Windows; suites repeated on Python 3.11.9 and 3.12.14 |
 | Capability probe | Exact local UTF-8/CRLF read and an actual SQLite FTS5 query demonstrated; host chat export explicitly unobserved |
 | Whole-tree structural check | PASS, zero findings, stable measured tree and matching executed/target validator bytes |
 | Mechanics diagrams | All eleven parsed and rendered using Mermaid 10.9.3; the two new source/audit diagrams visually inspected |
@@ -23,6 +25,8 @@ This experimental release starts from public v8.1.1, commit `e297c3f29debfda2bc6
 
 The platform skips concern unavailable unprivileged symlink creation, FIFO support and a receipt alias case dependent on symlink creation. Actual Windows junction and 8.3 short-path tests ran successfully. Native platform checks are kept separate from simulated link/reparse rejection. The repository workflows run all six suites and package the exact triggering commit; their Linux observations are available in the release's Actions runs, not presumed here.
 
+The version-correction cleanup step also passed twelve isolated mocked-API execution cases. These cover its exact old release/tag target, corrected-publication and asset gates, safe repetition after complete or partial retirement, refusal of changed identities and HTTP errors, and preservation of a tag retargeted during cleanup. These local cases do not claim GitHub deletion has occurred; consult the corrected release's workflow run for the actual result.
+
 One fresh reviewer context also used the production tools on six selected synthetic cases. The fixture author did not pass expected verdicts to that reviewer. All 34 selected source bodies were delivered with tool-generated receipts, and all six authored reports passed hash, original-line quotation and schema checks on their first attempt: 100 citation occurrences verified exactly. The reviewer found the omitted appointment, ignored authorized correction and inherited licence error; preserved an ambiguous suggestion and a legitimate appearance change; and identified the unambiguous HP error as requiring a player decision because a narrow repair would invalidate the played escape. No campaign repair was executed.
 
 A second fresh reviewer checked citation relevance against the 34 frozen bodies and found all 12 material findings supported, with no unsupported material claim found. This second review inspected sources directly and claimed no reader receipts.
@@ -31,7 +35,7 @@ That was one semantic integration pass by the same model family in a fresh conte
 
 The integration run exposed a usability gap: reviewers needed clearer report-field and citation instructions. The [audit guide](ADMIN/EVIDENCE_AUDIT.md#complete-the-report-template) now includes the supported values, exact original-line quoting and delivery-receipt workflow. Candidate reports explicitly keep source coverage, unresolved questions, consistency and repair eligibility separate.
 
-Before publication the final committed exporter must verify its public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and SHA-256. See [v9.0.0 release assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0) and [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) for actual publication evidence. The sections below retain earlier results at their original scope.
+Before publication the final committed exporter must verify its public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and SHA-256. See [v0.9.0 release assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0) and [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) for actual publication evidence. The sections below retain earlier results at their original scope.
 
 ## v8.1.1 direct-attention baseline — 2026-09-07
 

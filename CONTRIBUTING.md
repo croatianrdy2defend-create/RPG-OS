@@ -1,4 +1,4 @@
-# Contributing to RPG OS v9.0.0
+# Contributing to RPG OS v0.9.0
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. Keep public examples synthetic or sanitized.
 
@@ -43,6 +43,8 @@ Maintainer packaging requires a Git checkout and Python 3.10 or newer. It is opt
 5. Push the reviewed version change to `main`. The release workflow reruns checks and publishes the tag, ZIP, and checksum using the matching version notes. Manual dispatch also requires `main`.
 
 Treat published version tags and assets as immutable. An existing complete release for the same commit is left unchanged; conflicting or incomplete releases fail for inspection. A different release commit needs a new version and corresponding notes. The workflow does not publish a live campaign or infer release permission from ordinary campaign work.
+
+The explicitly authorized v0.9.0 numbering correction is a single recorded exception: after verifying the corrected release's commit and published assets, its workflow retires only the mistaken v9.0.0 release/tag at commit `3d6ad58c920691929295fdc19ba185029a38dbbe`. It preserves commit history and refuses any changed target. This exception grants no general permission to replace other releases.
 
 ## Evidence-audit contributions
 

@@ -8,6 +8,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -218,6 +219,72 @@ class ReaderTests(unittest.TestCase):
             return original_resolver(root, relative)
 
         with mock.patch.object(reader, "resolve_source", side_effect=mutating_resolver):
+            self.assert_code("source_changed", reader.load_document, self.root, "rules.md")
+
+    def test_same_file_with_different_stat_and_fstat_ctimes_is_read(self):
+        source = self.root / "rules.md"
+        source.write_bytes(b"original")
+        info = source.stat()
+        handle_info = SimpleNamespace(**{name: getattr(info, name) for name in
+            ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")})
+        handle_info.st_ctime_ns += 100
+        with mock.patch.object(reader.os, "fstat", return_value=handle_info):
+            document = reader.load_document(self.root, "rules.md")
+        self.assertEqual("original", document["text"])
+        self.assertEqual(hashlib.sha256(b"original").hexdigest(), document["sha256"])
+
+    def test_ctime_change_within_each_stat_api_is_still_rejected(self):
+        source = self.root / "rules.md"
+        source.write_bytes(b"original")
+        info = source.stat()
+        fields = {name: getattr(info, name) for name in
+            ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")}
+        changed = SimpleNamespace(**{**fields, "st_ctime_ns": info.st_ctime_ns + 1})
+        handle = SimpleNamespace(**{**fields, "st_ctime_ns": info.st_ctime_ns + 100})
+        changed_handle = SimpleNamespace(**{**fields, "st_ctime_ns": info.st_ctime_ns + 101})
+        original_stat = Path.stat
+        for api in ("path", "handle"):
+            with self.subTest(api=api):
+                path_values = iter([info, changed if api == "path" else info])
+                def path_stat(path, *args, **kwargs):
+                    return next(path_values) if path == source else original_stat(path, *args, **kwargs)
+                with mock.patch.object(reader, "resolve_source", return_value=source), \
+                        mock.patch.object(Path, "stat", path_stat), \
+                        mock.patch.object(reader.os, "fstat", side_effect=[handle, changed_handle if api == "handle" else handle]):
+                    self.assert_code("source_changed", reader.load_document, self.root, "rules.md")
+
+    def test_same_size_same_mtime_path_replacement_before_open_is_rejected(self):
+        source = self.root / "rules.md"
+        replacement = self.root / "replacement.md"
+        source.write_bytes(b"original")
+        replacement.write_bytes(b"replaced")
+        info = source.stat()
+        os.utime(replacement, ns=(info.st_atime_ns, info.st_mtime_ns))
+        self.assertNotEqual(info.st_ino, replacement.stat().st_ino)
+        original_open = os.open
+        def replacing_open(path, flags, *args, **kwargs):
+            replacement.replace(source)
+            return original_open(path, flags, *args, **kwargs)
+        with mock.patch.object(reader.os, "open", side_effect=replacing_open):
+            self.assert_code("source_changed", reader.load_document, self.root, "rules.md")
+
+    def test_same_size_same_mtime_path_replacement_after_read_is_rejected(self):
+        source = self.root / "rules.md"
+        replacement = self.root / "replacement.md"
+        source.write_bytes(b"original")
+        replacement.write_bytes(b"replaced")
+        info = source.stat()
+        os.utime(replacement, ns=(info.st_atime_ns, info.st_mtime_ns))
+        self.assertNotEqual(info.st_ino, replacement.stat().st_ino)
+        original_resolver = reader.resolve_source
+        calls = 0
+        def replacing_resolver(root, relative):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                replacement.replace(source)
+            return original_resolver(root, relative)
+        with mock.patch.object(reader, "resolve_source", side_effect=replacing_resolver):
             self.assert_code("source_changed", reader.load_document, self.root, "rules.md")
 
     def test_receipt_explicit_external_and_no_source_mutation(self):

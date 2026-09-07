@@ -1,4 +1,4 @@
-# RPG OS v9.0.0 architecture
+# RPG OS v0.9.0 architecture
 
 ## Operating environment
 

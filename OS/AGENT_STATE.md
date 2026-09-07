@@ -1,4 +1,4 @@
-# Independent agent state — v9.0.0
+# Independent agent state — v0.9.0
 
 Cold procedure for establishing a minimal individual baseline on direct attention, or a materially unresolved change or initiative opportunity. Do not load it at every startup or before every line of dialogue. Reuse sufficient established individual state. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
 

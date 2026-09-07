@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v9.0.0 experimental.
+"""Read-only structural validator for RPG OS v0.9.0 experimental.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.

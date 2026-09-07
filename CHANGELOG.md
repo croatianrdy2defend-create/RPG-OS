@@ -1,13 +1,14 @@
 # Changelog
 
-## v9.0.0 — 2026-09-08
+## v0.9.0 — 2026-09-08
 
 - Added optional exact-source reader with original lines, revision hashes, scoped section selection and delivery receipts.
 - Added optional disposable SQLite FTS5 search with scoped candidates, current-source verification and safe rebuilds.
 - Added untouched text/JSONL capture, selected prior/current audit bundles, pending report templates and mechanical citation/report checks; semantic review remains a separate model/human task.
 - Integrated optional evidence review after full saves without changing CHECKPOINT, current record formats or ordinary startup. Added compact NPC portrayal and omission/retirement review examples.
 - Expanded the mechanics guide, installation and compatible-upgrade instructions, public-package exclusions and regression checks.
-- Experimental v9.0.0 follows the requested v8.1.1 label. See [release notes](V9.0.0_CHANGES.md) and [verification](VERIFICATION.md).
+- Corrected the initially published v9.0.0 label to the intended v0.9.0; the workflow verifies the corrected publication before retiring only that mistaken release and tag. Earlier release labels below remain historical.
+- Fixed false source-change reports from differing Windows Python 3.12 path/handle timestamp representations, retaining identity and before/after mutation checks. Added four focused reader regressions. Features and record formats are unchanged. See [release notes](V0.9.0_CHANGES.md) and [verification](VERIFICATION.md).
 
 All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
 

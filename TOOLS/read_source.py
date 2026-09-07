@@ -127,7 +127,13 @@ def resolve_source(root: Path, relative: str) -> Path:
 
 
 def _stat_signature(info) -> tuple:
-    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+    return _source_identity(info) + (info.st_ctime_ns,)
+
+
+def _source_identity(info) -> tuple:
+    # Some Windows runtimes expose different ctime values through stat/fstat.
+    # Keep ctime comparisons within each API while checking shared identity here.
+    return (info.st_dev, info.st_ino, info.st_mode, info.st_size, info.st_mtime_ns)
 
 
 def _exact_lines(text: str) -> list[str]:
@@ -144,12 +150,17 @@ def load_document(root: Path, relative: str, expected_sha256=None) -> dict:
         descriptor = os.open(source, os.O_RDONLY | getattr(os, "O_BINARY", 0) | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0))
         with os.fdopen(descriptor, "rb") as stream:
             before = os.fstat(stream.fileno())
-            if not stat.S_ISREG(before.st_mode) or _stat_signature(before) != _stat_signature(before_path):
+            if not stat.S_ISREG(before.st_mode) or _source_identity(before) != _source_identity(before_path):
                 raise SourceError("Source changed while opening it.", "source_changed")
             raw = stream.read()
             after = os.fstat(stream.fileno())
         checked_again = resolve_source(canonical_root, relative)
-        if checked_again != source or _stat_signature(before) != _stat_signature(after) or _stat_signature(after) != _stat_signature(source.stat()) or len(raw) != after.st_size:
+        after_path = source.stat()
+        if (checked_again != source
+                or _stat_signature(before) != _stat_signature(after)
+                or _stat_signature(before_path) != _stat_signature(after_path)
+                or _source_identity(after) != _source_identity(after_path)
+                or len(raw) != after.st_size):
             raise SourceError("Source changed while reading it.", "source_changed")
     except OSError as exc:
         raise SourceError("Source could not be read.", "unreadable_source") from exc

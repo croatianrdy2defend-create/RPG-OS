@@ -1,8 +1,8 @@
-# Quick start — v9.0.0 experimental
+# Quick start — v0.9.0 experimental
 
 ## Prepare one campaign folder
 
-Download the [v9.0.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -32,7 +32,7 @@ Wait for a successful full-save confirmation before discarding the chat. SAVE, C
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people.
 
-An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v9.0.0.
+An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v0.9.0.
 
 Switch models after a completed save, giving the next GM the same updated folder. For a mid-scene switch, say:
 
