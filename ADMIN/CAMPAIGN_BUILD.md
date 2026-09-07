@@ -137,3 +137,16 @@ Before returning to NEW GAME:
 5. Return the brief, real capability bodies, essential routes, source/private envelopes, and meaningful unknowns for the single NEW GAME review.
 
 Do not persist here. The shared LOAD bind commits the accepted work with recovery protection. Omitted areas remain honestly absent or open.
+
+## Optional compact portrayal examples
+
+Useful anchors connect a person's manner to circumstances. These invented examples illustrate preparation, not a required profile or reaction table:
+
+| Established circumstances | Possible portrayal anchor |
+|---|---|
+| A clerk is finishing a delayed stock count and can spare a minute | Answers directly, checks the clock once; becomes more expansive if the interruption helps finish the task |
+| A friendly acquaintance enjoys company but keeps a promise to meet a sibling shortly | Offers a seat and asks a question; mentions the actual time constraint without treating warmth as a new commitment |
+| A colleague is angry about someone else's error and has not blamed the PC | Speech is clipped; an explanation or changed circumstances may soften the manner without instantly changing trust |
+| A reserved regular has no particular view of the newcomer | Brief greeting and an ordinary practical question; room for conversation without invented hostility or automatic attraction |
+
+Use established facts before eligible new authorship. Do not paste an example onto a person after dice to justify the outcome. No quota requires a quirk, gesture, conflict or emotional disclosure each turn. Quiet, ordinary and cooperative scenes can stand on their own. Removing a person from the active resume cues retires a retrieval cue, not their durable record, obligations or future trigger.

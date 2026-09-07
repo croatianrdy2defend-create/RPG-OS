@@ -1,20 +1,20 @@
-# RPG OS v8.1.1 — experimental playtest release
+# RPG OS v9.0.0 — experimental playtest release
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
-**Experimental, unbound fresh install.** This release includes the Freeform engine and blank campaign records. It includes no setting module, character, campaign history, or artwork. No paid API, custom application, database, or required script is part of the design.
+**Experimental, unbound fresh install.** This release includes the Freeform engine and blank campaign records. It includes no setting module, character, campaign history, or artwork. No paid API, custom application, database or script is required for play. Optional Python tools provide exact source reads, a disposable search cache and evidence-audit support.
 
 <table>
 <tr><td>
 <h3><a href="MECHANICS.md">How RPG OS works</a></h3>
-<p>See how the GM uses the world, your agreement, and saved records to continue a campaign. Includes nine diagrams, a workspace tree, and worked examples of direct attention, individual NPC continuity and a simple random fallback for later unresolved outcomes.</p>
+<p>See how the GM uses the world, your agreement, and saved records to continue a campaign. Includes diagrams, a workspace tree, and worked examples of NPC continuity, random fallback, exact retrieval and checking a save against session evidence.</p>
 <p><a href="MECHANICS.md"><strong>Explore how RPG OS works →</strong></a> · <a href="MECHANICS.md#independent-people-and-other-agents"><strong>Independent agent state →</strong></a></p>
 </td></tr>
 </table>
 
-[Get v8.1.1](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v8.1.1) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V8.1.1_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v9.0.0](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V9.0.0_CHANGES.md) · [Verification](VERIFICATION.md)
 
-**New in v8.1.1:** direct attention or interaction establishes a minimal current individual baseline before the NPC's focused behavior or reception. “I approach her” is enough; the GM does not infer why. Existing individuals keep their established facts, and further detail follows actual developments. This is an incremental instruction update from v0.8.1, with the same record formats. See the [direct-approach example](MECHANICS.md#example-i-approach-her) and [release notes](V8.1.1_CHANGES.md).
+**New in v9.0.0:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. The existing independent-agent baseline and random fallback continue unchanged. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [release notes](V9.0.0_CHANGES.md).
 
 The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
@@ -54,7 +54,7 @@ The procedure uses the existing person and system records. There is no required 
 
 This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play.
 
-Valid v0.7.3, v0.8.0 and v0.8.1 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change.
+Valid v0.7.3, v0.8.0, v0.8.1 and v8.1.1 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change.
 
 ## Continue a scene with another GM
 
@@ -87,7 +87,8 @@ The kit accommodates different genres and kinds of player character. Other rules
 | INSTANCE | Accepted agreement and current campaign state |
 | ARCHIVE | Historical evidence and routes to it |
 | ADMIN | Setup, save, correction, recovery, and handover procedures |
-| TOOLS | Optional read-only checkers, tests, and public-release packaging |
+| EVIDENCE | Optional untouched session captures, including OOC and rewinds; separate from accepted canon |
+| TOOLS | Optional readers, search and audit support, tests, and public-release packaging |
 
 Only a small startup packet is routinely loaded. SAVE, CLOSE, and END SESSION perform a complete save. CHECKPOINT preserves the present while retaining the preceding archive evidence boundary. Handover adds a live transfer package without turning that package into a historical save.
 
@@ -102,3 +103,11 @@ Project author and maintainer: [croatianrdy2defend-create](https://github.com/cr
 Design reference for the v0.7.2 optional preparation discussion: [Claude Corpus Engine by galliard5](https://github.com/galliard5/claude-corpus-engine/tree/7be53247635d41dad80b8dfb74dc96ae44852998). RPG OS's guidance and examples use original wording and its existing authority model.
 
 Original documentation/protocol material: [CC BY 4.0](LICENSE). Code and repository automation/configuration: [MIT](TOOLS/LICENSE). Attribute “RPG OS” to croatianrdy2defend-create, link to this repository, and indicate modifications. These licenses grant no rights in third-party games, rules, trademarks, settings, artwork, or campaign content.
+
+## Optional evidence review
+
+Ask: “Preserve this actual session export and audit the save against it and the prior records.” The GM follows [Evidence audit](ADMIN/EVIDENCE_AUDIT.md), states the captured and inspected scope, and separates contradictions, unresolved questions and missing evidence. An authorized correction is not ignored merely because the GM failed to acknowledge it. Clear bookkeeping and changes that would alter played outcomes have different repair eligibility.
+
+You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
+
+The v9.0.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.

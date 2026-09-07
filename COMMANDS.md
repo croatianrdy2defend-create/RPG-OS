@@ -27,6 +27,9 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 | REVIEW | Optional cold reflection; no automatic follow-up to saving |
 | VALIDATE / check the files | Read-only structural inspection, with limits stated |
 | AUDIT | Report actually observed loading/actions; no claim to unobserved context |
+| Audit this save against the session and prior records | [Evidence audit](ADMIN/EVIDENCE_AUDIT.md); explicit scope, semantic review and evidence checks, with separate repair authority |
+| Preserve this actual session export | Import untouched evidence with stated coverage; no invented transcript |
+| Read this exact section / search current records | [Optional source tools](ADMIN/SOURCE_ACCESS.md); current source verification before using search candidates |
 | Upgrade this campaign | Follow ADMIN/UPGRADE_V08.md in a protected copy; older formats route through the existing mapping |
 | Add an engine | Follow ADMIN/ADD_ENGINE.md |
 | Add/refine the setting brief | Follow the corresponding ADMIN procedure |

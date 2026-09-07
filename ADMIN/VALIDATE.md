@@ -1,4 +1,4 @@
-# VALIDATE — v8.1.1 experimental structural inspection
+# VALIDATE — v9.0.0 experimental structural inspection
 
 VALIDATE is read-only ADMIN work. It inspects an explicitly selected RPG_OS tree, reports what it observed, and stops. It does not repair, save, recover, accept an agreement, or start PLAY. Normal PLAY does not preload this file or the validator.
 
@@ -11,7 +11,7 @@ python -B TOOLS/validate.py --root .
 python -B TOOLS/validate.py --root . --json
 ```
 
-`VALIDATE-v3.1.0` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
+`VALIDATE-v3.2.0` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
 
 Scene handovers have an optional separate integrity checker: `python -B TOOLS/handover.py check --root . --package HANDOVER/<id>`; add `--return` when checking SCENE_RETURN.md. `python -B TOOLS/handover.py snapshot --root .` emits the outgoing snapshot recipe. These commands are read-only. Normal VALIDATE does not certify a handover's identities, source coverage, matching snapshot or return; consult the separate report and `ADMIN/SCENE_HANDOVER.md`. Its synthetic tests run with `python -B TOOLS/test_handover.py`.
 
@@ -74,3 +74,9 @@ An agent-state file's presence does not establish independent NPC decisions, unb
 One capable model with readable/writable files can still operate RPG OS. If code execution is unavailable, inspect the relevant files manually and label the result MODEL-CHECKED with exact observed coverage. Report a definite defect as FAIL; otherwise report INCOMPLETE, not SCRIPT-VERIFIED PASS. Do not imply unopened paths were checked or pretend to have executed code.
 
 Report OOC and stop. Authorized repair uses the relevant ADMIN procedure and preserves evidence. Pending recovery is resolved through ADMIN/RECOVERY.md before ordinary PLAY.
+
+## Optional source and evidence tooling
+
+The distribution includes `TOOLS/read_source.py`, `TOOLS/search_index.py`, `TOOLS/evidence.py` and their focused regression suites. Their presence is part of kit validation; running normal VALIDATE does not execute an evidence audit or certify a cache. `ADMIN/SOURCE_ACCESS.md` and `ADMIN/EVIDENCE_AUDIT.md` document those separate commands.
+
+Capture checking verifies imported bytes and declared coverage structure. Report checking verifies cited source versions, original-line quotations and supported report structure. It explicitly reports `semantic_review: not_performed`: an actual model or human must compare meaning and authority, including omitted changes. A checked quotation can still be irrelevant to a conclusion. Keep that semantic review's identity, scope and limitations separate from structural or citation results.

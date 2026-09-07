@@ -1,8 +1,8 @@
-# Quick start — v8.1.1 experimental
+# Quick start — v9.0.0 experimental
 
 ## Prepare one campaign folder
 
-Download the [v8.1.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v8.1.1), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v9.0.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -32,7 +32,7 @@ Wait for a successful full-save confirmation before discarding the chat. SAVE, C
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people.
 
-An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v8.1.1.
+An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v9.0.0.
 
 Switch models after a completed save, giving the next GM the same updated folder. For a mid-scene switch, say:
 
@@ -41,3 +41,7 @@ Switch models after a completed save, giving the next GM the same updated folder
 Follow the [scene-handover procedure](ADMIN/SCENE_HANDOVER.md); keep one active continuation. For other requests see [Everyday commands](COMMANDS.md).
 
 Play normally. If something feels wrong, a brief note and the relevant conversation/save can help diagnose it afterward. The [playtest guide](ADMIN/PLAYTEST_V08.md) is optional; no trial schedule or scene-by-scene audit is required. Explore the [illustrated mechanics guide](MECHANICS.md) when you want to see how the records work.
+
+## Optional evidence checks
+
+After normal setup, you can ask to preserve a real session export and compare a save with the session and prior records. To select a review at every full save, say so once and agree the available capture method and review scope. See [Evidence audit](ADMIN/EVIDENCE_AUDIT.md). This is optional and adds no standard setup questions. A fresh chat still resumes from the ordinary saved campaign.

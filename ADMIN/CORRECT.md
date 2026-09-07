@@ -50,3 +50,7 @@ Set CURRENT_SAVE safety_state to `active` exactly when a real accepted entry rem
 ## Result
 
 Briefly identify the correction and whether it is applied only in this chat or successfully saved with the new save id. Keep any source gap or unresolved scope honest. On interrupted writes retain the active marker and follow ADMIN/RECOVERY.md; no partial correction is a successful save, and no automatic rollback is claimed.
+
+## Findings from an evidence audit
+
+An auditor supplies evidence and a proposed correction; its report alone grants no write authority. Apply an already authorized narrow correction without asking for the same approval again. Separate evidentiary clarity from consequence containment: an unambiguous replacement that would change an already resolved survival, deadline, payment-dependent decision or other outcome still needs the applicable player decision under the agreement. Uncertain values remain unresolved. Preserve source, scope, affected dependencies and the superseding correction; use the same protected operation as any other saved repair. See `ADMIN/EVIDENCE_AUDIT.md`.

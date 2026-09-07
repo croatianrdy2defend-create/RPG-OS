@@ -27,3 +27,6 @@ jobs:
           python3 "$kit_dir/TOOLS/test_validate.py"
           python3 "$kit_dir/TOOLS/test_handover.py"
           python3 "$kit_dir/TOOLS/test_package_release.py"
+          python3 "$kit_dir/TOOLS/test_read_source.py"
+          python3 "$kit_dir/TOOLS/test_search_index.py"
+          python3 "$kit_dir/TOOLS/test_evidence.py"

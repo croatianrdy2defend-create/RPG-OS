@@ -19,3 +19,6 @@ HANDOVER/
 RECOVERY/
 output/
 TEST_RUN.md
+
+# Raw session captures are private local campaign evidence.
+EVIDENCE/captures/

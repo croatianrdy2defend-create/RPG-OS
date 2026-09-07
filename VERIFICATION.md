@@ -1,5 +1,38 @@
 # RPG OS experimental verification
 
+## v9.0.0 source and evidence tools — 2026-09-08
+
+This experimental release starts from public v8.1.1, commit `e297c3f29debfda2bc610ccf08acbddd48f66242`. It adds optional source reading, scoped lexical search and evidence capture/report checks. Existing save/record formats and the direct-attention NPC procedure remain compatible. Verification below concerns this implementation; it does not establish long-campaign reliability.
+
+| Check | Observed local result |
+|---|---|
+| Structural regression suite | 48 passed |
+| Handover regression suite | 35 passed, 1 platform skip |
+| Packaging regression suite | 15 passed, including new raw-capture exclusion and required-tool inventory checks |
+| Exact source reader | 24 passed, 3 platform skips |
+| Scoped lexical search | 32 passed, 1 platform skip |
+| Evidence capture and report checker | 31 passed, 2 platform skips |
+| Total | 192 discovered: 185 passed, 7 platform skips on Windows / Python 3.11.9 |
+| Capability probe | Exact local UTF-8/CRLF read and an actual SQLite FTS5 query demonstrated; host chat export explicitly unobserved |
+| Whole-tree structural check | PASS, zero findings, stable measured tree and matching executed/target validator bytes |
+| Mechanics diagrams | All eleven parsed and rendered using Mermaid 10.9.3; the two new source/audit diagrams visually inspected |
+| Independent code review | Reproduced and fixed Windows short-path containment, changed nested-campaign eligibility, invalid cached passage ranges and empty-source delivery; focused suites rerun |
+| Documented capture workflow | Import, integrity check, selected prior/current bundle, pending template, authored report and checker exercised through actual subprocess commands |
+| Played-campaign upgrade, forty-session continuity, cross-model audit reliability | NOT RUN |
+| Proposed E01 retirement and E02 repeatability diagnostics | NOT RUN as those named complete exercises |
+
+The platform skips concern unavailable unprivileged symlink creation, FIFO support and a receipt alias case dependent on symlink creation. Actual Windows junction and 8.3 short-path tests ran successfully. Native platform checks are kept separate from simulated link/reparse rejection. The repository workflows run all six suites and package the exact triggering commit; their Linux observations are available in the release's Actions runs, not presumed here.
+
+One fresh reviewer context also used the production tools on six selected synthetic cases. The fixture author did not pass expected verdicts to that reviewer. All 34 selected source bodies were delivered with tool-generated receipts, and all six authored reports passed hash, original-line quotation and schema checks on their first attempt: 100 citation occurrences verified exactly. The reviewer found the omitted appointment, ignored authorized correction and inherited licence error; preserved an ambiguous suggestion and a legitimate appearance change; and identified the unambiguous HP error as requiring a player decision because a narrow repair would invalidate the played escape. No campaign repair was executed.
+
+A second fresh reviewer checked citation relevance against the 34 frozen bodies and found all 12 material findings supported, with no unsupported material claim found. This second review inspected sources directly and claimed no reader receipts.
+
+That was one semantic integration pass by the same model family in a fresh context, not a cross-model or unattended long-run benchmark. Delivery receipts do not prove comprehension. The prior exploratory twelve-case repeated trial used a different diagnostic harness; its results are not counted as passes for this implementation. Source fixtures, raw captures and private audit artifacts are kept outside this unbound distribution.
+
+The integration run exposed a usability gap: reviewers needed clearer report-field and citation instructions. The [audit guide](ADMIN/EVIDENCE_AUDIT.md#complete-the-report-template) now includes the supported values, exact original-line quoting and delivery-receipt workflow. Candidate reports explicitly keep source coverage, unresolved questions, consistency and repair eligibility separate.
+
+Before publication the final committed exporter must verify its public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and SHA-256. See [v9.0.0 release assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v9.0.0) and [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) for actual publication evidence. The sections below retain earlier results at their original scope.
+
 ## v8.1.1 direct-attention baseline — 2026-09-07
 
 This incremental release starts from canonical public v0.8.1, commit `6177772108c8c0b61350670e71a7c97cb491e667`. Direct attention or interaction now requires a minimal current individual basis before focused portrayal or reception. Existing state, engine authority, private/public distinctions and requested-save boundaries remain intact. The observation that motivated the change was a supplied campaign audit; it does not independently authenticate that conversation's tool history.

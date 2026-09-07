@@ -30,13 +30,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run structural, handover, and packaging regression tests
+      - name: Run structural, source, search, evidence and packaging regression tests
         shell: bash
         run: |
           set -euo pipefail
           python3 -B TOOLS/test_validate.py
           python3 -B TOOLS/test_handover.py
           python3 -B TOOLS/test_package_release.py
+          python3 -B TOOLS/test_read_source.py
+          python3 -B TOOLS/test_search_index.py
+          python3 -B TOOLS/test_evidence.py
 
       - name: Package and verify the committed fresh install
         shell: bash

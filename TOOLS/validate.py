@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v0.8.0 experimental.
+"""Read-only structural validator for RPG OS v9.0.0 experimental.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.
@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v3.1.0"
+VALIDATOR_VERSION = "VALIDATE-v3.2.0"
 
 CURRENT_SAVE_FIELDS = (
     "engine", "module", "pc_record", "campaign_id", "save_id", "save_rev",
@@ -94,12 +94,21 @@ REQUIRED_FILES = (
     "ADMIN/SCENE_HANDOVER.md",
     "ADMIN/TESTS.md",
     "ADMIN/VALIDATE.md",
+    "ADMIN/SOURCE_ACCESS.md",
+    "ADMIN/EVIDENCE_AUDIT.md",
+    "EVIDENCE/README.md",
     "TOOLS/validate.py",
     "TOOLS/test_validate.py",
     "TOOLS/handover.py",
     "TOOLS/test_handover.py",
     "TOOLS/package_release.py",
     "TOOLS/test_package_release.py",
+    "TOOLS/read_source.py",
+    "TOOLS/test_read_source.py",
+    "TOOLS/search_index.py",
+    "TOOLS/test_search_index.py",
+    "TOOLS/evidence.py",
+    "TOOLS/test_evidence.py",
     "TOOLS/LICENSE",
     "QUICKSTART.md",
     "INSTALLATION.md",
@@ -2371,7 +2380,7 @@ def make_report(
             "result": structural_result,
             "provenance": "SCRIPT-VERIFIED",
             "coverage": [
-                "required release files including the cold v0.8 agent-state, upgrade and playtest documents; executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
+                "required release files including agent-state, upgrade/playtest guides and optional v9 source/search/evidence tools; executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
                 "CURRENT_SAVE metadata/readable sections, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
                 "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
                 "optional cold Bearing provenance and staleness warnings; active recovery and handover marker presence (handover package integrity requires its separate checker)",

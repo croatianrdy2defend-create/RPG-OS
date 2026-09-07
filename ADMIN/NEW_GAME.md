@@ -79,3 +79,7 @@ Use the shared bind procedure in `ADMIN/LOAD.md` with this accepted draft and it
 Create only MODULE, SETTING_BRIEF, POLICY, the PC baseline/bundle, T0_SAVE, and selected real capability bodies. No mandatory roster, empty encyclopedia, or opening interpretation is needed.
 
 After verification, report campaign/save identity, meaningful omissions, and how to resume from `OS/AGENTS.md`. Recommend a fresh PLAY chat so rejected drafts are cold. If the player continues here, perform the normal boot reads and use only accepted bound material.
+
+## Optional save review preference
+
+If the player requests raw capture or an audit after each full save, use `ADMIN/EVIDENCE_AUDIT.md` to state the actual capture method, selected scope, reviewer and repair authority. Record the accepted preference in the existing appropriate agreement sections; do not add a required clause, extra standard setup question or universal export promise. Installing tools does not select this option. Preserve any already supplied acceptance and unrelated terms.

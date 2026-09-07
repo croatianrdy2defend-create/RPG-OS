@@ -88,3 +88,5 @@ Archive evidence is immutable. Routing metadata and lossless partitions may be c
 Legacy DELTA.md, TRANSCRIPT.md, MESSAGES.md and prior hierarchical-scene-v1 sources remain readable. No forced migration or deletion accompanies schema adoption. Exact wording, sequence, quantities, ambiguity, contradictions, and original identifiers survive any optional partition.
 
 Physical sharding helps selective reading but does not prove a host returned only an addressed section. Inspect actual host behavior; do not treat an instruction to ignore visible neighboring text as isolation.
+
+The optional `EVIDENCE/` store is a distinct exception to the rule against duplicate accepted-history transcripts. It preserves an actual raw export unchanged, including OOC, superseded and rewound material. It is not another accepted ARCHIVE body, does not establish canon, and cannot advance `evidence_through`. Normal PLAY does not preload it. Capture and reconciliation follow `ADMIN/EVIDENCE_AUDIT.md`.

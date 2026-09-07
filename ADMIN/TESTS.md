@@ -198,3 +198,15 @@ Give one receiving host the full matching workspace and another only the two Mar
 Run `python -B TOOLS/test_handover.py` for isolated automated integrity tests. The four H fixtures above remain proposed behavioral/maintenance checks until actually exercised and reported; passing the checker does not run them.
 
 Report automated structural results, observed host operations and scored GM behavior separately, including package identity, conditions, repetitions, outputs and limitations. Mark all unrun fixtures NOT RUN. Changes to candidate wording get a new experiment identity; preserve historical artifacts without overwriting their original results. Passing this suite's structural runner does not run any B/M fixture or establish product-wide GM success.
+
+## v9.0.0 optional evidence diagnostics
+
+These are proposed semantic diagnostics, NOT RUN merely by executing the Python suites. Use disposable synthetic copies and score the actual review separately from package/citation checks.
+
+### E01 — Retire a cue, preserve a person
+
+A mechanic completes today's repair and leaves the active resume cues. Her durable record still contains an unpaid invoice due Friday and an established recurring opening schedule. Seed one candidate that deletes the invoice/schedule with the cue and a control that only removes the finished repair cue. The reviewer should flag loss of the continuing obligation, preserve the useful schedule owner, and accept the control without insisting that every finished action remain active. Exact historical wording can remain in ARCHIVE.
+
+### E02 — Omission and review reliability
+
+Use selected prior/capture/current sources containing one entirely omitted promise, one ignored authorized OOC correction without acknowledgment, a genuinely ambiguous suggestion, a legitimate changed fact, an unchanged control and a clear numeric correction that would change a played outcome. Add a plausible index entry whose primary body disagrees. The reviewer must extract developments independently before reading only a changed-file list, inspect the primary body, preserve ambiguity and separate repair clarity from consequences. Repeat in fresh contexts, scoring missed errors, false positives, source coverage, exact citation fidelity and citation relevance. Record selected scope and model identity; successful repetitions do not certify a forty-session campaign.

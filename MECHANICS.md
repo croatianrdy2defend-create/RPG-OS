@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v8.1.1 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v9.0.0 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -20,6 +20,7 @@ This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compa
 - [Recovering interrupted work](#recovering-interrupted-work)
 - [Handing an active scene to another GM](#handing-an-active-scene-to-another-gm)
 - [Sources, visuals, and host capabilities](#sources-visuals-and-host-capabilities)
+- [Exact retrieval and evidence audits](#exact-retrieval-and-evidence-audits)
 - [What the checks establish](#what-the-checks-establish)
 
 ## The operating loop
@@ -61,7 +62,8 @@ RPG_OS/
 |   |-- NOW.md             Current private and system state
 |   `-- ...                Safety, corrections, routing, optional review
 |-- ARCHIVE/               Indexes and accepted historical evidence
-|-- TOOLS/                 Optional read-only checkers and tests
+|-- EVIDENCE/              Optional raw captures; only README in the fresh kit
+|-- TOOLS/                 Optional readers, search, audit helpers and tests
 |-- RECOVERY/              Created for protected file operations
 `-- HANDOVER/              Created for an authorized live-scene transfer
 ```
@@ -212,7 +214,7 @@ The player does not operate this procedure turn by turn. Narration and dialogue 
 
 A minimal individual baseline does not settle every later opportunity. Whether someone sends a message, fulfills a promise or passes on a secret may remain open after the encounter. First use the retained baseline, actual developments and applicable ENGINE procedures. If an eligible outcome still lacks enough basis for grounded judgment, the GM can frame the question and use the selected fallback without expanding a sparse person into a dossier or assuming nothing happens. This later outcome resolution does not replace the baseline required when the person first receives direct attention, or add a second roll for an already resolved reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v8.1.1 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v9.0.0 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
@@ -356,12 +358,54 @@ Source-bound campaigns also need the relevant edition or continuity and a clear 
 
 The host must provide actual file reads, durable writes, and readback for the normal workflow. Attachment-only hosts can exchange complete replacement files manually, but an export is not a saved workspace until installed and verified. Private records reduce accidental narrative spoilers; they are not encrypted or necessarily hidden from the operator. See [Installation](INSTALLATION.md).
 
+## Exact retrieval and evidence audits
+
+At forty sessions, the difficulty is finding the relevant original and distinguishing a real change from an error. v9.0.0 adds optional tools for those tasks while keeping the ordinary campaign records as memory.
+
+An exact reader can return a whole file, a named section or original lines with their source hash. A search cache can locate likely passages, including text late in a document and known identity aliases. Its results are candidates: current records, T0 world baselines, history, raw captures and rules have distinct scopes. The GM fetches the current original before using a match. A changed or unavailable cache does not become evidence that the person or fact never existed. See [Source access](ADMIN/SOURCE_ACCESS.md).
+
+```mermaid
+flowchart TD
+    sourceNeed["A specific fact needs checking"] --> sourceRoute{"Known source route?"}
+    sourceRoute -->|"Yes"| sourceRead["Read actual file, section or original lines"]
+    sourceRoute -->|"No"| sourceSearch["Scoped search returns candidate references"]
+    sourceSearch --> sourceCheck["Check scope, eligibility and current source revision"]
+    sourceCheck -->|"Verified"| sourceRead
+    sourceCheck -->|"Unavailable or stale"| sourceDirect["Direct targeted file lookup; report remaining gaps"]
+    sourceDirect --> sourceRead
+    sourceRead --> sourceContext["Inspect enough context and applicable authority"]
+    sourceContext --> sourceUse["Use supported fact; preserve uncertainty"]
+```
+
+The audit is a different maintenance task. ARCHIVE retains accepted campaign evidence. The optional EVIDENCE store retains a supplied raw export unchanged, including OOC corrections, proposals and played scenes that were later rewound. Raw text proves what the supplied source contains; it does not make every statement canon or certify that the host exported everything.
+
+```mermaid
+flowchart TD
+    auditPrior["Preserved prior canon and applicable authority"] --> auditReview["Model or human compares meaning"]
+    auditRaw["Actual session export with declared coverage"] --> auditReview
+    auditSaved["Selected resulting save records"] --> auditReview
+    auditReview --> auditFindings["Consistency, unresolved questions, coverage and repair eligibility"]
+    auditFindings --> auditQuotes["Code checks frozen hashes, original-line quotes and report structure"]
+    auditQuotes --> auditDecision["Inspect cited meaning and repair authority"]
+    auditDecision -->|"Authorized, clear and contained"| auditCorrect["Protected CORRECT operation"]
+    auditDecision -->|"Uncertain or changes played consequences"| auditOpen["Report for the applicable player decision"]
+    auditCorrect --> auditTrace["Keep original evidence and superseding correction"]
+```
+
+For example, the prior save places a courier cycling toward the station. The immediate continuation puts her at a car steering wheel at that same moment, with no intervening transition; the save repeats the new description. Comparing the save only to this session would miss the unexplained change. Comparing all three identifies the conflict and its missing context. In a different sequence, she might park the bicycle and borrow a car during play; preserving that established transition would be correct. If the player instructed the GM to correct the mistaken description, failure to acknowledge the instruction does not remove its authority.
+
+The reviewer also extracts obligations from the session before looking at a changed-file list. Otherwise a completely omitted “meet at noon” promise could leave both the person record and resume summary looking internally consistent. Retiring an active cue must not erase a continuing commitment from its durable owner.
+
+You can request one audit or agree a bounded audit after each full save. Needed prior records are preserved before the save replaces them; the saved result and matching evidence are then reviewed. Save success and audit coverage are separate. Missing source remains a gap, and ordinary CHECKPOINT behavior stays unchanged. [Evidence audit](ADMIN/EVIDENCE_AUDIT.md) supplies the complete workflow and tool examples.
+
+These tools do not call a reviewing model automatically or repair canon on their own. A fresh reviewer can provide another perspective, but it is still fallible. Exact quotations can be irrelevant; source delivery can occur without adequate inspection. A reviewed baseline records what was actually checked and against which sources. Repetition, age and an index pointer do not upgrade it to proven truth.
+
 ## What the checks establish
 
 The optional [validator](TOOLS/validate.py) checks its documented structural scope. The [handover checker](TOOLS/handover.py) checks identities, paths, hashes, snapshot coverage, required sections, and duplicate event identifiers. It does not write a package, run another model, or import changes.
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
 
-For v0.8, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
+For v9.0.0, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

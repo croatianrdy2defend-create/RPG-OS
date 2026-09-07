@@ -175,6 +175,8 @@ class PackageTests(unittest.TestCase):
             "INSTANCE/CHAR/PC.md", "INSTANCE/PEOPLE/liv.md", "ARCHIVE/sessions/test/scene.md",
             "ENGINE/gurps.md", "TEST_RUN.md", "secret/notes.md", ".work/private.md",
             "TOOLS/.release/private.zip",
+            "EVIDENCE/captures/session-001/source.txt", "EVIDENCE/private.jsonl",
+            "EVIDENCE/captures/session-001/manifest.json", "EVIDENCE/audit-report.json",
         ):
             with self.subTest(path=relative):
                 with self.assertRaises(pack.PackageError):
@@ -187,7 +189,9 @@ class PackageTests(unittest.TestCase):
             pack.package(self.root)
 
     def test_missing_v08_extension_document_cannot_ship(self) -> None:
-        for relative in ("OS/AGENT_STATE.md", "ADMIN/UPGRADE_V08.md", "ADMIN/PLAYTEST_V08.md"):
+        for relative in ("OS/AGENT_STATE.md", "ADMIN/UPGRADE_V08.md", "ADMIN/PLAYTEST_V08.md",
+                         "TOOLS/read_source.py", "TOOLS/search_index.py", "TOOLS/evidence.py",
+                         "ADMIN/EVIDENCE_AUDIT.md", "ADMIN/SOURCE_ACCESS.md", "EVIDENCE/README.md"):
             original = (self.root / relative).read_text(encoding="utf-8")
             with self.subTest(path=relative):
                 (self.root / relative).unlink()

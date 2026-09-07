@@ -28,8 +28,9 @@ ROOT_FILES = {
     "CONTRIBUTING.md", "INSTALLATION.md", "LICENSE", "MECHANICS.md",
     "QUICKSTART.md", "README.md", "SHARE.md", "VERIFICATION.md", "VERSION",
 }
-ROOT_DIRS = {".github", "ADMIN", "ARCHIVE", "ENGINE", "INSTANCE", "MODULES", "OS", "TOOLS"}
+ROOT_DIRS = {".github", "ADMIN", "ARCHIVE", "ENGINE", "EVIDENCE", "INSTANCE", "MODULES", "OS", "TOOLS"}
 SCOPED_FILES = {
+    "EVIDENCE": {"README.md"},
     "MODULES": {"README.md", "_CONTRACT.md"},
     "ENGINE": {"_CONTRACT.md", "freeform.md"},
     "INSTANCE": {

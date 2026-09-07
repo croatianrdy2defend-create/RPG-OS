@@ -1,4 +1,4 @@
-# RPG OS v8.1.1 startup
+# RPG OS v9.0.0 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 
@@ -37,5 +37,7 @@ Exact PC values, detailed lore, subsystem bodies, and historical evidence remain
 | Upgrade this campaign | `ADMIN/UPGRADE_V08.md` — routes older formats through the existing v0.7 mapping when needed |
 | Add or refine the world brief | `ADMIN/ADD_SETTING_BRIEF.md` or `ADMIN/REFINE_SETTING_BRIEF.md` |
 | Check the files / VALIDATE | `ADMIN/VALIDATE.md` |
+| Read an exact source section / build or use scoped search | `ADMIN/SOURCE_ACCESS.md` |
+| Capture this session export / audit a save against source | `ADMIN/EVIDENCE_AUDIT.md` |
 
 Recognize clear natural-language intent. Explicit acceptance of a displayed proposal is sufficient; a particular token is not required. Retrieve other maintenance instructions only for that task. AUDIT reports only files/actions actually observed, with uncertainty about anything not verified.

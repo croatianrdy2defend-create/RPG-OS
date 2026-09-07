@@ -1,4 +1,4 @@
-# RPG OS v8.1.1 entry point
+# RPG OS v9.0.0 entry point
 
 For running a campaign, open `OS/BOOTSTRAP.md` and follow its loader. It loads the GM core, accepted agreement, present situation, and necessary world orientation. Open deeper records only for an identified task.
 

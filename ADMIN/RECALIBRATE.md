@@ -20,3 +20,7 @@ Installing the compatible v0.8 program uses `ADMIN/UPGRADE_V08.md`; it does not 
 Changes apply from acceptance forward. They do not rewrite earlier PC choices, outcomes, clocks, state, or archive history. Optional Bearing tied to the old contract becomes stale; do not regenerate it or run REVIEW automatically. Report the new revision and changed clauses plainly.
 
 An off-premise proposal is handled OOC by agreeing a return, recalibration, or ending; do not enforce the old premise with fabricated world barriers. Recalibration alone does not reverse a prior valid ironman outcome. Any separate retrospective change requires its own explicit treatment under the accepted Retcon policy and correction procedure.
+
+## Optional save review preference
+
+If the player requests raw capture or an audit after each full save, use `ADMIN/EVIDENCE_AUDIT.md` to state the actual capture method, selected scope, reviewer and repair authority. Record the accepted preference in the existing appropriate agreement sections; do not add a required clause, extra standard setup question or universal export promise. Installing tools does not select this option. Preserve any already supplied acceptance and unrelated terms.

@@ -1,4 +1,4 @@
-# RPG OS v8.1.1 architecture
+# RPG OS v9.0.0 architecture
 
 ## Operating environment
 
@@ -27,6 +27,8 @@ Authority for a new consequential development is identified before drafting it. 
 | Compact operative present | INSTANCE/CURRENT_SAVE |
 | Detailed character, people, system state, PC knowledge | Their selected INSTANCE records |
 | Historical evidence | ARCHIVE |
+| Optional untouched exports, including OOC and rewinds | EVIDENCE captures; evidence of what was said, not current canon |
+| Optional search cache and audit bundle/report | External selected location; no live-state authority |
 | Optional provisional interpretation | Cold BEARING |
 | Recoverable changes | ADMIN procedures and operation-specific RECOVERY records |
 | Pending GM transfer and retained transport/return provenance | HANDOVER active marker and named package; SCENE_HANDOVER procedure |
@@ -82,3 +84,11 @@ The read-only validator observes structure and references. Model readback checks
 The v0.8 experimental build prioritizes [real campaign playtesting](ADMIN/PLAYTEST_V08.md) for practical quality. Structural, recovery and packaging checks remain engineering requirements. Optional focused fixtures can diagnose an observed problem; a scripted behavioral schedule is not an entry or release gate for this playtest build.
 
 The startup packet is not a revision-bound compiled capsule. Save/contract lineage and paths are checked at their documented scope, but the system does not pin every engine/module/body to exact immutable content. A plausible replacement may escape detection. Recovery protects a recorded change set; it does not establish global version coherence or semantic correctness across arbitrary manual swaps.
+
+## Optional source access and audit layer
+
+The exact reader returns current UTF-8 source passages with original line boundaries, file identity and explicit completeness. The scoped SQLite FTS5 cache holds retrieval candidates only. Requested-scope source-set and hash checks prevent quietly using an old cache as current authority; verified fetching reopens the actual file. Missing FTS5 or an unusable cache leaves ordinary file retrieval available. Neither indexing nor reading changes campaign state.
+
+`EVIDENCE/` holds optional original exports and capture manifests, distinct from accepted ARCHIVE evidence. A cold audit freezes explicitly selected prior and resulting records outside its input roots and compares them with captured session source. A model or human extracts changes, identifies applicable authority and checks meaning. Code checks integrity, report structure and exact quotations; it does not perform semantic adjudication. Selection limits and unresolved authority remain explicit even when compared values agree.
+
+An optional standing agreement can select bounded review after a full save. Prior evidence must be preserved before its authorities are replaced. Review reports cannot silently repair current state; authorized repairs follow CORRECT and RECOVERY. Reviewed baselines are fallible, versioned review records with actual inspection depth, not truth earned through repetition. Normal boot, CHECKPOINT and ownership of current state remain unchanged.

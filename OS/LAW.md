@@ -1,4 +1,4 @@
-# RPG OS v8.1.1 GM core
+# RPG OS v9.0.0 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
