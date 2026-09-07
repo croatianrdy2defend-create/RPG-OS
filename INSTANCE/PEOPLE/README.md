@@ -1,9 +1,15 @@
-# INSTANCE/PEOPLE
+# INSTANCE/PEOPLE — v0.8.0
 
-Current person and relationship records. Use one stable portable person_id and exact route per promoted person. At the first durable accepted change, materialize the complete as-of-now mutable surface: NOW, PC relationship state, and only affected current PRIVATE state. Preserve consequential detail and uncertainty; do not reduce a relationship to an unsupported attitude label.
+Current individual-agent and relationship records. Existing person_id routes include nonhuman individual actors; no path migration is needed. Use one stable portable person_id and exact route per promoted agent. A shared collective/controller variable may instead belong to its existing NOW system owner, never both. At the first durable accepted change, materialize the complete as-of-now mutable surface: NOW, PC relationship state, and only affected current PRIVATE state. Preserve consequential detail and uncertainty; do not reduce a relationship to an unsupported attitude label.
 
 For a preauthored person, stable CANON and unrelated PRIVATE lore remain in MODULE. Named T0 NOW/PC snapshots support continuity only before a current override or accepted later change and while no declared transition is due. After materialization, this record owns current state; do not merge old snapshot values into it.
 
-For an emergent person without a MODULE source, keep only established minimal CANON plus complete current mutable state here, and add the id/route to CAST_STATUS. Do not invent missing identity or promote every transient extra.
+For an emergent agent without a MODULE source, keep only established minimal CANON plus complete current mutable state here, and add the id/route to CAST_STATUS. Promote by continuing causal significance, not friendliness or screen time; a brief witness can matter, while a routine cashier need not. Do not invent missing identity or promote every transient extra.
+
+Stance is part of this state at its actual target/context scope, not a separate register. Optional prose can retain relevant aims, orientation, capabilities or constraints, the cause of a material change, and an actual generation method/result reference. Use only supported dimensions: duty, personal regard and cooperation can differ; a machine need not have human feelings. No mandatory heading, relationship score, field vector or complete social graph is required. Preserve exact promises and unresolved dimensions rather than replacing them with labels.
+
+The cold `OS/AGENT_STATE.md` governs a materially unresolved establishment/change task. Preserve authorized private facts without inventing the PC's knowledge, and distinguish them from provisional interpretation and deliberately unfixed answers. A missing record is not evidence of a neutral or favorable stance. Later versions of a generator or group description do not rerandomize an established individual.
 
 Retain useful direct archive pointers rather than complete conversations. Historical evidence remains in ARCHIVE; present state remains here. Split an independently useful part only behind explicit routes, and protect edits with the save/recovery procedure. Mere retrieval or a past intimate exchange grants no present obligation or permission.
+
+PLAY creates no files here. Unsaved private developments remain best-effort context until a requested save or another already authorized persistence operation succeeds. This guide introduces no establishment autosave or private scratch layer. A handover receiver leaves source authorities frozen and returns supported developments through the existing return procedure.

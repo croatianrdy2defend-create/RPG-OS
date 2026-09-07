@@ -48,8 +48,8 @@ class PackageTests(unittest.TestCase):
         for relative, content in validator.EMPTY_INSTANCE_TEMPLATES.items():
             self.write(relative, content)
         self.write("TOOLS/validate.py", (HERE / "validate.py").read_text(encoding="utf-8"))
-        self.write("VERSION", "0.7.3\n")
-        self.write("V0.7.3_CHANGES.md", "# v0.7.3\n\nSynthetic release notes.\n")
+        self.write("VERSION", "0.8.0\n")
+        self.write("V0.8.0_CHANGES.md", "# v0.8.0 experimental\n\nSynthetic release notes.\n")
         self.write(".gitignore", ".release/\n.work/\n")
         self.write("ENGINE/freeform.md", "---\nid: freeform\nclass: engine\ncharacter_build_support: no-mechanical-sheet\n---\n# Freeform\n\nResolve declared intent using accepted fictional stakes.\n")
         self.write("ARCHIVE/_SCHEMA.md", "---\narchive_schema: hierarchical-scene-v1\n---\n# Archive\n\nAccepted evidence only.\n")
@@ -82,13 +82,48 @@ class PackageTests(unittest.TestCase):
         archive, sums = pack.package(self.root)
         self.assertEqual(archive.parent, self.root / ".release")
         checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
-        self.assertEqual(sums.read_text(), f"{checksum}  RPG_OS_v0.7.3.zip\n")
+        self.assertEqual(sums.read_text(), f"{checksum}  RPG_OS_v0.8.0.zip\n")
         with zipfile.ZipFile(archive) as result:
             self.assertIsNone(result.testzip())
-            files = {item.filename.removeprefix("RPG_OS_v0.7.3/") for item in result.infolist() if not item.is_dir()}
+            files = {item.filename.removeprefix("RPG_OS_v0.8.0/") for item in result.infolist() if not item.is_dir()}
             self.assertEqual(files, set(pack.tracked_manifest(self.root, "HEAD")))
-            self.assertEqual(result.read("RPG_OS_v0.7.3/VERSION"), b"0.7.3\n")
+            self.assertEqual(result.read("RPG_OS_v0.8.0/VERSION"), b"0.8.0\n")
             self.assertNotIn("untracked-secret.md", files)
+
+    def test_committed_version_still_controls_archive_name(self) -> None:
+        # Exercise historical version naming with a structurally current fixture;
+        # this does not claim that the current validator certifies an old kit.
+        self.write("VERSION", "0.7.3\n")
+        self.write("V0.7.3_CHANGES.md", "# v0.7.3\n\nSynthetic historical release notes.\n")
+        self.commit()
+        archive, sums = pack.package(self.root)
+        self.assertEqual(archive.name, "RPG_OS_v0.7.3.zip")
+        self.assertTrue(sums.read_text().endswith("  RPG_OS_v0.7.3.zip\n"))
+        with zipfile.ZipFile(archive) as result:
+            self.assertEqual(result.read("RPG_OS_v0.7.3/VERSION"), b"0.7.3\n")
+
+    def test_windows_checkout_preferences_do_not_change_release_bytes(self) -> None:
+        committed = pack.git(self.root, "show", "HEAD:README.md")
+        self.assertNotIn(b"\r\n", committed)
+        pack.git(self.root, "config", "core.autocrlf", "true")
+        pack.git(self.root, "config", "core.eol", "crlf")
+        # Recreate only this disposable fixture's README from its unchanged LF
+        # index; removing it first prevents Git's unchanged-file optimization.
+        (self.root / "README.md").unlink()
+        pack.git(self.root, "checkout-index", "--", "README.md")
+        self.assertIn(b"\r\n", (self.root / "README.md").read_bytes())
+        # Refresh conversion metadata after changing fixture configuration, and
+        # prove this refresh did not change any indexed committed content.
+        pack.git(self.root, "add", "--renormalize", ".")
+        self.assertEqual(pack.git(self.root, "write-tree"), pack.git(self.root, "rev-parse", "HEAD^{tree}"))
+        pack.assert_clean(self.root)
+        archive, _sums = pack.package(self.root)
+        with zipfile.ZipFile(archive) as result:
+            self.assertEqual(result.read("RPG_OS_v0.8.0/README.md"), committed)
+            self.assertEqual(result.read("RPG_OS_v0.8.0/TOOLS/validate.py"),
+                             pack.git(self.root, "show", "HEAD:TOOLS/validate.py"))
+        for key, expected in (("core.autocrlf", b"true"), ("core.eol", b"crlf")):
+            self.assertEqual(pack.git(self.root, "config", "--get", key).strip(), expected)
 
     def test_existing_output_is_preserved_until_explicit_overwrite(self) -> None:
         archive, sums = pack.package(self.root, self.base / "output")
@@ -150,6 +185,17 @@ class PackageTests(unittest.TestCase):
         self.commit()
         with self.assertRaisesRegex(pack.PackageError, "Frozen fresh-install validation failed"):
             pack.package(self.root)
+
+    def test_missing_v08_extension_document_cannot_ship(self) -> None:
+        for relative in ("OS/AGENT_STATE.md", "ADMIN/UPGRADE_V08.md", "ADMIN/PLAYTEST_V08.md"):
+            original = (self.root / relative).read_text(encoding="utf-8")
+            with self.subTest(path=relative):
+                (self.root / relative).unlink()
+                self.commit()
+                with self.assertRaisesRegex(pack.PackageError, "Frozen fresh-install validation failed"):
+                    pack.package(self.root)
+                self.write(relative, original)
+                self.commit()
 
     def test_git_export_attributes_cannot_silently_omit_committed_files(self) -> None:
         self.write("TOOLS/.gitattributes", "validate.py export-ignore\n")

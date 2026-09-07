@@ -9,3 +9,5 @@ Draft the complete compact replacement and explain the material differences with
 After acceptance, use ADMIN/RECOVERY.md for the affected files, replace the brief, and read it back. Inspect every changed depth route. If a module descriptor must change, disclose and include it in the accepted affected set; do not leave a dangling capability.
 
 An interrupted write leaves the operation pending for recovery. Preserve the old version. A useful valid brief needs no revision merely because the OS version changed. Script validation is optional and cannot prove the summary's fidelity.
+
+A species/culture/faction summary edit does not automatically rewrite existing individuals. Identify whether the request is a clearer summary, an accepted correction, prospective authoring, or an actual in-world development, and update only its authorized owners. Keep private orientations and exact generation mappings cold. Independently established exceptions remain valid at their recorded scope; v0.8 adoption does not require reauthoring a sufficient brief.

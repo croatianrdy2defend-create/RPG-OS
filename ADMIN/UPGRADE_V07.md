@@ -2,6 +2,8 @@
 
 Cold ADMIN procedure. Upgrading preserves a campaign; it never starts a new one or resets history. Support standard v0.6-series records and explicitly mapped older/custom records. Do not claim an unexamined private format is automatically compatible.
 
+An already valid v0.7.3 campaign moving to the compatible v0.8 experimental program uses `ADMIN/UPGRADE_V08.md` instead. It needs no state conversion or new save identity merely for that program update. Older layouts use the explicit mapping here before a separately checked v0.8 adoption.
+
 For an already-bound v0.7 save with readable sections, use ADMIN/RECALIBRATE.md to supplement the five required v0.7.1 agreement clauses in a protected copy. Preserve its present and archive unchanged; do not run the state conversion below. An incomplete v0.7 agreement is eligible for that focused repair.
 
 ## Before changing files

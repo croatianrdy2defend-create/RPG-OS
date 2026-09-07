@@ -34,6 +34,8 @@ Ask only selected/relevant clusters:
 
 Preserve declared goals as such in Open matters; never infer them from background or campaign preferences. OOC preferences belong in the agreement. Proposed past commitments require acceptance. Ownership of a resource does not imply it was used.
 
+PC hopes, attractions and background do not establish another agent's reciprocal state. Apply actual visible features and engine-defined capabilities at their supported scope, without making a favorable profile universally effective. Preserve explicitly accepted starting allies or mutual relationships; do not reroll them to demonstrate independence. Such a relationship still leaves future decisions open at their actual scope. A detailed PC does not require equally detailed NPC biographies or a human emotional model for nonhuman participants.
+
 A behavioral mechanic may impose only its defined accepted effects. It does not expand unrelated PC-control grants. Resolve a declared act within its scope; do not demand repeated consent for the same declaration or originate additional meaningful participation. Form-selection, opacity, fixed-destination, and hardcut grants do not silently delegate reserved PC choices. A cut can skip only the agreed continuity and outcomes; preserve any meaningful decision still owned by the player.
 
 ## Engine-aware mechanics

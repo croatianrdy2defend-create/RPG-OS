@@ -1,19 +1,13 @@
-# A short v0.7.3 playtest
+# Play and share useful findings — v0.8.0 experimental
 
-Use a clean copy and record observed results. These are proposed behavioral checks, not a claim that the release passed a live campaign.
+Start from [Quick start](QUICKSTART.md), or use [Upgrade to v0.8](ADMIN/UPGRADE_V08.md) in a separate copy of an existing campaign. Play an actual campaign normally. There is no required scripted trial schedule before playing.
 
-1. Start with OS/AGENTS.md and ask for Quick start. Supply a premise with an unusual world rule and a quiet opening. The interview should reuse supplied facts, ask only relevant essentials, and show one concrete proposal before binding.
-2. Accept, then resume in a fresh chat. The GM should remember the world's distinctive reality and current situation without loading all lore or asking for a second begin command.
-3. Try an ordinary activity and an already due consequence. Quiet play should remain usable; the due consequence should occur under its actual trigger.
-4. Request an exact character value, a concrete setting-defined form, and a past promise. The GM should find the relevant source, preserve qualifications, and stop retrieving when sufficient.
-5. Correct an overstepped decision. The GM should acknowledge it, preserve unaffected play, and repair dependent state.
-6. Save, then open a new chat. Compare the present and important wording against the original. Note any unavailable evidence instead of allowing reconstruction.
-7. In a disposable test copy, simulate an interrupted save as described in ADMIN/TESTS.md. A pending recovery marker should prevent ordinary resumption.
-8. Repeat setup with a very different premise: a collective nonhuman protagonist, a historical setting, or a rules-heavy campaign with imported character values.
-9. In a disposable bound copy, request scene handover at an unanswered decision. Verify that source play pauses, the receiving GM preserves the pending choice and established hidden state, and a returned change imports once. Repeat with a changed baseline, partial conversation, and duplicate return; compare observed behavior with ADMIN/SCENE_HANDOVER.md.
+The [real-campaign playtest guide](ADMIN/PLAYTEST_V08.md) explains completed-save model switching, mid-scene handover and optional incident notes. A note such as "the relationship changed after switching models" is enough to start an investigation; preserve the relevant conversation and saved files when possible.
 
-Also compare explicit versus absent structural-opacity grants, ironman versus rewind-enabled valid outcomes, and permitted versus denied hard cuts using the behavioral fixtures. Error correction and stopping/changing depiction must remain available. Treat the resulting actual play observations separately from clause-presence or filesystem checks.
+Useful questions emerge through play: do people remain recognizable, can they cooperate and change for real reasons, do choices matter, do consequences survive saving, does play move at an enjoyable pace, and how much correction is necessary?
 
-Record player effort, corrections, pacing, continuity, and retrieval/write observations separately from structural validation. See CONTRIBUTING.md for reporting.
+Keep the model, known reasoning setting, build and starting save with a session note when practical. These notes are optional and outside fictional state. Different models encounter different situations in a continuing campaign, so those sessions do not by themselves establish a controlled model ranking.
 
-For the original v0.7.2 continuity trial, use [ADMIN/PLAYTEST_V072](ADMIN/PLAYTEST_V072.md). A run from identical prepared facts checks runtime/save behavior; evaluating the optional preparation aids also requires observing setup and the resulting player experience.
+The optional cases in [ADMIN/TESTS](ADMIN/TESTS.md) and historical [v0.7.2 trial protocol](ADMIN/PLAYTEST_V072.md) remain available for targeted diagnosis. Fault-injection checks belong only in disposable copies; ordinary play does not require them.
+
+Before sharing a report, sanitize private identities, secrets and source material. See [Contributing](CONTRIBUTING.md). Report actual observations separately from structural checks and distinguish a repeatable failure from an initial interpretation.

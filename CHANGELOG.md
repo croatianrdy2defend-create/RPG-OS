@@ -6,6 +6,19 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 - No unreleased changes.
 
+## v0.8.0 — integrated agent state, experimental playtest release (2026-09-07)
+
+- Added a compact core rule and cold agent-state procedure using existing person/system authorities, without new required fields or startup reads.
+- Connected independent portrayal, causal change, actual randomness and eligible initialization through setup, worldbuilding, character construction, binding, saving, resumption and handover.
+- Preserved accepted relationships, individual variation, real initiative and meaningful influence. Repeated equivalent attempts and unperceived OOC hopes do not create automatic progress or resistance.
+- Added a protected v0.8 upgrade path preserving previous campaign/runtime copies and existing record formats; no retrospective cast generation or baseline rewriting.
+- Kept interrupted setup determinations reachable through the active recovery operation until the bind completes or the setup is explicitly cancelled/replaced, including after physical restoration of the starting files.
+- Reworked Quick start and installation guidance, added a real-campaign playtest guide, and expanded the illustrated mechanics guide to eight diagrams.
+- Fixed Windows release-archive line-ending conversion while retaining exact committed-blob checks, and repaired the public issue form's version field while accommodating brief play incidents.
+- Kept structural, recovery and packaging checks while making ordinary human campaign play the primary next evaluation of quality. Optional diagnostics remain available; no scripted behavioral pilot schedule is required before playing.
+- Retained ordinary requested-save/checkpoint semantics. New unsaved private state remains best-effort; no automatic protected-establishment experiment, new live-state layer or receiver writes to frozen source are included.
+- Preserved the unbound fresh-install package, Freeform-only engine inventory and provider-neutral campaign wording. See V0.8.0_CHANGES.md and VERIFICATION.md for scope and observed evidence.
+
 ## v0.7.3 — live scene handover and illustrated mechanics (2026-09-06)
 
 - Added optional live scene export, explicit receiving-GM activation, factual return, protected import, and cancellation. The source pauses at the pending choice; ordinary CHECKPOINT and archive evidence boundaries retain their meaning.

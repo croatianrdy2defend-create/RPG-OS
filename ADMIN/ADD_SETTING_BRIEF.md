@@ -10,3 +10,5 @@ Cold ADMIN procedure for an explicitly requested addition, including a staged ol
 6. Read back its identity, substance, and declared routes, then finish the operation. Report exactly what changed.
 
 Do not write current state, a roster, secrets, scene plans, or forecast into the brief. Presentation belongs in the accepted campaign agreement. No mandatory script, external inventory, magic acceptance phrase, or fresh-chat ritual is required. If relevant accepted play is unsaved, preserve it before making a baseline change that could affect its interpretation.
+
+For independent agents, include only useful public variation or supported capability constraints. Particular loyalties, beliefs and initialization weights belong in their narrow cold owners. Advertise actual domains, lookup triggers and capability tokens in Available depth; keep exact body paths in the descriptor/index. Missing species or culture folders do not require an invented taxonomy, and a public group tendency does not determine an individual's state.

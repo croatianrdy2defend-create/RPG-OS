@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.7.3
+# INSTANCE schema — v0.8.0
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -88,7 +88,7 @@ One current authority per value. This is a semantic check, not something a table
 | Full PC/profile and other mutable sheet/build values | INSTANCE/CHAR/PC.md or its explicit shards |
 | What the PC learned, with rumor/belief/uncertainty and sources | KNOWN |
 | Private conditions and mutable campaign/world-system state | NOW or explicit shards routed from NOW |
-| Current person/relationship state, including materially established NPC beliefs | PEOPLE/<person_id>.md or its explicit shards |
+| Current individual-agent/relationship state, including material stance, aims and beliefs | PEOPLE/<person_id>.md or its explicit shards |
 | Stable emergent-person identity | Minimal established CANON in that person's INSTANCE record |
 | Stable person-id and route mapping | CAST_STATUS |
 | Accepted rulings and corrections | CORRECTIONS, with a resume pointer when currently relevant |
@@ -100,9 +100,11 @@ MODULE baseline files remain stable. Before any later transition or current over
 
 An emergent person with durable causal state receives one stable person_id, minimal established CANON, complete current mutable state, and a CAST_STATUS route. A transient extra need not be promoted. An emergent durable system receives one stable system_id and `INSTANCE/NOW/<system_id>.md`, explicitly routed from NOW. Preserve its complete established current state and the minimum operating definition needed to continue: triggers/non-triggers, dependencies/order, and cue lifecycle when relevant. Missing rules stay unknown; do not invent them for completeness.
 
-Optional portrayal anchors belong with the person's existing stable canon or current state according to what they describe. Keep one authority; they require no additional record or fields.
+PEOPLE and existing person_id routes also support nonhuman individual agents. A collective/controller may instead use its selected NOW system owner; a shared variable never belongs to both. Stance is the target- and context-relevant subset of existing current state, not another authority. Optional prose may retain its scope, orientation, constraints, meaningful change causes and actual generation method/result reference. Preserve fixed, deliberately unfixed, unknown-to-PC, missing-source and inapplicable distinctions. No new mandatory headings, numerical vectors or default attitudes are introduced.
 
-When a private process remains live across fresh chats and no other resident fact makes its check discoverable, retain one non-revelatory condition/id/route in Active processes. Before an INSTANCE current record exists, that save pointer targets the existing MODULE baseline/definition body; the planned future INSTANCE destination belongs inside the definition. Once current state materializes, redirect the save pointer to that INSTANCE authority. Remove or demote a cue when it retires. Retrieval, review, and saving never advance a process. Elapsed time advances it only when its established rule says so.
+Optional portrayal anchors belong with the person's existing stable canon or current state according to what they describe. Keep one authority; they require no additional record or fields. Use `OS/AGENT_STATE.md` for a material establishment/change task, not as another startup dependency. Authorized private generation can establish a fact within the accepted scope without disclosing it to the PC; preparation and provisional interpretation do not become facts at save time.
+
+When a private process remains live across fresh chats and no other resident fact makes its check discoverable, retain one non-revelatory condition/id/route in Active processes. Before an INSTANCE current record exists, that save pointer targets the existing MODULE baseline/definition body; the planned future INSTANCE destination belongs inside the definition. Once current state materializes, redirect the save pointer to that INSTANCE authority. Remove or demote a cue when it retires. Retrieval, review, and saving never advance a process. Elapsed time advances it only when its established rule says so. Retain the scope/result of an already evaluated opportunity when needed to avoid repeated effects; a motive or repeated query alone creates no new opportunity or draw.
 
 Known-to-PC, private truth, exact fidelity, authorship ownership, and provisional interpretation are different distinctions, not mutually exclusive labels. Preserve the qualification needed for each fact. Hearing a rumor establishes that it was heard. Exact wording can be private. Missing historical evidence does not establish an event or make it available to invent retrospectively.
 
@@ -119,6 +121,8 @@ Separate established references, explicit player preferences, observed conduct, 
 Scene handovers are optional operational records outside INSTANCE, governed by `ADMIN/SCENE_HANDOVER.md`. `HANDOVER/ACTIVE.md` pauses source play; the package's CONVERSATION and GM_STATE files are frozen transport copies, not competing current authorities. No new CURRENT_SAVE metadata or commit kind is introduced. CHECKPOINT still retains its evidence boundary. An accepted return is compiled into the existing current authorities and full-save evidence once; its retained RECEIPT identifies the result. Normal startup checks only the active marker, never old packages. Installing the handover procedure alone creates no marker, package, person or fictional progress.
 
 PLAY writes no campaign files. Explicit Save/CLOSE/END SESSION uses ADMIN/CLOSE_CONTRACT.md; CHECKPOINT uses its reduced-evidence path. REVIEW writes only optional notes. RECALIBRATE writes only an explicitly accepted prospective agreement. CORRECT follows ADMIN/CORRECT.md for narrow current and historical repair. Safety changes take effect in the conversation immediately; durable changes use the recovery procedure and matching save flag.
+
+Independent-agent establishment adds no automatic write boundary, save kind or private working layer. Newly established unsaved private facts have best-effort context retention until a successful authorized save. Requested CHECKPOINT still preserves every accepted current change and the pending declaration, not just a stance. The receiving GM cannot checkpoint frozen source authorities. Missing retained state requires honest source/repair handling, not silent regeneration.
 
 Before overwriting any campaign file, follow ADMIN/RECOVERY.md: verified preimages and planned new paths in RECOVERY/<operation-id>, plus RECOVERY/ACTIVE.md. Any present active marker blocks ordinary boot until recovery or completion is verified. CURRENT_SAVE is published last for bind/save, but this is not multi-file atomicity. Preserve recovery materials; never claim automatic rollback. A failed review or agreement operation does not change unrelated state, but any pending recovery marker must be resolved before PLAY.
 

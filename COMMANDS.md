@@ -27,7 +27,7 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 | REVIEW | Optional cold reflection; no automatic follow-up to saving |
 | VALIDATE / check the files | Read-only structural inspection, with limits stated |
 | AUDIT | Report actually observed loading/actions; no claim to unobserved context |
-| Upgrade this older campaign | Follow ADMIN/UPGRADE_V07.md with preservation and an accepted mapping |
+| Upgrade this campaign to v0.8 | Follow ADMIN/UPGRADE_V08.md in a protected copy; older formats route through the existing mapping |
 | Add an engine | Follow ADMIN/ADD_ENGINE.md |
 | Add/refine the setting brief | Follow the corresponding ADMIN procedure |
 | Recover an interrupted operation | Follow ADMIN/RECOVERY.md before resuming |
@@ -35,3 +35,5 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 A clear acceptance of a displayed proposal is enough. No special acceptance token is required. A request to review a draft is not acceptance, and a draft never silently becomes canon.
 
 Technical identifiers in a save confirmation support recovery. You do not need to memorize them.
+
+Independent NPC state is part of ordinary play; no "generate stance" command or recurring reminder is required. Newly established facts remain unsaved until a requested save completes. Switch models at a completed save, or use handover for an unfinished scene. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) for optional session and incident notes.

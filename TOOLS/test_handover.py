@@ -131,6 +131,34 @@ class HandoverTests(unittest.TestCase):
         self.write("MODULES/README.md", "changed established lore")
         self.assert_invalid("snapshot hash mismatch")
 
+    def test_saved_agent_state_owners_are_covered_without_new_schema(self):
+        # These are ordinary existing owners; the checker protects their bytes,
+        # not the receiving GM's interpretation or portrayal of these facts.
+        owners = {
+            "OS/AGENT_STATE.md": "# Agent state\n\nCold procedure in the matching source workspace.\n",
+            "INSTANCE/PEOPLE/tavi.md": "# Tavi\n\nDislikes Iri's criticism but trusts its work. Promised access until fourth tide. Mistakenly believes the west channel is closed. Personal interests remain unfixed.\n",
+            "INSTANCE/NOW.md": "# NOW\n\n## Sluice watch\n\nAccess expires at fourth tide. No earlier inspection is due.\n",
+            "INSTANCE/KNOWN.md": "# KNOWN\n\nIri heard the claim that the west channel is closed; it is unverified.\n",
+        }
+        for relative, content in owners.items():
+            self.write(relative, content)
+        self.outgoing["snapshot_files"] = handover.snapshot(self.root)
+        self.flush_outgoing()
+        self.incoming["gm_state_sha256"] = handover.digest(self.root / self.package / "GM_STATE.md")
+        self.flush_return()
+        before = {relative: (self.root / relative).read_bytes() for relative in owners}
+        for relative in owners:
+            self.assertEqual(self.outgoing["snapshot_files"][relative], handover.digest(self.root / relative))
+        for args in ((), ("--return",)):
+            code, result = self.run_cli(*args)
+            self.assertEqual(code, 0, result)
+        self.assertEqual(before, {relative: (self.root / relative).read_bytes() for relative in owners})
+        for relative, content in owners.items():
+            with self.subTest(path=relative):
+                self.write(relative, content + "\nChanged after source freeze.\n")
+                self.assert_invalid("snapshot hash mismatch", "--return")
+                self.write(relative, content)
+
     def test_omitted_snapshot_file(self):
         self.outgoing["snapshot_files"].pop("MODULES/README.md")
         self.flush_outgoing()

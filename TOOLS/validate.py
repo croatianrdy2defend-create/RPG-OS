@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only structural validator for RPG OS v0.7.3.
+"""Read-only structural validator for RPG OS v0.8.0 experimental.
 
 The validator writes no report and performs no repair.  Its output is a
 point-in-time observation of the supplied tree, not a host or semantic test.
@@ -23,7 +23,7 @@ from pathlib import Path, PurePosixPath
 from typing import Any, Iterable, Optional
 
 
-VALIDATOR_VERSION = "VALIDATE-v3.0.2"
+VALIDATOR_VERSION = "VALIDATE-v3.1.0"
 
 CURRENT_SAVE_FIELDS = (
     "engine", "module", "pc_record", "campaign_id", "save_id", "save_rev",
@@ -58,6 +58,7 @@ REQUIRED_FILES = (
     "OS/BOOTSTRAP.md",
     "OS/LAW.md",
     "OS/RETRIEVAL.md",
+    "OS/AGENT_STATE.md",
     "ENGINE/_CONTRACT.md",
     "ENGINE/freeform.md",
     "MODULES/_CONTRACT.md",
@@ -82,6 +83,8 @@ REQUIRED_FILES = (
     "ADMIN/RECOVERY.md",
     "ADMIN/CORRECT.md",
     "ADMIN/UPGRADE_V07.md",
+    "ADMIN/UPGRADE_V08.md",
+    "ADMIN/PLAYTEST_V08.md",
     "ADMIN/LOAD.md",
     "ADMIN/MIGRATE_V05.md",
     "ADMIN/NEW_GAME.md",
@@ -107,6 +110,7 @@ REQUIRED_FILES = (
     "MECHANICS.md",
     "VERSION",
     "V0.7.3_CHANGES.md",
+    "V0.8.0_CHANGES.md",
     "README.md",
     "SHARE.md",
     "LICENSE",
@@ -2367,7 +2371,7 @@ def make_report(
             "result": structural_result,
             "provenance": "SCRIPT-VERIFIED",
             "coverage": [
-                "required release files, executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
+                "required release files including the cold v0.8 agent-state, upgrade and playtest documents; executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
                 "CURRENT_SAVE metadata/readable sections, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
                 "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
                 "optional cold Bearing provenance and staleness warnings; active recovery and handover marker presence (handover package integrity requires its separate checker)",

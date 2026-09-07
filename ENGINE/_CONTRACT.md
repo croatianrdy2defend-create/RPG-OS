@@ -1,4 +1,4 @@
-# Engine contract
+# Engine contract — v0.8.0
 
 An ENGINE supplies rules, not a setting, narrative voice, or campaign agreement. Any commercial, open, oracle-driven, or freeform system can be used when its required procedures and values are available. The kit ships only Freeform.
 
@@ -32,6 +32,16 @@ Campaign depth, GM initiative, routine delegation, compression, and presentation
 An explicitly accepted fixed outcome or structured destination defines what is already settled within its scope; do not offer that result as an open roll or judgment. Resolve genuinely open matters with this engine. A fixed-scope agreement is not permission to falsify a roll, silently change a resolution procedure, or decide a reserved PC choice. Genuine mechanical errors remain correctable under ironman; dissatisfaction with a valid outcome is not an error.
 
 MODULE names the installed engine. RULES_HOOKS may clarify compatible usage; an actual change to resolution or character rules needs a distinct engine id. Later explicit rulings remain in INSTANCE/CORRECTIONS.md.
+
+## Independent establishment and generation
+
+Use `OS/AGENT_STATE.md` for a materially unresolved agent establishment/change task. Opportunity selection, initialization of an eligible individual fact and resolution of an attempt are separate procedures. Existing fixed facts and deliberately open triggers retain their scope; no agent-state feature installs a universal reaction or relationship table.
+
+A supplied optional generator states the context/population, eligible dimensions, constraints, outcome meanings, actual random-input method and establishment scope. Select the compatible procedure and mapping before obtaining its result. Hard constraints restrict eligible outcomes; conditional or correlated dimensions may preserve coherence. Preserve the obtained result and method at the scope needed for later retention. Do not reroll, remap or change contextual modifiers to satisfy an OOC hope or make play artificially difficult.
+
+Use this engine's authorized judgment when no random method is selected. If a requested random method lacks a real source, obtain a player-supplied result or agree an alternative; model token sampling is not a reported die roll. A seed is useful only with the retained algorithm, inputs and mapping. A changed generator governs eligible future establishments, not existing people. An unchanged resolved opportunity gets no extra draw merely because it is queried more often; a new cause or eligible interval follows its governing procedure.
+
+These procedures neither grant PC authorship nor authorize PLAY writes. Ordinary functional exchanges need no extra roll, record or subsystem. Existing record owners and requested save/checkpoint procedures retain established results; unsaved private state remains best-effort context.
 
 ## Locality and sources
 

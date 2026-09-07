@@ -1,4 +1,4 @@
-# RPG OS v0.7.3 targeted reference
+# RPG OS v0.8.0 targeted reference
 
 Cold lookup guide. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 
@@ -13,7 +13,8 @@ Ask what existing fact or procedure could materially change the answer. Use the 
 | Resolution rule | Applicable CORRECTIONS, then bound ENGINE and named procedure; relevant module RULES_HOOKS |
 | Learned fact and qualification | `INSTANCE/KNOWN.md`, then cited evidence if exactness matters |
 | Current system or private condition | `INSTANCE/NOW.md` or exact current pointer; only the relevant system |
-| Named person's condition or relationship | Exact INSTANCE/PEOPLE record; CAST_STATUS maps identity when needed; relevant stable MODULE CANON separately |
+| Individual agent's condition, stance or relationship | Exact INSTANCE/PEOPLE record; CAST_STATUS maps identity when needed; relevant stable MODULE CANON separately; shared controller state remains with its selected NOW owner |
+| Materially unresolved agent establishment or change | `OS/AGENT_STATE.md` only when guidance is needed, then the applicable engine/source procedure; no automatic startup or per-dialogue read |
 | World detail or concrete setting-defined form | Bound `MODULE.md` capability map, then matching entrypoint and narrow body |
 | Private truth or defined unknown | Matching TRUTH or other private record; preserve access conditions and deliberate openness |
 | Past event or disputed memory | Known archive pointer; otherwise ARCHIVE/INDEX -> session INDEX -> evidence. Optional message/relation ledgers are shortcuts |
@@ -29,7 +30,7 @@ After a failed search, distinguish "not found" from "does not exist". Ask only w
 
 ## Preserve scope
 
-The Setting Brief supports ordinary background. A requested concrete form with stored governing lore requires that source; established individual facts retain priority over type-level defaults. Category prevalence creates no scene quota.
+The Setting Brief supports ordinary background. A requested concrete form with stored governing lore requires that source; established individual facts retain priority over type-level defaults. Category prevalence creates no scene quota. Retrieve group lore only when the present question needs it; reuse already established individual results rather than reconstructing them from group defaults.
 
 Current INSTANCE records supersede corresponding mutable starting baselines. Do not combine old and new totals or reintroduce superseded traits. Stable MODULE CANON still supplies unchanged background. A T0 value supports continuity only before an accepted change or due transition replaces it.
 

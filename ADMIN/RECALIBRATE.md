@@ -8,6 +8,8 @@ Every completed v0.7.1 agreement includes exactly one substantive clause in each
 
 Engine/module identity, established fiction, PC values, archive evidence, and operator safety have separate procedures. A new operator limit applies immediately; it does not wait for this edit.
 
+Installing the compatible v0.8 program uses `ADMIN/UPGRADE_V08.md`; it does not itself revise this campaign's agreement. More consistent use of existing independent agent facts needs no new questionnaire or compulsory clause. If a requested change introduces a materially new authorship or generation method, settle its scope and exact compatible procedure prospectively within these five sections. Preserve existing people, relationships, resolved opportunities and unknowns; incomplete old provenance is not a reason to rerandomize them. Distinguish an allowed initialization parameter from a changed resolution system, which requires ADD_ENGINE and a separately reviewed transition. This release adds no automatic private-establishment checkpoint permission or live-state layer.
+
 ## Procedure
 
 1. Show each affected existing clause or omission and proposed replacement/supplement, with its prospective effect. Preserve unaffected content. Form selection and nondisclosure are separate grants. Under accepted opacity, show the truthful delegation envelope rather than revealing a concealed choice; never manufacture a false form claim. If the player supplied the exact replacement or already accepted the displayed proposal, do not ask again. Otherwise obtain ordinary explicit acceptance; no special phrase is required.

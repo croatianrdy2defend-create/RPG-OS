@@ -1,4 +1,4 @@
-# Contributing to RPG OS v0.7.3
+# Contributing to RPG OS v0.8.0
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. Keep public examples synthetic or sanitized.
 
@@ -7,6 +7,10 @@ Useful contributions show a specific failure, its owning instruction or record, 
 Distinguish structural checks, observed host behavior, semantic judgments, and player ratings. A validator pass does not prove correct agency, pacing, meaningful memory, or enjoyable play. State the host/model only when actually known.
 
 For a report, include the relevant accepted agreement, present situation, player request, necessary reference records, observed retrieval/write actions, and the expected versus actual result. Exact quotes matter when the defect concerns a promise, choice, or ambiguity. Do not publish an entire private campaign.
+
+For the v0.8 experimental release, ordinary campaign play is the primary evaluation of practical quality. A brief incident note is useful; players need not complete scripted trials or interrupt every scene with checks. When known, preserve the model, reasoning setting, build and starting save alongside the relevant conversation. Keep this operational context outside fictional state. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md).
+
+When diagnosing an agent-state failure, distinguish portrayal of a retained fact, initialization of a new fact, and loss or omission during retention. Check both unsupported accommodation and artificial resistance, and whether actual evidence can change the appropriate belief or relationship. A saved biased result is still biased; intact file bytes alone do not establish fair GMing. Optional paired replays from a separate saved copy can isolate a reported failure without rewinding the live campaign.
 
 ## Verification
 

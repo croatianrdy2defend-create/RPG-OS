@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.7.3
+# Validation and behavioral fixtures — v0.8.0 experimental
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -16,11 +16,19 @@ Run the regression suite and a whole-workspace validator scan sequentially. Scan
 
 Regression coverage includes clean unbound and bound trees; missing or inconsistent required metadata/sections; each named agreement clause's presence, section, uniqueness and nonplaceholder value; benign metadata extensions; unchanged character copies; checkpoint/full-save evidence boundaries; private watch routes; safe module/archive/current routes; pending and completed recovery material; optional cold review notes; revised LAW provenance; and unchanged target bytes during validation. Code/comments cannot impersonate missing metadata or clauses.
 
+The v0.8 regressions also reject missing or empty new lifecycle documents and accept existing ordinary PEOPLE/NOW/KNOWN prose without new agent-state fields. The handover suite checks that those owners and the cold protocol are included in the frozen source snapshot and that changed bytes are rejected. These tests do not score the contents' truth, independence, social consequences or receiving-model behavior.
+
 Failure-branch tests deliberately change only disposable validator copies to check target mismatch and change during execution: both must return INCOMPLETE/exit 2 with meaningful messages and integer-or-null line fields. A fixture-only recovery simulation verifies valid prior state, interrupted writes, file restoration with an orphan empty directory, and safe removal of recorded empty new directories before the marker is cleared. It preserves pre-existing, unlisted, uncreated-by-operation and nonempty directories, along with recovery evidence. This simulation does not automate the product's manual recovery procedure or prove a model follows it. Run the actual suite and report its observed result; this document is not evidence that it passed.
+
+## Experimental release and campaign playtesting
+
+v0.8 is a complete experimental kit for operator-led campaign playtesting across models. A scripted behavioral pilot is not a release prerequisite. Structural, recovery-fixture, handover-integrity and packaging regressions still run; their results must retain their limited evidence labels. Run `python -B TOOLS/test_package_release.py` for isolated synthetic exports, including rejection of missing new extension files and checks of archive contents, version-derived names, hashes and unsafe paths.
+
+Use [PLAYTEST_V08](PLAYTEST_V08.md) for actual campaign observations and [UPGRADE_V08](UPGRADE_V08.md) for a prospective, scoped upgrade of an existing campaign. The reference fixtures below remain available for investigating a reproduced problem; they are not a compulsory onboarding exercise or a claim that the experimental protocol has passed behavioral evaluation. Keep campaign evidence and personal playtest notes out of the public fresh-install archive.
 
 ## Behavioral evidence protocol
 
-The following are proposed acceptance fixtures for the current readable agreements and state representation. All behavioral and model-led maintenance fixtures are NOT RUN until actual outputs and observations are collected; automated fixture simulations do not change that status. The optional cold [v0.7.2 paired pilot protocol](PLAYTEST_V072.md) specifies an original small campaign, fixed player inputs, fresh-context continuation and file-based scoring. It is coordinator material, never a normal GM startup dependency.
+The following are proposed acceptance fixtures for the current readable agreements and state representation. All behavioral and model-led maintenance fixtures are NOT RUN until actual outputs and observations are collected; automated fixture simulations do not change that status. The historical cold [v0.7.2 paired pilot protocol](PLAYTEST_V072.md) remains available as reference material; it is not the required v0.8 evaluation path or a normal GM startup dependency.
 
 Use clean copies, supplied original lore, comparable model/settings and player wording, and real read/write traces where the host exposes them. Record package identity and available evidence. Run opposing grants against identical material where the question concerns authority. Keep actual causal state fixed unless causal status is the variable being tested: an established due event still occurs in a referee game.
 
@@ -123,6 +131,16 @@ On a disposable old bound campaign, preserve source files and historical evidenc
 ### M06 — Host and privacy capability
 
 Check actual reads/writes and what the operator can see. If hidden preparation cannot be concealed, use the accepted visible-preparation or deliberately-unfixed method; do not promise an unavailable secret agent. A host lacking code can still use the Markdown procedures, but structural results remain MODEL-CHECKED/INCOMPLETE unless the script actually ran. Never certify section isolation, file-write success, recovery, or hidden state from a model's own assertion alone.
+
+### M07 — Pending opening draw across interruption and restoration
+
+Optional diagnostic, NOT RUN. This is available when investigating an actual bind problem; it is not a scripted behavioral release gate. Use disposable copies of an accepted new-game setup with one authorized random opening determination. Before requesting input, record the pending determination and intended result path in the active bind operation.
+
+First interrupt after the randomizer returns but before its successful result is retained in a recoverable file. Give a fresh GM the actual remaining records and honestly unavailable tool-output interval. It must preserve the pending operation and disclose the missing result, without fabricating a receipt, silently drawing again or claiming exact recovery. If an actual retained source remains accessible, it should recover that source instead of declaring a false gap.
+
+Separately retain a successful result, interrupt the bind, and restore the pre-bind files. The accepted setup remains pending: status stays started, ACTIVE retains its exact operation/result route, and ordinary startup follows it without scanning recovery history. A fresh GM resuming the same bind must reuse the retained result, preserve module T0 ownership and the empty INSTANCE bind convention, and complete the already authorized target before removing the marker. In a separate cancellation branch, explicit operator cancellation/replacement permits completed restoration and marker removal with the determinations' disposition recorded; a later attempt must not claim its new result is the recovered old one.
+
+Observe real model/tool actions and source availability separately from structural marker findings. Existing automated pending-marker checks do not execute this diagnostic or prove faithful draw reuse.
 
 ## Scene handover fixtures
 

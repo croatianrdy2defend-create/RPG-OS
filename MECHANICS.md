@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.7.3 is a file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.8.0 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -13,6 +13,7 @@ This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compa
 - [From fresh install to campaign](#from-fresh-install-to-campaign)
 - [The agreement and authorship](#the-agreement-and-authorship)
 - [Inside a turn](#inside-a-turn)
+- [Independent people and other agents](#independent-people-and-other-agents)
 - [Truth, knowledge, preparation, and history](#truth-knowledge-preparation-and-history)
 - [Saving the present and preserving evidence](#saving-the-present-and-preserving-evidence)
 - [Recovering interrupted work](#recovering-interrupted-work)
@@ -44,6 +45,7 @@ The fresh kit contains generic instructions and empty run templates. Campaign-sp
 ```text
 RPG_OS/
 |-- OS/                    GM core, startup, targeted retrieval
+|   `-- AGENT_STATE.md     Cold establishment and portrayal procedure
 |-- ADMIN/                 Setup, saves, corrections, recovery, handover
 |-- ENGINE/
 |   |-- _CONTRACT.md       Adapter requirements
@@ -135,6 +137,58 @@ Private processes advance when their recorded triggers apply. Reading a storm cl
 
 The [retrieval guide](OS/RETRIEVAL.md) preserves these distinctions. It also prohibits filling missing historical wording or exact values with plausible guesses.
 
+## Independent people and other agents
+
+An agent's relevant state gives the GM a basis for its decisions: what it can do, what it believes, what it wants and how it currently regards the matter at hand. People, creatures, machines and collectives need different kinds of description. There is no universal list of emotions or a numerical relationship meter.
+
+“Agent” means one of these fictional actors, including a decision-making system. The same GM portrays them through selectively retrieved facts; there are no separate AI workers running each NPC or continuously simulating the whole cast.
+
+The GM first uses established facts. A deliberately unfixed property follows its agreed trigger. A missing source is a retrieval problem, not permission to invent a convenient answer. Only an eligible new detail is established through the accepted procedure before it affects a consequential response. The [cold agent-state procedure](OS/AGENT_STATE.md) supplies this detail when needed; it is not another file loaded at every startup.
+
+```mermaid
+flowchart TD
+    agentNeed["A response needs an individual fact"] --> agentSource{"What is its source status?"}
+    agentSource -->|"Established"| agentUse["Recover the actual fact and its scope"]
+    agentSource -->|"Missing authority"| agentFind["Retrieve or keep the decision pending"]
+    agentSource -->|"Unfixed; trigger not reached"| agentOpen["Preserve the unresolved property"]
+    agentSource -->|"Eligible under accepted procedure"| agentEstablish["Establish from judgment or actual random input"]
+    agentEstablish --> agentUse
+    agentUse --> agentPortray["Portray from capabilities, knowledge and aims"]
+    agentPortray --> agentCause["Apply only supported changes and due consequences"]
+    agentCause --> agentChat["New state remains unsaved in conversation"]
+    agentChat --> agentSave["Requested save: compile complete present into existing owners"]
+    agentSave --> agentResume["Fresh GM retrieves retained state without regenerating it"]
+```
+
+### Example: a coworker, a mistaken belief, and a fresh GM
+
+In this illustrative station scene, coworker Mara values safe maintenance. She trusts the PC's technical skill, doubts their thoroughness, and keeps a personal distance. A service hatch is actually open, but Mara believes it is sealed because she read an outdated log. Her mistaken belief and the hatch's true condition are separate established facts.
+
+| Stage | What happens and what remains true |
+|---|---|
+| **Before the encounter** | The opening records establish Mara's mixed relationship and mistaken belief. The GM can portray courteous, cautious cooperation. Neither the PC's wish for friendship nor Mara's wrong information changes the hatch's actual condition. |
+| **A relevant event** | The player declares that the PC inspects the hatch and shows Mara the open latch. Mara looks and acknowledges the discrepancy. Direct observation changes her belief; this careful check gives her a reason to trust the PC's thoroughness more. Her personal distance remains unchanged. |
+| **The player requests a full save** | The complete relevant current relationship and belief, with their cause, go into Mara's person record. The PC's observation goes into KNOWN. Available declarations and dialogue go into ARCHIVE. The unchanged hatch fact keeps its existing world owner; the save's useful pointers locate current records. No additional action or attitude change occurs during saving. |
+| **A fresh GM resumes** | The new GM retrieves Mara's current record: greater professional trust, continued personal distance, and knowledge that the hatch is open. It does not replay the discovery, restore her old belief, or infer friendship. A later request for help is judged from these facts and the actual circumstances. |
+
+The valid change is as important as the continuity. Ignoring the observation would make Mara rigid; turning a careful inspection into universal affection would erase the distinction between professional trust and personal closeness. Ordinary help or initiative can be appropriate without manufacturing an obstacle.
+
+This example uses established facts and Freeform judgment, so it requires no random draw. If an eligible unknown instead uses a selected random procedure, its context and outcome meanings must be settled before obtaining real input. The result is then retained at its actual scope; repeated attempts or a new GM do not authorize another draw.
+
+Stable background stays in MODULE; later mutable individual state uses PEOPLE, and collective/system state uses its selected NOW authority. Until the requested save succeeds, the encounter's new state remains in conversation. A full save preserves available evidence; a checkpoint preserves current state without adding that evidence. Neither can reconstruct a lost quotation or hidden determination.
+
+Three distinctions keep the procedure honest:
+
+| Distinction | Practical effect |
+|---|---|
+| Opportunity, initial state, attempted influence | Meeting another person, establishing an eligible trait and resolving persuasion are different questions. Repeating an equivalent attempt does not reroll identity or create another chance by itself. |
+| Judgment and randomness | A random procedure needs actual input and predefined applicable outcomes. GM judgment remains valid when it is the accepted method; fabricated rolls do not add independence. |
+| Motive, plan and event | Wanting to send a message does not mean it was sent. A real eligible opportunity can produce initiative; repeatedly checking for messages does not multiply a resolved opportunity. |
+
+Ordinary conversation holds new state only as working context. Existing saved records are recoverable; a newly formed unsaved intention is not guaranteed to survive context loss. An authorized setup can establish a recorded private opening, and a requested save can preserve subsequent facts. v0.8 does not introduce automatic checkpoints or a second live-state store. If a result is truly unavailable after interruption, report the gap instead of presenting a replacement as the original.
+
+The player does not operate this procedure turn by turn. Narration and dialogue should remain natural, with the next meaningful reserved choice returned promptly. Actual campaign play will test whether these instructions improve continuity and pacing; the [playtest guide](ADMIN/PLAYTEST_V08.md) keeps optional observations outside the fiction.
+
 ## Truth, knowledge, preparation, and history
 
 These are separate questions, not one all-purpose memory:
@@ -201,6 +255,8 @@ flowchart TD
 
 The marker takes precedence even if a file looks newer or an operation says “complete.” Recovery checks what actually happened. Restoration removes only verified operation-created files and, when empty, operation-created directories; retained backups remain available.
 
+For a bind with pending generated determinations, restoring the starting files alone leaves the accepted setup pending. Its active marker and exact result routes remain until verified completion or explicit setup cancellation/replacement. This keeps a fresh chat from losing the reference and silently drawing again.
+
 This is a recoverability procedure, not automatic rollback or atomic storage. If essential accepted content is unavailable, the GM preserves the pending operation and asks only for what is missing. See [Recovery](ADMIN/RECOVERY.md).
 
 ## Handing an active scene to another GM
@@ -233,6 +289,8 @@ Preparation reuses an already exact checkpoint or creates one; no fictional time
 
 The receiving GM needs the matching workspace and must read the briefing and immediate dependencies. It continues with the player from the pending action while leaving source authorities frozen. Hidden stats and decisions transfer only if actually established; model-internal reasoning and missing chat text do not.
 
+Retained agent state includes mixed relationships, actual beliefs, established reasons for change, unresolved properties and any relevant obtained random result. The receiving GM does not generate the person again. Its newly developed facts remain in the receiving conversation until captured in the permitted return; no source checkpoint is allowed while those authorities are frozen.
+
 `SCENE_RETURN.md` supplies a factual non-graphic account, concrete public/private changes, source qualifications, and the next unresolved decision. This return format does not impose a depiction policy on the receiving scene. Omitted physical detail must not erase a promise, expenditure, injury, discovery, or uncertainty.
 
 Import verifies the same campaign, save, agreement, briefing, conversation, and frozen source files. Semantic review then checks authorship, sequence, prior values, triggers, and evidence. A changed base requires reconciliation. A retained `RECEIPT.md` records imported event IDs and resulting save identity so repeated imports apply nothing again.
@@ -254,5 +312,7 @@ The host must provide actual file reads, durable writes, and readback for the no
 The optional [validator](TOOLS/validate.py) checks its documented structural scope. The [handover checker](TOOLS/handover.py) checks identities, paths, hashes, snapshot coverage, required sections, and duplicate event identifiers. It does not write a package, run another model, or import changes.
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
+
+For v0.8, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

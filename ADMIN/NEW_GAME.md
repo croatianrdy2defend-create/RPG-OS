@@ -34,6 +34,14 @@ When the selected depth includes recurring people or consequential hidden facts,
 
 Use supplied or accessible source references and label gaps honestly. Request the needed fact/procedure, preserve an unknown, or propose a clear divergence. Copy every source/fidelity constraint that affects PLAY into the agreement/brief, or a real source-authority body with an exact contract/descriptor route. The brief advertises its domain, trigger, and capability only; never leave an operative constraint solely in cold POLICY. Adapters contain compact procedures and field requirements, not reconstructed books or bulk copyrighted tables. For random mechanics, establish an available real randomizer or player-provided results; no mandatory helper script is assumed.
 
+## Independent agents at the selected depth
+
+Use supplied individual facts and accepted starting relationships first. A PC hope does not determine another agent's response; an explicitly accepted ally is a real opening fact. Prepare only the independent aims, knowledge, constraints or current orientation that the opening actually needs. Ordinary role-consistent service needs no extra roll, dossier or interview. Use `OS/AGENT_STATE.md` for a materially unresolved establishment or change task, and CAMPAIGN_BUILD for selected authoring depth.
+
+Settle only material missing methods in the same proposal. Freeform judgment remains valid; when partly randomized initialization is selected, identify its eligible scope, compatible procedure, context, outcome mapping and actual random source before the draw. Reuse supplied choices. Missing randomness requires supplied input or an accepted alternative, not invented rolls. Distinguish fixed facts, PC-unknown facts, deliberately unresolved dimensions and missing required sources.
+
+State the retention limit briefly where relevant: authorized opening private facts can be recorded during bind; later unsaved hidden state has best-effort conversational retention until an ordinary requested save or checkpoint. PLAY writes no private scratch records and starts no automatic establishment checkpoint. Check spoiler visibility only if the requested mode depends on it; a filename or collapsed tool result does not prove secrecy. Use the existing reviewed/unfixed fallback when private authoring cannot be kept unexposed.
+
 ## Prepare one reviewable proposal
 
 Show the actual proposal concisely. Under accepted structural opacity, show the truthful selection/disclosure envelope rather than exposing its concealed choice or plot:
@@ -43,6 +51,8 @@ Show the actual proposal concisely. Under accepted structural opacity, show the 
 - The PC, mechanical readiness/deferrals, opening, and meaningful unknowns.
 - Selected optional systems and their initial status/current routes; any useful portrayal/investigation notes within existing bodies; any private-authoring envelope and real host disclosure limitations. Review private content only to the extent the accepted disclosure mode permits.
 - The small file manifest and accepted limits, distinguishing operator and module origins.
+
+Compile any selected generation permission into GM initiative, its actual source/procedure into an exact engine or compatible module route, and practical disclosure limits into Presentation. Keep the existing five sections and named clauses; no stance enum, retention questionnaire or new command is required. A newly authored module's fixed opening results become its reusable T0 baseline; later LOAD reuses those results rather than drawing a new population. Existing-module variability follows LOAD's unresolved-state rule.
 
 Read `MODULES/_CONTRACT.md`, `ENGINE/_CONTRACT.md`, and `INSTANCE/_SCHEMA.md` before finalizing. POLICY retains `## Voice` and `## Campaign defaults` as setup proposals. Accepted presentation goes in the run contract; accepted stronger module limits go in SAFETY. POLICY is cold during PLAY.
 

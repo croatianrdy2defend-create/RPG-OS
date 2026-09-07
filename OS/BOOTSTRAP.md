@@ -1,4 +1,4 @@
-# RPG OS v0.7.3 startup
+# RPG OS v0.8.0 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 
@@ -34,7 +34,7 @@ Exact PC values, detailed lore, subsystem bodies, and historical evidence remain
 | Correct that / revise an established fact | `ADMIN/CORRECT.md` |
 | Change how we play / RECALIBRATE | `ADMIN/RECALIBRATE.md` |
 | Review the campaign / REVIEW | `ADMIN/REVIEW.md` |
-| Upgrade an older campaign | `ADMIN/UPGRADE_V07.md` |
+| Upgrade this campaign to v0.8 | `ADMIN/UPGRADE_V08.md` — routes older formats through the existing v0.7 mapping when needed |
 | Add or refine the world brief | `ADMIN/ADD_SETTING_BRIEF.md` or `ADMIN/REFINE_SETTING_BRIEF.md` |
 | Check the files / VALIDATE | `ADMIN/VALIDATE.md` |
 

@@ -247,7 +247,10 @@ def package(root: Path, output_dir: Path | None = None, overwrite: bool = False)
             raise PackageError(f"Output exists or is unsafe; use a new directory or explicit --overwrite: {target}")
     with isolated_directory() as temporary:
         archive = temporary / archive_path.name
-        git(root, "archive", "--format=zip", f"--prefix={prefix}/", f"--output={archive}", commit)
+        # Archive canonical committed bytes, independent of checkout line-ending
+        # preferences. Keep the blob verification below as the authority.
+        git(root, "-c", "core.autocrlf=false", "-c", "core.eol=lf",
+            "archive", "--format=zip", f"--prefix={prefix}/", f"--output={archive}", commit)
         contents = safe_extract(archive, temporary / "export", prefix)
         if set(contents) != set(manifest):
             raise PackageError("Git archive does not contain exactly the committed files (check export-ignore attributes)")

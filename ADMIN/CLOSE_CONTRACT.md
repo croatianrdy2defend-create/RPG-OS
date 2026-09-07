@@ -22,6 +22,8 @@ Prepare the five readable resume sections. Preserve actual ongoing action, meani
 
 Preserve full PC details under CHAR, what the PC learned under KNOWN, private/system state under NOW, person/relationship progression under PEOPLE, id mappings under CAST_STATUS, and accepted rulings under CORRECTIONS. Do not replace detailed authority with a vague resume summary or duplicate a live total. If an emergent durable person/system first needs persistence, follow the schema's established-only record rules. Keep a non-revelatory process cue only when needed for fresh-chat discovery.
 
+Include actual independently established agent state within the accepted authoring scope: relevant current orientation, knowledge/beliefs, constraints, and supported changes. Retain useful procedure/input or change provenance when available, without storing private model reasoning. Preserve unknown and inapplicable dimensions instead of completing a vector. A missing prior hidden value is a source gap; saving cannot retrospectively establish it, reroll it, or infer it from a favorable exchange. Use `OS/AGENT_STATE.md` only if this distinction needs resolution. Material gaps must be reported without revealing private content. A requested checkpoint still compiles the complete present; no stance-only write or automatic establishment checkpoint is introduced.
+
 For historical evidence, the boundary is the prior **evidence_through**, not necessarily the prior checkpoint. Gather only accepted source actually available from that boundary forward. A checkpoint may already have applied its state transitions; archiving those transitions now must not apply them to state again. Identify source gaps explicitly; a summary is not the missing dialogue or roll record.
 
 ## Full save evidence

@@ -64,6 +64,8 @@ Choose an honest mode for each needed private domain:
 - **Constrained private generation:** the operator accepts domain, scope, exclusions, and authority before generation; write privately only if the host actually permits content to remain unexposed.
 - **Unfixed:** preserve the unknown under accepted generation constraints until legitimately established.
 
+For selected random generation, settle the applicable procedure, context and outcome mapping before obtaining real random input. Keep actual obtained inputs/results and their scope through the shared bind's recovery operation; if an interruption loses a required result, report the gap instead of inventing a receipt or redrawing it silently. Ordinary PLAY later retains unsaved state only in its working conversation until requested persistence. No private-establishment autosave or separate writable state layer is supplied.
+
 A private-preparation grant and permission to conceal the campaign's selected structure are different. Follow the separate Form selection and Structure disclosure clauses. An opacity envelope can be the truthful reviewable/control record; it need not expose the selected form, plot, or private body. It must not falsely advertise another form.
 
 Once a delegated selection creates an operative structural commitment, preserve it in the appropriate existing private/current authority with a non-revelatory route. The public envelope may stay unchanged. A fresh chat retrieves the established selection instead of choosing again; if selection genuinely remains open, record that honestly. This uses existing MODULE/INSTANCE authority and the host's actual disclosure capabilities, not a new secret subsystem.
@@ -82,7 +84,9 @@ For a campaign promising a solvable factual investigation, check that its import
 
 ### People, factions, and institutions
 
-Develop actors whose recurrence or independent action matters: motives, resources, constraints, knowledge/misbeliefs, relationships, characteristic behavior, and the next applicable action or condition. Include distinctive dialogue/portrayal cues where useful. Do not prebuild everyone.
+Develop actors whose recurrence or independent action matters: supported nature, independent aims, resources, constraints, knowledge/misbeliefs, relevant current orientation, characteristic expression, and any actually applicable action condition. These are useful distinctions, not compulsory headings or a universal psychological vector. Fixed facts and explicitly unresolved dimensions remain distinct. A short coherent body can suffice; do not prebuild everyone. `OS/AGENT_STATE.md` supplies the selective establishment/change procedure.
+
+Use the brief when sufficient. Retrieve species, culture, faction or role definitions only where they materially affect this actor; keep composition shallow and retain the individualized result in its one proper owner. Hard supported capability limits differ from cultural tendencies and personal exceptions. No placeholder taxonomy, all-to-all relationship graph, or mandatory human motive is needed. Favorable, unfavorable and mixed starting relationships are all valid within the accepted premise.
 
 An established actor can act when due without waiting for PC attention. An invented actor's existence is not a requirement to feature them. A scheduled battle can start without assuming the PC joins it. Use one stable person id for routing and later INSTANCE overlays.
 

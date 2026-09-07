@@ -6,6 +6,8 @@ An ordinary correction such as “that was two rounds, not three” or “do not
 
 Identify the actual erroneous fact, ruling, narration, stored record, or presentation boundary and the supplied correction. Preserve unrelated accepted action, choices, quantities, relationships, and evidence. Ask only when the requested replacement or the affected scope is genuinely ambiguous; do not turn every correction into agreement renegotiation.
 
+For agent-state errors, separate what was said, what was true, what each audience knew or believed, and what remained unresolved. Correcting world truth does not automatically inform an NPC. Missing prior private state or provenance is not evidence of an unfavorable stance, nor permission to replace a favorable one. Recover the actual source or retain the narrow gap; use `OS/AGENT_STATE.md` when needed. A genuinely supported change may supersede an old orientation; independence is not a reason to freeze it.
+
 Distinguish:
 
 - correction of an actual factual, recording, rules, or authorship error from dissatisfaction with a valid accepted outcome or a prospective creative change;

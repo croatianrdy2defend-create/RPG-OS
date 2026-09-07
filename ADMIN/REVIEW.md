@@ -21,6 +21,8 @@ Use whatever short headings the review needs; no fixed seven-section form is req
 
 A review may honestly conclude `no stable pattern yet`. Abstract directions are possibilities to consider, not queued scenes or instructions to realize them. Do not answer protected unknowns, tick systems, assign hidden historical causes, alter the agreement, or interpret participation as delegation.
 
+When reviewing independent agents, compare portrayed responses and changes with actual current sources, knowledge and causes. Cooperation, refusal, initiative and indifference can all be appropriate; a rejection count is not independence, and never changing is not fidelity. Separate an unavailable source from a portrayal error. Optional natural-play incident notes follow `ADMIN/PLAYTEST_V08.md`; they do not supply missing motives, retrospective probability tables or accepted world facts.
+
 ## Durable write
 
 Prepare a compact candidate with the source bases and `status: provisional`. Compare it against the actual sources and current ids. Protect BEARING and the new candidate path using ADMIN/RECOVERY.md, then write and inspect INSTANCE/BEARING.candidate.md. Publish the checked notes to BEARING only; preserve the prior preimage and finish recovery.

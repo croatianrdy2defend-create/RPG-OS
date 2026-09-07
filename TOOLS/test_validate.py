@@ -42,7 +42,9 @@ class StructuralValidationTests(unittest.TestCase):
             self.write(relative, "# Synthetic fixture document\n\nFor structural regression only.\n")
         for relative, text in validate.EMPTY_INSTANCE_TEMPLATES.items():
             self.write(relative, text)
-        self.write("TOOLS/validate.py", (HERE / "validate.py").read_text(encoding="utf-8"))
+        # Identity validation compares exact executing/target bytes, including
+        # checkout line endings. A text copy can silently normalize CRLF.
+        shutil.copyfile(HERE / "validate.py", self.root / "TOOLS/validate.py")
         self.write("TOOLS/test_validate.py", Path(__file__).read_text(encoding="utf-8"))
         self.write("ENGINE/freeform.md", "---\nid: freeform\nclass: engine\ncharacter_build_support: no-mechanical-sheet\n---\n# Freeform\n\nResolve declared intent using accepted fictional stakes.\n")
         self.write("ARCHIVE/_SCHEMA.md", "---\narchive_schema: hierarchical-scene-v1\n---\n# Archive\n\nAccepted evidence only.\n")
@@ -497,6 +499,37 @@ class StructuralValidationTests(unittest.TestCase):
     def test_missing_new_recovery_procedure(self) -> None:
         (self.root / "ADMIN/RECOVERY.md").unlink()
         self.assert_code("CORE_REQUIRED_FILE")
+
+    def test_missing_or_empty_v08_lifecycle_documents(self) -> None:
+        for relative in ("OS/AGENT_STATE.md", "ADMIN/UPGRADE_V08.md", "ADMIN/PLAYTEST_V08.md", "V0.8.0_CHANGES.md"):
+            original = self.read(relative)
+            with self.subTest(path=relative, condition="missing"):
+                (self.root / relative).unlink()
+                findings = self.check().findings
+                self.assertTrue(any(item.code == "CORE_REQUIRED_FILE" and item.path == relative for item in findings), findings)
+            with self.subTest(path=relative, condition="empty"):
+                self.write(relative, " \n")
+                findings = self.check().findings
+                self.assertTrue(any(item.code == "CORE_REQUIRED_EMPTY" and item.path == relative for item in findings), findings)
+            self.write(relative, original)
+        self.assert_valid()
+
+    def test_existing_people_prose_needs_no_agent_state_fields(self) -> None:
+        self.bind()
+        self.save.update(save_id="save-02", save_rev="2", save_parent="save-01", commit_kind="checkpoint")
+        self.save_sections["Relevant records"] += "\nCurrent contact: `INSTANCE/PEOPLE/tavi.md`."
+        self.save_sections["Active processes"] = "At the fourth tide inspect `INSTANCE/NOW.md#Sluice watch`."
+        owners = {
+            "INSTANCE/PEOPLE/tavi.md": "# Tavi\n\nTavi respects Iri's work but dislikes its public criticism. Tavi promised access to the east sluice through the fourth tide. Tavi mistakenly believes the west channel is closed. Further personal interests have not been established.\n",
+            "INSTANCE/NOW.md": "# NOW\n\n## Sluice watch\n\nThe east sluice access expires at the fourth tide. No inspection is scheduled before then.\n",
+            "INSTANCE/KNOWN.md": "# KNOWN\n\nIri heard Tavi say that the west channel is closed; Iri has not verified it.\n",
+        }
+        for relative, content in owners.items():
+            self.write(relative, content)
+        self.flush()
+        before = {relative: (self.root / relative).read_bytes() for relative in owners}
+        self.assert_valid()
+        self.assertEqual(before, {relative: (self.root / relative).read_bytes() for relative in owners})
 
     def test_unbound_cannot_contain_prior_pc(self) -> None:
         self.write("INSTANCE/CHAR/PC.md", "# Prior character\n\nAn earlier campaign character.\n")

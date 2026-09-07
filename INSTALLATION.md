@@ -1,62 +1,58 @@
-# Installation and portability
+# Installation and portability — v0.8.0 experimental
 
 ## A new campaign
 
-Extract the [v0.7.3 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.7.3) into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [QUICKSTART](QUICKSTART.md). The release contains blank, unbound templates and only the Freeform engine; it carries no campaign module, character, or artwork.
+Download the [v0.8.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.0), extract its package into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [Quick start](QUICKSTART.md). The release contains blank, unbound templates and only the Freeform engine; it carries no campaign module, character or artwork. Earlier versions remain on the [published releases page](https://github.com/croatianrdy2defend-create/RPG-OS/releases).
 
-The normal workflow requires the host to:
+The normal workflow requires the host to read named files, create and replace ordinary files, preserve them between chats, and let the model inspect what it wrote. An attachment may be readable without being writable. Establish the actual available operations during setup; use the export workflow below when needed. No paid API, background service or required script is part of the design. Smaller reference files help hosts that can only read entire files.
 
-- read named files and expose their actual contents to the model;
-- create and replace ordinary files;
-- preserve them between chats;
-- let the model inspect what it wrote.
+Do not begin from a folder containing another campaign's INSTANCE, ARCHIVE, or pending RECOVERY/HANDOVER state. Keep that campaign in its own copy.
 
-An attachment may be readable without being writable. Have the model honestly establish its available file operations during setup. No paid API, background service, code execution, or validator is required. A host with only whole-file reads benefits from smaller reference files.
+## State, randomness and practical visibility
 
-Do not begin from a folder containing another campaign's INSTANCE, ARCHIVE, or pending RECOVERY state. Retain that campaign in its own copy.
+The agent-state procedure uses existing records for individual circumstances, beliefs, aims and relationships. Setup can establish the small private opening baseline under the accepted authoring scope. During ordinary play, newly established facts and changes remain unsaved in the conversation until a requested save. Installing v0.8 does not create automatic checkpoints or an invisible memory service.
+
+When a selected procedure requires randomness, use an actual available randomizer or player-supplied input with agreed outcome meanings. If neither is available, settle an explicit judgment alternative or keep that resolution pending. Freeform judgment is a valid default; fabricated dice are not a substitute for the requested method. Merely supplying a seed does not define a reproducible generator without its procedure and inputs.
+
+Private records provide practical spoiler separation, not encryption. Tool arguments, results or writes may be visible to the operator. If a selected method depends on concealment, check with a harmless synthetic secret and explain the actual limitation. Do not expose a real plot fact to test the interface. A collapsed panel or a file named "private" does not establish secrecy.
+
+Recheck only affected capabilities when moving hosts. A host change does not authorize regenerating recorded people or changing rules.
 
 ## Existing campaigns
 
-**Do not replace a live campaign with the blank INSTANCE or ARCHIVE templates.**
+**Never install blank INSTANCE or ARCHIVE templates over a campaign.**
 
-1. Complete the latest save using the old compatible runtime.
-2. Keep a restorable copy of the entire old campaign and its original runtime.
-3. Work in a separate upgrade copy. Install the v0.7.3 OS, ADMIN, generic contracts/schemas, documentation, and optional tools there. Preserve campaign-owned MODULES, ENGINE adapters, INSTANCE records, ARCHIVE, and recovery material.
-4. Say: "Open ADMIN/UPGRADE_V07.md and prepare this campaign's upgrade."
-5. Review the mapped present, concrete agreement, presentation, limits, and any missing brief. Accept the proposal before publication.
-6. Resume only after the resulting records and references have been checked.
+1. Complete the latest save using the old compatible runtime. Finish or reconcile pending recovery and scene transfers before changing their dependencies.
+2. Keep a restorable copy of the entire campaign and its original runtime. Create a separate upgrade copy.
+3. Give the GM the v0.8 kit as the update source and say: "Open ADMIN/UPGRADE_V08.md from the new kit and prepare this campaign's upgrade in the separate copy."
+4. Review the actual program-file change set and any material compatibility question. Preserve campaign-owned modules, engine adapters, instance records, archives, local modifications and recovery evidence as the procedure specifies.
+5. Apply the authorized update with recovery protection and readback. Resume from the preserved save after verification.
 
-The upgrade procedure preserves source records and historical evidence. Legacy field names and calibration labels are mapped explicitly rather than silently reinterpreted. Nonstandard old records may require clarification. Broad compatibility is a procedural design goal, not a claim that every private campaign has been tested.
+Valid v0.7.1–v0.7.3 records retain their formats and save identities. The upgrade consolidates general operating guidance; it does not resample NPCs, rewrite historical motives, replace an accepted relationship, or require retrospective completion of personality fields. Only a separately accepted campaign change revises its agreement or generation method.
 
-For an already-bound v0.7 campaign, the save format is unchanged. In a protected copy, install the runtime/maintenance fixes while retaining its campaign records. Ask ADMIN/RECALIBRATE.md to supplement missing Play form, Form selection, Structure disclosure, Cuts, and Retcon clauses from actual accepted terms. Review unresolved choices and proposed defaults before acceptance. Only the agreement revision changes for this supplementation; it does not migrate current state, rewrite history, or broaden old grants. The new clause-presence checks may flag an old agreement until this focused repair is complete.
+Older field-only formats and missing agreement clauses still need the existing [v0.7 mapping](ADMIN/UPGRADE_V07.md) or focused [recalibration](ADMIN/RECALIBRATE.md), as routed by the v0.8 procedure. Do not infer old permissions from prior model behavior.
 
-The runtime does not pin every referenced record to an immutable version. Preserve a coherent campaign copy; do not interchange engine, module, or current-state files solely because their names match.
+The runtime does not pin every referenced record to an immutable version. Keep a coherent campaign copy; matching filenames alone do not make arbitrary engines, modules or current-state files interchangeable.
 
-For a valid v0.7.1 campaign, v0.7.2 keeps the same record format and agreement clauses. Apply generic instructions/schemas in a protected copy while retaining campaign-owned files. Optional portrayal or investigation notes need no retrospective completion and do not authorize rewriting a bound module baseline. Accepted later changes use the existing current-state and maintenance procedures.
+## Continuing with another model
 
-v0.7.3 retains the valid v0.7.1/v0.7.2 current-state and agreement formats. Its scene-handover extension is optional. Install its generic instructions and optional helpers together in a protected copy; never replace campaign records with fresh templates. Accept any standing handover grant prospectively through RECALIBRATE. Complete or cancel an active transfer before changing its pinned authorities; an update during transfer invalidates the original snapshot and requires reconciliation.
+After a successful full save, give the next model the same updated campaign folder and ask it to open OS/AGENTS.md and continue. Keep one active continuation. Retain the build, model and known reasoning setting with your optional session note; do not invent settings the host does not expose. Different prose is expected; established facts and unresolved choices must survive.
 
-## Moving a live scene between GMs
+For an unfinished scene, use [Scene handover](ADMIN/SCENE_HANDOVER.md). It captures accessible conversation and established GM state against a frozen workspace. A different host needs a deliberate copy; the procedure does not send files or grant external access. The source stays paused until checked return/import or cancellation.
 
-Use the [scene-handover procedure](ADMIN/SCENE_HANDOVER.md) when continuity must include the unfinished scene and established private GM state. Both GMs need the same coherent workspace baseline, required references, and explicit transfer records. A different host needs a deliberate copy of that workspace; the mechanism does not grant access or send files to an external service.
-
-Only one GM continues the scene. The source stays paused while the receiver works. Preserve the sealed conversation and GM briefing unchanged, then return the factual scene result for checked import. The snapshot includes referenced module assets, but it cannot transfer unavailable conversation, unrecorded facts, inaccessible files, or model-internal reasoning. Private files are spoiler separation, not encryption.
+The receiver leaves source authorities frozen. Its new unsaved facts must be captured in the permitted return; the source cannot be used as a live receiver checkpoint. Unavailable chat, unrecorded model intentions and inaccessible references cannot be transferred. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md).
 
 ## Hosts without direct workspace writes
 
-Use a manual export workflow if that is the capability actually available:
+1. Provide the startup records and specifically requested references.
+2. At SAVE, ask for complete replacements for every changed file, a list of those files, and the historical evidence being retained.
+3. Preserve the previous versions before installing the replacements yourself. Use generated downloadable files if available, otherwise copy complete contents.
+4. Confirm that every replacement was installed and checked. The fresh chat must receive or access these updated files.
 
-1. Provide the current startup records and specifically requested references.
-2. At SAVE, ask for complete replacement contents for each changed file, a list of those files, and the historical evidence being retained.
-3. Keep the previous versions before replacing them yourself. If the host can generate downloadable files, use those; otherwise copy the displayed complete contents.
-4. Confirm that every listed replacement was installed. A fresh chat must receive or access the updated files.
+Until then, the result is **an export awaiting installation**, not a confirmed workspace save. Keep the conversation until installation. Visible exports cannot conceal private preparation; use reviewed, openly acknowledged or deliberately unresolved material as appropriate to the accepted method.
 
-Until that happens, the result is **an export awaiting installation**, not a confirmed workspace save. Do not discard the conversation before installing it. Do not fabricate hidden private preparation in visible export text; use reviewed or deliberately unfixed material.
+## Source material and backups
 
-## Privacy, source material, and backups
+Keep personal campaigns separate from a shareable unbound kit. Include only source material you may use and redistribute as appropriate. A franchise name alone does not establish edition, continuity or exact rules authority. Inspect referenced visuals only when the host can actually access and interpret them.
 
-Private campaign files are not encrypted. Use non-revealing filenames for secrets, and keep spoilers out of player-facing summaries. Host interfaces may still show file activity.
-
-Keep personal campaigns separate from a shareable unbound kit. Include only source material you may use and redistribute as appropriate. A franchise name alone does not establish an edition, continuity, or exact rules authority.
-
-Recovery copies protect against identifiable interrupted edits; retain occasional complete campaign backups as well. No model-operated file convention guarantees automatic rollback or perfect recall.
+Recovery copies protect against identifiable interrupted edits; retain complete campaign backups as well. No model-operated file convention guarantees automatic rollback, perfect recall or universal model compatibility.

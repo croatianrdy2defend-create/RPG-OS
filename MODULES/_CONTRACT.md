@@ -1,4 +1,4 @@
-# Module contract
+# Module contract — v0.8.0
 
 A module supplies a reusable world, opening baseline, character baseline, and any selected reference depth. It does not accept a run agreement or activate its own prepared material.
 
@@ -85,6 +85,10 @@ Keep related material together. Split independently retrieved subjects when usef
 
 Typical homes: public world in WORLD; actors/institutions in PEOPLE/INST; candidates in SEEDS; public conditions/tracks in CLOCKS; hidden facts in TRUTH; compatible mechanical clarifications in RULES_HOOKS. A real engine override requires a distinct engine id. Later table rulings live in INSTANCE/CORRECTIONS.md.
 
+Independent-agent establishment uses the existing individual/system owners and the cold `OS/AGENT_STATE.md` procedure. Author only the useful opening basis at the selected depth: supported capabilities, actual knowledge/beliefs, aims, constraints and relevant current orientation. Stable background, mutable stance, hard constraints and deliberately unresolved answers remain distinct. Use sparse species/culture/faction composition only where material; create no compulsory taxonomy, default human psychology, trait vector or all-to-all relationship graph. Group tendencies do not erase established individual exceptions, and changes to a group summary do not rewrite existing individuals.
+
+A compatible generation hook identifies its context, eligible dimensions, constraints, outcome meanings, random-input method and result scope before use. The engine owns resolution; POLICY alone cannot install operative rules. Retain accepted generated facts where they belong, not an unexecuted seed as though it were a person. No module promises concealed durable state without the host's actual retention and visibility support.
+
 Private filenames, headings, ids, index gists, and watch cues must be non-revelatory when secrecy matters. Separate unrelated private subjects when whole-file reads would expose them. This is spoiler hygiene, not encryption or guaranteed host secrecy.
 
 Rehearse one representative need → declared entrypoint → smallest sufficient body → stop lookup for every complex capability before bind. A pointer is a route, not an instruction to read everything linked.
@@ -105,6 +109,8 @@ Its sections are **Situation; Character state; Open matters; Active processes; R
 
 LOAD assigns unique runtime ids and bind lineage, preserves accepted opening bodies, and begins with `archive_ref: none` and `evidence_through: none`.
 
+Fixed opening agent state stays in its named MODULE T0 owner. Current PEOPLE/NOW/CAST_STATUS registers retain their empty bind convention; no new stance overlay is copied into INSTANCE merely by loading. Preserve existing-module bytes and fixed relationships. A genuinely unresolved dimension remains eligible only under its accepted future establishment path; no implicit run-specific randomized T0 override or nested bind/checkpoint is introduced.
+
 ## Mutable systems and people
 
 MODULE definitions and mutable baselines are immutable as-of-T0 after bind. Authorized migration or Setting Brief upgrade/refinement may change only their explicitly approved surface; they do not silently rewrite world facts or history.
@@ -117,4 +123,6 @@ At SAVE/CLOSE or optional CHECKPOINT, carry accepted changes once to their selec
 
 Authored people may use `## CANON`, `## NOW`, `## PC`, `## PRIVATE`. CANON is stable baseline; NOW/PC and mutable PRIVATE are T0 snapshots. Use one safe stable person id in PEOPLE routing, relevant save references, and `INSTANCE/PEOPLE/<person_id>.md`. Keep a mature record together or narrowly routed according to retrieval needs.
 
-On the first persistent change, a preauthored person's INSTANCE overlay owns their complete relevant current mutable surface and links to stable MODULE material. Do not copy stable CANON or unrelated private lore, or mix older T0 values into a newer current answer. An emergent recurring person may have minimal established CANON and current state in INSTANCE with its route in CAST_STATUS. Do not promote every transient extra, infer a missing biography, or modify MODULE to store relationship progression.
+On the first persistent change, a preauthored person's INSTANCE overlay owns their complete relevant current mutable surface and links to stable MODULE material. Do not copy stable CANON or unrelated private lore, or mix older T0 values into a newer current answer. An emergent agent with continuing causal significance may have minimal established CANON and current state in INSTANCE with its route in CAST_STATUS, including a nonhuman individual. Shared controller state remains with its selected system owner. Do not promote every transient extra, infer a missing biography, or modify MODULE to store relationship progression.
+
+Retain the cause and scope of material orientation changes, an actual initialization reference where relevant, and an evaluated opportunity's scope/result when needed to avoid repeated effects. These are optional prose meanings within existing records, not new required fields. State changes follow actual events/information and applicable rules, not turn count. Agent establishment does not authorize automatic saves: PLAY remains read-only, and unsaved private developments have only best-effort context retention until successful authorized persistence.

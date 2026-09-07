@@ -1,4 +1,4 @@
-# RPG OS v0.7.3 architecture
+# RPG OS v0.8.0 architecture
 
 ## Operating environment
 
@@ -10,7 +10,7 @@ The architecture optimizes the amount of relevant material the GM must reconcile
 
 OS/AGENTS -> OS/BOOTSTRAP -> LAW + CURRENT_SAVE + CAMPAIGN_CONTRACT.
 
-A bound run also reads its compact SETTING_BRIEF and active SAFETY. It checks RECOVERY/ACTIVE directly before play. POLICY, full schemas, retrieval instructions, reference bodies, and optional Bearing are cold. The agreement contains the accepted presentation, so ordinary startup does not open a large policy file for one voice section.
+A bound run also reads its compact SETTING_BRIEF and active SAFETY. It checks RECOVERY/ACTIVE directly before play, followed by the existing HANDOVER/ACTIVE check. POLICY, full schemas, retrieval instructions, the agent-state procedure, reference bodies, and optional Bearing are cold. The agreement contains the accepted presentation, so ordinary startup does not open a large policy file for one voice section.
 
 During a turn the GM understands the situation and intent, retrieves materially relevant authority, resolves consequences, and presents the result. A direct pointer needs no preliminary route traversal. A bounded subject search can recover a missing route.
 
@@ -32,6 +32,18 @@ Authority for a new consequential development is identified before drafting it. 
 | Pending GM transfer and retained transport/return provenance | HANDOVER active marker and named package; SCENE_HANDOVER procedure |
 
 Current values replace corresponding mutable starting values; stable background remains reusable. Known-to-PC, private, unfixed, and provisional states remain distinct. A summary cannot silently supersede evidence outside its scope.
+
+## Independent agent state
+
+An agent here is a fictional decision-maker: a person, creature, machine or collective. One GM portrays the relevant agents; the architecture adds no parallel AI workers or background actor scheduler. The [worked encounter-to-resume example](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm) shows the current-state and evidence owners in use.
+
+The compact LAW rule governs ordinary portrayal. [OS/AGENT_STATE.md](OS/AGENT_STATE.md) is retrieved when a consequential response depends on an unresolved individual fact, or when establishment, change or retention needs clarification. It adds no unconditional startup read or separate NPC database.
+
+Established source state comes first. Deliberately unfixed properties follow their trigger; missing authority is a retrieval or repair problem. Eligible new properties use the accepted procedure before influencing resolution. Agent capabilities, actual knowledge, individual goals and relevant orientation constrain portrayal. Relevant evidence and events can change the correct aspect; mere repeated attempts or an unperceived OOC hope do not predetermine the result. Motive, plan and executed event remain distinct.
+
+Fixed opening state belongs to the selected MODULE baseline. Later complete mutable person state belongs in PEOPLE and collective/system state in its NOW authority. An agent's belief may differ from world truth; correcting one does not inform that agent without an established disclosure or observation. Relationship aspects likewise change at their supported scope. Only relevant facts are retained; there is no universal vector, all-cast scan or automatic generation table. Cultural and physical constraints retain their source scope instead of determining every individual's psychology.
+
+New state in ordinary PLAY is conversational and best-effort until saved. A requested save or checkpoint compiles the complete accepted present through existing recovery; it does not provide an invisible write on each NPC decision. An authorized setup can establish a small recorded private opening. A result unavailable after interruption is an explicit gap; recovery provenance is not an alternative live-state layer. The proposed automatic protected-establishment experiment is outside this release.
 
 ## Saving
 
@@ -57,8 +69,12 @@ New Game never clears an existing run. Upgrade preserves old material and maps i
 
 Optional recurring-person and hidden-fact notes are cold authoring aids inside existing records. They add neither an authority layer nor a resident file. Stable anchors and current beliefs keep their existing owners; testimony, private truth, and what an audience learned remain distinct across saves and corrections.
 
+Setup selects only materially necessary authorship, generation and retention choices within the same proposal. Newly generated fixed opening values become the module's reusable T0 baseline; later LOAD preserves them. Existing imported baselines stay unchanged. [Upgrade to v0.8](ADMIN/UPGRADE_V08.md) updates the generic program in a protected copy without regenerating established people or rewriting campaign evidence.
+
 ## Validation boundary
 
 The read-only validator observes structure and references. Model readback checks selected semantic consistency fallibly. Player-rated sessions assess agency, pacing, coherence, and correction burden. Evidence from these activities is reported separately.
+
+The v0.8 experimental build prioritizes [real campaign playtesting](ADMIN/PLAYTEST_V08.md) for practical quality. Structural, recovery and packaging checks remain engineering requirements. Optional focused fixtures can diagnose an observed problem; a scripted behavioral schedule is not an entry or release gate for this playtest build.
 
 The startup packet is not a revision-bound compiled capsule. Save/contract lineage and paths are checked at their documented scope, but the system does not pin every engine/module/body to exact immutable content. A plausible replacement may escape detection. Recovery protects a recorded change set; it does not establish global version coherence or semantic correctness across arbitrary manual swaps.
