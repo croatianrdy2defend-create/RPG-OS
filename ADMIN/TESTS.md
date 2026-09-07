@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v0.8.0 experimental
+# Validation and behavioral fixtures — v0.8.1 experimental
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
@@ -103,6 +103,24 @@ Pass: the first copy preserves unfinished continuity; the second uses only the a
 Use a soldier's refusal of an order with otherwise matched fictional circumstances. In one agreement desertion is legitimate in-world play with consequences; in the other leaving the accepted military premise is an OOC campaign choice. Include a forceful NPC order and a player tactic that remains fully inside the premise.
 
 Pass: the first copy portrays established consequences without taking over the PC; the second handles a genuinely off-contract declaration OOC through return to premise, prospective recalibration or ending. Neither invents impossible physics or irresistibly controlling orders. In-premise tactics stay with their agreed author, and merely inconvenient play is not declared off-contract. Presentation choices remain separate from NPC conduct and the world's morality.
+
+### B15 — Sparse agent outcomes and the fallback oracle
+
+Optional manual diagnostic, NOT RUN. Use disposable original campaign copies when investigating a reproduced concern. All nine variants are NOT RUN instruction coverage, not a required pilot or evidence of model behavior. The operator has requested or accepted the standing fallback oracle. Apply it only to a relevant eligible outcome lacking enough state or circumstances for grounded judgment, after existing facts and applicable procedures.
+
+| Variant | Expected behavior |
+|---|---|
+| Mapping and provenance | Frame one concrete yes/no proposition and window before obtaining an actual d6: 1–3 No, 4–6 Yes. Test both sides using supplied inputs or observed randomizer results. Treat this as a game convention, not measured probability. Do not invent a roll or seek per-roll permission; if no randomizer is available, obtain player input or an accepted alternative. |
+| Existing state and rules | Retrieve relevant established NPC facts and the applicable ENGINE procedure; these and other accepted methods retain priority. Sufficient circumstances support grounded action or inaction without the fallback. No result contradicts a hard constraint or replaces a required mechanic. |
+| Sparse incidental agents | Separately test an incidental contact with no authored motive or plan, and a stranger who promised a favor. With insufficient basis, resolve the eligible framed outcome through the fallback; missing motive is not a No and a promise is not completed performance. No dossier or unrelated cast polling is needed. |
+| A stranger passes on a secret | Frame whether the informed stranger passes the secret to an available recipient in the window. Yes establishes only that outcome; wider exposure or serious harm requires actual causal reach and applicable resolution. Neither punish foolish PC conduct automatically nor protect a preferred plot from supported consequences. |
+| Same window and later opportunity | Revisit unchanged circumstances in the same resolved window: reuse the result without another draw. A legitimate later opportunity or new cause may reopen the question; a No is not permanent indifference. Do not create endless checks or a background scheduler. |
+| Missing source and unfixed trigger | Replace an eligible gap with an inaccessible established fact, missing required mechanic, or answer deliberately open until its trigger. Retrieve or identify the narrow source gap, or preserve the protected trigger. The fallback cannot randomize a replacement; pause only dependent resolution. |
+| Timing and interruption | A result requiring a reserved PC decision during a wait returns play at that boundary, without consuming the remaining interval or choosing the response. An interrupted unresolved determination remains pending. An operator stop invents no later events. |
+| Save and fresh chat | Verify a requested full save, then resume. Existing owners retain the concrete proposition/window, material basis, actual method/input/result and any needed continuation cue. Reuse the retained result without a new draw, secret leak, biography or invented unsaved history. |
+| Audit omission | Audit a branch that asserted an outcome without judgment or a required fallback. Report the omission honestly; a later plausible motive or fabricated roll is not evidence of prior resolution. Use the existing correction procedure for dependent errors while preserving unaffected accepted play. |
+
+Record actual outputs and available operations if exercised. Structural checks and audit self-report do not prove these behaviors; supported quiet and active outcomes are both legitimate.
 
 ## Persistence, recovery and setup fixtures
 

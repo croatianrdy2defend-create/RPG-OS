@@ -1,6 +1,6 @@
-# Independent agent state — v0.8.0
+# Independent agent state — v0.8.1
 
-Cold procedure for a materially unresolved establishment or change. Do not load it at every startup or before every line of dialogue. Existing individual state and ordinary role-consistent function often suffice. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
+Cold procedure for a materially unresolved establishment, change or initiative opportunity. Do not load it at every startup or before every line of dialogue. Existing individual state and ordinary role-consistent function often suffice. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
 
 ## Identify the actual decision
 
@@ -16,7 +16,7 @@ Distinguish fixed private truth, an answer deliberately open until its trigger, 
 
 ## Establish eligible gaps
 
-Determine fairness-sensitive facts before resolving the attempt they affect. Use the bound engine or an accepted compatible generation procedure. Fix the eligible scope, context, constraints and outcome meanings before drawing. A new optional method needs acceptance where not already authorized; no universal social probability table is supplied here. A genuine conflicting rules change follows the engine-change procedure.
+Determine fairness-sensitive facts before resolving the attempt they affect. Use the bound engine or an accepted compatible generation procedure. Fix the eligible scope, context, constraints and outcome meanings before drawing. A new optional method needs acceptance where not already authorized; the fallback below is an available convention, not a universal social model. A genuine conflicting rules change follows the engine-change procedure.
 
 When randomness is claimed, obtain actual randomizer or player-supplied input. Otherwise use the engine's authorized judgment or agree an available alternative. Record the method honestly. Token sampling is not a die roll. A seed without its algorithm, inputs and mapping is not sufficient provenance.
 
@@ -34,9 +34,19 @@ Preserve PC authorship and actual declarations. Attraction, trust, cooperation, 
 
 ## Resolve operative opportunities
 
-A tendency is not a plan, and a plan is not execution. Use an actual opportunity, channel or capability, relevant constraints and the agreement's initiative authority. Read only agents implicated by the current situation or a due condition; do not poll the cast at day changes or saves.
+Resolve relevant open matters when the current activity, circumstances or declared wait makes their outcome material. Use existing state, available channels and actual constraints; a missing motive or plan does not establish inaction. A sparse incidental NPC needs no dossier before the accepted fallback can resolve an eligible unknown. Unrelated agents need no check.
 
-Retain an evaluated opportunity's scope/result when needed to prevent repeated effects. Checking the same unchanged interval more often creates no extra draws. A real new cause or eligible later interval may reopen the decision under its procedure. Keep necessary continuation cues in Active processes, with the private values in their existing owner; retire or redirect a cue when appropriate.
+Keep the question and interval bounded. An earlier reaction retains its original scope. If an event ends a wait, place it within supported circumstances and stop there; leave later time uncommitted. Retain the question/window, method and result in the existing person/system owner when needed at the next requested save. Repeated queries or subdivisions create no extra draws for the same resolved opportunity. Only an actual operative condition needs an Active processes cue; no automatic timer is added.
+
+## Fallback oracle for eligible unknowns
+
+Use when the player requests this random fallback or accepts it as a standing method. Facts and applicable ENGINE procedures take priority; grounded judgment remains sufficient where supported. Otherwise resolve the eligible uncertainty directly:
+
+1. Frame one concrete yes/no question and its scope before drawing, such as whether a contact sends a message within this week. Keep impossible outcomes out; preserve fixed facts and PC authorship.
+2. Use the already accepted oracle, or this fallback convention: one actual d6, **1–3 No; 4–6 Yes**. These even odds are a game convention, not a claim about real-world probabilities. A standing selection covers subsequent questions without new permission each time. If real randomness is unavailable, obtain the player's roll or agree an available alternative.
+3. Record the question, mapping, actual input and scoped result. Portray that result without inventing prior motives or history to justify it. Resolve further consequences through their actual circumstances and applicable rules; a secret being disclosed does not automatically mean every enemy learns it or the worst outcome occurs.
+
+Importance to the campaign does not exempt an eligible uncertain outcome from the accepted method. This fallback does not replace missing required rules/values, regenerate inaccessible established state, or open a deliberately unfixed fact before its trigger. It creates no per-NPC biography, automatic recurring roll or PLAY write. An omitted resolution stays an audit gap until an accepted correction; do not fabricate retrospective dice or reasons.
 
 ## Retain, save and transfer honestly
 

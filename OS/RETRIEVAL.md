@@ -1,4 +1,4 @@
-# RPG OS v0.8.0 targeted reference
+# RPG OS v0.8.1 targeted reference
 
 Cold lookup guide. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 
@@ -14,7 +14,9 @@ Ask what existing fact or procedure could materially change the answer. Use the 
 | Learned fact and qualification | `INSTANCE/KNOWN.md`, then cited evidence if exactness matters |
 | Current system or private condition | `INSTANCE/NOW.md` or exact current pointer; only the relevant system |
 | Individual agent's condition, stance or relationship | Exact INSTANCE/PEOPLE record; CAST_STATUS maps identity when needed; relevant stable MODULE CANON separately; shared controller state remains with its selected NOW owner |
-| Materially unresolved agent establishment or change | `OS/AGENT_STATE.md` only when guidance is needed, then the applicable engine/source procedure; no automatic startup or per-dialogue read |
+| Agent initiative during elapsed time or a declared wait | Relevant Open matters, Active processes and accepted play, then the implicated person/system records; a stopping condition identifies relevance, not a guaranteed event; no cast-wide scan |
+| Materially unresolved agent establishment, change or initiative opportunity | `OS/AGENT_STATE.md` only when guidance is needed, then the applicable engine/source procedure; no automatic startup or per-dialogue read |
+| Eligible outcome with too little basis for judgment | Accepted fallback oracle in `OS/AGENT_STATE.md`; frame the question and use real input; missing required sources are still retrieval gaps |
 | World detail or concrete setting-defined form | Bound `MODULE.md` capability map, then matching entrypoint and narrow body |
 | Private truth or defined unknown | Matching TRUTH or other private record; preserve access conditions and deliberate openness |
 | Past event or disputed memory | Known archive pointer; otherwise ARCHIVE/INDEX -> session INDEX -> evidence. Optional message/relation ledgers are shortcuts |

@@ -1,4 +1,4 @@
-# INSTANCE/PEOPLE — v0.8.0
+# INSTANCE/PEOPLE — v0.8.1
 
 Current individual-agent and relationship records. Existing person_id routes include nonhuman individual actors; no path migration is needed. Use one stable portable person_id and exact route per promoted agent. A shared collective/controller variable may instead belong to its existing NOW system owner, never both. At the first durable accepted change, materialize the complete as-of-now mutable surface: NOW, PC relationship state, and only affected current PRIVATE state. Preserve consequential detail and uncertainty; do not reduce a relationship to an unsupported attitude label.
 

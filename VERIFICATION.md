@@ -1,8 +1,50 @@
-# v0.8.0 experimental verification — 2026-09-07
+# RPG OS experimental verification
 
-This report distinguishes engineering checks on the isolated public candidate from future human campaign observations. The baseline is public v0.7.3, commit `a92d658530a7fd30f958c1af3814a604803368d0`. Historical [v0.7.2 trials](V0.7.2_TRIALS.md) retain their original scope; they are not evidence of new agent-state behavior.
+This report distinguishes engineering checks from human campaign observations and identifies the build each result describes. The v0.8.1 release tree starts from canonical public main, commit `40f8c021059b3f5a3f0f761441da117591871ae6`, with the reviewed simple fallback changes. The checks below were observed on the versioned release candidate. Historical [v0.7.2 trials](V0.7.2_TRIALS.md) retain their original scope; they are not evidence of new agent-state behavior.
 
-## Observed engineering checks
+## v0.8.1 release checks — 2026-09-07
+
+All three suites were rerun sequentially after the v0.8.1 runtime and release-documentation edits. The whole-tree validator ran separately after fixture mutation stopped. The final committed export must pass its own frozen validation, byte comparison, inventory and checksum checks before publication. Release automation repeats the suites and exporter on the published commit; its result and assets are available with the [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) and [v0.8.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.1).
+
+| Final v0.8.1 check | Status |
+|---|---|
+| Structural regression suite | 48 passed on Windows / Python 3.11 |
+| Handover regression suite | 35 passed; one native-symlink test skipped because this host does not permit symlink creation; separate Windows reparse-point test passed |
+| Packaging regression suite | 15 passed |
+| Total automated regression cases | 99 discovered: 98 passed, 1 platform skip |
+| Whole-tree structural validator | PASS; zero findings, stable measured tree and matching executed/target validator bytes |
+| Current documentation links | 97 relative destinations/anchors checked; zero failures |
+| Public issue form | YAML parses; unique field IDs and correctly nested v0.8.1 version placeholder |
+| Mechanics diagrams | All nine parsed and rendered with Mermaid 10.9.3; the new fallback diagram visually inspected |
+| Independent static review | No scope, standing-selection or release-inventory issue found; generic Freeform kit and blank campaign/archive bodies retained |
+| Committed ZIP and GitHub assets | Checked after commit by the exporter and release workflow; consult the release assets and workflow for the published artifact result |
+| B15 human diagnostics and fresh-chat replay | NOT RUN |
+| Complete model-operated upgrade of a played campaign to v0.8.1 | NOT RUN |
+
+## Reviewed random-fallback candidate — prior observations (2026-09-07)
+
+A supplied campaign audit reported successful retrieval of an unresolved contact record, followed by a quiet interval whose later opportunity had never been assessed. This is reported play evidence motivating the change; it does not prove every quiet outcome is erroneous or independently authenticate the other conversation's tool history.
+
+The reviewed candidate supplied a simple optional standing oracle for eligible outcomes too sparse for grounded judgment: frame a bounded question and obtain actual random input. Its default convention is one d6, 1–3 No and 4–6 Yes; existing facts, applicable engine procedures and other accepted methods retain priority. It replaced the longer local assessment draft. Its save schema, installed engine adapters, startup file set and write permissions were unchanged. LAW grew from 1,609 to 1,690 whitespace-delimited words; AGENT_STATE grew from 952 to 1,223. These are measurements of that reviewed candidate. The detailed method remains cold and is enabled by the player's request or standing selection, without per-roll reconfirmation. Installation alone does not change an existing diceless agreement or another selected method.
+
+| Reviewed fallback-candidate check | Previously observed result |
+|---|---|
+| Structural regression suite | 48 passed |
+| Handover regression suite | 35 passed; one native-symlink test skipped on this Windows host; Windows reparse-point test passed |
+| Packaging regression suite | 15 passed |
+| Total automated regression cases | 99 discovered: 98 passed, 1 platform skip |
+| Final structural validator | PASS, zero findings; stable tree and matching executed/target validator bytes |
+| Documentation links | 91 relative destinations/anchors checked; no failures |
+| Mechanics diagrams | All nine parsed and rendered with Mermaid 10.9.3; the simplified fallback diagram visually inspected |
+| Independent static instruction review | Reviewed direct sparse-outcome fallback, existing facts/methods, standing acceptance, real input, causal scope and missing-source protection; updated the diagnostic link after its heading changed |
+| New B15 diagnostic variants | Nine optional variants documented, NOT RUN |
+| Fresh-chat campaign replay with revised instructions | NOT RUN |
+
+All three regression suites were rerun on the reviewed fallback candidate after simplifying the protocol. These engineering and static checks do not establish that a GM will apply it reliably, and they predate the final v0.8.1 version and documentation changes. At that observation point the patch was local and unpublished; the published v0.8.0 artifact and live campaign history were unchanged. No retrospective contact decision or replacement roll was made. No v0.8.1 publication, completed campaign upgrade or human behavioral result is inferred from those checks.
+
+The following engineering section describes the original v0.8.0 release build, whose baseline was public v0.7.3, commit `a92d658530a7fd30f958c1af3814a604803368d0`.
+
+## Published v0.8.0 engineering checks — 2026-09-07
 
 | Check | Observed result |
 |---|---|
@@ -51,7 +93,7 @@ Setup records a pending generated determination before obtaining its input. Afte
 
 The [v0.8 upgrade procedure](ADMIN/UPGRADE_V08.md) has been reviewed for program/data ownership, backup preservation and compatibility routing. A complete model-operated upgrade of a played campaign was not executed during this build. Existing synthetic compatibility and recovery checks do not establish that broader result.
 
-The core grew by 123 whitespace-delimited words from v0.7.3; the cold agent-state procedure is 952 words. The loader adds no unconditional read of that procedure. These are static measurements; actual retrieval, latency, setup burden and adherence require observation.
+In the published v0.8.0 build, the core grew by 123 whitespace-delimited words from v0.7.3 and the cold agent-state procedure was 952 words. The loader adds no unconditional read of that procedure. These are static measurements; actual retrieval, latency, setup burden and adherence require observation.
 
 Use [real-campaign playtesting](ADMIN/PLAYTEST_V08.md) to assess recognizability, initiative, cause-driven change, pacing, saving and continuation with different models. Notes are optional and outside fictional authority. A rejection is not by itself evidence of independence, and an enjoyable session is not proof of lossless memory.
 

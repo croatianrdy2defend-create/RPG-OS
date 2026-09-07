@@ -5,7 +5,7 @@ temperature: selective
 character_build_support: no-mechanical-sheet
 ---
 
-# ENGINE — Freeform v0.8.0
+# ENGINE — Freeform v0.8.1
 
 Use only when the operator selects it. There is no formal attribute list, hidden stat block, or compulsory dice system.
 

@@ -1,4 +1,4 @@
-# v0.8 experimental campaign play
+# v0.8.1 experimental campaign play
 
 This release is for ordinary human campaign play with optional feedback. Start or resume a real chosen campaign, make the decisions you want to make, save it normally, and judge whether its world remains coherent and enjoyable. No scripted behavioral pilot, rejection quota, scoring worksheet or special gameplay command is required. Structural/tool checks describe their own technical scope; they do not certify NPC independence or player enjoyment.
 
@@ -26,5 +26,7 @@ Record only a moment worth reporting, not every exchange. A short note can inclu
 - Available exact excerpt or saved source route, with missing wording labelled; any correction and its observed result.
 
 Separate observation from interpretation. A summary is not an exact transcript; an unread private record does not prove the NPC had no reason. Keep real secrets out of public reports unless their disclosure is authorized. Do not export private model reasoning or publish campaign files merely because feedback is useful. Optional notes never create NPC motives, player preferences, historical events or new authoring permissions.
+
+For unsupported silence or initiative, an optional note can identify the outcome/window, known facts, applicable procedure and any actual fallback input/result. Sparse NPC detail alone does not settle the outcome. Once requested or accepted, the standing fallback needs no per-roll permission; note whether it respected established facts, real causal reach and save/resume continuity. A later audit cannot supply an omitted roll or prove a past judgment. The optional [B15 diagnostic in TESTS](TESTS.md#b15--sparse-agent-outcomes-and-the-fallback-oracle) provides nine NOT RUN variants for investigation, not an extra campaign routine or behavioral certification.
 
 For a clear current error, use ordinary CORRECT; for a desired future approach, use RECALIBRATE. An explicit REVIEW can compare actual sources and describe provisional patterns without changing state. Preserve the unaffected campaign and requested fixes rather than restarting it to produce a cleaner report. Continue normal play whenever the current state is sound.

@@ -1,8 +1,8 @@
-# Quick start — v0.8.0 experimental
+# Quick start — v0.8.1 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.8.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.0), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade to v0.8](ADMIN/UPGRADE_V08.md) for an existing campaign.
+Download the [v0.8.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.1), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade to v0.8](ADMIN/UPGRADE_V08.md) for an existing campaign.
 
 ## Start
 
@@ -13,6 +13,8 @@ Say:
 Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement. Other characters respond from their established circumstances; your character's hopes guide their attempts. More preparation is available through Guided or Detailed setup. No NPC spreadsheet is required.
 
 Review the proposal, including any material uncertainty or practical host limitation. Clearly accept it or request changes. The GM binds the accepted material, reads it back and confirms the saved identity. A fresh play chat helps keep rejected setup alternatives out of play.
+
+To choose the optional fallback once, add: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” The supplied convention is one actual d6, 1–3 No and 4–6 Yes; established facts, applicable rules and other selected methods take priority. Once selected, it needs no permission for each roll. See the [worked examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
 ## Play, save and resume
 
@@ -29,6 +31,8 @@ Wait for a successful full-save confirmation before discarding the chat. SAVE, C
 ## Adjust or switch GMs
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people.
+
+An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v0.8.1.
 
 Switch models after a completed save, giving the next GM the same updated folder. For a mid-scene switch, say:
 

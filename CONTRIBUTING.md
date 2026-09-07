@@ -1,4 +1,4 @@
-# Contributing to RPG OS v0.8.0
+# Contributing to RPG OS v0.8.1
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. Keep public examples synthetic or sanitized.
 

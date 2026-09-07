@@ -4,7 +4,15 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 ## Unreleased
 
-- No unreleased changes.
+No changes currently listed.
+
+## v0.8.1 — simple standing random fallback (2026-09-07)
+
+- Add a simple standing fallback oracle for eligible unauthored outcomes with too little basis for grounded judgment: frame a bounded question and use actual random input. The supplied convention is one d6, 1–3 No and 4–6 Yes; facts, applicable rules and other accepted methods retain priority.
+- Resolve relevant open matters before settling elapsed-time outcomes, including inaction. Preserve the question, actual input and scoped result through existing owners, without NPC dossiers, a scheduler, per-roll permission or automatic saving.
+- Document examples for contact, promises and secrets, first-interruption behavior and honest audit gaps. Add optional regression scenarios; human replay of the revised behavior remains untested.
+- Explain one-time selection in setup or a prospective agreement change. Installing this patch does not silently change a diceless campaign, another selected oracle, established facts or saved history.
+- Update current release guidance and the nine-diagram mechanics guide. Existing record formats, Freeform-only distribution and public unbound campaign templates remain unchanged. See V0.8.1_CHANGES.md and VERIFICATION.md for scope and evidence.
 
 ## v0.8.0 — integrated agent state, experimental playtest release (2026-09-07)
 

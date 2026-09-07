@@ -1,4 +1,4 @@
-# RPG OS v0.8.0 — experimental playtest release
+# RPG OS v0.8.1 — experimental playtest release
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
@@ -7,12 +7,16 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 <table>
 <tr><td>
 <h3><a href="MECHANICS.md">How RPG OS works</a></h3>
-<p>See how the GM uses the world, your agreement, and saved records to continue a campaign. Includes eight diagrams, a workspace tree, and a worked example of an NPC relationship changing and surviving a fresh chat.</p>
+<p>See how the GM uses the world, your agreement, and saved records to continue a campaign. Includes nine diagrams, a workspace tree, and worked examples of NPC continuity and a simple random fallback for unresolved outcomes.</p>
 <p><a href="MECHANICS.md"><strong>Explore how RPG OS works →</strong></a> · <a href="MECHANICS.md#independent-people-and-other-agents"><strong>Independent agent state →</strong></a></p>
 </td></tr>
 </table>
 
-[Get v0.8.0](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.0) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.8.0_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.8.1](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.1) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.8.1_CHANGES.md) · [Verification](VERIFICATION.md)
+
+**New in v0.8.1:** a simple standing random fallback for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. The supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. Missing NPC detail does not by itself justify inaction. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes) and [release notes](V0.8.1_CHANGES.md).
+
+To select it once, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include it in a new campaign's accepted proposal, or adopt it prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) for an existing campaign. After selection, no per-roll permission is needed. Installing the update alone does not change an existing diceless agreement or another selected oracle.
 
 ## Start playing
 
@@ -44,7 +48,7 @@ The procedure uses the existing person and system records. There is no required 
 
 This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play.
 
-Valid v0.7.3 campaigns retain their record format. Use the [v0.8 upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change.
+Valid v0.7.3 and v0.8.0 campaigns retain their record format. Use the [v0.8 upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change.
 
 ## Continue a scene with another GM
 

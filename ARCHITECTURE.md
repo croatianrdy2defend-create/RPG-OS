@@ -1,4 +1,4 @@
-# RPG OS v0.8.0 architecture
+# RPG OS v0.8.1 architecture
 
 ## Operating environment
 
@@ -37,9 +37,11 @@ Current values replace corresponding mutable starting values; stable background 
 
 An agent here is a fictional decision-maker: a person, creature, machine or collective. One GM portrays the relevant agents; the architecture adds no parallel AI workers or background actor scheduler. The [worked encounter-to-resume example](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm) shows the current-state and evidence owners in use.
 
-The compact LAW rule governs ordinary portrayal. [OS/AGENT_STATE.md](OS/AGENT_STATE.md) is retrieved when a consequential response depends on an unresolved individual fact, or when establishment, change or retention needs clarification. It adds no unconditional startup read or separate NPC database.
+The compact LAW rule governs ordinary portrayal and relevant unresolved outcomes. [OS/AGENT_STATE.md](OS/AGENT_STATE.md) supplies a simple accepted random fallback when sparse state cannot support judgment, alongside establishment and retention guidance. It adds no unconditional startup read or separate NPC database.
 
 Established source state comes first. Deliberately unfixed properties follow their trigger; missing authority is a retrieval or repair problem. Eligible new properties use the accepted procedure before influencing resolution. Agent capabilities, actual knowledge, individual goals and relevant orientation constrain portrayal. Relevant evidence and events can change the correct aspect; mere repeated attempts or an unperceived OOC hope do not predetermine the result. Motive, plan and executed event remain distinct.
+
+Resolve a material open question through established facts, applicable engine rules or supported judgment. When an eligible outcome remains too uncertain, use the accepted fallback oracle: frame a bounded yes/no question, set the mapping and obtain real random input. The supplied convention is one d6, 1–3 No and 4–6 Yes; another already accepted oracle keeps its method. A standing selection needs no per-roll permission. Sparse NPC detail is not a reason to default to inaction or invent a biography first. Retain the scoped result and stop at the first applicable interruption. The [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes) cover contact, promises and secrets. This is model-operated adjudication, not an independently running event processor.
 
 Fixed opening state belongs to the selected MODULE baseline. Later complete mutable person state belongs in PEOPLE and collective/system state in its NOW authority. An agent's belief may differ from world truth; correcting one does not inform that agent without an established disclosure or observation. Relationship aspects likewise change at their supported scope. Only relevant facts are retained; there is no universal vector, all-cast scan or automatic generation table. Cultural and physical constraints retain their source scope instead of determining every individual's psychology.
 

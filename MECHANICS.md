@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.8.0 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.8.1 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -14,6 +14,7 @@ This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compa
 - [The agreement and authorship](#the-agreement-and-authorship)
 - [Inside a turn](#inside-a-turn)
 - [Independent people and other agents](#independent-people-and-other-agents)
+- [Random fallback for unresolved outcomes](#random-fallback-for-unresolved-outcomes)
 - [Truth, knowledge, preparation, and history](#truth-knowledge-preparation-and-history)
 - [Saving the present and preserving evidence](#saving-the-present-and-preserving-evidence)
 - [Recovering interrupted work](#recovering-interrupted-work)
@@ -188,6 +189,36 @@ Three distinctions keep the procedure honest:
 Ordinary conversation holds new state only as working context. Existing saved records are recoverable; a newly formed unsaved intention is not guaranteed to survive context loss. An authorized setup can establish a recorded private opening, and a requested save can preserve subsequent facts. v0.8 does not introduce automatic checkpoints or a second live-state store. If a result is truly unavailable after interruption, report the gap instead of presenting a replacement as the original.
 
 The player does not operate this procedure turn by turn. Narration and dialogue should remain natural, with the next meaningful reserved choice returned promptly. Actual campaign play will test whether these instructions improve continuity and pacing; the [playtest guide](ADMIN/PLAYTEST_V08.md) keeps optional observations outside the fiction.
+
+### Random fallback for unresolved outcomes
+
+Sometimes a relevant outcome is open and the NPC has too little established detail for grounded judgment. The GM can frame the question and roll instead of inventing a personality first or assuming nothing happens. Facts and applicable ENGINE procedures take priority. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each later use.
+
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.8.1 alone does not alter a diceless agreement or replace another selected method.
+
+Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
+
+| Sparse encounter | A concrete question the oracle can settle |
+|---|---|
+| A stranger accepts the PC's contact details without a promise. | Does this person send a message within the next seven days? |
+| A stranger receives payment and promises a favor. | Does this person deliver the agreed favor by the promised deadline? |
+| The PC tells a stranger an important secret. | Does this person pass the secret to another person during the specified interval? |
+
+The roll resolves that question. A Yes to disclosure creates no automatic knowledge in every enemy, and a No to contact this week creates no permanent dislike. Later consequences follow actual recipients, channels, circumstances and applicable rules. An outcome's importance does not exempt it from the selected method.
+
+```mermaid
+flowchart TD
+    oracleNeed["An eligible open question matters now"] --> oracleRules{"Facts or applicable rules settle it?"}
+    oracleRules -->|"Yes"| oracleUse["Use those facts or rules"]
+    oracleRules -->|"No"| oracleBasis{"Enough basis for grounded judgment?"}
+    oracleBasis -->|"Yes"| oracleJudge["Use supported judgment"]
+    oracleBasis -->|"No"| oracleRoll["Frame the question; use the accepted oracle and actual random input"]
+    oracleUse --> oracleKeep["Retain the scoped result; respect the first stopping event"]
+    oracleJudge --> oracleKeep
+    oracleRoll --> oracleKeep
+```
+
+This is a fallback for eligible unauthored outcomes, not inaccessible established facts or missing required rules. It adds no cast-wide polling, recurring daily chances or automatic save. A repeat query reuses its resolved result. If contact ends a wait, establish a compatible occurrence time and stop there; later time remains uncommitted. Keep the question, mapping, actual input and result in the existing owner at the next requested save when needed. Audits report missing resolution honestly. Optional [B15 diagnostics](ADMIN/TESTS.md#b15--sparse-agent-outcomes-and-the-fallback-oracle) remain unrun examples, not proof of model compliance.
 
 ## Truth, knowledge, preparation, and history
 
