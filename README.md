@@ -2,19 +2,21 @@
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
+**Unreleased on main:** independent-agent establishment now starts with an entity-appropriate behavioral basis and its actual source of control, not a human personality template or the PC's interpretation. The [procedure](OS/AGENT_STATE.md), core and existing state owners are aligned; [targeted regression cases](ADMIN/TEST_AGENT_STATE.md) separate automated instruction checks from behavioral evidence. This refinement does not change the published v0.9.0 tag or ZIP, add a schema or reset existing campaigns.
+
 **Experimental, unbound fresh install.** This release includes the Freeform engine and blank campaign records. It includes no setting module, character, campaign history, or artwork. No paid API, custom application, database or script is required for play. Optional Python tools provide exact source reads, a disposable search cache and evidence-audit support.
 
 <table>
 <tr><td>
 <h3><a href="MECHANICS.md">How RPG OS works</a></h3>
 <p>See how the GM uses the world, your agreement, and saved records to continue a campaign. Includes diagrams, a workspace tree, and worked examples of NPC continuity, random fallback, exact retrieval and checking a save against session evidence.</p>
-<p><a href="MECHANICS.md"><strong>Explore how RPG OS works →</strong></a> · <a href="MECHANICS.md#independent-people-and-other-agents"><strong>Independent agent state →</strong></a></p>
+<p><a href="MECHANICS.md"><strong>Explore how RPG OS works →</strong></a> · <a href="OS/AGENT_STATE.md"><strong>Independent agent state →</strong></a></p>
 </td></tr>
 </table>
 
 [Get v0.9.0](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.0_CHANGES.md) · [Verification](VERIFICATION.md)
 
-**New in v0.9.0:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. The existing independent-agent baseline and random fallback continue unchanged. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [release notes](V0.9.0_CHANGES.md).
+**New in the v0.9.0 release:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. That release retained the preceding independent-agent baseline and random fallback; current main adds the unreleased establishment refinement above. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [release notes](V0.9.0_CHANGES.md).
 
 The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
@@ -40,21 +42,25 @@ Wait for confirmation that the save completed before discarding the conversation
 
 ## Independent agent state
 
-Independent agent state is integrated through setup, worldbuilding, play, saving, resumption, and scene handover. The GM uses each relevant person's established circumstances, knowledge and aims, determines eligible unknowns through the accepted method, and changes their state for actual causes. Cooperation, initiative, resistance and indifference can all follow from those circumstances. Conversation length and the player's hoped-for outcome do not automatically create agreement.
+Independent agent state is integrated through setup, worldbuilding, play, saving, resumption, and scene handover. The GM first recovers or establishes what actually governs the relevant entity: its supported nature, source of control, applicable drives or directives, available information and present circumstances. These are optional questions for finding the smallest useful basis, not required character fields. The same GM portrays the entities; no additional running AI processes are needed.
 
-Here, an **agent** is a fictional person, creature, machine or collective whose decisions matter. One GM portrays these agents; the feature requires no additional running AI processes.
+**Independence from the player's wishes is not individual autonomy.** An individual, creature, machine or collective may operate through discretion, instinct, programming, orders or shared control. A controlled body need not have human emotions or an independent personal project. An ordinary organization need not erase its members' discretion. Shared control does not grant unlimited shared knowledge. The module supplies these setting-specific facts; the engine governs applicable resolution.
 
-When you single out an individual for attention or interaction, or an NPC directly engages your character, the GM first retrieves or establishes a small current individual baseline. “I approach her” is enough: the GM need not ask your character's motive or assume flirtation, company or a request for directions. A few relevant facts about the person's current activity, orientation, manner or constraints can support their response. The NPC reacts to what it can actually perceive, under the applicable rules; its guess about your intent may be mistaken. [See the direct-approach example](MECHANICS.md#example-i-approach-her).
+When you single out an individual for attention or interaction, or an NPC directly engages your character, the GM recovers or establishes its minimal basis before the first focused portrayal or resolution that depends on it. “I approach her” is enough: the GM need not ask your character's motive or assume flirtation, company or a request for directions. An entity's own relevant perception, an established order, a due process or authorized initiative can also make its basis material; player attention is not the fictional cause of its existence or activity.
 
-Existing people retain their established facts. A current mood can change for a real reason; repeated attention does not generate a different person. Background crowds need no individual preparation, and a directly engaged clerk may need only a tiny baseline. Deeper detail and durable records follow actual developments. A later opportunity that remains too uncertain can still use the selected d6 fallback without replacing that baseline or rerolling a settled reaction.
+**Establish the entity, not the player's impression.** Accepted world and individual facts, actual prior history and pre-encounter circumstances can constrain generation. Unverified interpretations, unperceived player wishes and desired scene endings cannot establish private nature. Preserve what an entity actually said or did without automatically treating its perceived meaning as its motive. A short reply need not mean dislike; non-attack need not mean benevolence. Private state, outward presentation and each viewpoint's supported interpretation remain distinct where applicable. Not applicable is not unknown or zero.
 
-For example, a coworker can remain personally distant while developing professional trust after a difficult shared job. A successful save should preserve both aspects and the available evidence of what changed, so the next GM can continue the same relationship. Existing friendships and accepted starting relationships remain valid. [Follow the worked example from encounter to fresh GM](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm).
+For example, a synthetic raider can value a challenging opponent and therefore become more interested in a contest, not automatically friendlier. A linked defender can guard its assigned approach rather than chase every target, using only its actual control and information. A credential device need not acquire friendship because the player asks nicely. These examples require those facts in their own setting; the OS does not impose them on a species or device category. The [targeted cases](ADMIN/TEST_AGENT_STATE.md) include human social controls, nonhuman drives, collective control, limited communication and capability changes.
 
-The procedure uses the existing person and system records. There is no required personality spreadsheet, new startup file, cast-wide simulation or automatic save. New unsaved state remains in conversation until an authorized save installs it. A checkpoint preserves the whole present while retaining the previous archive evidence boundary.
+Existing entities retain their established facts. Actual causes can change the relevant state; repeated attention does not create a different individual. A successful demonstration can improve professional trust without automatically creating personal affection. Cooperation, initiative, resistance, obedience and indifference are all possible when supported. Neither a favorable nor an unfavorable outcome proves independence. [Follow the coworker example across a save](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm).
 
-This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play.
+Background crowds need no individual preparation. Routine contact can use a tiny basis; deeper detail follows actual causal significance. A later eligible opportunity can still use the accepted fallback without replacing fixed state or rerolling an earlier reaction. A roll cannot create an unsupported capacity or an inapplicable relationship dimension. There is no mandatory personality spreadsheet, new startup file, cast-wide simulation or automatic save.
 
-Valid v0.7.3, v0.8.0, v0.8.1 and v8.1.1 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change.
+New unsaved state has best-effort retention in the available conversation, not an independently recoverable private commitment. Authorized saving preserves the factual basis and actual method provenance in existing PEOPLE or system owners, not internal reasoning. Shared state has one owner; a checkpoint preserves the whole present while retaining the previous archive evidence boundary. Adoption preserves established characters, controllers and history rather than regenerating them or silently relabeling fixed facts as impressions.
+
+This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play. The new automated instruction checks are not evidence that a model follows the procedure.
+
+Valid v0.7.3, v0.8.0, v0.8.1 and v8.1.1 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
 
 ## Continue a scene with another GM
 
@@ -88,7 +94,7 @@ The kit accommodates different genres and kinds of player character. Other rules
 | ARCHIVE | Historical evidence and routes to it |
 | ADMIN | Setup, save, correction, recovery, and handover procedures |
 | EVIDENCE | Optional untouched session captures, including OOC and rewinds; separate from accepted canon |
-| TOOLS | Optional readers, search and audit support, tests, and public-release packaging |
+| TOOLS | Optional readers, search and audit helpers, tests, and public-release packaging |
 
 Only a small startup packet is routinely loaded. SAVE, CLOSE, and END SESSION perform a complete save. CHECKPOINT preserves the present while retaining the preceding archive evidence boundary. Handover adds a live transfer package without turning that package into a historical save.
 

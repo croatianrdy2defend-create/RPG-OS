@@ -30,3 +30,4 @@ jobs:
           python3 "$kit_dir/TOOLS/test_read_source.py"
           python3 "$kit_dir/TOOLS/test_search_index.py"
           python3 "$kit_dir/TOOLS/test_evidence.py"
+          python3 "$kit_dir/TOOLS/test_agent_state.py"
