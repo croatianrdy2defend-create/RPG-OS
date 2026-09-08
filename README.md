@@ -1,4 +1,93 @@
-# RPG OS v0.9.2 — experimental playtest release
+# RPG OS
+### Boundless imagination. Negotiable details. One enduring core.
+
+I built RPG OS because I wanted to play in the worlds I imagined without having to write every outcome myself.
+
+I wanted to sit down at home, become someone within a setting I had designed, and discover what happened next. Not wait for a studio to turn that particular world into a videogame. Not program every possible interaction. And when I returned the following evening, I wanted yesterday’s decisions to still matter.
+
+**RPG OS is a framework for persistent solo role-playing with an AI game master.** You play through conversation. The AI portrays the world and its inhabitants, resolves your attempts through the chosen rules, and maintains the campaign in ordinary, readable files.
+
+The intended setup is simple: a PC, an internet connection, a capable AI subscription with an environment that can read, update, and preserve files, and a campaign folder. No separate paid API integration, custom server, or programming project is required.
+
+I originally made it for myself. I shared it because other people might want the same experience—but have entirely different adventures in mind.
+
+## Choose the experience
+
+Perhaps you want a tightly guided adventure: a clear mission, prepared turning points, and a few sessions packed with action. Perhaps you want an open sandbox where you can explore, settle somewhere, pursue an ambition, or abandon yesterday’s plan for something more interesting.
+
+Both are legitimate. A guided campaign should not have to pretend it is a sandbox, and a sandbox should not secretly force you toward a predetermined ending. The agreement between you and the GM defines the experience.
+
+You also choose the scope of detail.
+
+You can arrive with extensive lore and insist on close adherence to its geography, history, physics, and inhabitants. You can request meticulous records of possessions, resources, exact promises, and the small details that make a place recognizable.
+
+Or you can begin with a premise and a character, keep bookkeeping light, and give the GM broad permission to develop the unknown as you encounter it.
+
+These approaches can coexist. Carefully defined biology can sit alongside improvised settlements. Detailed combat can coexist with abstract travel. A short adventure can have deep lore; a sprawling campaign can use simple rules.
+
+Tone, difficulty, pacing, narrative structure, world depth, and recordkeeping are separate choices—not a single package you must accept.
+
+**You decide what needs precision, what can remain abstract, and where the GM has room to surprise you.** Permission to invent expands what remains open; it does not silently erase what has already been established. Deliberate revisions are possible, but they remain deliberate.
+
+## Human is not the default
+
+Universality matters because the next campaign might require a completely different reality.
+
+Star Wars, Warhammer 40,000, and Star Trek should not become interchangeable scenery. Neither should a Second World War spy campaign, a gladiator’s life in ancient Rome, or a Viking raider’s journey along an unfamiliar coast.
+
+And why stop at people?
+
+Play a dinosaur in the Late Cretaceous. Navigate hunger, injury, unfamiliar terrain, and encounters that never involve a single spoken word.
+
+**Play as a bloody ant in an ant nest.**
+
+A food trail vanishes. Water enters the lower tunnels. Beyond the entrance, a fallen branch becomes a formidable obstacle. Getting something home could be an entire expedition.
+
+An adventure does not become less meaningful because its protagonist has six legs.
+
+These are campaign possibilities, not bundled settings or promises of complete scientific simulation. You establish the kind of world being played. A naturalistic ant colony and a kingdom of talking ants are both valid—but they are not the same premise.
+
+That distinction extends to every encounter. A machine need not have human emotions. A creature may learn without understanding speech. A controlled organism may have limited discretion. The GM should use each entity’s actual senses, information, circumstances, and source of control rather than put a human personality behind every unfamiliar body.
+
+Nor should an entity’s nature be determined by what you hope it will do. Cooperation and opposition should arise from the fiction, not from automatic agreement or compulsory resistance.
+
+The setting defines what exists. The chosen rules govern resolution. RPG OS provides the shared operating discipline without requiring every universe to contain the same concepts.
+
+## A growing history, a focused present
+
+The campaign’s memory lives in files so that it does not depend entirely on one increasingly long conversation.
+
+The GM works with the immediate situation and retrieves relevant records when necessary. Earlier scenes and detailed lore remain available without crowding every exchange. An extensive archive can serve as a reference library rather than a manuscript the model must reread from beginning to end.
+
+When you ask about a promise made several sessions ago, recognizing that the earlier conversation matters—and finding it—is part of the GM’s job. You should not have to operate a database to speak to a character.
+
+Checkpoints preserve the current situation. Full saves also preserve the available history of play. After saving, a fresh conversation can resume from those records with a focused working set.
+
+**The aim is to let the campaign grow in history without making the GM carry all of that history at once.**
+
+Because those records are ordinary files, you can inspect them, back them up, and provide them to another compatible model. Changing GMs need not mean abandoning the adventure. Better-suited models and tools can become useful to an existing campaign, not just its replacement.
+
+## Built to be played, not to be perfect
+
+The goal is a good game master, not an infallible machine.
+
+An awkward description, a forgotten minor detail, or a debatable ruling need not ruin an evening. Human GMs make mistakes too, and legitimate differences of judgment are part of role-playing.
+
+What matters is distinguishing manageable imperfections from failures that undermine the campaign: lost relationships, rewritten history, invented player decisions, or mistakes that spread through later records. RPG OS’s procedures are designed to prevent or contain those failures without making the player a full-time auditor.
+
+It remains experimental and depends on the model and environment running it. The practical standard is nevertheless straightforward: **Was the adventure enjoyable? Did it honor the game you chose? Can you return and continue it?**
+
+“One enduring core” does not mean frozen software. It means preserving the commitments underneath all that freedom: an understood agreement, respected player control, coherent consequences, and a history worth returning to.
+
+You might bring years of worldbuilding or only a strange idea. You might want a few evenings of action, a life among the stars, or an expedition beneath a fallen leaf.
+
+**Build the world. Choose the experience. Take your place in it.**
+
+---
+
+## Documentation and release information
+
+**RPG OS v0.9.2 — experimental playtest release**
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
@@ -48,7 +137,7 @@ Wait for confirmation that the save completed before discarding the conversation
 
 To select the standard policy for a campaign, say:
 
-> Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.
+> Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md) for this campaign.
 
 The GM records that accepted permission through normal setup or recalibration. With unsaved state, it warns after a consequential change or substantial scene boundary, after 15 completed PLAY replies since verified persistence, or at a supported context reading of at least 65%. The meter must actually be available to the model or reported by the operator; it is never guessed. Several triggers create one notice, not several saves.
 
@@ -136,6 +225,6 @@ Original documentation/protocol material: [CC BY 4.0](LICENSE). Code and reposit
 
 Ask: “Preserve this actual session export and audit the save against it and the prior records.” The GM follows [Evidence audit](ADMIN/EVIDENCE_AUDIT.md), states the captured and inspected scope, and separates contradictions, unresolved questions and missing evidence. An authorized correction is not ignored merely because the GM failed to acknowledge it. Clear bookkeeping and changes that would alter played outcomes have different repair eligibility.
 
-You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
+You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. A fresh chat still resumes from the ordinary saved campaign. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
 
 The v0.9.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.
