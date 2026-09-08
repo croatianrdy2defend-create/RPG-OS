@@ -6,6 +6,18 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 No changes currently listed.
 
+## v0.9.2 — 2026-09-08
+
+- Added optional announced autosave through the existing recovery-protected, complete-present CHECKPOINT. It remains off unless explicitly selected for that campaign; installation does not grant automatic persistence.
+- Added one-response-ahead generic notices and coalesced consequential-state, substantial-scene, 15-PLAY-reply and supported 65% context-pressure triggers. An already handled high-context episode does not cause repeated checkpoints.
+- Preserved operator delay/resume/disable and manual save authority. Full SAVE/CLOSE is never downgraded; recovery, active handover and concurrent writes block automatic execution.
+- Required the outgoing model/context to save and verify before planned model, reasoning-setting, provider, chat or GM changes. No host context-transfer guarantee is claimed.
+- Preserved pending PC choices, fictional time, private/current state ownership, archive_ref and evidence_through. Checkpoints do not archive new exact dialogue or replace CLOSE/handover before source is discarded.
+- Added an optional read-only scheduling helper and 34 scheduler, instruction-route and synthetic metadata tests. Ten live autosave behavioral cases remain explicitly NOT RUN.
+- Integrated setup, recalibration, startup, saving, upgrade and user guidance without new mandatory campaign fields, a new save format, private scratch writes or a background service.
+- Added the autosave suite to both workflows and exact committed-package verification on release branches before publication. Retained all v0.9.1 agent-state checks while allowing subsequent version numbers.
+- See [release notes](V0.9.2_CHANGES.md), [autosave procedure](ADMIN/AUTOSAVE.md) and [observed verification](VERIFICATION.md).
+
 ## v0.9.1 — 2026-09-08
 
 - Reworked independent-agent establishment around an entity-appropriate behavioral basis rather than a universal human personality model: supported nature/capabilities, actual control, applicable drives/directives, information and circumstances now govern focused portrayal.
@@ -117,7 +129,7 @@ No changes currently listed.
 - Extended source-policy questions from historical campaigns to externally defined/source-bound settings while keeping copyrighted sourcebooks and unsupported model reconstruction out of the build
 - Strengthened campaign construction around what may be improvised, what requires exact authority, what remains unfixed, and the smallest retrieval route
 - Added paired semantic fixtures for natural background variety versus checklist portrayal, narrow on-demand lore retrieval, established-person preservation, and lawful homebrew improvisation
-- Added optional backup-first `REFINE SETTING BRIEF` for a valid bound campaign; after exact `ACCEPT REFINED SETTING BRIEF`, it may replace only that brief using already-authoritative stable public module facts and cannot create new canon
+- Added optional backup-first `REFINE SETTING BRIEF` for a valid bound campaign; it displays the complete brief and, after exact `ACCEPT REFINED SETTING BRIEF`, may replace only that brief using already-authoritative stable public module facts and cannot create new canon
 - Existing valid v0.6.2 Setting Briefs remain structurally compatible; refinement is optional
 - Kept LAW, the five-file technical boot, Campaign Contract and Current Save field schemas, engine architecture, archives, clocks, phases, Bearing, and NPC promotion unchanged
 - The public package remains unbound, contains no campaign world, and bundles only Freeform

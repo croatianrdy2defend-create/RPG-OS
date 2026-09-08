@@ -1,5 +1,36 @@
 # RPG OS experimental verification
 
+## v0.9.2 announced autosave — 2026-09-08
+
+The implementation candidate is commit `480174e37f1ee299441b73cda5961f897f60c538`, based on published v0.9.1 commit `7c1499c084c96595a13f73582176332413749b8f`. [Structural validation run 34205017056](https://github.com/croatianrdy2defend-create/RPG-OS/actions/runs/34205017056), job `101992375832`, completed successfully on GitHub's Ubuntu 24.04.4 runner. The logs were read after completion. A local full checkout was unavailable in this authoring environment; these are remote CI observations, not claimed local test runs.
+
+| Check | Observed candidate result |
+|---|---|
+| Whole-tree structural validator | PASS, zero findings; stable measured tree and matching executed/target validator |
+| Structural regression suite | 48 passed |
+| Handover regression suite | 36 passed |
+| Packaging regression suite | 15 passed |
+| Exact source reader | 30 passed, 1 platform skip |
+| Scoped lexical search | 31 passed, 2 platform skips |
+| Evidence capture/report checks | 32 passed, 1 platform skip |
+| Agent-instruction regressions | 18 passed |
+| Autosave scheduler, routes and synthetic metadata | 34 passed |
+| Total | 248 discovered: 244 passed, 4 platform skips |
+| Actual committed fresh-install package | Exporter completed; RPG_OS_v0.9.2.zip checksum check OK |
+| Live autosave/model-switch cases A01–A10 | NOT RUN |
+| Native Windows repetition for v0.9.2 | NOT RUN |
+| Hidden-state completeness, long-campaign and host context-transfer reliability | NOT ESTABLISHED |
+
+The new suite tests default-off permission, one-response notice ordering, coalescing, operator overrides, supported context sources, pressure-episode debounce, failure/blocking decisions, absence of scheduler filesystem writes and compatible checkpoint metadata. The synthetic save fixtures manually assemble expected records under the existing validator; they do not execute a model-operated protected checkpoint. They therefore do not establish that a model notices every trigger, preserves every private fact, or follows the procedure in live play.
+
+The actual scheduling helper is read-only and optional. The accepted model-operated protocol invokes ADMIN/CLOSE_CONTRACT.md for persistence. Recovery markers remain conventions rather than OS locks, readback is fallible, and a checkpoint does not preserve new exact archive evidence. See [Autosave](ADMIN/AUTOSAVE.md) and [the separate behavioral cases](ADMIN/TEST_AUTOSAVE.md).
+
+A successful checkpoint during a high-context episode must not create a repeated pressure-only save loop: the episode stays handled until a supported below-threshold reading or fresh boot. The outgoing context saves before a planned model/reasoning switch. No empirical claim about the host's internal context transfer follows from that conservative rule.
+
+The final documentation commit reruns the same branch checks before promotion. Final publication must independently pass the release workflow on its exact triggering commit; consult [the release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) and [v0.9.2 assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.2) for that final commit and result. This recorded candidate result is not a claim that an unobserved later run succeeded. No live campaign was modified or given autosave permission by publishing this kit.
+
+The following sections retain earlier observations at their original scope.
+
 ## v0.9.0 source and evidence tools — 2026-09-08
 
 The source-access implementation was initially published as v9.0.0 at commit `3d6ad58c920691929295fdc19ba185029a38dbbe`. v0.9.0 corrects that release number and adds a narrow Windows Python 3.12 source-reader compatibility fix. Path/handle identity metadata is compared across APIs, while each API's full before/after signature retains its own ctime check. Four added regressions cover different API timestamp representations, same-API timestamp mutation and actual same-size/same-mtime file replacement before opening or after reading. The corrected release workflow repeats the regression and committed-package checks, then retires only the mistaken release/tag after verifying the corrected publication.
@@ -115,9 +146,9 @@ The following engineering section describes the original v0.8.0 release build, w
 | Structural validator on the unbound candidate | PASS; zero findings, stable measured tree and matching executed/target validator bytes |
 | Structural regression suite | 48 tests passed on Python 3.11 / Windows |
 | Handover regression suite | 36 tests: 35 passed, one native-symlink fixture skipped because this host does not permit symlink creation; the separate Windows reparse-point rejection fixture passed |
-| Packaging regression suite | 15 tests passed on Python 3.11 / Windows |
+| Packaging regression suite | 15 tests passed |
 | Total automated regression cases | 99 discovered: 98 passed, 1 platform skip |
-| Mechanics diagrams | All eight parsed and rendered with Mermaid 10.9.3 in headless Chrome; the new agent-state diagram was visually inspected |
+| Mechanics diagrams | All eight parsed and rendered using Mermaid 10.9.3 in headless Chrome; the new agent-state diagram was visually inspected |
 | Documentation links | Checked relative destinations and heading anchors resolve |
 | Public incident form | YAML parses; version placeholder is correctly nested and optional incident context is available |
 | Release inventory | 74 intended public files; blank campaign/archive records, generic module contracts and Freeform only |
@@ -144,6 +175,11 @@ Run sequentially from a separate development copy:
 python -B TOOLS/test_validate.py
 python -B TOOLS/test_handover.py
 python -B TOOLS/test_package_release.py
+python -B TOOLS/test_read_source.py
+python -B TOOLS/test_search_index.py
+python -B TOOLS/test_evidence.py
+python -B TOOLS/test_agent_state.py
+python -B TOOLS/test_autosave.py
 python -B TOOLS/validate.py --root .
 ```
 
@@ -151,7 +187,7 @@ On a clean committed public checkout, `python -B TOOLS/package_release.py` expor
 
 ## Runtime scope and remaining observations
 
-Ordinary PLAY creates no automatic checkpoint or private scratch file. Newly established unsaved state has best-effort retention in available conversation. Requested saving preserves the complete accepted present; a checkpoint retains the previous archive evidence boundary. The receiving GM leaves frozen source authorities unchanged.
+Ordinary PLAY remains read-only and creates no private scratch file. In v0.9.2 a separately accepted announced-autosave policy may enter the protected ADMIN checkpoint procedure; without that grant, no automatic checkpoint occurs. Newly established unsaved state has best-effort retention in available conversation. Authorized saving preserves the complete accepted present; a checkpoint retains the previous archive evidence boundary. The receiving GM leaves frozen source authorities unchanged.
 
 Setup records a pending generated determination before obtaining its input. After an interrupted bind, physical restoration alone does not cancel the accepted setup: its active recovery route remains until completion or explicit setup cancellation/replacement. A genuinely lost result is reported as a gap. Optional diagnostic M07 in [ADMIN/TESTS](ADMIN/TESTS.md) describes this model-operated recovery edge and remains NOT RUN; the automated active-marker checks do not validate its semantic execution.
 
