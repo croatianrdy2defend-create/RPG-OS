@@ -1,8 +1,8 @@
-# Quick start — v0.9.0 experimental
+# Quick start — v0.9.1 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.9.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.1), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -10,7 +10,7 @@ Say:
 
 > Open OS/AGENTS.md. Help me start a new RPG campaign. Use Quick start and ask only what you need next.
 
-Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement. Other characters respond from their established circumstances; your character's hopes guide their attempts. “I approach her” is enough to bring an individual into focus: the GM retrieves or establishes a small current baseline before her response, while your purpose remains yours to declare. More preparation is available through Guided or Detailed setup. No NPC spreadsheet is required.
+Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement. Other entities respond from their established nature, control, information, circumstances and applicable aims or directives rather than from your character's hopes or interpretation. “I approach her” is enough to bring an individual into focus: the GM retrieves or establishes a small current basis before the focused response, while your purpose remains yours to declare. More preparation is available through Guided or Detailed setup. No NPC spreadsheet is required.
 
 Review the proposal, including any material uncertainty or practical host limitation. Clearly accept it or request changes. The GM binds the accepted material, reads it back and confirms the saved identity. A fresh play chat helps keep rejected setup alternatives out of play.
 
@@ -30,9 +30,9 @@ Wait for a successful full-save confirmation before discarding the chat. SAVE, C
 
 ## Adjust or switch GMs
 
-Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people.
+Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v0.9.0.
+An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v0.9.1.
 
 Switch models after a completed save, giving the next GM the same updated folder. For a mid-scene switch, say:
 

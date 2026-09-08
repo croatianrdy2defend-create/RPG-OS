@@ -25,7 +25,7 @@ body:
     id: release
     attributes:
       label: RPG OS release or commit
-      placeholder: v0.9.0 or commit SHA
+      placeholder: v0.9.1 or commit SHA
     validations:
       required: true
 
@@ -69,7 +69,7 @@ body:
     id: test_id
     attributes:
       label: Relevant test scenario or request
-      placeholder: Recovery, NEW GAME, SAVE, VALIDATE...
+      placeholder: Recovery, NEW GAME, SAVE, VALIDATE, U15...
 
   - type: textarea
     id: reproduction

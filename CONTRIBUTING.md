@@ -1,4 +1,4 @@
-# Contributing to RPG OS v0.9.0
+# Contributing to RPG OS v0.9.1
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. Keep public examples synthetic or sanitized.
 
@@ -8,11 +8,11 @@ Distinguish structural checks, observed host behavior, semantic judgments, and p
 
 For a report, include the relevant accepted agreement, present situation, player request, necessary reference records, observed retrieval/write actions, and the expected versus actual result. Exact quotes matter when the defect concerns a promise, choice, or ambiguity. Do not publish an entire private campaign.
 
-For the v0.8 experimental release, ordinary campaign play is the primary evaluation of practical quality. A brief incident note is useful; players need not complete scripted trials or interrupt every scene with checks. When known, preserve the model, reasoning setting, build and starting save alongside the relevant conversation. Keep this operational context outside fictional state. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md).
+For the current experimental release, ordinary campaign play is the primary evaluation of practical quality. A brief incident note is useful; players need not complete scripted trials or interrupt every scene with checks. When known, preserve the model, reasoning setting, build and starting save alongside the relevant conversation. Keep this operational context outside fictional state. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md).
 
-When diagnosing an agent-state failure, distinguish portrayal of a retained fact, initialization of a new fact, and loss or omission during retention. Check both unsupported accommodation and artificial resistance, and whether actual evidence can change the appropriate belief or relationship. A saved biased result is still biased; intact file bytes alone do not establish fair GMing. Optional paired replays from a separate saved copy can isolate a reported failure without rewinding the live campaign.
+When diagnosing an agent-state failure, distinguish portrayal of a retained fact, initialization of a new fact, prospective change, late deepening, and loss or omission during retention. Check both unsupported accommodation and artificial resistance, and whether actual evidence can change the appropriate belief or relationship. An unexplained earlier presentation should not acquire a new hidden past cause merely because the player interpreted it, nor should the opposite interpretation be selected to demonstrate independence. A saved biased result is still biased; intact file bytes alone do not establish fair GMing. Optional paired replays from a separate saved copy can isolate a reported failure without rewinding the live campaign.
 
-The [universal behavioral-basis cases](ADMIN/TEST_AGENT_STATE.md) add perception-versus-private-state, nonhuman drives, shared control, information boundaries, inapplicable dimensions, adoption and sparse-state controls. They remain NOT RUN until actual model observations exist. Text-presence checks do not validate semantics or hidden independence. Keep factual basis and available generation provenance separate from internal reasoning, which is neither required evidence nor a durable record.
+The [universal behavioral-basis cases](ADMIN/TEST_AGENT_STATE.md) add perception-versus-private-state, nonhuman drives, shared control, information boundaries, inapplicable dimensions, adoption, sparse-state and prospective-deepening controls. They remain NOT RUN until their exact fixtures are observed. Text-presence checks do not validate semantics or hidden independence. Keep factual basis and available generation provenance separate from internal reasoning, which is neither required evidence nor a durable record.
 
 ## Verification
 

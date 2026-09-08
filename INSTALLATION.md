@@ -1,8 +1,8 @@
-# Installation and portability — v0.9.0 experimental
+# Installation and portability — v0.9.1 experimental
 
 ## A new campaign
 
-Download the [v0.9.0 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0), extract its package into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [Quick start](QUICKSTART.md). The release contains blank, unbound templates and only the Freeform engine; it carries no campaign module, character or artwork. Earlier versions remain on the [published releases page](https://github.com/croatianrdy2defend-create/RPG-OS/releases).
+Download the [v0.9.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.1), extract its package into a dedicated campaign folder and make it available to your LLM. Use one active campaign per copy. Start from [Quick start](QUICKSTART.md). The release contains blank, unbound templates and only the Freeform engine; it carries no campaign module, character or artwork. Earlier versions remain on the [published releases page](https://github.com/croatianrdy2defend-create/RPG-OS/releases).
 
 The normal workflow requires the host to read named files, create and replace ordinary files, preserve them between chats, and let the model inspect what it wrote. An attachment may be readable without being writable. Establish the actual available operations during setup; use the export workflow below when needed. No paid API, background service or required script is part of the design. Smaller reference files help hosts that can only read entire files.
 
@@ -10,11 +10,11 @@ Do not begin from a folder containing another campaign's INSTANCE, ARCHIVE, or p
 
 ## State, randomness and practical visibility
 
-The agent-state procedure uses existing records for individual circumstances, beliefs, aims and relationships. Setup can establish the small private opening baseline under the accepted authoring scope. During ordinary play, newly established facts and changes remain unsaved in the conversation until a requested save. Installing v0.8 does not create automatic checkpoints or an invisible memory service.
+The agent-state procedure uses existing records for entity-appropriate nature/capabilities, control, information, applicable aims/drives/directives, circumstances and relationships where they exist. Setup can establish the small private opening basis under the accepted authoring scope. During ordinary play, newly established facts and changes remain unsaved in the conversation until a requested save. Installing v0.9.1 does not create automatic checkpoints or an invisible memory service.
 
 When a selected procedure requires randomness, use an actual available randomizer or player-supplied input with agreed outcome meanings. If neither is available, settle an explicit judgment alternative or keep that resolution pending. Freeform judgment is a valid default; fabricated dice are not a substitute for the requested method. Merely supplying a seed does not define a reproducible generator without its procedure and inputs.
 
-v0.9.0 adds a minimal individual baseline when the player singles out an NPC for direct attention or interaction, or the NPC directly engages the PC. A bare approach needs no explanation of purpose. Existing people are reused, and detail grows only as actual developments require it. See the [direct-approach example](MECHANICS.md#example-i-approach-her).
+v0.9.1 establishes a minimal entity-appropriate basis before focused portrayal when the player singles out an individual or the entity directly engages the PC, and also when an established perception, order, due process or authorized initiative makes the basis material. Player attention is not the fictional activation switch. The PC's interpretation cannot establish private nature, and late deepening cannot invent an earlier hidden cause merely to explain or contradict an observed presentation. See [Independent agent state](OS/AGENT_STATE.md).
 
 The simple standing fallback from v0.8.1 remains available for eligible unauthored outcomes with insufficient basis for grounded judgment: one actual d6, 1–3 No and 4–6 Yes. Select it once in the accepted setup proposal or request its prospective adoption through [Recalibrate](ADMIN/RECALIBRATE.md). Established facts, applicable rules and other selected methods come first; selection removes the need for per-roll permission. Installing the program alone preserves an existing diceless agreement or another selected oracle. See the [fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
@@ -28,13 +28,13 @@ Recheck only affected capabilities when moving hosts. A host change does not aut
 
 1. Complete the latest save using the old compatible runtime. Finish or reconcile pending recovery and scene transfers before changing their dependencies.
 2. Keep a restorable copy of the entire campaign and its original runtime. Create a separate upgrade copy.
-3. Give the GM the v0.9.0 kit as the update source and say: "Open ADMIN/UPGRADE_V08.md from the new kit and prepare this campaign's upgrade in the separate copy."
+3. Give the GM the v0.9.1 kit as the update source and say: "Open ADMIN/UPGRADE_V08.md from the new kit and prepare this campaign's upgrade in the separate copy."
 4. Review the actual program-file change set and any material compatibility question. Preserve campaign-owned modules, engine adapters, instance records, archives, local modifications and recovery evidence as the procedure specifies.
 5. Apply the authorized update with recovery protection and readback. Resume from the preserved save after verification.
 
-Valid v0.7.1–v0.7.3 and v0.8.0 records retain their formats and save identities. The upgrade consolidates general operating guidance; it does not resample NPCs, rewrite historical motives, replace an accepted relationship, or require retrospective completion of personality fields. Only a separately accepted campaign change revises its agreement or generation method.
+Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1 and v0.9.0 records retain their formats and save identities. The upgrade consolidates general operating guidance; it does not resample NPCs, rewrite historical motives, replace an accepted relationship, or require retrospective completion of personality fields. Only a separately accepted campaign change revises its agreement or generation method.
 
-Older field-only formats and missing agreement clauses still need the existing [v0.7 mapping](ADMIN/UPGRADE_V07.md) or focused [recalibration](ADMIN/RECALIBRATE.md), as routed by the v0.8 procedure. Do not infer old permissions from prior model behavior.
+Older field-only formats and missing agreement clauses still need the existing [v0.7 mapping](ADMIN/UPGRADE_V07.md) or focused [recalibration](ADMIN/RECALIBRATE.md), as routed by the compatible upgrade procedure. Do not infer old permissions from prior model behavior.
 
 The runtime does not pin every referenced record to an immutable version. Keep a coherent campaign copy; matching filenames alone do not make arbitrary engines, modules or current-state files interchangeable.
 
