@@ -75,6 +75,29 @@ class PackageTests(unittest.TestCase):
         pack.git(self.root, "add", "-A")
         pack.git(self.root, "commit", "-qm", "Synthetic fixture")
 
+    def test_host_contract_and_case_report_ship_as_exact_documentation(self) -> None:
+        documents = {
+            "HOST_CONTRACT.md": "# Host boundary\n\nDocumentation, not a gameplay dependency.\n",
+            "V0.9.1_TRIALS.md": "# Reported diagnostic\n\nSource limitations remain explicit.\n",
+        }
+        version_before = (self.root / "VERSION").read_bytes()
+        for relative, body in documents.items():
+            self.write(relative, body)
+        self.commit()
+        archive, _sums = pack.package(self.root)
+        with zipfile.ZipFile(archive) as result:
+            for relative, body in documents.items():
+                self.assertEqual(result.read(f"RPG_OS_v0.8.0/{relative}"), body.encode("utf-8"))
+            self.assertEqual(result.read("RPG_OS_v0.8.0/VERSION"), version_before)
+        self.assertEqual((self.root / "VERSION").read_bytes(), version_before)
+
+    def test_host_documentation_does_not_open_unlisted_root_paths(self) -> None:
+        pack.assert_public_paths({"HOST_CONTRACT.md", "V0.9.1_TRIALS.md"})
+        for relative in ("HOST_CONTRACT_PRIVATE.md", "host_contract.md", "creature_notes.txt"):
+            with self.subTest(path=relative):
+                with self.assertRaises(pack.PackageError):
+                    pack.assert_public_paths({relative})
+
     def test_clean_export_matches_committed_tree_and_checksum(self) -> None:
         self.write(".work/private/notes.md", "Untracked private scene, not for publication.\n")
         self.write(".release/old.zip", "Untracked old artifact.\n")

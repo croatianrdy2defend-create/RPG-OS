@@ -2,6 +2,8 @@
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
+**Documentation update — version unchanged:** [Host compatibility contract](HOST_CONTRACT.md) describes the existing host/GM boundary, two capability levels and nine compatibility examples. [East Three creature test](V0.9.1_TRIALS.md) explains the guided pre-v0.9.1 scene with Sena, Six-C and the vesh, its reported successes, retrospective-cause defect and source limitations. Neither document is a new gameplay rule or startup dependency. These current-branch additions do not replace the already published v0.9.2 ZIP.
+
 **New in v0.9.2:** optional [announced autosave](ADMIN/AUTOSAVE.md) invokes the existing protected complete-present CHECKPOINT after a one-response-ahead notice. It coalesces meaningful-state, scene-boundary, turn-count and actually available context-pressure triggers. The outgoing model saves before a model/reasoning change; a checkpoint does not replace a full evidence-preserving CLOSE. Autosave stays off until explicitly selected. No campaign format, background service or private scratch layer is added.
 
 **Retained from v0.9.1:** independent-agent establishment starts with an entity-appropriate behavioral basis and its actual source of control, not a human personality template or the PC's interpretation. Control and information remain separate, inapplicable behavioral dimensions stay inapplicable, and later deepening cannot backfill an earlier hidden cause merely to explain or contradict the player's interpretation. The [procedure](OS/AGENT_STATE.md), core, Freeform adapter and existing state owners remain aligned; [targeted regression cases](ADMIN/TEST_AGENT_STATE.md) separate automated instruction checks from behavioral evidence. No campaign schema or existing character is reset.
@@ -20,7 +22,7 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 
 **v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. Later releases preserve those tools and refine independent-agent establishment and persistence. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
 
-The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
+The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
 To select it once, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include it in a new campaign's accepted proposal, or adopt it prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) for an existing campaign. After selection, no per-roll permission is needed. Installing the update alone does not change an existing diceless agreement or another selected oracle.
 
@@ -121,6 +123,8 @@ File-changing procedures retain verified prior copies and publish the main save 
 ## Evidence and credits
 
 The [verification report](VERIFICATION.md) separates structural tests from live-play evidence. Scripts check specified file relationships; they cannot prove enjoyable GMing, complete memory, private-file concealment, or universal host compatibility.
+
+The [East Three case report](V0.9.1_TRIALS.md) preserves the creature test's reported outcomes and audit defects, selected player declarations, tested candidate and missing-source qualifications. It is not a full transcript, a post-fix rerun or evidence of cross-model persistence. The [host contract](HOST_CONTRACT.md) is for implementation review, not a certification earned by passing text checks.
 
 Project author and maintainer: [croatianrdy2defend-create](https://github.com/croatianrdy2defend-create). RPG OS developed through iterative campaign work and LLM-assisted design and review.
 

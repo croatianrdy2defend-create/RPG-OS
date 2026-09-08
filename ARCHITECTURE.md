@@ -1,10 +1,18 @@
-# RPG OS v0.9.0 architecture
+# RPG OS v0.9.2 architecture
 
 ## Operating environment
 
 One LLM acts as GM and file operator in an ordinary workspace. Conversation is temporary working memory. Markdown files preserve accepted records. Scripts are optional development tools, never required runtime components.
 
 The architecture optimizes the amount of relevant material the GM must reconcile during play. Disk size alone is not the target.
+
+## Host boundary — developer reference
+
+[HOST_CONTRACT.md](HOST_CONTRACT.md) describes the existing 0.9.x boundary against the v0.9.2 baseline. It separates the host's storage, tools and execution from the selected GM's fictional authorship and authorized file-operation role. Basic plain-file and Enhanced native implementations preserve the same meanings; alternate storage requires a mapping/export before claiming compatibility with the existing tools. The document and its nine compatibility examples add no gameplay mechanism, automatic startup read or certification.
+
+Infrastructure may accelerate source access, recovery and transfer without acquiring authority to invent private causes, convert search results into canon or advance fiction during persistence. The file encoding can change in a future implementation; state ownership, knowledge distinctions and evidence boundaries cannot silently disappear. No external harness, adapter or alternate storage implementation is added here.
+
+The [East Three creature-test report](V0.9.1_TRIALS.md) explains one guided pre-v0.9.1 scene and its audit, including the retrospective-cause defect that informed prospective deepening. Selected player messages and recovered play/audit summaries have different evidence weight. The report is not a complete transcript, post-fix rerun or save/resume test.
 
 ## Startup and play
 
@@ -49,13 +57,17 @@ The baseline does not predetermine every later outcome. Resolve a material open 
 
 Fixed opening state belongs to the selected MODULE baseline. Later complete mutable person state belongs in PEOPLE and collective/system state in its NOW authority. An agent's belief may differ from world truth; correcting one does not inform that agent without an established disclosure or observation. Relationship aspects likewise change at their supported scope. Only relevant facts are retained; there is no universal vector, all-cast scan or automatic generation table. Cultural and physical constraints retain their source scope instead of determining every individual's psychology.
 
-New state in ordinary PLAY is conversational and best-effort until saved. A requested save or checkpoint compiles the complete accepted present through existing recovery; it does not provide an invisible write on each NPC decision. An authorized setup can establish a small recorded private opening. A result unavailable after interruption is an explicit gap; recovery provenance is not an alternative live-state layer. The proposed automatic protected-establishment experiment is outside this release.
+The retained v0.9.1 procedure also separates actual control from available information and makes inapplicable dimensions stay inapplicable. A due order, perception or authorized initiative may make an entity's basis material without player attention. Later deepening may change current state prospectively, but cannot invent a prior hidden cause merely to confirm or contradict the player's interpretation. An independently established earlier source or accepted determination is distinct from retrospective explanation.
+
+New state in ordinary PLAY is conversational and best-effort until saved. Authorized persistence compiles the complete accepted present through existing recovery; it does not provide an invisible write on each NPC decision. An authorized setup can establish a small recorded private opening. A result unavailable after interruption is an explicit gap; recovery provenance is not an alternative live-state layer. The earlier automatic protected-establishment experiment is not implemented; v0.9.2 instead offers the separately accepted whole-present announced-autosave policy below.
 
 ## Saving
 
 SAVE/CLOSE/END SESSION performs one complete save. Current-save metadata carries the latest present identity separately from the latest archived evidence boundary. CHECKPOINT changes the former while retaining the latter.
 
 The operator/model preserves preimages, records affected files and newly created directories with their prior existence, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Restoration removes only verified operation-created empty directories after file reconciliation, using exact nonrecursive removal. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
+
+The optional [announced-autosave policy](ADMIN/AUTOSAVE.md) invokes that existing CHECKPOINT after accepted permission and advance notice. It does not add a save format, background service or private-state owner. Recovery, active handover and an in-progress write block concurrent execution. Installation alone leaves it off, and a checkpoint still does not archive new dialogue or replace full CLOSE before source access is discarded.
 
 A coherent episode can occupy one evidence body. Split scenes or records when they will be retrieved independently. Preserve consequential wording and missing-source qualifications. Optional indexes locate evidence; they do not replace it.
 
