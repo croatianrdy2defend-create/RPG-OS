@@ -137,7 +137,7 @@ Wait for confirmation that the save completed before discarding the conversation
 
 To select the standard policy for a campaign, say:
 
-> Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md) for this campaign.
+> Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.
 
 The GM records that accepted permission through normal setup or recalibration. With unsaved state, it warns after a consequential change or substantial scene boundary, after 15 completed PLAY replies since verified persistence, or at a supported context reading of at least 65%. The meter must actually be available to the model or reported by the operator; it is never guessed. Several triggers create one notice, not several saves.
 
@@ -225,6 +225,6 @@ Original documentation/protocol material: [CC BY 4.0](LICENSE). Code and reposit
 
 Ask: “Preserve this actual session export and audit the save against it and the prior records.” The GM follows [Evidence audit](ADMIN/EVIDENCE_AUDIT.md), states the captured and inspected scope, and separates contradictions, unresolved questions and missing evidence. An authorized correction is not ignored merely because the GM failed to acknowledge it. Clear bookkeeping and changes that would alter played outcomes have different repair eligibility.
 
-You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. A fresh chat still resumes from the ordinary saved campaign. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
+You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
 
 The v0.9.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.
