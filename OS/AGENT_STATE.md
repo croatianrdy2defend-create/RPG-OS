@@ -1,4 +1,4 @@
-# Independent agent state — v0.9.0
+# Independent agent state — v0.9.1
 
 Cold procedure for establishing an entity-appropriate behavioral basis: the existing minimal baseline, not a new record type. Use before the focused portrayal or consequential behavior it governs, or for a materially unresolved change or initiative opportunity. Do not load it at every startup or before every line of dialogue. Reuse sufficient established state. No mandatory agent vector, draw, dossier, new state owner or writing permission is introduced.
 
@@ -37,6 +37,16 @@ Preserve actual observed actions and speech as constraints, but do not promote t
 Keep the basis small and entity-appropriate. Relevant activity or function, a drive or directive, present condition, information or a practical constraint may suffice. Where useful, ask what governs its behavior without this new PC intervention; an ordinary ongoing activity is a valid answer. Include supported opportunities and positive aims, not just obstacles manufactured to demonstrate independence. A routine clerk needs no biography; a controlled organism needs no friendship inventory.
 
 Distinguish pre-existing facts from a first impression or response caused by the encounter. Establish eligible facts before the portrayal or resolution they affect; never invent prior motives afterward to explain a selected result. Existing observations constrain eligible generation without uniquely determining every hidden cause. Preserve supported outcomes and unresolved dimensions rather than rewriting earlier behavior. Applicable ENGINE procedures still govern uncertainty; prose traits supply no automatic numerical modifiers. Do not resolve the same reception once in the baseline and again as a reaction roll.
+
+## Deepen prospectively, not retrospectively
+
+Once focused portrayal, speech or observed behavior exists, any private cause behind it that was not already established remains unresolved. Later deepening may establish new current or future state when it becomes material. It may establish an earlier cause only by recovering a pre-existing authoritative source or by using an accepted generation procedure whose admissible inputs do not include the player's interpretation, the desired scene outcome or a need to explain the old portrayal.
+
+The earlier observation is a constraint on eligible answers, not selection evidence for its hidden meaning. Do not choose either the player's interpretation or its opposite as the private cause merely to accommodate the player or to demonstrate independence. If several causes remain compatible and no independent determination is required, leave the cause open.
+
+New evidence can legitimately change current beliefs, aims, orders, orientation or control from that point forward. Do not rewrite that new state backward into an earlier motive or history. A tired appearance does not by itself authorize an invented prior long shift; later technical evidence can create a current mechanical hypothesis without establishing that the hypothesis existed earlier. The same rule applies to nonhuman and controlled entities: later behavior does not authorize inventing a weak control signal, instinctive drive or program state that had supposedly governed an earlier action unless that prior cause is independently established.
+
+When the establishment boundary matters to continuity or audit, retain a compact source/method or timing cue with the factual state. Do not store internal reasoning. A later self-report that a fact was "already decided" is not independent proof of earlier establishment.
 
 ## Establish eligible gaps
 

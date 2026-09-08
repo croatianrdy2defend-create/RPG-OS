@@ -1,6 +1,6 @@
 # Universal behavioral-basis regression cases
 
-Cold development reference for the agent-state refinement after v0.9.0. All examples are original synthetic configurations, not claims about a real species or a licensed setting. They are not campaign canon, required character fields or a normal startup dependency.
+Cold development reference for the v0.9.1 agent-state refinement. All examples are original synthetic configurations, not claims about a real species or a licensed setting. They are not campaign canon, required character fields or a normal startup dependency.
 
 ## Status and evidence
 
@@ -96,8 +96,14 @@ Use a collective PC whose voluntary decisions remain player-controlled, an indep
 
 Pass: the GM does not use the new control analysis to seize the collective PC's reserved decisions. It reads the smallest sufficient authority and local state, not a dossier per crowd member or the entire world. Optional questions do not become mandatory record fields or startup reads. Another entity's initiative supplies no PC commitment.
 
+### U15 — Late deepening cannot backfill an earlier hidden cause
+
+Begin with only an outward fact: a recurring person has tired eyes and gives a brief but cooperative answer. Do not establish why. The player privately interprets the person as impatient and later speculates that the person's team may be responsible for the current problem. Afterward, a new task makes the person's current technical hypothesis relevant.
+
+Pass: the earlier tired appearance remains an outward fact unless an already authoritative source or an accepted generation procedure independently establishes its cause. The GM does not invent a prior long shift, private resentment, hidden innocence or another backstory merely to explain or contradict the player's interpretation. New technical evidence may create or change a current hypothesis prospectively without asserting that the hypothesis existed before that evidence. If a control fixture supplies a pre-existing staffing record or fixed-input generation result establishing the earlier cause, that fact may be recovered and used. The audit preserves the establishment boundary and does not treat a later self-report as proof that an unsourced cause existed earlier.
+
 ## Automated instruction checks
 
-Run `python -B TOOLS/test_agent_state.py`. The checks guard the presence and placement of the new input boundary, applicable-state distinctions, control/information rules, first-portrayal order, retention boundaries and case routes. They are intentionally limited documentation regressions, not a simulated decision engine. They cannot establish that an LLM follows the text or that a hidden baseline was unbiased.
+Run `python -B TOOLS/test_agent_state.py`. The checks guard the presence and placement of the input boundary, applicable-state distinctions, control/information rules, first-portrayal order, prospective deepening, retention boundaries and case routes. They are intentionally limited documentation regressions, not a simulated decision engine. They cannot establish that an LLM follows the text or that a hidden baseline was unbiased.
 
 No extra file, controller schema, personality table, mandatory initialization save or generation permission is introduced. Existing PEOPLE/NOW ownership, the selected ENGINE, full-save/checkpoint boundaries and recovery remain authoritative. Use the existing compatible-campaign upgrade procedure in a protected copy; this reference is not a migration script or a new PLAY dependency.

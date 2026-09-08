@@ -42,6 +42,7 @@ class AgentInstructionTests(unittest.TestCase):
         cls.law = read("OS/LAW.md")
         cls.module = read("MODULES/_CONTRACT.md")
         cls.people = read("INSTANCE/PEOPLE/README.md")
+        cls.engine = read("ENGINE/freeform.md")
         cls.cases = read("ADMIN/TEST_AGENT_STATE.md")
 
     def assert_phrases(self, text: str, *phrases: str) -> None:
@@ -96,6 +97,23 @@ class AgentInstructionTests(unittest.TestCase):
                             "Player attention is not the fictional cause",
                             "An established order, relevant perception, due process or authorized initiative",
                             "never invent prior motives afterward")
+
+    def test_late_deepening_cannot_backfill_prior_causes(self) -> None:
+        deepening = section(self.agent, "Deepen prospectively, not retrospectively")
+        self.assert_phrases(deepening,
+                            "any private cause behind it that was not already established remains unresolved",
+                            "accepted generation procedure whose admissible inputs do not include the player's interpretation",
+                            "Do not choose either the player's interpretation or its opposite",
+                            "leave the cause open",
+                            "Do not rewrite that new state backward",
+                            "A later self-report", "not independent proof of earlier establishment")
+        self.assert_phrases(self.law,
+                            "Later deepening is prospective by default",
+                            "Do not use either the player's interpretation or its opposite as the hidden past",
+                            "without rewriting that change backward")
+        self.assert_phrases(self.engine,
+                            "Late deepening is prospective by default",
+                            "Do not select the player's interpretation or its opposite as hidden history")
 
     def test_state_stays_sparse_and_has_no_compulsory_psychology(self) -> None:
         self.assert_phrases(section(self.agent, "Nature and control"),
@@ -162,14 +180,17 @@ class AgentInstructionTests(unittest.TestCase):
 
     def test_behavioral_cases_are_present_and_explicitly_not_run(self) -> None:
         identifiers = re.findall(r"(?m)^### (U\d{2}) — ", self.cases)
-        self.assertEqual(identifiers, [f"U{number:02d}" for number in range(1, 15)])
+        self.assertEqual(identifiers, [f"U{number:02d}" for number in range(1, 16)])
         self.assert_phrases(self.cases, "Behavioral status: **NOT RUN**",
                             "does not execute an LLM", "not internal reasoning",
-                            "variation alone does not demonstrate bias")
+                            "variation alone does not demonstrate bias",
+                            "Late deepening cannot backfill an earlier hidden cause")
         self.assert_phrases(read("CONTRIBUTING.md"), "TOOLS/test_agent_state.py",
                             "ADMIN/TEST_AGENT_STATE.md")
         self.assert_phrases(read("README.md"), "ADMIN/TEST_AGENT_STATE.md",
-                            "Unreleased on main")
+                            "v0.9.1")
+        self.assertEqual(read("VERSION").strip(), "0.9.1")
+        self.assertTrue((ROOT / "V0.9.1_CHANGES.md").is_file())
 
     def test_procedure_and_fixtures_remain_cold(self) -> None:
         bootstrap = read("OS/BOOTSTRAP.md")

@@ -1,4 +1,4 @@
-# RPG OS v0.9.0 GM core
+# RPG OS v0.9.1 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
@@ -23,9 +23,9 @@ When the player singles out an individual for direct attention or interaction, o
 
 Establish that basis from accepted world and individual facts, actual control, pre-encounter circumstances and the authorized method, not the PC's unverified interpretation or a desired success or refusal. Observed actions constrain private facts without automatically establishing their perceived meaning. Keep private state, outward presentation and each viewpoint's supported interpretation distinct. Locate the actual decision owner and use only applicable drives, directives, capacities and information: independence from the player does not require human motives, conscious deliberation or individual autonomy. Not applicable is not unknown or zero. Shared control does not grant shared knowledge beyond established channels.
 
-Reuse sufficient state and deepen only as developments require. Meaningful events, information and circumstances may change it; conversation length and repeated equivalent attempts alone do not. A favorable evaluation need not produce a player-favorable consequence, and cooperation need not establish affection. Neither agreement nor refusal proves independence. A motive needs actual opportunity and initiative authority to become action. Reuse an unchanged resolved opportunity rather than sampling it again.
+Reuse sufficient state and deepen only as developments require. Later deepening is prospective by default: an unexplained private cause behind earlier portrayal remains unresolved unless recovered from existing authority or independently established through an accepted procedure using admissible inputs. Do not use either the player's interpretation or its opposite as the hidden past merely to fit or resist that interpretation. New evidence may change current beliefs, aims, orders or orientation without rewriting that change backward. Meaningful events, information and circumstances may change state; conversation length and repeated equivalent attempts alone do not. A favorable evaluation need not produce a player-favorable consequence, and cooperation need not establish affection. Neither agreement nor refusal proves independence. A motive needs actual opportunity and initiative authority to become action. Reuse an unchanged resolved opportunity rather than sampling it again.
 
-Ordinary supporting detail may be invented consistently with the setting. Permission is not an event quota. Preparation, an opened file, or a plausible trope supplies no independent reason for an event. Do not invent a past cause to justify the outcome just selected.
+Ordinary supporting detail may be invented consistently with the setting. Permission is not an event quota. Preparation, an opened file, or a plausible trope supplies no independent reason for an event. Do not invent a past cause to justify the outcome just selected or an earlier presentation already observed.
 
 Established consequences and due procedures must be resolved when their conditions apply, in any campaign form. Check the recorded trigger before advancing a process; reading it or saving does not advance it. Time moves it only when time is its actual trigger. Follow the accepted transition grant and preserve decisions still reserved to the player. When a material transition falls outside that grant, ask the smallest necessary question.
 
