@@ -1,10 +1,12 @@
-# RPG OS v0.9.1 — experimental playtest release
+# RPG OS v0.9.2 — experimental playtest release
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
-**New in v0.9.1:** independent-agent establishment now starts with an entity-appropriate behavioral basis and its actual source of control, not a human personality template or the PC's interpretation. Control and information remain separate, inapplicable behavioral dimensions stay inapplicable, and later deepening cannot backfill an earlier hidden cause merely to explain or contradict the player's interpretation. The [procedure](OS/AGENT_STATE.md), core, Freeform adapter and existing state owners remain aligned; [targeted regression cases](ADMIN/TEST_AGENT_STATE.md) separate automated instruction checks from behavioral evidence. No campaign schema or existing character is reset.
+**New in v0.9.2:** optional [announced autosave](ADMIN/AUTOSAVE.md) invokes the existing protected complete-present CHECKPOINT after a one-response-ahead notice. It coalesces meaningful-state, scene-boundary, turn-count and actually available context-pressure triggers. The outgoing model saves before a model/reasoning change; a checkpoint does not replace a full evidence-preserving CLOSE. Autosave stays off until explicitly selected. No campaign format, background service or private scratch layer is added.
 
-**Experimental, unbound fresh install.** This release includes the Freeform engine and blank campaign records. It includes no setting module, character, campaign history, or artwork. No paid API, custom application, database or script is required for play. Optional Python tools provide exact source reads, a disposable search cache and evidence-audit support.
+**Retained from v0.9.1:** independent-agent establishment starts with an entity-appropriate behavioral basis and its actual source of control, not a human personality template or the PC's interpretation. Control and information remain separate, inapplicable behavioral dimensions stay inapplicable, and later deepening cannot backfill an earlier hidden cause merely to explain or contradict the player's interpretation. The [procedure](OS/AGENT_STATE.md), core, Freeform adapter and existing state owners remain aligned; [targeted regression cases](ADMIN/TEST_AGENT_STATE.md) separate automated instruction checks from behavioral evidence. No campaign schema or existing character is reset.
+
+**Experimental, unbound fresh install.** This release includes the Freeform engine and blank campaign records. It includes no setting module, character, campaign history, or artwork. No paid API, custom application, database or script is required for play. Optional Python tools provide exact source reads, a disposable search cache, evidence-audit support and a read-only autosave scheduling helper.
 
 <table>
 <tr><td>
@@ -14,9 +16,9 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 </td></tr>
 </table>
 
-[Get v0.9.1](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.1) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.1_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.9.2](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.2) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.2_CHANGES.md) · [Verification](VERIFICATION.md)
 
-**v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. v0.9.1 preserves those tools and refines independent-agent establishment. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
+**v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. Later releases preserve those tools and refine independent-agent establishment and persistence. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
 
 The standing random fallback from v0.8.1 remains available for eligible unauthored outcomes that lack enough basis for grounded judgment. Existing facts, applicable rules and other selected methods come first. Its supplied convention is one actual d6, **1–3 No and 4–6 Yes**, applied to a bounded question. See the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes).
 
@@ -40,6 +42,20 @@ To stop:
 
 Wait for confirmation that the save completed before discarding the conversation. A fresh chat can access only records actually saved and made available. Attachment-only hosts use the manual export procedure in [INSTALLATION](INSTALLATION.md).
 
+## Optional announced autosave
+
+To select the standard policy for a campaign, say:
+
+> Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.
+
+The GM records that accepted permission through normal setup or recalibration. With unsaved state, it warns after a consequential change or substantial scene boundary, after 15 completed PLAY replies since verified persistence, or at a supported context reading of at least 65%. The meter must actually be available to the model or reported by the operator; it is never guessed. Several triggers create one notice, not several saves.
+
+> OOC — Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say “checkpoint now” or “delay autosave.”
+
+After the next completed play response, the GM briefly enters the existing protected CHECKPOINT procedure and reports the result. No fictional time passes, no unanswered PC choice is resolved, and no new archive evidence is created. Recovery or active handover blocks execution. Delay, resume, disable and manual save are ordinary requests; full SAVE always remains a full save. Nothing runs while the chat is idle.
+
+**Save first, switch second.** Do not change model/reasoning strength before the outgoing context saves. A checkpoint protects current state only: use full CLOSE or the actual scene handover before discarding dialogue/source access, and have the next GM reload the authoritative files. Neither readback nor a context percentage guarantees hidden-memory completeness or host switching behavior. The [autosave procedure](ADMIN/AUTOSAVE.md) and [behavioral cases](ADMIN/TEST_AUTOSAVE.md) state the limits. Installing v0.9.2 does not enable autosave in a separately stored campaign.
+
 ## Independent agent state
 
 Independent agent state is integrated through setup, worldbuilding, play, saving, resumption, and scene handover. The GM first recovers or establishes what actually governs the relevant entity: its supported nature, source of control, applicable drives or directives, available information and present circumstances. These are optional questions for finding the smallest useful basis, not required character fields. The same GM portrays the entities; no additional running AI processes are needed.
@@ -56,13 +72,13 @@ For example, a synthetic raider can value a challenging opponent and therefore b
 
 Existing entities retain their established facts. Actual causes can change the relevant state; repeated attention does not create a different individual. A successful demonstration can improve professional trust without automatically creating personal affection. Cooperation, initiative, resistance, obedience and indifference are all possible when supported. Neither a favorable nor an unfavorable outcome proves independence. [Follow the coworker example across a save](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm).
 
-Background crowds need no individual preparation. Routine contact can use a tiny basis; deeper detail follows actual causal significance. A later eligible opportunity can still use the accepted fallback without replacing fixed state or rerolling an earlier reaction. A roll cannot create an unsupported capacity or an inapplicable relationship dimension. There is no mandatory personality spreadsheet, new startup file, cast-wide simulation or automatic save.
+Background crowds need no individual preparation. Routine contact can use a tiny basis; deeper detail follows actual causal significance. A later eligible opportunity can still use the accepted fallback without replacing fixed state or rerolling an earlier reaction. A roll cannot create an unsupported capacity or an inapplicable relationship dimension. There is no mandatory personality spreadsheet, new agent startup file or cast-wide simulation. Agent establishment alone grants no automatic save; the optional whole-present autosave needs its separate accepted policy.
 
 New unsaved state has best-effort retention in the available conversation, not an independently recoverable private commitment. Authorized saving preserves the factual basis and actual method provenance in existing PEOPLE or system owners, not internal reasoning. Shared state has one owner; a checkpoint preserves the whole present while retaining the previous archive evidence boundary. Adoption preserves established characters, controllers and history rather than regenerating them or silently relabeling fixed facts as impressions.
 
 This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play. The automated instruction checks are not evidence that a model follows the procedure.
 
-Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1 and v0.9.0 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
+Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1, v0.9.0 and v0.9.1 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
 
 ## Continue a scene with another GM
 
@@ -94,9 +110,9 @@ The kit accommodates different genres and kinds of player character. Other rules
 | ENGINE / MODULES | Resolution rules and stable setting authorities |
 | INSTANCE | Accepted agreement and current campaign state |
 | ARCHIVE | Historical evidence and routes to it |
-| ADMIN | Setup, save, correction, recovery, and handover procedures |
+| ADMIN | Setup, save, correction, recovery, autosave and handover procedures |
 | EVIDENCE | Optional untouched session captures, including OOC and rewinds; separate from accepted canon |
-| TOOLS | Optional readers, search and audit helpers, tests, and public-release packaging |
+| TOOLS | Optional readers, search, audit and scheduling helpers, tests, and public-release packaging |
 
 Only a small startup packet is routinely loaded. SAVE, CLOSE, and END SESSION perform a complete save. CHECKPOINT preserves the present while retaining the preceding archive evidence boundary. Handover adds a live transfer package without turning that package into a historical save.
 

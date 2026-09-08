@@ -19,6 +19,10 @@ In a fresh chat, precede your request with "Open OS/AGENTS.md."
 | Request | Meaning |
 |---|---|
 | CHECKPOINT | Save the present only; historical evidence since the last complete save remains unarchived |
+| Enable standard announced autosave | Select [the optional policy](ADMIN/AUTOSAVE.md) through setup/recalibration; warning precedes the existing protected checkpoint |
+| Delay / resume autosave | Suspend a pending automatic checkpoint; reannounce before automatic execution resumes |
+| Disable autosave | Revoke automatic persistence and record the prospective agreement change |
+| Checkpoint now / save now | Run the requested manual present-only/full save; supersede the pending autosave |
 | Prepare a scene handover / SCENE HANDOVER | Pause the current scene; checkpoint its state and export available conversation plus the GM briefing |
 | Receive this handover | Become the receiving GM for the named package and continue with the player at its pending decision |
 | Prepare the scene return | Receiving GM records non-graphic events, consequences, private changes and the next decision |
@@ -39,4 +43,4 @@ A clear acceptance of a displayed proposal is enough. No special acceptance toke
 
 Technical identifiers in a save confirmation support recovery. You do not need to memorize them.
 
-Independent NPC state is part of ordinary play; no "generate stance" command or recurring reminder is required. Newly established facts remain unsaved until a requested save completes. Switch models at a completed save, or use handover for an unfinished scene. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) for optional session and incident notes.
+Independent NPC state is part of ordinary play; no "generate stance" command or recurring reminder is required. Newly established facts remain unsaved until an authorized persistence operation completes. Autosave stays off unless selected and never runs while the chat is idle. Keep the current model/reasoning setting until the outgoing save is verified. A checkpoint preserves state, not new exact dialogue; use full CLOSE or the existing handover before discarding source. See [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) for optional session and incident notes.

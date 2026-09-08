@@ -1,4 +1,4 @@
-# RPG OS v0.9.1 startup
+# RPG OS v0.9.2 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 
@@ -12,6 +12,7 @@ Load a campaign when asked to run, resume, or set one up. Development and review
 5. Check that the bound ENGINE entrypoint and `pc_record` exist without preloading their bodies. The engine resolves to exactly one of `ENGINE/<engine>.md` or `ENGINE/<engine>/ENGINE.md`. Safe ids start with a letter/digit and contain only letters/digits/dot/underscore/hyphen; no traversal or absolute path. Follow only campaign-local record paths.
 6. Read `MODULES/<module>/SETTING_BRIEF.md`. Its identity must match and its world orientation must be usable. Require `safety_state` to be exactly `floor-only` or `active`; a missing/invalid flag requires repair. Read `INSTANCE/SAFETY.md` when active; that requires real limits. Presentation is already accepted in the agreement. Do not load POLICY or Bearing during ordinary startup.
 7. Orient to Situation, Character state, Open matters, Active processes, and Relevant records. Follow private watch or other detailed pointers only when the present task calls for them. Resolve essential conflicts before fiction; harmless extra metadata or heading order alone need not prevent play.
+8. Only if the accepted agreement explicitly enables autosave, follow `ADMIN/AUTOSAVE.md` for its cadence and advance notice. Absent policy means off, not a missing required field. A clean boot from a verified save starts its operational count at zero; never invent an old warning or unsaved state. Recovery and handover still take priority. No context-meter access is assumed.
 
 ## Respond
 
@@ -27,6 +28,7 @@ Exact PC values, detailed lore, subsystem bodies, and historical evidence remain
 | Use an existing module / LOAD MODULE | `ADMIN/LOAD.md` |
 | Save / CLOSE / END SESSION | `ADMIN/CLOSE_CONTRACT.md` |
 | Quick present-only save / CHECKPOINT | Checkpoint section in that procedure |
+| Enable/disable autosave, delay/resume a pending autosave | `ADMIN/AUTOSAVE.md`; persistent policy changes use `ADMIN/RECALIBRATE.md` |
 | Hand this scene to another GM / SCENE HANDOVER | `ADMIN/SCENE_HANDOVER.md` — prepare |
 | Continue from this handover | `ADMIN/SCENE_HANDOVER.md` — receive |
 | Import the scene return / RETURN SCENE | `ADMIN/SCENE_HANDOVER.md` — import |

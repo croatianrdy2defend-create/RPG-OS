@@ -1,8 +1,8 @@
-# Quick start — v0.9.1 experimental
+# Quick start — v0.9.2 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.9.1 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.1), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.2 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.2), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -26,15 +26,23 @@ At a stopping point:
 
 > Save the campaign and end the session.
 
-Wait for a successful full-save confirmation before discarding the chat. SAVE, CLOSE and END SESSION preserve current state and available accepted evidence. A requested checkpoint preserves the whole present but does not archive new session evidence. A manual export must be installed before it is a workspace save.
+Wait for a successful full-save confirmation before discarding the chat. SAVE, CLOSE and END SESSION preserve current state and available accepted evidence. A checkpoint preserves the whole present but does not archive new session evidence. A manual export must be installed before it is a workspace save.
+
+## Optional announced autosave
+
+Say: “Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.” The GM records the accepted policy through setup or recalibration; installation alone leaves it off.
+
+The standard policy warns after consequential unsaved state or substantial scene boundaries, after 15 completed PLAY replies, or at a supported context reading of at least 65%. The meter must actually be accessible or reported by you. One generic warning precedes a checkpoint after the next completed play turn. Several triggers coalesce; nothing runs unattended. “Checkpoint now,” “save now,” “delay autosave,” “resume autosave” and “disable autosave” remain available.
+
+Keep the current model/reasoning setting until the outgoing save is verified. The checkpoint does not preserve new exact dialogue and cannot guarantee host memory transfer. Before discarding the chat or source access, perform full CLOSE or the applicable handover. See [Autosave](ADMIN/AUTOSAVE.md).
 
 ## Adjust or switch GMs
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) if you want it; a diceless campaign does not acquire dice merely by installing v0.9.1.
+An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired; a diceless campaign does not acquire dice merely by installing v0.9.2.
 
-Switch models after a completed save, giving the next GM the same updated folder. For a mid-scene switch, say:
+Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 
 > Prepare a scene handover at this point.
 

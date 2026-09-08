@@ -40,7 +40,7 @@ Use supplied individual facts and accepted starting relationships first. A PC ho
 
 Settle only material missing methods in the same proposal. Freeform judgment remains valid; when partly randomized initialization is selected, identify its eligible scope, compatible procedure, context, outcome mapping and actual random source before the draw. Reuse supplied choices. Missing randomness requires supplied input or an accepted alternative, not invented rolls. Distinguish fixed facts, PC-unknown facts, deliberately unresolved dimensions and missing required sources.
 
-State the retention limit briefly where relevant: authorized opening private facts can be recorded during bind; later unsaved hidden state has best-effort conversational retention until an ordinary requested save or checkpoint. PLAY writes no private scratch records and starts no automatic establishment checkpoint. Check spoiler visibility only if the requested mode depends on it; a filename or collapsed tool result does not prove secrecy. Use the existing reviewed/unfixed fallback when private authoring cannot be kept unexposed.
+State the retention limit briefly where relevant: authorized opening private facts can be recorded during bind; later unsaved hidden state has best-effort conversational retention until an authorized save or checkpoint. PLAY writes no private scratch records; agent establishment alone starts no automatic checkpoint. A separately selected whole-present autosave policy uses `ADMIN/AUTOSAVE.md`, not a new private-state layer. Check spoiler visibility only if the requested mode depends on it; a filename or collapsed tool result does not prove secrecy. Use the existing reviewed/unfixed fallback when private authoring cannot be kept unexposed.
 
 ## Prepare one reviewable proposal
 
@@ -79,6 +79,12 @@ Use the shared bind procedure in `ADMIN/LOAD.md` with this accepted draft and it
 Create only MODULE, SETTING_BRIEF, POLICY, the PC baseline/bundle, T0_SAVE, and selected real capability bodies. No mandatory roster, empty encyclopedia, or opening interpretation is needed.
 
 After verification, report campaign/save identity, meaningful omissions, and how to resume from `OS/AGENTS.md`. Recommend a fresh PLAY chat so rejected drafts are cold. If the player continues here, perform the normal boot reads and use only accepted bound material.
+
+## Optional announced autosave
+
+When selected, include `ADMIN/AUTOSAVE.md`'s policy in the same compact agreement: permission/triggers in GM initiative, a one-response-ahead generic warning in Presentation, and unchanged fictional time plus outgoing-save-before-switch in Time and transitions. The standard selected cadence is 15 completed PLAY replies, with consequential-state/scene-boundary triggers and a 65% context warning only from actual host telemetry or an operator report. Keep the operator's delay/disable/manual-save rights. Absent acceptance remains off; do not add a required interview question, sixth named clause, script dependency or empty autosave file.
+
+Bind finishes before any autosave cadence starts. Autosave later invokes the existing protected complete-present CHECKPOINT and preserves the previous archive evidence boundary. It is not a full CLOSE or a promise that unsaved hidden state survives a model/reasoning change. The outgoing context must save first; preserve full evidence or a proper handover before discarding source.
 
 ## Optional save review preference
 

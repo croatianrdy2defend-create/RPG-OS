@@ -87,8 +87,7 @@ class AgentInstructionTests(unittest.TestCase):
         self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
                             "Preserve actual observed actions and speech as constraints",
                             "do not promote their perceived meaning into motive, disposition or capability",
-                            "private state, outward presentation",
-                            "Do not invent a PC interpretation",
+                            "private state, outward presentation", "Do not invent a PC interpretation",
                             "require every outward appearance to conceal a contrary motive")
 
     def test_basis_precedes_dependent_portrayal_without_attention_activation(self) -> None:
@@ -103,16 +102,13 @@ class AgentInstructionTests(unittest.TestCase):
         self.assert_phrases(deepening,
                             "any private cause behind it that was not already established remains unresolved",
                             "accepted generation procedure whose admissible inputs do not include the player's interpretation",
-                            "Do not choose either the player's interpretation or its opposite",
-                            "leave the cause open",
-                            "Do not rewrite that new state backward",
-                            "A later self-report", "not independent proof of earlier establishment")
-        self.assert_phrases(self.law,
-                            "Later deepening is prospective by default",
+                            "Do not choose either the player's interpretation or its opposite", "leave the cause open",
+                            "Do not rewrite that new state backward", "A later self-report",
+                            "not independent proof of earlier establishment")
+        self.assert_phrases(self.law, "Later deepening is prospective by default",
                             "Do not use either the player's interpretation or its opposite as the hidden past",
                             "without rewriting that change backward")
-        self.assert_phrases(self.engine,
-                            "Late deepening is prospective by default",
+        self.assert_phrases(self.engine, "Late deepening is prospective by default",
                             "Do not select the player's interpretation or its opposite as hidden history")
 
     def test_state_stays_sparse_and_has_no_compulsory_psychology(self) -> None:
@@ -120,23 +116,20 @@ class AgentInstructionTests(unittest.TestCase):
                             "reasoning prompts, not required fields",
                             "No duplicate control register, all-to-all relationship graph or cast-wide update")
         self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
-                            "Background crowds need no individual preparation",
-                            "Include supported opportunities and positive aims",
+                            "Background crowds need no individual preparation", "Include supported opportunities and positive aims",
                             "a controlled organism needs no friendship inventory")
 
     def test_randomness_cannot_create_inapplicable_capacities(self) -> None:
         self.assert_phrases(section(self.agent, "Establish eligible gaps"),
                             "Fix admissible inputs, eligible scope, context, constraints and outcome meanings before drawing",
-                            "obtain actual randomizer or player-supplied input",
-                            "Randomness does not remove bias",
+                            "obtain actual randomizer or player-supplied input", "Randomness does not remove bias",
                             "unsupported capacity or an inapplicable relationship dimension",
                             "Never switch a table, reinterpret a result or reroll")
 
     def test_approval_and_cooperation_are_not_player_outcome_meters(self) -> None:
         self.assert_phrases(section(self.agent, "Portray and change"),
                             "A favorable evaluation by an entity need not produce a player-favorable consequence",
-                            "Cooperation need not establish affection",
-                            "Agency does not require refusal, agreement",
+                            "Cooperation need not establish affection", "Agency does not require refusal, agreement",
                             "there is no outcome quota")
 
     def test_change_is_scoped_and_not_retrospective_regeneration(self) -> None:
@@ -145,51 +138,42 @@ class AgentInstructionTests(unittest.TestCase):
                             "without retroactively choosing what existed before the encounter",
                             "Repetition alone earns neither progress nor forced resistance")
         self.assert_phrases(section(self.agent, "Resolve operative opportunities"),
-                            "Repeated queries or subdivisions create no extra draws",
-                            "leave later time uncommitted")
+                            "Repeated queries or subdivisions create no extra draws", "leave later time uncommitted")
 
     def test_retention_keeps_existing_owners_and_honest_limits(self) -> None:
         self.assert_phrases(section(self.agent, "Retain, save and transfer honestly"),
-                            "Shared state has one authority",
-                            "PLAY remains read-only",
-                            "not an independently recoverable hidden commitment",
-                            "not proof of independent generation",
-                            "not internal reasoning",
-                            "no automatic establishment checkpoint, background save or private scratch file",
+                            "Shared state has one authority", "PLAY remains read-only",
+                            "not an independently recoverable hidden commitment", "not proof of independent generation",
+                            "not internal reasoning", "no automatic establishment checkpoint, background save or private scratch file",
                             "The receiving GM leaves source authorities frozen")
 
     def test_adoption_preserves_established_entities_and_history(self) -> None:
         self.assert_phrases(section(self.agent, "Retain, save and transfer honestly"),
-                            "Adoption is preservation-first",
-                            "do not regenerate existing individuals, controllers, relationships or history",
+                            "Adoption is preservation-first", "do not regenerate existing individuals, controllers, relationships or history",
                             "ADMIN/CORRECT.md", "accepted prospective procedure",
                             "Relabeling a prior fact as an impression is not a silent repair")
 
     def test_core_module_and_current_owner_expose_the_same_boundary(self) -> None:
-        self.assert_phrases(self.law, "entity-appropriate behavioral basis",
-                            "Not applicable is not unknown or zero",
-                            "Shared control does not grant shared knowledge",
-                            "A roll cannot create an unsupported capacity")
-        self.assert_phrases(self.module, "The module supplies entity-specific capacities",
-                            "the OS supplies the procedure", "the ENGINE owns resolution",
-                            "admissible inputs", "not required files, fields")
+        self.assert_phrases(self.law, "entity-appropriate behavioral basis", "Not applicable is not unknown or zero",
+                            "Shared control does not grant shared knowledge", "A roll cannot create an unsupported capacity")
+        self.assert_phrases(self.module, "The module supplies entity-specific capacities", "the OS supplies the procedure",
+                            "the ENGINE owns resolution", "admissible inputs", "not required files, fields")
         self.assert_phrases(self.people, "not required fields or a human personality template",
-                            "one selected NOW or other existing system authority",
-                            "do not rerandomize an established entity",
+                            "one selected NOW or other existing system authority", "do not rerandomize an established entity",
                             "PLAY creates no files here")
 
     def test_behavioral_cases_are_present_and_explicitly_not_run(self) -> None:
         identifiers = re.findall(r"(?m)^### (U\d{2}) — ", self.cases)
         self.assertEqual(identifiers, [f"U{number:02d}" for number in range(1, 16)])
-        self.assert_phrases(self.cases, "Behavioral status: **NOT RUN**",
-                            "does not execute an LLM", "not internal reasoning",
-                            "variation alone does not demonstrate bias",
-                            "Late deepening cannot backfill an earlier hidden cause")
-        self.assert_phrases(read("CONTRIBUTING.md"), "TOOLS/test_agent_state.py",
-                            "ADMIN/TEST_AGENT_STATE.md")
-        self.assert_phrases(read("README.md"), "ADMIN/TEST_AGENT_STATE.md",
-                            "v0.9.1")
-        self.assertEqual(read("VERSION").strip(), "0.9.1")
+        self.assert_phrases(self.cases, "Behavioral status: **NOT RUN**", "does not execute an LLM", "not internal reasoning",
+                            "variation alone does not demonstrate bias", "Late deepening cannot backfill an earlier hidden cause")
+        self.assert_phrases(read("CONTRIBUTING.md"), "TOOLS/test_agent_state.py", "ADMIN/TEST_AGENT_STATE.md")
+        self.assert_phrases(read("README.md"), "ADMIN/TEST_AGENT_STATE.md", "v0.9.1")
+        # Preserve the v0.9.1 regression without pinning all future releases to its version.
+        version = read("VERSION").strip()
+        self.assertRegex(version, r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")
+        self.assertGreaterEqual(tuple(map(int, version.split("."))), (0, 9, 1))
+        self.assertTrue((ROOT / f"V{version}_CHANGES.md").is_file())
         self.assertTrue((ROOT / "V0.9.1_CHANGES.md").is_file())
 
     def test_procedure_and_fixtures_remain_cold(self) -> None:

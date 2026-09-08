@@ -8,7 +8,7 @@ Every completed v0.7.1 agreement includes exactly one substantive clause in each
 
 Engine/module identity, established fiction, PC values, archive evidence, and operator safety have separate procedures. A new operator limit applies immediately; it does not wait for this edit.
 
-Installing the compatible v0.8 program uses `ADMIN/UPGRADE_V08.md`; it does not itself revise this campaign's agreement. More consistent use of existing independent agent facts needs no new questionnaire or compulsory clause. If a requested change introduces a materially new authorship or generation method, settle its scope and exact compatible procedure prospectively within these five sections. Preserve existing people, relationships, resolved opportunities and unknowns; incomplete old provenance is not a reason to rerandomize them. Distinguish an allowed initialization parameter from a changed resolution system, which requires ADD_ENGINE and a separately reviewed transition. This release adds no automatic private-establishment checkpoint permission or live-state layer.
+Installing a compatible program update uses `ADMIN/UPGRADE_V08.md`; it does not itself revise this campaign's agreement. More consistent use of existing independent agent facts needs no new questionnaire or compulsory clause. If a requested change introduces a materially new authorship or generation method, settle its scope and exact compatible procedure prospectively within these five sections. Preserve existing people, relationships, resolved opportunities and unknowns; incomplete old provenance is not a reason to rerandomize them. Distinguish an allowed initialization parameter from a changed resolution system, which requires ADD_ENGINE and a separately reviewed transition. Program installation alone adds no automatic private-establishment checkpoint permission or live-state layer.
 
 ## Procedure
 
@@ -20,6 +20,12 @@ Installing the compatible v0.8 program uses `ADMIN/UPGRADE_V08.md`; it does not 
 Changes apply from acceptance forward. They do not rewrite earlier PC choices, outcomes, clocks, state, or archive history. Optional Bearing tied to the old contract becomes stale; do not regenerate it or run REVIEW automatically. Report the new revision and changed clauses plainly.
 
 An off-premise proposal is handled OOC by agreeing a return, recalibration, or ending; do not enforce the old premise with fabricated world barriers. Recalibration alone does not reverse a prior valid ironman outcome. Any separate retrospective change requires its own explicit treatment under the accepted Retcon policy and correction procedure.
+
+## Optional announced autosave
+
+Use `ADMIN/AUTOSAVE.md` when the operator explicitly enables, disables or changes the policy. Put the actual permission and selected triggers in GM initiative, concise notices in Presentation, and the save-before-switch/no-fictional-time convention in Time and transitions. No sixth required clause, new campaign field or separate state owner is added. An absent policy stays off; accepting the documented standard policy needs no additional interview. Disabling takes effect immediately while its durable agreement change follows the protected procedure.
+
+Autosave is a whole-present CHECKPOINT through CLOSE_CONTRACT, not permission for PLAY or agent establishment to write private scratch files. Give one response of notice, honor deferral and manual-save precedence, and do not run it concurrently with this agreement operation. Keep ordinary generation, player control, existing state and archive evidence unchanged. A model/reasoning switch must not be recommended before the outgoing context saves; a checkpoint alone does not preserve new exact dialogue. Temporary delay/resume follows AUTOSAVE without editing campaign facts.
 
 ## Optional save review preference
 
