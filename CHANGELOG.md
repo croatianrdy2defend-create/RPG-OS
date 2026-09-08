@@ -1,5 +1,23 @@
 # Changelog
 
+All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
+
+## Unreleased
+
+No changes currently listed.
+
+## v0.9.1 — 2026-09-08
+
+- Reworked independent-agent establishment around an entity-appropriate behavioral basis rather than a universal human personality model: supported nature/capabilities, actual control, applicable drives/directives, information and circumstances now govern focused portrayal.
+- Separated independence from individual autonomy and separated shared control from shared knowledge, including local perception, controller authority, communication scope/delay and supported control transitions.
+- Made the player character's unverified interpretation, unperceived player wishes and desired scene outcomes inadmissible as evidence of private nature; observed behavior constrains hidden causes without automatically establishing its perceived meaning.
+- Added explicit treatment of inapplicable behavioral dimensions so friendship, trust, attraction, conversation or other human-style concepts do not become hidden zero scores for entities that do not support them.
+- Added the prospective-deepening rule: once an earlier portrayal exists, an unexplained hidden cause stays unresolved unless recovered from existing authority or independently established through an accepted procedure using admissible inputs. The player's interpretation—or its opposite—cannot be used as retrofit history.
+- Preserved legitimate current change from new evidence, orders and circumstances without rewriting that change backward into earlier motive or history.
+- Added U15 for the late-backstory failure, bringing the agent-state instruction suite to 18 checks and the cold behavioral reference to 15 synthetic cases. Behavioral fixtures remain distinct from automated text/route checks.
+- Updated Freeform, startup, installation, upgrade, reporting and current PEOPLE guidance. No save/agreement/archive/handover schema, automatic save, controller registry, personality spreadsheet or cast-wide simulation was added.
+- Existing v0.7.3, v0.8.0, v0.8.1, v8.1.1 and v0.9.0 campaigns remain format-compatible and keep established characters, controllers, relationships, histories and prior generation results. See [release notes](V0.9.1_CHANGES.md) and [verification](VERIFICATION.md).
+
 ## v0.9.0 — 2026-09-08
 
 - Added optional exact-source reader with original lines, revision hashes, scoped section selection and delivery receipts.
@@ -9,12 +27,6 @@
 - Expanded the mechanics guide, installation and compatible-upgrade instructions, public-package exclusions and regression checks.
 - Corrected the initially published v9.0.0 label to the intended v0.9.0; the workflow verifies the corrected publication before retiring only that mistaken release and tag. Earlier release labels below remain historical.
 - Fixed false source-change reports from differing Windows Python 3.12 path/handle timestamp representations, retaining identity and before/after mutation checks. Added four focused reader regressions. Features and record formats are unchanged. See [release notes](V0.9.0_CHANGES.md) and [verification](VERIFICATION.md).
-
-All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
-
-## Unreleased
-
-No changes currently listed.
 
 ## v8.1.1 — individual baselines on direct attention (2026-09-07)
 
