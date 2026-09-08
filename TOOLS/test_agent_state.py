@@ -173,7 +173,7 @@ class AgentInstructionTests(unittest.TestCase):
         self.assert_phrases(self.module, "The module supplies entity-specific capacities",
                             "the OS supplies the procedure", "the ENGINE owns resolution",
                             "admissible inputs", "not required files, fields")
-        self.assert_phrases(self.people, "not a human personality template",
+        self.assert_phrases(self.people, "not required fields or a human personality template",
                             "one selected NOW or other existing system authority",
                             "do not rerandomize an established entity",
                             "PLAY creates no files here")
