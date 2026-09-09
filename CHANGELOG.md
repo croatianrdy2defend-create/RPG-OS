@@ -48,7 +48,7 @@ No changes currently listed.
 - Preserved legitimate current change from new evidence, orders and circumstances without rewriting that change backward into earlier motive or history.
 - Added U15 for the late-backstory failure, bringing the agent-state instruction suite to 18 checks and the cold behavioral reference to 15 synthetic cases. Behavioral fixtures remain distinct from automated text/route checks.
 - Updated Freeform, startup, installation, upgrade, reporting and current PEOPLE guidance. No save/agreement/archive/handover schema, automatic save, controller registry, personality spreadsheet or cast-wide simulation was added.
-- Existing v0.7.3, v0.8.0, v0.8.1, v8.1.1 and v0.9.0 campaigns remain format-compatible and keep established characters, controllers, relationships, histories and prior generation results. See [release notes](V0.9.1_CHANGES.md) and [verification](VERIFICATION.md).
+- Existing v0.7.3, v0.8.0, v0.8.1, v0.8.2 and v0.9.0 campaigns remain format-compatible and keep established characters, controllers, relationships, histories and prior generation results. See [release notes](V0.9.1_CHANGES.md) and [verification](VERIFICATION.md).
 
 ## v0.9.0 — 2026-09-08
 
@@ -60,13 +60,13 @@ No changes currently listed.
 - Corrected the initially published v9.0.0 label to the intended v0.9.0; the workflow verifies the corrected publication before retiring only that mistaken release and tag. Earlier release labels below remain historical.
 - Fixed false source-change reports from differing Windows Python 3.12 path/handle timestamp representations, retaining identity and before/after mutation checks. Added four focused reader regressions. Features and record formats are unchanged. See [release notes](V0.9.0_CHANGES.md) and [verification](VERIFICATION.md).
 
-## v8.1.1 — individual baselines on direct attention (2026-09-07)
+## v0.8.2 — individual baselines on direct attention (2026-09-07)
 
 - Establish or retrieve a minimal current individual baseline when the player singles out an NPC for direct attention or interaction, or an NPC directly engages the PC, before focused portrayal or reaction resolution. A bare approach requires no inferred or declared PC purpose.
 - Separate pre-existing individual circumstances from what the NPC perceives and the first impression or response formed now. Attention creates no additional PC conduct or automatic NPC awareness; private state remains distinct from PC knowledge.
 - Reuse existing individuals and deepen only as actual developments require. Tiny service encounters require no full profile, mandatory field inventory, crowd initialization or automatic durable record.
 - Preserve ENGINE authority and the selected fallback. Descriptive traits supply no invented numerical modifiers; one reaction is not resolved twice, and motives are not invented after a result to explain it.
-- Update the nine-diagram mechanics guide, setup/upgrade guidance and optional B16 human diagnostics. This is an incremental instruction update from v0.8.1; save, agreement, archive, handover and person/system formats remain unchanged. See V8.1.1_CHANGES.md and VERIFICATION.md for scope and evidence.
+- Update the nine-diagram mechanics guide, setup/upgrade guidance and optional B16 human diagnostics. This is an incremental instruction update from v0.8.1; save, agreement, archive, handover and person/system formats remain unchanged. See V0.8.2_CHANGES.md and VERIFICATION.md for scope and evidence.
 
 ## v0.8.1 — simple standing random fallback (2026-09-07)
 

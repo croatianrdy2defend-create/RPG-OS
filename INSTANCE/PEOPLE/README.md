@@ -1,4 +1,4 @@
-# INSTANCE/PEOPLE — v8.1.1
+# INSTANCE/PEOPLE — v0.8.2
 
 Consequential enduring individual-agent and relationship records. Existing person_id routes include nonhuman individual actors; no path migration is needed. Use one stable portable person_id and exact route per promoted agent. A shared collective/controller variable may instead belong to its existing NOW system owner, never both. At the first durable accepted change, materialize the complete as-of-now durable mutable surface: current personal conditions, applicable PC relationship state, and only affected consequential PRIVATE state. Temporary active encounter state belongs in the single block in `INSTANCE/NOW.md`, with exact pointers to facts already owned here rather than duplicates. Preserve consequential detail and uncertainty; do not reduce a relationship to an unsupported attitude label.
 

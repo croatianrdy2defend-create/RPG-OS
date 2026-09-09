@@ -1,4 +1,4 @@
-# Engine contract — v8.1.1
+# Engine contract — v0.8.2
 
 An ENGINE supplies rules, not a setting, narrative voice, or campaign agreement. Any commercial, open, oracle-driven, or freeform system can be used when its required procedures and values are available. The kit ships only Freeform.
 

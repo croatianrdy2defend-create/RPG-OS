@@ -1,4 +1,4 @@
-# v8.1.1 experimental campaign play
+# v0.8.2 experimental campaign play
 
 This release is for ordinary human campaign play with optional feedback. Start or resume a real chosen campaign, make the decisions you want to make, save it normally, and judge whether its world remains coherent and enjoyable. No scripted behavioral pilot, rejection quota, scoring worksheet or special gameplay command is required. Structural/tool checks describe their own technical scope; they do not certify NPC independence or player enjoyment.
 

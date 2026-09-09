@@ -83,7 +83,7 @@ The following sections retain earlier observations at their original scope.
 
 The source-access implementation was initially published as v9.0.0 at commit `3d6ad58c920691929295fdc19ba185029a38dbbe`. v0.9.0 corrects that release number and adds a narrow Windows Python 3.12 source-reader compatibility fix. Path/handle identity metadata is compared across APIs, while each API's full before/after signature retains its own ctime check. Four added regressions cover different API timestamp representations, same-API timestamp mutation and actual same-size/same-mtime file replacement before opening or after reading. The corrected release workflow repeats the regression and committed-package checks, then retires only the mistaken release/tag after verifying the corrected publication.
 
-This experimental release starts from public v8.1.1, commit `e297c3f29debfda2bc610ccf08acbddd48f66242`. It adds optional source reading, scoped lexical search and evidence capture/report checks. Existing save/record formats and the direct-attention NPC procedure remain compatible. Verification below concerns this implementation; it does not establish long-campaign reliability.
+This experimental release starts from public v0.8.2, commit `e297c3f29debfda2bc610ccf08acbddd48f66242`. It adds optional source reading, scoped lexical search and evidence capture/report checks. Existing save/record formats and the direct-attention NPC procedure remain compatible. Verification below concerns this implementation; it does not establish long-campaign reliability.
 
 | Check | Observed local result |
 |---|---|
@@ -116,7 +116,7 @@ The integration run exposed a usability gap: reviewers needed clearer report-fie
 
 Before publication the final committed exporter must verify its public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and SHA-256. See [v0.9.0 release assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.0) and [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) for actual publication evidence. The sections below retain earlier results at their original scope.
 
-## v8.1.1 direct-attention baseline — 2026-09-07
+## v0.8.2 direct-attention baseline — 2026-09-07
 
 This incremental release starts from canonical public v0.8.1, commit `6177772108c8c0b61350670e71a7c97cb491e667`. Direct attention or interaction now requires a minimal current individual basis before focused portrayal or reception. Existing state, engine authority, private/public distinctions and requested-save boundaries remain intact. The observation that motivated the change was a supplied campaign audit; it does not independently authenticate that conversation's tool history.
 
@@ -130,14 +130,14 @@ All three regression suites ran sequentially on the versioned candidate after th
 | Total automated regression cases | 99 discovered: 98 passed, 1 platform skip |
 | Whole-tree structural validator | PASS; zero findings, stable measured tree and matching executed/target validator bytes |
 | Documentation links | 101 relative destinations/anchors checked; zero failures |
-| Issue form | YAML parses; unique field IDs and correctly nested v8.1.1 placeholder |
+| Issue form | YAML parses; unique field IDs and correctly nested v0.8.2 placeholder |
 | Mechanics diagrams | All nine parsed and rendered with Mermaid 10.9.3; revised individual-state diagram visually inspected |
 | Independent static behavior review | Direct-attention trigger, routine contact, undeclared intent, perception, reuse, bounded depth and existing resolution/persistence rules reviewed; no actionable issue found |
 | B16 first-contact and fresh-chat diagnostics | Six optional manual cases documented, NOT RUN |
 | Model-operated update of a played campaign | NOT RUN |
 | NPC-capacity or long-campaign behavioral benchmark | NOT RUN |
 
-The final committed exporter must verify the public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and written SHA-256 before publication. The [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) repeats regression and packaging checks on the published commit; consult it and the [v8.1.1 assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v8.1.1) for publication evidence. This source report does not claim a completed external run in advance.
+The final committed exporter must verify the public inventory, exact committed bytes, ZIP paths/CRCs, frozen unbound state and written SHA-256 before publication. The [release workflow](https://github.com/croatianrdy2defend-create/RPG-OS/actions/workflows/release.yml) repeats regression and packaging checks on the published commit; consult it and the [v0.8.2 assets](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.8.2) for publication evidence. This source report does not claim a completed external run in advance.
 
 These engineering results do not prove that a GM establishes its baseline before responding, retains unsaved private state, or portrays a large cast consistently. B16 asks for available factual state and operation evidence while leaving unavailable ordering unverified; private model reasoning is not required. New baselines remain best-effort conversation state until an authorized save succeeds. The release creates no running AI worker per NPC, full-cast scan, new schema or automatic write.
 

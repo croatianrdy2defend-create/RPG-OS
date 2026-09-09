@@ -1,4 +1,4 @@
-# Validation and behavioral fixtures — v8.1.1 experimental
+# Validation and behavioral fixtures — v0.8.2 experimental
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 

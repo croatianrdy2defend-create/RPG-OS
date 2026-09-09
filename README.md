@@ -179,7 +179,7 @@ New unsaved state has best-effort retention in the available conversation, not a
 
 This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play. The automated instruction checks are not evidence that a model follows the procedure.
 
-Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1, v0.9.0, v0.9.1, v0.9.2 and v0.9.3 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
+Valid v0.7.3, v0.8.0, v0.8.1, v0.8.2, v0.9.0, v0.9.1, v0.9.2 and v0.9.3 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
 
 ## Continue a scene with another GM
 
