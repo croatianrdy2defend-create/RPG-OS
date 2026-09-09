@@ -87,6 +87,22 @@ You might bring years of worldbuilding or only a strange idea. You might want a 
 
 ## Documentation and release information
 
+### A moment at the table
+
+*Original illustrative fiction, not a bundled setting or observed playtest. The player's character is Neri, a courier. This campaign has accepted Freeform without dice; its opening facts and Iven's current encounter basis are already established.*
+
+> **GM:** Floodwater slaps the landing beneath your boots. Iven, the keeper, braces a knee against a tangled boat line. “Last boat's for the search crew.”
+>
+> **Player:** I leave the rope alone and hold up my sealed dispatch, address outward. “Could your crew take this to the western tower? I'll wait here.”
+>
+> **GM:** Iven reads the address and sets his hook down. “I'll ask their captain when she returns. No promise she'll take it.” A bell rings across the water; nobody has reached the landing yet. What do you do?
+>
+> **Player:** I tuck the letter back under my coat. Neri worries he's losing time, but I ask where the crew went.
+
+The player chooses Neri's conduct and inner experience. The GM supplies the keeper's response and the world around him. A promise to ask remains a promise to ask; the letter has not changed hands or reached its destination. Saving can preserve that distinction for tomorrow's GM.
+
+Continue this scene through a [save and fresh-chat resume](QUICKSTART.md#play-save-and-resume), or follow the [full worked examples in How RPG OS works](MECHANICS.md) to see what supports the dialogue and survives behind it.
+
 **RPG OS v0.9.4 — experimental playtest release**
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.

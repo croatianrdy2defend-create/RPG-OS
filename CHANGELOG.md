@@ -4,7 +4,7 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 ## Unreleased
 
-No changes currently listed.
+- Added original worked fictional scenes beside the player guides and mechanics explanations, showing player/GM dialogue, encounter state, nonhuman perception, decisions, evidence, saves and handovers. These are illustrations, not new rules or observed playtests.
 
 ## v0.9.4 — universal encounter generation (2026-09-09)
 

@@ -54,6 +54,18 @@ LAW owns this mandatory operating order. The model performs it; Markdown does no
 
 Current values replace corresponding mutable starting values; stable background remains reusable. Known-to-PC, private, unfixed, and provisional states remain distinct. A summary cannot silently supersede evidence outside its scope.
 
+For a concrete example, suppose an invented Freeform campaign starts with courier Neri at a landing, the north bridge broken, and keeper Iven incorrectly believing it intact based on an old report. Those facts and his encounter basis are established before this illustrative exchange; it is not bundled canon or observed test evidence.
+
+> **GM:** Iven points upstream. “Try the north bridge. It was clear at noon; I haven't been back.”
+>
+> **Player:** I keep the dispatch under my coat. “I'll inspect it before risking the letter.”
+>
+> **GM:** “Mind the current,” he says, leaving the gate open. Beyond it, the road disappears into rain. What do you do?
+
+The bridge's starting condition belongs to MODULE; Iven's consequential current belief belongs to his PEOPLE record. KNOWN preserves what Neri heard, qualified as Iven's claim, without granting Neri the unseen truth. The saved present keeps Neri at the landing with the dispatch and an announced inspection still pending. ARCHIVE preserves the available exchange, including “I haven't been back.”
+
+A later question about Iven's exact directions retrieves that wording. A summary such as “Iven recommended the bridge” cannot establish a guarantee that it was safe now. Neither the old report nor Neri's announced plan repairs the bridge or performs the inspection.
+
 ## Independent agent state
 
 An agent here is a fictional decision-maker: a person, creature, machine or collective. One GM portrays the relevant agents; the architecture adds no parallel AI workers or background actor scheduler. The [worked encounter-to-resume example](MECHANICS.md#example-a-coworker-a-mistaken-belief-and-a-fresh-gm) shows the current-state and evidence owners in use.

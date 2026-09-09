@@ -32,6 +32,30 @@ At a stopping point:
 
 Wait for a successful full-save confirmation before discarding the chat. SAVE, CLOSE and END SESSION preserve current state and available accepted evidence. A checkpoint preserves the whole present but does not archive new session evidence. A manual export must be installed before it is a workspace save.
 
+For example, continue the [invented landing scene](README.md#a-moment-at-the-table). This is illustrative Freeform dialogue, not a test transcript or installed campaign. Assume the host can update the folder and preserve the shown session evidence; the GM uses the established encounter facts.
+
+> **GM:** Iven nods toward the submerged houses. “Checking the upper rooms. They'll come back through that gate.”
+>
+> **Player:** I stay at the landing and offer to hold his lantern while he sorts the ropes.
+>
+> **GM:** He passes you the lantern. “Keep it high.” By its light he frees a loop from the cleat. The gate creaks open as the crew returns. Their captain stops in the lantern light. “What brings you to the landing?”
+>
+> **Player, OOC:** Save the campaign and end the session here, before I answer.
+
+After completing and checking the full save, the GM's confirmation might say:
+
+> **GM, OOC:** Full save landing-s0002 complete. Neri is holding Iven's lantern at the landing and still has the sealed dispatch. The captain's question is unanswered. The current situation and available session evidence are saved.
+
+The next evening, open a fresh chat with that saved folder:
+
+> **Player, OOC:** Open OS/AGENTS.md and continue my saved campaign.
+>
+> **GM:** You are still at the landing, lantern in hand. The captain is waiting to hear why you came; Iven holds the freed line beside you. What do you say or do?
+>
+> **Player:** I'm relieved the crew is back. I tell her the council sent me, but keep the dispatch sealed until she agrees to take it.
+
+The new GM resumes the pending decision. Saving did not answer the captain, hand over the letter, or consume fictional time. You can stop in the middle of a conversation without surrendering the next choice.
+
 ## Optional announced autosave
 
 Say: “Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.” The GM records the accepted policy through setup or recalibration; installation alone leaves it off.

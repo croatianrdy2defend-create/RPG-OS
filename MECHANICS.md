@@ -6,6 +6,8 @@ It is not a trained model, background server, autonomous simulation, or replacem
 
 This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compact technical ownership notes, see [Architecture](ARCHITECTURE.md); the linked operating files contain the full procedures.
 
+The worked scenes below are original fictional illustrations, not campaign records or observed playtests. Each supplies its own situation; examples do not share a world unless stated. Unless a scene demonstrates initialization, its participants already have an established encounter basis. **Player** and **GM** show what a chat can look like. The accompanying explanations reveal selected facts for the reader; ordinary narration does not print a private-state worksheet. Any displayed dice are fixed illustration inputs, not claims that a randomizer was used.
+
 ## Contents
 
 - [The operating loop](#the-operating-loop)
@@ -120,6 +122,20 @@ Initiative is meaningful without being compulsory incident generation. An establ
 
 For example, permission to compress ordinary ferry travel can cover the declared crossing. It does not automatically choose whether the PC accepts a job offered aboard. [LAW](OS/LAW.md) defines these authorship and continuation rules; [Recalibrate](ADMIN/RECALIBRATE.md) changes accepted terms prospectively.
 
+### At the table: the ferry reaches a decision
+
+In this Freeform fantasy campaign, routine travel within a declared journey may be compressed. The PC has already paid for passage to Bellwater; accepting employment remains the player's choice.
+
+> **Player:** I take the ferry to Bellwater. I stay on deck and watch the banks.
+>
+> **GM:** Reed beds give way to the town's leaning warehouses. As the ferry rounds the last bend, a woman with a ledger braces herself beside the rail. “You travel light. I need someone to carry a sealed case from the landing to the governor's house. Five crowns, if you can go straight there.” The landing is coming into view.
+>
+> **Player:** “What is in the case?” I keep my hands off it.
+>
+> **GM:** “Glass instruments,” she says. “I can show you the packing, but I won't break the seals.” She holds the case where you can inspect it.
+
+The crossing progresses within the declared trip. The GM offers an independently motivated person's proposal and stops before accepting the job, taking the case or changing the PC's destination. The woman's claim about the contents is testimony until supported; the player can investigate, negotiate or decline.
+
 ## Inside a turn
 
 Startup checks recovery first, then loads the core, current save, and accepted contract. An active handover pauses source play. A bound run also reads its compact setting brief and any active operator limits; detailed lore and mechanics stay available for targeted retrieval. Every PLAY reply follows LAW's Understand → Establish → Resolve → Portray order. Routine dialogue may make each stage brief, but does not skip the relevant basis or source before authorship.
@@ -147,6 +163,22 @@ Before a pending action proceeds, check its current conditions, information, mea
 Private processes advance when their recorded triggers apply. Reading a storm clock does not move it. Saving does not make the storm arrive. A time-based process advances because relevant time elapsed, while another process may depend on a specific event instead.
 
 The [retrieval guide](OS/RETRIEVAL.md) preserves these distinctions. It also prohibits filling missing historical wording or exact values with plausible guesses.
+
+### At the table: a plan needs working equipment
+
+In this science-fiction Freeform example, the established relay has a dead power cell, the PC carries one tested compatible replacement, and an unobstructed working link to the depot exists once power is restored. The PC can perform the routine swap. Sending and receiving a packet does not establish that help will be dispatched.
+
+> **Player:** I send the evacuation request.
+>
+> **GM:** The transmit key clicks. The display stays black; the dead cell cannot power the relay. Your replacement is still in its carrier pouch.
+>
+> **Player:** I replace the cell and send the request again.
+>
+> **GM:** You exchange the cells and reseat the cover. The display lights, then marks the packet received at the depot. No reply has arrived yet.
+>
+> **Player:** I watch the northern approach while I wait.
+
+The first declaration supplied an intention, not a completed transmission or an unstated repair. The second supplied the missing installation. Current state now places the working cell in the relay and the dead one among the removed parts; the depot has received a request, not issued an evacuation order. A later response must use those facts. The engine judges the routine task from this example's supplied capabilities; a different engine or risky repair would use its own applicable procedure.
 
 ## Independent people and other agents
 
@@ -185,9 +217,17 @@ flowchart TD
 
 ### Example: “I approach her”
 
-In a synthetic station scene, the player approaches a woman beside a departure board. The illustration supplies her current basis before her response: distracted while checking a delayed train; trying to follow the display with time for a brief question; perceiving an approaching stranger and provisionally interpreting them as another traveler; no particular attraction; open to a short exchange while monitoring announcements. These are illustrative fixed inputs, not claimed random results. They decide neither the PC's purpose nor her response to a yet-unspecified request. No enduring personality or explanation of her earlier life is needed.
+A woman stands beside a station departure board, watching the delayed Greyhaven service. The PC is already carrying a red glove found on the platform; it is not hers. For this Freeform illustration her supplied current basis is distracted but not distressed; waiting for that train with time for a brief exchange; seeing an approaching stranger and provisionally taking them for another traveler; no particular attraction; open to a short conversation while monitoring announcements. These facts precede her response and say nothing about the PC's purpose.
 
-If she can see the approach, she may turn toward the PC or respond according to the applicable reaction procedure. She might assume a traveler needs help, but that remains her inference. The player can speak, wait, leave or reveal a different purpose. The GM does not require a motive declaration merely to make her an individual, and it does not generate a new baseline when the PC next speaks. A later announcement or an actual exchange can change her attention or willingness at the relevant scope.
+> **Player:** I approach her.
+>
+> **GM:** She glances from you to the board. “If you're after the Greyhaven train, it hasn't got any more punctual since I started glaring at it.”
+>
+> **Player:** “Actually, I wanted to ask whether you dropped this.” I show her the red glove I found on the platform.
+>
+> **GM:** She looks at it, then checks her coat pockets. “I didn't, but thank you for asking.” Her attention returns briefly to the departure board.
+
+Her initial assumption was allowed to be wrong; the GM neither assigned a motive to the approach nor treated it as flirtation. The same current basis supports the next reply without another initialization. An actual announcement could change her priorities; a new player sentence alone does not reset them.
 
 ### Example: a coworker, a mistaken belief, and a fresh GM
 
@@ -199,6 +239,20 @@ In this illustrative station scene, coworker Mara values safe maintenance. She t
 | **A relevant event** | The player declares that the PC inspects the hatch and shows Mara the open latch. Mara looks and acknowledges the discrepancy. Direct observation changes her belief; this careful check gives her a reason to trust the PC's thoroughness more. Her personal distance remains unchanged. |
 | **The player requests a full save** | The consequential current relationship and belief, with their cause, go into Mara's person record. Her still-active temporary basis goes into NOW with references to those enduring facts. The PC's observation goes into KNOWN. Available declarations and dialogue go into ARCHIVE. The unchanged hatch fact keeps its existing world owner; the save's useful pointers locate current records. No additional action or attitude change occurs during saving. |
 | **A fresh GM resumes** | The new GM retrieves Mara's current record: greater professional trust, continued personal distance, and knowledge that the hatch is open. It does not replay the discovery, restore her old belief, or infer friendship. A later request for help is judged from these facts and the actual circumstances. |
+
+What the relevant event and later continuation can sound like under this example's Freeform judgment:
+
+> **Player:** I point out the open latch. “The log says sealed. Look at this.”
+>
+> **GM:** Mara bends close enough to inspect the catch. “You're right. That entry is wrong.” She studies the gap. “Good catch. Let's check the other access points before anyone signs this off.”
+
+After the full save and a fresh GM's retrieval, a new player request can build on that change:
+
+> **Player:** “Will you check the lower hatch with me?”
+>
+> **GM:** “Yes. I'll watch the indicator while you inspect the catch.” Mara brings her inspection lamp over.
+
+This continuation supplies professional cooperation, while leaving the PC to carry out or revise the proposed inspection. It does not replay the discovery or turn Mara's revised professional judgment into personal intimacy.
 
 The valid change is as important as the continuity. Ignoring the observation would make Mara rigid; turning a careful inspection into universal affection would erase the distinction between professional trust and personal closeness. Ordinary help or initiative can be appropriate without manufacturing an obstacle.
 
@@ -217,6 +271,24 @@ Three distinctions keep the procedure honest:
 Ordinary conversation holds new state as working context. Authorized saves preserve the complete current active set in NOW and enduring/consequential facts in existing person/system owners. Genuine expiry removes an inconsequential temporary entry from current authority at its actual time; old transcripts remain historical evidence. This is not erasure of chat tokens. A required active fact lost through interruption remains a source gap, not a discarded value that can be rerolled. No per-contact checkpoint or private scratch layer is introduced.
 
 The player does not operate this procedure turn by turn. Narration and dialogue should remain natural, with the next meaningful reserved choice returned promptly. Actual campaign play will test whether these instructions improve continuity and pacing; the [playtest guide](ADMIN/PLAYTEST_V08.md) keeps optional observations outside the fiction.
+
+### At the table: the rescue line and the one witness
+
+Ten adult rescuers haul a stretcher up a quarry incline. Shared instructions, footing and visible signals support coordinated group portrayal without a ten-person private roster. For this illustration, Ivo earlier saw someone with yellow cuffs and a dark pack beside a warning post; he saw neither their face nor any act of cutting the cable.
+
+> **Player:** I ask the rear handler whether he saw who damaged the warning cable.
+
+Ivo now participates individually. His supplied Freeform basis is breathless while handling the rope; prioritizing a safe haul and keeping tension; hearing the question and regarding the PC as a possible investigator without knowing their authority; no particular attraction; willing to answer when speaking will not disrupt the lift.
+
+> **GM:** “I saw someone at that post.” Ivo tightens his grip. “Wait—over the lip first.”
+>
+> **Player:** I stand clear while they finish that lift, then listen.
+>
+> **GM:** Once the stretcher is secure, he continues: “Yellow cuffs. A dark pack. Their face was behind the post. I didn't see what they were doing.”
+>
+> **Player:** “Thank you. That's all.” I return to the cable.
+
+The work pause preserved Ivo's active basis and pending answer. Once the exchange ends with no continuing involvement requiring that temporary state, its inconsequential details can expire. His consequential observation remains in working state and is retained in the appropriate person/system record at the next authorized save. Returning later can find him rested or differently disposed; it cannot supply a remembered face or establish that the person he saw cut the cable.
 
 ### Optional encounter generation: direction, then concrete state
 
@@ -250,6 +322,54 @@ A wholly eligible baseline uses **at most three 2d6 determinations, six independ
 
 The existing active-state lifecycle and first-focus portrayal retrieval still apply. Reuse active values through attention gaps, update affected fields for actual developments and release inconsequential temporary values only on genuine deactivation. Retain consequential facts, unresolved matters and input references needed for continuity. The helper adds no ongoing attraction/reception roll, visible checklist, private scratch record, per-turn write or automatic checkpoint. An upgrade leaves the accepted generation method and diceless agreement intact unless a prospective change is separately accepted.
 
+#### At the table: a welcome distraction, an unfinished calibration
+
+In a Freeform glider workshop scene, the adult PC approaches adult mechanic Sera in clear view. The agreement selects the optional initial 2d6 helper. Before input, the GM assigns separate pairs to emotional readiness for work, initial interpersonal appraisal and overall attraction. The following are fixed worked-example inputs, not actual rolls.
+
+The GM completes this basis before Sera's response:
+
+| Field | Concrete established value in this illustration |
+|---|---|
+| Condition and mode | **4 + 5 = 9, positive:** composed and attentive while calibrating a wing brace. |
+| Priorities and constraints | Finish calibration before the tow; leaving interrupts the measurement. No priority roll. |
+| Perception and appraisal | Sees an unfamiliar adult approach. **1 + 3 = 4, negative:** provisionally doubts that this stranger will respect her working space. |
+| Attraction | **5 + 6 = 11, strongly positive:** a pronounced personal pull toward the PC despite that unfavorable appraisal; finer subtypes remain unfixed. |
+| Engagement stance | Receptive to brief conversation beside the bench; protective of the calibration in progress. Derived from the whole basis. |
+
+What the player sees is the exchange, not that table:
+
+> **Player:** “Will you leave this for a minute and show me your glider?”
+>
+> **GM:** Sera keeps the gauge against the brace. “I'd like to show you. Give me until this is aligned.” As you speak, her gaze flicks to the clear space beside the bench. “Stay that side, please. I can't have this knocked.”
+>
+> **Player:** I stay on that side and ask what the gauge measures.
+>
+> **GM:** “The brace's deflection.” She tips the dial into view while keeping it seated. “That little movement becomes a much bigger problem once you're airborne.”
+
+Freeform resolves each request from the established basis and actual exchange. Attraction does not erase her unfavorable first appraisal or unfinished task; neither requires gratuitous hostility. The next question reuses the active state. In a separate initial illustration, an attraction total of 4 could establish aversion, while 7 could mean no particular pull. Those are different starting examples, not extra draws to revise Sera after her response.
+
+#### At the table: different mechanisms beneath the same fields
+
+These separate examples supply fictional module profiles before adjudication. Their behavior uses those profiles and the selected Freeform rules.
+
+**A cave predator.** Its profile establishes a nonsocial animal that locates prey through rock vibration, lacks speech comprehension, and has no interpersonal attraction domain. The supplied basis is hungry and hunting; seeking reachable prey; detecting footsteps through a connected ledge without seeing or identifying the PC; attraction inapplicable; pursuing detectable movement within reach.
+
+> **Player:** I call, “Easy. I'm a friend,” and keep walking.
+>
+> **GM:** Its feelers follow the tremor of each step. Your words gain no answer; it scrapes toward the ledge.
+
+Hunger and prey classification are neither dislike nor personal attraction. Kind words cannot operate through a comprehension channel this animal lacks. Any attempt to escape or attack still uses its actual capabilities and the engine; this exchange guarantees neither capture nor safety.
+
+**A controlled inspection unit.** Its profile establishes a camera and status display with a deterministic controller. Its supplied basis is functioning and surveying; inspecting a sample locker; receiving images but no audio; no interpersonal appraisal or attraction capacity; performing authorized image capture. Neither camera nor controller can release the floodgate, and no credential verdict has been supplied.
+
+> **Player:** I hold my access card in front of its lens and tell it to open the gate.
+>
+> **GM:** A green scan crosses the card. The display reads: “Image captured.” The floodgate remains shut.
+
+The unit has an image, not verified authority. It cannot hear the request or acquire gate control from it. Actual controller processing and communication would be established under the profile when they occur.
+
+For an entity with a wholly specified simple process, no private liking or random condition need be invented. If a fictional bacterium is defined to reverse when its detected nutrient concentration falls, a falling sample can produce “The cell reverses and moves along the channel.” That follows the supplied chemical mechanism; it does not mean the bacterium recognized or disliked a microscopic PC.
+
 ### Random fallback for unresolved outcomes
 
 A current individual baseline does not settle every later opportunity. Sending a message, fulfilling a promise or passing on a secret may remain open after an encounter. Use retained consequential facts, any still-required active basis, actual developments and applicable ENGINE procedures. If an eligible outcome lacks enough basis for grounded judgment, use the accepted fallback within scope. This does not replace the basis required before individual participation, resurrect expired trivia, or add a second roll for a settled reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each eligible later use.
@@ -280,6 +400,20 @@ flowchart TD
 
 This is a fallback for eligible unauthored outcomes, not inaccessible established facts or missing required rules. It adds no cast-wide polling, recurring daily chances or automatic save. A repeat query reuses its resolved result. If contact ends a wait, establish a compatible occurrence time and stop there; later time remains uncommitted. Keep the question, mapping, actual input and result in the existing owner at the next requested save when needed. Audits report missing resolution honestly. Optional [B15 diagnostics](ADMIN/TESTS.md#b15--sparse-agent-outcomes-and-the-fallback-oracle) remain unrun examples, not proof of model compliance.
 
+#### At the table: a message within an agreed window
+
+A courier has the PC's address and permission to write, but made no promise. In this separate illustration, no surviving fact, applicable engine rule or supported judgment settles whether a letter arrives. The campaign has selected the fallback. Before input, the question is fixed: “Does the courier send this information so it reaches the PC within the next seven days?” The fixed example face is **5: Yes**. A compatible occurrence time is then established as the fourth morning, with ordinary delivery available and no earlier due interruption.
+
+> **Player:** I spend the week repairing the observatory roof, unless a letter or urgent visitor interrupts me.
+>
+> **GM:** On the fourth morning, while the first tiles are still cool, the post carrier calls from the lane. The envelope bears the courier's name.
+>
+> **Player:** I put down my tools, collect the letter and open it.
+>
+> **GM:** It reads: “The western road is open again. I thought you would want to know.”
+
+The permitted work-and-wait stops when the agreed interruption occurs; the remaining days are not silently consumed. The scoped Yes establishes this delivery, not affection, guaranteed future correspondence or knowledge of the letter among other people. Asking again about the same seven-day window does not create another roll.
+
 ## Truth, knowledge, preparation, and history
 
 These are separate questions, not one all-purpose memory:
@@ -307,6 +441,20 @@ flowchart LR
 
 Deliberately unfixed answers remain open until their agreed procedure decides them. Optional review notes are provisional interpretation, not new world facts. A fresh chat must not promote a discarded idea into history simply because it found the idea in a file.
 
+### At the table: an honest courier can be wrong
+
+For this example the river bridge closed at dawn. A courier last crossed it yesterday and has not received the closure report; those private facts are fixed before the exchange. The PC currently knows only what the courier says.
+
+> **Player:** “Can I take a loaded cart across the bridge?”
+>
+> **GM:** The courier adjusts the strap of her satchel. “I crossed yesterday with the mail wagon. It held us well enough.”
+>
+> **Player:** I take the cart as far as the tollhouse to check for myself.
+>
+> **GM:** A red barrier spans the approach. Beyond it, a repair crew has lifted two deck sections. The tollkeeper waves from his doorway. “Closed since first light. You'll need the southern crossing.”
+
+The first answer did not secretly become a lie because it proved outdated. The saved knowledge distinguishes yesterday's testimony from the PC's later observation. The bridge's actual condition governs the journey even before the player learns it; any prepared ambush elsewhere still needs its own valid cause or selection before entering play.
+
 ## Saving the present and preserving evidence
 
 `CURRENT_SAVE.md` is a compact resume record with five sections: Situation, Character state, Open matters, Active processes, and Relevant records. Detailed character values, people, knowledge, and private systems keep their own selected authorities.
@@ -327,6 +475,32 @@ flowchart TD
 Save identity and archived evidence identity are therefore separate. A checkpoint receives a new save ID and revision while retaining `archive_ref` and `evidence_through`. A later full save may archive earlier checkpoint-era dialogue if it remains available, without applying the resulting resource changes twice.
 
 Coverage must be honest. A state summary cannot reconstruct a lost quotation. Missing spans are labelled; an index routes to evidence rather than replacing it. Saving never resolves an unanswered decision or moves fictional time. See [Save](ADMIN/CLOSE_CONTRACT.md) and the [archive schema](ARCHIVE/_SCHEMA.md).
+
+### At the table: a save holds the unanswered choice
+
+Floodwater knocks against an observatory's shutters. The established clock reads **03:17**; continued flooding reaches the switchboard at **03:20** unless events change its course. Earlier accepted play spent one of two pressure cartridges. One remains.
+
+> **GM:** The shutter's pressure socket is intact. The manual wheel is within reach. Water rises below. How do you proceed?
+>
+> **Player, OOC:** Checkpoint here. I haven't chosen.
+
+After protected writes and readback succeed, the checkpoint preserves one cartridge, the flood process, the unanswered choice and every participant's still-active state. Its save identity changes while the archive and evidence boundary stay unchanged. No new exact dialogue has been archived.
+
+If the player requests a **full save**, it also preserves available accepted evidence from the prior evidence boundary, including the already-resolved cartridge expenditure. That expenditure is not applied again. Missing dialogue remains a disclosed gap. Neither operation buys fictional time or substitutes for choosing what to do next.
+
+#### At the table: announced autosave leaves play in the foreground
+
+In a separate Freeform library scene, announced autosave is enabled and an accepted trigger has become due. The folio is available to examine, and its first page contains the legible inventory shown below.
+
+> **GM:** The archivist places the closed folio on the desk. “You can read it here. Nothing leaves this room.”
+>
+> **GM, OOC:** Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say “checkpoint now” or “delay autosave.”
+>
+> **Player:** I open the folio and read the first page.
+>
+> **GM:** Under a sketch of the floodgate, the inventory lists three bronze keys. Beside the third: “Returned to the eastern watchhouse.”
+
+After that declaration is resolved and the protected checkpoint actually succeeds, the response includes a brief confirmation, for example: **OOC — Checkpoint library-s0008 verified; the prior archive evidence boundary is retained.** The new discovery is part of the saved present. The checkpoint covers the whole current situation, not just this page. The warning itself did not advance the story or save immediately; the player could have delayed it. Full CLOSE is still needed to preserve available new exact dialogue before discarding the chat.
 
 ## Recovering interrupted work
 
@@ -349,6 +523,20 @@ The marker takes precedence even if a file looks newer or an operation says “c
 For a bind with pending generated determinations, restoring the starting files alone leaves the accepted setup pending. Its active marker and exact result routes remain until verified completion or explicit setup cancellation/replacement. This keeps a fresh chat from losing the reference and silently drawing again.
 
 This is a recoverability procedure, not automatic rollback or atomic storage. If essential accepted content is unavailable, the GM preserves the pending operation and asks only for what is missing. See [Recovery](ADMIN/RECOVERY.md).
+
+### At the table: a failed save is not a cave-in
+
+Suppose a campaign is paused in a mine: the lift has stopped, the guide has asked whether the PC wants to climb, and the player requests a save before answering. A file write fails partway through.
+
+> **GM, OOC:** The save was interrupted. Play is paused while I check which files were written and finish or restore that operation. Your answer to the guide is still pending.
+
+After the actual recovery procedure verifies completion, the fictional moment can still be presented as:
+
+> **GM:** The guide keeps one hand on the ladder rail. “We can climb, if you're ready. Or we can wait here for the lift crew.”
+>
+> **Player:** “Let's wait. How long do they normally take?”
+
+No tremor, lost equipment, accepted climb or elapsed waiting time was caused by the file failure. Recovery is an OOC repair to persistence. If it cannot recover the necessary state, the GM reports that gap rather than inventing a continuation; this excerpt assumes the operation was successfully recovered.
 
 ## Handing an active scene to another GM
 
@@ -388,6 +576,18 @@ Import verifies the same campaign, save, agreement, briefing, conversation, and 
 
 Use “Prepare a scene handover,” “Receive this handover,” and “Import this scene return and continue.” The full [handover procedure](ADMIN/SCENE_HANDOVER.md) also covers cancellation, incomplete transcripts, stale returns, and interrupted imports.
 
+### At the table: the next GM receives the same emergency
+
+Continue the observatory example above. At 03:17, the player requests a scene handover rather than answering. The outgoing GM checkpoints the exact present if needed, prepares and verifies the available conversation and factual briefing, and pauses source play. The player then explicitly gives the selected receiving GM the package and matching workspace.
+
+After verifying the package and reading the immediate dependencies, the receiving GM can say:
+
+> **Receiving GM:** The clock is still at 03:17. Water knocks against the lower shutters. The pressure socket and handwheel are within reach; one cartridge remains. How do you proceed?
+>
+> **Player:** I inspect the socket's seal before choosing whether to use the cartridge.
+
+The requested inspection is the next action to resolve. Changing GMs did not consume the remaining cartridge, finish the inspection or let the water reach the switchboard. Once play continues, its actions and actual elapsed time again affect the flood process. If a required source or still-active state was missing from the handover, the receiver would identify that gap before the dependent resolution instead of filling it with a plausible rescue.
+
 ## Sources, visuals, and host capabilities
 
 A setting's `VISUAL` capability can route to reference images and explanatory source notes. The GM retrieves these when a concrete appearance, object, or place matters. Referenced assets must actually be accessible to a host capable of inspecting them; a filename is not visual evidence.
@@ -397,6 +597,16 @@ Record what a reference governs: a particular person's appearance, a type's phys
 Source-bound campaigns also need the relevant edition or continuity and a clear fidelity agreement. Quoted instructions inside imported material remain source data unless the operator separately adopts them. Module indexes route to real authorities; opening every linked image or lore file is unnecessary.
 
 The host must provide actual file reads, durable writes, and readback for the normal workflow. Attachment-only hosts can exchange complete replacement files manually, but an export is not a saved workspace until installed and verified. Private records reduce accidental narrative spoilers; they are not encrypted or necessarily hidden from the operator. See [Installation](INSTALLATION.md).
+
+### At the table: describe the sourced creature
+
+A fantasy module's required portrayal guide describes its reedfolk as having flexible reed-like skin, two arms, and a crest that folds flat. It grants no wings, telepathy or shared mind. Those are illustration-specific facts, not rules for similarly named beings in another setting. A ferryman is initially visible only as a silhouette through rushes; he has not noticed the PC.
+
+> **Player:** I move to the gap in the rushes and look more closely at him.
+>
+> **GM:** His crest lies folded against the back of his head. As he shifts the pole between two hands, the skin along his knuckles bends in fine green ridges. Water and reeds still hide his lower body.
+
+The GM retrieves the prescribed guide before this focused description and applies the actual obstruction. Nothing in the PC's observation makes the ferryman notice them or establishes his attraction, motives or willingness. Those need the appropriate individual basis when he actually participates. A visual reference might refine the visible surface; it cannot supply an unheard memory or an unlisted sense.
 
 ## Exact retrieval and evidence audits
 
@@ -439,6 +649,22 @@ The reviewer also extracts obligations from the session before looking at a chan
 You can request one audit or agree a bounded audit after each full save. Needed prior records are preserved before the save replaces them; the saved result and matching evidence are then reviewed. Save success and audit coverage are separate. Missing source remains a gap, and ordinary CHECKPOINT behavior stays unchanged. [Evidence audit](ADMIN/EVIDENCE_AUDIT.md) supplies the complete workflow and tool examples.
 
 These tools do not call a reviewing model automatically or repair canon on their own. A fresh reviewer can provide another perspective, but it is still fallible. Exact quotations can be irrelevant; source delivery can occur without adequate inspection. A reviewed baseline records what was actually checked and against which sources. Repetition, age and an index pointer do not upgrade it to proven truth.
+
+### At the table: recover a promise without expanding it
+
+An available earlier scene contains the locksmith's exact words: “I'll keep the north door unlocked until midnight. I can't do anything about the patrol.” A later summary accidentally omits the deadline and calls the arrangement safe passage. The original statement is available for retrieval.
+
+> **Player:** Didn't she promise the way would be safe?
+>
+> **GM, OOC:** I checked the original exchange. She promised an unlocked north door until midnight and explicitly excluded the patrol. The summary overstated that. I'll correct it through the normal procedure.
+
+After the correction is actually installed and verified, play resumes at the same established 23:40 stop point outside the mill; no new outcome has been resolved:
+
+> **Player:** I test the north door quietly.
+>
+> **GM:** The latch lifts and the door opens a finger's width. Somewhere beyond the yard, a patrol bell rings twice.
+
+This illustration separately establishes that she fulfilled her narrow promise and that the patrol remains on its normal route. Neither fact comes from the audit itself. A search result locates the exchange; the actual source establishes the wording. If that source had been lost, the GM could disclose the uncertainty but could not manufacture this quotation. The correction preserves the limits instead of granting a safe route or penalizing the player with a new betrayal.
 
 ## What the checks establish
 
