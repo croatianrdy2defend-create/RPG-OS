@@ -45,6 +45,8 @@ These procedures neither grant PC authorship nor authorize PLAY writes. Ordinary
 
 ## Locality and sources
 
+Reusable, non-selectable mechanics helpers may live under `ENGINE/_shared/` and must be explicitly routed by a selecting adapter. They are not another engine identity or an automatic default. Keep setting populations, current people, occupations, places and source bindings in the selected MODULE/INSTANCE owners; the shared helper receives their relevant facts. A direction-based generator fixes eligibility and the meaning of direction before input, then the GM authors the concrete eligible state before dependent behavior. It requires no prewritten state catalogue.
+
 Keep a compact adapter in one entrypoint. Split independently needed mechanics into explicit narrow routes under `ENGINE/<id>/` when useful; do not create empty hierarchies or duplicate procedures in indexes. Retrieve only the procedure relevant now.
 
 Keep adapters to compact procedures and field requirements. Do not paste or reconstruct commercial books, chapters, bulk spell/equipment lists, or source tables. Use supplied values and accessible owned sources honestly; installation does not imply permission to redistribute third-party text. Missing source support stays visible rather than being replaced by model confidence.

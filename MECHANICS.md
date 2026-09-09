@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.9.3 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.9.4 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -14,6 +14,7 @@ This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compa
 - [The agreement and authorship](#the-agreement-and-authorship)
 - [Inside a turn](#inside-a-turn)
 - [Independent people and other agents](#independent-people-and-other-agents)
+- [Optional encounter generation: direction, then concrete state](#optional-encounter-generation-direction-then-concrete-state)
 - [Random fallback for unresolved outcomes](#random-fallback-for-unresolved-outcomes)
 - [Truth, knowledge, preparation, and history](#truth-knowledge-preparation-and-history)
 - [Saving the present and preserving evidence](#saving-the-present-and-preserving-evidence)
@@ -51,7 +52,8 @@ RPG_OS/
 |-- ADMIN/                 Setup, saves, corrections, recovery, handover
 |-- ENGINE/
 |   |-- _CONTRACT.md       Adapter requirements
-|   `-- freeform.md        Available judgment-based rules adapter
+|   |-- freeform.md        Only bundled selectable rules adapter
+|   `-- _shared/           Optional procedures for compatible engines
 |-- MODULES/               Contracts; accepted worlds are added here
 |-- INSTANCE/
 |   |-- CURRENT_SAVE.md    Compact present and useful routes
@@ -68,13 +70,13 @@ RPG_OS/
 `-- HANDOVER/              Created for an authorized live-scene transfer
 ```
 
-A module contains stable world material and an opening baseline. An instance is one actual run through that material. Later mutable values belong in the instance, while unchanged world background remains in the module. Archives preserve what happened rather than competing with the current records over what is true now.
+A module contains stable world material, source bindings and an opening baseline. ENGINE owns the selected generation and resolution mechanics; module facts constrain where those mechanics apply. An instance is one actual run through that material. Later mutable values belong in the instance, while unchanged world background remains in the module. Archives preserve what happened rather than competing with the current records over what is true now.
 
 The layout does not require an encyclopedia or a file for every passing character. Records split when their subjects need independent retrieval. See the [module contract](MODULES/_CONTRACT.md) and [instance schema](INSTANCE/_SCHEMA.md).
 
 ## From fresh install to campaign
 
-The public installation is **unbound**: no selected world, character, campaign history, or active handover. Freeform is available, but setup still establishes the chosen engine. Unbound describes installation state; it does not select a play style or override a host's capabilities.
+The public installation is **unbound**: no selected world, character, campaign history, or active handover. Freeform is the only bundled selectable engine, but setup still establishes the chosen engine. The shared encounter generator is an optional procedure, not an engine identity. Unbound describes installation state; it does not select a play style or override a host's capabilities.
 
 Start with:
 
@@ -216,11 +218,43 @@ Ordinary conversation holds new state as working context. Authorized saves prese
 
 The player does not operate this procedure turn by turn. Narration and dialogue should remain natural, with the next meaningful reserved choice returned promptly. Actual campaign play will test whether these instructions improve continuity and pacing; the [playtest guide](ADMIN/PLAYTEST_V08.md) keeps optional observations outside the fiction.
 
+### Optional encounter generation: direction, then concrete state
+
+[ENGINE/_shared/ENCOUNTER_GENERATION.md](ENGINE/_shared/ENCOUNTER_GENERATION.md) is a universal optional helper, used only when a compatible bound engine and the accepted agreement select it. It supplies eligible initial values within the five mandatory fields; it does not choose a response or replace the engine's resolution procedure. MODULE supplies the entity's supported nature, capacities, control, source routes and circumstances. Existing facts, active values and precise perception limits take priority over generation.
+
+Before drawing, identify the unresolved facet of **condition**, **initial interpersonal appraisal** or **overall attraction**, and fix its scope. Use two independent actual d6 for each eligible facet and sum that pair:
+
+| 2d6 total | Direction and intensity |
+|---|---|
+| 2–3 | Strongly negative |
+| 4–5 | Negative |
+| 6–8 | Neutral or mixed |
+| 9–10 | Positive |
+| 11–12 | Strongly positive |
+
+**After each direction/intensity band is obtained, the GM establishes the concrete current value before choosing dependent behavior.** A label such as "positive" or "mixed" does not complete the field. There is no catalogue of moods, venues or six prepared states. The GM fills a short, meaningful value within the previously fixed facet, source constraints and accepted authoring scope. No additional intensity roll or invented past cause is needed. Strong means a marked degree within supported limits, granting no new capacity, compulsion, automatic cooperation or loss of boundaries. Neutral/mixed means a concrete absence of directional pull or supported countervailing considerations, rather than an empty placeholder.
+
+The direction refers to different things in the three eligible facets:
+
+| Facet | What the GM makes concrete |
+|---|---|
+| Condition | Favorable or adverse to the entity's own current functioning or activity in the previously selected physical, emotional or operational aspect. Preserve known injuries and other condition facts; a positive result grants no healing or equipment. |
+| Initial interpersonal appraisal | A favorable or unfavorable evaluation of the PC from information actually perceived or already held. It cannot prove identity, trustworthiness or the PC's undeclared intent. |
+| Overall attraction | Personal pull toward or aversion from the PC within the supported attraction domain. No particular pull or concrete ambivalence can fill the middle band. It establishes neither approval nor hostility, availability, commitment or participation. |
+
+**Priorities and constraints** receive concrete current aims, drives, directives or operative processes and practical limits from sources, circumstances and eligible authorship. State what the entity pursues, preserves or avoids and how it matters now; a bare activity label can miss competing commitments. These aims are independent of the player's hoped-for result and receive no polarity roll. **Perception and appraisal** preserves actual detection, recognition, information and limitations. A nonsocial response follows its sourced sensing, classification, control and response mechanisms; predation or chemical response does not become interpersonal liking or attraction by analogy. **Engagement stance** is derived from the complete basis and situation without a willingness or stance draw. The bound engine then resolves the pending decision once.
+
+Applicable overall attraction is completed at first sufficient perception even if the entity is busy, on duty or partnered. Physical/aesthetic, sexual and romantic detail can be resolved later within surviving constraints, but that does not leave the overall field blank. Supported inapplicability needs no draw; an unread source or unknown capacity remains a source gap. A precise lack of perception delays only the affected determination until the necessary information arrives.
+
+A wholly eligible baseline uses **at most three 2d6 determinations, six independent faces total**. Fix pair-to-facet assignments before input; do not share faces between facets or entities. Fixed facts, supported inapplicability and precise perception limits reduce the input. The bands are game conventions, not population statistics: with fair independent dice, 6–8 occurs in 16 of 36 pairs and each strong band in 3 of 36. Drawing a uniform total from 2 to 12 changes the method. Use real input or agree an available alternative; do not fabricate rolls, reroll inconvenient directions or choose a response and fit the inputs afterward.
+
+The existing active-state lifecycle and first-focus portrayal retrieval still apply. Reuse active values through attention gaps, update affected fields for actual developments and release inconsequential temporary values only on genuine deactivation. Retain consequential facts, unresolved matters and input references needed for continuity. The helper adds no ongoing attraction/reception roll, visible checklist, private scratch record, per-turn write or automatic checkpoint. An upgrade leaves the accepted generation method and diceless agreement intact unless a prospective change is separately accepted.
+
 ### Random fallback for unresolved outcomes
 
 A current individual baseline does not settle every later opportunity. Sending a message, fulfilling a promise or passing on a secret may remain open after an encounter. Use retained consequential facts, any still-required active basis, actual developments and applicable ENGINE procedures. If an eligible outcome lacks enough basis for grounded judgment, use the accepted fallback within scope. This does not replace the basis required before individual participation, resurrect expired trivia, or add a second roll for a settled reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each eligible later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.3 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.4 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
@@ -412,6 +446,6 @@ The optional [validator](TOOLS/validate.py) checks its documented structural sco
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
 
-For v0.9.3, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
+For v0.9.4, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

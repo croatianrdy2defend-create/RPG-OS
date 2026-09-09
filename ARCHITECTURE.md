@@ -1,4 +1,4 @@
-# RPG OS v0.9.3 architecture
+# RPG OS v0.9.4 architecture
 
 ## Operating environment
 
@@ -41,8 +41,8 @@ LAW owns this mandatory operating order. The model performs it; Markdown does no
 |---|---|
 | Universal GM duties and limits | OS/LAW |
 | Accepted play experience, delegation, pacing, presentation | INSTANCE/CAMPAIGN_CONTRACT |
-| Stable world and starting baselines | MODULES |
-| Resolution procedures | ENGINE, with scoped accepted INSTANCE corrections |
+| Stable world facts, source bindings and starting baselines | MODULES |
+| Selected generation and resolution procedures | ENGINE, with scoped accepted INSTANCE corrections |
 | Compact operative present | INSTANCE/CURRENT_SAVE |
 | Detailed character, people, system state, PC knowledge | Their selected INSTANCE records |
 | Historical evidence | ARCHIVE |
@@ -63,6 +63,12 @@ LAW's Establish stage governs every turn. [OS/AGENT_STATE.md](OS/AGENT_STATE.md#
 The basis uses existing facts and eligible prospective authorship, rather than the result being sought. It is current state, not a complete biography or a preselected outcome. During continuing participation, repeated attention reuses it and brings its activities forward through actual elapsed time and developments. Group treatment establishes no identical personalities, shared mind or private attraction; an individual entering separately resolved participation or appraisal receives a current basis without retrospective private causes. World truth, private state, outward presentation and each participant's supported interpretation retain distinct scopes. Control, available information and applicable capacities govern the entity; neither human psychology nor individual autonomy is universal.
 
 World creation binds usable source-compatible generation methods and real routes for its ordinary actors and needed opening exceptions. Resolve uses the resulting basis under the bound ENGINE and accepted exceptions. An accepted initial-fact generator is distinct from resolving acceptance, reciprocity or consent. The accepted fallback handles eligible remaining uncertainty through its own permitted scope; the [worked fallback examples](MECHANICS.md#random-fallback-for-unresolved-outcomes) illustrate contact, promises and secrets. Source gaps, already resolved opportunities and deliberately open facts retain their separate treatment. These are model-operated judgments and procedures, not an independently running event processor.
+
+The optional universal [ENGINE/_shared/ENCOUNTER_GENERATION.md](ENGINE/_shared/ENCOUNTER_GENERATION.md) is a procedure a compatible bound engine and accepted agreement can select. It is not an engine identity; Freeform remains the only bundled selectable engine. MODULE supplies setting facts, capacities, limits and source routes; ENGINE supplies the selected mechanics. Existing diceless agreements and other selected methods survive installation unchanged.
+
+For each eligible condition facet, initial interpersonal appraisal and overall attraction, an independent pair of actual d6 supplies direction/intensity: 2–3 strongly negative, 4–5 negative, 6–8 neutral/mixed, 9–10 positive, 11–12 strongly positive. The GM then establishes a concrete value before dependent behavior, within a facet fixed before input. At most three determinations use six independent faces; no extra intensity or engagement draw is added. The bands are not a catalogue of moods or venue-specific states. Strong values stay within supported capacities and boundaries; the middle band still needs a concrete absence of directional pull or supported countervailing considerations.
+
+Priorities and constraints establish the entity's own current aim, drive, directive or process and practical limits from sources and permitted authorship. Factual perception is not rolled; nonsocial appraisal follows sourced sensing, classification, control and response mechanisms. Engagement is derived from the complete basis and situation, and the bound engine resolves the pending decision once. None of the generated directions grants new capacities, trust, availability or compelled participation.
 
 Fixed opening state belongs to its selected MODULE T0 authority. Current temporary encounter state uses one optional `Active encounter state` block in NOW; entry membership means active. PEOPLE retains durable individual and relationship facts; shared controllers retain one actual system owner. Reuse state through attention gaps and update affected values on relevant events. Genuine deactivation releases inconsequential temporary state, with fresh incidental return allowed within surviving facts. Preserve consequences and unresolved matters; missing required active state remains a gap. Expiry changes current authority at its actual time, never deletes historical evidence or invents old causes. This is a logical working-context policy, not erasure of earlier chat tokens; no private scratch writes, new runtime, roster or automatic per-contact save is introduced.
 

@@ -87,11 +87,13 @@ You might bring years of worldbuilding or only a strange idea. You might want a 
 
 ## Documentation and release information
 
-**RPG OS v0.9.3 — experimental playtest release**
+**RPG OS v0.9.4 — experimental playtest release**
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
-**New in v0.9.3:** temporary five-field encounter baselines give active individuals a current basis before their behavior, including applicable attraction or aversion. Genuine deactivation releases inconsequential private values while retaining observations, commitments and unresolved consequences. Focused physical portrayal retrieves its required source independently of activation. Resolve carries actual event changes forward and checks the means and conditions of pending actions. These duties use existing records and add no background simulation or per-turn file writes. See [release notes](V0.9.3_CHANGES.md).
+**New in v0.9.4:** an optional [shared encounter generator](ENGINE/_shared/ENCOUNTER_GENERATION.md), selected by a compatible engine and the accepted agreement, gives eligible condition, interpersonal appraisal and overall attraction independent 2d6 direction/intensity bands. The GM fills each concrete current value after its band and before behavior. Priorities and constraints come from the entity's own aims and circumstances; perception stays factual, nonsocial responses follow their sources, and engagement is derived from the completed basis. Freeform remains the only bundled selectable engine. Installing the helper changes no agreement or dice policy. See [release notes](V0.9.4_CHANGES.md) and [how generation works](MECHANICS.md#optional-encounter-generation-direction-then-concrete-state).
+
+**Retained from v0.9.3:** temporary five-field encounter baselines give active individuals a current basis before their behavior, including applicable attraction or aversion. Genuine deactivation releases inconsequential private values while retaining observations, commitments and unresolved consequences. Focused physical portrayal retrieves its required source independently of activation. Resolve carries actual event changes forward and checks the means and conditions of pending actions. These duties use existing records and add no background simulation or per-turn file writes. See [v0.9.3 release notes](V0.9.3_CHANGES.md).
 
 [Host compatibility contract](HOST_CONTRACT.md) describes the existing host/GM boundary, two capability levels and nine compatibility examples. [East Three creature test](V0.9.1_TRIALS.md) records the earlier guided scene, retrospective-cause defect and evidence limits. These retained documents are neither a gameplay mechanism nor a startup dependency.
 
@@ -109,7 +111,7 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 </td></tr>
 </table>
 
-[Get v0.9.3](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.3) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.3_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.9.4](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.4) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.4_CHANGES.md) · [Verification](VERIFICATION.md)
 
 **v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. Later releases preserve those tools and refine independent-agent establishment and persistence. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
 
@@ -147,7 +149,7 @@ The GM records that accepted permission through normal setup or recalibration. W
 
 After the next completed play response, the GM briefly enters the existing protected CHECKPOINT procedure and reports the result. No fictional time passes, no unanswered PC choice is resolved, and no new archive evidence is created. Recovery or active handover blocks execution. Delay, resume, disable and manual save are ordinary requests; full SAVE always remains a full save. Nothing runs while the chat is idle.
 
-**Save first, switch second.** Do not change model/reasoning strength before the outgoing context saves. A checkpoint protects current state only: use full CLOSE or the actual scene handover before discarding dialogue/source access, and have the next GM reload the authoritative files. Neither readback nor a context percentage guarantees hidden-memory completeness or host switching behavior. The [autosave procedure](ADMIN/AUTOSAVE.md) and [behavioral cases](ADMIN/TEST_AUTOSAVE.md) state the limits. Installing v0.9.3 does not enable autosave in a separately stored campaign.
+**Save first, switch second.** Do not change model/reasoning strength before the outgoing context saves. A checkpoint protects current state only: use full CLOSE or the actual scene handover before discarding dialogue/source access, and have the next GM reload the authoritative files. Neither readback nor a context percentage guarantees hidden-memory completeness or host switching behavior. The [autosave procedure](ADMIN/AUTOSAVE.md) and [behavioral cases](ADMIN/TEST_AUTOSAVE.md) state the limits. Installing v0.9.4 does not enable autosave in a separately stored campaign.
 
 ## Independent agent state
 
@@ -157,7 +159,9 @@ Independent agent state is integrated through setup, worldbuilding, play, saving
 
 An individual's participation, appraisal, initiative or separately resolved personal decision activates that temporary basis. “I approach her” can begin participation without choosing the PC's purpose; an NPC's own individual look can also activate it. Merely observing an unaware actor does not generate private state, while first focused physical portrayal still retrieves any module-prescribed guide before description. Active participation survives a pause or shift of attention. Supported events update the affected values; repeated contact does not reroll them.
 
-Applicable attraction can be positive, absent or aversive without deciding trust, availability, willingness or a relationship. Physical, aesthetic, sexual and romantic meaning can be resolved later where relevant, preserving already known limits. Being busy or partnered does not make applicable attraction inapplicable. A bacterium's chemical response or a predator's hunger uses its actual mechanism instead of interpersonal attraction by analogy. World creation binds usable, source-compatible methods for its actors; the OS imposes no universal dice table.
+Applicable attraction can be positive, absent or aversive without deciding trust, availability, willingness or a relationship. Physical, aesthetic, sexual and romantic meaning can be resolved later where relevant, preserving already known limits. Being busy or partnered does not make applicable attraction inapplicable. A bacterium's chemical response or a predator's hunger uses its actual mechanism instead of interpersonal attraction by analogy. MODULE binds world facts and usable sources; ENGINE owns selected generation and resolution mechanics. The OS requires the five fields without imposing a dice policy.
+
+When selected, the shared generator uses at most three 2d6 determinations, six independent faces total. Its bands supply direction and intensity; they are not a mood or venue catalogue. The GM makes even a neutral/mixed result concrete, within the previously fixed facet and source constraints. Strong values create no new capacity, compulsion or automatic cooperation. Active values survive attention gaps and change only at their proper scope; the helper adds no ongoing reaction roll or second resolution of a decision.
 
 **Establish the entity, not the player's impression.** Accepted world and individual facts, actual prior history and pre-encounter circumstances can constrain generation. Unverified interpretations, unperceived player wishes and desired scene endings cannot establish private nature. Preserve what an entity actually said or did without automatically treating its perceived meaning as its motive. A short reply need not mean dislike; non-attack need not mean benevolence. Private state, outward presentation and each viewpoint's supported interpretation remain distinct where applicable. Not applicable is not unknown or zero.
 
@@ -175,7 +179,7 @@ New unsaved state has best-effort retention in the available conversation, not a
 
 This is a complete experimental build for ordinary campaign playtesting. Start playing, switch models at completed saves or through the existing handover, and note meaningful problems when they occur. No scripted trial schedule is required before playing. [Real-campaign playtesting](ADMIN/PLAYTEST_V08.md) explains a lightweight way to preserve useful evidence; narrative quality and cross-model reliability remain to be evaluated in actual play. The automated instruction checks are not evidence that a model follows the procedure.
 
-Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1, v0.9.0, v0.9.1 and v0.9.2 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
+Valid v0.7.3, v0.8.0, v0.8.1, v8.1.1, v0.9.0, v0.9.1, v0.9.2 and v0.9.3 campaigns retain their record format. Use the [compatible-campaign upgrade procedure](ADMIN/UPGRADE_V08.md) in a separate protected copy. Adoption preserves established characters and histories; different generation methods or permissions require their own accepted prospective change. Updating this public repository does not itself modify a separately stored campaign.
 
 ## Continue a scene with another GM
 
@@ -204,7 +208,8 @@ The kit accommodates different genres and kinds of player character. Other rules
 | Area | Purpose |
 |---|---|
 | OS | Startup, GM instructions, targeted retrieval |
-| ENGINE / MODULES | Resolution rules and stable setting authorities |
+| ENGINE | Selected generation and resolution procedures |
+| MODULES | Stable setting facts, source bindings and opening baselines |
 | INSTANCE | Accepted agreement and current campaign state |
 | ARCHIVE | Historical evidence and routes to it |
 | ADMIN | Setup, save, correction, recovery, autosave and handover procedures |

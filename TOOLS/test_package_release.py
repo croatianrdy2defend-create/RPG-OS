@@ -98,6 +98,18 @@ class PackageTests(unittest.TestCase):
                 with self.assertRaises(pack.PackageError):
                     pack.assert_public_paths({relative})
 
+    def test_optional_encounter_helper_ships_without_binding_the_fresh_install(self) -> None:
+        relative = "ENGINE/_shared/ENCOUNTER_GENERATION.md"
+        body = "# Optional generic encounter support\n\nSelected by a bound engine and accepted agreement.\n"
+        save_before = (self.root / "INSTANCE/CURRENT_SAVE.md").read_bytes()
+        self.write(relative, body)
+        self.commit()
+        archive, _sums = pack.package(self.root)
+        with zipfile.ZipFile(archive) as result:
+            self.assertEqual(result.read(f"RPG_OS_v0.8.0/{relative}"), body.encode("utf-8"))
+            self.assertEqual(result.read("RPG_OS_v0.8.0/INSTANCE/CURRENT_SAVE.md"), save_before)
+        self.assertEqual((self.root / "INSTANCE/CURRENT_SAVE.md").read_bytes(), save_before)
+
     def test_clean_export_matches_committed_tree_and_checksum(self) -> None:
         self.write(".work/private/notes.md", "Untracked private scene, not for publication.\n")
         self.write(".release/old.zip", "Untracked old artifact.\n")
@@ -197,6 +209,9 @@ class PackageTests(unittest.TestCase):
             "RECOVERY/operation/preimage.md", "HANDOVER/export/GM_STATE.md",
             "INSTANCE/CHAR/PC.md", "INSTANCE/PEOPLE/liv.md", "ARCHIVE/sessions/test/scene.md",
             "ENGINE/gurps.md", "TEST_RUN.md", "secret/notes.md", ".work/private.md",
+            "ENGINE/_shared/ENCOUNTER_GENERATION_PRIVATE.md", "ENGINE/_shared/encounter_generation.md",
+            "ENGINE/_shared/setting/ENCOUNTER_GENERATION.md", "ENGINE/campaign/ENCOUNTER_GENERATION.md",
+            "ENGINE/_shared/CAMPAIGN_GENERATION.md",
             "TOOLS/.release/private.zip",
             "EVIDENCE/captures/session-001/source.txt", "EVIDENCE/private.jsonl",
             "EVIDENCE/captures/session-001/manifest.json", "EVIDENCE/audit-report.json",

@@ -1,5 +1,30 @@
 # RPG OS experimental verification
 
+## v0.9.4 universal encounter generation — 2026-09-09
+
+Local Windows verification of the clean unbound release candidate discovered **253 tests: 246 passed, 7 platform skips, zero failures** across nine sequential suites. The prior eight suites remain, with one additional packaging test and six encounter-generation checks. All nine suites passed on their first execution against this prepared public candidate. Whole-tree structural validation passed with zero findings and a stable measured tree.
+
+| Suite | Discovered | Passed | Platform skips |
+|---|---:|---:|---:|
+| test_validate.py | 48 | 48 | 0 |
+| test_handover.py | 36 | 35 | 1 |
+| test_package_release.py | 18 | 18 | 0 |
+| test_read_source.py | 31 | 28 | 3 |
+| test_search_index.py | 33 | 32 | 1 |
+| test_evidence.py | 33 | 31 | 2 |
+| test_agent_state.py | 14 | 14 | 0 |
+| test_autosave.py | 34 | 34 | 0 |
+| test_encounter_generation.py | 6 | 6 | 0 |
+
+The new suite verifies optional selection, source routing, concrete-state ordering, three determinations/six faces maximum, five bands covering totals 2–12, and all 36 independent dice-pair combinations with counts 3/7/16/7/3. These are checks of documented rules, not random samples or model behavior. Packaging exercises exact helper inclusion while preserving an unbound save and rejecting nearby setting/campaign paths. Both GitHub workflows now include the encounter suite and verify the committed package; their actual run status belongs to the triggering commit, not this local test result.
+
+Five small two-stage developer rehearsals covered a task-bound adult, a sourced territorial animal, controlled credential gates, a bacterium and an entity with a missing required source. The three rolled fixtures were reset and repeated after final selection of 2d6. Observed responses retained task/relationship limits despite strong attraction, gave the middle band concrete ordinary energy, respected sensory and controller communication limits, followed a fixed chemical response, and left missing capacities unresolved. The first animal fixture omitted explicit unobstructed sight; the agent correctly withheld detection. That input was clarified prospectively and supplied at establishment in the final repeat.
+
+The rehearsals used visible establishment, deterministic supplied inputs and explicit case resets in one agent context. They did not establish independent fresh-context isolation, unprompted play, population distributions, save/handover fidelity or crowded long-context reliability. Formal U01–U26 remain separately NOT RUN. No private actor, campaign binding or raw audit transcript is distributed.
+
+All eleven MECHANICS Mermaid blocks are unchanged from v0.9.3, so no diagram rerender was required. The existing README introduction is preserved. The public instance and archive remain blank and unbound; Freeform remains the only selectable engine. The new helper requires explicit selection and does not impose dice or change existing campaign agreements.
+
+
 ## v0.9.3 temporary encounter state — 2026-09-09
 
 Local Windows verification of the clean unbound release candidate discovered **246 tests: 239 passed, 7 platform skips, zero remaining failures** across the eight release suites. Structural validation passed with zero findings for both the unbound kit and the installed bound workspace. The companion campaign-specific suite is kept outside the public distribution; the bound workspace total was 251 tests, 244 passed and the same seven platform skips.

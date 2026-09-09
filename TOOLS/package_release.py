@@ -33,7 +33,7 @@ ROOT_DIRS = {".github", "ADMIN", "ARCHIVE", "ENGINE", "EVIDENCE", "INSTANCE", "M
 SCOPED_FILES = {
     "EVIDENCE": {"README.md"},
     "MODULES": {"README.md", "_CONTRACT.md"},
-    "ENGINE": {"_CONTRACT.md", "freeform.md"},
+    "ENGINE": {"_CONTRACT.md", "freeform.md", "_shared/ENCOUNTER_GENERATION.md"},
     "INSTANCE": {
         "_SCHEMA.md", "CURRENT_SAVE.md", "CAMPAIGN_CONTRACT.md", "BEARING.md",
         "SAFETY.md", "KNOWN.md", "NOW.md", "CAST_STATUS.md", "CORRECTIONS.md",

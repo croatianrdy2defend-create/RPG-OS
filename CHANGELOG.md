@@ -6,6 +6,14 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 No changes currently listed.
 
+## v0.9.4 — universal encounter generation (2026-09-09)
+
+- Added an optional universal ENGINE helper selected through a compatible engine and accepted agreement. Freeform remains the default bundled engine without compulsory dice.
+- Kept five current fields; eligible condition, interpersonal appraisal and attraction use up to three independent 2d6 determinations with five direction/intensity bands. The GM assigns concrete source-compatible states before behavior, without fixed mood or venue tables.
+- Preserved independent priorities, factual perception, sourced nonsocial mechanisms, derived engagement, applicable attraction and existing active/consequential state. Strong and middle bands are concrete current values, not new capacities or forced actions.
+- Separated reusable mechanics from module source binding and generalized activation, retention and setup guidance beyond hospitality. No save-format change, extra runtime or per-contact write is introduced.
+- Added encounter regressions to both CI workflows, exact helper packaging coverage and public adoption/upgrade guidance. See [release notes](V0.9.4_CHANGES.md) and [verification](VERIFICATION.md) for observed checks and bounded rehearsal limits.
+
 ## v0.9.3 — temporary encounter state and consequence continuity (2026-09-09)
 
 - Made Understand → Establish → Resolve → Portray the explicit order for every PLAY response, including required source retrieval before focused portrayal.

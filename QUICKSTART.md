@@ -1,8 +1,8 @@
-# Quick start — v0.9.3 experimental
+# Quick start — v0.9.4 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.9.3 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.3), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.4 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.4), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform as a selectable engine. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -13,6 +13,8 @@ Say:
 Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement, including a usable, source-compatible method for establishing new encounters. Before an entity individually participates, appraises the PC or takes relevant initiative, the GM establishes five current facts: condition and mode, priorities and constraints, perception and appraisal, applicable overall attraction or aversion, and engagement stance. Its supported nature, control and existing history govern those facts. “I approach her” can begin participation while your purpose remains yours to declare. Merely observing an unaware individual does not initialize private state; the GM still retrieves any required portrayal guide before focused physical description.
 
 Shared group conduct can stay at group scale: ten soldiers following a patrol procedure need not create ten personalities, but three people making their own decisions about an offered drink need three individual baselines. Active state survives pauses and shifts of attention and changes with actual developments. When participation reasonably ends, inconsequential temporary values can expire; consequential observations, promises, relationships and unresolved matters survive. Later incidental contact may receive fresh temporary values within those surviving facts. Attraction does not establish trust, availability or willingness. The method follows the entity's actual capacities and uses real dice only where selected; five fields do not require five rolls. More preparation is available through Guided or Detailed setup; no population roster or NPC spreadsheet is required.
+
+The optional [shared encounter generator](ENGINE/_shared/ENCOUNTER_GENERATION.md) can be selected by a compatible engine and your accepted agreement. For eligible condition, initial interpersonal appraisal and overall attraction, it uses at most three independent 2d6 determinations. Each gives a direction/intensity band; the GM then fills a concrete current value before behavior, within the world facts and source constraints. Priorities follow the entity's own aims, perception stays factual, nonsocial responses use their actual mechanisms, and engagement follows from the complete basis. The [mechanics guide](MECHANICS.md#optional-encounter-generation-direction-then-concrete-state) explains the bands. The helper is optional and adds no setup requirement to a diceless campaign.
 
 Review the proposal, including any material uncertainty or practical host limitation. Clearly accept it or request changes. The GM binds the accepted material, reads it back and confirms the saved identity. A fresh play chat helps keep rejected setup alternatives out of play.
 
@@ -42,7 +44,7 @@ Keep the current model/reasoning setting until the outgoing save is verified. Th
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted resolution method after a program update. Select the fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired; a diceless campaign does not acquire dice merely by installing v0.9.3.
+An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.4.
 
 Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 

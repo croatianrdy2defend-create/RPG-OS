@@ -5,7 +5,7 @@ temperature: selective
 character_build_support: no-mechanical-sheet
 ---
 
-# ENGINE — Freeform v0.9.3
+# ENGINE — Freeform v0.9.4
 
 Use only when the operator selects it, within [LAW's operating cycle](../OS/LAW.md#prime-directive--every-play-response). There is no formal attribute list, hidden stat block, or compulsory dice system.
 
@@ -18,6 +18,8 @@ The agreement governs initiative, PC control, and any explicitly accepted fixed 
 Use the established entity-appropriate behavioral basis when judging a response: supported nature/capabilities, actual control and local discretion, available information, applicable aims/drives/directives, constraints, relationships where applicable, and current circumstances. Human psychology is not a universal default. Meaningful interaction, new information, changed orders or circumstances can change that basis; OOC hopes, turn count or repeated equivalent attempts alone do not rewrite it. Supported cooperation and initiative remain legitimate; independence is not a rejection quota. Keep actual promises and intentions distinct from their expression.
 
 Individual participation, appraisal or initiative recovers or establishes the five-field current basis before dependent behavior under `OS/AGENT_STATE.md`. Mere visual focus requires its portrayal sources without automatic private-state activation. Freeform judgment remains the default; partly randomized generation requires an agreed compatible method with admissible inputs, context, mappings and real input. Reuse active state through attention gaps; update affected values on meaningful developments. Under the accepted lifecycle, genuine deactivation permits releasing inconsequential temporary state and fresh later incidental generation within retained facts. Repetition or missing active state supplies no reroll. No automatic social roll, full biography or universal psychology is installed.
+
+When the operator accepts it for initial generation, this adapter selects the optional [2d6 direction and intensity procedure](_shared/ENCOUNTER_GENERATION.md#initial-generation). It supplies concrete eligible condition, initial interpersonal appraisal and overall attraction before behavior; the module binds actual world and entity sources. This is an optional initial-state method, not an outcome or reception table. Without that accepted selection, Freeform judgment remains the default. Installing the helper alone changes neither a bound agreement nor existing active state.
 
 Late deepening is prospective by default. An unexplained private cause behind earlier portrayal remains unresolved unless recovered from existing authority or independently established by an accepted procedure using admissible inputs. Do not select the player's interpretation or its opposite as hidden history merely to fit or resist the player. New evidence can change current state from that point forward without establishing that the state or motive existed earlier.
 

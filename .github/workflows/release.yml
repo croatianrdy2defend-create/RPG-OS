@@ -30,7 +30,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run structural, source, search, evidence, agent, autosave and packaging regression tests
+      - name: Run structural, source, search, evidence, agent, autosave, encounter generation and packaging regression tests
         shell: bash
         run: |
           set -euo pipefail
@@ -42,6 +42,7 @@ jobs:
           python3 -B TOOLS/test_evidence.py
           python3 -B TOOLS/test_agent_state.py
           python3 -B TOOLS/test_autosave.py
+          python3 -B TOOLS/test_encounter_generation.py
 
       - name: Package and verify the committed fresh install
         shell: bash

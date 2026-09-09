@@ -1,4 +1,4 @@
-# Contributing to RPG OS v0.9.3
+# Contributing to RPG OS v0.9.4
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. For a four-stage failure, identify the missing source, establishment or resolution dependency before proposing another outcome-specific rule. Keep public examples synthetic or sanitized.
 
@@ -30,9 +30,10 @@ python TOOLS/test_search_index.py
 python TOOLS/test_evidence.py
 python TOOLS/test_agent_state.py
 python TOOLS/test_autosave.py
+python TOOLS/test_encounter_generation.py
 ```
 
-The validator is read-only. Regression tests use temporary synthetic campaigns where needed; the agent-state suite reads instruction text and routes without making model calls or campaign writes. The autosave suite checks a read-only scheduler, instruction routes and synthetic present/evidence metadata. Run suites and whole-tree scans sequentially. Report actual output and limitations. Behavioral cases in ADMIN/TESTS.md, ADMIN/TEST_AGENT_STATE.md and ADMIN/TEST_AUTOSAVE.md require real play observation; do not mark them passed from reading the instructions.
+The validator is read-only. Regression tests use temporary synthetic campaigns where needed; the agent-state suite reads instruction text and routes without making model calls or campaign writes. The autosave suite checks a read-only scheduler, instruction routes and synthetic present/evidence metadata. The encounter-generation suite checks the optional helper's instructions, routes, input budget and documented direction table; it does not observe source retrieval or generated behavior during play. Run suites and whole-tree scans sequentially. Report actual output and limitations. Behavioral cases in ADMIN/TESTS.md, ADMIN/TEST_AGENT_STATE.md and ADMIN/TEST_AUTOSAVE.md require real play observation; do not mark them passed from reading the instructions.
 
 Cross-check a change's owning contract, templates, loader, setup/save/recovery procedures, validator, tests, and documentation. Preserve legacy evidence and make format changes explicit. Avoid turning an optional world system into universal setup work.
 
@@ -43,7 +44,7 @@ Documentation/protocol contributions use CC BY 4.0; code/configuration use MIT. 
 Maintainer packaging requires a Git checkout and Python 3.10 or newer. It is optional tooling, not a requirement for playing. A downloaded ZIP has no Git history and cannot run this packaging command on itself.
 
 1. Work from the public unbound repository. Set `VERSION` and add matching `V<version>_CHANGES.md`; update current documentation and verification evidence.
-2. Run all regression suites and review the public inventory. Keep only Freeform, generic module contracts, and empty campaign registers. Check documentation links and render changed Mermaid diagrams. A release branch may run the same checks in GitHub Actions when a local checkout is unavailable; report the actual execution location.
+2. Run all regression suites and review the public inventory. Keep Freeform as the only selectable engine, generic module contracts, and empty campaign registers. The optional generic helper at `ENGINE/_shared/ENCOUNTER_GENERATION.md` may ship as support selected by a bound engine and accepted agreement; it is not another selectable engine or a default random policy. Other setting or campaign engine content remains outside the public kit. Check documentation links and render changed Mermaid diagrams. A release branch may run the same checks in GitHub Actions when a local checkout is unavailable; report the actual execution location.
 3. Commit the intended tree. Packaging rejects staged or unstaged tracked changes. Run `python -B TOOLS/package_release.py` to export and verify that commit.
 4. Inspect `.release/RPG_OS_v<version>.zip` and `.release/SHA256SUMS`. Untracked files are excluded. `--output-dir` selects another destination; existing output is refused unless `--overwrite` is explicitly supplied.
 5. Push the reviewed version change to `main`. The release workflow reruns checks and publishes the tag, ZIP, and checksum using the matching version notes. Manual dispatch also requires `main`.
