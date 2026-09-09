@@ -174,8 +174,9 @@ class ProtocolTests(unittest.TestCase):
                 self.assertIn(phrase.casefold(), body.casefold())
 
     def test_runtime_routes_are_integrated(self):
+        # Bound campaigns may replace README; check the actual runtime routes.
         for path in ("OS/LAW.md", "OS/BOOTSTRAP.md", "ADMIN/CLOSE_CONTRACT.md", "ADMIN/NEW_GAME.md",
-                     "ADMIN/RECALIBRATE.md", "README.md", "COMMANDS.md"):
+                     "ADMIN/RECALIBRATE.md", "COMMANDS.md"):
             with self.subTest(path=path):
                 self.assertIn("ADMIN/AUTOSAVE.md", self.read(path))
 

@@ -1,5 +1,28 @@
 # RPG OS experimental verification
 
+## v0.9.3 temporary encounter state — 2026-09-09
+
+Local Windows verification of the clean unbound release candidate discovered **246 tests: 239 passed, 7 platform skips, zero remaining failures** across the eight release suites. Structural validation passed with zero findings for both the unbound kit and the installed bound workspace. The companion campaign-specific suite is kept outside the public distribution; the bound workspace total was 251 tests, 244 passed and the same seven platform skips.
+
+| Suite | Discovered | Passed | Platform skips |
+|---|---:|---:|---:|
+| test_validate.py | 48 | 48 | 0 |
+| test_handover.py | 36 | 35 | 1 |
+| test_package_release.py | 17 | 17 | 0 |
+| test_read_source.py | 31 | 28 | 3 |
+| test_search_index.py | 33 | 32 | 1 |
+| test_evidence.py | 33 | 31 | 2 |
+| test_agent_state.py | 14 | 14 | 0 |
+| test_autosave.py | 34 | 34 | 0 |
+
+The first public evidence-suite attempt completed its test assertions but failed in Windows temporary-directory cleanup with `WinError 145`; an unchanged rerun passed. The first bound autosave check ran while the new release-notes file was still being written; its release-note existence check passed when rerun after preparation. These initial failures are not counted as successful executions.
+
+All eleven MECHANICS Mermaid diagrams rendered successfully with Mermaid 11.12.0 in a local headless browser. The changed lifecycle diagram was visually inspected. The public README introduction was preserved from the existing repository; generic instructions and version guidance were updated below it.
+
+Two bounded paired crowded-scene pilots compared the prior rules with the two Resolve additions, including full saves and fresh-context continuations. The explicit High repeat retained the tested observations, unheard-speech boundaries and pending-action dependencies in both variants. Both witnesses spoke publicly in that repeat. The trials did not demonstrate an advantage from the added paragraphs, silent-witness reliability under long context, or complete private reactivation on return. A small hidden-device-detail disclosure remained an observed portrayal defect. These results are limited behavioral observations, not a full execution of the cold U01–U26 cases, which retain their NOT RUN status.
+
+Five-field activation and release are model-operated instructions, not an independent simulation or guaranteed hidden memory. The public kit contains no private campaign module, actor, saved encounter, raw session transcript or campaign-specific test suite. Packaging verifies the committed unbound inventory and archive integrity separately; it does not establish model compliance or long-campaign quality.
+
 ## v0.9.2 announced autosave — 2026-09-08
 
 The implementation candidate is commit `480174e37f1ee299441b73cda5961f897f60c538`, based on published v0.9.1 commit `7c1499c084c96595a13f73582176332413749b8f`. [Structural validation run 34205017056](https://github.com/croatianrdy2defend-create/RPG-OS/actions/runs/34205017056), job `101992375832`, completed successfully on GitHub's Ubuntu 24.04.4 runner. The logs were read after completion. A local full checkout was unavailable in this authoring environment; these are remote CI observations, not claimed local test runs.

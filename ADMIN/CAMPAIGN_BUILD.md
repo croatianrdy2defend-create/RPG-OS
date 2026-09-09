@@ -34,6 +34,8 @@ A category does not automatically determine individual conduct. Explicitly estab
 
 Produce the public Setting Brief under the three required headings. Keep named cast, mutable state, detailed lore, private truth, preparation, and future events cold. Available depth names real capabilities and when their detail is needed, not a compulsory reading list. Local variation need not display every world category.
 
+If the module prescribes focused portrayal guidance, Available depth advertises the first focused description that requires it and the matching capability. Verify the narrow guide route during setup. A brief's compatible anatomy facts do not replace an applicable portrayal method; sufficient loaded guidance can be reused.
+
 ## Optional systems: enough to operate and resume
 
 For each selected mutable system, retain only relevant information in its authoritative body:
@@ -84,11 +86,17 @@ For a campaign promising a solvable factual investigation, check that its import
 
 ### People, factions, and institutions
 
-Develop actors whose recurrence or independent action matters: supported nature, independent aims, resources, constraints, knowledge/misbeliefs, relevant current orientation, characteristic expression, and any actually applicable action condition. These are useful distinctions, not compulsory headings or a universal psychological vector. Fixed facts and explicitly unresolved dimensions remain distinct. A short coherent body can suffice; do not prebuild everyone. `OS/AGENT_STATE.md` supplies the selective establishment/change procedure.
+Prepare the method before preparing a cast. Bind the [Initial Encounter Baseline](../OS/AGENT_STATE.md#initial-encounter-baseline) and active-participation lifecycle. Its five mandatory current fields are **Condition and mode; Priorities and constraints; Perception and appraisal; Attraction; Engagement stance**. A compact compatible default and necessary opening exceptions suffice. World sources define capacities, senses, actual control and constraints; the engine or accepted hook defines eligible generation. Settle exact mappings, dependencies, admissible inputs, real input and temporary-state expiry in the normal proposal. No population roster, comprehensive taxonomy or separate questionnaire is required.
 
-Use the brief when sufficient. Retrieve species, culture, faction or role definitions only where they materially affect this actor; keep composition shallow and retain the individualized result in its one proper owner. Hard supported capability limits differ from cultural tendencies and personal exceptions. No placeholder taxonomy, all-to-all relationship graph, or mandatory human motive is needed. Favorable, unfavorable and mixed starting relationships are all valid within the accepted premise.
+Known individual temperament, intelligence, knowledge and mechanical capacities remain sourced inputs; a current mood or high roll supplies no permanent trait or ability. Use actual drives, directives and control for other entities. Establish overall attraction where applicable, including aversion, with physical/aesthetic, sexual or romantic meaning resolved later only when needed and within known constraints. Duty, partnership or unwillingness to engage cannot excuse missing applicable attraction. Unsupported capacity, actual inapplicability and insufficient sensory information remain distinct; every applicable current field has a concrete value or precise limitation before use.
+
+Develop only actors whose opening participation, consequential recurrence or independent action matters. Visual observation alone does not require private state; its portrayal-source trigger still applies. Shared conditions and coordinated group action can remain group state. An individual appraisal, discretionary decision or direct engagement requires the five-field basis before its behavior. Ten soldiers detecting the PC need not produce ten personalities; three independent drink decisions need three bases. Inherit actual shared and individual facts without retroactively attributing a private appraisal to an earlier group sighting.
+
+Use the brief within its actual coverage and retrieve governing species, culture, faction, role or portrayal guidance before it is needed. Keep composition shallow and retain the individualized result in its one proper owner. Hard supported capability limits differ from cultural tendencies and personal exceptions. Generate population facts and personal tendencies from accepted world inputs, not the PC's preferred partner, unperceived wishes or hoped-for response. Fixed facts and deliberately unresolved dimensions remain distinct. Favorable, unfavorable and mixed starting relationships are all valid within the accepted premise.
 
 An established actor can act when due without waiting for PC attention. An invented actor's existence is not a requirement to feature them. A scheduled battle can start without assuming the PC joins it. Use one stable person id for routing and later INSTANCE overlays.
+
+Throughout active participation, reuse the baseline and update only what actual activities, information or relevant elapsed time affects. A goal is not guaranteed success, and the actor is not frozen between PC remarks. On genuine deactivation release inconsequential temporary values; preserve enduring facts, operative consequences and unresolved matters in their selected owners. Later incidental participation may generate a fresh basis constrained by those facts. Missing active/consequential state is a source gap, never permission to label it expired or reroll an ongoing exchange.
 
 #### Optional portrayal anchor for a recurring person
 
@@ -131,10 +139,12 @@ A new engine needs known procedures and inputs. Do not use world detail, agreeme
 Before returning to NEW GAME:
 
 1. Check selected domains and the five named clauses fit the accepted agreement. Resolve only meaningful contradictions. If a proposed direction is genuinely outside the premise, handle return/recalibration/ending OOC rather than inventing fictional barriers; ordinary established consequences within the premise still proceed.
-2. Identify opening dependencies: mechanics, current values, live conditions, and player-owned decisions. Ensure only relevant cues/routes enter T0's five readable sections.
+2. Identify opening dependencies: mechanics, current values, live conditions, player-owned decisions, and a usable baseline procedure for the relevant entity types. Check all five current fields for individuals whose opening participation requires them, with precise perception/source limitations where applicable. Ensure only relevant cues/routes enter T0's five readable sections; do not initialize every group member or dormant possibility.
 3. For interacting systems, walk one representative cause through its consequences exactly once, with a selected owner for each changed value.
-4. Rehearse one meaningful retrieval for each complex capability. Repair routes that require reading unrelated private material or discovering an unknown hierarchy.
+4. Rehearse one meaningful retrieval for each complex capability, including the applicable generation procedure and any prescribed focused-portrayal guide. Repair routes that require reading unrelated private material or discovering an unknown hierarchy. Check that the brief advertises the guide's actual first-focus trigger; a compatible description alone does not verify prior retrieval.
 5. Return the brief, real capability bodies, essential routes, source/private envelopes, and meaningful unknowns for the single NEW GAME review.
+
+Include or prepare the one encounter rehearsal used by LOAD verification: exercise a representative individual's five current fields through a response and an applicable coordinated group's shared conduct through its individualization boundary. Use the selected methods and source routes with clearly synthetic people and circumstances; actual random draws require their predefined mappings. Do not reuse a campaign determination as a disposable test draw or adopt the exercise as opening canon. Carry its actual observations forward within the same setup so it is performed once, not repeated by every guide. A changed relevant method invalidates only affected coverage. Mark absent observations unrun and unsupported group coverage inapplicable; static route validation cannot establish behavioral compliance.
 
 Do not persist here. The shared LOAD bind commits the accepted work with recovery protection. Omitted areas remain honestly absent or open.
 

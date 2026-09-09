@@ -6,6 +6,18 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 No changes currently listed.
 
+## v0.9.3 — temporary encounter state and consequence continuity (2026-09-09)
+
+- Made Understand → Establish → Resolve → Portray the explicit order for every PLAY response, including required source retrieval before focused portrayal.
+- Established five current fields before individual participation, appraisal or initiative: condition/mode, priorities/constraints, perception/appraisal, applicable overall attraction or aversion, and engagement stance. Supported nature, control, capacities and established history govern those fields without compulsory permanent personality generation.
+- Separated visual-only focus from private-state activation. Coordinated groups retain shared operational scale; separately resolved individual decisions receive individual baselines.
+- Retained active values through attention gaps, updated them for actual developments, and allowed genuine deactivation to release inconsequential temporary state. Consequential observations, relationships, promises and unresolved matters survive; lost required state remains a source gap.
+- Used the existing NOW active-state block and PEOPLE/system owners for authorized saves and handovers, with no new save schema, per-contact write, inactive registry or background actor service.
+- Bound usable source-compatible generation through world creation and setup, preserving engine authority, existing facts and accepted methods. Overall attraction does not decide trust, availability, acceptance or consent; inapplicable mechanisms remain inapplicable.
+- Required Resolve to carry actual event changes and perception limits into current working state before continuing, and to check current conditions, information, means and resources before pending actions execute. Neither requirement authorizes PLAY file writes or automatic repairs.
+- Reconciled startup, setup, persistence, handover, upgrade and user guidance. Valid v0.9.2 and earlier compatible campaigns keep their formats and established histories; different generation permissions require accepted prospective changes.
+- Limited paired trials demonstrated some successful save/resume cases but no clear advantage from the two Resolve additions and no long-context reliability claim. See [version notes](V0.9.3_CHANGES.md) and [verification](VERIFICATION.md).
+
 ## v0.9.2 — 2026-09-08
 
 - Added optional announced autosave through the existing recovery-protected, complete-present CHECKPOINT. It remains off unless explicitly selected for that campaign; installation does not grant automatic persistence.

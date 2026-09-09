@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
-"""Instruction-text and routing regressions for the universal behavioral basis.
+"""Procedure-structure and routing regressions for ordinary PLAY and agent state.
 
 No LLM calls, behavioral simulation, private-state inspection or campaign writes.
-Passing these checks does not establish independent or enjoyable model behavior.
+These checks protect the procedure's shape and access paths, not its semantics.
+Behavioral protections require the separate cases in ADMIN/TEST_AGENT_STATE.md.
 Run: python -B TOOLS/test_agent_state.py
 """
 from __future__ import annotations
 
 from pathlib import Path
+import posixpath
 import re
 import sys
 import unittest
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
+PLAY_STAGES = ("Understand", "Establish", "Resolve", "Portray")
+BASELINE_DIMENSIONS = (
+    "Condition and mode", "Priorities and constraints", "Perception and appraisal",
+    "Attraction", "Engagement stance",
+)
 
 
 def read(relative: str) -> str:
@@ -25,7 +32,7 @@ def normalized(text: str) -> str:
 
 
 def section(text: str, heading: str) -> str:
-    """Require one exact level-two heading; never silently inspect another section."""
+    """Require one exact level-two heading; never inspect a different section."""
     pattern = rf"(?m)^## {re.escape(heading)}[ \t]*$"
     matches = list(re.finditer(pattern, text))
     if len(matches) != 1:
@@ -40,148 +47,158 @@ class AgentInstructionTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.agent = read("OS/AGENT_STATE.md")
         cls.law = read("OS/LAW.md")
-        cls.module = read("MODULES/_CONTRACT.md")
-        cls.people = read("INSTANCE/PEOPLE/README.md")
-        cls.engine = read("ENGINE/freeform.md")
         cls.cases = read("ADMIN/TEST_AGENT_STATE.md")
 
-    def assert_phrases(self, text: str, *phrases: str) -> None:
-        actual = normalized(text)
-        for phrase in phrases:
-            with self.subTest(phrase=phrase):
-                self.assertIn(normalized(phrase), actual)
+    def assert_route(self, text: str, relative: str, owner: str | None = None) -> None:
+        spellings = {relative}
+        if owner:
+            spellings.add(posixpath.relpath(relative, posixpath.dirname(owner)))
+        self.assertTrue(any(route in text for route in spellings),
+                        f"Missing route to {relative} from {owner or 'root'}")
+        self.assertTrue((ROOT / relative).is_file(), relative)
 
-    def test_independence_is_not_autonomy_or_human_deliberation(self) -> None:
-        self.assert_phrases(section(self.agent, "Identify the actual decision"),
-                            "Independence from the player's desired outcome is not individual autonomy",
-                            "Some behavior needs no conscious deliberation",
-                            "reserved control of a PC")
+    def test_prime_directive_orders_every_play_stage(self) -> None:
+        headings = re.findall(r"(?m)^## (.+?)[ \t]*$", self.law)
+        self.assertEqual(headings, ["Prime directive — every PLAY response",
+                                    *PLAY_STAGES, "Save and repair"])
+        prime = section(self.law, headings[0])
+        steps = re.findall(r"(?m)^(\d+)\. \[([^\]]+)\]\(#([a-z]+)\)", prime)
+        self.assertEqual(steps, [(str(index), stage, stage.casefold())
+                                 for index, stage in enumerate(PLAY_STAGES, 1)])
+        for heading in headings:
+            with self.subTest(heading=heading):
+                self.assertTrue(section(self.law, heading).strip())
 
-    def test_control_information_and_transition_are_distinct(self) -> None:
-        self.assert_phrases(section(self.agent, "Nature and control"),
-                            "Locate the decision owner and any local discretion",
-                            "A shared objective does not imply shared knowledge",
-                            "communication channels, scope and delays",
-                            "supported transition rather than inventing freedom, paralysis or a new personality")
+    def test_establishment_routes_precede_resolution_and_portrayal(self) -> None:
+        establish = section(self.law, "Establish")
+        self.assert_route(establish, "OS/RETRIEVAL.md")
+        self.assert_route(establish, "OS/AGENT_STATE.md")
+        self.assertIn("ENGINE", section(self.law, "Resolve"))
+        for owner in ("OS/LAW.md", "OS/RETRIEVAL.md"):
+            with self.subTest(owner=owner):
+                self.assertIn("source", normalized(read(owner)))
 
-    def test_authority_distinguishes_hard_limits_and_tendencies(self) -> None:
-        self.assert_phrases(section(self.agent, "Recover sufficient authority"),
-                            "Existing individual facts outrank group tendencies",
-                            "hard capability constraints remain binding",
-                            "Appearance alone establishes neither a custom nor a capacity or incapacity")
+    def test_agent_establishment_and_change_topics_remain_retrievable(self) -> None:
+        # These cold section names are retrieval interfaces. Their wording may
+        # evolve through an intentional route change, not accidental deletion.
+        headings = (
+            "Identify the actual decision", "Recover sufficient authority",
+            "Nature and control", "Initial Encounter Baseline",
+            "Active participation and deactivation",
+            "Deepen prospectively, not retrospectively", "Establish eligible gaps",
+            "Portray and change", "Resolve operative opportunities",
+            "Fallback oracle for eligible unknowns", "Retain, save and transfer honestly",
+        )
+        for heading in headings:
+            with self.subTest(heading=heading):
+                self.assertTrue(section(self.agent, heading).strip())
+        portray = self.agent.index("## Portray and change")
+        for heading in ("Recover sufficient authority", "Nature and control",
+                        "Initial Encounter Baseline",
+                        "Establish eligible gaps"):
+            with self.subTest(prerequisite=heading):
+                self.assertLess(self.agent.index(f"## {heading}"), portray)
+        self.assert_route(section(self.agent, "Recover sufficient authority"),
+                          "OS/RETRIEVAL.md", owner="OS/AGENT_STATE.md")
 
-    def test_inapplicable_is_not_an_unknown_or_zero(self) -> None:
-        self.assert_phrases(section(self.agent, "Recover sufficient authority"),
-                            "Not applicable is not unknown or a zero score awaiting improvement",
-                            "an answer deliberately open until its trigger",
-                            "An unread or broken route is not permission to regenerate")
+    def test_world_and_engine_routes_retain_the_shared_procedure(self) -> None:
+        for relative in ("MODULES/_CONTRACT.md", "INSTANCE/PEOPLE/README.md",
+                         "ENGINE/freeform.md", "OS/RETRIEVAL.md"):
+            with self.subTest(caller=relative):
+                self.assert_route(read(relative), "OS/AGENT_STATE.md")
 
-    def test_generation_has_an_input_boundary(self) -> None:
-        self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
-                            "Prior causal history involving the PC is legitimate input",
-                            "unverified interpretation", "an unperceived player wish",
-                            "a proposed narrative role", "not evidence of private nature",
-                            "separate those inputs from the admissible basis")
+    def test_persistence_and_repair_keep_existing_procedures(self) -> None:
+        for body in (section(self.law, "Save and repair"),
+                     section(self.agent, "Retain, save and transfer honestly")):
+            for route in ("ADMIN/CLOSE_CONTRACT.md", "ADMIN/SCENE_HANDOVER.md",
+                          "ADMIN/CORRECT.md"):
+                with self.subTest(route=route, owner=body[:70]):
+                    self.assert_route(body, route)
 
-    def test_observations_do_not_reverse_establish_their_meaning(self) -> None:
-        self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
-                            "Preserve actual observed actions and speech as constraints",
-                            "do not promote their perceived meaning into motive, disposition or capability",
-                            "private state, outward presentation", "Do not invent a PC interpretation",
-                            "require every outward appearance to conceal a contrary motive")
+    def test_required_baseline_dimensions_and_scale_have_an_operative_owner(self) -> None:
+        baseline = section(self.agent, "Initial Encounter Baseline")
+        for dimension in BASELINE_DIMENSIONS:
+            with self.subTest(dimension=dimension):
+                self.assertIn(normalized(dimension), normalized(baseline))
+        self.assertRegex(normalized(baseline), r"\b(required|mandatory)\b")
+        self.assertRegex(baseline, r"(?m)^### Scope and scale[ \t]*$")
+        for concept in ("individual", "group", "perception"):
+            with self.subTest(concept=concept):
+                self.assertIn(concept, normalized(baseline))
 
-    def test_basis_precedes_dependent_portrayal_without_attention_activation(self) -> None:
-        self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
-                            "before the first focused portrayal or resolution that depends on it",
-                            "Player attention is not the fictional cause",
-                            "An established order, relevant perception, due process or authorized initiative",
-                            "never invent prior motives afterward")
+        baseline = normalized(section(self.agent, "Initial Encounter Baseline"))
+        for concept in ("overall", "aversion", "participation"):
+            self.assertIn(concept, baseline)
 
-    def test_late_deepening_cannot_backfill_prior_causes(self) -> None:
-        deepening = section(self.agent, "Deepen prospectively, not retrospectively")
-        self.assert_phrases(deepening,
-                            "any private cause behind it that was not already established remains unresolved",
-                            "accepted generation procedure whose admissible inputs do not include the player's interpretation",
-                            "Do not choose either the player's interpretation or its opposite", "leave the cause open",
-                            "Do not rewrite that new state backward", "A later self-report",
-                            "not independent proof of earlier establishment")
-        self.assert_phrases(self.law, "Later deepening is prospective by default",
-                            "Do not use either the player's interpretation or its opposite as the hidden past",
-                            "without rewriting that change backward")
-        self.assert_phrases(self.engine, "Late deepening is prospective by default",
-                            "Do not select the player's interpretation or its opposite as hidden history")
+    def test_required_factual_coverage_does_not_change_storage_or_play_write_scope(self) -> None:
+        # A small explicit scope contract supplements the routing checks. It
+        # does not prove that surrounding prose or model behavior respects it.
+        introduction = self.agent.split("\n## ", 1)[0]
+        self.assertIn("not a permanent profile", normalized(introduction))
+        self.assertRegex(normalized(introduction), r"\bpermission\b.*\bwrite\b.*\bplay\b")
+        self.assertIn("play remains read-only", normalized(
+            section(self.agent, "Retain, save and transfer honestly")))
+        self.assertIn("play creates no files here", normalized(read("INSTANCE/PEOPLE/README.md")))
+        # Deliberately keep the existing prose-schema regression: required
+        # behavioral coverage does not make five persisted fields compulsory.
+        self.assertIn("def test_existing_people_prose_needs_no_agent_state_fields(",
+                      read("TOOLS/test_validate.py"))
 
-    def test_state_stays_sparse_and_has_no_compulsory_psychology(self) -> None:
-        self.assert_phrases(section(self.agent, "Nature and control"),
-                            "reasoning prompts, not required fields",
-                            "No duplicate control register, all-to-all relationship graph or cast-wide update")
-        self.assert_phrases(section(self.agent, "Establish a minimal baseline on direct attention"),
-                            "Background crowds need no individual preparation", "Include supported opportunities and positive aims",
-                            "a controlled organism needs no friendship inventory")
+    def test_new_world_generation_has_sources_and_a_rehearsal(self) -> None:
+        # These checks establish that actual routed instructions exist, not
+        # that their authored probabilities or resulting behavior are fair.
+        for owner in ("ADMIN/NEW_GAME.md", "MODULES/_CONTRACT.md"):
+            body = normalized(read(owner))
+            with self.subTest(owner=owner):
+                for concept in ("source", "rehearsal"):
+                    self.assertIn(concept, body)
+                self.assertRegex(body, r"\b(mapping|outcome meanings)\b")
 
-    def test_randomness_cannot_create_inapplicable_capacities(self) -> None:
-        self.assert_phrases(section(self.agent, "Establish eligible gaps"),
-                            "Fix admissible inputs, eligible scope, context, constraints and outcome meanings before drawing",
-                            "obtain actual randomizer or player-supplied input", "Randomness does not remove bias",
-                            "unsupported capacity or an inapplicable relationship dimension",
-                            "Never switch a table, reinterpret a result or reroll")
+    def test_active_lifecycle_and_retention_have_explicit_owners(self) -> None:
+        lifecycle = normalized(section(self.agent, "Active participation and deactivation"))
+        for concept in ("active", "attention", "deactivat", "temporary", "consequence"):
+            with self.subTest(concept=concept):
+                self.assertIn(concept, lifecycle)
+        retention = section(self.agent, "Retain, save and transfer honestly")
+        self.assert_route(retention, "INSTANCE/NOW.md", owner="OS/AGENT_STATE.md")
+        self.assertIn("PEOPLE", retention)
+        self.assertIn("Active encounter state", retention)
+        self.assertIn("missing", normalized(retention))
 
-    def test_approval_and_cooperation_are_not_player_outcome_meters(self) -> None:
-        self.assert_phrases(section(self.agent, "Portray and change"),
-                            "A favorable evaluation by an entity need not produce a player-favorable consequence",
-                            "Cooperation need not establish affection", "Agency does not require refusal, agreement",
-                            "there is no outcome quota")
+    def test_procedure_and_fixtures_remain_cold(self) -> None:
+        bootstrap = read("OS/BOOTSTRAP.md")
+        self.assert_route(bootstrap, "OS/LAW.md")
+        self.assertNotIn("OS/AGENT_STATE.md", bootstrap)
+        self.assertNotIn("TEST_AGENT_STATE.md", bootstrap)
+        self.assertIn("do not load it at every startup", normalized(self.agent))
 
-    def test_change_is_scoped_and_not_retrospective_regeneration(self) -> None:
-        self.assert_phrases(section(self.agent, "Portray and change"),
-                            "changed orders", "Retain a short cause at the affected scope",
-                            "without retroactively choosing what existed before the encounter",
-                            "Repetition alone earns neither progress nor forced resistance")
-        self.assert_phrases(section(self.agent, "Resolve operative opportunities"),
-                            "Repeated queries or subdivisions create no extra draws", "leave later time uncommitted")
+    def test_behavioral_cases_have_separate_unrun_status_and_pass_criteria(self) -> None:
+        cases = section(self.cases, "Behavioral cases")
+        chunks = re.split(r"(?m)^### (U\d{2}) — [^\n]+\n", cases)
+        self.assertEqual(chunks[1::2], [f"U{number:02d}" for number in range(1, 27)])
+        for identifier, body in zip(chunks[1::2], chunks[2::2]):
+            with self.subTest(case=identifier):
+                self.assertIn("Pass:", body)
+                setup, expected = body.split("Pass:", 1)
+                self.assertTrue(setup.strip())
+                self.assertTrue(expected.strip())
+        self.assertIn("Behavioral status: **NOT RUN**", self.cases)
+        self.assertIn("does not execute an LLM", self.cases)
+        self.assertIn("not internal reasoning", self.cases)
+        self.assertTrue(section(self.cases, "Refactor review and paired comparison").strip())
 
-    def test_retention_keeps_existing_owners_and_honest_limits(self) -> None:
-        self.assert_phrases(section(self.agent, "Retain, save and transfer honestly"),
-                            "Shared state has one authority", "PLAY remains read-only",
-                            "not an independently recoverable hidden commitment", "not proof of independent generation",
-                            "not internal reasoning", "no automatic establishment checkpoint, background save or private scratch file",
-                            "The receiving GM leaves source authorities frozen")
+    def test_maintainer_routes_are_independent_of_campaign_readme(self) -> None:
+        # A bound campaign may replace the public-kit README with its own
+        # startup guide. CONTRIBUTING remains the developer route in either kit.
+        for route in ("TOOLS/test_agent_state.py", "ADMIN/TEST_AGENT_STATE.md"):
+            self.assert_route(read("CONTRIBUTING.md"), route)
 
-    def test_adoption_preserves_established_entities_and_history(self) -> None:
-        self.assert_phrases(section(self.agent, "Retain, save and transfer honestly"),
-                            "Adoption is preservation-first", "do not regenerate existing individuals, controllers, relationships or history",
-                            "ADMIN/CORRECT.md", "accepted prospective procedure",
-                            "Relabeling a prior fact as an impression is not a silent repair")
-
-    def test_core_module_and_current_owner_expose_the_same_boundary(self) -> None:
-        self.assert_phrases(self.law, "entity-appropriate behavioral basis", "Not applicable is not unknown or zero",
-                            "Shared control does not grant shared knowledge", "A roll cannot create an unsupported capacity")
-        self.assert_phrases(self.module, "The module supplies entity-specific capacities", "the OS supplies the procedure",
-                            "the ENGINE owns resolution", "admissible inputs", "not required files, fields")
-        self.assert_phrases(self.people, "not required fields or a human personality template",
-                            "one selected NOW or other existing system authority", "do not rerandomize an established entity",
-                            "PLAY creates no files here")
-
-    def test_behavioral_cases_are_present_and_explicitly_not_run(self) -> None:
-        identifiers = re.findall(r"(?m)^### (U\d{2}) — ", self.cases)
-        self.assertEqual(identifiers, [f"U{number:02d}" for number in range(1, 16)])
-        self.assert_phrases(self.cases, "Behavioral status: **NOT RUN**", "does not execute an LLM", "not internal reasoning",
-                            "variation alone does not demonstrate bias", "Late deepening cannot backfill an earlier hidden cause")
-        self.assert_phrases(read("CONTRIBUTING.md"), "TOOLS/test_agent_state.py", "ADMIN/TEST_AGENT_STATE.md")
-        self.assert_phrases(read("README.md"), "ADMIN/TEST_AGENT_STATE.md", "v0.9.1")
-        # Preserve the v0.9.1 regression without pinning all future releases to its version.
+    def test_release_history_is_preserved_without_pinning_current_version(self) -> None:
         version = read("VERSION").strip()
         self.assertRegex(version, r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$")
         self.assertGreaterEqual(tuple(map(int, version.split("."))), (0, 9, 1))
         self.assertTrue((ROOT / f"V{version}_CHANGES.md").is_file())
         self.assertTrue((ROOT / "V0.9.1_CHANGES.md").is_file())
-
-    def test_procedure_and_fixtures_remain_cold(self) -> None:
-        bootstrap = read("OS/BOOTSTRAP.md")
-        self.assertNotIn("OS/AGENT_STATE.md", bootstrap)
-        self.assertNotIn("TEST_AGENT_STATE.md", bootstrap)
-        self.assert_phrases(self.agent, "Do not load it at every startup",
-                            "No mandatory agent vector, draw, dossier, new state owner or writing permission")
 
     def test_section_reader_rejects_missing_or_duplicate_coverage(self) -> None:
         self.assertEqual(section("## A\nkept\n## B\nother\n", "A").strip(), "kept")

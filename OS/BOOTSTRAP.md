@@ -1,4 +1,4 @@
-# RPG OS v0.9.2 startup
+# RPG OS v0.9.3 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 
@@ -15,6 +15,8 @@ Load a campaign when asked to run, resume, or set one up. Development and review
 8. Only if the accepted agreement explicitly enables autosave, follow `ADMIN/AUTOSAVE.md` for its cadence and advance notice. Absent policy means off, not a missing required field. A clean boot from a verified save starts its operational count at zero; never invent an old warning or unsaved state. Recovery and handover still take priority. No context-meter access is assumed.
 
 ## Respond
+
+For every PLAY response, including the first after loading, execute LAW's `Prime directive — every PLAY response`: Understand → Establish → Resolve → Portray, in that order. Startup supplies the initial authorities; it does not replace the procedure on later turns.
 
 If asked to continue, resume the recorded moment and ongoing declaration within accepted delegation, including an explicitly applicable Cuts grant. No second "begin" command is needed. Without that grant, preserve lived continuity and uncommitted time. A cut does not invent elapsed events or decide a reserved pending choice; keep its unresolved facts and consequences honest. Do not automatically restart a resolved scene. If asked only to check readiness, report readiness without fiction.
 

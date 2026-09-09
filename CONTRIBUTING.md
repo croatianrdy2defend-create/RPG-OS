@@ -1,6 +1,6 @@
-# Contributing to RPG OS v0.9.2
+# Contributing to RPG OS v0.9.3
 
-Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. Keep public examples synthetic or sanitized.
+Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. For a four-stage failure, identify the missing source, establishment or resolution dependency before proposing another outcome-specific rule. Keep public examples synthetic or sanitized.
 
 ## Evidence
 

@@ -5,11 +5,11 @@ temperature: selective
 character_build_support: no-mechanical-sheet
 ---
 
-# ENGINE — Freeform v8.1.1
+# ENGINE — Freeform v0.9.3
 
-Use only when the operator selects it. There is no formal attribute list, hidden stat block, or compulsory dice system.
+Use only when the operator selects it, within [LAW's operating cycle](../OS/LAW.md#prime-directive--every-play-response). There is no formal attribute list, hidden stat block, or compulsory dice system.
 
-Resolve uncertain outcomes by GM judgment from established capabilities, circumstances, opposition, and clear stakes. If the player requests a coin, die, or oracle, agree the method and outcome meanings before resolution. Do not claim a random result came from a tool that was not used. If the host cannot obtain the requested result, ask for the player's roll or agree an available method.
+Resolve uncertain outcomes by GM judgment from established capabilities, circumstances, opposition, and clear stakes. For requested randomness, use the already accepted coin, die or oracle method, or agree its method and outcome meanings before resolution. Do not claim a random result came from a tool that was not used. If the host cannot obtain the requested result, ask for the player's roll or agree an available method.
 
 The agreement governs initiative, PC control, and any explicitly accepted fixed structural scope. Do not offer a fixed destination or outcome as an open judgment/roll. Outcomes left uncertain still follow this engine's resolution procedure. A resolution outcome is not permission to invent voluntary PC conduct outside the declared/delegated scope.
 
@@ -17,7 +17,7 @@ The agreement governs initiative, PC control, and any explicitly accepted fixed 
 
 Use the established entity-appropriate behavioral basis when judging a response: supported nature/capabilities, actual control and local discretion, available information, applicable aims/drives/directives, constraints, relationships where applicable, and current circumstances. Human psychology is not a universal default. Meaningful interaction, new information, changed orders or circumstances can change that basis; OOC hopes, turn count or repeated equivalent attempts alone do not rewrite it. Supported cooperation and initiative remain legitimate; independence is not a rejection quota. Keep actual promises and intentions distinct from their expression.
 
-Direct attention or engagement recovers or establishes a minimal current basis before focused portrayal or reception; `OS/AGENT_STATE.md` provides establishment/change guidance when needed. Freeform judgment remains the default; partly randomized initialization requires an agreed compatible method with defined admissible inputs, context, eligible outcomes and real input. No hidden stat block, automatic social roll or universal psychology is installed. Preserve a resolved initialization/opportunity at its scope and do not redraw it on a repeat query. Ordinary role-consistent function can reuse sufficient state without an extra roll, deeper profile or repeat retrieval.
+Individual participation, appraisal or initiative recovers or establishes the five-field current basis before dependent behavior under `OS/AGENT_STATE.md`. Mere visual focus requires its portrayal sources without automatic private-state activation. Freeform judgment remains the default; partly randomized generation requires an agreed compatible method with admissible inputs, context, mappings and real input. Reuse active state through attention gaps; update affected values on meaningful developments. Under the accepted lifecycle, genuine deactivation permits releasing inconsequential temporary state and fresh later incidental generation within retained facts. Repetition or missing active state supplies no reroll. No automatic social roll, full biography or universal psychology is installed.
 
 Late deepening is prospective by default. An unexplained private cause behind earlier portrayal remains unresolved unless recovered from existing authority or independently established by an accepted procedure using admissible inputs. Do not select the player's interpretation or its opposite as hidden history merely to fit or resist the player. New evidence can change current state from that point forward without establishing that the state or motive existed earlier.
 
