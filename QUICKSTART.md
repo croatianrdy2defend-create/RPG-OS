@@ -10,6 +10,14 @@ Say:
 
 > Open OS/AGENTS.md. Help me start a new RPG campaign. Follow ADMIN/NEW_GAME.md, including Neutrality before worldbuilding, and use Quick start. Ask only what you need next.
 
+The GM briefly explains the three setup levels at the start, even when you use this Quick start request:
+
+- **Quick start:** a playable minimum with proposed defaults and only essential questions.
+- **Guided:** the main choices explained in short stages.
+- **Detailed:** the full setup menu first, then deeper work in the areas you choose.
+
+Every level lets you customize world fidelity, character and rules detail, tone, narrative voice, dialogue language, pacing, guidance, limits and saving preferences. You can mix levels, switch during setup, or let the GM propose defaults. Detailed setup includes how the game is narrated and presented, not just more lore. Ask to see the [full menu](ADMIN/NEW_GAME.md#make-the-options-visible) at any time; choosing Quick start does not require another depth-selection question. The final proposal makes its defaults and deferrals visible before you accept it.
+
 For the GM: read and apply [Neutrality before worldbuilding](ADMIN/NEW_GAME.md#neutrality-before-worldbuilding) before the first world, lore or opening proposal. This applies at every setup depth. The standard [session routine](ADMIN/SESSION.md) also belongs in the normal proposal: relevant preparation at begin/resume and feedback plus consolidation at an explicit ending. Examples and visual references supply no generation weights; the requested premise and supported sources govern the draft.
 
 Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement, including a usable, source-compatible method for establishing new encounters. Before an entity individually participates, appraises the PC or takes relevant initiative, the GM establishes five current facts: condition and mode, priorities and constraints, perception and appraisal, applicable overall attraction or aversion, and engagement stance. Its supported nature, control and existing history govern those facts. A bare approach can begin participation while your purpose remains yours to declare. Merely observing an unaware individual does not initialize private state; the GM still retrieves any required portrayal guide before focused physical description.

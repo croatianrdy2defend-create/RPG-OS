@@ -143,7 +143,7 @@ Extract the release into its own folder and give your model read/write access. T
 
 > Open OS/AGENTS.md. Help me start a new RPG campaign. Use Quick start and ask only what you need next.
 
-Provide any premise, character, rules, preferences, and references you already have. The interview reuses them and presents one compact proposal for your acceptance. Quick start develops only what the opening needs; Guided and Detailed setup provide more preparation.
+Provide any premise, character, rules, preferences, and references you already have. The GM briefly explains the setup levels even when you request Quick start: a playable minimum with proposed defaults, Guided choices in short stages, or Detailed preparation from a full menu of areas you can develop, delegate or defer. Every level offers control over voice, dialogue language, pacing, guidance and other presentation settings as well as world, character and rules detail. You can mix depths or switch during setup. The interview reuses your choices and presents one compact proposal with visible defaults for acceptance; see the [setup options](ADMIN/NEW_GAME.md#make-the-options-visible).
 
 To resume in a fresh chat:
 
