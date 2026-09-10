@@ -6,7 +6,7 @@ It is not a trained model, background server, autonomous simulation, or replacem
 
 This guide explains the mechanics behind [Quick start](QUICKSTART.md). For compact technical ownership notes, see [Architecture](ARCHITECTURE.md); the linked operating files contain the full procedures.
 
-The worked scenes below are original fictional illustrations, not campaign records or observed playtests. Each supplies its own situation; examples do not share a world unless stated. Unless a scene demonstrates initialization, its participants already have an established encounter basis. **Player** and **GM** show what a chat can look like. The accompanying explanations reveal selected facts for the reader; ordinary narration does not print a private-state worksheet. Any displayed dice are fixed illustration inputs, not claims that a randomizer was used.
+The worked scenes below are original fictional illustrations, not campaign records or observed playtests. Each supplies its own situation; examples do not share a world unless stated. Unless a scene demonstrates initialization, its participants already have an established encounter basis. **Player** and **GM** show what a chat can look like. The accompanying explanations reveal selected facts for the reader; ordinary narration does not print a private-state worksheet. Any displayed dice are fixed illustration inputs, not claims that a randomizer was used. Read these cases for explanation only. Their subjects, repetition and descriptive detail supply no generation weights or defaults; worldbuilding follows [NEW GAME’s neutrality rule](ADMIN/NEW_GAME.md#neutrality-before-worldbuilding), and PLAY follows the governing source procedures.
 
 ## Contents
 
@@ -120,7 +120,7 @@ The player controls the PC's voluntary actions, speech, inner experience, and co
 
 Initiative is meaningful without being compulsory incident generation. An established cause, applicable procedure, explicit request, or accepted initiative grant must justify a new consequential development before it is drafted. Permission to introduce trouble does not mean every scene owes trouble.
 
-For example, permission to compress ordinary ferry travel can cover the declared crossing. It does not automatically choose whether the PC accepts a job offered aboard. [LAW](OS/LAW.md) defines these authorship and continuation rules; [Recalibrate](ADMIN/RECALIBRATE.md) changes accepted terms prospectively.
+Routine compression covers the ordinary steps of the declared activity within its agreed scope. It stops before a new reserved decision or commitment. [LAW](OS/LAW.md) defines these authorship and continuation rules; [Recalibrate](ADMIN/RECALIBRATE.md) changes accepted terms prospectively.
 
 ### At the table: the ferry reaches a decision
 
@@ -190,13 +190,13 @@ An agent's relevant state gives the GM a basis for its decisions: what it is doi
 
 | Depth | What the GM needs |
 |---|---|
-| Background people or coordinated group conduct | Ordinary setting-consistent portrayal, actual shared duties and information. Ten soldiers noticing the PC need not acquire ten personalities; no shared private attraction is inferred. |
-| Individual participation, appraisal or separately resolved personal decision | Five current fields: condition/mode, priorities/constraints, perception/appraisal, attraction, engagement stance. Recover governing facts and active values; settle eligible gaps before behavior. Three independent drink decisions require three baselines. |
+| Background people or coordinated group conduct | Ordinary setting-consistent portrayal, actual shared duties and information. Shared conduct alone does not require individual baselines; no shared private attraction is inferred. |
+| Individual participation, appraisal or separately resolved personal decision | Five current fields: condition/mode, priorities/constraints, perception/appraisal, attraction, engagement stance. Recover governing facts and active values; settle eligible gaps before behavior. Each independently resolved decision owner needs its own basis. |
 | Actual developments make more detail matter | Deepen the affected person as play supplies causes, disclosures or new needs. Retain durable consequences through the existing person/system owner when continuity requires them. |
 
 These are scales of resolution, not new record types. Five current determinations can be concise; there is no permanent personality worksheet or public questionnaire. An activity alone does not complete the basis. Applicable overall attraction is established even on duty, while absent perception is a precise limitation rather than zero attraction. Overall attraction includes attraction, no particular attraction or aversion within the supported attraction domain, and remains distinct from approval, trust, hostility, availability and participation. Known subtype-specific constraints survive; finer meaning can be resolved later when relevant. During active participation, reuse state through attention gaps and update only what information, events or meaningful elapsed activity affects. At genuine deactivation release inconsequential private values; retain consequential facts and unresolved matters. A later incidental encounter may generate fresh temporary values under the accepted method, but missing active state and an ongoing negotiation never supply reset authority.
 
-Established facts come first, including private facts the PC has not learned. A deliberately unfixed property keeps its agreed trigger. A missing source remains a retrieval problem. Eligible new details follow the accepted authoring or generation method; participation does not authorize replacing inaccessible facts or selecting an unaccepted random method. The [cold agent-state procedure](OS/AGENT_STATE.md) supplies the operating detail when needed and adds no unconditional startup read.
+Establish the subject from accepted world facts, circumstances and the authorized selection method before selecting portrayal references. Example frequency, image availability, document order and the PC's preferences add no population weights. Preserve actual demographics and local variation without equal quotas. Established facts come first, including private facts the PC has not learned. A deliberately unfixed property keeps its agreed trigger. A missing source remains a retrieval problem. Eligible new details follow the accepted authoring or generation method; participation does not authorize replacing inaccessible facts or selecting an unaccepted random method. The [cold agent-state procedure](OS/AGENT_STATE.md) supplies the operating detail when needed and adds no unconditional startup read.
 
 The NPC perceives only what is actually available to it: the PC's observable approach, words and conduct, plus any legitimately held prior knowledge. It may form a mistaken inference; that belief does not establish the PC's intent. Resolve the reaction from both the individual baseline and the applicable ENGINE procedure. The baseline supplies context, not arbitrary mechanical modifiers or permission to bypass a required reaction check. Do not resolve the same reaction twice, roll away fixed state, or invent a prior motive after seeing the result.
 
@@ -215,48 +215,7 @@ flowchart TD
     agentSave --> agentResume["Resume active state; fresh incidental values only after genuine expiry"]
 ```
 
-### Example: “I approach her”
-
-A woman stands beside a station departure board, watching the delayed Greyhaven service. The PC is already carrying a red glove found on the platform; it is not hers. For this Freeform illustration her supplied current basis is distracted but not distressed; waiting for that train with time for a brief exchange; seeing an approaching stranger and provisionally taking them for another traveler; no particular attraction; open to a short conversation while monitoring announcements. These facts precede her response and say nothing about the PC's purpose.
-
-> **Player:** I approach her.
->
-> **GM:** She glances from you to the board. “If you're after the Greyhaven train, it hasn't got any more punctual since I started glaring at it.”
->
-> **Player:** “Actually, I wanted to ask whether you dropped this.” I show her the red glove I found on the platform.
->
-> **GM:** She looks at it, then checks her coat pockets. “I didn't, but thank you for asking.” Her attention returns briefly to the departure board.
-
-Her initial assumption was allowed to be wrong; the GM neither assigned a motive to the approach nor treated it as flirtation. The same current basis supports the next reply without another initialization. An actual announcement could change her priorities; a new player sentence alone does not reset them.
-
-### Example: a coworker, a mistaken belief, and a fresh GM
-
-In this illustrative station scene, coworker Mara values safe maintenance. She trusts the PC's technical skill, doubts their thoroughness, and keeps a personal distance. Her supplied current basis is calm and inspecting maintenance work, prioritizing safety, perceiving the known coworker through that established mixed appraisal, experiencing no particular attraction, and open to professional cooperation. A service hatch is actually open, but Mara believes it is sealed because she read an outdated log. Her mistaken belief and the hatch's true condition are separate established facts. These are illustrative fixed facts, not results of a live test.
-
-| Stage | What happens and what remains true |
-|---|---|
-| **Before the encounter** | Individual participation retrieves Mara's established relationship, belief and current basis; it does not regenerate their fixed values. The GM can portray courteous, cautious cooperation. Neither the PC's wish for friendship nor Mara's wrong information changes the hatch's actual condition. |
-| **A relevant event** | The player declares that the PC inspects the hatch and shows Mara the open latch. Mara looks and acknowledges the discrepancy. Direct observation changes her belief; this careful check gives her a reason to trust the PC's thoroughness more. Her personal distance remains unchanged. |
-| **The player requests a full save** | The consequential current relationship and belief, with their cause, go into Mara's person record. Her still-active temporary basis goes into NOW with references to those enduring facts. The PC's observation goes into KNOWN. Available declarations and dialogue go into ARCHIVE. The unchanged hatch fact keeps its existing world owner; the save's useful pointers locate current records. No additional action or attitude change occurs during saving. |
-| **A fresh GM resumes** | The new GM retrieves Mara's current record: greater professional trust, continued personal distance, and knowledge that the hatch is open. It does not replay the discovery, restore her old belief, or infer friendship. A later request for help is judged from these facts and the actual circumstances. |
-
-What the relevant event and later continuation can sound like under this example's Freeform judgment:
-
-> **Player:** I point out the open latch. “The log says sealed. Look at this.”
->
-> **GM:** Mara bends close enough to inspect the catch. “You're right. That entry is wrong.” She studies the gap. “Good catch. Let's check the other access points before anyone signs this off.”
-
-After the full save and a fresh GM's retrieval, a new player request can build on that change:
-
-> **Player:** “Will you check the lower hatch with me?”
->
-> **GM:** “Yes. I'll watch the indicator while you inspect the catch.” Mara brings her inspection lamp over.
-
-This continuation supplies professional cooperation, while leaving the PC to carry out or revise the proposed inspection. It does not replay the discovery or turn Mara's revised professional judgment into personal intimacy.
-
-The valid change is as important as the continuity. Ignoring the observation would make Mara rigid; turning a careful inspection into universal affection would erase the distinction between professional trust and personal closeness. Ordinary help or initiative can be appropriate without manufacturing an obstacle.
-
-This example uses established facts and Freeform judgment, so it requires no random draw. If an eligible unknown instead uses a selected random procedure, its context and outcome meanings must be settled before obtaining real input. The result is then retained at its actual scope; repeated attempts or a new GM do not authorize another draw.
+Worked examples of initial participation and continuity are in [the optional reference](ADMIN/PORTRAYAL_EXAMPLES.md#initial-participation-and-continuity). Retrieve them only for an explanatory question; their supplied actors and circumstances are not generation inputs.
 
 Stable background stays in MODULE; later mutable individual state uses PEOPLE, and collective/system state uses its selected NOW authority. Direct attention does not itself create a file or require durable promotion. A promise, consequential disclosure or continuing interaction may make retention necessary; a brief service exchange may leave nothing needing its own person record. Until the requested save succeeds, the encounter's new state remains in conversation. A full save preserves available evidence; a checkpoint preserves current state without adding that evidence. Neither can reconstruct a lost quotation or hidden determination.
 
@@ -378,11 +337,7 @@ For example, say: “Use the simple d6 fallback as our standing method for eligi
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
-| Sparse encounter | A concrete question the oracle can settle |
-|---|---|
-| A stranger accepts the PC's contact details without a promise. | Does this person send a message within the next seven days? |
-| A stranger receives payment and promises a favor. | Does this person deliver the agreed favor by the promised deadline? |
-| The PC tells a stranger an important secret. | Does this person pass the secret to another person during the specified interval? |
+Optional [worked questions](ADMIN/PORTRAYAL_EXAMPLES.md#scoped-fallback-questions) illustrate the same scope without making their circumstances ordinary encounter defaults.
 
 The roll resolves that question. A Yes to disclosure creates no automatic knowledge in every enemy, and a No to contact this week creates no permanent dislike. Later consequences follow actual recipients, channels, circumstances and applicable rules. An outcome's importance does not exempt it from the selected method.
 
@@ -642,7 +597,7 @@ flowchart TD
     auditCorrect --> auditTrace["Keep original evidence and superseding correction"]
 ```
 
-For example, the prior save places a courier cycling toward the station. The immediate continuation puts her at a car steering wheel at that same moment, with no intervening transition; the save repeats the new description. Comparing the save only to this session would miss the unexplained change. Comparing all three identifies the conflict and its missing context. In a different sequence, she might park the bicycle and borrow a car during play; preserving that established transition would be correct. If the player instructed the GM to correct the mistaken description, failure to acknowledge the instruction does not remove its authority.
+Compare the prior save, accepted session developments and resulting save together. An unexplained change introduced during the session can be repeated faithfully in the resulting save and still contradict the earlier authority. Identify the missing transition rather than treating repetition as confirmation. Preserve supported transitions and accepted corrections; an unacknowledged operator correction still retains its authority.
 
 The reviewer also extracts obligations from the session before looking at a changed-file list. Otherwise a completely omitted “meet at noon” promise could leave both the person record and resume summary looking internally consistent. Retiring an active cue must not erase a continuing commitment from its durable owner.
 

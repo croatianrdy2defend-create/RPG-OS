@@ -2,6 +2,8 @@
 
 Use only for domains selected during NEW GAME. Reuse the accepted premise and draft agreement. This guide develops material; it does not introduce another mandatory interview or runtime policy.
 
+Before drafting or expanding any selected domain, read and apply [NEW GAME’s Neutrality before worldbuilding](NEW_GAME.md#neutrality-before-worldbuilding), including its review of generated lore and reusable guidance. Reuse sufficient guidance already loaded; this applies equally to Quick, Guided and Detailed preparation.
+
 ## Choose the useful depth
 
 Offer a short relevant selection: world/ordinary life; places and exploration; people/institutions; hidden truth and mysteries; changing conditions; relationships; resources/logistics; rule calibration; or a custom domain. Work one selected area at a time. Quick, Guided, and Detailed can all stop with the runnable minimum.
@@ -80,7 +82,7 @@ When useful, record what is fixed and what remains unresolved; which relevant pe
 
 Use the existing TRUTH, WORLD, or person body that owns the fact. Later changed knowledge, deception, or world state belongs in its selected INSTANCE record; refer to other owners rather than copying their current values. A compact note does not replace evidence or fix an unresolved fact by being written. Fixed new content still needs the accepted authoring authority; optional REVIEW cannot establish it.
 
-**Example — an accepted opening with a partly unresolved event:** Kesh's manual override opened the service hatch before the blackout; no impact caused that opening. Kesh remembers doing it but says the hatch stayed closed to conceal an unauthorized repair: a deliberate lie. Venn heard the alarm but saw no opening, and sincerely believes an impact burst the hatch: a mistaken belief, not deception. The cause of the blackout remains deliberately unfixed; neither account nor a player's sabotage theory settles it. A battery-backed hatch log records local opening before power loss, but says nothing about motive or the blackout's cause. That evidence becomes available only through actual access to the log, not because this note exists.
+For a worked distinction between an event, knowledge, mistaken belief and deliberate deception, retrieve [the optional example](PORTRAYAL_EXAMPLES.md#hidden-facts-and-testimony) only when needed.
 
 For a campaign promising a solvable factual investigation, check that its important conclusions have workable discovery paths and that witnesses can be wrong without accidentally making progress impossible. Do not impose physical-evidence requirements, a clue count, a single solution, or a fixed answer on every mystery. Testimony-only inquiry, competing interpretations, and deliberate unknowability can fit an explicitly accepted experience. Keep genuinely unfixed matters open until their agreed resolution process requires determination; do not choose truth to reward or defeat a guess.
 
@@ -90,9 +92,9 @@ Prepare the method before preparing a cast. Bind the [Initial Encounter Baseline
 
 Known individual temperament, intelligence, knowledge and mechanical capacities remain sourced inputs; a current mood or high roll supplies no permanent trait or ability. Use actual drives, directives and control for other entities. Establish overall attraction where applicable, including aversion, with physical/aesthetic, sexual or romantic meaning resolved later only when needed and within known constraints. Duty, partnership or unwillingness to engage cannot excuse missing applicable attraction. Unsupported capacity, actual inapplicability and insufficient sensory information remain distinct; every applicable current field has a concrete value or precise limitation before use.
 
-Develop only actors whose opening participation, consequential recurrence or independent action matters. Visual observation alone does not require private state; its portrayal-source trigger still applies. Shared conditions and coordinated group action can remain group state. An individual appraisal, discretionary decision or direct engagement requires the five-field basis before its behavior. Ten soldiers detecting the PC need not produce ten personalities; separately resolved individual decisions need separate bases. Inherit actual shared and individual facts without retroactively attributing a private appraisal to an earlier group sighting.
+Develop only actors whose opening participation, consequential recurrence or independent action matters. Visual observation alone does not require private state; its portrayal-source trigger still applies. Shared conditions and coordinated group action can remain group state. An individual appraisal, discretionary decision or direct engagement requires the five-field basis before its behavior. Shared conduct alone does not require per-member initialization; separately resolved individual decisions need separate bases. Inherit actual shared and individual facts without retroactively attributing a private appraisal to an earlier group sighting.
 
-Use the brief within its actual coverage and retrieve governing species, culture, faction, role or portrayal guidance before it is needed. Keep composition shallow and retain the individualized result in its one proper owner. Hard supported capability limits differ from cultural tendencies and personal exceptions. Generate population facts and personal tendencies from accepted world inputs, not the PC's preferred partner, unperceived wishes or hoped-for response. Fixed facts and deliberately unresolved dimensions remain distinct. Favorable, unfavorable and mixed starting relationships are all valid within the accepted premise.
+Use the brief within its actual coverage and retrieve governing species, culture, faction, role or portrayal guidance before it is needed. Keep composition shallow and retain the individualized result in its one proper owner. Hard supported capability limits differ from cultural tendencies and personal exceptions. Generate population facts and personal tendencies from accepted world inputs under LAW's selection/portrayal boundary. Retrieve references for an already selected subject; example frequency and asset coverage add no population weights. Apply a cultural practice through the actual community and individual history within its stated scope. Preserve local variation without adding representation quotas. Fixed facts and deliberately unresolved dimensions remain distinct. Favorable, unfavorable and mixed starting relationships are all valid within the accepted premise.
 
 An established actor can act when due without waiting for PC attention. An invented actor's existence is not a requirement to feature them. A scheduled battle can start without assuming the PC joins it. Use one stable person id for routing and later INSTANCE overlays.
 
@@ -104,7 +106,7 @@ If an important person is likely to become generic in play, add a small usable a
 
 Ground an existing person's anchor in accepted facts or actual prior portrayal. A sample line is an illustration, not historical dialogue or a phrase to repeat in every scene. Stable anchors stay with the existing baseline; a current objective, attitude, resource, or relationship stays in its one current authority. Retrieve that current context when it matters rather than duplicating it in the anchor. Supported changes can override an old baseline; do not freeze a person forever to preserve a voice note.
 
-**Example — a maintenance swarm:** Rill usually weighs actions by whether a damaged system can recover. Its speech names a cause and then the likely result: “Seal that joint and the rest can keep breathing.” Under immediate pressure it gives the urgent instruction first: “Close the feed. I can explain once it holds.” It will not knowingly conceal a diagnosed structural hazard. Whether Rill currently trusts the PC, controls that feed, or is assigned to this repair is answered by its existing current record, not invented from this anchor. The same aid could instead describe light patterns or collective expression in a setting without speech.
+For a worked portrayal anchor, retrieve [the optional example](PORTRAYAL_EXAMPLES.md#a-recurring-portrayal-anchor) only when needed.
 
 Do not make a roster, checklist before every line, mandatory mannerisms, or a new file for every transient extra. The anchor helps portray a person already relevant to the situation; it does not summon them, grant them knowledge, or schedule their next appearance.
 
@@ -148,15 +150,8 @@ Include or prepare the one encounter rehearsal used by LOAD verification: exerci
 
 Do not persist here. The shared LOAD bind commits the accepted work with recovery protection. Omitted areas remain honestly absent or open.
 
-## Optional compact portrayal examples
+## Optional worked examples
 
-Useful anchors connect a person's manner to circumstances. These invented examples illustrate preparation, not a required profile or reaction table:
-
-| Established circumstances | Possible portrayal anchor |
-|---|---|
-| A clerk is finishing a delayed stock count and can spare a minute | Answers directly, checks the clock once; becomes more expansive if the interruption helps finish the task |
-| A friendly acquaintance enjoys company but keeps a promise to meet a sibling shortly | Offers a seat and asks a question; mentions the actual time constraint without treating warmth as a new commitment |
-| A colleague is angry about someone else's error and has not blamed the PC | Speech is clipped; an explanation or changed circumstances may soften the manner without instantly changing trust |
-| A reserved regular has no particular view of the newcomer | Brief greeting and an ordinary practical question; room for conversation without invented hostility or automatic attraction |
+Retrieve `ADMIN/PORTRAYAL_EXAMPLES.md` only when an explanatory example is needed. Keep case details outside operational instructions and current campaign facts; they supply no default personality, mood, constraint, appearance or response.
 
 Use established facts before eligible new authorship. Do not paste an example onto a person after dice to justify the outcome. No quota requires a quirk, gesture, conflict or emotional disclosure each turn. Quiet, ordinary and cooperative scenes can stand on their own. Removing a person from the active resume cues retires a retrieval cue, not their durable record, obligations or future trigger.

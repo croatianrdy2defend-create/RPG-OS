@@ -14,7 +14,7 @@ Identify the fact or procedure needed next. Reuse already loaded source material
 | Learned fact and qualification | `INSTANCE/KNOWN.md`, then cited evidence if exactness matters |
 | Current system or private condition | `INSTANCE/NOW.md` or exact current pointer; only the relevant system |
 | Individual participation, attention, appraisal, initiative or personal decision involving the PC | Recover NOW's Active encounter state and relevant enduring facts; complete all five current fields under `OS/AGENT_STATE.md#Initial Encounter Baseline` before dependent behavior. Use the selected ENGINE generation procedure and MODULE source binding for eligible activation gaps. Merely observing an unaware entity does not activate it; no inferred PC purpose, automatic awareness or crowd scan |
-| Coordinated group conduct, without an individually resolved participant | Shared orders, actual common circumstances and local information under `OS/AGENT_STATE.md#Scope and scale`; ten soldiers noticing PC do not need ten personal baselines; individual exceptions remain binding and separate personal decisions require separate baselines |
+| Coordinated group conduct, without an individually resolved participant | Shared orders, actual common circumstances and local information under `OS/AGENT_STATE.md#Scope and scale`; shared conduct alone does not require separate personal baselines; individual exceptions remain binding and separate personal decisions require separate baselines |
 | First focused physical portrayal or closer observation with a module-prescribed guide | Follow the direct guide route or VISUAL/other declared source capability before focused detail; reuse already loaded applicable guidance, never substitute broad brief coverage for the prescribed first-focus source |
 | Individual agent's current encounter condition or stance | `INSTANCE/NOW.md#Active encounter state`, then accepted post-save changes; shared controller state stays with one current owner. Retain the active baseline across attention gaps; expired inconsequential state is not recovered as current truth |
 | Enduring individual fact, consequential history or relationship | Exact INSTANCE/PEOPLE record; CAST_STATUS maps identity when needed; relevant stable MODULE CANON separately. Surviving facts constrain new temporary state without requiring recovery of discarded incidental impressions |
@@ -36,7 +36,7 @@ After a failed search, distinguish "not found" from "does not exist". Ask only w
 
 ## Preserve scope
 
-The Setting Brief supports ordinary background within its stated coverage. Established individual facts retain priority over type-level defaults; do not reconstruct them from group tendencies. Category prevalence creates no scene quota.
+The Setting Brief supports ordinary background within its stated coverage. Established individual facts retain priority over type-level defaults; do not reconstruct them from group tendencies. Category prevalence creates no scene quota. Apply LAW's selection/portrayal boundary: source ordering, examples and reference availability do not supply selection weights. A cultural practice applies through the actual community and individual facts within the source's stated scope.
 
 Current INSTANCE records supersede corresponding mutable starting baselines. Do not combine old and new totals or reintroduce superseded traits. Stable MODULE CANON still supplies unchanged background. A T0 value supports continuity only before an accepted change or due transition replaces it.
 

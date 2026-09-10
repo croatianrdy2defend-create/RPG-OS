@@ -10,7 +10,7 @@ Recover surviving state and the relevant world sources for actual nature, contro
 
 Before dependent individual behavior, complete **Condition and mode; Priorities and constraints; Perception and appraisal; Attraction; Engagement stance**. Each needs a concrete value, supported inapplicability, or a precise source/perception limitation with its ending condition. Unknown is not neutral, absent or inapplicable. Retrieve missing required authority; fill eligible gaps rather than defaulting them to neutrality.
 
-Identify which of condition, initial interpersonal appraisal and overall attraction remains eligible for generation. Fix the unresolved facet and its scope before drawing; do not prepare six named states or a custom outcome table. Established facts remain binding. A known injury, for example, is not rerolled; an eligible emotional aspect may vary only if that capacity and aspect were identified beforehand. Do not choose a different aspect after seeing the result.
+Identify which of condition, initial interpersonal appraisal and overall attraction remains eligible for generation. Fix the unresolved facet and its scope before drawing; do not prepare six named states or a custom outcome table. Established facts remain binding. Do not reroll an established facet; another eligible aspect may vary only if that capacity and aspect were identified beforehand. Do not choose a different aspect after seeing the result.
 
 Use only information actually received through established channels. The PC's upcoming action is not already perceived. Unperceived player wishes, preferred outcomes and intended narrative roles cannot select inputs or dictate concrete values.
 

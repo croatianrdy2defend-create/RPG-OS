@@ -8,11 +8,13 @@ Download the [v0.9.4 release](https://github.com/croatianrdy2defend-create/RPG-O
 
 Say:
 
-> Open OS/AGENTS.md. Help me start a new RPG campaign. Use Quick start and ask only what you need next.
+> Open OS/AGENTS.md. Help me start a new RPG campaign. Follow ADMIN/NEW_GAME.md, including Neutrality before worldbuilding, and use Quick start. Ask only what you need next.
 
-Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement, including a usable, source-compatible method for establishing new encounters. Before an entity individually participates, appraises the PC or takes relevant initiative, the GM establishes five current facts: condition and mode, priorities and constraints, perception and appraisal, applicable overall attraction or aversion, and engagement stance. Its supported nature, control and existing history govern those facts. “I approach her” can begin participation while your purpose remains yours to declare. Merely observing an unaware individual does not initialize private state; the GM still retrieves any required portrayal guide before focused physical description.
+For the GM: read and apply [Neutrality before worldbuilding](ADMIN/NEW_GAME.md#neutrality-before-worldbuilding) before the first world, lore or opening proposal. This applies at every setup depth. Examples and visual references supply no generation weights; the requested premise and supported sources govern the draft.
 
-Shared group conduct can stay at group scale: ten soldiers following a patrol procedure need not create ten personalities, but three people making their own decisions about an offered drink need three individual baselines. Active state survives pauses and shifts of attention and changes with actual developments. When participation reasonably ends, inconsequential temporary values can expire; consequential observations, promises, relationships and unresolved matters survive. Later incidental contact may receive fresh temporary values within those surviving facts. Attraction does not establish trust, availability or willingness. The method follows the entity's actual capacities and uses real dice only where selected; five fields do not require five rolls. More preparation is available through Guided or Detailed setup; no population roster or NPC spreadsheet is required.
+Provide any premise, character, rules or references you already have. The GM reuses them and proposes a playable opening and agreement, including a usable, source-compatible method for establishing new encounters. Before an entity individually participates, appraises the PC or takes relevant initiative, the GM establishes five current facts: condition and mode, priorities and constraints, perception and appraisal, applicable overall attraction or aversion, and engagement stance. Its supported nature, control and existing history govern those facts. A bare approach can begin participation while your purpose remains yours to declare. Merely observing an unaware individual does not initialize private state; the GM still retrieves any required portrayal guide before focused physical description.
+
+Shared group conduct can stay at group scale; each independently resolved individual decision requires its own baseline. Active state survives pauses and shifts of attention and changes with actual developments. When participation reasonably ends, inconsequential temporary values can expire; consequential observations, promises, relationships and unresolved matters survive. Later incidental contact may receive fresh temporary values within those surviving facts. Attraction does not establish trust, availability or willingness. The method follows the entity's actual capacities and uses real dice only where selected; five fields do not require five rolls. More preparation is available through Guided or Detailed setup; no population roster or NPC spreadsheet is required.
 
 The optional [shared encounter generator](ENGINE/_shared/ENCOUNTER_GENERATION.md) can be selected by a compatible engine and your accepted agreement. For eligible condition, initial interpersonal appraisal and overall attraction, it uses at most three independent 2d6 determinations. Each gives a direction/intensity band; the GM then fills a concrete current value before behavior, within the world facts and source constraints. Priorities follow the entity's own aims, perception stays factual, nonsocial responses use their actual mechanisms, and engagement follows from the complete basis. The [mechanics guide](MECHANICS.md#optional-encounter-generation-direction-then-concrete-state) explains the bands. The helper is optional and adds no setup requirement to a diceless campaign.
 
@@ -32,29 +34,7 @@ At a stopping point:
 
 Wait for a successful full-save confirmation before discarding the chat. SAVE, CLOSE and END SESSION preserve current state and available accepted evidence. A checkpoint preserves the whole present but does not archive new session evidence. A manual export must be installed before it is a workspace save.
 
-For example, continue the [invented landing scene](README.md#a-moment-at-the-table). This is illustrative Freeform dialogue, not a test transcript or installed campaign. Assume the host can update the folder and preserve the shown session evidence; the GM uses the established encounter facts.
-
-> **GM:** Iven nods toward the submerged houses. “Checking the upper rooms. They'll come back through that gate.”
->
-> **Player:** I stay at the landing and offer to hold his lantern while he sorts the ropes.
->
-> **GM:** He passes you the lantern. “Keep it high.” By its light he frees a loop from the cleat. The gate creaks open as the crew returns. Their captain stops in the lantern light. “What brings you to the landing?”
->
-> **Player, OOC:** Save the campaign and end the session here, before I answer.
-
-After completing and checking the full save, the GM's confirmation might say:
-
-> **GM, OOC:** Full save landing-s0002 complete. Neri is holding Iven's lantern at the landing and still has the sealed dispatch. The captain's question is unanswered. The current situation and available session evidence are saved.
-
-The next evening, open a fresh chat with that saved folder:
-
-> **Player, OOC:** Open OS/AGENTS.md and continue my saved campaign.
->
-> **GM:** You are still at the landing, lantern in hand. The captain is waiting to hear why you came; Iven holds the freed line beside you. What do you say or do?
->
-> **Player:** I'm relieved the crew is back. I tell her the council sent me, but keep the dispatch sealed until she agrees to take it.
-
-The new GM resumes the pending decision. Saving did not answer the captain, hand over the letter, or consume fictional time. You can stop in the middle of a conversation without surrendering the next choice.
+An optional [worked save-and-resume example](ADMIN/PORTRAYAL_EXAMPLES.md#saving-and-resuming-an-unfinished-exchange) shows how the next choice stays pending. Retrieve it only when an illustration is useful; it supplies no setup or campaign facts.
 
 ## Optional announced autosave
 
