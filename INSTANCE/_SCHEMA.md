@@ -1,6 +1,6 @@
-# INSTANCE schema — v0.8.2
+# INSTANCE schema — v0.9.5
 
-Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, historical evidence, and optional review notes have different jobs. Normal PLAY does not load this schema.
+Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, administrative session continuity, historical evidence, derivative preparation and optional review notes have different jobs. Normal PLAY does not load this schema.
 
 ## Current save
 
@@ -36,9 +36,30 @@ After the table, include each of these level-two sections once. They are readabl
 
 An empty section is `none`. Do not repeat a fact across sections merely to fill them. If a detail is owned elsewhere, retain a nonconflicting resume cue or pointer. Full detailed knowledge, private state, PC values, and lore remain independently retrievable.
 
+## Session continuity
+
+The optional administrative `## Session continuity` section follows the five fictional resume sections. It adds no metadata field or save kind. A new unbound template and new bind use `none`; legacy omission remains readable. A module T0 may omit it or use `none`, never a played session or carried feedback. No PREP exists in a clean kit or at bind.
+
+`none` means explicitly not started; absence means legacy/unrecorded. Neither implies an unpaid award. First actual PLAY after setup begins a session in working conversation. A new chat, save, checkpoint, fictional day, scene or handover preserves an active session. END SESSION follows `ADMIN/SESSION.md`; bare SAVE/CLOSE alone does not end it. Adopt legacy identity prospectively from the known point without reconstructing past sessions or awards. Once recorded, ordinary saving preserves this section; do not silently remove it as legacy.
+
+For a session actually begun, use one table with these four fields exactly once, followed only by useful administrative prose or bullets:
+
+| Session item | Meaning |
+|---|---|
+| session_id | Actual unique portable play-session id, using the save-id grammar but independent of save ids and archive folders; never reuse one within the campaign |
+| phase | `active`, `closing`, or `ended` |
+| opening_save | Actual save used when this session began, including the bind save for first play; `unknown` only for honestly unrecorded legacy coverage |
+| feedback | `not-due`, `pending`, `received`, `declined`, or `not-provided` |
+
+The actual record table header is `Session item | Value`; the table above defines its fields. `active` means ongoing play, `closing` means its wrap-up has started, and `ended` means play ended, possibly with expressly unfinished administrative items. Ended does not certify that all questions or mechanics were completed. `not-due` means no end invitation is currently due; early explicit feedback may still be retained. `pending` means an invitation, reply or promised follow-up is outstanding. `received` requires an actual response, not acceptance of every requested change. `declined` requires an explicit decline. `not-provided` means no answer was supplied at closure and no exchange is open; it is neither satisfaction nor a decline. A still-owed invitation stays pending.
+
+Preserve real unfinished items with their original session/boundary/rule identity, actual status and exact source/effect-owner route. Keep required unarchived feedback or input at its available fidelity in this administrative section until a surviving evidence route can replace it. Distinguish statement, interpretation, permitted treatment and an unresolved agreement proposal. A received response may still leave an adjustment pending. When a new session begins, retain older pending items and unarchived feedback with their original identities; do not replace the new session's id with an old one to handle late feedback.
+
+Mechanical results and session/boundary/rule application references belong at their actual selected effect owners, not solely here or in PREP. Beginning and ending are distinct boundaries even when a rule name matches. Preserve a settled zero or inapplicable adjudication where relevant; missing application evidence does not license repeating the rule. Existing owners and exact available evidence distinguish an already applied effect from pending work. A current snapshot alone cannot prove whether a missing section was deleted or an unrecorded award occurred; compare the protected prior authority and report genuine gaps.
+
 ## Identity and evidence boundaries
 
-The distributed save is unbound: engine/module `unbound`; save_rev `0`; commit_kind `unbound`; safety_state `floor-only`; all other metadata and all five sections `none`. It contains no campaign residue. KNOWN, NOW, CAST_STATUS, and CORRECTIONS retain their distributed empty templates; CHAR and PEOPLE contain only their README files. No archive evidence belongs to an unbound kit.
+The distributed save is unbound: engine/module `unbound`; save_rev `0`; commit_kind `unbound`; safety_state `floor-only`; all other metadata, all five fictional sections and Session continuity `none`. It contains no campaign residue. KNOWN, NOW, CAST_STATUS, and CORRECTIONS retain their distributed empty templates; CHAR and PEOPLE contain only their README files. No archive evidence belongs to an unbound kit.
 
 A new module's T0_SAVE uses this metadata/section shape with the actual engine/module and future `pc_record: INSTANCE/CHAR/PC.md`, accepted opening time/place/state, but campaign_id/save_id/save_parent/archive_ref/evidence_through `none`, save_rev `0`, and commit_kind `unbound`. It is an opening template, never a bound run. LOAD supplies unique run/save identity, revision one, and commit_kind `bind`; it copies the exact accepted PC route closure into INSTANCE/CHAR. Only accepted opening facts may enter the instance. Legacy T0 formats are mapped by ADMIN without changing their source facts.
 
@@ -95,6 +116,10 @@ One current authority per value. This is a semantic check, not something a table
 | Accepted rulings and corrections | CORRECTIONS, with a resume pointer when currently relevant |
 | Operator content limits, including hard-no and veil boundaries | SAFETY |
 | Accepted historical evidence | ARCHIVE evidence bodies |
+| Current play-session identity and unfinished administrative wrap-up, including required unarchived feedback | CURRENT_SAVE's Session continuity |
+| Actual feedback and session-boundary adjudication once archived | Clearly labelled OOC session operational evidence in ARCHIVE, not fictional facts |
+| Mechanical boundary result and session/boundary/rule application reference | Actual engine-selected current effect owner, with available evidence routes |
+| Derivative causal context and conditional preparation | Optional PREP; never sole authority for a fact, pending input, feedback or applied result |
 | Optional provisional review | BEARING, explicit REVIEW only |
 
 MODULE baseline files remain stable. Before any later transition or current override exists, and only while no declared transition has occurred or is due, one specifically named MODULE as-of-T0 snapshot may support current continuity. PLAY holds later accepted changes in chat. At the next save, apply still-unsaved changes exactly once to the selected authority. For a first person/system change, materialize the complete as-of-now mutable surface; do not merge a newer overlay with old T0 values. Stable CANON and unrelated private lore stay in MODULE.
@@ -119,6 +144,16 @@ Known-to-PC, private truth, exact fidelity, authorship ownership, and provisiona
 
 Across saving and correction, preserve a materially misleading claim as something its speaker said to its actual audience, separately from established private truth and any materially established NPC belief. An accepted utterance need not be true; do not infer that its speaker knew it was false. Retain belief uncertainty and source where established. Correcting the claim's assessed truth does not erase the utterance or tell its audience the correction unless that disclosure actually occurred.
 
+## Optional preparation
+
+`INSTANCE/PREP.md` is an on-demand derivative GM working record under `ADMIN/SESSION.md`. Do not ship an empty template, create it at bind or add it to CURRENT_SAVE's required current-authority routes. SESSION checks this one optional fixed path. Absent, foreign or obsolete notes can be ignored or rebuilt from available authority; they do not invalidate an otherwise playable save. Never follow a symlink or unsafe path. Missing current facts, rules and exact evidence remain genuine source gaps, not preparation to regenerate.
+
+When useful preparation is first persisted after bind, use front matter `id: instance.preparation`, `class: campaign-preparation`, `temperature: cold`, and one table headed `Preparation basis | Value`. Its fields are `campaign_id`, `base_save_id`, and `base_contract_id`, each once, naming the actual campaign and persisted save/agreement considered. Do not automatically restamp unchanged notes with the save that later writes them. State the real scope of any accepted post-save developments considered and retain their current/evidence routes when available. A newer id alone neither invalidates every note nor proves a fresh review.
+
+Useful optional body headings are **Causal context**, **Live concerns and completion**, **Feedback and response**, and **Conditional preparation**. They may summarize relevant supported causes, current concerns and completed undertakings, link actual feedback to its prospective treatment, and prepare revisable possibilities with necessary conditions or invalidating changes. Omit irrelevant material; no compulsory populated categories, word count, threats, cast, clues or new fixed outcomes. Previously accepted structural commitments stay at the agreement owner. Distinguish an uncertain interpretation from an established cause, an actual intention from an unestablished idea, and a proposed adjustment from an accepted instruction.
+
+Current owners, agreement and actual evidence govern. PREP must never be the only surviving copy of an NPC's private fact, explicit feedback, a pending meaningful choice, session identity, point total or mechanical application reference. Link to those owners and sources without duplicating live values. A missing or deleted PREP loses only derivative working notes. During PLAY preparation stays in conversation with its acknowledged retention limits; the next authorized full save or checkpoint may preserve useful existing work. Compilation itself does not invent preparation or activate a possibility.
+
 ## Optional review
 
 BEARING is cold, optional, and never loaded at normal startup. Its notes cite campaign_id, base_save_id, base_contract_id and the files/headings actually reviewed. The empty template has `status: none`; a completed review is explicitly provisional. No fixed seven-section layout is required. At bind only campaign identity may be reset; no review is inferred.
@@ -129,7 +164,7 @@ Separate established references, explicit player preferences, observed conduct, 
 
 Scene handovers are optional operational records outside INSTANCE, governed by `ADMIN/SCENE_HANDOVER.md`. `HANDOVER/ACTIVE.md` pauses source play; the package's CONVERSATION and GM_STATE files are frozen transport copies, not competing current authorities. No new CURRENT_SAVE metadata or commit kind is introduced. CHECKPOINT still retains its evidence boundary. An accepted return is compiled into the existing current authorities and full-save evidence once; its retained RECEIPT identifies the result. Normal startup checks only the active marker, never old packages. Installing the handover procedure alone creates no marker, package, person or fictional progress.
 
-PLAY writes no campaign files. Explicit Save/CLOSE/END SESSION uses ADMIN/CLOSE_CONTRACT.md; CHECKPOINT uses its reduced-evidence path. REVIEW writes only optional notes. RECALIBRATE writes only an explicitly accepted prospective agreement. CORRECT follows ADMIN/CORRECT.md for narrow current and historical repair. Safety changes take effect in the conversation immediately; durable changes use the recovery procedure and matching save flag.
+PLAY writes no campaign files. Save/bare CLOSE uses ADMIN/CLOSE_CONTRACT.md; an actual END SESSION request uses ADMIN/SESSION.md before that full save. CHECKPOINT uses CLOSE's reduced-evidence path. All preserve complete current authorities, administrative continuity and useful existing preparation without independently adjudicating boundaries. REVIEW writes only optional notes. RECALIBRATE writes only an explicitly accepted prospective agreement. CORRECT follows ADMIN/CORRECT.md for narrow current and historical repair. Safety changes take effect in the conversation immediately; durable changes use the recovery procedure and matching save flag.
 
 Independent-agent establishment, updating and deactivation add no automatic write boundary, save kind or private scratch layer. During PLAY, the active set changes in conversation with best-effort retention; the next authorized save synchronizes its complete current membership and values. Requested CHECKPOINT still preserves every accepted current change, active baseline, consequential retained fact and pending declaration, not just the encounter block. The receiving GM cannot checkpoint frozen source authorities. Missing required retained state requires honest source/repair handling, not silent regeneration. Program adoption preserves existing saved facts; only subsequent authorized lifecycle transitions can expire eligible temporary state.
 

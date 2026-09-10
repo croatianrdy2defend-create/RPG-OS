@@ -98,9 +98,13 @@ For example, continue the [invented landing scene](../README.md#a-moment-at-the-
 >
 > **Player, OOC:** Save the campaign and end the session here, before I answer.
 
-After completing and checking the full save, the GM's confirmation might say:
+> **GM, OOC:** The fictional question stays unanswered. Before the final save, is there any feedback for next time? You can skip it.
+>
+> **Player, OOC:** Skip feedback this time.
 
-> **GM, OOC:** Full save landing-s0002 complete. Neri is holding Iven's lantern at the landing and still has the sealed dispatch. The captain's question is unanswered. The current situation and available session evidence are saved.
+The GM records the explicit decline, consolidates the actual continuation and completes the full save. Its verified confirmation might say:
+
+> **GM, OOC:** Full save landing-s0002 complete. Neri is holding Iven's lantern at the landing and still has the sealed dispatch. The captain's question is unanswered. The current situation and available session evidence are saved; feedback was explicitly declined.
 
 The next evening, open a fresh chat with that saved folder:
 

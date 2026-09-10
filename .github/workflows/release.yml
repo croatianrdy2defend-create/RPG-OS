@@ -30,7 +30,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run structural, source, search, evidence, agent, autosave, encounter generation and packaging regression tests
+      - name: Run structural/session, source, search, evidence, agent, autosave, encounter generation and packaging regression tests
         shell: bash
         run: |
           set -euo pipefail

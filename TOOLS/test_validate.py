@@ -238,6 +238,236 @@ class StructuralValidationTests(unittest.TestCase):
     def test_clean_unbound(self) -> None:
         self.assert_valid()
 
+    def session_body(self, **changes: str) -> str:
+        values = dict(session_id="play-session-01", phase="active", opening_save="save-01", feedback="not-due")
+        values.update(changes)
+        return "| Session item | Value |\n|---|---|\n" + "\n".join(f"| {key} | {value} |" for key, value in values.items())
+
+    def start_saved_session(self, **changes: str) -> None:
+        self.bind()
+        self.archive_close()
+        self.save_sections["Session continuity"] = self.session_body(**changes)
+        self.flush()
+
+    def prep_body(self, **changes: str) -> str:
+        values = dict(campaign_id="brine-01", base_save_id="save-02", base_contract_id="agreement-01")
+        values.update(changes)
+        rows = "\n".join(f"| {key} | {value} |" for key, value in values.items())
+        return ("---\nid: instance.preparation\nclass: campaign-preparation\ntemperature: cold\n---\n\n# PREP\n\n"
+                "Derivative notes, not authority.\n\n| Preparation basis | Value |\n|---|---|\n" + rows +
+                "\n\n## Conditional preparation\n\nRecheck the relevant actual conditions in `INSTANCE/NOW.md` before using this possibility.\n")
+
+    def test_session_absence_and_explicit_unstarted_are_distinct(self) -> None:
+        self.assertEqual(self.assert_valid().metrics["session_continuity"], "legacy/unrecorded")
+        self.save_sections["Session continuity"] = "none"
+        self.flush()
+        self.assertEqual(self.assert_valid().metrics["session_continuity"], "not-started")
+        self.bind()
+        self.assert_valid()
+
+    def test_session_metadata_contract_unchanged_and_missing_preparation_valid(self) -> None:
+        self.start_saved_session()
+        checker = self.assert_valid()
+        self.assertEqual(checker.metrics["session_id"], "play-session-01")
+        self.assertEqual(checker.metrics["preparation_status"], "absent (optional)")
+        self.assertEqual(len(validate.CURRENT_SAVE_FIELDS), 13)
+        self.assertEqual(len(validate.SAVE_SECTIONS), 5)
+
+    def test_valid_session_phase_and_feedback_combinations(self) -> None:
+        self.start_saved_session()
+        for phase in ("active", "closing", "ended"):
+            for feedback in ("not-due", "pending", "received", "declined", "not-provided"):
+                if phase != "active" and feedback == "not-due":
+                    continue
+                with self.subTest(phase=phase, feedback=feedback):
+                    self.save_sections["Session continuity"] = self.session_body(phase=phase, feedback=feedback, opening_save="unknown")
+                    self.flush()
+                    self.assert_valid()
+
+    def test_closing_and_ended_cannot_skip_feedback_with_not_due(self) -> None:
+        self.start_saved_session()
+        for phase in ("closing", "ended"):
+            with self.subTest(phase=phase):
+                self.save_sections["Session continuity"] = self.session_body(phase=phase, feedback="not-due")
+                self.flush()
+                self.assert_code("SESSION_FEEDBACK_DUE")
+
+    def test_session_identity_survives_checkpoint_and_full_save_lineage(self) -> None:
+        self.start_saved_session(phase="closing", feedback="pending")
+        before = self.save_sections["Session continuity"]
+        self.save.update(save_id="save-03", save_rev="3", save_parent="save-02", commit_kind="checkpoint")
+        self.flush()
+        checker = self.assert_valid()
+        self.assertEqual(checker.metrics["session_id"], "play-session-01")
+        self.assertEqual(self.save_sections["Session continuity"], before)
+        self.assertEqual(checker.current["evidence_through"], "save-02")
+
+    def test_session_initial_records_cannot_hold_played_state(self) -> None:
+        self.save_sections["Session continuity"] = self.session_body()
+        self.flush()
+        self.assert_code("SESSION_INITIAL_CONTENT")
+        self.bind()
+        self.assert_code("SESSION_INITIAL_CONTENT")
+        self.save_sections["Session continuity"] = "none"
+        self.flush()
+        findings = self.check().findings
+        self.assertTrue(any(item.code == "SESSION_INITIAL_CONTENT" and item.path == "MODULES/brine/T0_SAVE.md" for item in findings), findings)
+
+    def test_session_invalid_values_and_blank_fields_fail(self) -> None:
+        self.start_saved_session()
+        for field, value, code in (
+            ("session_id", "../other", "SESSION_ID_FORMAT"),
+            ("session_id", "none", "SESSION_ID_FORMAT"),
+            ("session_id", "", "SESSION_EMPTY_FIELD"),
+            ("phase", "saved", "SESSION_PHASE"),
+            ("opening_save", "none", "SESSION_OPENING_SAVE"),
+            ("feedback", "satisfied", "SESSION_FEEDBACK"),
+        ):
+            with self.subTest(field=field, value=value):
+                self.save_sections["Session continuity"] = self.session_body(**{field: value})
+                self.flush()
+                self.assert_code(code)
+
+    def test_session_duplicate_unknown_and_shadow_rows_fail(self) -> None:
+        self.start_saved_session()
+        for suffix, code in (
+            ("\n| phase | ended |", "SESSION_DUPLICATE_FIELD"),
+            ("\n| award | 10 |", "SESSION_UNKNOWN_FIELD"),
+            ("\n\n| phase | ended |", "SESSION_TABLE_SHADOW_ROW"),
+            ("\n\n" + self.session_body(), "SESSION_TABLE_DUPLICATE"),
+        ):
+            with self.subTest(code=code):
+                self.save_sections["Session continuity"] = self.session_body() + suffix
+                self.flush()
+                self.assert_code(code)
+
+    def test_session_duplicate_heading_and_misplaced_table_fail(self) -> None:
+        self.start_saved_session()
+        original = self.read("INSTANCE/CURRENT_SAVE.md")
+        self.write("INSTANCE/CURRENT_SAVE.md", original + "\n## Session continuity\n\nnone\n")
+        self.assert_code("SESSION_SECTION_COUNT")
+        self.save_sections.pop("Session continuity")
+        self.save_sections["Relevant records"] += "\n\n" + self.session_body()
+        self.flush()
+        self.assert_code("SESSION_TABLE_SCOPE")
+
+    def test_session_outer_pipeless_tables_cannot_hide_control_scope(self) -> None:
+        self.start_saved_session()
+        outer_pipeless = "\n".join(line.strip().strip("|").strip() for line in self.session_body().splitlines())
+        self.save_sections.pop("Session continuity")
+        self.save_sections["Relevant records"] += "\n\n" + outer_pipeless
+        self.flush()
+        self.assert_code("SESSION_TABLE_SCOPE")
+        self.save_sections["Relevant records"] = "Profile: `INSTANCE/CHAR/PC.md`."
+        self.save_sections["Session continuity"] = outer_pipeless + "\n\n" + self.session_body()
+        self.flush()
+        self.assert_code("SESSION_TABLE_NONCANONICAL")
+
+    def test_session_control_rows_cannot_precede_the_authoritative_table(self) -> None:
+        self.start_saved_session()
+        self.save_sections["Session continuity"] = "| phase | ended |\n\n" + self.session_body()
+        self.flush()
+        self.assert_code("SESSION_TABLE_SHADOW_ROW")
+
+    def test_session_comments_and_fences_do_not_supply_fields(self) -> None:
+        self.start_saved_session()
+        missing = self.session_body().replace("| feedback | not-due |", "")
+        for fake in ("<!-- | feedback | received | -->", "```markdown\n| feedback | received |\n```"):
+            with self.subTest(fake=fake):
+                self.save_sections["Session continuity"] = missing + "\n" + fake
+                self.flush()
+                self.assert_code("SESSION_MISSING_FIELD")
+        for fake in ("<!--\n" + self.session_body() + "\n-->", "```markdown\n" + self.session_body() + "\n```"):
+            with self.subTest(fake=fake):
+                self.save_sections["Session continuity"] = fake
+                self.flush()
+                self.assert_code("SESSION_TABLE_MISSING")
+
+    def test_session_existing_outstanding_routes_are_checked(self) -> None:
+        self.start_saved_session(phase="ended", feedback="received")
+        self.save_sections["Session continuity"] += "\n\nEarlier feedback for play-session-00: `ARCHIVE/sessions/save-02/episode.md#E-save-02-observation`."
+        self.flush()
+        self.assert_valid()
+        self.save_sections["Session continuity"] += "\nPending source: `INSTANCE/missing.md`."
+        self.flush()
+        self.assert_code("SAVE_RECORD_MISSING")
+
+    def test_preparation_optional_valid_stale_and_foreign_bases(self) -> None:
+        self.start_saved_session()
+        self.write("INSTANCE/PREP.md", self.prep_body())
+        self.assert_valid()
+        self.write("INSTANCE/PREP.md", self.prep_body(base_save_id="save-01"))
+        self.assert_valid()
+        self.assert_code("PREP_STALE_BASE", "WARNING")
+        self.write("INSTANCE/PREP.md", self.prep_body(campaign_id="other-campaign"))
+        self.assert_valid()
+        self.assert_code("PREP_FOREIGN_CAMPAIGN", "WARNING")
+
+    def test_preparation_basis_does_not_change_when_current_save_changes(self) -> None:
+        self.start_saved_session()
+        self.write("INSTANCE/PREP.md", self.prep_body())
+        before = (self.root / "INSTANCE/PREP.md").read_bytes()
+        self.save.update(save_id="save-03", save_rev="3", save_parent="save-02", commit_kind="checkpoint")
+        self.flush()
+        self.assert_valid()
+        self.assert_code("PREP_STALE_BASE", "WARNING")
+        self.assertEqual((self.root / "INSTANCE/PREP.md").read_bytes(), before)
+
+    def test_preparation_malformed_or_unreadable_is_nonfatal(self) -> None:
+        self.start_saved_session()
+        self.write("INSTANCE/PREP.md", "# Unusable derivative note\n\n```\n| Preparation basis | Value |\n|---|---|\n| campaign_id | brine-01 |\n```\n")
+        self.assert_valid()
+        self.assert_code("PREP_TABLE_MISSING", "WARNING")
+        (self.root / "INSTANCE/PREP.md").write_bytes(b"\xff\xfe")
+        self.assert_valid()
+        self.assert_code("PREP_READ", "WARNING")
+
+    def test_preparation_basis_duplicates_and_hidden_fields_warn(self) -> None:
+        self.start_saved_session()
+        duplicate = self.prep_body().replace("| base_save_id | save-02 |", "| base_save_id | save-02 |\n| base_save_id | save-01 |")
+        self.write("INSTANCE/PREP.md", duplicate)
+        self.assert_valid()
+        self.assert_code("PREP_DUPLICATE_FIELD", "WARNING")
+        hidden = self.prep_body().replace("| base_contract_id | agreement-01 |", "<!-- | base_contract_id | agreement-01 | -->")
+        self.write("INSTANCE/PREP.md", hidden)
+        self.assert_valid()
+        self.assert_code("PREP_MISSING_FIELD", "WARNING")
+        self.write("INSTANCE/PREP.md", self.prep_body() + "\n| Preparation basis | Value |\n|---|---|\n| campaign_id | other |\n")
+        self.assert_valid()
+        self.assert_code("PREP_TABLE_SCOPE", "WARNING")
+
+    def test_preparation_unsafe_paths_fail_but_missing_sources_warn(self) -> None:
+        self.start_saved_session()
+        for route in ("../outside.md", "C:/outside.md", "INSTANCE/../outside.md"):
+            with self.subTest(route=route):
+                self.write("INSTANCE/PREP.md", self.prep_body() + f"\nSource: `{route}`.\n")
+                self.assert_code("PREP_SOURCE_PATH")
+        self.write("INSTANCE/PREP.md", self.prep_body() + "\nSource: `INSTANCE/missing.md`.\n")
+        self.assert_valid()
+        self.assert_code("PREP_SOURCE_MISSING", "WARNING")
+
+    def test_preparation_and_candidates_cannot_hide_in_initial_instance(self) -> None:
+        self.write("INSTANCE/PREP.md", self.prep_body())
+        self.assert_code("INSTANCE_INITIAL_CONTENT")
+        self.bind()
+        self.assert_code("INSTANCE_INITIAL_CONTENT")
+        self.archive_close()
+        self.write("INSTANCE/PREP.candidate.md", self.prep_body())
+        self.assert_code("PREP_STALE_CANDIDATE")
+
+    def test_preparation_symlink_and_broken_source_symlink_remain_errors(self) -> None:
+        self.start_saved_session()
+        linked_source = self.root / "INSTANCE/linked-source.md"
+        try:
+            linked_source.symlink_to(self.root / "INSTANCE/absent-target.md")
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"host cannot create test symlinks: {exc}")
+        self.write("INSTANCE/PREP.md", self.prep_body() + "\nSource: `INSTANCE/linked-source.md`.\n")
+        self.assert_code("PREP_SOURCE_PATH")
+        (self.root / "INSTANCE/PREP.md").unlink()
+        (self.root / "INSTANCE/PREP.md").symlink_to(self.root / "INSTANCE/NOW.md")
+        self.assert_code("PATH_SYMLINK")
+
     def test_bound_without_policy_bearing_or_ledgers(self) -> None:
         self.bind()
         self.assert_valid()

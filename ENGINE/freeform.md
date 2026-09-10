@@ -5,7 +5,7 @@ temperature: selective
 character_build_support: no-mechanical-sheet
 ---
 
-# ENGINE — Freeform v0.9.4
+# ENGINE — Freeform v0.9.5
 
 Use only when the operator selects it, within [LAW's operating cycle](../OS/LAW.md#prime-directive--every-play-response). There is no formal attribute list, hidden stat block, or compulsory dice system.
 
@@ -33,4 +33,8 @@ Creation support is `no-mechanical-sheet`. Offer a profile, minimum opening fact
 
 Campaign clocks, factions, phases, and accounting are selected world systems, not implied Freeform attributes or resolution tables. Exact supplied values remain exact; qualitative capability remains qualitative.
 
-Open this adapter when resolving uncertainty or answering a rules question. Ordinary dialogue and established consequences normally need no repeat retrieval.
+## Lifecycle and growth
+
+This adapter supplies no mechanical beginning/end procedure, automatic session XP, level increase, rest reset or downtime allotment. Session preparation, wrap-up and feedback introduce none. Supported changes in capability, resources, access, relationships and circumstances remain possible through ordinary authority and resolution and persist at their existing current owners. Do not invent an award balance or compulsory growth schedule; a new mechanical advancement scheme follows the normal engine-change procedure.
+
+Open this adapter when resolving uncertainty or answering a rules question, including relevant lifecycle coverage. Ordinary dialogue, established consequences and a session boundary with no supplied mechanic need no repeated rule retrieval.

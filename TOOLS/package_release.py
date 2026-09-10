@@ -195,6 +195,13 @@ def validate_fresh_install(root: Path) -> None:
     assert_public_paths(paths)
     assert_fields(root, "INSTANCE/CURRENT_SAVE.md", SAVE_VALUES)
     assert_fields(root, "INSTANCE/CAMPAIGN_CONTRACT.md", CONTRACT_VALUES)
+    # The path is public, but live session control/feedback never is. Retain
+    # legacy absence while allowing only the declared unstarted installation.
+    save_text = (root / "INSTANCE/CURRENT_SAVE.md").read_text(encoding="utf-8")
+    session_bodies = re.findall(r"^## Session continuity[ \t]*\r?\n(.*?)(?=^#{1,2}[ \t]|\Z)",
+                               save_text, re.MULTILINE | re.DOTALL)
+    if len(session_bodies) > 1 or any(body.strip() != "none" for body in session_bodies):
+        raise PackageError("Fresh install contains session continuity or feedback instead of an unstarted section")
     bearing = root / "INSTANCE/BEARING.md"
     if bearing.exists():
         assert_fields(root, "INSTANCE/BEARING.md", {

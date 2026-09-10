@@ -18,6 +18,7 @@ The body states:
 - How genuinely random results are obtained when required: an available real randomizer or player-provided results. No compulsory helper script; never report an invented model number as an actual roll.
 - Character fields required before bind, permitted deferrals with their conditions, and optional fields.
 - A compact creation order, or where the operator must supply procedures/values.
+- Applicable lifecycle procedures, including beginning/end boundaries, or an explicit statement that none are supplied; identify their source, triggers, required inputs, effect owners and player choices.
 - When to retrieve this adapter or its specific subprocedures.
 - Any relevant source/version and honest coverage limits.
 
@@ -32,6 +33,14 @@ Campaign depth, GM initiative, routine delegation, compression, and presentation
 An explicitly accepted fixed outcome or structured destination defines what is already settled within its scope; do not offer that result as an open roll or judgment. Resolve genuinely open matters with this engine. A fixed-scope agreement is not permission to falsify a roll, silently change a resolution procedure, or decide a reserved PC choice. Genuine mechanical errors remain correctable under ironman; dissatisfaction with a valid outcome is not an error.
 
 MODULE names the installed engine. RULES_HOOKS may clarify compatible usage; an actual change to resolution or character rules needs a distinct engine id. Later explicit rulings remain in INSTANCE/CORRECTIONS.md.
+
+## Lifecycle procedures
+
+`ADMIN/SESSION.md` routes actual play-session beginnings and endings to this engine. Identify each supplied procedure's real trigger and timing, source, required inputs, resulting current owner, and unresolved player choices. Session completion, scenario completion, rest and downtime are distinct triggers when the rules distinguish them. Supply no universal XP scheme, healing reset, world tick or award cadence. Settle any campaign-dependent application prospectively within the accepted rules and agreement.
+
+Adjudicate separately from persistence. Keep a settled application, including a zero result or a ruling of inapplicability where relevant, with its play-session/boundary/rule identity at the selected effect owner and preserve available evidence. Beginning and ending applications are distinct even when the rule name matches. An active resume may complete an expressly pending procedure but creates no new beginning trigger. Saves, retries, chats, handovers and repeated end requests do not repeat an application; prospective legacy identity adoption alone proves no earlier trigger. Missing sources or a missing application record are not permission to guess an effect or award again.
+
+Awarding resources is separate from choosing how to spend them. Preserve required player selections and unavailable rules or inputs as precise pending items; resolve no dependent action without what its rule requires. Use existing current owners and authorized persistence, with outstanding administrative routes in Session continuity. PREP owns neither a balance nor the sole proof of application. References may be compacted only into surviving evidence, not erased at the next session boundary.
 
 ## Independent establishment and generation
 

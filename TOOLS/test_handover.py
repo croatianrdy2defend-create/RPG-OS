@@ -131,7 +131,7 @@ class HandoverTests(unittest.TestCase):
         self.write("MODULES/README.md", "changed established lore")
         self.assert_invalid("snapshot hash mismatch")
 
-    def test_saved_agent_state_owners_are_covered_without_new_schema(self):
+    def test_saved_agent_and_session_owners_are_covered_without_new_transport_schema(self):
         # These are ordinary existing owners; the checker protects their bytes,
         # not the receiving GM's interpretation or portrayal of these facts.
         owners = {
@@ -139,6 +139,9 @@ class HandoverTests(unittest.TestCase):
             "INSTANCE/PEOPLE/tavi.md": "# Tavi\n\nDislikes Iri's criticism but trusts its work. Promised access until fourth tide. Mistakenly believes the west channel is closed. Personal interests remain unfixed.\n",
             "INSTANCE/NOW.md": "# NOW\n\n## Sluice watch\n\nAccess expires at fourth tide. No earlier inspection is due.\n",
             "INSTANCE/KNOWN.md": "# KNOWN\n\nIri heard the claim that the west channel is closed; it is unverified.\n",
+            "ADMIN/SESSION.md": "# Session procedure\n\nTransfer preserves the actual play-session identity.\n",
+            "INSTANCE/CURRENT_SAVE.md": "| campaign_id | campaign-1 |\n| save_id | save-1 |\n\n## Session continuity\n\n| Session item | Value |\n|---|---|\n| session_id | play-session-1 |\n| phase | active |\n| opening_save | save-0 |\n| feedback | not-due |\n\nEarlier feedback for play-session-0 is pending; preserve its actual source.\n",
+            "INSTANCE/PREP.md": "# PREP\n\nDerivative notes only. Recheck changed conditions before using a conditional opportunity; previous completion remains settled.\n",
         }
         for relative, content in owners.items():
             self.write(relative, content)
@@ -158,6 +161,11 @@ class HandoverTests(unittest.TestCase):
                 self.write(relative, content + "\nChanged after source freeze.\n")
                 self.assert_invalid("snapshot hash mismatch", "--return")
                 self.write(relative, content)
+        self.outgoing["snapshot_files"].pop("INSTANCE/PREP.md")
+        self.flush_outgoing()
+        self.incoming["gm_state_sha256"] = handover.digest(self.root / self.package / "GM_STATE.md")
+        self.flush_return()
+        self.assert_invalid("snapshot coverage mismatch", "--return")
 
     def test_omitted_snapshot_file(self):
         self.outgoing["snapshot_files"].pop("MODULES/README.md")

@@ -23,7 +23,7 @@ ARCHIVE/
     02_<episode>.md        only if another useful retrieval boundary exists
 ```
 
-A full Save/CLOSE/END SESSION creates one folder per closed available slice. A CHECKPOINT creates no evidence folder and retains the earlier archive_ref/evidence_through. The latter pair identifies the latest archived close, not necessarily the current save id.
+A full Save/CLOSE creates one folder per closed available slice. END SESSION uses ADMIN/SESSION.md before that same full save. A CHECKPOINT creates no evidence folder and retains the earlier archive_ref/evidence_through. The latter pair identifies the latest archived close, not necessarily the current save id. Folders under `sessions` are save slices, not definitions of logical play sessions: one play session can span several saves and folders. Never rename old folders or invent past session identities to install this distinction.
 
 An outgoing scene handover creates transport records under HANDOVER, not an archived close. On accepted return, preserve the available non-graphic return account through the normal full-save evidence layout, identifying its coverage and original package/return source. Do not claim omitted raw dialogue was archived or apply already-imported state changes again. Retained handover copies are provenance, not another current authority or a replacement for required archive bodies and indexes. `ADMIN/SCENE_HANDOVER.md` owns return identity and receipt checks.
 
@@ -40,6 +40,8 @@ Each new evidence body has a unique stable heading such as `## E-<save_id>-01`. 
 Do not reconstruct unavailable source from model memory, CURRENT_SAVE, an old index, or a genre expectation. Record a source gap explicitly: what span/detail is unavailable, what surviving authority establishes, and what remains uncertain. `evidence_through` does not certify a complete transcript. A defensible private current value does not prove its unrecorded historical cause. Do not invent private events while saving.
 
 Rejected/rewound fiction, unsent suggestions, hidden candidate generation, and OOC ADMIN/provider responses are not accepted fictional evidence. An explicitly accepted correction may be stored as a clearly labeled record correction, identifying what it supersedes; it must not be narrated as a new fictional event. Keep the unaffected original evidence and its uncertainty.
+
+One narrow additional class is **OOC session operational evidence**: actual player feedback and its disposition, and relevant session-boundary adjudication. Label it literally, identify the actual play-session id and, for a mechanical result, beginning/ending boundary and rule. Preserve available source fidelity and honest gaps. It establishes what was actually said or adjudicated, not fictional events, PC/NPC knowledge, agreement changes or population preferences by implication. Other administrative chatter, provider instructions, private preparation and internal reasoning stay excluded. Use ordinary source bodies and the existing routing grammar, not another transcript or feedback ledger. OOC-only material has an honest non-fictional or unknown time designation, never invented fictional elapsed time.
 
 Do not create a duplicate full-session transcript after a faithful partition. If partition equivalence is uncertain, preserve the original detailed source and route to it. Disk duplication during a protected recovery operation is a backup, not a second canonical evidence record.
 
@@ -67,7 +69,7 @@ Keep one row per archived close using the existing columns:
 
 `save_id | commit_kind | session | span | place | route_terms | notes | folder | session_index | event_heading`
 
-commit_kind is `close`; folder and session_index identify the new folder and its INDEX. New writes leave legacy event_heading blank. Preserve established session identities. route_terms contain compact neutral names/subjects sufficient to locate likely requested evidence; they do not enumerate every scene or reveal private outcomes. notes is terse operational information, including a meaningful source gap or superseding correction route where needed, never a plot recap.
+commit_kind is `close`; folder and session_index identify the new folder and its INDEX. New writes leave legacy event_heading blank. Preserve established session identities. For new slices, the existing `session` column may name the actual logical play-session id; if evidence concerns several sessions, label each body's scope explicitly without assigning unsupported identities. route_terms contain compact neutral names/subjects sufficient to locate likely requested evidence; they do not enumerate every scene or reveal private outcomes. notes is terse operational information, including a meaningful source gap or superseding correction route where needed, never a plot recap.
 
 The table uses outer pipes and one contiguous row block. Do not add rows after a blank line. Skip campaign-level routing when a current record, the operator, or a ledger already identifies the exact session/source. If campaign routing becomes unwieldy, improve its explicit indexes in separate maintenance rather than turning it into a campaign bible.
 

@@ -1,4 +1,4 @@
-# RPG OS v0.9.4 targeted reference
+# RPG OS v0.9.5 targeted reference
 
 Cold lookup guide for LAW's Establish stage. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 
@@ -24,6 +24,8 @@ Identify the fact or procedure needed next. Reuse already loaded source material
 | Canon-governed fact beyond loaded coverage | Bound `MODULE.md` capability map, then matching entrypoint and narrow body; use an available direct pointer immediately |
 | Private truth or defined unknown | Matching TRUTH or other private record; preserve access conditions and deliberate openness |
 | Past event or disputed memory | Known archive pointer; otherwise ARCHIVE/INDEX -> session INDEX -> evidence. Optional message/relation ledgers are shortcuts |
+| Begin/resume/end a play session, or unfinished feedback | `ADMIN/SESSION.md`; CURRENT_SAVE's administrative Session continuity, then exact pending-item/current-effect and labelled OOC evidence routes |
+| Useful causal context or conditional preparation | SESSION checks the optional fixed path `INSTANCE/PREP.md`; verify relevant claims against their current/evidence owners and the agreement. Missing derivative notes do not supply missing facts or imply a new session |
 | Accepted operator limits | Active `INSTANCE/SAFETY.md`; no inferred extras |
 
 Check corrections when their scope could affect the question. Saving places useful correction pointers in Relevant records. If a relevant correction route is absent, inspect the compact correction register.
@@ -40,7 +42,7 @@ The Setting Brief supports ordinary background within its stated coverage. Estab
 
 Current INSTANCE records supersede corresponding mutable starting baselines. Do not combine old and new totals or reintroduce superseded traits. Stable MODULE CANON still supplies unchanged background. A T0 value supports continuity only before an accepted change or due transition replaces it.
 
-Reading private state does not reveal it to the PC; reading a process does not advance it. Retrieved preparation is not automatically selected. Review notes are provisional and require a specific review task.
+Reading private state does not reveal it to the PC; reading a process does not advance it. Retrieved preparation is not automatically selected. PREP is derivative: recover only the relevant causes, commitments, actual feedback and changed dependencies needed to prepare the intended continuation. Extend historical retrieval for an identified gap or contradiction, not an automatic archive, cast or inactive-seed scan. Explicit feedback comes from actual retained source, not inferred PC conduct; it changes neither world truth nor the agreement by implication. Review notes are provisional and require a specific review task.
 
 Exact wording, quantities, sequence, rolls, and disputed context require evidence bodies. Preserve rumor, possibility, and uncertainty. Summaries cannot reconstruct missing source text.
 

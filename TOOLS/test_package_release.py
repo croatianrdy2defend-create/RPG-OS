@@ -198,6 +198,43 @@ class PackageTests(unittest.TestCase):
         with self.assertRaisesRegex(pack.PackageError, "Frozen fresh-install validation failed"):
             pack.package(self.root)
 
+    def test_session_procedure_and_unstarted_section_ship_without_preparation(self) -> None:
+        procedure = "# Session procedure\n\nPrepare on actual begin; invite feedback at actual end.\n"
+        self.write("ADMIN/SESSION.md", procedure)
+        save = self.root / "INSTANCE/CURRENT_SAVE.md"
+        self.write("INSTANCE/CURRENT_SAVE.md", save.read_text(encoding="utf-8") + "\n## Session continuity\n\nnone\n")
+        self.commit()
+        archive, _sums = pack.package(self.root)
+        with zipfile.ZipFile(archive) as result:
+            self.assertEqual(result.read("RPG_OS_v0.8.0/ADMIN/SESSION.md"), procedure.encode("utf-8"))
+            self.assertIn(b"## Session continuity\n\nnone", result.read("RPG_OS_v0.8.0/INSTANCE/CURRENT_SAVE.md"))
+            self.assertNotIn("RPG_OS_v0.8.0/INSTANCE/PREP.md", result.namelist())
+
+    def test_live_session_and_feedback_in_public_save_are_rejected(self) -> None:
+        original = (self.root / "INSTANCE/CURRENT_SAVE.md").read_text(encoding="utf-8")
+        for body in (
+            "| Session item | Value |\n|---|---|\n| session_id | private-session |\n| phase | ended |\n| opening_save | private-save |\n| feedback | received |\n",
+            "none\n\nPlayer feedback: a private request.\n",
+            "none\n\n<!-- Private feedback retained in a comment. -->\n",
+        ):
+            with self.subTest(body=body):
+                self.write("INSTANCE/CURRENT_SAVE.md", original + "\n## Session continuity\n\n" + body)
+                self.commit()
+                with self.assertRaisesRegex(pack.PackageError, "session continuity or feedback"):
+                    pack.package(self.root)
+
+    def test_preparation_is_never_a_public_install_path_even_when_empty(self) -> None:
+        for relative in ("INSTANCE/PREP.md", "INSTANCE/PREP.candidate.md", "INSTANCE/PREP/session.md"):
+            with self.subTest(relative=relative):
+                with self.assertRaisesRegex(pack.PackageError, "Campaign/module content"):
+                    pack.assert_public_paths({relative})
+
+    def test_missing_session_procedure_fails_fresh_install_validation(self) -> None:
+        (self.root / "ADMIN/SESSION.md").unlink()
+        self.commit()
+        with self.assertRaisesRegex(pack.PackageError, "CORE_REQUIRED_FILE"):
+            pack.package(self.root)
+
     def test_real_module_is_rejected(self) -> None:
         self.write("MODULES/example_world/MODULE.md", "# Private campaign module\n")
         self.commit()

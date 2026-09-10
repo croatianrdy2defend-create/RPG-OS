@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.9.4 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.9.5 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -95,7 +95,9 @@ flowchart TD
     setupChoice -->|"Revise"| setupDraft
     setupChoice -->|"Accept"| setupBind["Protect writes and bind the accepted records"]
     setupBind --> setupVerify["Read back identities, contents, and routes"]
-    setupVerify --> setupPlay["Resume the accepted opening"]
+    setupVerify --> setupReady["Bound and ready; no play session yet"]
+    setupReady -->|"Actual request to play"| setupPrepare["SESSION: prepare and handle genuinely due beginning rules"]
+    setupPrepare --> setupPlay["Play the accepted opening"]
 ```
 
 Binding gives the run its own campaign identity, save lineage, agreement identity, current PC bundle, and opening state. New Game does not clear a previous campaign to make room. Use a separate clean copy for another run.
@@ -333,7 +335,7 @@ For an entity with a wholly specified simple process, no private liking or rando
 
 A current individual baseline does not settle every later opportunity. Sending a message, fulfilling a promise or passing on a secret may remain open after an encounter. Use retained consequential facts, any still-required active basis, actual developments and applicable ENGINE procedures. If an eligible outcome lacks enough basis for grounded judgment, use the accepted fallback within scope. This does not replace the basis required before individual participation, resurrect expired trivia, or add a second roll for a settled reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each eligible later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.4 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.5 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
@@ -410,11 +412,27 @@ For this example the river bridge closed at dawn. A courier last crossed it yest
 
 The first answer did not secretly become a lie because it proved outdated. The saved knowledge distinguishes yesterday's testimony from the PC's later observation. The bridge's actual condition governs the journey even before the player learns it; any prepared ambush elsewhere still needs its own valid cause or selection before entering play.
 
+## Beginning, ending and preparing the next session
+
+At begin/resume, the GM recovers relevant prior causes, current commitments, consequences and explicit feedback, checks useful preparation and resumes the actual moment. A new logical session also invokes any genuine engine beginning procedures once; a fresh chat continuing an active session does not. At an explicit ending, fiction stops, developments and completion are consolidated, the GM invites or reuses feedback, genuinely due ending procedures are adjudicated once and the full save preserves the result.
+
+| Record | Role |
+|---|---|
+| Existing current owners and archive evidence | What is actually true, what happened and what the player explicitly said |
+| CURRENT_SAVE — Session continuity | Current session id, active/closing/ended phase and unfinished wrap-up; a new bind has `none` |
+| Optional INSTANCE/PREP.md | Source-linked causal context, relevant concerns/completion, feedback treatment and revisable possibilities |
+
+The GM must offer or reuse end feedback, but the player can decline. An immediate stop can save pending feedback; silence is not an answer or decline. Late feedback keeps its original session identity, informs permitted prospective changes and does not repeat rewards or rewrite events. Required unarchived feedback survives independently of PREP until faithfully preserved in labelled OOC operational evidence.
+
+PREP is a working synthesis, not a new canon or award ledger. Missing or obsolete notes can be rebuilt from authority. Actual mechanical effects and application references stay with their selected current owners. Beginning and ending applications have distinct session/boundary/rule references. A save retry cannot adjudicate again, including after a settled zero. Ending and starting a session do not automatically advance fictional time, a world clock or an NPC's active state.
+
+Preparation may be short. It must preserve completed undertakings and use actual causes; no required threat, cast, clue count or escalating plot replaces a quiet continuation. New games include this routine in their existing agreement, with actual engine cadence choices where needed. See [SESSION](ADMIN/SESSION.md) for the procedure and [INSTANCE schema](INSTANCE/_SCHEMA.md) for ownership and formats.
+
 ## Saving the present and preserving evidence
 
-`CURRENT_SAVE.md` is a compact resume record with five sections: Situation, Character state, Open matters, Active processes, and Relevant records. Detailed character values, people, knowledge, and private systems keep their own selected authorities.
+`CURRENT_SAVE.md` is a compact resume record with five fictional sections: Situation, Character state, Open matters, Active processes, and Relevant records. Optional administrative Session continuity separately preserves session identity and unfinished wrap-up. Detailed character values, people, knowledge, and private systems keep their own selected authorities.
 
-**Save**, **Close**, and **End session** perform a full save. **Checkpoint** preserves the complete present without adding archive evidence. The distinction matters before discarding a conversation.
+**Save** and bare **Close** preserve the complete current state and available accepted evidence. **End session** first invokes [the session routine](ADMIN/SESSION.md), including feedback and genuinely due engine procedures, then that full save. Immediate stopping can save with unfinished wrap-up identified. **Checkpoint** preserves the complete present without adding exact new archive evidence. Wait for verified full persistence before discarding a conversation.
 
 ```mermaid
 flowchart TD
@@ -627,6 +645,6 @@ The optional [validator](TOOLS/validate.py) checks its documented structural sco
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
 
-For v0.9.4, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
+For v0.9.5, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

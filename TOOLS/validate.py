@@ -33,6 +33,8 @@ CURRENT_SAVE_FIELDS = (
 SAVE_SECTIONS = (
     "Situation", "Character state", "Open matters", "Active processes", "Relevant records",
 )
+SESSION_FIELDS = ("session_id", "phase", "opening_save", "feedback")
+PREPARATION_FIELDS = ("campaign_id", "base_save_id", "base_contract_id")
 CONTRACT_FIELDS = (
     "campaign_id", "contract_id", "contract_rev", "contract_parent", "status", "module",
 )
@@ -80,6 +82,7 @@ REQUIRED_FILES = (
     "ADMIN/CAMPAIGN_BUILD.md",
     "ADMIN/CHARACTER_BUILD.md",
     "ADMIN/CLOSE_CONTRACT.md",
+    "ADMIN/SESSION.md",
     "ADMIN/RECOVERY.md",
     "ADMIN/CORRECT.md",
     "ADMIN/UPGRADE_V07.md",
@@ -782,7 +785,7 @@ class Validator:
             return None
         probe = candidate
         while True:
-            if probe.exists() and probe.is_symlink():
+            if probe.is_symlink():
                 self.add("ERROR", code, source_path, f"path crosses symlink: {value!r}", line)
                 return None
             if probe == boundary or probe == self.root or probe.parent == probe:
@@ -855,6 +858,85 @@ class Validator:
                 self.add("ERROR", "SAVE_RECORD_HEADING", relative,
                          f"record heading must resolve exactly once: {raw!r}", line)
 
+    def check_session_continuity(self, text: str, relative: str, initial: bool = False) -> None:
+        """Check optional administrative structure, never infer a session trigger."""
+        body, line, count = section_text(text, "Session continuity", 2)
+        # A misplaced control table cannot masquerade as harmless extra prose.
+        lines = text.splitlines()
+        visible, structural = structural_markdown_lines(lines)
+        heading_lines = list(iter_literal_headings(text))
+        owner = ""
+        headings = {number: (level, title) for number, level, title in heading_lines}
+        for number, content in enumerate(structural, 1):
+            if number in headings and headings[number][0] <= 2:
+                owner = headings[number][1] if headings[number][0] == 2 else ""
+            cells = split_table_like_row(content) if visible[number - 1] else None
+            if cells and [strip_code_ticks(cell).casefold() for cell in cells] == ["session item", "value"]:
+                if owner != "Session continuity":
+                    self.add("ERROR", "SESSION_TABLE_SCOPE", relative,
+                             "session control table must be inside the level-two Session continuity section", number)
+                elif split_markdown_row(content) is None:
+                    self.add("ERROR", "SESSION_TABLE_NONCANONICAL", relative,
+                             "session control requires outer pipes; another rendered table cannot shadow it", number)
+        if count == 0:
+            if relative == "INSTANCE/CURRENT_SAVE.md":
+                self.metrics["session_continuity"] = "legacy/unrecorded"
+            return
+        if count != 1:
+            self.add("ERROR", "SESSION_SECTION_COUNT", relative,
+                     f"expected at most one level-two Session continuity section; found {count}")
+            return
+        compact = (body or "").strip()
+        if compact == "none":
+            if relative == "INSTANCE/CURRENT_SAVE.md":
+                self.metrics["session_continuity"] = "not-started"
+            return
+        if initial:
+            self.add("ERROR", "SESSION_INITIAL_CONTENT", relative,
+                     "unbound/bind/T0 session continuity must be absent or literal none; never inherit played-session state", line)
+        rows = self.find_table(body or "", ["Session item", "Value"], relative, "SESSION_TABLE", line_offset=(line or 1) - 1)
+        if rows is None:
+            return
+        body_visible, body_structural = structural_markdown_lines((body or "").splitlines())
+        for offset, content in enumerate(body_structural):
+            cells = split_table_like_row(content) if body_visible[offset] else None
+            if cells and [strip_code_ticks(cell).casefold() for cell in cells] == ["session item", "value"] and split_markdown_row(content) is not None:
+                break
+            if cells and strip_code_ticks(cells[0]).strip() in SESSION_FIELDS:
+                self.add("ERROR", "SESSION_TABLE_SHADOW_ROW", relative,
+                         "session item occurs before the authoritative table", (line or 1) + offset)
+        values: dict[str, str] = {}
+        for row in rows:
+            field = strip_code_ticks(row["session item"]).strip()
+            value = strip_code_ticks(row["value"]).strip()
+            if field in values:
+                self.add("ERROR", "SESSION_DUPLICATE_FIELD", relative, f"duplicate session item {field!r}", row["_line"])
+                continue
+            if field not in SESSION_FIELDS:
+                self.add("ERROR", "SESSION_UNKNOWN_FIELD", relative, f"unknown session item {field!r}; outstanding items use prose", row["_line"])
+            if not value:
+                self.add("ERROR", "SESSION_EMPTY_FIELD", relative, f"session item {field!r} is blank", row["_line"])
+            values[field] = value
+        for field in SESSION_FIELDS:
+            if field not in values:
+                self.add("ERROR", "SESSION_MISSING_FIELD", relative, f"missing session item {field!r}")
+        session_id = values.get("session_id", "")
+        if not SAFE_ID.fullmatch(session_id) or is_sentinel(session_id) or is_placeholder(session_id):
+            self.add("ERROR", "SESSION_ID_FORMAT", relative, "session_id requires a portable non-placeholder play-session id")
+        if values.get("phase") not in {"active", "closing", "ended"}:
+            self.add("ERROR", "SESSION_PHASE", relative, "session phase must be active, closing or ended")
+        opening = values.get("opening_save", "")
+        if opening != "unknown" and (not SAFE_ID.fullmatch(opening) or is_sentinel(opening) or is_placeholder(opening)):
+            self.add("ERROR", "SESSION_OPENING_SAVE", relative, "opening_save requires a portable save id or honest unknown")
+        if values.get("feedback") not in {"not-due", "pending", "received", "declined", "not-provided"}:
+            self.add("ERROR", "SESSION_FEEDBACK", relative, "feedback must be not-due, pending, received, declined or not-provided")
+        elif values.get("phase") in {"closing", "ended"} and values.get("feedback") == "not-due":
+            self.add("ERROR", "SESSION_FEEDBACK_DUE", relative,
+                     "closing/ended sessions require an actual feedback disposition; an owed invitation or reply stays pending")
+        if relative == "INSTANCE/CURRENT_SAVE.md":
+            self.metrics["session_continuity"] = values.get("phase", "unrecognized")
+            self.metrics["session_id"] = session_id
+
     def check_current_save(self) -> None:
         relative = "INSTANCE/CURRENT_SAVE.md"
         text = self.read_text(self.root / relative, "SAVE_READ")
@@ -887,6 +969,7 @@ class Validator:
             self.add("ERROR", "SAVE_PARTIAL_BINDING", relative, "engine and module binding states disagree")
         self.bound = engine != "unbound" and module != "unbound"
         sections = self.check_sections(text, relative, SAVE_SECTIONS, "SAVE", not self.bound)
+        self.check_session_continuity(text, relative, initial=not self.bound or commit == "bind")
         if not self.bound:
             expected = {field: "none" for field in CURRENT_SAVE_FIELDS}
             expected.update(engine="unbound", module="unbound", save_rev="0",
@@ -1055,6 +1138,71 @@ class Validator:
         for index in range(start, len(self.findings)):
             finding = self.findings[index]
             self.findings[index] = Finding("WARNING", finding.code, finding.path, finding.line, finding.message)
+
+    def check_preparation(self) -> None:
+        """Optional derivative notes cannot certify facts or veto sound continuity."""
+        relative = "INSTANCE/PREP.md"
+        path = self.root / relative
+        candidate = self.root / "INSTANCE/PREP.candidate.md"
+        if candidate.exists() or candidate.is_symlink():
+            self.add("ERROR", "PREP_STALE_CANDIDATE", self.relative(candidate),
+                     "unfinished preparation candidate exists; resolve its recorded operation")
+        if not path.exists() and not path.is_symlink():
+            self.metrics["preparation_status"] = "absent (optional)"
+            return
+        start = len(self.findings)
+        text = self.read_text(path, "PREP_READ")
+        if text is not None:
+            frontmatter, errors = extract_frontmatter(text)
+            for error in errors:
+                self.add("WARNING", "PREP_FRONTMATTER", relative, error)
+            for field, expected in {"id": "instance.preparation", "class": "campaign-preparation", "temperature": "cold"}.items():
+                if frontmatter.get(field) != expected:
+                    self.add("WARNING", "PREP_FRONTMATTER_VALUE", relative, f"preparation front-matter {field} should be {expected!r}")
+            first_section = next((line for line, level, _title in iter_literal_headings(text) if level == 2), None)
+            metadata = "\n".join(text.splitlines()[:first_section - 1]) if first_section else text
+            rows = self.find_table(metadata, ["Preparation basis", "Value"], relative, "PREP_TABLE")
+            if first_section:
+                visible, structural = structural_markdown_lines(text.splitlines())
+                for number in range(first_section - 1, len(structural)):
+                    cells = split_table_like_row(structural[number]) if visible[number] else None
+                    if cells and [strip_code_ticks(cell).casefold() for cell in cells] == ["preparation basis", "value"]:
+                        self.add("WARNING", "PREP_TABLE_SCOPE", relative,
+                                 "preparation basis belongs in one header table before the body sections", number + 1)
+            values: dict[str, str] = {}
+            for row in rows or []:
+                field = strip_code_ticks(row["preparation basis"]).strip()
+                value = strip_code_ticks(row["value"]).strip()
+                if field in values:
+                    self.add("WARNING", "PREP_DUPLICATE_FIELD", relative, f"duplicate preparation basis {field!r}", row["_line"])
+                    continue
+                if field not in PREPARATION_FIELDS:
+                    self.add("WARNING", "PREP_UNKNOWN_FIELD", relative, f"unrecognized preparation basis {field!r}", row["_line"])
+                if not SAFE_ID.fullmatch(value) or is_sentinel(value) or is_placeholder(value):
+                    self.add("WARNING", "PREP_BASIS_ID", relative, f"preparation basis {field!r} needs an actual portable id", row["_line"])
+                values[field] = value
+            for field in PREPARATION_FIELDS:
+                if field not in values:
+                    self.add("WARNING", "PREP_MISSING_FIELD", relative, f"missing preparation basis {field!r}")
+            if values.get("campaign_id") != self.current.get("campaign_id"):
+                self.add("WARNING", "PREP_FOREIGN_CAMPAIGN", relative,
+                         "preparation does not identify this campaign; ignore it and recover useful work from actual authority")
+            elif values.get("base_save_id") != self.current.get("save_id") or values.get("base_contract_id") != self.contract.get("contract_id"):
+                self.add("WARNING", "PREP_STALE_BASE", relative,
+                         "preparation basis differs from current save/agreement; recheck relevant sources, never refresh provenance merely because of saving")
+            self.metrics["preparation_status"] = "derivative (basis checked only)"
+        # Malformed/unreadable derivative content is nonfatal; path safety is not.
+        for index in range(start, len(self.findings)):
+            finding = self.findings[index]
+            if finding.code.startswith("PREP_"):
+                self.findings[index] = Finding("WARNING", finding.code, finding.path, finding.line, finding.message)
+        if text is not None:
+            for line, raw in backticked_markdown_paths(text):
+                file_part, _separator, _heading = raw.partition("#")
+                target = self.safe_path(file_part, self.root, self.root, "PREP_SOURCE_PATH", relative, line)
+                if target is not None and not target.is_file():
+                    self.add("WARNING", "PREP_SOURCE_MISSING", relative,
+                             f"derivative source route is missing: {raw!r}; recover from actual authority", line)
 
     def check_recovery(self) -> None:
         marker = self.root / "RECOVERY/ACTIVE.md"
@@ -1752,6 +1900,8 @@ class Validator:
 
         t0_path = module_dir / "T0_SAVE.md"
         t0_text = self.read_text(t0_path, "T0_READ") if t0_path.is_file() else None
+        if t0_text is not None:
+            self.check_session_continuity(t0_text, self.relative(t0_path), initial=True)
         if t0_text is not None and section_text(t0_text, "Situation", 2)[2] == 0:
             legacy_rows = self.find_table(t0_text, ["Field", "Value"], self.relative(t0_path), "T0_TABLE", required=False)
             legacy_fields = {strip_code_ticks(row["field"]).strip() for row in (legacy_rows or [])}
@@ -2316,6 +2466,7 @@ class Validator:
         self.check_current_save()
         self.check_campaign_contract()
         self.check_bearing()
+        self.check_preparation()
         self.check_initial_instance()
         self.check_recovery()
         self.check_handover()
@@ -2381,9 +2532,10 @@ def make_report(
             "provenance": "SCRIPT-VERIFIED",
             "coverage": [
                 "required release files including agent-state, upgrade/playtest guides and optional v9 source/search/evidence tools; executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
-                "CURRENT_SAVE metadata/readable sections, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
+                "CURRENT_SAVE metadata/readable sections, optional Session continuity table, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
                 "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
                 "optional cold Bearing provenance and staleness warnings; active recovery and handover marker presence (handover package integrity requires its separate checker)",
+                "optional derivative PREP identity/basis and safe source paths; freshness, faithful causal synthesis, feedback retention, prior omission and once-only session adjudication require source comparison and cannot be proved from one snapshot",
                 "clean unbound INSTANCE paths and bound PC overlay",
                 "installed engine identity, safe ids, and declared character-build support",
                 "bound module using v0.4 descriptor grammar, required setting-brief identity/sections and candidate residue, capabilities/routes, optional POLICY source voice, closed PC routing bundles, and T0/bind consistency where machine-parseable",

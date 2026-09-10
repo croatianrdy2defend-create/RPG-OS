@@ -18,6 +18,8 @@ Return material decisions to the five-section run proposal: Campaign promise, Pl
 
 The operator may choose a form or separately delegate its selection and withholding of structural information. Keep the control record truthful about the accepted authority. Under delegated opacity, review the envelope and constraints without forcing disclosure of the concealed choice; private plot alone is not opacity permission. Agreed fixed destinations/outcomes are legitimate within their stated scope, but do not justify fake open checks or reserved PC decisions.
 
+Return any relevant beginning/end hook, source and cadence choices to these same agreement sections. The standard ADMIN/SESSION.md preparation and feedback duties apply at every setup depth, including engines without boundary mechanics.
+
 POLICY's Voice and Campaign defaults are reusable setup proposals. Source expectations also belong there for future setup, but all accepted constraints affecting PLAY are copied into the Campaign promise/brief or a real source-authority body reached by an exact contract/descriptor route; the brief advertises only domain/trigger/capability. Voice/guidance goes into Presentation; accepted stronger module limits into SAFETY with their origin. POLICY never remains the sole home of a runtime fidelity rule. Detailed world machinery stays behind capabilities.
 
 ## World and ordinary life
@@ -51,6 +53,8 @@ For each selected mutable system, retain only relevant information in its author
 - Minimal provenance: source or accepted setup basis; later current records identify the save/accepted transition establishing their values.
 
 Do not require every field for static lore. A setup summary is not durable authority: operational declarations must live in the selected body. Detailed current values have one owner. A MODULE T0 snapshot stays historical after a later transition; point to the selected INSTANCE route rather than merging incompatible moments.
+
+Distinguish OOC session procedures from fictional clocks. Ending a session advances a selected system only when its actual rule declares that trigger. Preparation is not a world-development turn. For a substantial finite activity, make its scope, available meaningful choices, applicable resolution and completion or withdrawal conditions usable; a finished undertaking need not become a larger plot. Use existing facts and selected mechanics without a separate quest system, automatic assignment acceptance or incident quota.
 
 ### Places, exploration, and prepared situations
 
@@ -147,6 +151,8 @@ Before returning to NEW GAME:
 5. Return the brief, real capability bodies, essential routes, source/private envelopes, and meaningful unknowns for the single NEW GAME review.
 
 Include or prepare the one encounter rehearsal used by LOAD verification: exercise a representative individual's five current fields through a response and an applicable coordinated group's shared conduct through its individualization boundary. Use the selected methods and source routes with clearly synthetic people and circumstances; actual random draws require their predefined mappings. Do not reuse a campaign determination as a disposable test draw or adopt the exercise as opening canon. Carry its actual observations forward within the same setup so it is performed once, not repeated by every guide. A changed relevant method invalidates only affected coverage. Mark absent observations unrun and unsupported group coverage inapplicable; static route validation cannot establish behavioral compliance.
+
+Check session readiness once across this setup: relevant current/history routes where actual history exists, the scope for useful conditional preparation, any real engine-hook source and effect owner with session/boundary/rule repeat protection, and the feedback carry-forward path through Session continuity, evidence and optional post-bind PREP. Reuse this check in NEW_GAME and LOAD. It verifies readiness, not observed play; do not manufacture history, populated PREP or an extra rehearsal to satisfy it.
 
 Do not persist here. The shared LOAD bind commits the accepted work with recovery protection. Omitted areas remain honestly absent or open.
 

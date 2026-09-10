@@ -2,6 +2,8 @@
 
 Explicit **REVIEW** requests only. No automatic review follows Save or END SESSION. Normal PLAY/boot does not load Bearing, and there is no review_mode contract gate.
 
+The standard beginning/end routine and required GM feedback step belong to ADMIN/SESSION.md, not this optional review. Its source-linked preparation uses optional PREP; BEARING stays cold provisional review and cannot become the session-control, feedback or preparation authority.
+
 A conversational review may remain in chat. If durable notes are requested, this operation writes only INSTANCE/BEARING.md under ADMIN/RECOVERY.md. Review is provisional interpretation, not current facts, agreed policy, preparation, or a new campaign obligation.
 
 ## Scope

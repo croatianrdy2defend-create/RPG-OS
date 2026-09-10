@@ -2,7 +2,14 @@
 
 All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
 
-## Unreleased
+## v0.9.5 — session preparation, closure and feedback (2026-09-10)
+
+- Added one session procedure for relevant causal preparation at begin/resume and consolidation, mandatory GM feedback handling, actual engine procedures and full persistence at an explicit ending. Players may decline feedback or stop immediately with unfinished items preserved.
+- Added optional administrative Session continuity to CURRENT_SAVE while preserving its 13 metadata fields and five fictional sections; on-demand PREP remains derivative and absent from new binds and public packages.
+- Preserved actual feedback and boundary adjudication through a narrow labelled OOC evidence exception. Save/CLOSE, checkpoints, fresh chats and handovers retain the logical session; repeats and zero adjudications cannot create another award opportunity.
+- Connected genuine engine beginning/end hooks to their actual triggers, effect owners and session/boundary/rule application references. Freeform supplies no automatic XP or session reset.
+- Integrated the routine into NEW GAME, LOAD, module contracts, QUICKSTART and active guides/examples without extra mandatory setup questions. Kept source-governed neutrality explicit before worldbuilding.
+- Added focused schema/package/handover coverage and connected developer cases. See [release notes](V0.9.5_CHANGES.md), [session cases](ADMIN/TEST_SESSION.md) and [verification](VERIFICATION.md) for observed results and limitations.
 
 - Added original worked fictional scenes beside the player guides and mechanics explanations, showing player/GM dialogue, encounter state, nonhuman perception, decisions, evidence, saves and handovers. These are illustrations, not new rules or observed playtests.
 

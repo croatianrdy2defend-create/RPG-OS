@@ -5,14 +5,16 @@ You can speak normally. Capitalized commands remain aliases.
 | Say | What happens |
 |---|---|
 | Start a new game | Adaptive setup; a reviewable proposal before binding |
-| Continue my campaign | Load the saved campaign and resume at its recorded moment |
-| Save | Preserve current state and available accepted historical evidence |
-| End session / CLOSE | The same complete save, then stop |
+| Continue my campaign | Load authority, recover relevant history/preparation and resume at the recorded moment |
+| Save / CLOSE | Preserve complete current state and available accepted evidence; keep the play session |
+| End session / finish for today | Stop fiction, consolidate, invite/reuse feedback, apply genuinely due engine procedures and full-save |
 | Correct that | Repair the specific error and dependent consequences |
 | Change how we play / RECALIBRATE | Show a prospective change to the accepted agreement |
 | Use an existing module / LOAD MODULE | Bind a selected existing module into a clean campaign copy |
 
 In a fresh chat, precede your request with "Open OS/AGENTS.md."
+
+Use the actual meaning of the request: “close the session for today” ends it; bare CLOSE is a full save. “Save and end” invokes [SESSION](ADMIN/SESSION.md) once. Feedback may be answered or declined, and immediate stopping preserves pending items. Fresh chats and handovers do not independently end a session.
 
 ## Optional and maintenance requests
 

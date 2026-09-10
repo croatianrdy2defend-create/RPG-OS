@@ -43,3 +43,7 @@ none
 ## Relevant records
 
 none
+
+## Session continuity
+
+none

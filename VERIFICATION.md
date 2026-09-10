@@ -1,5 +1,31 @@
 # RPG OS experimental verification
 
+## v0.9.5 session preparation, closure and feedback — 2026-09-10
+
+Local Windows verification of the assembled public source discovered **277 tests: 269 passed, 8 platform skips, zero remaining failures** across the nine release suites. The final structural suite includes the session control, derivative preparation and compatibility checks; packaging and handover cover the new surfaces through their existing mechanisms.
+
+| Suite | Discovered | Passed | Platform skips |
+|---|---:|---:|---:|
+| test_validate.py | 68 | 67 | 1 |
+| test_handover.py | 36 | 35 | 1 |
+| test_package_release.py | 22 | 22 | 0 |
+| test_read_source.py | 31 | 28 | 3 |
+| test_search_index.py | 33 | 32 | 1 |
+| test_evidence.py | 33 | 31 | 2 |
+| test_agent_state.py | 14 | 14 | 0 |
+| test_autosave.py | 34 | 34 | 0 |
+| test_encounter_generation.py | 6 | 6 | 0 |
+
+Adversarial parser checks exposed two initial shadow-control misses: an outer-pipeless table outside the administrative section and control rows preceding the canonical table. Both were fixed with regressions before delivery. A final cross-field check rejects closing/ended sessions still claiming feedback is not due, while retaining valid early feedback and unfinished ended-session feedback. The final validator suite and three relevant packaging cases passed after that change; previously passing unaffected suites were reused. Platform skips include Windows symlink-creation limitations. No skip is counted as a pass.
+
+Whole-tree structural validation passed with zero findings for the public unbound source and the separately assembled bound upgrade candidate. The latter also passed its six campaign-specific encounter checks, which remain outside the public package. The package continues to exclude runtime PREP, live session control and private campaign content. The release workflow independently tests and verifies the committed fresh-install archive before publishing; its actual run belongs to the triggering commit, not to these local suite counts.
+
+One guided model rehearsal recorded 17 concrete transitions using supplied synthetic source facts and feedback: actual-play permission after bind, a pending choice through ordinary Save and a new-chat-style resume, explicit ending and feedback, a sourced synthetic zero award, repeated End, a second session, late feedback after PREP loss, finite completion, immediate stop followed by decline, and readiness without play. The recorded responses retained the tested choices, session identities, feedback, completion and settled zero. Repeated End on already saved unchanged closure reported the existing receipt rather than claiming a fresh save; a separately requested new full save was not exercised in that turn.
+
+This was a single-context guided rehearsal with simulated persistence receipts, not independent fresh-context recovery, actual file publication, unscripted award judgment or long-campaign evidence. Missing-rule choices, real save failure/recovery, arbitrary engine beginning effects and the complete connected [S01–S19 cases](ADMIN/TEST_SESSION.md) were not exercised end to end. Structural tests do not prove feedback quality, causal reasoning or once-only GM judgment. Synthetic people, raw rehearsal content and private campaign records are not distributed.
+
+All eleven MECHANICS Mermaid blocks parsed with Mermaid 11.12.0. The changed setup diagram rendered in a local headless browser and was visually inspected: verified bind waits for an actual PLAY request before SESSION preparation and the accepted opening. Other diagrams were unchanged.
+
 ## v0.9.4 universal encounter generation — 2026-09-09
 
 Local Windows verification of the clean unbound release candidate discovered **253 tests: 246 passed, 7 platform skips, zero failures** across nine sequential suites. The prior eight suites remain, with one additional packaging test and six encounter-generation checks. All nine suites passed on their first execution against this prepared public candidate. Whole-tree structural validation passed with zero findings and a stable measured tree.

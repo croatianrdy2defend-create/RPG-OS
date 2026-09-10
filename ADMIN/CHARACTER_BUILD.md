@@ -32,7 +32,7 @@ Ask only selected/relevant clusters:
 - Resources at the accepted precision.
 - Opening condition, location/order in time, ongoing declared activity, and unresolved choices.
 
-Preserve declared goals as such in Open matters; never infer them from background or campaign preferences. OOC preferences belong in the agreement. Proposed past commitments require acceptance. Ownership of a resource does not imply it was used.
+Preserve declared goals as such in Open matters; never infer them from background or campaign preferences. Accepted standing OOC preferences belong in the agreement; actual session feedback and its permitted treatment follow `ADMIN/SESSION.md` without becoming an agreement amendment by implication. Proposed past commitments require acceptance. Ownership of a resource does not imply it was used.
 
 PC hopes, attractions and background do not establish another agent's reciprocal state. Apply actual visible features and engine-defined capabilities at their supported scope, without making a favorable profile universally effective. Preserve explicitly accepted starting allies or mutual relationships; do not reroll them to demonstrate independence. Such a relationship still leaves future decisions open at their actual scope. A detailed PC does not require equally detailed NPC biographies or a human emotional model for nonhuman participants.
 
@@ -48,6 +48,8 @@ A behavioral mechanic may impose only its defined accepted effects. It does not 
 6. Check conflicting values, unresolved required fields, and accepted/deferred facts before returning to the campaign draft.
 
 No agreement clause supplies a missing mechanic. Later play needing an unresolved required value pauses for that value/procedure rather than guessing.
+
+If the selected engine supplies growth or another lifecycle effect, identify its actual current owner and needed source route under `ENGINE/_CONTRACT.md#Lifecycle procedures`. Preserve deferred player spending or improvement choices until needed; a resource award does not select a purchase. Session/boundary/rule application references stay with the effect owner when actually adjudicated. Do not require an extra sheet, point field or empty award history for an engine that supplies none, and do not apply a session effect during character creation or bind.
 
 ## Import and storage
 

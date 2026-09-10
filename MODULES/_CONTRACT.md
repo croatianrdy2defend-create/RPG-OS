@@ -115,7 +115,9 @@ New T0_SAVE uses the CURRENT_SAVE metadata table and five readable sections in `
 
 Its sections are **Situation; Character state; Open matters; Active processes; Relevant records**. They hold the accepted opening, relevant condition/resources, actual declared goals/obligations, due processes/non-revelatory private watch routes, and useful exact records. The PC's future INSTANCE route is created at bind. For systems and people not yet materialized in INSTANCE, save pointers target their existing MODULE T0 bodies; store the planned later INSTANCE destination inside the governing definition, not as an already existing save authority. Redirect the save pointer when the first persistent change creates that current record. Do not infer goals or PC participation. Legacy templates are mapped into an accepted bind draft without silently changing their source.
 
-LOAD assigns unique runtime ids and bind lineage, preserves accepted opening bodies, and begins with `archive_ref: none` and `evidence_through: none`.
+T0 may omit administrative Session continuity for legacy compatibility or contain `## Session continuity` with body `none`. It must carry no live session identity, feedback, adjudication receipts or runtime PREP from another run. Reusable opening facts are not a previous campaign notebook.
+
+LOAD assigns unique runtime ids and bind lineage, preserves accepted opening bodies, and begins with `archive_ref: none` and `evidence_through: none`. It initializes CURRENT_SAVE's Session continuity independently to `none` and creates no PREP at bind.
 
 Fixed opening agent state stays in its named MODULE T0 owner. Current PEOPLE/NOW/CAST_STATUS registers retain their empty bind convention; no new stance overlay is copied into INSTANCE merely by loading. Preserve existing-module bytes and fixed relationships. A genuinely unresolved dimension remains eligible only under its accepted future establishment path; no implicit run-specific randomized T0 override or nested bind/checkpoint is introduced.
 
@@ -123,7 +125,7 @@ Fixed opening agent state stays in its named MODULE T0 owner. Current PEOPLE/NOW
 
 MODULE definitions and mutable baselines are immutable as-of-T0 after bind. Authorized migration or Setting Brief upgrade/refinement may change only their explicitly approved surface; they do not silently rewrite world facts or history.
 
-For each selected mutable system, store its id, accepted T0 status (definition-only/dormant/live), actual triggers/non-triggers, one later current-authority route, needed watch-cue lifecycle, and dependency/update order where relevant. Retain minimal source/acceptance provenance. Static lore needs no lifecycle bureaucracy.
+For each selected mutable system, store its id, accepted T0 status (definition-only/dormant/live), actual triggers/non-triggers, one later current-authority route, needed watch-cue lifecycle, and dependency/update order where relevant. Retain minimal source/acceptance provenance. A real session-boundary trigger identifies its selected engine/module procedure and resulting current owner; the generic session routine supplies no implicit tick, award or reset. POLICY can propose cadence defaults, but accepted runtime terms belong in the agreement. Static lore needs no lifecycle bureaucracy.
 
 Current answers use accepted unsaved changes, then the selected INSTANCE record. A specifically identified T0 snapshot may support unchanged continuity only when no later transition is established or due; do not initialize everything. When due, resolve the relevant process from its governing state before answering its consequences. Reading a definition or ending a session does not change a system unless that is its declared trigger.
 

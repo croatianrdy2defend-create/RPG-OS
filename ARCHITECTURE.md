@@ -1,4 +1,4 @@
-# RPG OS v0.9.4 architecture
+# RPG OS v0.9.5 architecture
 
 ## Operating environment
 
@@ -86,9 +86,15 @@ Fixed opening state belongs to its selected MODULE T0 authority. Current tempora
 
 New state in ordinary PLAY is conversational and best-effort until saved. Authorized persistence compiles the complete accepted present through existing recovery; it does not provide an invisible write on each NPC decision. An authorized setup can establish a small recorded private opening. A result unavailable after interruption is an explicit gap; recovery provenance is not an alternative live-state layer. The earlier automatic protected-establishment experiment is not implemented; the separately accepted whole-present announced-autosave policy introduced in v0.9.2 remains available below.
 
+## Session preparation and feedback
+
+ADMIN/SESSION.md connects relevant historical causes, current commitments and explicit feedback to useful conditional preparation at begin/resume, and consolidates them at an explicit ending. Genuine engine beginning/end hooks use their actual triggers and owners once per session/boundary/rule. Fresh chats, saves and handovers retain the logical session.
+
+CURRENT_SAVE's optional administrative Session continuity owns identity and pending wrap-up; missing legacy coverage stays unknown and a clean bind uses `none`. On-demand INSTANCE/PREP.md is derivative working synthesis, created only by useful authorized post-bind persistence. Current owners and actual evidence survive its absence. Explicit feedback and boundary adjudication may be preserved as labelled OOC session operational evidence; private preparation and other administrative chatter remain outside fictional history. Feedback is a required GM duty, with a player decline permitted, and its applicable treatment informs subsequent preparation.
+
 ## Saving
 
-SAVE/CLOSE/END SESSION performs one complete save. Current-save metadata carries the latest present identity separately from the latest archived evidence boundary. CHECKPOINT changes the former while retaining the latter.
+SAVE/bare CLOSE performs a complete save. An explicit END SESSION invokes ADMIN/SESSION.md for consolidation, feedback and genuinely due engine procedures, then that full save; immediate stopping can preserve unfinished closure. No second save type is added. Current-save metadata carries the latest present identity separately from the latest archived evidence boundary. CHECKPOINT changes the former while retaining the latter.
 
 The operator/model preserves preimages, records affected files and newly created directories with their prior existence, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Restoration removes only verified operation-created empty directories after file reconciliation, using exact nonrecursive removal. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
 

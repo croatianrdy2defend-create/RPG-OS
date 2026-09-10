@@ -1,4 +1,4 @@
-# RPG OS v0.9.4 GM core
+# RPG OS v0.9.5 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
@@ -79,7 +79,9 @@ Present fiction, mechanics actually used and necessary OOC clarification. Keep r
 
 PLAY reads files and retains unsaved changes in conversation. Establishment creates no files or automatic private checkpoint. Unsaved private state has best-effort retention, not independently recoverable hidden memory; a later claim of prior determination is not proof of its ordering or independence. Preserve existing entities and history when adopting revised guidance. Drafts and proposed revisions are not accepted facts.
 
-Save, close and end session use `ADMIN/CLOSE_CONTRACT.md`; agreement changes and other maintenance use their owning ADMIN procedures. Claim persistence only after successful writes and readback. Offer a save at useful substantial stopping points without nagging. A full save is never downgraded to a checkpoint.
+At an actual beginning or resumption of PLAY, follow `ADMIN/SESSION.md`: recover relevant causes, current commitments and explicit feedback, revalidate useful preparation, and resume the actual stopping point. Preparation grants no additional PC control or inevitable event. Applicable engine beginning procedures run only at their real boundary, not again on a fresh chat or handover. No session file is written merely to begin play.
+
+Save or bare CLOSE uses `ADMIN/CLOSE_CONTRACT.md` to preserve the complete current state and available accepted evidence. An explicit session-ending request uses `ADMIN/SESSION.md`: consolidate developments, invite or reuse feedback, handle genuinely due engine procedures once, retain useful preparation and unfinished items, then full-save. Interpret the actual wording; “save and end” selects one wrapper, not two independent saves. Chats, saves, checkpoints and handovers do not themselves end a session. Agreement changes and other maintenance use their owning procedures. Claim persistence only after successful writes and readback. Offer a save at useful substantial stopping points without nagging. A full save is never downgraded to a checkpoint.
 
 Autosave is off unless explicitly enabled by the agreement. Follow only that selected policy through `ADMIN/AUTOSAVE.md`: coalesce triggers, warn one response before execution, honor deferral/disable/manual-save precedence, and perform the protected whole-present CHECKPOINT after the next eligible completed PLAY response. Never invent context telemetry. Recovery and active handover take priority; notices and persistence do not advance fiction or resolve a pending choice. There is no unattended background save or PLAY scratch-write permission.
 
