@@ -6,7 +6,9 @@ Before drafting or expanding any selected domain, read and apply [NEW GAME’s N
 
 ## Choose the useful depth
 
-Offer a short relevant selection: world/ordinary life; places and exploration; people/institutions; hidden truth and mysteries; changing conditions; relationships; resources/logistics; rule calibration; or a custom domain. Work one selected area at a time. Quick, Guided, and Detailed can all stop with the runnable minimum.
+Start from [NEW GAME's setup overview](NEW_GAME.md#make-the-options-visible). Detailed setup shows that full overview before selecting areas, including narrative voice, dialogue language, pacing, guidance and rules visibility as well as worldbuilding. Reuse choices and explanations already given; a later switch from Quick or Guided to Detailed exposes the overview without restarting settled work.
+
+This guide develops the selected world and system areas: world/ordinary life; places and exploration; people/institutions; hidden truth and mysteries; changing conditions; relationships; resources/logistics; rule calibration; or a custom domain. Explain the useful choices and their effects within an area before asking the player to decide. Work one selected area at a time; delegated areas receive a reviewable proposal and optional areas can remain deferred. Quick, Guided, and Detailed can all stop with the runnable minimum. Return presentation and other agreement choices to NEW GAME rather than letting this world's detail stand in for a complete setup.
 
 World detail, dynamics, accounting precision, and mechanical complexity are independent. Detailed means depth inside a selection, not every domain, massive rosters, or a larger resident prompt. Keep one cohesive body until independent retrieval would benefit from a split.
 
