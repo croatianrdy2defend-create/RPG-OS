@@ -1,0 +1,24 @@
+# Python validation artifacts
+__pycache__/
+*.py[cod]
+
+# Operating-system and editor debris
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
+
+# Locally packaged releases and private campaign workspaces
+*.zip
+.work/
+.release/
+LOCAL_CAMPAIGNS/
+private-campaigns/
+HANDOVER/
+RECOVERY/
+output/
+TEST_RUN.md
+
+# Raw session captures are private local campaign evidence.
+EVIDENCE/captures/

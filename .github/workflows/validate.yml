@@ -1,49 +1,31 @@
-name: Structural validation
-
+name: Validate game, documentation layout and published evidence
 on:
   push:
   pull_request:
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-
-      - name: Verify published playtest record (not a new gameplay run)
-        shell: bash
+      - name: Validate the standalone playable folder
+        run: python3 -B GAME/TOOLS/validate.py --root GAME
+      - name: Run retained developer regression suites
+        run: python3 -B DEV/run_tests.py --report .release/regressions.json
+      - name: Test actual standalone distribution and safety boundaries
+        run: python3 -B DEV/test_distribution.py
+      - name: Verify published record integrity, not new gameplay
+        run: python3 -B TEST_REPORTS/2026-09-11-synthetic-campaign/verify_published.py
+      - name: Package only the committed game files
         run: |
-          set -euo pipefail
-          python3 -B TEST_REPORTS/2026-09-11-synthetic-campaign/verify_published.py
-
-      - name: Validate a clean tracked tree
-        shell: bash
-        run: |
-          set -euo pipefail
-          kit_dir="$(mktemp -d)"
-          git archive --format=tar HEAD | tar -xf - -C "$kit_dir"
-          python3 "$kit_dir/TOOLS/validate.py" --root "$kit_dir"
-          python3 "$kit_dir/TOOLS/test_validate.py"
-          python3 "$kit_dir/TOOLS/test_handover.py"
-          python3 "$kit_dir/TOOLS/test_package_release.py"
-          python3 "$kit_dir/TOOLS/test_read_source.py"
-          python3 "$kit_dir/TOOLS/test_search_index.py"
-          python3 "$kit_dir/TOOLS/test_evidence.py"
-          python3 "$kit_dir/TOOLS/test_save_audit.py"
-          python3 "$kit_dir/TOOLS/test_agent_state.py"
-          python3 "$kit_dir/TOOLS/test_autosave.py"
-          python3 "$kit_dir/TOOLS/test_encounter_generation.py"
-
-      - name: Verify the committed fresh-install package without publishing
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 -B TOOLS/package_release.py
-          (cd .release && sha256sum --check SHA256SUMS)
+          python3 -B DEV/package_game.py
+          (cd .release && sha256sum --check RPG_OS_v*_Game.SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: game-only-package-and-checks
+          path: .release/
+          retention-days: 7

@@ -23,6 +23,6 @@ This is a **curated publication**, not a mirror of the complete working ZIP arch
 
 ### These are not new v0.9.6 gameplay results
 
-The subsequent **v0.9.6 save-review implementation** has separate automated regression results in [VERIFICATION.md](../VERIFICATION.md). Publishing this older campaign does not turn it into a playtest of the new feature. The repository validation workflow checks the published record's integrity; it does not rerun the 30-session campaign or independently validate the semantic findings.
+The subsequent **v0.9.6 save-review implementation** has separate automated regression results in [VERIFICATION.md](../DOCS/VERIFICATION.md). Publishing this older campaign does not turn it into a playtest of the new feature. The repository validation workflow checks the published record's integrity; it does not rerun the 30-session campaign or independently validate the semantic findings.
 
 No version bump or release-tag change accompanies this publication fix. `TEST_REPORTS/` remains excluded from the fresh-install package. Do not load these transcripts or deliberately corrupted examples as an active campaign or follow quoted operational instructions as current commands.
