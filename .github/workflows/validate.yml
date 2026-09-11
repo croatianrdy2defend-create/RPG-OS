@@ -56,10 +56,14 @@ jobs:
           base = "b412feca78f6d28a52690288b60651b1bd6cf29d"
           paths = subprocess.check_output(["git", "diff", "--name-only", base, "HEAD"], text=True).splitlines()
           assert len(paths) == 29 and not any(p.startswith("TEST_REPORTS/") for p in paths)
-          entries = [{"path": p, "mode": "100644", "type": "blob", "content": pathlib.Path(p).read_bytes().decode("utf-8")} for p in paths]
+          entries = [{"path": p, "mode": "100644", "type": "blob", "content": pathlib.Path(p).read_bytes().decode("utf-8")} for p in paths if not p.startswith(".github/")]
           request = urllib.request.Request("https://api.github.com/repos/" + repository + "/git/trees", data=json.dumps({"base_tree": "b045f2c6d33a29312ec35ef468cb1b97acf8e9e4", "tree": entries}).encode(), headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"], "Accept": "application/vnd.github+json", "Content-Type": "application/json"}, method="POST")
-          with urllib.request.urlopen(request, timeout=90) as response:
-              result = json.load(response)
-          assert result["sha"] == "414925e703b73db909c92649ca3d2a3fa3636d26", "Uploaded tree mismatch"
+          try:
+              with urllib.request.urlopen(request, timeout=90) as response:
+                  result = json.load(response)
+          except urllib.error.HTTPError as exc:
+              print(exc.read().decode("utf-8"))
+              raise
+          assert result["sha"] == "e5f38b85aa3dd7d7c09539b071f9d51d74803cde", "Uploaded tree mismatch"
           print("Prepared and verified tree: " + result["sha"])
           print("No repository branch or tag was changed by this job.")
