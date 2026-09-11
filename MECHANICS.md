@@ -1,6 +1,6 @@
 # How RPG OS works
 
-RPG OS v0.9.5 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.9.6 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
@@ -335,7 +335,7 @@ For an entity with a wholly specified simple process, no private liking or rando
 
 A current individual baseline does not settle every later opportunity. Sending a message, fulfilling a promise or passing on a secret may remain open after an encounter. Use retained consequential facts, any still-required active basis, actual developments and applicable ENGINE procedures. If an eligible outcome lacks enough basis for grounded judgment, use the accepted fallback within scope. This does not replace the basis required before individual participation, resurrect expired trivia, or add a second roll for a settled reaction. The [fallback oracle](OS/AGENT_STATE.md#fallback-oracle-for-eligible-unknowns) is a standing method the player can select once; it needs no permission for each eligible later use.
 
-For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.5 alone does not alter a diceless agreement or replace another selected method.
+For example, say: “Use the simple d6 fallback as our standing method for eligible unresolved outcomes when grounded judgment is insufficient.” Include this selection in the accepted setup proposal, or use [Recalibrate](ADMIN/RECALIBRATE.md) to adopt it prospectively for an existing campaign. Installing v0.9.6 alone does not alter a diceless agreement or replace another selected method.
 
 Use the already accepted oracle, or the supplied convention: **one actual d6, 1–3 No and 4–6 Yes**. Set the question, eligible outcomes and time window before drawing. Even odds are a convenient game convention, not a measurement of real behavior. Preserve the result at that scope.
 
@@ -619,7 +619,7 @@ Compare the prior save, accepted session developments and resulting save togethe
 
 The reviewer also extracts obligations from the session before looking at a changed-file list. Otherwise a completely omitted “meet at noon” promise could leave both the person record and resume summary looking internally consistent. Retiring an active cue must not erase a continuing commitment from its durable owner.
 
-You can request one audit or agree a bounded audit after each full save. Needed prior records are preserved before the save replaces them; the saved result and matching evidence are then reviewed. Save success and audit coverage are separate. Missing source remains a gap, and ordinary CHECKPOINT behavior stays unchanged. [Evidence audit](ADMIN/EVIDENCE_AUDIT.md) supplies the complete workflow and tool examples.
+You can request one audit or select a standing save-review policy. Recommended `tiered` uses a lightweight completed-action/record check at checkpoints and bounded source-first review at full saves and session ends. Explicit `every-save` adds the expensive review to checkpoints. Preserve prior authorities before replacement; review a stable complete candidate when supported, otherwise disclose post-save review. State saved through, history archived through and review covered through remain separate. A missing transcript, incomplete review or internal source conflict is not a clean verdict. The same-model reviewer remains fallible; shared routing does not remove its blind spots. [Evidence audit](ADMIN/EVIDENCE_AUDIT.md) supplies the complete workflow and tool examples.
 
 These tools do not call a reviewing model automatically or repair canon on their own. A fresh reviewer can provide another perspective, but it is still fallible. Exact quotations can be irrelevant; source delivery can occur without adequate inspection. A reviewed baseline records what was actually checked and against which sources. Repetition, age and an index pointer do not upgrade it to proven truth.
 
@@ -645,6 +645,6 @@ The optional [validator](TOOLS/validate.py) checks its documented structural sco
 
 These checks cannot prove that prose is faithful, a player accepted a choice, a transcript is complete, or a scene is well portrayed. Model readback can assess meaning but remains fallible. Human playtests assess agency, pacing, consistency, and correction burden. [Verification](VERIFICATION.md) separates these kinds of evidence.
 
-For v0.9.5, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
+For v0.9.6, ordinary continuing campaigns are the primary next test of practical quality. Keep structural checks before delivery and use focused behavioral cases when a real failure needs diagnosis. No scripted trial schedule must be completed before the player can use this experimental release.
 
 Use the records to make continuity inspectable and repairable, and report actual verification limits. The protocol helps the GM remember and act consistently; successful play still depends on reading, judgment, and the player's accepted agreement.

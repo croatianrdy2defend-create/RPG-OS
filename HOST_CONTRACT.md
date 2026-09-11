@@ -141,3 +141,13 @@ For PLAY examples, retain actual ordered conversation and available factual esta
 **Then:** Deepen the NPC and save.
 
 **Assert:** Keep the old cause unresolved; invent neither prior dislike nor concealed affection to explain or contradict the interpretation. Legitimate new state is dated forward. Review source/method and sequence (**R**), without requesting private reasoning.
+
+## Save-review capability and cost
+
+The optional shared policy in ADMIN/CLOSE_CONTRACT.md distinguishes lightweight checkpoints from bounded source-first review. Recommended opt-in `tiered` preserves the cheap checkpoint path; explicit `every-save` adds source review there. Enabling either uses the existing accepted agreement, not automatic upgrade permission. No separate provider, server or background service is required or silently called.
+
+The host must expose actual accessible source to perform transcript-grounded review. A chat visible to the operator need not be accessible to the model. Use real exports/supplied files or exact host-delivered messages and their actual revisions; record unavailable spans, edited conflicts and absent private facts. Do not reconstruct a transcript from memory. Overlapping live chat/export is one source stream; stable identity and scope avoid double application, not text-only deduplication.
+
+A capable host may stage a complete immutable candidate outside live authorities, freeze prior/source evidence, obtain a source-first review and publish under existing recovery, then read back the exact reviewed files. A changing mixed tree is not such a candidate. Otherwise use the documented post-save audit and disclose ordering. Preserve valid progress under pressure with incomplete coverage; never fabricate review, retry indefinitely or block immediate stop. Real token/latency/pacing costs and reviewer quality require observed testing; a cheaper tier provides less assurance, not the same check for free.
+
+Keep exact state-saved, history-archived and review-covered boundaries separate. Lightweight/no-source checks cannot claim a transcript review. Neither raw capture integrity nor same-model source review proves canonical interpretation, source coherence, hidden-state completeness or session-100 reliability. Report source contradictions as unresolved evidence, not an automatic choice of the convenient timeline. Private captures/audit receipts follow actual access limits and are not published as public campaign files by this feature.

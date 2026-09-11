@@ -112,4 +112,4 @@ Bind finishes before any autosave cadence starts. Autosave later invokes the exi
 
 ## Optional save review preference
 
-If the player requests raw capture or an audit after each full save, use `ADMIN/EVIDENCE_AUDIT.md` to state the actual capture method, selected scope, reviewer and repair authority. Record the accepted preference in the existing appropriate agreement sections; do not add a required clause, extra standard setup question or universal export promise. Installing tools does not select this option. Preserve any already supplied acceptance and unrelated terms.
+If the player requests raw capture or save review (`tiered`: lightweight checkpoints/source-reviewed full saves; `every-save`: source review at checkpoints too), use `ADMIN/EVIDENCE_AUDIT.md` to state the actual capture method, selected scope, reviewer and repair authority. Record the accepted preference in the existing appropriate agreement sections; do not add a required clause, extra standard setup question or universal export promise. Installing tools does not select this option. Preserve any already supplied acceptance and unrelated terms.

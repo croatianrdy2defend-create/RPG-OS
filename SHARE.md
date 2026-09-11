@@ -1,4 +1,4 @@
-# Play and share useful findings — v0.9.5 experimental
+# Play and share useful findings — v0.9.6 experimental
 
 Start from [Quick start](QUICKSTART.md), or use [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md) in a separate copy. Play an actual campaign normally. There is no required scripted trial schedule before playing.
 

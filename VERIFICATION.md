@@ -1,5 +1,30 @@
 # RPG OS experimental verification
 
+## v0.9.6 tiered, source-bound save review — 2026-09-11
+
+Local Linux verification of the prepared public kit completed **318 tests: 314 passed, 4 platform/privilege skips, zero remaining failures** across ten sequential suites. Whole-tree structural validation passed with no findings and a stable tree. The unchanged core matched the supplied v0.9.5 archive and the live repository's core tree before editing; the previously published TEST_REPORTS folder is preserved on GitHub and deliberately excluded from fresh-install distribution.
+
+| Suite | Discovered | Passed | Skipped |
+|---|---:|---:|---:|
+| test_validate.py | 68 | 68 | 0 |
+| test_handover.py | 36 | 36 | 0 |
+| test_package_release.py | 24 | 24 | 0 |
+| test_read_source.py | 31 | 30 | 1 |
+| test_search_index.py | 33 | 31 | 2 |
+| test_evidence.py | 33 | 32 | 1 |
+| test_save_audit.py | 39 | 39 | 0 |
+| test_agent_state.py | 14 | 14 | 0 |
+| test_autosave.py | 34 | 34 | 0 |
+| test_encounter_generation.py | 6 | 6 | 0 |
+
+The 39 new save-review tests check tier selection, read-only selected diff, save identity/revision/parent and archive boundaries, exact capture stopping points, frozen write/removal scope, changed-candidate/readback rejection, pending/missing-source handling, explicit source-conflict declarations, duplicate text retention, safe paths and CLI compatibility. Their reports contain deliberately supplied synthetic judgments. They do not run an AI reviewer, discover a prose contradiction or measure semantic error detection. Two additional packaging tests verify repository-only report exclusion without allowing unrelated tracked campaign content into the kit.
+
+Two development regressions were caught and fixed before this final run: the generic report-template exit status was accidentally changed while adding pending save-review handling; a packaging error-message change broke an existing assertion. The original CLI behavior was restored and the diagnostic retained compatibility. No old failure was relabeled a pass or removed from the suite.
+
+The semantic acceptance cases in [ADMIN/TEST_SAVE_REVIEW.md](ADMIN/TEST_SAVE_REVIEW.md) are **NOT RUN** for v0.9.6. No blind reviewer trial, fresh-context campaign, human enjoyment study, measured model latency/token cost or 100-session trial was performed for this patch. Lightweight checkpoint checks offer less assurance than a source review; they are not equivalent validation at lower cost. Source-first methodology already existed, and uniform routing does not remove same-model review blind spots. Source coherence remains a separate human/model assessment.
+
+No Mermaid diagram was changed. Public engine/world rules, accepted campaign facts, empty live templates and original playtest report remain unchanged. Release CI reruns the checks and committed-blob packaging; its actual outcome belongs to the publication commit and is not inferred from these local results.
+
 ## v0.9.5 session preparation, closure and feedback — 2026-09-10
 
 Local Windows verification of the assembled public source discovered **277 tests: 269 passed, 8 platform skips, zero remaining failures** across the nine release suites. The final structural suite includes the session control, derivative preparation and compatibility checks; packaging and handover cover the new surfaces through their existing mechanisms.

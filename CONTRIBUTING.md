@@ -1,4 +1,4 @@
-# Contributing to RPG OS v0.9.5
+# Contributing to RPG OS v0.9.6
 
 Useful contributions show a specific failure, its owning instruction or record, and a reproducible improvement. For a four-stage failure, identify the missing source, establishment or resolution dependency before proposing another outcome-specific rule. Keep public examples synthetic or sanitized.
 
@@ -28,6 +28,7 @@ python TOOLS/test_package_release.py
 python TOOLS/test_read_source.py
 python TOOLS/test_search_index.py
 python TOOLS/test_evidence.py
+python TOOLS/test_save_audit.py
 python TOOLS/test_agent_state.py
 python TOOLS/test_autosave.py
 python TOOLS/test_encounter_generation.py
@@ -49,7 +50,7 @@ Maintainer packaging requires a Git checkout and Python 3.10 or newer. It is opt
 4. Inspect `.release/RPG_OS_v<version>.zip` and `.release/SHA256SUMS`. Untracked files are excluded. `--output-dir` selects another destination; existing output is refused unless `--overwrite` is explicitly supplied.
 5. Push the reviewed version change to `main`. The release workflow reruns checks and publishes the tag, ZIP, and checksum using the matching version notes. Manual dispatch also requires `main`.
 
-Treat published version tags and assets as immutable. An existing complete release for the same commit is left unchanged; conflicting or incomplete releases fail for inspection. A different release commit needs a new version and corresponding notes. The workflow does not publish a live campaign or infer release permission from ordinary campaign work.
+Treat published version tags and assets as immutable. An existing complete release for the same commit is left unchanged; conflicting or incomplete releases fail for inspection. A different release commit needs a new version and corresponding notes. The workflow does not publish a live campaign or infer release permission from ordinary campaign work. Repository-only TEST_REPORTS stays on GitHub and is excluded from the fresh-install ZIP; every selected kit file still matches its committed blob, and other unexpected tracked campaign content is rejected.
 
 The explicitly authorized v0.9.0 numbering correction is a single recorded exception: after verifying the corrected release's commit and published assets, its workflow retires only the mistaken v9.0.0 release/tag at commit `3d6ad58c920691929295fdc19ba185029a38dbbe`. It preserves commit history and refuses any changed target. This exception grants no general permission to replace other releases.
 

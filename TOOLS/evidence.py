@@ -357,7 +357,7 @@ def document(root, relative, expected_sha256=None):
 
 
 def prepare_audit(prior, current, capture, output, selected=(), prior_selected=(), current_selected=(),
-                  prior_manifest=None, current_manifest=None):
+                  prior_manifest=None, current_manifest=None, save_boundary=None):
     selections = {}
     protected = []
     for side, root_value, manifest_file, local in (
@@ -407,6 +407,9 @@ def prepare_audit(prior, current, capture, output, selected=(), prior_selected=(
                             "source_sha256": captured["source_sha256"], "status": captured["status"]},
                 "files": {relative: sha(data) for relative, data in sorted(files.items())},
                 "coverage": "scoped", "semantic_review": "not_performed"}
+    if save_boundary is not None:
+        manifest["save_binding"] = make_save_binding(save_boundary, sources, files, captured,
+                                                    selections["prior"][0], selections["current"][0])
     files["bundle.json"] = json_bytes(manifest)
     destination = write_package(output, files, protected)
     return check_bundle(destination)
@@ -462,6 +465,8 @@ def check_bundle(bundle):
     require(manifest.get("selection_difference") == {
         "prior_only": sorted(prior_paths - current_paths), "current_only": sorted(current_paths - prior_paths),
         "meaning": "Selection differences do not establish file creation or deletion."}, "selection difference coverage mismatch")
+    if "save_binding" in manifest:
+        validate_save_binding(manifest["save_binding"], manifest, root, capture)
     return {"status": "frozen_inputs_verified", "bundle": str(root), "bundle_id": manifest["bundle_id"],
             "bundle_sha256": sha(raw), "manifest": manifest, "source_count": len(sources),
             "source_coverage": "scoped", "semantic_review": "not_performed"}
@@ -486,7 +491,7 @@ def report_template(bundle):
     limitations.extend(f"Caller-declared gap: {gap}" for gap in captured["declared_gaps"])
     if captured["status"] == "pending":
         limitations.append("Capture is pending; no conversation source bytes are available.")
-    return {"schema": REPORT_SCHEMA, "report_id": str(uuid.uuid4()), "review_status": "pending",
+    result = {"schema": REPORT_SCHEMA, "report_id": str(uuid.uuid4()), "review_status": "pending",
             "reviewer": {"kind": "unspecified", "identifier": "", "independence": "unknown"},
             "bundle_id": frozen["bundle_id"], "bundle_sha256": frozen["bundle_sha256"],
             "capture": frozen["manifest"]["capture"],
@@ -499,6 +504,12 @@ def report_template(bundle):
             "evidence_boundaries": {"conversation_completeness": "caller_claim_only",
                                     "source_scope": "selected_paths_only",
                                     "semantic_truth": "not_established_by_checker"}}
+    if "save_binding" in frozen["manifest"]:
+        result["save_review"] = {
+            "binding_sha256": sha(json_bytes(frozen["manifest"]["save_binding"])),
+            "review_covered_through": None,
+            "source_coherence": {"status": "not_assessed", "summary": "", "citations": []}}
+    return result
 
 
 def ref_key(value):
@@ -549,6 +560,9 @@ def check_report(bundle, report_file, delivery_receipt=None):
             lines = docs[key]["lines"]
             require(type(start) is int and type(end) is int and 1 <= start <= end <= len(lines),
                     f"invalid original line range in {label}")
+            binding = frozen["manifest"].get("save_binding")
+            if key[0] == "capture" and binding and binding["state_saved_through"]["basis"] == "capture_lines":
+                require(end <= binding["state_saved_through"]["end_line"], "citation uses play after selected save boundary")
             require(isinstance(citation.get("quote"), str)
                     and citation["quote"] == "".join(lines[start - 1:end]), f"quote does not match original lines in {label}")
             keys.add(key)
@@ -670,6 +684,34 @@ def check_report(bundle, report_file, delivery_receipt=None):
         require(consistency["status"] == "not_reviewed" and repair["status"] != "eligible", "pending report cannot declare review/repair success")
     if repair["status"] == "eligible":
         require(report["review_status"] == "completed" and bool(reviewed), "unreviewed evidence cannot authorize repair")
+    if "save_binding" in frozen["manifest"]:
+        review = report.get("save_review")
+        binding = frozen["manifest"]["save_binding"]
+        require(isinstance(review, dict) and set(review) == {
+            "binding_sha256", "review_covered_through", "source_coherence"}, "missing save review declaration")
+        require(review["binding_sha256"] == sha(json_bytes(binding)), "stale save binding reference")
+        covered = review["review_covered_through"]
+        require(covered is None or covered == binding["state_saved_through"], "review boundary differs from selected stop")
+        if covered is not None:
+            require(report["review_status"] == "completed" and binding["state_saved_through"]["basis"] == "capture_lines",
+                    "pending review or unavailable capture cannot claim reviewed-through coverage")
+            require(coverage["status"] == "scoped", "reviewed-through requires all selected sources declared reviewed")
+        if consistency["status"] == "consistent":
+            require(covered is not None, "consistent save needs explicit reviewed-through scope")
+        coherence = review["source_coherence"]
+        require(isinstance(coherence, dict) and set(coherence) == {"status", "summary", "citations"}
+                and coherence["status"] in ("not_assessed", "no_conflict_observed", "conflict_observed", "undetermined")
+                and isinstance(coherence["summary"], str), "invalid source coherence declaration")
+        if report["review_status"] == "pending":
+            require(coherence["status"] == "not_assessed", "pending review cannot assess source coherence")
+        if coherence["status"] != "not_assessed":
+            require(bool(coherence["summary"].strip()), "source coherence assessment needs explanation")
+        citations(coherence["citations"], "source coherence", required=coherence["status"] == "conflict_observed")
+        # Matching a contradictory source is not a clean review, even if copying was exact.
+        require(coherence["status"] != "conflict_observed" or consistency["status"] != "consistent",
+                "source conflict must remain unresolved, not a consistent-save badge")
+    elif "save_review" in report:
+        raise EvidenceError("save review declaration requires a save-bound bundle")
     return {"status": "report_structure_verified" if report["review_status"] == "completed" else "pending_review",
             "report_sha256": sha(report_bytes), "bundle_id": frozen["bundle_id"], "bundle_sha256": frozen["bundle_sha256"],
             "capture_manifest_sha256": frozen["manifest"]["capture"]["manifest_sha256"],
@@ -684,6 +726,227 @@ def check_report(bundle, report_file, delivery_receipt=None):
             "delivery_receipt_sha256": receipt_hash, "reviewer_identity_and_independence": "unverified_declarations",
             "semantic_review": "not_performed", "repair_authorized": False,
             "limitation": "Hash, quote and schema checks establish byte/reference consistency, not semantic truth, actual reading, independent review, or permission to repair."}
+
+
+# Save-review support is optional. It certifies selected bytes and references, never
+# source meaning, consent, chronology, or completeness of the caller's write set.
+SAVE_BOUNDARY_SCHEMA = "rpg-save-review-boundary-v1"
+SAVE_BINDING_SCHEMA = "rpg-save-review-binding-v1"
+SAVE_PATH = "INSTANCE/CURRENT_SAVE.md"
+SAVE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z")
+
+
+def save_review_plan(policy="off", kind="checkpoint", source_review=False):
+    """Pure planning over an already accepted policy; cannot grant permission."""
+    require(policy in ("off", "tiered", "every-save"), "unknown save review policy")
+    require(kind in ("checkpoint", "close"), "unknown save kind")
+    require(type(source_review) is bool, "source_review must be boolean")
+    level = "source" if source_review or policy == "every-save" or (policy == "tiered" and kind == "close") else "lightweight"
+    return {"status": "planned", "policy": policy, "save_kind": kind, "review_level": level,
+            "capture_required_for_source_review": level == "source", "semantic_review": "not_performed",
+            "repair_authorized": False, "policy_acceptance": "caller_responsibility",
+            "limitation": "Lightweight is not transcript-grounded semantic review. A source reviewer remains fallible."}
+
+
+def _save_fields(data):
+    """Read the existing Field/Value table without treating unrelated prose as metadata."""
+    text = data.decode("utf-8")
+    lines = text.splitlines()
+    starts = [i for i, line in enumerate(lines) if re.fullmatch(r"\|\s*Field\s*\|\s*Value\s*\|", line.strip())]
+    require(len(starts) == 1, "save needs exactly one Field/Value table")
+    fields = {}
+    for line in lines[starts[0] + 1:]:
+        if not line.strip().startswith("|"):
+            break
+        cells = [v.strip() for v in line.strip().strip("|").split("|")]
+        require(len(cells) == 2, "malformed save metadata row")
+        if all(re.fullmatch(r":?-+:?", cell) for cell in cells):
+            continue
+        key, value = cells
+        require(key not in fields and value, "duplicate or blank save metadata")
+        fields[key] = value
+    names = ("campaign_id", "save_id", "save_rev", "save_parent", "commit_kind", "archive_ref", "evidence_through")
+    require(all(name in fields for name in names), "missing save identity/evidence metadata")
+    require(all(SAVE_ID.fullmatch(fields[key]) for key in ("campaign_id", "save_id", "save_parent", "evidence_through")),
+            "unsafe save identity")
+    require(fields["campaign_id"] != "none" and fields["save_id"] != "none", "save audit requires a bound campaign")
+    require(re.fullmatch(r"[0-9]+", fields["save_rev"]) is not None, "invalid save revision")
+    require(fields["commit_kind"] in ("bind", "checkpoint", "close"), "invalid bound save kind")
+    require((fields["archive_ref"] == "none") == (fields["evidence_through"] == "none"), "incomplete archive boundary")
+    if fields["archive_ref"] != "none":
+        route(fields["archive_ref"])
+    result = {key: fields[key] for key in names}
+    result["save_rev"] = int(result["save_rev"])
+    return result
+
+
+def _save_transition(prior, current):
+    require(prior["campaign_id"] == current["campaign_id"], "save campaign mismatch")
+    require(current["save_parent"] == prior["save_id"] and current["save_id"] != prior["save_id"]
+            and current["save_rev"] == prior["save_rev"] + 1, "save parent/id/revision mismatch")
+    require(current["commit_kind"] in ("checkpoint", "close"), "review supports checkpoint or close, not a new bind")
+    if current["commit_kind"] == "checkpoint":
+        require(all(prior[key] == current[key] for key in ("archive_ref", "evidence_through")),
+                "checkpoint changed archived evidence boundary")
+    else:
+        require(current["evidence_through"] == current["save_id"] and current["archive_ref"] != "none"
+                and current["archive_ref"] != prior["archive_ref"], "full save needs its own new archive boundary")
+
+
+def _optional_bytes(root, relative):
+    """Absence is allowed; unsafe/symlinked ancestors are not mistaken for absence."""
+    path = root
+    for part in route(relative).parts:
+        require(path.is_dir(), "source ancestor must be a directory")
+        path /= part
+        if not os.path.lexists(path):
+            return None
+        inspect(path)
+    return read_bytes(path)
+
+
+def _path_list(value, label):
+    strings(value, label)
+    require(len({path.casefold() for path in value}) == len(value), f"duplicate/case-colliding {label}")
+    for path in value:
+        require(route(path).suffix.lower() == ".md", f"{label} must name Markdown files")
+    return value
+
+
+def save_diff(prior, current, selected=()):
+    """No capture, model call or file writes. Selected files only, not a full validator."""
+    before = checked_absolute(prior, directory=True)
+    after = checked_absolute(current, directory=True)
+    paths = sorted(set([SAVE_PATH, *selected]))
+    _path_list(paths, "selected paths")
+    old = _save_fields(read_bytes(rooted(before, SAVE_PATH)))
+    new = _save_fields(read_bytes(rooted(after, SAVE_PATH)))
+    _save_transition(old, new)
+    changes = []
+    for path in paths:
+        a, b = _optional_bytes(before, path), _optional_bytes(after, path)
+        require(a is not None or b is not None, f"selected path absent on both sides: {path}")
+        changes.append({"path": path, "prior_sha256": sha(a) if a is not None else None,
+                        "current_sha256": sha(b) if b is not None else None,
+                        "change": "unchanged" if a == b else "added" if a is None else "removed" if b is None else "changed"})
+    return {"status": "selected_diff_verified", "prior_save": old, "current_save": new, "files": changes,
+            "history_archived_through": new["evidence_through"], "state_saved_through": "not_observed",
+            "review_covered_through": None, "review_level": "lightweight", "semantic_review": "not_performed",
+            "repair_authorized": False, "limitation": "Selected hashes and save identity only; no action-completion, source-meaning or omission guarantee."}
+
+
+def _validate_stop(stop, captured):
+    require(isinstance(stop, dict), "state_saved_through must be an object")
+    if stop.get("basis") == "unavailable":
+        require(set(stop) == {"basis", "description"} and isinstance(stop["description"], str)
+                and bool(stop["description"].strip()), "unavailable stop needs an honest source limitation")
+        return
+    require(set(stop) == {"basis", "capture_sha256", "start_line", "end_line", "description"}
+            and stop["basis"] == "capture_lines", "invalid state stopping-point schema")
+    require(captured["status"] == "captured" and stop["capture_sha256"] == captured["source_sha256"],
+            "state boundary has missing or different capture")
+    first, last = stop["start_line"], stop["end_line"]
+    require(type(first) is int and type(last) is int and 1 <= first <= last <= captured["manifest"]["byte_coverage"]["source_line_count"],
+            "state boundary lines are outside capture")
+    require(isinstance(stop["description"], str) and bool(stop["description"].strip()), "state boundary needs scope description")
+
+
+def make_save_binding(request, sources, files, captured, prior_root, current_root):
+    require(isinstance(request, dict) and set(request) == {
+        "schema", "state_saved_through", "write_paths", "removed_paths", "limitations"}
+        and request["schema"] == SAVE_BOUNDARY_SCHEMA, "invalid save boundary request")
+    _validate_stop(request["state_saved_through"], captured)
+    strings(request["limitations"], "boundary limitations")
+    writes = _path_list(request["write_paths"], "write_paths")
+    removed = _path_list(request["removed_paths"], "removed_paths")
+    require(SAVE_PATH in writes and not set(writes) & set(removed), "write set must include current save and exclude removals")
+    indexed = {(s["side"], s["path"]): s for s in sources}
+    require(all((side, SAVE_PATH) in indexed for side in ("prior", "current")), "select prior and current CURRENT_SAVE")
+    old = _save_fields(files[indexed[("prior", SAVE_PATH)]["snapshot"]])
+    new = _save_fields(files[indexed[("current", SAVE_PATH)]["snapshot"]])
+    _save_transition(old, new)
+    require(all(("current", path) in indexed for path in writes), "write path is outside frozen current selection")
+    for path in removed:
+        require(("prior", path) in indexed and ("current", path) not in indexed, "removal needs prior-only selected source")
+        require(_optional_bytes(current_root, path) is None, "declared removed path still exists in proposed save")
+    # Never equate every prior-only selection with a deletion. Explicit removals only.
+    for source in sources:
+        if source["side"] != "current":
+            continue
+        previous = indexed.get(("prior", source["path"]))
+        if previous and source["sha256"] != previous["sha256"]:
+            require(source["path"] in writes, "changed selected record omitted from write_paths")
+    return {"schema": SAVE_BINDING_SCHEMA, "prior_save": old, "current_save": new,
+            "state_saved_through": request["state_saved_through"],
+            "history_archived_through": {"evidence_through": new["evidence_through"], "archive_ref": new["archive_ref"]},
+            "write_paths": writes, "removed_paths": removed, "limitations": request["limitations"],
+            "scope": "selected_paths_only", "boundary_and_write_scope": "caller_declared_not_semantically_verified"}
+
+
+def validate_save_binding(binding, manifest, root, captured):
+    require(isinstance(binding, dict) and set(binding) == {
+        "schema", "prior_save", "current_save", "state_saved_through", "history_archived_through", "write_paths",
+        "removed_paths", "limitations", "scope", "boundary_and_write_scope"}, "invalid save binding fields")
+    require(binding["schema"] == SAVE_BINDING_SCHEMA and binding["scope"] == "selected_paths_only"
+            and binding["boundary_and_write_scope"] == "caller_declared_not_semantically_verified", "invalid save binding scope")
+    _validate_stop(binding["state_saved_through"], captured)
+    strings(binding["limitations"], "binding limitations")
+    indexed = {(s["side"], s["path"]): s for s in manifest["sources"]}
+    for side in ("prior", "current"):
+        require((side, SAVE_PATH) in indexed, "binding missing selected save identity")
+        actual = _save_fields(read_bytes(rooted(root, indexed[(side, SAVE_PATH)]["snapshot"])))
+        require(binding[side + "_save"] == actual, "binding does not match frozen save identity")
+    _save_transition(binding["prior_save"], binding["current_save"])
+    new = binding["current_save"]
+    require(binding["history_archived_through"] == {"evidence_through": new["evidence_through"], "archive_ref": new["archive_ref"]},
+            "binding archive boundary mismatch")
+    writes = _path_list(binding["write_paths"], "write_paths")
+    removed = _path_list(binding["removed_paths"], "removed_paths")
+    require(SAVE_PATH in writes and not set(writes) & set(removed), "invalid bound write/removal set")
+    require(all(("current", path) in indexed for path in writes), "unselected bound write")
+    require(all(("prior", path) in indexed and ("current", path) not in indexed for path in removed), "invalid bound removal")
+    for (side, path), source in indexed.items():
+        previous = indexed.get(("prior", path))
+        if side == "current" and previous and previous["sha256"] != source["sha256"]:
+            require(path in writes, "changed selected record absent from bound write set")
+
+
+def prepare_save_audit(prior, current, capture, output, boundary_file, selected=(), prior_selected=(), current_selected=()):
+    boundary_path = checked_absolute(boundary_file)
+    request_bytes = read_bytes(boundary_path)
+    output_path(output, [boundary_path])
+    request = parse_json(request_bytes, boundary_path)
+    common = list(dict.fromkeys([SAVE_PATH, *selected]))
+    return prepare_audit(prior, current, capture, output, common, prior_selected, current_selected, save_boundary=request)
+
+
+def check_save_audit(bundle, report_file, saved, delivery_receipt=None):
+    """Read-only final comparison. Success is byte matching, not semantic approval."""
+    frozen = check_bundle(bundle)
+    require("save_binding" in frozen["manifest"], "bundle is not save-bound")
+    checked = check_report(bundle, report_file, delivery_receipt)
+    report = read_json(report_file)
+    require(sha(read_bytes(report_file)) == checked["report_sha256"], "report changed after reference check")
+    binding = frozen["manifest"]["save_binding"]
+    root = checked_absolute(saved, directory=True)
+    matched = []
+    for source in frozen["manifest"]["sources"]:
+        if source["side"] == "current":
+            require(sha(read_bytes(rooted(root, source["path"]))) == source["sha256"],
+                    f"saved file differs from reviewed version: {source['path']}")
+            matched.append(source["path"])
+    for path in binding["removed_paths"]:
+        require(_optional_bytes(root, path) is None, f"reviewed removal not applied: {path}")
+    return {"status": "selected_saved_bytes_verified", "save_id": binding["current_save"]["save_id"],
+            "matched_paths": matched, "removed_paths_verified": binding["removed_paths"],
+            "state_saved_through": binding["state_saved_through"], "history_archived_through": binding["history_archived_through"],
+            "review_covered_through": report["save_review"]["review_covered_through"],
+            "review_status": report["review_status"], "record_consistency": report["record_consistency"]["status"],
+            "source_coverage": report["source_coverage"], "source_coherence": report["save_review"]["source_coherence"],
+            "limitations": binding["limitations"] + checked["capture_coverage"]["declared_gaps"],
+            "report_sha256": checked["report_sha256"], "bundle_sha256": frozen["bundle_sha256"],
+            "semantic_review": "not_performed_by_tool", "repair_authorized": False,
+            "limitation": "Selected byte identity only. This does not publish a save, prove atomicity, authenticate a reviewer or establish semantic truth."}
 
 
 def parser():
@@ -715,6 +978,28 @@ def parser():
     report.add_argument("--bundle", required=True)
     report.add_argument("--report", required=True)
     report.add_argument("--delivery-receipt", help="Optional read_source.py JSONL receipts for bundle sources, or rpg-source-delivery-receipt-v1 JSON: bundle_id, bundle_sha256, passages (original-line citations)")
+    plan = commands.add_parser("save-review-plan", help="Choose a declared review tier; no source or campaign access")
+    plan.add_argument("--policy", choices=("off", "tiered", "every-save"), default="off")
+    plan.add_argument("--kind", choices=("checkpoint", "close"), required=True)
+    plan.add_argument("--source-review", action="store_true", help="Explicit one-off source review")
+    diff = commands.add_parser("save-diff", help="Read-only selected-state diff and save identity checks; no semantic verdict")
+    diff.add_argument("--prior", required=True)
+    diff.add_argument("--current", required=True)
+    diff.add_argument("--select", action="append", default=[])
+    bound = commands.add_parser("prepare-save-audit", help="Freeze a source-review bundle tied to an exact proposed save")
+    bound.add_argument("--prior", required=True)
+    bound.add_argument("--current", required=True)
+    bound.add_argument("--capture", required=True)
+    bound.add_argument("--output", required=True)
+    bound.add_argument("--boundary", required=True, help="rpg-save-review-boundary-v1 JSON; see ADMIN/EVIDENCE_AUDIT.md")
+    bound.add_argument("--select", action="append", default=[])
+    bound.add_argument("--prior-select", action="append", default=[])
+    bound.add_argument("--current-select", action="append", default=[])
+    finish = commands.add_parser("check-save-audit", help="Check review references and exact selected saved bytes; no campaign writes")
+    finish.add_argument("--bundle", required=True)
+    finish.add_argument("--report", required=True)
+    finish.add_argument("--saved", required=True, help="Actual published or stable proposed save root to read back")
+    finish.add_argument("--delivery-receipt")
     return result
 
 
@@ -733,10 +1018,19 @@ def main(argv=None):
                                   args.prior_select, args.current_select, args.prior_manifest, args.current_manifest)
         elif args.command == "report-template":
             value = report_template(args.bundle)
+        elif args.command == "save-review-plan":
+            value = save_review_plan(args.policy, args.kind, args.source_review)
+        elif args.command == "save-diff":
+            value = save_diff(args.prior, args.current, args.select)
+        elif args.command == "prepare-save-audit":
+            value = prepare_save_audit(args.prior, args.current, args.capture, args.output,
+                                       args.boundary, args.select, args.prior_select, args.current_select)
+        elif args.command == "check-save-audit":
+            value = check_save_audit(args.bundle, args.report, args.saved, args.delivery_receipt)
         else:
             value = check_report(args.bundle, args.report, args.delivery_receipt)
         print(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False))
-        return 2 if value.get("status") == "pending_review" else 0
+        return 2 if value.get("status") == "pending_review" or (args.command == "check-save-audit" and value.get("review_status") == "pending") else 0
     except (EvidenceError, OSError, ValueError, TypeError, KeyError) as exc:
         print(json.dumps({"status": "invalid", "error": str(exc), "semantic_review": "not_performed"}, ensure_ascii=False))
         return 1

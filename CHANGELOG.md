@@ -2,6 +2,17 @@
 
 All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
 
+## v0.9.6 — tiered, source-bound save review (2026-09-11)
+
+- Unified saving routes under the existing procedure while keeping cheap checkpoints: recommended opt-in `tiered` uses bounded source review at full saves; explicit `every-save` includes checkpoints.
+- Separated state-saved, history-archived and review-covered boundaries; added optional administrative provenance without new required save metadata or a second world-state store.
+- Added selected diff/save-binding/readback commands to the existing evidence helper, including changed-candidate rejection, explicit removal checks and honest missing-source handling.
+- Amended autosave's capture prohibition explicitly for authorized source review; ordinary lightweight autosave still creates no raw transcript or archive evidence.
+- Kept source-first judgment, correction authority and source-coherence limits explicit. Same-model blind spots, live cost and semantic detection reliability remain unproven.
+- Added deterministic regression coverage and NOT RUN independent behavioral cases. Kept repository-only public test reports outside fresh-install packaging without removing them from GitHub.
+
+See [release notes](V0.9.6_CHANGES.md) and [verification](VERIFICATION.md).
+
 ## v0.9.5 — session preparation, closure and feedback (2026-09-10)
 
 - Added one session procedure for relevant causal preparation at begin/resume and consolidation, mandatory GM feedback handling, actual engine procedures and full persistence at an explicit ending. Players may decline feedback or stop immediately with unfinished items preserved.

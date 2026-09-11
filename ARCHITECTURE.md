@@ -1,4 +1,4 @@
-# RPG OS v0.9.5 architecture
+# RPG OS v0.9.6 architecture
 
 ## Operating environment
 
@@ -133,5 +133,7 @@ The startup packet is not a revision-bound compiled capsule. Save/contract linea
 The exact reader returns current UTF-8 source passages with original line boundaries, file identity and explicit completeness. The scoped SQLite FTS5 cache holds retrieval candidates only. Requested-scope source-set and hash checks prevent quietly using an old cache as current authority; verified fetching reopens the actual file. Missing FTS5 or an unusable cache leaves ordinary file retrieval available. Neither indexing nor reading changes campaign state.
 
 `EVIDENCE/` holds optional original exports and capture manifests, distinct from accepted ARCHIVE evidence. A cold audit freezes explicitly selected prior and resulting records outside its input roots and compares them with captured session source. A model or human extracts changes, identifies applicable authority and checks meaning. Code checks integrity, report structure and exact quotations; it does not perform semantic adjudication. Selection limits and unresolved authority remain explicit even when compared values agree.
+
+The shared CLOSE_CONTRACT route supports an explicitly selected tiered review policy: lightweight checkpoints and bounded source review at full saves, with every-save source review as the higher-cost opt-in. Keep the exact state stopping point, existing archived-evidence boundary and actual reviewed scope separate. Frozen save-bound evidence and readback checks are operational provenance, not a second current authority. Source-first interpretation already existed and remains fallible; neither repeated self-review nor structural matching proves source coherence. No new universal campaign facts, engine mechanics or hidden memory service are introduced.
 
 An optional standing agreement can select bounded review after a full save. Prior evidence must be preserved before its authorities are replaced. Review reports cannot silently repair current state; authorized repairs follow CORRECT and RECOVERY. Reviewed baselines are fallible, versioned review records with actual inspection depth, not truth earned through repetition. Normal boot, CHECKPOINT and ownership of current state remain unchanged.

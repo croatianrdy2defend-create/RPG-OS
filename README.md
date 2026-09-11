@@ -103,11 +103,11 @@ The player chooses Neri's conduct and inner experience. The GM supplies the keep
 
 Continue this scene through a [save and fresh-chat resume](QUICKSTART.md#play-save-and-resume), or follow the [full worked examples in How RPG OS works](MECHANICS.md) to see what supports the dialogue and survives behind it.
 
-**RPG OS v0.9.5 — experimental playtest release**
+**RPG OS v0.9.6 — experimental playtest release**
 
 RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown files as its memory. You play in chat; the GM retrieves references, follows your accepted campaign agreement, and saves the campaign into the workspace.
 
-**New in v0.9.5:** [session preparation and feedback](ADMIN/SESSION.md) connect relevant campaign history to each continuation. An explicit ending consolidates developments, invites/reuses feedback, applies genuinely due engine procedures once and full-saves. Optional preparation notes remain derivative; the existing save preserves session identity and unfinished wrap-up. NEW GAME, LOAD and QUICKSTART include the routine without extra mandatory setup questions. Save and fresh-chat resumption do not independently end a session. See [v0.9.5 release notes](V0.9.5_CHANGES.md) and [the mechanics guide](MECHANICS.md#beginning-ending-and-preparing-the-next-session).
+**New in v0.9.6:** optional tiered save review connects all saving routes without making checkpoints heavyweight. Full saves can use the existing source-first audit; checkpoints stay lightweight under the recommended opt-in policy, with explicit every-save source review available. Separate saved, archived and reviewed boundaries plus exact-file readback expose scope and stale approvals. This is stronger save plumbing, not an infallible model reviewer. See [v0.9.6 release notes](V0.9.6_CHANGES.md) and [the shared saving procedure](ADMIN/CLOSE_CONTRACT.md).
 
 **Retained from v0.9.4:** an optional [shared encounter generator](ENGINE/_shared/ENCOUNTER_GENERATION.md), selected by a compatible engine and the accepted agreement, gives eligible condition, interpersonal appraisal and overall attraction independent 2d6 direction/intensity bands. The GM fills each concrete current value after its band and before behavior. Priorities and constraints come from the entity's own aims and circumstances; perception stays factual, nonsocial responses follow their sources, and engagement is derived from the completed basis. Freeform remains the only bundled selectable engine. Installing the helper changes no agreement or dice policy. See [release notes](V0.9.4_CHANGES.md) and [how generation works](MECHANICS.md#optional-encounter-generation-direction-then-concrete-state).
 
@@ -129,7 +129,7 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 </td></tr>
 </table>
 
-[Get v0.9.5](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.5) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.5_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.9.6](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.6) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.6_CHANGES.md) · [Verification](VERIFICATION.md)
 
 **v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. Later releases preserve those tools and refine independent-agent establishment and persistence. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
 
@@ -167,7 +167,7 @@ The GM records that accepted permission through normal setup or recalibration. W
 
 After the next completed play response, the GM briefly enters the existing protected CHECKPOINT procedure and reports the result. No fictional time passes, no unanswered PC choice is resolved, and no new archive evidence is created. Recovery or active handover blocks execution. Delay, resume, disable and manual save are ordinary requests; full SAVE always remains a full save. Nothing runs while the chat is idle.
 
-**Save first, switch second.** Do not change model/reasoning strength before the outgoing context saves. A checkpoint protects current state only: use full CLOSE or the actual scene handover before discarding dialogue/source access, and have the next GM reload the authoritative files. Neither readback nor a context percentage guarantees hidden-memory completeness or host switching behavior. The [autosave procedure](ADMIN/AUTOSAVE.md) and [behavioral cases](ADMIN/TEST_AUTOSAVE.md) state the limits. Installing v0.9.5 does not enable autosave in a separately stored campaign.
+**Save first, switch second.** Do not change model/reasoning strength before the outgoing context saves. A checkpoint protects current state only: use full CLOSE or the actual scene handover before discarding dialogue/source access, and have the next GM reload the authoritative files. Neither readback nor a context percentage guarantees hidden-memory completeness or host switching behavior. The [autosave procedure](ADMIN/AUTOSAVE.md) and [behavioral cases](ADMIN/TEST_AUTOSAVE.md) state the limits. Installing v0.9.6 does not enable autosave in a separately stored campaign.
 
 ## Independent agent state
 
@@ -257,3 +257,9 @@ Ask: “Preserve this actual session export and audit the save against it and th
 You can adopt that bounded review after each full save through the existing agreement. It is optional; unavailable exports or reviewers produce an explicit incomplete audit. No tool can promise a complete chat export on every host. Raw captures and private findings stay in your campaign or selected audit location; the public kit contains only empty guidance. [Source access](ADMIN/SOURCE_ACCESS.md) explains optional exact reads and the rebuildable search cache.
 
 The v0.9.0 source-access and audit design also draws lessons from [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine/tree/0ab149e8699440acf2715a16df4604ea268e2315). The tools and procedures here are independently implemented for RPG OS's existing file authorities.
+
+## Save review without making every checkpoint heavyweight
+
+v0.9.6 offers an optional shared save-review policy. Recommended `tiered` keeps checkpoints lightweight and uses the existing conversation-backed review at full saves and session ends. Explicit `every-save` extends that more expensive review to checkpoints. Installation alone enables neither policy. State saved through, history archived through and review covered through remain separate; successful saving is not a guarantee that everything was semantically checked.
+
+This is improved save plumbing, not an infallible AI reviewer. Source-first checking already existed; the new connections and byte/source binding do not remove same-model blind spots or establish source coherence. Missing transcript access, incomplete review and source contradictions stay explicit. No engine rules or existing campaign history are rewritten. See [release notes](V0.9.6_CHANGES.md) and [the shared saving procedure](ADMIN/CLOSE_CONTRACT.md).

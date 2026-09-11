@@ -1,8 +1,8 @@
-# Quick start — v0.9.5 experimental
+# Quick start — v0.9.6 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.9.5 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.5), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform as a selectable engine. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.6 release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.6), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform as a selectable engine. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -48,7 +48,7 @@ Keep the current model/reasoning setting until the outgoing save is verified. Th
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.5.
+An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.6.
 
 Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 

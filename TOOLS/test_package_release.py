@@ -125,6 +125,25 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(result.read("RPG_OS_v0.8.0/VERSION"), b"0.8.0\n")
             self.assertNotIn("untracked-secret.md", files)
 
+    def test_repository_reports_stay_on_github_not_in_fresh_install(self) -> None:
+        relative = "TEST_REPORTS/synthetic-report.md"
+        body = "# Published test report\n\nRepository-only evidence.\n"
+        self.write(relative, body)
+        self.commit()
+        archive, _sums = pack.package(self.root)
+        with zipfile.ZipFile(archive) as result:
+            self.assertFalse(any("TEST_REPORTS/" in name for name in result.namelist()))
+            self.assertIn("RPG_OS_v0.8.0/VERSION", result.namelist())
+        self.assertEqual((self.root / relative).read_text(), body)
+        self.assertNotIn(relative, pack.tracked_manifest(self.root, "HEAD"))
+
+    def test_report_exclusion_does_not_allow_other_tracked_campaign_content(self) -> None:
+        self.write("TEST_REPORTS/synthetic-report.md", "Repository-only report.\n")
+        self.write("PRIVATE_CAMPAIGN/player.md", "Not distributable.\n")
+        self.commit()
+        with self.assertRaises(pack.PackageError):
+            pack.package(self.root)
+
     def test_committed_version_still_controls_archive_name(self) -> None:
         # Exercise historical version naming with a structurally current fixture;
         # this does not claim that the current validator certifies an old kit.

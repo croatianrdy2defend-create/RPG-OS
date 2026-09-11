@@ -23,6 +23,8 @@ import zipfile
 
 sys.dont_write_bytecode = True
 
+REPOSITORY_ONLY_DIRS = {"TEST_REPORTS"}  # Public reports remain on GitHub, outside the fresh-install kit.
+
 ROOT_FILES = {
     ".gitignore", "ARCHITECTURE.md", "CHANGELOG.md", "COMMANDS.md",
     "CONTRIBUTING.md", "INSTALLATION.md", "LICENSE", "MECHANICS.md",
@@ -140,6 +142,8 @@ def tracked_manifest(root: Path, commit: str) -> dict[str, str]:
         if path.casefold() in folded:
             raise PackageError(f"Case-colliding tracked path: {path}")
         folded.add(path.casefold())
+        if PurePosixPath(path).parts[0] in REPOSITORY_ONLY_DIRS:
+            continue
         manifest[path] = object_id
     assert_public_paths(set(manifest))
     return manifest
@@ -259,10 +263,10 @@ def package(root: Path, output_dir: Path | None = None, overwrite: bool = False)
         # Archive canonical committed bytes, independent of checkout line-ending
         # preferences. Keep the blob verification below as the authority.
         git(root, "-c", "core.autocrlf=false", "-c", "core.eol=lf",
-            "archive", "--format=zip", f"--prefix={prefix}/", f"--output={archive}", commit)
+            "archive", "--format=zip", f"--prefix={prefix}/", f"--output={archive}", commit, "--", *sorted(manifest))
         contents = safe_extract(archive, temporary / "export", prefix)
         if set(contents) != set(manifest):
-            raise PackageError("Git archive does not contain exactly the committed files (check export-ignore attributes)")
+            raise PackageError("Git archive does not contain exactly the committed files selected for the fresh-install kit (check export-ignore attributes)")
         object_format = git(root, "rev-parse", "--show-object-format").decode().strip()
         if object_format not in {"sha1", "sha256"}:
             raise PackageError(f"Unsupported Git object format: {object_format}")

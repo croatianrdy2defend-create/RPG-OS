@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.9.5
+# INSTANCE schema — v0.9.6
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, administrative session continuity, historical evidence, derivative preparation and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -171,3 +171,9 @@ Independent-agent establishment, updating and deactivation add no automatic writ
 Before overwriting any campaign file, follow ADMIN/RECOVERY.md: verified preimages and planned new paths in RECOVERY/<operation-id>, plus RECOVERY/ACTIVE.md. Any present active marker blocks ordinary boot until recovery or completion is verified. CURRENT_SAVE is published last for bind/save, but this is not multi-file atomicity. Preserve recovery materials; never claim automatic rollback. A failed review or agreement operation does not change unrelated state, but any pending recovery marker must be resolved before PLAY.
 
 Growing records may retain their canonical entrypoint as a compact index pointing to independently relevant bodies. Split only when it improves retrieval, not by a file-size quota; update routes with recovery protection. Indexes locate information and do not duplicate it. Existing v0.6 state/contract formats require explicit ADMIN/UPGRADE_V07.md mapping and acceptance; ordinary boot never silently rewrites them.
+
+## Optional save-review provenance
+
+An optional administrative `## Save review` section after the fictional resume sections may carry the exact proposed **state saved through** description/source locator, requested review tier (`lightweight` or `source`) and intended external receipt locator. Use concise prose, not another required table. Keep `archive_ref`/`evidence_through` as the sole **history archived through** fields. **Review covered through**, reviewer declarations, source conflicts, gaps and actual results belong in the external immutable report/receipt, not a competing current-state owner.
+
+A receipt locator may name a planned output; it is not a success claim. Read the actual receipt and match its save/source identity before using it. Do not add a result/hash afterward to a reviewed CURRENT_SAVE: that would change its reviewed bytes. A later ordinary save may reference the prior receipt as history. Unbound templates and module T0 omit this section; legacy absence means unrecorded review coverage. No change to required metadata, five fictional sections, campaign agreement clauses or commit kinds is introduced. Normal boot does not preload all audits/captures, and a missing receipt does not erase saved progress.

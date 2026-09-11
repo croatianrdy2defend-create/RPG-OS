@@ -2,6 +2,10 @@
 
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
+## v0.9.6 save-review checks
+
+Run `python -B TOOLS/test_save_audit.py` alongside the existing suites. It checks save-review policy, selected file/boundary binding and readback, not model comprehension or a semantic detection rate. [ADMIN/TEST_SAVE_REVIEW.md](TEST_SAVE_REVIEW.md) describes separate NOT RUN live cases, including source contradictions, hidden faults, legitimate changes and cost/pacing.
+
 ## Automated structural regressions
 
 Run when Python is available:

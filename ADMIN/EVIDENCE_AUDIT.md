@@ -1,8 +1,8 @@
-# Evidence capture and campaign consistency audit — v0.9.0
+# Evidence capture and campaign consistency audit — v0.9.6
 
 Cold maintenance procedure for a requested source capture, consistency check or selected audit-on-save option. Ordinary `AUDIT` of tool activity remains an observed-actions report; a request to compare campaign state against evidence selects this procedure. Do not begin fiction, resolve an open outcome, or change current records while auditing.
 
-The Python helper imports actual supplied source, freezes explicitly selected inputs, and checks package/report identity and citations. A capable model or human performs the semantic comparison. No helper silently calls another provider, generates semantic findings, or grants itself repair authority. A fresh reviewer context is preferable when available; report the actual reviewer arrangement and limits when it is not.
+The Python helper imports actual supplied source, freezes explicitly selected inputs, and checks package/report identity and citations. A capable model or human performs the semantic comparison. No helper silently calls another provider, generates semantic findings, or grants itself repair authority. A fresh reviewer context is preferable when available; report the actual reviewer arrangement and limits when it is not. Uniform routing is not a cure for review-quality failures: the same model can repeat the same blind spots. Source coherence is a separate question from faithful copying; the helper detects neither automatically. A semantic reviewer may flag explicit contradictions within inspected source, but cannot silently reconcile them or guarantee all such contradictions were found.
 
 ## Capture the available original
 
@@ -84,12 +84,67 @@ Retain original evidence and write a traceable superseding correction. Do not re
 
 A reviewed baseline references a specific report, exact source revisions, time boundary and coverage. It is a fallible cached assessment, not new campaign truth. Reuse it for unchanged relevant facts; reopen affected conclusions when evidence, corrections, authority or scope changes. Periodically selected spot-checks can investigate a settled fact without a preexisting contradiction. Record what was actually sampled; never report all baselines reviewed from one sample. An index-only review cannot substitute for inspecting the primary body. There is no automatic truth-by-age or repetition rule.
 
-## Optional audit on full save
+## Shared policy and bounded cost
 
-An explicit request such as “audit this save” authorizes this review once. To run it after each full save, retain that standing choice and any narrow repair grant in the existing agreement through the appropriate acceptance/recalibration procedure. Installation alone adds neither. Keep checkpoint semantics unchanged unless separately requested.
+CLOSE_CONTRACT owns the common save route. An explicit request selects review once; retain a standing choice prospectively through the existing agreement/recalibration procedure. `tiered` is the recommended opt-in: lightweight checkpoints and bounded source-first review on full saves/session ends/accepted returns. `every-save` explicitly adds that review to checkpoints. `off`/absence disables only the additional formal review; ordinary faithful compilation and write checks remain. Legacy full-save grants retain their original scope. Capture, review and repair permission remain distinct. No mandatory new agreement clause, automatic enablement or new campaign truth store is introduced.
 
-At an opted-in full save, preserve the prior authorities needed for comparison before replacement. Complete the protected save under CLOSE_CONTRACT, retain its actual available source and snapshots, then run a bounded audit of that save. A host that can safely assemble a complete candidate may review before publication, but cannot claim that a changing mixed working tree is a frozen candidate. Report save success separately from audit status. Missing capture, unavailable reviewer or uncertain evidence yields incomplete audit coverage rather than a fabricated PASS or an indefinite loss of the otherwise authorized save. A defect requiring repair follows CORRECT; unresolved scope is reported honestly.
+Lightweight checking does not prepare a capture/bundle or ask a model to independently extract the transcript. It checks the completed action and affected records with available working evidence, plus selected diff/metadata/readback. Its record says no transcript-grounded review performed. Source review uses the existing source-first steps above; widening the routes does not improve the reviewer's judgment by itself.
 
-The audit is selective maintenance, not an additional per-scene dossier, plot director or compulsory full-archive read. Preserve the normal small startup packet and continue to test actual play quality with `ADMIN/PLAYTEST_V08.md`.
+Bound source reviews to the selected save, relevant earlier evidence and actual available context. Do not repeatedly reread the entire campaign. Reuse exact captures/prior reviewed facts with their limits; expand to original evidence when a claim depends on it. At accepted periodic full-save/end-session maintenance, sample some older evidence including obligations no longer visible in current open-matters lists. This is a selected spot-check, not a claim to review all history. Host/token/time budgets and actual pacing need measurement in independent live play. When budget, source or reviewer is unavailable, record incomplete/deferred scope and preserve progress rather than pretending the review ran, looping retries or forcing more play.
+
+Active chat and exported transcript can overlap. Use actual source identity, message/revision identifiers or exact capture spans to reconcile that overlap. Same wording is not a unique event identifier. An edited conflict needs source/authority inspection; never choose the convenient copy or apply the shared event twice. A host must supply actual accessible text: the player's visible window is not proof of model access. Include recorded private facts under their access rules, but never reconstruct missing private determinations.
+
+## Save-bound helper workflow
+
+All existing capture/report commands remain compatible. The new commands add selected save identity, separate boundaries and readback checks; none executes a semantic review, calls a provider, writes the campaign, or grants repair permission.
+
+```text
+python -B TOOLS/evidence.py save-review-plan --policy tiered --kind checkpoint
+python -B TOOLS/evidence.py save-diff --prior C:/RPG_SUPPORT/prior --current C:/RPG_SUPPORT/candidate --select INSTANCE/CHAR/PC.md --select INSTANCE/NOW.md
+```
+
+`save-diff` performs no capture or writes. It reads CURRENT_SAVE automatically plus explicitly selected Markdown, reports additions/changes/removals and checks campaign/parent/revision/commit/evidence metadata. It is not the whole structural validator, does not inspect chat, and cannot prove action completion or selection completeness. Use complete stable roots, not a mixed in-progress tree.
+
+For a source review, import the real available source with `import`, or use `pending` for a genuinely missing capture. Create a caller-authored boundary JSON outside the input roots. Example shape (replace all illustrative values using actual source reads):
+
+```json
+{
+  "schema": "rpg-save-review-boundary-v1",
+  "state_saved_through": {
+    "basis": "capture_lines",
+    "capture_sha256": "<actual SHA256 from the verified capture>",
+    "start_line": 1,
+    "end_line": 8,
+    "description": "Accepted source since the chosen prior boundary through this exact stopping point; any overlap already applied to state is identified in review."
+  },
+  "write_paths": ["INSTANCE/CURRENT_SAVE.md", "INSTANCE/CHAR/PC.md"],
+  "removed_paths": [],
+  "limitations": ["Only the explicitly selected sources are in scope."]
+}
+```
+
+For inaccessible source, use `{"basis":"unavailable","description":"Actual missing source and stopping-point limitation"}` rather than fake lines/hashes. The line-span endpoint binds the selected save; it does not prove that all host messages were exported, that all listed play is accepted, or that the selected stop is the true last accepted action. That still needs review. Older relevant lines may support history; later unsaved lines cannot support a finding about this save. Record source-scope gaps separately from factual uncertainty.
+
+`write_paths` lists every affected Markdown file, including the current pointer and new archive files for a full save. Freeze each written file as a current selection. Select actual prior versions where they exist, and prior-only removed records separately. `removed_paths` explicitly distinguishes real deletions from a prior-only evidence selection; absence from a selection alone is not a deletion. Include governing agreement, corrections and relevant historical/private sources even when unchanged. The helper cannot infer an omitted write or omitted source from the caller's list.
+
+```text
+python -B TOOLS/evidence.py prepare-save-audit --prior C:/RPG_SUPPORT/prior --current C:/RPG_SUPPORT/candidate --capture EVIDENCE/captures/session-001 --boundary C:/RPG_SUPPORT/boundary.json --output C:/RPG_SUPPORT/save-review-001 --select INSTANCE/CHAR/PC.md --select INSTANCE/CAMPAIGN_CONTRACT.md
+python -B TOOLS/evidence.py report-template --bundle C:/RPG_SUPPORT/save-review-001
+python -B TOOLS/evidence.py check-save-audit --bundle C:/RPG_SUPPORT/save-review-001 --report C:/RPG_SUPPORT/save-review-001.report.json --saved .
+```
+
+The preparation command automatically selects prior/current CURRENT_SAVE, verifies their campaign/parent/revision relationship, binds `state_saved_through`, derives **history archived through** from actual archive_ref/evidence_through and freezes the explicit write/removal scope. CHECKPOINT must preserve both archive fields; CLOSE must use its new save_id and archive folder. Existing prepare-audit bundles without save binding remain valid for general audits.
+
+A save-bound report adds `save_review`: preserve `binding_sha256`; leave `review_covered_through` null until the selected span and all selected inputs were actually reviewed, then copy the exact `state_saved_through` object. With missing capture, a pending report or only partial review, retain null. This is a reviewer declaration, not proof of comprehension. `source_coherence` has `status` (`not_assessed`, `no_conflict_observed`, `conflict_observed`, `undetermined`), `summary` and exact `citations`. Explicit conflict requires cited source, remains unresolved under the existing correction rules, and cannot be reported as a consistent-save result. No conflict observed is not proof of coherent source. A source-versus-source chronology contradiction is not repaired by making the save match one side.
+
+Complete the ordinary report fields and source-first comparison as above. `check-report` also binds the new fields and refuses capture citations after the selected stopping point. `check-save-audit` additionally compares every selected current file with the actual saved/proposed bytes and verifies explicit removals. A changed file, different save identity or changed review binding invalidates reuse of the earlier review. The output separates selected-byte matching, declared record consistency, source coherence, coverage/gaps and all three boundaries. Exit 0 means those mechanical checks completed, even when a completed report declares inconsistency; exit 2 means review pending; exit 1 means invalid input or mismatched bytes/references. A generated report-template still exits 0 and is not a performed review.
+
+Report/receipt outputs stay outside the frozen candidate and bundle; no self-referential hash or after-review success stamp is written into reviewed files. Optional CURRENT_SAVE Save review prose can point to an intended external receipt without claiming its existence or result. A fresh context must read the actual receipt before treating it as evidence of review. Missing legacy fields mean unrecorded coverage, never a fabricated baseline.
+
+## Publication, failures and review quality
+
+Where a host can assemble a stable complete candidate, review before publication and read back afterward under CLOSE_CONTRACT/RECOVERY. Recheck the live prior identity/preimages before publishing. Otherwise preserve prior authorities and perform a bounded post-save audit; disclose that ordering. Never label an in-progress mixed tree frozen or reuse an old approval for a revised candidate. A known corrupt candidate does not replace the usable save: preserve new progress separately while resolving the discrepancy. An otherwise valid save can complete with missing evidence/unavailable reviewer, explicitly unverified. Post-publication recording repairs require existing CORRECT authority; a source disagreement or already-played consequence is not a copying fix.
+
+Source-first review, two-way omission checking, testimony/truth distinctions and repair gates predate v0.9.6. This release connects them to the selected save routes and binds their evidence; it does not establish a semantic detection rate. Test them with hidden fault keys and legitimate-change controls in a genuinely separate reviewer context when available. Record misses and false positives, correct-source relevance, source gaps, actual cost and player interruption separately from hash/quote checks. The new deterministic regression suite does not call a model or demonstrate human enjoyment or session-100 reliability.
 
 Examples use a separate existing `C:/RPG_SUPPORT` directory. Substitute actual absolute paths for external inputs and outputs (or ordinary relative paths without `..`). Parent traversal is rejected; output locations must be outside the protected input roots.
