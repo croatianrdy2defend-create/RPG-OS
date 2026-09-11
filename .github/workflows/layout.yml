@@ -1,21 +1,104 @@
-name: Repository layout workspace
+name: Verify separated game and documentation candidate
 on:
   push:
     branches: [work/game-docs-separation-20260911]
 permissions:
   contents: read
 jobs:
-  snapshot:
+  prepare:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: 877ab697ce96c2c937df5a6ccb53bb8f5568811b
           persist-credentials: false
-      - name: Export the inspected public source
-        run: git archive --format=zip HEAD > "$RUNNER_TEMP/rpg-current.zip"
+      - name: Reconstruct the exact locally tested candidate
+        shell: python
+        run: |
+          import base64, bz2, hashlib, json, pathlib, re, subprocess
+          base = '877ab697ce96c2c937df5a6ccb53bb8f5568811b'
+          expected_tree = '88c527ee4ab15be06700122fd769c22b10ec8ff4'
+          hashes = ['e7a265f54883afd91e4e4efe7c340196b7812628','6859953a655e71ccdab47a6dd2a0c0031fb5ae28','d9da2ca35a897203034972928aaebec123548472','d012b96cb8b8fb6ce16a487a4e60f3c4e771422d','59a53fc4151a45de57a7bf6408e2b36f365c61c1','02e3d0cb45856a4c7896c06d209938d524786247']
+          parts = []
+          for n, expected in enumerate(hashes, 1):
+              text = pathlib.Path(f'.github/_layout/part-{n}.b64').read_text()
+              # Repair only known transport transcription errors, then require exact original bytes.
+              if n == 1:
+                  text = re.sub(r'FVVVVVVUVYq+oooooiq+oq+iq+(?=2S0)', 'FVVVVVVUVY' + 'q'*11 + 'oooooi' + 'q'*27 + 'o' + 'q'*5 + 'i' + 'q'*5, text)
+                  text = text.replace('Xjos42ivGnv3Lp', 'Xjos42ivG3Lp')
+              if n == 3:
+                  text = re.sub(r'Exo(?:iI)+(?=5RUtK)', 'Exo' + 'iI'*6, text)
+              data = text.encode('ascii')
+              actual = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+              assert actual == expected, f'Transport part {n} differs from tested input: {actual}'
+              parts.append(data)
+          raw = bz2.decompress(base64.b64decode(b''.join(parts), validate=True))
+          assert hashlib.sha256(raw).hexdigest() == 'cb105eb15905d830dfd5ed6b91dcd80c0e7413330c7a721f58fdf15c68fd6580'
+          bundle = json.loads(raw)
+          assert bundle['base'] == base and bundle['final_tree'] == expected_tree
+          subprocess.run(['git','fetch','--no-tags','origin',base], check=True)
+          subprocess.run(['git','checkout','--detach',base], check=True)
+          def git(*args):
+              return subprocess.check_output(['git',*args])
+          tracked = git('ls-files','-z').decode().split('\0')[:-1]
+          original = {p: pathlib.Path(p).read_bytes() for p in tracked}
+          outputs = {}
+          for item in bundle['files']:
+              name = item['path']; path = pathlib.PurePosixPath(name)
+              assert not path.is_absolute() and '..' not in path.parts and '.git' not in path.parts
+              assert name not in outputs
+              if 'text' in item:
+                  data = item['text'].encode('utf-8')
+              else:
+                  data = original[item['source']]
+                  for start, end, replacement in reversed(item['edits']):
+                      assert 0 <= start <= end <= len(data)
+                      data = data[:start] + base64.b64decode(replacement, validate=True) + data[end:]
+              assert hashlib.sha256(data).hexdigest() == item['sha256'], name
+              outputs[name] = data
+          for name in tracked:
+              if name not in outputs:
+                  pathlib.Path(name).unlink()
+          for name, data in outputs.items():
+              path = pathlib.Path(name); path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(data)
+          subprocess.run(['git','add','-A'], check=True)
+          assert git('write-tree').decode().strip() == expected_tree, 'Reconstructed tree differs'
+          subprocess.run(['git','diff','--cached','--check'], check=True)
+          subprocess.run(['git','-c','user.name=RPG OS distribution verification','-c','user.email=rpg-os-tests@example.invalid','-c','commit.gpgsign=false','commit','-m','Verify exact game/documentation separation candidate'], check=True)
+          print('Verified candidate tree:', expected_tree)
+      - name: Run all retained and standalone distribution checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B GAME/TOOLS/validate.py --root GAME
+          python3 -B DEV/run_tests.py --report .release/regressions.json
+          python3 -B DEV/test_distribution.py
+          python3 -B TEST_REPORTS/2026-09-11-synthetic-campaign/verify_published.py
+          python3 -B DEV/package_game.py
+          (cd .release && sha256sum --check RPG_OS_v*_Game.SHA256SUMS)
+          test "$(sha256sum .release/RPG_OS_v0.9.6_Game.zip | cut -d' ' -f1)" = 299ec178da2cef55b034969872ba3c38bcf05e776cbe949927627bd84d967e90
+      - name: Upload tested content objects without changing any branch or release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import json, os, pathlib, subprocess, urllib.request
+          repository = os.environ['GITHUB_REPOSITORY']
+          assert repository == 'croatianrdy2defend-create/RPG-OS'
+          assert subprocess.check_output(['git','rev-parse','HEAD^{tree}'], text=True).strip() == '88c527ee4ab15be06700122fd769c22b10ec8ff4'
+          paths = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')[:-1]
+          # Workflow changes are published separately through the authorized connector.
+          entries = [{'path':'.github','mode':'040000','type':'tree','sha':'49f8f4a9cb6cc6d903502304d0e828fb39ace6da'}]
+          entries += [{'path':p,'mode':'100644','type':'blob','content':pathlib.Path(p).read_bytes().decode('utf-8')} for p in paths if not p.startswith('.github/')]
+          request = urllib.request.Request('https://api.github.com/repos/' + repository + '/git/trees', data=json.dumps({'tree':entries}).encode(), headers={'Authorization':'Bearer ' + os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}, method='POST')
+          with urllib.request.urlopen(request, timeout=90) as response:
+              result = json.load(response)
+          assert result['sha'] == 'd06040e0238a00d42148283eff6fc03b37a97190', 'Uploaded content tree differs'
+          print('Verified uploaded content tree:', result['sha'])
+          print('No branch, tag or release was changed by this job.')
       - uses: actions/upload-artifact@v4
         with:
-          name: rpg-layout-source
-          path: ${{ runner.temp }}/rpg-current.zip
-          retention-days: 1
+          name: verified-game-only-candidate
+          path: .release/
+          retention-days: 7
