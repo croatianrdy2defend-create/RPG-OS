@@ -1,0 +1,60 @@
+# Session 16: The crossing remains a choice
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-021
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-16-T01
+Time: Day 8, 13:15 -> Day 8, 13:15
+Simulated player: I will wait one hour at the safe mooring for the gusts to ease; I am not ordering Nessa into the crossing.
+GM: Nessa holds the mooring. The waiting interval is declared, and the only unsettled question is whether the current gusts ease enough for her ordinary safe crossing standard.
+
+OOC GM — declared random procedure: Do the gusts ease during this one declared hour? Actual accepted d6 input; 1–3: The gusts remain; no crossing is attempted.; 4–6: Gusts ease to ordinary safe passage conditions..
+
+OOC Recorded tool input: {"id": "R20-01", "session": "session-16", "before_turn": 2, "question": "Do the gusts ease during this one declared hour?", "mapping_before_draw": {"1-3": "The gusts remain; no crossing is attempted.", "4-6": "Gusts ease to ordinary safe passage conditions."}, "faces_requested": 1, "faces": [2], "sum": 2, "result": "The gusts remain; no crossing is attempted."}
+
+## session-16-T02
+Time: Day 8, 13:15 -> Day 8, 14:15
+Simulated player: I watch the conditions through that hour.
+GM: After the hour, the gusts remain above her normal threshold. She offers to hold at the mooring overnight under the same paid outbound fare.
+
+OOC GM: Simulated operator explicitly requests a manual checkpoint before choosing whether to proceed; retain Nessa’s current active state. This is not an end-session or archive-publication event.
+
+OOC GM: Checkpoint verified: sluice-save-022; archive evidence still through sluice-save-021. No time or pending choice resolved.
+
+## session-16-T03
+Time: Day 8, 14:15 -> Day 9, 08:15
+Simulated player: I accept the offered overnight wait aboard; no crossing until ordinary conditions return.
+GM: Nessa secures the skiff. The declared night passes without an additional fee or incident. Morning conditions are ordinary; the crossing itself is still unperformed.
+
+## session-16-T04
+Time: Day 9, 08:15 -> Day 9, 11:15
+Simulated player: Proceed along that ordinary marked channel. I stay seated as agreed.
+GM: Nessa pilots across and continues to Bram Reach. The paid outbound leg is completed once; she does not collect the same four crowns again.
+
+## session-16-T05
+Time: Day 9, 11:15 -> Day 9, 11:35
+Simulated player: I check the workshop address without accepting any sales pitch on the quay.
+GM: The named workshop has a real sign and a staffed counter. Mara can ask about a measured order. A nearby reseller also offers a supposedly compatible seal, but its alloy has not been verified.
+
+## session-16-T06
+Time: Day 9, 11:35 -> Day 9, 11:55
+Simulated player: I ask Bram what a correctly measured new ring would cost, and whether my copied dimensions are sufficient.
+GM: He quotes twelve crowns for a ring made to the supplied drawing: six on accepted order, six after dimensional inspection. His eight-day lead time begins when an order is actually accepted. He cannot certify measurements Mara has not supplied.
+
+## session-16-T07
+Time: Day 9, 11:55 -> Day 9, 12:00
+Simulated player: I take the quote but do not order yet. I want to inspect the cheaper ready-made claim first.
+GM: Bram gives a written quote marked NOT AN ORDER. He allocates no materials, and the eight-day manufacturing interval has not begun.
+
+## session-16-T08
+Time: Day 9, 12:00 -> Day 9, 12:30
+Simulated player: I stop at the public travelers’ shelter for the evening, keeping both purses separate.
+GM: The advertised flood-relief shelter admits displaced travelers for an ordinary free bunk. No wage, new debt, or workshop deposit is invented. Personal money remains four; the restricted repair balance is twenty.
+
+OOC Simulated operator: End this session and make one full save. The checkpoint should keep the pending choice, not make the crossing for me.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-023. Source audit pending until its separately authored report is checked.
+

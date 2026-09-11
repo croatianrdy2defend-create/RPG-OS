@@ -1,0 +1,52 @@
+# Session 22: The prepaid hour has an end
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-028
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-22-T01
+Time: Day 20, 09:00 -> Day 20, 09:05
+Simulated player: I ask Jory to verify the platform and parts before we begin his paid hour.
+GM: He verifies dry footing, compatible mountings and K-4’s isolation indicator. He confirms that fitting and static checking can occupy the agreed hour; startup remains a separate decision.
+
+## session-22-T02
+Time: Day 20, 09:05 -> Day 20, 10:05
+Simulated player: Begin the agreed hour. I help with ordinary holding and recording, not an unsafe load.
+GM: Over sixty minutes Jory fits A-17 and the inspected ring using the available workshop tools. Mara performs only the declared ordinary assistance. Static fit is sound; no powered or water-delivery test has happened.
+
+## session-22-T03
+Time: Day 20, 10:05 -> Day 20, 10:10
+Simulated player: I mark the credit note used and ask for confirmation that no second hour has been bought.
+GM: Jory marks the note REDEEMED: ONE HOUR. He confirms no second hour was performed, bought or owed. The old credit is closed by actual work, not a cash refund.
+
+## session-22-T04
+Time: Day 20, 10:10 -> Day 20, 10:15
+Simulated player: I ask whether he can stay all day for free because the city still needs the pump.
+GM: Jory declines and leaves for his other work. The refusal does not undo the completed hour or the now-installed components.
+
+## session-22-T05
+Time: Day 20, 10:15 -> Day 20, 10:20
+Simulated player: With Jory gone, I ask K-4 which remaining check I can observe without forcing an output run.
+GM: It identifies a guarded disconnected motor rotation test, with no water through the western outlet. It can run that bounded diagnostic only on an explicit request with the guard closed.
+
+## session-22-T06
+Time: Day 20, 10:20 -> Day 20, 10:30
+Simulated player: Close the guard and run that diagnostic only; do not deliver water.
+GM: The guard closes and the disconnected mechanism rotates briefly, then stops. No water passes through the outlet. Under the clarification actually agreed with Sera, the three-crown debt has not become due.
+
+## session-22-T07
+Time: Day 20, 10:30 -> Day 20, 10:35
+Simulated player: Keep it isolated. I want to inspect the outlet before choosing a water test.
+GM: K-4 returns to isolation. The powered diagnostic does not supply authority for the next test, and no wager or debt collection occurs during the pause.
+
+## session-22-T08
+Time: Day 20, 10:35 -> Day 20, 10:35
+Simulated player: I stop here with that outlet decision unresolved.
+GM: Mara remains at the platform. Installed parts and the redeemed hour persist; the current controller state and unchosen next test remain active across the save.
+
+OOC Simulated operator: End this session and make one full save. Save the controller’s actual stopped state; do not reroll it or infer a water start.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-029. Source audit pending until its separately authored report is checked.
+

@@ -1,0 +1,53 @@
+# Session 24: A debt can end without erasing its history
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-030
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-24-T01
+Time: Day 20, 12:05 -> Day 20, 12:15
+Simulated player: I show Sera my first-flow note and tell her water actually passed through the western outlet.
+GM: Sera reads the note and hears the report now. She recognizes that the clarified condition has occurred. She does not pretend to have learned it before Mara arrived.
+
+## session-24-T02
+Time: Day 20, 12:15 -> Day 20, 12:20
+Simulated player: Before paying, I ask her to check the original two-part loan: the earlier five stayed paid, correct?
+GM: Correct. The original agreement distinguished the two tranches, and the earlier wage-linked five crowns were actually paid. Only the remaining three are payable now.
+Resolution: Check original loan and actual prior payment; repetition alone is not evidence of an unpaid balance.
+
+## session-24-T03
+Time: Day 20, 12:20 -> Day 20, 12:25
+Simulated player: I pay the remaining three from my own four and ask for a settled receipt.
+GM: Sera receives exactly three personal crowns and marks the loan settled. Mara retains one personal crown. The eight-crown loan history remains, but neither tranche is outstanding.
+
+## session-24-T04
+Time: Day 20, 12:25 -> Day 20, 12:30
+Simulated player: I ask whether settling it means I now owe public support for her union proposal.
+GM: “Your testimony stayed yours.” Sera does not convert the completed loan into a new political obligation. She can invite Mara to a discussion, but no acceptance is inferred.
+
+## session-24-T05
+Time: Day 20, 12:30 -> Day 20, 13:00
+Simulated player: I buy one crown of food and eat it at the public bench.
+GM: One personal crown changes hands and the meal is eaten. Mara’s personal balance is now zero. This is neither another loan payment nor a public-works expense.
+
+## session-24-T06
+Time: Day 20, 13:00 -> Day 20, 13:05
+Simulated player: I look at the redeemed Jory note and the settled loan receipt. They should not become active tasks again merely because I read them.
+GM: The documents remain historical evidence of completed obligations. There is no unused Jory hour and no remaining Sera balance; reading either produces no new work, charge or reward.
+
+## session-24-T07
+Time: Day 20, 13:05 -> Day 20, 13:25
+Simulated player: I visit Ivo, but I am not asking him to relocate the patients now that the pump runs.
+GM: At High Street, Ivo reports the same two patients are still safe. Drainage work does not by itself certify the old clinic building or require another move.
+
+## session-24-T08
+Time: Day 20, 13:25 -> Day 20, 13:30
+Simulated player: I ask whether he wants me to do anything today; I will accept a quiet answer.
+GM: “Rest, and bring no more emergencies today.” Ivo smiles and returns to his work. It is an ordinary request, not a magical prohibition on world events or a binding new PC task.
+
+OOC Simulated operator: End this session and make one full save. Let completed obligations stay complete, while keeping their original evidence retrievable.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-031. Source audit pending until its separately authored report is checked.
+

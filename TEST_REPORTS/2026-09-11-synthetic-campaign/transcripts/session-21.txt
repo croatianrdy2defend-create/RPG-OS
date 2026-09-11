@@ -1,0 +1,56 @@
+# Session 21: Permission, ownership, and a machine that still will not start
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-027
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+OOC GM: Source audit found two narrow recording errors: the delivered title request remains carried, and the pump explanation denies the now-stored serviceable seal. Their clear recording repairs are authorized; no fictional transfer or repair is repeated. A separate source conflict remains: session-19-T01 says next morning but records Day 10, 21:50.
+
+OOC Simulated operator: For the timing conflict, explicitly retain the emitted numerical timeline and all played outcomes. Correct my session-19-T01 timing phrase to later that same day at 21:50; the eight-day work interval stays unchanged. This is my chosen resolution of the contradictory source, not something the audit may silently infer. Apply the two unambiguous recording repairs too.
+
+## session-21-T01
+Time: Day 19, 18:40 -> Day 19, 18:50
+Simulated player: I tell Sera the new ring is in the repair store, but the pump has not run. I ask whether a disconnected motor test would count as “the western pump runs.”
+GM: Sera hears the new procurement facts now. She says that phrase had not specified a test mode, and agrees to clarify it before testing: actual water delivered through the western outlet triggers the three crowns; a disconnected dry rotation does not.
+
+## session-21-T02
+Time: Day 19, 18:50 -> Day 19, 18:55
+Simulated player: I accept that clarification. It does not change the five crowns already paid, and my testimony remains mine.
+GM: “Agreed.” The five-crown wage tranche stays paid. The remaining three crowns are still not due because no water has been delivered; no new loan or payment occurs.
+
+## session-21-T03
+Time: Day 19, 18:55 -> Day 19, 19:10
+Simulated player: I show Nessa the inquiry stamp and ask whether she will allow A-17 to be installed while ownership is still disputed.
+GM: Nessa agrees to temporary public repair use only under a new receipt that preserves her claim and forbids sale or disposal. She does not settle title, waive compensation, or give Mara the actuator personally.
+
+## session-21-T04
+Time: Day 19, 19:10 -> Day 19, 20:10
+Simulated player: I ask the custodian to release both parts under those limits to the repair platform, not into my personal inventory.
+GM: Voss signs the release. The store crew carries A-17 and the new ring to the isolated platform and signs the receiving inventory. Their custody actually changes; title remains reserved and nothing has been installed.
+
+## session-21-T05
+Time: Day 19, 20:10 -> Day 19, 20:15
+Simulated player: I point to the two parts and ask K-4 to start now, before a mechanic comes.
+GM: “COMPONENTS PRESENT. ASSEMBLY INCOMPLETE. START INHIBITED.” Having the parts and a signed order does not make the installed machinery safe.
+
+## session-21-T06
+Time: Day 19, 20:15 -> Day 19, 20:20
+Simulated player: Understood. Keep isolation engaged. I will arrange the mechanic rather than force the interlock.
+GM: K-4 retains local isolation. It does not infer that Mara authorized an alternative automatic start or disabled the safety system.
+
+## session-21-T07
+Time: Day 19, 20:20 -> Day 19, 20:35
+Simulated player: I show Jory the parts receipt and isolation confirmation. May we use the prepaid hour at nine tomorrow morning?
+GM: Jory agrees to Day 20, 09:00 for one hour of safe assembly. The credit remains unused until the work actually happens; agreement on a date does not redeem it.
+
+## session-21-T08
+Time: Day 19, 20:35 -> Day 20, 09:00
+Simulated player: I return to the shelter and sleep until eight, then walk to the platform for the appointment.
+GM: The declared night and walk reach the platform at Day 20, 09:00. The appointment is now due; saving before its work resolves no assembly or payment.
+
+OOC Simulated operator: End this session and make one full save. Clarify ambiguous triggers before rolling them into debt, and keep the dry test separate.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-028. Source audit pending until its separately authored report is checked.
+

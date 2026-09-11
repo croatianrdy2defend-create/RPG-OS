@@ -17,6 +17,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Verify published playtest record (not a new gameplay run)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B TEST_REPORTS/2026-09-11-synthetic-campaign/verify_published.py
+
       - name: Validate a clean tracked tree
         shell: bash
         run: |

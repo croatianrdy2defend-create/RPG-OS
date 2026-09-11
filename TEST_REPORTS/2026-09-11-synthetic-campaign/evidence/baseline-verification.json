@@ -1,0 +1,70 @@
+{
+  "verified": true,
+  "sessions": 10,
+  "turn_pairs": 100,
+  "elapsed_minutes": 4560,
+  "fictional_hours": 76.0,
+  "cash_transactions": 11,
+  "cash_ledger": [
+    {
+      "turn": "session-01-T04",
+      "delta": 8,
+      "balance": 26
+    },
+    {
+      "turn": "session-01-T05",
+      "delta": -12,
+      "balance": 14
+    },
+    {
+      "turn": "session-01-T06",
+      "delta": -2,
+      "balance": 12
+    },
+    {
+      "turn": "session-02-T07",
+      "delta": -3,
+      "balance": 9
+    },
+    {
+      "turn": "session-04-T08",
+      "delta": -4,
+      "balance": 5
+    },
+    {
+      "turn": "session-05-T03",
+      "delta": -2,
+      "balance": 3
+    },
+    {
+      "turn": "session-05-T08",
+      "delta": -3,
+      "balance": 0
+    },
+    {
+      "turn": "session-09-T01",
+      "delta": 12,
+      "balance": 12
+    },
+    {
+      "turn": "session-09-T02",
+      "delta": -5,
+      "balance": 7
+    },
+    {
+      "turn": "session-09-T04",
+      "delta": -6,
+      "balance": 1
+    },
+    {
+      "turn": "session-10-T07",
+      "delta": -1,
+      "balance": 0
+    }
+  ],
+  "final_coins": 0,
+  "remaining_conditional_debt": 3,
+  "ending_receipts": 10,
+  "full_archive_slices": 10,
+  "limitations": "Structured arithmetic, identity, archive-boundary and current-owner checks only; not independent semantic or human validation."
+}

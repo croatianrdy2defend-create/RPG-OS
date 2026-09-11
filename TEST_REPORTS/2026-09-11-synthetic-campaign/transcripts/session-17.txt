@@ -1,0 +1,56 @@
+# Session 17: A deposit with an actual return condition
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-023
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+OOC Simulated operator: Keep any injury treatment offscreen from now on; non-graphic consequences may still be stated. Save this depiction limit. Do not rewind valid outcomes.
+
+OOC GM: The veil applies immediately without changing wounds, causes, choices or NPC beliefs. It will be persisted with the matching safety flag at the authorized full save.
+
+## session-17-T01
+Time: Day 9, 12:30 -> Day 9, 12:40
+Simulated player: I ask the reseller whether the ring is certified bronze, and I will not take “looks right” as proof.
+GM: Leni says it came from a salvage lot and has not been assayed. It may fit the drawing, but its composition is unverified. That disclosure is not a confession that she knows it is wrong.
+
+## session-17-T02
+Time: Day 9, 12:40 -> Day 9, 12:55
+Simulated player: I will leave six repair-account crowns only if they are returned in full when the independent assay rejects the ring. I will owe no purchase balance unless I accept it after the test.
+GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.
+
+## session-17-T03
+Time: Day 9, 12:55 -> Day 9, 13:05
+Simulated player: I ask her to send the ring straight to Bram for inspection. I do not claim that holding a receipt puts the ring in my bag.
+GM: Leni carries it to the neighboring bench in Mara’s view. Bram signs temporary inspection custody; neither ownership nor final purchase acceptance changes.
+
+## session-17-T04
+Time: Day 9, 13:05 -> Day 9, 13:10
+Simulated player: I read the receipt a second time to check the condition, not to make another deposit.
+GM: It still says six crowns held once. Reading and copying the terms transfers no money.
+
+## session-17-T05
+Time: Day 9, 13:10 -> Day 9, 13:25
+Simulated player: I ask Bram to inspect under the public repair-aid testing provision and tell me whether there is a fee.
+GM: Bram confirms that this one documented relief-part check has no fee. He records the ring’s identifying notch and its unverified alloy before testing; he makes no claim to have completed an assay yet.
+
+## session-17-T06
+Time: Day 9, 13:25 -> Day 9, 13:30
+Simulated player: I tell him I am worried Leni knowingly cheated me. Do you know that?
+GM: Bram does not. He can test the ring; an unfavorable result would establish a material problem, not by itself Leni’s knowledge or intent.
+
+## session-17-T07
+Time: Day 9, 13:30 -> Day 9, 13:35
+Simulated player: Then record my worry as suspicion, not as a fact. I wait for the test tomorrow.
+GM: Bram records the custody and requested check, not an accusation as truth. The next available test is tomorrow morning; Mara has explicitly chosen the wait.
+
+## session-17-T08
+Time: Day 9, 13:35 -> Day 10, 04:35
+Simulated player: I return to the travelers’ shelter and sleep until that appointment.
+GM: The declared quiet night passes. Leni’s deposit remains held, the ring stays at Bram’s bench, and no test result or refund is created by the session ending.
+
+OOC Simulated operator: End this session and make one full save. Please retain suspicion as suspicion and the new veil as an OOC limit.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-024. Source audit pending until its separately authored report is checked.
+

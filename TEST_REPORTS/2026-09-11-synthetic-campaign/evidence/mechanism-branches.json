@@ -1,0 +1,64 @@
+{
+  "main_campaign_unchanged": true,
+  "cases": [
+    {
+      "id": "R1",
+      "mechanism": "Interrupted protected write / recovery",
+      "play_blocked": true,
+      "pointer_remained_old": true,
+      "exact_restoration": true,
+      "created_directory_removed": true,
+      "final_validator_exit": 0,
+      "scope": "Experimental host executing documented procedure; not OS-level atomicity or an autonomous GM."
+    },
+    {
+      "id": "R2",
+      "mechanism": "Actual indexed retrieval, original source fetch, stale/missing evidence refusal",
+      "stale_status": "stale_revision",
+      "missing_status": null,
+      "history_not_reconstructed": true
+    },
+    {
+      "id": "H1",
+      "mechanism": "Outgoing freeze / same-context receive / return-only / import once",
+      "source_play_blocked": true,
+      "source_frozen_during_receiver": true,
+      "prior_checkpoint_events_archived_not_reapplied": true,
+      "same_session_active": true,
+      "no_added_boundary_receipt": true,
+      "duplicate_rejected": {
+        "status": "error",
+        "errors": [
+          "handover already resolved: imported"
+        ]
+      },
+      "scope": "Real file protocol and source reads, one new simulated exchange. NOT fresh context, cross-model, or autonomous semantic import. The experimental writer uses marker-aware Session starts but explicit source-import orchestration."
+    },
+    {
+      "id": "H2",
+      "mechanism": "Cancel unplayed handover",
+      "campaign_bytes_unchanged": true,
+      "replay_rejected": true
+    },
+    {
+      "id": "COLD",
+      "mechanism": "Explicit cold REVIEW and source-revalidated PREP",
+      "bearing_only_on_review": true,
+      "provisional_not_canon": true,
+      "preparation_revalidated_from_actual_source": true,
+      "save_id_unchanged": true,
+      "validator_exit": 0
+    },
+    {
+      "id": "ADAPTER-BRIEF",
+      "mechanism": "ADD_ENGINE / missing brief addition / editorial REFINE_SETTING_BRIEF",
+      "new_adapter_installed": true,
+      "id_collision_refused": true,
+      "bound_engine_remained_freeform": true,
+      "brief_added_then_refined": true,
+      "no_individual_or_current_state_rewrite": true,
+      "validator_exit": 0,
+      "scope": "Disposable public-source fixture. Adapter installation tested, not its use in twenty-session play or a full new-engine bind."
+    }
+  ]
+}

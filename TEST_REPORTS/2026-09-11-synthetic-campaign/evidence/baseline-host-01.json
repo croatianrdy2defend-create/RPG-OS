@@ -1,0 +1,23 @@
+{
+  "id": "HOST-01",
+  "classification": "Assistant-authored playtest serializer defect, not supplied RPG OS code",
+  "source_snapshot": "snapshots/checkpoint-session-05.zip",
+  "observed_persistent_person_baseline": {
+    "Condition and mode": "Eligible current mental focus; generate at first engagement.",
+    "Priorities and constraints": "Protect borrowed winch and finish one safe paid job; cannot repair a missing actuator.",
+    "Perception and appraisal": "Eligible appraisal when Mara actually approaches; no prior personal encounter.",
+    "Attraction": "Eligible overall attraction at first sufficient perception.",
+    "Engagement stance": "Derive after the three eligible determinations."
+  },
+  "observed_actual_active_baseline": {
+    "Condition and mode": "Mental focus is usable but divided between finishing cable checks and arranging the next job; neither incapacitated nor unusually sharp.",
+    "Priorities and constraints": "Protect the borrowed winch and take one safe, bounded job; cannot supply a missing actuator or authorize gate motion.",
+    "Perception and appraisal": "Still skeptical of Mara’s risk judgment, but now has direct evidence of diagram competence and her willingness to leave hauling to him.",
+    "Attraction": "No particular personal pull or aversion toward Mara at this encounter; this is separate from his strongly negative safety appraisal.",
+    "Engagement stance": "Brusque and cautious; require a concrete safe load plan and verified operating scope before agreeing to any job."
+  },
+  "requirement": "ADMIN/CLOSE_CONTRACT.md: temporary active encounter fields belong in NOW, enduring personal changes in PEOPLE.",
+  "validator_result": "Exit 0 with PREP_STALE_BASE advisory; structural validator does not certify semantic state ownership.",
+  "severity": "medium",
+  "effect": "An incoming reader could mistake duplicated opening/eligible fields in the person overlay for current encounter authority. No demonstrated PC outcome was changed in this run."
+}

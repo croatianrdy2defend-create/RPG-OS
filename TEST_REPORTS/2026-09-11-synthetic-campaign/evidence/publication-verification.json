@@ -1,0 +1,33 @@
+{
+  "publication_date": "2026-09-11",
+  "tested_version": "0.9.5",
+  "source_commit": "211242384046afabe2135e9fee10b11ba4c19901",
+  "uploaded_source_tree": "fd8596cc4c98f20362ab1faa5de897dd3e17e2a4",
+  "github_source_tree": "fd8596cc4c98f20362ab1faa5de897dd3e17e2a4",
+  "source_tree_exact_match": true,
+  "full_archive_manifest_entries_checked": 13390,
+  "full_archive_manifest_mismatches": 0,
+  "fresh_verify_deliverable_output_matches_previously_supplied_output": true,
+  "fresh_semantic_review_or_new_play_performed": false,
+  "original_archives": [
+    {
+      "file": "RPG-OS-main.zip",
+      "bytes": 488394,
+      "sha256": "8c0ec2b5cfb6387daf0ee1d8e7c63a9cae2148259a3c3bfb34212806a0e4563b",
+      "mirrored_in_repository": false
+    },
+    {
+      "file": "RPG_OS_Ten_Session_Playtest.zip",
+      "bytes": 5965763,
+      "sha256": "62cb4cc66fbf1053f8a44203afc5c44ae7f6706d7afb557480af26826ed74e87",
+      "mirrored_in_repository": false
+    },
+    {
+      "file": "RPG_OS_Twenty_Additional_Sessions_Playtest.zip",
+      "bytes": 41274248,
+      "sha256": "239f31c6073d9a00d98681a2ec9a1f5a1ddf4bedeb4d6bc5d19e6dd4744f70cb",
+      "mirrored_in_repository": false
+    }
+  ],
+  "publication_scope": "Detailed report, test protocol, raw synthetic transcripts, coverage, selected original result files and derived audit dossiers. Not a mirror of all campaign snapshots, frozen bundles, scripts or binary ZIP archives. Original full archives remain separate deliverables; manifest identities above do not make them downloadable from GitHub."
+}

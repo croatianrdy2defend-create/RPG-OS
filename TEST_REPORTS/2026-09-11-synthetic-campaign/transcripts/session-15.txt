@@ -1,0 +1,52 @@
+# Session 15: The purse that is not hers
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-019
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-15-T01
+Time: Day 8, 10:00 -> Day 8, 10:15
+Simulated player: I ask whether the city will fund an actual replacement seal. I will not pledge my testimony or buy it with money meant for patients.
+GM: Voss offers twenty-four crowns from the public works repair account, restricted to recorded seal procurement and the two agreed passage fares. Unspent money must be returned. The offer includes no personal wage or testimony condition.
+
+## session-15-T02
+Time: Day 8, 10:15 -> Day 8, 10:25
+Simulated player: I accept those written restrictions and ask him to count the money into a separate marked purse.
+GM: Voss hands over twenty-four crowns and a restricted-expense form. Mara’s own four crowns stay separate. Authority to spend the repair purse is not ownership of its balance.
+
+## session-15-T03
+Time: Day 8, 10:25 -> Day 8, 10:30
+Simulated player: Does this transfer the actuator’s ownership to the city or tell K-4 to start?
+GM: No. Voss distinguishes spending authority, the unresolved A-17 title, and K-4’s physical interlock. The old conditional restart order still requires safe physical prerequisites.
+
+## session-15-T04
+Time: Day 8, 10:30 -> Day 8, 10:40
+Simulated player: I book the outward trip for four crowns from the marked repair purse, not my own cash. No return date yet.
+GM: Nessa accepts exactly four repair-account crowns for the outbound leg. She issues a receipt marked OUTBOUND ONLY. A later return still requires a separate four-crown payment.
+
+## session-15-T05
+Time: Day 8, 10:40 -> Day 8, 10:50
+Simulated player: I put my notebook and the copied dimensions in the boat and board.
+GM: The load fits the patched skiff’s ordinary passenger capacity. Nessa checks the lashings before casting off. Mara has not volunteered to repair anything during the trip.
+
+## session-15-T06
+Time: Day 8, 10:50 -> Day 8, 11:00
+Simulated player: I ask whether she thinks the city stole her actuator.
+GM: “I bought what their disposal clerk offered. The receipt doesn’t decide who had the right to sell it.” Nessa maintains her claim but does not assert that Mara witnessed the original sale.
+
+## session-15-T07
+Time: Day 8, 11:00 -> Day 8, 11:15
+Simulated player: I offer to carry her written claim to the inquiry desk, but only if she gives me a copy.
+GM: Nessa writes a bounded request for title review and gives Mara the copy. Mara accepts delivery to the next available inquiry desk, not a promise to win the case.
+
+## session-15-T08
+Time: Day 8, 11:15 -> Day 8, 13:15
+Simulated player: I stay aboard for the first leg of the journey and stop before the upriver crossing.
+GM: The skiff reaches the marked approach to the upriver crossing after two hours. Whether to cross in the current gusts remains Mara’s next reserved travel decision; no weather result is rolled in saving.
+
+OOC Simulated operator: End this session and make one full save. Keep the restricted purse separate from my money, and leave that crossing decision to me.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-020. Source audit pending until its separately authored report is checked.
+

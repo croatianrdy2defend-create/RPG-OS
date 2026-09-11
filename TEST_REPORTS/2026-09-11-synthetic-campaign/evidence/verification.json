@@ -1,0 +1,179 @@
+{
+  "artifact_type": "Same-context synthetic campaign and non-blind mechanism test; not human or autonomous play",
+  "additional_sessions": 20,
+  "new_player_GM_pairs": 160,
+  "total_campaign_sessions": 30,
+  "full_session_saves": 20,
+  "new_checkpoints": 5,
+  "main_session_boundary_receipts": 30,
+  "first_pass_audit_status_counts": {
+    "consistent": 14,
+    "inconsistent": 5,
+    "undetermined": 1
+  },
+  "primary_reports_checked": 20,
+  "primary_reports_check_statuses": {
+    "report_structure_verified": 20
+  },
+  "later_primary_review_misses": 2,
+  "all_emitted_dialogue_matches_structured_event_text": true,
+  "all_raw_capture_hashes_match_original_generated_source": true,
+  "original_core_files_checked": 86,
+  "core_differences": [],
+  "old_archive_bodies_checked": 10,
+  "old_archive_bodies_unchanged": true,
+  "personal_cash_start": 0,
+  "personal_cash_final": 12,
+  "cash_ledger": [
+    {
+      "event": "session-12-T03",
+      "before": 0,
+      "after": 6,
+      "delta": 6,
+      "original_GM": "Tamsin checks all three entries and stamps acceptance. She counts six crowns into Mara’s hand. The payment is for this report, not another installment of the earlier survey wages."
+    },
+    {
+      "event": "session-12-T05",
+      "before": 6,
+      "after": 4,
+      "delta": -2,
+      "original_GM": "The stallkeeper hands over the purchased food and two crowns change from four offered. The net expense is two crowns; Mara retains four."
+    },
+    {
+      "event": "session-24-T03",
+      "before": 4,
+      "after": 1,
+      "delta": -3,
+      "original_GM": "Sera receives exactly three personal crowns and marks the loan settled. Mara retains one personal crown. The eight-crown loan history remains, but neither tranche is outstanding."
+    },
+    {
+      "event": "session-24-T05",
+      "before": 1,
+      "after": 0,
+      "delta": -1,
+      "original_GM": "One personal crown changes hands and the meal is eaten. Mara’s personal balance is now zero. This is neither another loan payment nor a public-works expense."
+    },
+    {
+      "event": "session-25-T03",
+      "before": 0,
+      "after": 8,
+      "delta": 8,
+      "original_GM": "Voss checks the scoped report, accepts it and pays eight crowns. Mara receives eight personal crowns once. No public-works procurement balance is reopened."
+    },
+    {
+      "event": "session-29-T03",
+      "before": 8,
+      "after": 16,
+      "delta": 8,
+      "original_GM": "Voss counts eight crowns into Mara’s hand and marks this commission paid. Mara now has sixteen personal crowns. The previous operating-report payment is not being repeated."
+    },
+    {
+      "event": "session-29-T04",
+      "before": 16,
+      "after": 12,
+      "delta": -4,
+      "original_GM": "The clinic relief desk receives four personal crowns and issues the donation receipt. Mara retains twelve. The settled loan, procurement account and completed wages are unchanged."
+    }
+  ],
+  "restricted_account": {
+    "received": 24,
+    "balance": 0,
+    "spent": 20,
+    "returned": 4,
+    "status": "closed; twenty spent and four returned",
+    "purchases": [
+      {
+        "item": "outbound passage",
+        "amount": 4,
+        "source": "session-15-T04"
+      },
+      {
+        "item": "refundable reseller deposit",
+        "amount": 6,
+        "source": "session-17-T02"
+      },
+      {
+        "item": "reseller deposit refunded",
+        "amount": -6,
+        "source": "session-18-T04"
+      },
+      {
+        "item": "measured ring manufacturing deposit",
+        "amount": 6,
+        "source": "session-19-T01"
+      },
+      {
+        "item": "manufactured ring balance after inspection",
+        "amount": 6,
+        "source": "session-19-T06"
+      },
+      {
+        "item": "return passage",
+        "amount": 4,
+        "source": "session-20-T02"
+      }
+    ]
+  },
+  "elapsed_minutes_added": 87895,
+  "fictional_start": "Day 4, 12:00",
+  "fictional_end": "Day 65, 12:55",
+  "fresh_rng_calls": 3,
+  "recorded_rng_sequence_reproduces": true,
+  "checkpoint_boundary_checks": [
+    {
+      "save_id": "sluice-save-013",
+      "session": "session-11",
+      "no_added_boundary_receipt": true
+    },
+    {
+      "save_id": "sluice-save-015",
+      "session": "session-12",
+      "no_added_boundary_receipt": true
+    },
+    {
+      "save_id": "sluice-save-016",
+      "session": "session-12",
+      "no_added_boundary_receipt": true
+    },
+    {
+      "save_id": "sluice-save-022",
+      "session": "session-16",
+      "no_added_boundary_receipt": true
+    },
+    {
+      "save_id": "sluice-save-033",
+      "session": "session-26",
+      "no_added_boundary_receipt": true
+    }
+  ],
+  "mutation_cases": {
+    "mutation": 20,
+    "valid_control": 6,
+    "scope_probe": 2
+  },
+  "mutation_reports_verified": 28,
+  "mutation_structural_validations_passed": 20,
+  "regression_suites": 9,
+  "regression_discovered": 277,
+  "regression_skipped": 4,
+  "regression_passed": 273,
+  "regression_suite_failures": 0,
+  "final_structural_exit": 0,
+  "final_structural_result": "PASS WITH WARNINGS",
+  "final_warnings": [
+    {
+      "code": "PREP_STALE_BASE",
+      "line": null,
+      "message": "preparation basis differs from current save/agreement; recheck relevant sources, never refresh provenance merely because of saving",
+      "path": "INSTANCE/PREP.md",
+      "severity": "WARNING"
+    }
+  ],
+  "known_unrepaired_semantic_issue": "PC goals retains the old unperformed-hour task; see final-review/LATE-02. Latest file is not declared universally semantically clean.",
+  "limitations": [
+    "Semantic judgments are manually authored by the same assistant that generated the fiction and deliberate mutations.",
+    "Source-reader delivery checks establish bytes, not comprehension or independent reasoning.",
+    "Batch audits are not independent prepublication gates. Intermediate checkpoints require their own comparisons.",
+    "New mechanism branches do not modify main campaign; source snapshots retain failures and superseding corrections."
+  ]
+}

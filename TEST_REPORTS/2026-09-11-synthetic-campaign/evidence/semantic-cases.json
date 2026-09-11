@@ -1,0 +1,831 @@
+{
+  "kind": "Derived publication dossier. Original non-blind, same-assistant judgments; no automatic semantic detection. State fragments are deliberately corrupted fixtures or selected valid controls, never live state. Full-source file hashes identify the original frozen bundle, which is in the separately supplied full archive. A quotation fragment alone cannot establish absence elsewhere in a whole file.",
+  "cases": [
+    {
+      "id": "M01",
+      "kind": "mutation",
+      "session": 17,
+      "name": "New obligation omitted",
+      "judgment": "inconsistent",
+      "summary": "The actual six-crown deposit and conditional return must have a current owner. The entire deposit object is absent although no purchase, refund or cancellation occurred. Other references do not supply its complete operative terms.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "1d844a54d371a7560899fdc785f109b6fe7cb849942c1d6628d5ca0c09988adb",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "cd3168e6d2511ef1438e2849dd56168e9ddc0125f6bcd5c8b3af010420e0baac",
+          "start_line": 100,
+          "end_line": 100,
+          "quote": "    \"procurement\": {\n"
+        }
+      ]
+    },
+    {
+      "id": "M02",
+      "kind": "mutation",
+      "session": 17,
+      "name": "Deposit amount inflated",
+      "judgment": "inconsistent",
+      "summary": "The agreement records six held, not eight. No subsequent amendment supports the larger amount.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "79e79d3bbe3965aaa3fd1e44e8bb833a3d4ad6588f299b0c49b0aee844f202e8",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "af1e3c57f59d63ae2a450454ed75465f27f0761ad5733f7f0ded8ad06e9d7b59",
+          "start_line": 130,
+          "end_line": 130,
+          "quote": "      \"amount\": 8,\n"
+        }
+      ]
+    },
+    {
+      "id": "M03",
+      "kind": "mutation",
+      "session": 17,
+      "name": "Purchase invented",
+      "judgment": "inconsistent",
+      "summary": "A refundable deposit and custody transfer are not purchase acceptance; the actual agreement expressly requires a later separate acceptance.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "1c66161e8e03bd5804297fbaee9c557c264787a4a580fc0fe500d4801e74ac97",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "984cf3b0f42e6e1d255b15776cefaa0999605677280ac8ea22cce85e569bbd48",
+          "start_line": 134,
+          "end_line": 134,
+          "quote": "      \"accepted_purchase\": true,\n"
+        }
+      ]
+    },
+    {
+      "id": "M04",
+      "kind": "mutation",
+      "session": 17,
+      "name": "Refund invented early",
+      "judgment": "inconsistent",
+      "summary": "The final source explicitly says the deposit remains held and no refund has occurred. A receipt reread cannot cause payment.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "176b23d58c69a88ced15bcf82530d345f8bb8c5db5577f571597769b4e9e9f9b",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 49,
+          "end_line": 49,
+          "quote": "GM: The declared quiet night passes. Leni’s deposit remains held, the ring stays at Bram’s bench, and no test result or refund is created by the session ending.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "11678c0825b99f86ef7c840afb4b895ce2fc08ded33b6bd0c2767cd783ab4cf5",
+          "start_line": 132,
+          "end_line": 132,
+          "quote": "      \"returned\": 6,\n"
+        }
+      ]
+    },
+    {
+      "id": "M05",
+      "kind": "mutation",
+      "session": 17,
+      "name": "Refund qualifier lost",
+      "judgment": "inconsistent",
+      "summary": "The agreed automatic refund trigger is a rejected assay, not every demand. A later voluntary cancellation remains possible but has not yet happened at this boundary.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "5c569cc20ff5bd892b7f3daa51284604e690305c196ec011cedae4c5abee2da5",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "c199b0d95af5f5bf62fc19dd039951af6cb280a8c9fdf43bf3502c2e1257cf84",
+          "start_line": 135,
+          "end_line": 135,
+          "quote": "      \"refund_trigger\": \"unconditional immediate return on demand\",\n"
+        }
+      ]
+    },
+    {
+      "id": "M06",
+      "kind": "mutation",
+      "session": 17,
+      "name": "Restricted money made personal",
+      "judgment": "inconsistent",
+      "summary": "Prior personal cash is four. The restricted purse still holds fourteen; its public ownership was never transferred to Mara by this deposit session.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "8786930904d3a48a09fbb7bfb595b52d50d0aeb435cbd393203bc4170142f549",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Leni agrees in writing: six held as a refundable deposit; rejected assay means a full six-crown return, with no balance due absent later acceptance. The actual sale price after approval would be twelve total.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "25581b3905f0735baf06b8bd7d32924d4d74147b6e51379d17a595e60604a297",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "  \"coins\": 18,\n"
+        },
+        {
+          "source": "prior",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "61f82363eefd48f5924387e191850c22caa344324f6d225a793dab2a4c0e546c",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "  \"coins\": 4,\n"
+        }
+      ]
+    },
+    {
+      "id": "M07",
+      "kind": "mutation",
+      "session": 18,
+      "name": "Observed assay result reversed",
+      "judgment": "inconsistent",
+      "summary": "The actual performed check and recorded result say the material meets specification. The refund did not require rewriting this result.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "10e4962b692a3e46596b620f1f41a54264fc16ac106c7e1a9aeff9c7031961ba",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "26ca921b2703dfb11ef4a612ee248803088feca114d099b8bfade37ca2df8d2f",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "GM: Bram records that the material meets the specification. The finding does not establish Leni’s prior knowledge.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "8e01466ed9507323b922b828ca9328c76e22465d4920f3a5e76145d81a710b45",
+          "start_line": 148,
+          "end_line": 148,
+          "quote": "      \"acceptable\": false\n"
+        }
+      ]
+    },
+    {
+      "id": "M08",
+      "kind": "mutation",
+      "session": 18,
+      "name": "Valid refund given false cause",
+      "judgment": "inconsistent",
+      "summary": "The refund was accepted through a new mutual cancellation after a passed assay. The amount is right but this causal and contractual record is false.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "27067f044d661939fd17f2f7b006b7693656c13b3b409bad8c0e2aa03bc99672",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "26ca921b2703dfb11ef4a612ee248803088feca114d099b8bfade37ca2df8d2f",
+          "start_line": 29,
+          "end_line": 29,
+          "quote": "GM: Leni agrees to that new cancellation arrangement because the ring can return to sale. She counts six crowns back into the repair purse after receiving the ring. This refund follows a new accepted agreement, not a falsely failed assay.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "1c2ae0699f01521b281becb9a93508f02a4e631288497de6a0e3525c99c61add",
+          "start_line": 141,
+          "end_line": 141,
+          "quote": "      \"status\": \"automatically refunded because the assay failed\"\n"
+        }
+      ]
+    },
+    {
+      "id": "M09",
+      "kind": "mutation",
+      "session": 21,
+      "name": "Custody becomes personal inventory",
+      "judgment": "inconsistent",
+      "summary": "The parts were actually transported by the civic store crew to the pump platform. Permission to help does not put them in Mara’s personal bag.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "0a27969c9c37657db61f23ee76f736c7092a8a11f79a6a8f073ed40dd3d8a001",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "edac2dcc9f7b90381df5c08b0a1026ccd8001becb4b95a2a3439589e5c257963",
+          "start_line": 29,
+          "end_line": 29,
+          "quote": "GM: Voss signs the release. The store crew carries A-17 and the new ring to the isolated platform and signs the receiving inventory. Their custody actually changes; title remains reserved and nothing has been installed.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "a5c6bd955f36647a7b53da22bb72cb157962f2367ce414f8c88b893738af2598",
+          "start_line": 56,
+          "end_line": 56,
+          "quote": "    \"Serviceable bronze ring in Mara’s personal bag\"\n"
+        }
+      ]
+    },
+    {
+      "id": "M10",
+      "kind": "mutation",
+      "session": 22,
+      "name": "Redeemed service revived",
+      "judgment": "inconsistent",
+      "summary": "The source records sixty minutes of work and a redeemed note. A new request is not a second unused credit.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "ed806b2b7e7d7061ca1d52447378bf00bc16c07924124447cda850dc8a1f8408",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "e6c26f9cdb969210f741fe3eb0462e0746b30d3a00b5e6eaf1c1f0433427c53b",
+          "start_line": 20,
+          "end_line": 20,
+          "quote": "GM: Jory marks the note REDEEMED: ONE HOUR. He confirms no second hour was performed, bought or owed. The old credit is closed by actual work, not a cash refund.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "c86e8388c54794d12317138defc698e13faf95036f27d21bb693fb32cb8c1b4a",
+          "start_line": 189,
+          "end_line": 189,
+          "quote": "      \"status\": \"one unused prepaid hour remains\"\n"
+        }
+      ]
+    },
+    {
+      "id": "M11",
+      "kind": "mutation",
+      "session": 23,
+      "name": "Matured debt stays conditional",
+      "judgment": "inconsistent",
+      "summary": "The newly agreed trigger actually happened in this source: first outlet water delivery. The remaining three are now due and unpaid.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "71aadd225a2c345c8ba2f13604e7d5507096f9a30dd9591e9abe8b2fa2083eae",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "a3e430289d2605081b87d346f3e2775f3f37cd62aba7bdb163f8f1a06b967787",
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "GM: K-4 opens the specified delivery path and the western pump moves water through the outlet. This is the first actual delivery after the agreed clarification. The old remaining three-crown tranche becomes due now; it is not yet paid.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "6f2a4e27199ef573bd459cd523e5718d9af0fcfe93c49dd91f5502c58c6c5d28",
+          "start_line": 68,
+          "end_line": 68,
+          "quote": "        \"due\": false,\n"
+        }
+      ]
+    },
+    {
+      "id": "M12",
+      "kind": "mutation",
+      "session": 23,
+      "name": "NPC receives remote knowledge",
+      "judgment": "inconsistent",
+      "summary": "The narration explicitly separates Mara’s observation from Sera’s knowledge. No messenger or other information path is recorded before this save.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "e0f31b89162d5049fd1a694c11ef5130a3f1903c9ee7716fb65b246de82a48c7",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "a3e430289d2605081b87d346f3e2775f3f37cd62aba7bdb163f8f1a06b967787",
+          "start_line": 39,
+          "end_line": 39,
+          "quote": "GM: Mara has witnessed the trigger. Sera has not been shown this event by the controller or this narration. The debt can be due before she personally learns that its condition occurred.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/PEOPLE/sera.md",
+          "sha256": "6ad218426f57d16db9ce1a50898acfa6584e1ac735ca32c93bcc7abe4f547f20",
+          "start_line": 17,
+          "end_line": 17,
+          "quote": "    \"Sera directly knows first outlet water flowed before Mara tells her.\"\n"
+        }
+      ]
+    },
+    {
+      "id": "M13",
+      "kind": "mutation",
+      "session": 24,
+      "name": "Paid debt resurrected",
+      "judgment": "inconsistent",
+      "summary": "Sera actually received the final three and marked the loan settled. The old agreement remains history, not a continuing balance.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "42d6824098d733288c2ae3d26150cd6d20c80129fdc31977864420645d44c26c",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "f2b2a674645c9311f637b749a4b991eaddc976c1dc94e0c1b62fab8de1629fff",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "GM: Sera receives exactly three personal crowns and marks the loan settled. Mara retains one personal crown. The eight-crown loan history remains, but neither tranche is outstanding.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "30b293971c8dfd4907a9eda5f974b8b11ed9f783de706b2dfaa5e9120fc70546",
+          "start_line": 66,
+          "end_line": 66,
+          "quote": "      \"remaining\": 3,\n"
+        }
+      ]
+    },
+    {
+      "id": "M14",
+      "kind": "mutation",
+      "session": 24,
+      "name": "Money reappears",
+      "judgment": "inconsistent",
+      "summary": "Four at the opening minus three paid and one eaten leaves zero, stated in the actual source. No new income was received.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "3716f02a708dba60cb0d7cefef052e44c95d6befd738a91f318599004fe65c70",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "f2b2a674645c9311f637b749a4b991eaddc976c1dc94e0c1b62fab8de1629fff",
+          "start_line": 31,
+          "end_line": 31,
+          "quote": "GM: One personal crown changes hands and the meal is eaten. Mara’s personal balance is now zero. This is neither another loan payment nor a public-works expense.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "7a738d54586fa714316da8dd07f3cb3566732cfe53b14a0fc7bc75ad710b4d31",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "  \"coins\": 3,\n"
+        }
+      ]
+    },
+    {
+      "id": "M15",
+      "kind": "mutation",
+      "session": 25,
+      "name": "Private truth becomes public verdict",
+      "judgment": "inconsistent",
+      "summary": "The panel leaves intent and remedy open. Private GM truth and a witness claim do not establish a public conviction.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "6bf134ec6052abeaa7c062daf676dba65e83949cede93807ce599f33c3ced137",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "6d95e6b05fe73bd09aade0ce6a76cb0a35e318c0115f2ba39af260673cace072",
+          "start_line": 35,
+          "end_line": 35,
+          "quote": "GM: The panel receives the documentary conflict and Mara’s express limit. It keeps questions of intent and the full remedy open rather than manufacturing an eyewitness memory for her.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "85528833ca74aec16e2c2e1bf80642ef9cd040954652423612605dce67cb0d92",
+          "start_line": 201,
+          "end_line": 201,
+          "quote": "    \"public_criminal_verdict\": \"Rusk convicted of intentional substitution by the panel today\"\n"
+        }
+      ]
+    },
+    {
+      "id": "M16",
+      "kind": "mutation",
+      "session": 27,
+      "name": "NPC refund credited to PC",
+      "judgment": "inconsistent",
+      "summary": "Nine went directly to Nessa; Mara explicitly receives none and ends with eight. A favorable title outcome is not player treasure.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "59429718f1f152c1338253216fe734fa0cbe10da46acb52e77cfe5b54d930ce6",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "6f3b753a44a0a187db55726ae3e3db1314857db20305435a662123a3e3f6f7f7",
+          "start_line": 35,
+          "end_line": 35,
+          "quote": "GM: She accepts the company. At the desk the clerk counts nine crowns directly to Nessa against the order and cancels the payment voucher. Mara receives none.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "ae6ef7c59ba38a7eecfa01fb7d2714c287deebba9a21a2643a35170f7b9e1a11",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "  \"coins\": 17,\n"
+        }
+      ]
+    },
+    {
+      "id": "M17",
+      "kind": "mutation",
+      "session": 29,
+      "name": "Second wage duplicated",
+      "judgment": "inconsistent",
+      "summary": "Eight were paid for this accepted commission; the prior report wage was separate and already held. The donation leaves twelve, not twenty.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "0b57a1267bdd1ea8e6a3b5aef040995e6a5e1d1280f03ad1674fd0fa7bf2f079",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "349288bddb3ce57f139603758d618d3efd7dd6ebdc74cea677c27d19e6569dec",
+          "start_line": 25,
+          "end_line": 25,
+          "quote": "GM: The clinic relief desk receives four personal crowns and issues the donation receipt. Mara retains twelve. The settled loan, procurement account and completed wages are unchanged.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "ab7004c2e407d8d99a8a65f8971d58261188ce5d90a9a3e0ae459d78d6db48b4",
+          "start_line": 22,
+          "end_line": 22,
+          "quote": "  \"coins\": 20,\n"
+        }
+      ]
+    },
+    {
+      "id": "M18",
+      "kind": "mutation",
+      "session": 30,
+      "name": "Completed duty extended",
+      "judgment": "inconsistent",
+      "summary": "The accepted household stay expressly excludes extending the completed public job. No new offer or acceptance creates renewed monitoring.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "38f3675bb3f193b0bea7ef40e897369dc7b17aeb3b4dca377d74acd2e689a47c",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "3246a09294cf5daebfb3ecddf257f533e0a2cd44471af868dabba5053054d07d",
+          "start_line": 15,
+          "end_line": 15,
+          "quote": "GM: Kala accepts. The limited household arrangement begins. Mara’s finished observation commission remains finished, and no new public wage or daily gauge duty follows her to the hillside.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "f58addcbd6861ab921dbde0e40e940dbffccdf2bbf6b7d75f38b0d2fcc80f45f",
+          "start_line": 204,
+          "end_line": 204,
+          "quote": "      \"status\": \"automatically renewed; daily gauge duty continues indefinitely\",\n"
+        }
+      ]
+    },
+    {
+      "id": "M19",
+      "kind": "mutation",
+      "session": 30,
+      "name": "Unchosen time added",
+      "judgment": "inconsistent",
+      "summary": "The player authorized thirty nights, not forty. The saved elapsed count adds ten days unsupported by the actual time lines; its own displayed datetime remains conflicting.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "1b03cf0ecc138add5dba7cf464e54ea46b14f9c61c271783125072d74237acff",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "3246a09294cf5daebfb3ecddf257f533e0a2cd44471af868dabba5053054d07d",
+          "start_line": 20,
+          "end_line": 20,
+          "quote": "GM: The authorized quiet month passes with the stated limited help and included meals. No material interruption occurs. The stay is completed without cash rent, extra debt, wages or an unearned skill award. Conditions in unvisited buildings are not newly certified.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "f724e7f202beab5e050f038bc3096fd2d86c8847e43de6917a774a7724179f3d",
+          "start_line": 11,
+          "end_line": 11,
+          "quote": "    \"elapsed\": 106855,\n"
+        }
+      ]
+    },
+    {
+      "id": "M20",
+      "kind": "mutation",
+      "session": 22,
+      "name": "Active required field deleted",
+      "judgment": "inconsistent",
+      "summary": "K-4 is still participating at the saved decision. Established inapplicability is a required explicit dimension, not permission to delete the field. This is a missing active value, not genuine departure.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "eca53832f8238e963c0d219b40dfbff0dae1075efb47c517eb57e45b5a07f0a8",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "e6c26f9cdb969210f741fe3eb0462e0746b30d3a00b5e6eaf1c1f0433427c53b",
+          "start_line": 45,
+          "end_line": 45,
+          "quote": "GM: Mara remains at the platform. Installed parts and the redeemed hour persist; the current controller state and unchosen next test remain active across the save.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "2a58c2e9ead95d1aacc08f8a296c6ca1078ff820b59bc874b37a19c6e558a480",
+          "start_line": 10,
+          "end_line": 10,
+          "quote": "    \"k4\": {\n"
+        },
+        {
+          "source": "current",
+          "path": "OS/AGENT_STATE.md",
+          "sha256": "d7a84a0cc9d3a8f3cb0fe97f695249c9d1f73b35f95d0fffa3b0549808d62a74",
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "| Attraction | Where applicable, its present overall attraction to or aversion toward the PC within the supported attraction domain. Physical/aesthetic, sexual and romantic meaning can be resolved later when relevant; the initial value must not wait merely because those subtypes are unneeded. |\n"
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "kind": "valid_control",
+      "session": 17,
+      "name": "Unchanged refundable deposit",
+      "judgment": "consistent",
+      "summary": "Six are held pending a future check; there is no completed purchase or refund. Preserve both the obligation and uncertainty.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "f07dc52be28be4d9fb6ad27c7f0b78d53fda71cbb3dda5734958486ecf1113f9",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "23e47b1bfbb1b1145811de0d5a2fc0c5fb77ef8b521dfaf3e14ec9a73057ca0e",
+          "start_line": 49,
+          "end_line": 49,
+          "quote": "GM: The declared quiet night passes. Leni’s deposit remains held, the ring stays at Bram’s bench, and no test result or refund is created by the session ending.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "72af7a8da1da4cb1815d47188810c543c5883009e923347147fef7e409689be5",
+          "start_line": 131,
+          "end_line": 131,
+          "quote": "      \"held\": 6,\n"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "kind": "valid_control",
+      "session": 18,
+      "name": "Passed assay plus negotiated refund",
+      "judgment": "consistent",
+      "summary": "A new accepted cancellation can validly supersede the initial conditional-refund path. Preserve the passed assay and the real refund; do not invent a failed test.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "1da65eb7609d3abcccde259a8ac3c8ce51f1c005f0519bd3d8074e2f2b35b35b",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "26ca921b2703dfb11ef4a612ee248803088feca114d099b8bfade37ca2df8d2f",
+          "start_line": 29,
+          "end_line": 29,
+          "quote": "GM: Leni agrees to that new cancellation arrangement because the ring can return to sale. She counts six crowns back into the repair purse after receiving the ring. This refund follows a new accepted agreement, not a falsely failed assay.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "f817b8883d2f2756a52b1199524e0074862784324811646cdb7f495dd0570277",
+          "start_line": 141,
+          "end_line": 141,
+          "quote": "      \"status\": \"cancelled by new mutual agreement; deposit returned\"\n"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "kind": "valid_control",
+      "session": 24,
+      "name": "Actual payment closes conditional debt",
+      "judgment": "consistent",
+      "summary": "The condition matured in the prior session and the actual payment now closes the balance. Keeping the original remaining value would itself be wrong.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "480b1e6e55c6411b6ae3dfb73b255d4403670936724a8e6fea5b13c1cd31449d",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "f2b2a674645c9311f637b749a4b991eaddc976c1dc94e0c1b62fab8de1629fff",
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "GM: Sera receives exactly three personal crowns and marks the loan settled. Mara retains one personal crown. The eight-crown loan history remains, but neither tranche is outstanding.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "0e6b7119b00dd427cd5c6cd0677daa58026eb7a1513de078ba29e4d2dc76c51a",
+          "start_line": 66,
+          "end_line": 66,
+          "quote": "      \"remaining\": 0,\n"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "kind": "valid_control",
+      "session": 14,
+      "name": "Injury healed after actual examination",
+      "judgment": "consistent",
+      "summary": "The earlier injury need not remain forever. The source records a later examination and clearance after elapsed time, not an automatic session reset.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "fecdc0cf60d00ce706f6e6d37a6605bb7f1d54ed04c808c4331fe45881a0df1c",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "2f0981dad3c3f4773e8ef84a63713425547aa593c9f899176e3f143a137c59a1",
+          "start_line": 20,
+          "end_line": 20,
+          "quote": "GM: The wound is closed, clean and painless through ordinary finger movement. A gentle supervised grip test produces no pain. Ivo clears ordinary survey and boat-handling tasks, not immunity to future injury.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "b80d600d0dbba26c62924749a2b5fa226181d336a648be51caa0b00c819d7973",
+          "start_line": 48,
+          "end_line": 48,
+          "quote": "  \"wounds\": [],\n"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "kind": "valid_control",
+      "session": 30,
+      "name": "Retire settled obligation object",
+      "judgment": "consistent",
+      "summary": "The settled item can leave the active obligations object because the final source confirms neither tranche outstanding and retained inventory/archive still preserve its settlement. No live obligation is lost.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "f9946da52dc97d9f9099efbbab940d754868b9feb3f8697fa29a27fc237f154f",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "3246a09294cf5daebfb3ecddf257f533e0a2cd44471af868dabba5053054d07d",
+          "start_line": 30,
+          "end_line": 30,
+          "quote": "GM: Neither is outstanding. Her retained account shows the earlier five paid and the final three paid after the clarified outlet trigger. Absence did not reopen the loan or create interest that was never agreed.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/CHAR/PC.md",
+          "sha256": "f24225846588563d857aa984425df6e4b8b8d625d025bd83ce50917776914dc9",
+          "start_line": 58,
+          "end_line": 58,
+          "quote": "    \"Sera’s settled loan receipt: five paid earlier, three after first outlet delivery\",\n"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "kind": "valid_control",
+      "session": 23,
+      "name": "Retire genuinely departed active controller",
+      "judgment": "consistent",
+      "summary": "The scene actually ends and Mara walks away after the duty crew accepts monitoring. K-4’s effects stay in world records but it need not remain Mara’s active encounter participant.",
+      "structural_result": "PASS WITH WARNINGS",
+      "source_report_sha256": "43e2509890d8b33be537aa2f27efdf4c750dd5cb21a15392eed08ffe0865bebb",
+      "citations": [
+        {
+          "source": "capture",
+          "path": "source.txt",
+          "sha256": "a3e430289d2605081b87d346f3e2775f3f37cd62aba7bdb163f8f1a06b967787",
+          "start_line": 44,
+          "end_line": 44,
+          "quote": "GM: The publicly assigned duty crew accepts the existing monitored shift under its supervisor. It does not promise permanent repair-free operation or private service to Mara. K-4 remains local to the platform.\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/NOW.md",
+          "sha256": "09d24c8e18a350c3b0567c377ff2454730207d5255233d9239ace4ebdb8609f4",
+          "start_line": 9,
+          "end_line": 9,
+          "quote": "  \"active\": {},\n"
+        }
+      ]
+    },
+    {
+      "id": "S01",
+      "kind": "scope_probe",
+      "session": null,
+      "name": "Inherited claim with original source omitted",
+      "judgment": "undetermined",
+      "summary": "This late capture contains no session-nine price statement. The two selected saves repeat the same asserted historical quote, which does not authenticate its wording. Fetch the original booking before verifying or repairing it.",
+      "structural_result": null,
+      "source_report_sha256": "806cb56a15d265228434e1f4df6ed71f79fc3bed04553df568f9f030842adaa7",
+      "citations": [
+        {
+          "source": "prior",
+          "path": "INSTANCE/PEOPLE/nessa.md",
+          "sha256": "66140d0959144fe960cf897e9100453bcc0c45550189e92b7ba43e79f3dd4e0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "    \"Historical quote attributed to Nessa at the session-nine booking: \\\"Six crowns for each leg, twelve total.\\\"\"\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/PEOPLE/nessa.md",
+          "sha256": "66140d0959144fe960cf897e9100453bcc0c45550189e92b7ba43e79f3dd4e0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "    \"Historical quote attributed to Nessa at the session-nine booking: \\\"Six crowns for each leg, twelve total.\\\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "kind": "scope_probe",
+      "session": null,
+      "name": "Inherited claim with original source added in new bundle",
+      "judgment": "inconsistent",
+      "summary": "The newly selected original booking contradicts the inherited quote in both saves: six was the total for the two-leg round trip, not each leg. Agreement between successive corrupted records did not validate their history.",
+      "structural_result": null,
+      "source_report_sha256": "bca775cf2bc8c5bcff53bab4822bbc3425f0891a70aea919c0b5ae0566403632",
+      "citations": [
+        {
+          "source": "prior",
+          "path": "INSTANCE/PEOPLE/nessa.md",
+          "sha256": "66140d0959144fe960cf897e9100453bcc0c45550189e92b7ba43e79f3dd4e0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "    \"Historical quote attributed to Nessa at the session-nine booking: \\\"Six crowns for each leg, twelve total.\\\"\"\n"
+        },
+        {
+          "source": "current",
+          "path": "INSTANCE/PEOPLE/nessa.md",
+          "sha256": "66140d0959144fe960cf897e9100453bcc0c45550189e92b7ba43e79f3dd4e0e",
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "    \"Historical quote attributed to Nessa at the session-nine booking: \\\"Six crowns for each leg, twelve total.\\\"\"\n"
+        },
+        {
+          "source": "current",
+          "path": "ARCHIVE/sessions/sluice-save-011/01_play.md",
+          "sha256": "24528fa47898b3b4339d8218ec93aef86da2ed296a98c5f9d9942f7d11c02191",
+          "start_line": 37,
+          "end_line": 37,
+          "quote": "**GM:** Nessa accepts the bounded round trip and takes six crowns once. The outward leg reaches the platform by open water; the flooded Quay Road is not used. The patched boat is physically available, and the return leg is included in the paid scope.\n"
+        }
+      ]
+    }
+  ],
+  "mechanical_probes": [
+    {
+      "id": "B01",
+      "test": "Raw source bytes altered",
+      "status": "rejected",
+      "actual_error": "capture source hash/size mismatch"
+    },
+    {
+      "id": "B02",
+      "test": "Report exact citation text fabricated",
+      "status": "rejected",
+      "actual_error": "quote does not match original lines in record consistency"
+    }
+  ],
+  "fixture_failures": [
+    "Initial scoped roots lacked full runtime required files; hydration omitted EVIDENCE/README.md once. Both structural failures are preserved. Final checks use complete runtime and unchanged mutated current owners.",
+    "Initial tamper-catcher used the wrong exception class; underlying helper already rejected tamper. Retried using EvidenceError and preserved the actual rejection."
+  ]
+}

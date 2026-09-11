@@ -1,0 +1,52 @@
+# Session 25: A useful statement is not a verdict
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-031
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-25-T01
+Time: Day 20, 13:30 -> Day 20, 13:40
+Simulated player: I ask whether there is paid technical work left. I am not selling an accusation or an endorsement.
+GM: Voss offers eight crowns for a written operating report covering the observed checks, first flow and remaining limitations, payable on acceptance. He explicitly excludes compelled political or criminal testimony from the job.
+
+## session-25-T02
+Time: Day 20, 13:40 -> Day 20, 15:40
+Simulated player: I accept that bounded report and spend two hours writing only what I observed, labeling other people’s reports separately.
+GM: Mara writes the accepted report over two hours. It distinguishes measured tests, her observed outlet flow, the crew’s reported continued operation, and uninspected buildings. Work is complete but payment still awaits acceptance.
+
+## session-25-T03
+Time: Day 20, 15:40 -> Day 20, 16:00
+Simulated player: I submit it for review and ask to be paid only if that stated work is accepted.
+GM: Voss checks the scoped report, accepts it and pays eight crowns. Mara receives eight personal crowns once. No public-works procurement balance is reopened.
+
+## session-25-T04
+Time: Day 20, 16:00 -> Day 20, 16:30
+Simulated player: I attend the public inquiry desk voluntarily and give the same technical limits.
+GM: The clerk accepts Mara’s bounded technical statement. Her paid report is not enlarged into a promise to prove criminal intent or to endorse either faction.
+
+## session-25-T05
+Time: Day 20, 16:30 -> Day 20, 16:40
+Simulated player: I ask Rusk why his invoice said bronze.
+GM: Rusk claims that an invoice label does not establish what he personally knew. His statement is testimony. The established private truth in the GM’s source is not automatically evidence available to Mara or the panel.
+
+## session-25-T06
+Time: Day 20, 16:40 -> Day 20, 16:55
+Simulated player: I point to the independent delivery register, but I do not pretend I watched him order the substitution.
+GM: The panel receives the documentary conflict and Mara’s express limit. It keeps questions of intent and the full remedy open rather than manufacturing an eyewitness memory for her.
+
+## session-25-T07
+Time: Day 20, 16:55 -> Day 20, 17:05
+Simulated player: I ask the clerk for Nessa’s title-review status and whether a decision has actually been issued.
+GM: The clerk says the title panel will hear the documentary issue on Day 28. No decision has yet been issued. Mara may deliver that scheduling information; she has not promised Nessa a win.
+
+## session-25-T08
+Time: Day 20, 17:05 -> Day 20, 17:25
+Simulated player: I leave with my eight crowns and let the unresolved questions remain unresolved.
+GM: Mara reaches the shelter. She has a completed paid report, not a universal verdict; neither a new antagonist nor a replacement emergency appears merely to extend the campaign.
+
+OOC Simulated operator: End this session and make one full save. Keep testimony, private truth, and adjudicated findings distinct.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-032. Source audit pending until its separately authored report is checked.
+

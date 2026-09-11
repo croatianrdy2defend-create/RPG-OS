@@ -1,0 +1,52 @@
+# Session 27: The hearing offers a result, not an adventure reward
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-034
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-27-T01
+Time: Day 27, 17:15 -> Day 28, 10:00
+Simulated player: I choose to attend the hearing, after taking today’s accessible gauge reading.
+GM: Mara completes the Day-28 reading from the safe marked access, then reaches the hearing before proceedings begin. The observation job and voluntary attendance remain separate.
+
+## session-27-T02
+Time: Day 28, 10:00 -> Day 28, 10:10
+Simulated player: I ask Nessa to show the actual sale stub before I say what she paid.
+GM: Nessa shows her original disposal-sale stub. It records nine crowns paid to the municipal disposal clerk for A-17. The amount is established from this newly inspected document, not guessed from what compensation might be convenient.
+
+## session-27-T03
+Time: Day 28, 10:10 -> Day 28, 10:20
+Simulated player: I say only that I saw the stub today and the temporary-use receipt earlier. I do not claim to have attended the sale.
+GM: The panel records that limited statement. Mara is not turned into a witness to an unobserved event, and her technical work payment is not treated as payment for this testimony.
+
+## session-27-T04
+Time: Day 28, 10:20 -> Day 28, 12:20
+Simulated player: I listen to the panel’s actual finding rather than asking the GM to decide in my favor.
+GM: After reviewing the disposal record and the public asset register, the panel finds the clerk lacked authority to dispose of A-17. It orders the city to retain the actuator for public use and refund Nessa’s documented nine crowns. This is a title-and-sale remedy, not a criminal verdict on the seal substitution.
+
+## session-27-T05
+Time: Day 28, 12:20 -> Day 28, 12:30
+Simulated player: I ask whether she accepts that result or wants to challenge it. I will not speak for her.
+GM: Nessa says she will take the refund rather than continue the title dispute. Her decision is hers. It neither forgives the city universally nor establishes a romantic interest or permanent loyalty to Mara.
+
+## session-27-T06
+Time: Day 28, 12:30 -> Day 28, 12:50
+Simulated player: I walk with her to the payment desk if she wants company, but I will not receive the money for her.
+GM: She accepts the company. At the desk the clerk counts nine crowns directly to Nessa against the order and cancels the payment voucher. Mara receives none.
+
+## session-27-T07
+Time: Day 28, 12:50 -> Day 28, 13:00
+Simulated player: I ask for a copy of the published title decision, not her cancelled cash voucher.
+GM: Mara obtains the public decision copy. The record now distinguishes a decided title question, Nessa’s completed refund, and the separately unresolved contractor issue.
+
+## session-27-T08
+Time: Day 28, 13:00 -> Day 28, 13:20
+Simulated player: I return to the shelter and keep the six remaining observations on my own schedule.
+GM: Mara returns with the same eight personal crowns. Neither winning public clarity nor accompanying Nessa produced player treasure or completed tomorrow’s observation.
+
+OOC Simulated operator: End this session and make one full save. A mixed outcome for Nessa feels more credible than treating her claim as my reward.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-035. Source audit pending until its separately authored report is checked.
+

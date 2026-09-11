@@ -1,0 +1,145 @@
+{
+  "kind": "Derived publication index of original same-context first-pass reports; not a fresh semantic review",
+  "reports": [
+    {
+      "session": 11,
+      "source_report": "evidence/audits/session-11/report.json",
+      "source_report_sha256": "c93027ab77f63ac0172e501101ac1622d5de20e8fb04e971974ef906c05fbc41",
+      "status": "consistent",
+      "summary": "No selected consequential inconsistency found: unpaid six-crown work remains unpaid; old three-crown condition persists; missing measurement and cash zero are correctly retained."
+    },
+    {
+      "session": 12,
+      "source_report": "evidence/audits/session-12/report.json",
+      "source_report_sha256": "9d5409adf9633113370c1a0a688fbb6f095250292d18a7c3e1298524098f1719",
+      "status": "inconsistent",
+      "summary": "Resource changes are faithful (six received, two spent, four left), and the prepaid repair hour remains unused. A duplicated completed-job status is stale."
+    },
+    {
+      "session": 13,
+      "source_report": "evidence/audits/session-13/report.json",
+      "source_report_sha256": "a420185f289c1fbd9bde573541931788823c8022900b553dbdad9a701eb71c3d",
+      "status": "inconsistent",
+      "summary": "Pell receives the correction only after direct delivery and corrects one actual notice; reading the inquiry date is not a commitment. The inherited stale relief-offer status remains."
+    },
+    {
+      "session": 14,
+      "source_report": "evidence/audits/session-14/report.json",
+      "source_report_sha256": "9811b254b1e0d992f0f406613741317d250da556934349fcc10a5277556d13c6",
+      "status": "inconsistent",
+      "summary": "The time interval was player-declared and the wound was cleared only after an actual later examination; no XP or income reset occurred. The inherited stale relief-offer status remains."
+    },
+    {
+      "session": 15,
+      "source_report": "evidence/audits/session-15/report.json",
+      "source_report_sha256": "196b0b4572a8e89c9e511bf2d586daa5bc19db5b52e1ec92f9761773a31b75d4",
+      "status": "inconsistent",
+      "summary": "Restricted twenty-four-crown procurement funding stays separate from four personal crowns; four of the restricted coins were spent. Accepted delivery and the unresolved crossing are retained. Stale offer-stage and active-state descriptions need narrow repair."
+    },
+    {
+      "session": 16,
+      "source_report": "evidence/audits/session-16/report.json",
+      "source_report_sha256": "73bce67b3b6c689d51b9dd11f65ffa3a41d408fd2c402cdebe6e4c5505ae58e0",
+      "status": "consistent",
+      "summary": "The negative weather input did not force a crossing: one hour was observed, the decision checkpointed, then an explicitly accepted overnight wait preceded the actual crossing. Outbound fare was not charged twice. The machining quotation did not start an order."
+    },
+    {
+      "session": 17,
+      "source_report": "evidence/audits/session-17/report.json",
+      "source_report_sha256": "852dc1201667b1573d171bad5334df26aad8ccf360784749434e41c35c6731d5",
+      "status": "consistent",
+      "summary": "The six-crown refundable deposit, unaccepted purchase and ring custody are distinguished. The explicit OOC veil is persisted with safety_state active and does not change fictional outcomes or NPC beliefs."
+    },
+    {
+      "session": 18,
+      "source_report": "evidence/audits/session-18/report.json",
+      "source_report_sha256": "8fb0c9feef4b7123dfd727c7f23ce9c18c9fc07f201fff488bb0f571ca663acf",
+      "status": "consistent",
+      "summary": "The actual assay passed. The refund therefore correctly follows a newly accepted cancellation agreement, not the original failed-assay trigger. Restricted money returns to twenty, personal money remains four, and no seller intent is inferred."
+    },
+    {
+      "session": 19,
+      "source_report": "evidence/audits/session-19/report.json",
+      "source_report_sha256": "949d8b40351f04124ecbecc896a0e487bf12287f7f94c25c596834f2cdaf6173",
+      "status": "undetermined",
+      "summary": "The order, twelve-crown cost, eight-day interval, inspection and payment are retained; however, the emitted turn says next morning while its timestamp advances Day 10 morning only to Day 10 evening. The source itself conflicts on timing, so a semantic checker cannot choose a canonical timestamp without an explicit resolution."
+    },
+    {
+      "session": 20,
+      "source_report": "evidence/audits/session-20/report.json",
+      "source_report_sha256": "4a56f31516994b592ff5a689fb765a14814ee8f5315061c22628cd1daaeddf35",
+      "status": "inconsistent",
+      "summary": "The restricted account reconciles to twenty spent and four returned; the original title-review delivery is marked fulfilled. The delivered request remains incorrectly in PC inventory, and the pump explanation still says no serviceable seal is available after a serviceable ring was delivered into the repair store."
+    },
+    {
+      "session": 21,
+      "source_report": "evidence/audits/session-21/report.json",
+      "source_report_sha256": "d48f114bcf73e71cbdc02f1a09bc5c4a2fd0fcc5842561ebf0202dcb7a42f900",
+      "status": "consistent",
+      "summary": "The two unambiguous recording repairs are retained in CORRECTIONS, and the source timing conflict is resolved by an explicit simulated-operator choice rather than an inferred audit repair. The debt trigger is prospectively clarified before tests; custody movement does not settle title or operate the machine."
+    },
+    {
+      "session": 22,
+      "source_report": "evidence/audits/session-22/report.json",
+      "source_report_sha256": "ec1b62c23837a26071ddd3f18da98397022deecd7c34a1651cc3f7648be4d0e9",
+      "status": "consistent",
+      "summary": "One actual sixty-minute prepaid hour is redeemed once; Jory can decline more work. Installed parts and a bounded disconnected dry test do not trigger the clarified water-delivery debt. K-4’s complete active state and pending choice survive the save."
+    },
+    {
+      "session": 23,
+      "source_report": "evidence/audits/session-23/report.json",
+      "source_report_sha256": "642760e903ce61ccefd654bcafa0e132d7b3e26a0ec9daa0b0c195d8001e1516",
+      "status": "consistent",
+      "summary": "The actual random input held the bounded pressure test. Subsequent explicit authorization produced real outlet flow, making the remaining three crowns due, not paid. Sera’s knowledge does not update by remote narration, and the old flood is not rewound."
+    },
+    {
+      "session": 24,
+      "source_report": "evidence/audits/session-24/report.json",
+      "source_report_sha256": "ea12f10324d22b2653ffc61b8c7960b16ce9d65425fc4c2e7c67880243210f3e",
+      "status": "consistent",
+      "summary": "Three personal crowns are actually paid after the observed trigger; the earlier five remain paid; the remaining balance becomes zero. The one-crown meal is separate and leaves personal cash zero. Completed credit and loan remain historical rather than reactivated."
+    },
+    {
+      "session": 25,
+      "source_report": "evidence/audits/session-25/report.json",
+      "source_report_sha256": "cb169eac7f54cae86d08c3caed8f72cc30148018bbd3b645c20c366975ef63d7",
+      "status": "consistent",
+      "summary": "The eight-crown operating report is offered, accepted, completed, reviewed and paid in that order, without compelled political testimony. Rusk’s intent statement remains testimony and the title hearing remains a future scheduled matter."
+    },
+    {
+      "session": 26,
+      "source_report": "evidence/audits/session-26/report.json",
+      "source_report_sha256": "9db18cbcc72d4bbd041f6e27d6496fd07f3dd1f7fe728448c3de7460230e0dd4",
+      "status": "consistent",
+      "summary": "The finite observation job preserves its scope, dates, seven actual readings and unpaid future fee. The explicit request to undo the original valid flood was declined under the accepted clause without blocking ordinary play or content limits. Autosave deferral/resumption and the eventual full-save override are recorded separately from fiction."
+    },
+    {
+      "session": 27,
+      "source_report": "evidence/audits/session-27/report.json",
+      "source_report_sha256": "a7da7efcf36c1fc6dbb66ede16278070a032a55aab08598c2dcf540bbc8b7126",
+      "status": "consistent",
+      "summary": "The actual title decision and direct nine-crown payment to Nessa do not become Mara’s income or a verdict about contractor intent. Day-28 attendance and one observation are player-selected; the observation count reaches eight, not fourteen."
+    },
+    {
+      "session": 28,
+      "source_report": "evidence/audits/session-28/report.json",
+      "source_report_sha256": "9d5ab783756830b664444010e998824a8a9383aa5caf21ead3fc8830c6955859",
+      "status": "consistent",
+      "summary": "Pell receives a contact address without accepting a dispatch promise. Repeated questioning causes no message or reroll. The original loan passage is actually delivered by the source reader, and its history is distinguished from the zero current balance. Nine observations are recorded."
+    },
+    {
+      "session": 29,
+      "source_report": "evidence/audits/session-29/report.json",
+      "source_report_sha256": "1c292bb4eaf64ab4ce4f2d33a09f94f56b1b0e8be3c232e3312b3a492b7cbd86",
+      "status": "consistent",
+      "summary": "Fourteen specific daily observations are completed before report acceptance and the actual eight-crown payment. The four-crown donation is separate, leaving twelve personal crowns. An explicit bounded demonstration teaches only the stated inspection capability, not a level or repair qualification."
+    },
+    {
+      "session": 30,
+      "source_report": "evidence/audits/session-30/report.json",
+      "source_report_sha256": "25fbde987c5d1950258fd3cc77a9c6768ad0605e4a9a3e643225f61531c13cbf",
+      "status": "consistent",
+      "summary": "The thirty-night hospitality arrangement is explicitly accepted and completed without cash rent or new public wages. Returning participants preserve completed accounts. The current pump notice is correctly qualified as today’s report, not proof of continuous intervening operation. Final personal money is twelve and no new sequel commitment is made."
+    }
+  ]
+}

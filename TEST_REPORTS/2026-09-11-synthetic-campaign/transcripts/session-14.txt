@@ -1,0 +1,52 @@
+# Session 14: Days that pass without an adventure quota
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-018
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-14-T01
+Time: Day 5, 18:40 -> Day 5, 18:45
+Simulated player: I want several quiet days until Day 8, doing light tasks for my relief lodging and avoiding heavy grip. Stop if something materially interrupts that routine.
+GM: Ivo confirms the shelter still offers relief meals and bunks in exchange for optional light sorting, not a wage contract. Nothing requires a new expedition. The declared interval can be taken without assigning Mara hazardous work.
+
+## session-14-T02
+Time: Day 5, 18:45 -> Day 8, 09:00
+Simulated player: I follow that limited routine to Day 8 at nine, unless an actual interruption occurs.
+GM: The interval passes quietly. The patients remain in the operating shelter. Mara’s hand gets time to heal, but no mechanical reset or cash award is applied simply for the cut in narration.
+
+## session-14-T03
+Time: Day 8, 09:00 -> Day 8, 09:15
+Simulated player: I ask Ivo to examine my palm and test ordinary movement.
+GM: The wound is closed, clean and painless through ordinary finger movement. A gentle supervised grip test produces no pain. Ivo clears ordinary survey and boat-handling tasks, not immunity to future injury.
+
+## session-14-T04
+Time: Day 8, 09:15 -> Day 8, 09:20
+Simulated player: I thank him and ask him to come upriver with me if I find a repair job.
+GM: Ivo declines: his two patients still need clinic support, and he has made his own work commitments. Gratitude and family do not give Mara his time.
+
+## session-14-T05
+Time: Day 8, 09:20 -> Day 8, 09:30
+Simulated player: I ask whether my old two-leg passage receipt covers an upriver trip now.
+GM: “Both those legs were used.” Nessa does not charge retrospectively, but a new upriver journey is not included. She offers a seat for four crowns each direction, only if Mara actually accepts.
+
+## session-14-T06
+Time: Day 8, 09:30 -> Day 8, 09:35
+Simulated player: I cannot spend my last four without a plan. I decline for now.
+GM: Nessa accepts the refusal and goes back to her skiff work. No seat is booked and no coin leaves Mara’s purse.
+
+## session-14-T07
+Time: Day 8, 09:35 -> Day 8, 09:55
+Simulated player: I check the public workshop board for a possible supply route, not a guaranteed quest reward.
+GM: A named upriver workshop advertises bronze machining and an eight-day fabrication lead time after an accepted measured order. The notice proves neither stock availability nor that Mara can afford it.
+
+## session-14-T08
+Time: Day 8, 09:55 -> Day 8, 10:00
+Simulated player: I copy the address and stop there today.
+GM: Mara records the address. She has four personal crowns, a healed hand after examination, and no new financial commitment.
+
+OOC Simulated operator: End this session and make one full save. The quiet interval and real healing check were enough; no replacement emergency is needed.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-019. Source audit pending until its separately authored report is checked.
+

@@ -1,0 +1,31 @@
+{
+  "findings": [
+    {
+      "id": "LATE-01",
+      "session": 22,
+      "finding": "The active K-4 appraisal still says it has not observed powered/outlet tests, after it carried out the expressly requested guarded disconnected rotation. This compound phrase fails to distinguish the completed powered dry diagnostic from still-unperformed pressure/outlet tests. The first-pass session-22 report did not flag this selected-field ambiguity/staleness. The narrow source-grounded wording is: observed the guarded disconnected rotation and static fit; pressure and outlet-water tests remain unperformed. No historical snapshot is overwritten and no new result is inferred.",
+      "original_report_missed_selected_issue": true,
+      "report": "report.json",
+      "checker": "report_structure_verified"
+    },
+    {
+      "id": "LATE-02",
+      "session": 30,
+      "finding": "The current PC goals list still says to resolve or reschedule the unperformed prepaid hour, although the original session-30 source explicitly confirms it was used. Other authoritative obligation, receipt and work fields are correctly closed. This stale current-goal wording is misleading, not a new actual obligation. The first-pass session-30 report missed it despite having both relevant sources. Preserve its past intent as history or mark it completed; do not schedule a second free hour.",
+      "original_report_missed_selected_issue": true,
+      "report": "report.json",
+      "checker": "report_structure_verified"
+    },
+    {
+      "id": "LATE-03",
+      "save": "sluice-save-016",
+      "finding": "Automatic checkpoint preserved six coins and a paid completed survey but retained the opening situation text saying the report is incomplete and no personal cash earned. CURRENT_SAVE Situation is generated from this stale field. Full session-end save later updates it, but the intermediate checkpoint remains a potentially misleading resume point.",
+      "exact_turn": "The duplicate is marked COPY. Mara still has six crowns; Tamsin does not pay again.",
+      "saved_personal_cash": 6,
+      "saved_situation": "Morning after one relief shift; report incomplete, no personal cash earned.",
+      "outside_primary_full_save_bundle_comparison": true,
+      "classification": "Actual experimental save-writer checkpoint synchronization defect, distinct from supplied structural rules."
+    }
+  ],
+  "not_repaired_in_main_save": "LATE-02 current goal text is intentionally left inspectable in the tested final save. A proposed narrow recording repair is supplied, not silently applied. LATE-01 and LATE-03 concern preserved historical active/checkpoint records and are not retroactively rewritten."
+}

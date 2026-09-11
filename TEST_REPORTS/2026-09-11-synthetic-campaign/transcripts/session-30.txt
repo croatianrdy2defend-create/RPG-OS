@@ -1,0 +1,52 @@
+# Session 30: What survives a quiet month
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-037
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-30-T01
+Time: Day 35, 10:40 -> Day 35, 11:10
+Simulated player: I ask Kala whether her offered guest room is still available for one month, and what she expects in return.
+GM: The room is available for thirty nights. Kala proposes two hours of ordinary garden help each week during the stay, with meals included, no cash rent, and no duty to investigate or represent her. This is an offer, not an imposed new debt.
+
+## session-30-T02
+Time: Day 35, 11:10 -> Day 35, 11:20
+Simulated player: I accept those thirty nights and the limited weekly garden help. I am taking a quiet break, not extending my public-works job.
+GM: Kala accepts. The limited household arrangement begins. Mara’s finished observation commission remains finished, and no new public wage or daily gauge duty follows her to the hillside.
+
+## session-30-T03
+Time: Day 35, 11:20 -> Day 65, 11:20
+Simulated player: I spend the agreed thirty nights there and perform the agreed light garden help, stopping for an actual material interruption. Do not invent an incident just to make the month dramatic.
+GM: The authorized quiet month passes with the stated limited help and included meals. No material interruption occurs. The stay is completed without cash rent, extra debt, wages or an unearned skill award. Conditions in unvisited buildings are not newly certified.
+
+## session-30-T04
+Time: Day 65, 11:20 -> Day 65, 12:20
+Simulated player: I return to High Street and look at the current public pump notice rather than assuming the first successful run made it immortal.
+GM: The current duty notice reports normal monitored operation today. It is a dated report, not proof of uninterrupted operation throughout the month or a guarantee against future faults.
+
+## session-30-T05
+Time: Day 65, 12:20 -> Day 65, 12:30
+Simulated player: I ask Sera whether the old three crowns or five crowns are outstanding after my month away.
+GM: Neither is outstanding. Her retained account shows the earlier five paid and the final three paid after the clarified outlet trigger. Absence did not reopen the loan or create interest that was never agreed.
+
+## session-30-T06
+Time: Day 65, 12:30 -> Day 65, 12:40
+Simulated player: I ask Jory whether I still have that prepaid hour. I think I may have forgotten using it.
+GM: Jory points to the redeemed note and the recorded assembly. That hour was performed, not lost. He offers no automatic second hour; any new work would need a new agreement.
+
+## session-30-T07
+Time: Day 65, 12:40 -> Day 65, 12:55
+Simulated player: I review the public title decision and ask what remains genuinely unresolved, without requesting an invented verdict.
+GM: A-17 remains the city asset installed under the actual panel decision, and Nessa’s nine crowns were paid to her, not Mara. The available records still do not establish a final criminal-intent verdict. The original patients were saved and the flood damage happened; neither is rewritten by elapsed sessions.
+
+## session-30-T08
+Time: Day 65, 12:55 -> Day 65, 12:55
+Simulated player: End this twenty-session continuation here. Keep my twelve crowns and the actual remaining uncertainty; do not create a sequel assignment for me.
+GM: Mara stops on High Street with twelve personal crowns. No old debt, redeemed service, completed commission or fulfilled delivery has reactivated. The unestablished verdict remains unestablished, and no new player commitment is added at closure.
+
+OOC Simulated operator: End this session and make one full save. This is enough. Preserve the mixed history and the closed accounts rather than tidying uncertainty into a false ending.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-038. Source audit pending until its separately authored report is checked.
+

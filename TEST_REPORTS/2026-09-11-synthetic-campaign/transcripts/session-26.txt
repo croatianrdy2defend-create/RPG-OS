@@ -1,0 +1,72 @@
+# Session 26: The job does not purchase every hour of a life
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-032
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-26-T01
+Time: Day 20, 17:25 -> Day 20, 17:35
+Simulated player: I ask for work I can actually do without becoming responsible for the whole city.
+GM: Voss offers eight crowns for fourteen daily accessible gauge observations, Day 21 through Day 34, followed by submission on Day 35. Payment follows acceptance. Repairs, round-the-clock watch and guaranteed uptime are expressly excluded.
+
+OOC GM: Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say checkpoint now or delay autosave.
+
+OOC Simulated operator: Delay autosave for now; I will resume it or ask for a full save.
+
+## session-26-T02
+Time: Day 20, 17:35 -> Day 20, 17:40
+Simulated player: I accept that exact scope. I will not sign a promise to prevent every failure or skip the title hearing.
+GM: Voss accepts the limits. The fourteen-day observation task is now a real commitment, but no wages arrive merely because the order is signed.
+
+OOC Simulated operator: Resume standard autosave; announce again before automatic execution.
+
+## session-26-T03
+Time: Day 20, 17:40 -> Day 20, 17:45
+Simulated player: I copy the schedule and retain the explicit exclusions with it.
+GM: The copy preserves the actual dates, observation scope and conditional payment. It grants no political duty and no permission to move Mara through unchosen hazards.
+
+OOC GM: Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say checkpoint now or delay autosave.
+
+## session-26-T04
+Time: Day 20, 17:45 -> Day 20, 17:55
+Simulated player: I leave the office and ask for a full account of my money before I make plans.
+GM: Mara leaves with eight personal crowns, no public-works procurement balance, no unpaid Sera loan, and no unused Jory hour. The new eight-crown fee is only a future receivable.
+
+OOC GM: Previously announced automatic complete-present checkpoint. This is not an end-session or archive-publication event.
+
+OOC GM: Checkpoint verified: sluice-save-033; archive evidence still through sluice-save-032. No time or pending choice resolved.
+
+OOC Simulated operator: Delay autosave for now; I will resume it or ask for a full save.
+
+OOC Simulated operator: Could we simply undo the old Lower Quay flooding now that the repair succeeded?
+
+OOC GM: That was a valid accepted outcome under the retained no-valid-outcome-retcon clause, not a recording error. It remains. Stopping, changing depiction and correcting genuine errors remain available; a successful later repair does not undo the flood.
+
+OOC Simulated operator: Keep the original outcome. Continue the stated observation work without a new disaster quota.
+
+## session-26-T05
+Time: Day 20, 17:55 -> Day 21, 09:00
+Simulated player: I spend the rest of today quietly, then take the first safe gauge reading at nine tomorrow morning.
+GM: The declared interval reaches Day 21 at nine. Mara observes the accessible gauge within the marked safe zone and records the actual local operating reading. This completes one observation, not all fourteen.
+
+## session-26-T06
+Time: Day 21, 09:00 -> Day 27, 17:00
+Simulated player: I follow the same limited daily routine through Day 27. Stop before the Day 28 title hearing so I can decide whether to attend.
+GM: Days 22 through 27 each provide ordinary safe access and an operating gauge reading. No repair work or guaranteed uptime is inferred between observations. The declared routine stops at the end of Day 27, before the hearing choice.
+
+## session-26-T07
+Time: Day 27, 17:00 -> Day 27, 17:05
+Simulated player: I read the hearing notice but make no attendance promise just by looking at it.
+GM: The notice still gives Day 28 for title review. It is a public opportunity, not a mandatory quest step or evidence that Nessa has already won.
+
+## session-26-T08
+Time: Day 27, 17:05 -> Day 27, 17:15
+Simulated player: I finish this session here and make a full save rather than leaving a delayed automatic checkpoint pending.
+GM: Mara is on High Street with seven observations completed and seven still required. The pending autosave is superseded by the requested full save; no second checkpoint or new session is created.
+
+OOC Simulated operator: End this session and make one full save. Bounded work should leave room for other choices; keep the completed flood outcome intact.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-034. Source audit pending until its separately authored report is checked.
+

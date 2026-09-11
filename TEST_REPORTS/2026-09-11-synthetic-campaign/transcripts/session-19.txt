@@ -1,0 +1,52 @@
+# Session 19: Eight days start when the order starts
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-025
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-19-T01
+Time: Day 10, 06:50 -> Day 10, 21:50
+Simulated player: I return the next morning with the drawing and accept your twelve-crown quote: six now and six only after dimensional inspection.
+GM: Bram reads back the copied dimensions and the twelve-crown terms. Mara accepts that specified order and pays six restricted crowns. The eight-day manufacturing lead time starts now, not at the earlier advertisement.
+
+## session-19-T02
+Time: Day 10, 21:50 -> Day 10, 21:55
+Simulated player: Can I pay the balance now and make the eight days disappear?
+GM: Paying early would not machine bronze faster. Mara has not actually tendered another payment, and Bram does not claim that money can bypass the physical work.
+
+## session-19-T03
+Time: Day 10, 21:55 -> Day 10, 22:00
+Simulated player: Then I keep the six until the agreed inspection. Please show me the promised ready time.
+GM: Bram points to the actual accepted-order date plus eight days. This is a manufacturing commitment, not a guarantee that every later installation prerequisite will be met.
+
+## session-19-T04
+Time: Day 10, 22:00 -> Day 18, 21:50
+Simulated player: I spend the waiting interval in the relief shelter doing its ordinary optional light tasks. Stop for any actual material interruption, not a scene quota.
+GM: The shelter accepts the same arrangement; no wage is offered or earned. The declared quiet wait proceeds to the promised ready time without inventing offscreen debts, extra jobs or a second flood.
+
+## session-19-T05
+Time: Day 18, 21:50 -> Day 18, 22:20
+Simulated player: I go to the workshop and inspect the completed ring against the accepted drawing before paying.
+GM: The ring matches the agreed drawing and material record at the bench. Mara can accept this completed object; the test does not certify the unvisited pump assembly.
+
+## session-19-T06
+Time: Day 18, 22:20 -> Day 18, 22:30
+Simulated player: I accept this inspected ring and pay the remaining six from the restricted purse.
+GM: Bram receives exactly six more restricted crowns and transfers the completed ring. Total machining payment is twelve. The order is settled, not still awaiting a deposit or balance.
+
+## session-19-T07
+Time: Day 18, 22:30 -> Day 18, 22:50
+Simulated player: I wrap the ring and head to the public landing without assuming Nessa waited for me all week.
+GM: Mara reaches the landing with the ring. A posted sailing notice shows Nessa is due on her independent return trade route tomorrow. That is an opportunity, not a standing duty to serve Mara.
+
+## session-19-T08
+Time: Day 18, 22:50 -> Day 19, 13:50
+Simulated player: I choose to wait for that sailing, without booking or paying tonight.
+GM: The declared night passes at the travelers’ shelter. Eight restricted crowns and four personal crowns remain. No return fare has yet been paid.
+
+OOC Simulated operator: End this session and make one full save. The deadline should follow real acceptance and elapsed work, not how many sessions we played.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-026. Source audit pending until its separately authored report is checked.
+

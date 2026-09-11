@@ -1,0 +1,61 @@
+# Session 11: The work that is offered, not owed
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-012
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-11-T01
+Time: Day 4, 12:00 -> Day 4, 12:10
+Simulated player: I ask Ivo whether the patients got through the night. I am not volunteering him for another trip.
+GM: Both evacuated patients are still at High Street. Ivo reports a quiet morning and asks whether Mara has kept the dressing dry. He will stay for his own clinic shift.
+
+OOC GM: Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say checkpoint now or delay autosave.
+
+## session-11-T02
+Time: Day 4, 12:10 -> Day 4, 12:20
+Simulated player: I show him my hand, then ask where a surveyor can earn food money without heavy lifting.
+GM: The cut is closed but tender. Ivo advises against loaded rope work. A relief notice offers six crowns for a mapped inspection of the high drains, payable after the inspector accepts the report; it is not money already earned.
+
+OOC GM: Previously announced automatic complete-present checkpoint. This is not an end-session or archive-publication event.
+
+OOC GM: Checkpoint verified: sluice-save-013; archive evidence still through sluice-save-012. No time or pending choice resolved.
+
+## session-11-T03
+Time: Day 4, 12:20 -> Day 4, 12:35
+Simulated player: I ask Sera whether taking the drain job would change my debt or give her my testimony.
+GM: “No. Different accounts.” Sera repeats that the remaining three crowns depend on the western pump running. The offered six-crown job purchases the specified survey only.
+
+OOC Simulated operator: Delay autosave for now; I will resume it or ask for a full save.
+
+## session-11-T04
+Time: Day 4, 12:35 -> Day 4, 12:45
+Simulated player: I accept just those three drains, no unsafe descent, with payment after an accepted report.
+GM: Sera records the bounded job. She lends no extra coin and does not add a loyalty promise. A drain marked below the high bridge can be inspected from the rail.
+
+## session-11-T05
+Time: Day 4, 12:45 -> Day 4, 18:45
+Simulated player: I spend the afternoon mapping from safe ground and stop before any descent would be needed.
+GM: Over six hours Mara surveys two drains. The third has silt across its measuring marks. Clearing a view would require a separate safe work arrangement; the incomplete third measurement is marked honestly.
+
+## session-11-T06
+Time: Day 4, 18:45 -> Day 4, 19:05
+Simulated player: I write “not measured” for the third. I would rather lose the fee than invent a depth.
+GM: The draft contains the two observed measurements and the explicit gap. There is still no accepted report and no six-crown payment.
+
+## session-11-T07
+Time: Day 4, 19:05 -> Day 5, 11:00
+Simulated player: I return to the shelter, eat the offered relief meal, and sleep there until the morning inspection.
+GM: Mara reaches the open High Street shelter and takes its publicly offered meal and bunk. The night passes quietly. This relief aid creates no private debt, payment or automatic recovery; the hand remains tender.
+
+## session-11-T08
+Time: Day 5, 11:00 -> Day 5, 11:00
+Simulated player: Before meeting the inspector, I check the original agreement in my notes. I have no cash yet, correct?
+GM: Correct: zero personal crowns. The six-crown fee is unpaid pending acceptance; the three-crown pump obligation is separate and not yet due.
+Resolution: No income from session completion or from accepting a contract.
+
+OOC Simulated operator: End this session and make one full save. Keep incomplete work distinct from dishonesty and from automatic failure.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-014. Source audit pending until its separately authored report is checked.
+

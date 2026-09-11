@@ -1,0 +1,57 @@
+# Session 18: The assay does not read a mind
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-024
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-18-T01
+Time: Day 10, 04:35 -> Day 10, 04:40
+Simulated player: I attend the agreed assay and ask him to check the same marked ring.
+GM: Bram matches the notch to the custody record. This is the object Leni supplied, not a convenient replacement. The material property was deliberately left unresolved until the actual check.
+
+OOC GM — declared random procedure: Does the offered salvaged ring meet the required material specification? Actual accepted d6 input; 1–3: The assay rejects the ring’s material for this repair.; 4–6: The assay finds material meeting the specification..
+
+OOC Recorded tool input: {"id": "R20-02", "session": "session-18", "before_turn": 2, "question": "Does the offered salvaged ring meet the required material specification?", "mapping_before_draw": {"1-3": "The assay rejects the ring’s material for this repair.", "4-6": "The assay finds material meeting the specification."}, "faces_requested": 1, "faces": [5], "sum": 5, "result": "The assay finds material meeting the specification."}
+
+## session-18-T02
+Time: Day 10, 04:40 -> Day 10, 05:40
+Simulated player: I watch the recorded test and ask for its actual conclusion.
+GM: Bram records that the material meets the specification. The finding does not establish Leni’s prior knowledge.
+
+## session-18-T03
+Time: Day 10, 05:40 -> Day 10, 05:45
+Simulated player: I want the report, but I am not agreeing to buy the ring merely because we tested it.
+GM: The report is handed over. No balance becomes due from the test alone; the written deposit terms required a separate purchase acceptance.
+
+## session-18-T04
+Time: Day 10, 05:45 -> Day 10, 06:05
+Simulated player: The alloy passed, but I decline the purchase. Would you agree to return the deposit if I release the ring immediately? I know failure was the automatic refund condition.
+GM: Leni agrees to that new cancellation arrangement because the ring can return to sale. She counts six crowns back into the repair purse after receiving the ring. This refund follows a new accepted agreement, not a falsely failed assay.
+
+## session-18-T05
+Time: Day 10, 06:05 -> Day 10, 06:10
+Simulated player: I count the refund and ask for a receipt showing the account closed.
+GM: The deposit receipt is marked RETURNED: SIX. It records one refund and no sale. Mara does not count those restricted funds as personal earnings.
+
+## session-18-T06
+Time: Day 10, 06:10 -> Day 10, 06:15
+Simulated player: I do not post an accusation of fraud. I keep the report and take Bram’s measured-order quote back out.
+GM: The report remains evidence about this ring. The twelve-crown machining quote is still an alternative; it has not transformed into an order during the dispute.
+
+## session-18-T07
+Time: Day 10, 06:15 -> Day 10, 06:20
+Simulated player: I compare the twelve-crown price and the four-crown return fare with the twenty in the repair purse.
+GM: Twelve plus four leaves four restricted crowns if those later expenditures actually occur. No projected purchase has yet been charged; the current restricted balance is twenty.
+Resolution: Future budget comparison is not an applied transaction.
+
+## session-18-T08
+Time: Day 10, 06:20 -> Day 10, 06:50
+Simulated player: That is within the authorization. I decide to visit Bram tomorrow, but I do not sign the order tonight.
+GM: Mara returns to the shelter. She has made a plan, not a workshop contract; no materials are reserved and no lead-time clock starts yet.
+
+OOC Simulated operator: End this session and make one full save. I want a refund to follow the actual condition or a new agreement, not a favorable rewrite.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-025. Source audit pending until its separately authored report is checked.
+

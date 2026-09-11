@@ -1,0 +1,67 @@
+# Session 12: A correction is not a second wage
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-014
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-12-T01
+Time: Day 5, 11:00 -> Day 5, 11:15
+Simulated player: I hand over the incomplete report and explain the obstruction.
+GM: Tamsin refuses to certify three measurements when one is missing. She offers a long measuring pole from the open rail; she does not require a descent.
+
+OOC GM: Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say checkpoint now or delay autosave.
+
+## session-12-T02
+Time: Day 5, 11:15 -> Day 5, 13:15
+Simulated player: I use the pole from the rail while she reads the scale, stopping if footing shifts.
+GM: The marked rail is sound. With the pole the two obtain the missing depth without entering the drain. Mara adds the observed value and both sign that measurement.
+Resolution: Established equipment and safe access make the bounded task routine; no invented dice.
+
+OOC GM: Previously announced automatic complete-present checkpoint. This is not an end-session or archive-publication event.
+
+OOC GM: Checkpoint verified: sluice-save-015; archive evidence still through sluice-save-014. No time or pending choice resolved.
+
+## session-12-T03
+Time: Day 5, 13:15 -> Day 5, 13:30
+Simulated player: I submit the completed report and ask her to inspect it now.
+GM: Tamsin checks all three entries and stamps acceptance. She counts six crowns into Mara’s hand. The payment is for this report, not another installment of the earlier survey wages.
+
+OOC GM: Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say checkpoint now or delay autosave.
+
+## session-12-T04
+Time: Day 5, 13:30 -> Day 5, 13:35
+Simulated player: I count the coins and ask for a duplicate receipt, not a second payment.
+GM: The duplicate is marked COPY. Mara still has six crowns; Tamsin does not pay again.
+
+OOC GM: Previously announced automatic complete-present checkpoint. This is not an end-session or archive-publication event.
+
+OOC GM: Checkpoint verified: sluice-save-016; archive evidence still through sluice-save-014. No time or pending choice resolved.
+
+OOC Simulated operator: Delay autosave for now; I will resume it or ask for a full save.
+
+## session-12-T05
+Time: Day 5, 13:35 -> Day 5, 13:45
+Simulated player: I buy two crowns of food for myself and put the rest away.
+GM: The stallkeeper hands over the purchased food and two crowns change from four offered. The net expense is two crowns; Mara retains four.
+
+## session-12-T06
+Time: Day 5, 13:45 -> Day 5, 13:55
+Simulated player: I ask Jory to spend the prepaid hour tomorrow on the pump, whatever the conditions.
+GM: “The credit survived; that doesn’t make tomorrow safe.” Jory declines the proposed date. His one prepaid hour remains unused, and he does not demand payment to preserve it.
+
+## session-12-T07
+Time: Day 5, 13:55 -> Day 5, 14:00
+Simulated player: Fair. We will choose the date after the parts and safe platform are confirmed.
+GM: Jory agrees to that scheduling condition. No hour is performed, refunded or duplicated.
+
+## session-12-T08
+Time: Day 5, 14:00 -> Day 5, 14:25
+Simulated player: I walk back to the shelter and leave the rest of today uncommitted.
+GM: Mara returns to High Street with four crowns. There is no new assignment or manufactured emergency waiting just because a job finished.
+
+OOC Simulated operator: End this session and make one full save. The refusal was useful because it preserved the credit rather than deleting it.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-017. Source audit pending until its separately authored report is checked.
+

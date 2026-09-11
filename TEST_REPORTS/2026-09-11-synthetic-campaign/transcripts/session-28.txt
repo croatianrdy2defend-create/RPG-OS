@@ -1,0 +1,55 @@
+# Session 28: A contact address is not a promise to send
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-035
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-28-T01
+Time: Day 28, 13:20 -> Day 28, 13:30
+Simulated player: I show Pell the new public title decision, keeping it separate from the old false claim that Voss sold the repairs.
+GM: Pell reads the decision. An unauthorized disposal clerk’s sale is now documented; it does not make Mara’s earlier accusation about Voss suddenly true. He learns the distinction from this actual delivery.
+
+## session-28-T02
+Time: Day 28, 13:30 -> Day 28, 13:35
+Simulated player: I give him Nessa’s mooring address in case he needs a contact. I am not commissioning a delivery.
+GM: Pell writes down the address. He makes no promise to send a notice, reserves no journey, and receives no fee. Contact information is not a courier contract.
+
+## session-28-T03
+Time: Day 28, 13:35 -> Day 28, 13:35
+Simulated player: Has he sent her anything yet?
+GM: No dispatch has occurred. Asking immediately does not create or reroll a messenger opportunity; he has only accepted the address.
+
+## session-28-T04
+Time: Day 28, 13:35 -> Day 28, 13:55
+Simulated player: I go to the archive to check the exact wording of my original loan for my own record, not because it is unpaid.
+GM: The original agreement remains in its archived session passage, and later payment records settle it. The exact original sentence can be retrieved without turning the history back into a live debt.
+Resolution: Historical quotation is retrieved from the primary passage; current settlement is checked separately.
+
+OOC Recorded source delivery: Original loan passage read through read_source.py; SHA-256 e3e38c6206c69b0dff64ba4d67e6c5f6fa360f927971261b7a9f777c771ef954, original lines 37-44. The source body, not an index entry, was delivered.
+
+## session-28-T05
+Time: Day 28, 13:55 -> Day 28, 14:00
+Simulated player: Read the original sentence, then distinguish the later clarification and the two actual payments.
+GM: The original sentence is: “Three crowns when the western pump runs; five more only after my survey wages clear. No payment buys you my testimony.” The later dry-rotation clarification did not erase it. Five were paid earlier and the final three after actual outlet flow; the balance is zero.
+
+## session-28-T06
+Time: Day 28, 14:00 -> Day 28, 14:05
+Simulated player: I want to make sure that old receipt for six crowns of passage does not say six per leg.
+GM: The retained passage receipt says six crowns total for the completed earlier two-leg arrangement. The later upriver fares were new four-crown contracts each way. Those are different trips, not a corrected price applied backward.
+
+## session-28-T07
+Time: Day 28, 14:05 -> Day 29, 09:00
+Simulated player: I take today’s observation before returning to the shelter.
+GM: The safe accessible Day-29 gauge observation is completed after the declared wait to that day. It is the ninth required observation, not a new wage payment or an assumption about every unobserved hour.
+
+## session-28-T08
+Time: Day 29, 09:00 -> Day 29, 09:20
+Simulated player: I leave the remaining five days for the next session and end without taking a new delivery job.
+GM: Mara stops at the shelter. Pell has no accepted dispatch promise, the observation job still has five readings left, and all old loan and passage obligations remain settled.
+
+OOC Simulated operator: End this session and make one full save. Do not convert my contact-sharing or repeated questions into a promise or a sent message.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-036. Source audit pending until its separately authored report is checked.
+

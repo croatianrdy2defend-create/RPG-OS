@@ -1,0 +1,74 @@
+[
+  {
+    "suite": "test_agent_state.py",
+    "exit_code": 0,
+    "seconds": 0.56,
+    "cases": 14,
+    "skipped": 0,
+    "complete": true
+  },
+  {
+    "suite": "test_autosave.py",
+    "exit_code": 0,
+    "seconds": 1.787,
+    "cases": 34,
+    "skipped": 0,
+    "complete": true
+  },
+  {
+    "suite": "test_encounter_generation.py",
+    "exit_code": 0,
+    "seconds": 0.561,
+    "cases": 6,
+    "skipped": 0,
+    "complete": true
+  },
+  {
+    "suite": "test_evidence.py",
+    "exit_code": 0,
+    "seconds": 3.857,
+    "cases": 33,
+    "skipped": 1,
+    "complete": true
+  },
+  {
+    "suite": "test_handover.py",
+    "exit_code": 0,
+    "seconds": 0.741,
+    "cases": 36,
+    "skipped": 0,
+    "complete": true
+  },
+  {
+    "suite": "test_package_release.py",
+    "exit_code": 0,
+    "seconds": 14.198,
+    "cases": 22,
+    "skipped": 0,
+    "complete": true
+  },
+  {
+    "suite": "test_read_source.py",
+    "exit_code": 0,
+    "seconds": 2.986,
+    "cases": 31,
+    "skipped": 1,
+    "complete": true
+  },
+  {
+    "suite": "test_search_index.py",
+    "exit_code": 0,
+    "seconds": 1.593,
+    "cases": 33,
+    "skipped": 2,
+    "complete": true
+  },
+  {
+    "suite": "test_validate.py",
+    "exit_code": 0,
+    "seconds": 3.396,
+    "cases": 68,
+    "skipped": 0,
+    "complete": true
+  }
+]

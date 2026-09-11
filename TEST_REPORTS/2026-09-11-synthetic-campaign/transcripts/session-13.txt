@@ -1,0 +1,53 @@
+# Session 13: What the public correction actually reached
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-017
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-13-T01
+Time: Day 5, 14:25 -> Day 5, 14:40
+Simulated player: I ask Edda to find my original actuator receipt. Does it say Nessa gave up ownership?
+GM: The receipt reserves the title dispute. Edda reads the original entry rather than treating Mara’s possession of a witness copy as ownership of A-17.
+Resolution: Primary historical receipt must be retrieved; an index or summary is not the quoted source.
+
+## session-13-T02
+Time: Day 5, 14:40 -> Day 5, 15:00
+Simulated player: Please certify a copy for the inquiry. I do not want a different story written over the old one.
+GM: Edda makes a relief-inquiry copy without a fee under the stated public copying provision. The older receipt remains unchanged.
+
+## session-13-T03
+Time: Day 5, 15:00 -> Day 5, 15:05
+Simulated player: I ask whether Voss has been found innocent of everything.
+GM: “A lawful transfer is not a verdict on everything.” Edda can establish Permit 41’s scope. The repair-contract inquiry has not yet concluded.
+
+## session-13-T04
+Time: Day 5, 15:05 -> Day 5, 15:10
+Simulated player: I ask Pell what people are saying about my accusation.
+GM: Pell repeats the old claim that Voss sold the repairs. He has not seen the permit or Mara’s private retraction. The earlier correction did not travel to him merely because it was true.
+
+## session-13-T05
+Time: Day 5, 15:10 -> Day 5, 15:25
+Simulated player: I show him the certified permit and say plainly that my sale accusation was unsupported. The separate invoice problem remains under inquiry.
+GM: Pell reads the permit number and hears the qualification. He agrees to amend the notice he personally carries; he makes no promise that every earlier listener will learn it.
+
+## session-13-T06
+Time: Day 5, 15:25 -> Day 5, 15:35
+Simulated player: I wait while he corrects that notice; I do not ask him to promise more.
+GM: He crosses out the sale allegation on his own notice and writes the qualification. That one notice is corrected. The city’s other conversations remain outside this observed action.
+
+## session-13-T07
+Time: Day 5, 15:35 -> Day 5, 15:40
+Simulated player: I read the inquiry notice but do not agree to attend yet.
+GM: The public notice sets a preliminary evidence desk for Day 12 at 09:00. Reading it creates knowledge, not an appointment Mara has promised to keep.
+
+## session-13-T08
+Time: Day 5, 15:40 -> Day 5, 18:40
+Simulated player: I return to my bunk. Keep my evening quiet.
+GM: The walk and quiet evening pass without incident. Mara’s money, old debt conditions and unfinished credit are unchanged.
+
+OOC Simulated operator: End this session and make one full save. Please keep audience limits and knowledge separate from universal rumor cleanup.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-018. Source audit pending until its separately authored report is checked.
+

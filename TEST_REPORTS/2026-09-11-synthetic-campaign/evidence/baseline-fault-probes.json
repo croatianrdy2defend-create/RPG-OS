@@ -1,0 +1,80 @@
+{
+  "main_campaign_unchanged": true,
+  "probes": [
+    {
+      "id": "F01",
+      "name": "Interrupted multi-file save and exact rollback",
+      "injected": true,
+      "play_blocked": true,
+      "interrupted_validator_exit": 1,
+      "restored_validator_exit": 0,
+      "present_bytes_restored": true,
+      "new_directory_removed": true,
+      "scope": "Real file writes/readback using an experimental implementation of the documented recovery procedure. Not evidence of an independent GM autonomously following it."
+    },
+    {
+      "id": "F02",
+      "name": "Missing historical source is not reconstructed from current state",
+      "injected": true,
+      "reader_exit": 2,
+      "reader_status": null,
+      "validator_exit": 1,
+      "validator_codes": [
+        "SESSION_SHARD_MISSING",
+        "PREP_STALE_BASE"
+      ],
+      "response": "The original archived exchange is unavailable in this branch. The current PC obligation record still states terms, but it does not recover the missing historical source. No replacement transcript or claim of verified original wording is produced.",
+      "scope": "Actual missing-file diagnostics and a bounded same-model response to the gap."
+    },
+    {
+      "id": "F03",
+      "name": "Structurally valid save loses the conditional loan",
+      "injected": true,
+      "validator_exit": 0,
+      "validator_codes": [
+        "PREP_STALE_BASE"
+      ],
+      "custom_comparison_detects_loss": true,
+      "removed_obligation": {
+        "exact_promise": "Three crowns when the western pump runs; five more only after my survey wages clear. No payment buys you my testimony.",
+        "evidence": "session-01-T04",
+        "remaining": 3,
+        "pump_tranche": {
+          "amount": 3,
+          "due": false,
+          "paid": 0
+        },
+        "wages_tranche": {
+          "amount": 5,
+          "due": false,
+          "paid": 5
+        }
+      },
+      "classification": "Confirmed semantic coverage limitation, not a bug against the validator’s expressly structural promise."
+    },
+    {
+      "id": "F04",
+      "name": "Missing active encounter field in a structurally valid checkpoint",
+      "injected": true,
+      "validator_exit": 0,
+      "missing_fields": [
+        "Attraction"
+      ],
+      "custom_five_field_check_fails": true,
+      "classification": "Semantic completeness is not established by the shipped structural validator. Missing current state must not be called deactivation or rerolled."
+    },
+    {
+      "id": "F05",
+      "name": "Changed indexed source is not silently treated as verified evidence",
+      "injected": true,
+      "fetch_exit": 2,
+      "fetch_status": "stale_revision",
+      "response": {
+        "status": "stale_revision",
+        "fresh": false,
+        "message": "Source revision no longer matches the requested SHA-256. Use a known source pointer with read_source.py, or rebuild this optional cache. Missing lexical candidates never establish that a fact is absent."
+      },
+      "scope": "Actual bundled search_index.py build/search/fetch against a changed source in a disposable root."
+    }
+  ]
+}

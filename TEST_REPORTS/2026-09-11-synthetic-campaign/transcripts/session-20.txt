@@ -1,0 +1,52 @@
+# Session 20: A return is not an automatic refund
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-026
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-20-T01
+Time: Day 19, 13:50 -> Day 19, 14:00
+Simulated player: I ask whether today’s boat has safe room for me and the ring. I am not invoking my old emergency passage receipt.
+GM: There is room within the current loading limit. Nessa offers today’s return for four crowns; her earlier waiting at the crossing did not create unlimited future transport.
+
+## session-20-T02
+Time: Day 19, 14:00 -> Day 19, 14:10
+Simulated player: I accept and pay four from the marked repair purse, then board with the ring.
+GM: Nessa receives four restricted crowns and issues a RETURN ONLY receipt. Mara boards with the ring. The restricted balance is now four; her personal purse still contains four.
+
+## session-20-T03
+Time: Day 19, 14:10 -> Day 19, 17:10
+Simulated player: During the ordinary trip I tell her the observed assay result and show the new ring’s paperwork.
+GM: Nessa hears the qualified report: the salvage ring passed but was returned by a new cancellation agreement. She learns this now; she was not present at the assay.
+
+## session-20-T04
+Time: Day 19, 17:10 -> Day 19, 17:25
+Simulated player: I disembark at High Street and thank her. That completes the paid return.
+GM: Mara and the wrapped ring reach the safe landing. Both new paid legs are now completed, without a second charge or another unused passage credit.
+
+## session-20-T05
+Time: Day 19, 17:25 -> Day 19, 17:55
+Simulated player: I bring the expense receipts and the four unspent repair crowns. Here is the returned-deposit receipt too; do not count that refund as profit.
+GM: Voss checks the twenty-four received, eight spent on two fares, and twelve spent on the manufactured ring. The six deposited with Leni was returned and nets to zero. Mara physically returns the remaining four restricted crowns.
+
+## session-20-T06
+Time: Day 19, 17:55 -> Day 19, 18:05
+Simulated player: I keep my own four crowns and ask for a receipt for handing over the ring to the locked repair store.
+GM: The clerk receives the ring into the designated repair store and gives a custody receipt. Mara no longer carries the ring. The actuator remains under its separate title reservation; neither item has yet been installed.
+
+## session-20-T07
+Time: Day 19, 18:05 -> Day 19, 18:20
+Simulated player: I also deliver Nessa’s signed request to the inquiry clerk now that we are back.
+GM: The clerk stamps receipt of the actual title-review request. Mara’s promise to deliver it to the next available desk is fulfilled; she has not promised a favorable title decision.
+
+## session-20-T08
+Time: Day 19, 18:20 -> Day 19, 18:40
+Simulated player: I stop for the day rather than restart machinery tonight.
+GM: Mara returns to the shelter with four personal crowns and no repair-account money. The completed procurement did not run the pump, spend Jory’s credit, or trigger the old three-crown payment.
+
+OOC Simulated operator: End this session and make one full save. Keep the old promise fulfilled once and the unused service credit intact.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-027. Source audit pending until its separately authored report is checked.
+

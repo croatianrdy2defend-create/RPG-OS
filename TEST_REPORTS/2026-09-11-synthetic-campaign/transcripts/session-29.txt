@@ -1,0 +1,52 @@
+# Session 29: A fortnight is completed by its work, not its title
+SOURCE: Original assistant-authored synthetic player/GM output, emitted turn by turn by the experimental host. Not a real-user chat export, human play, or a blind independent model. No unrecorded multi-hour play is claimed.
+Opening save: sluice-save-036
+
+OOC Simulated operator: Continue from the recorded moment. Preserve unresolved decisions and established consequences. Audit the eventual full save against this original synthetic output.
+
+## session-29-T01
+Time: Day 29, 09:20 -> Day 35, 09:00
+Simulated player: I continue the five remaining safe daily readings, Days 30 through 34, and stop at the Day-35 submission boundary.
+GM: Each of the five actual scheduled visits has safe access and an observed operating reading. The fourteen-entry record is now complete. The declared cut stops on Day 35 before submission; payment is still pending acceptance.
+
+## session-29-T02
+Time: Day 35, 09:00 -> Day 35, 09:20
+Simulated player: I submit the fourteen dated observations and explicitly say I did not watch the pump every hour.
+GM: Voss checks the fourteen dates against the agreed accessible-observation task. He accepts the stated limits rather than changing the contract into a continuous-watch guarantee.
+
+## session-29-T03
+Time: Day 35, 09:20 -> Day 35, 09:25
+Simulated player: I ask for the eight-crown payment that acceptance now makes payable.
+GM: Voss counts eight crowns into Mara’s hand and marks this commission paid. Mara now has sixteen personal crowns. The previous operating-report payment is not being repeated.
+
+## session-29-T04
+Time: Day 35, 09:25 -> Day 35, 09:45
+Simulated player: I donate four of my own crowns to the High Street clinic and ask that it be recorded as voluntary aid, not debt repayment.
+GM: The clinic relief desk receives four personal crowns and issues the donation receipt. Mara retains twelve. The settled loan, procurement account and completed wages are unchanged.
+
+## session-29-T05
+Time: Day 35, 09:45 -> Day 35, 10:05
+Simulated player: I ask Jory to show me the ordinary visual brake inspection from the safe side of the guard. I am not claiming a full mechanic qualification.
+GM: During the twenty-minute public demonstration he shows the marked visual checks and their stop conditions. Mara learns that narrow inspection routine; it does not make her a qualified repair mechanic or grant a numerical level.
+
+## session-29-T06
+Time: Day 35, 10:05 -> Day 35, 10:10
+Simulated player: I repeat the steps back without touching a live mechanism.
+GM: Jory confirms the stated checks and corrects one ordering mistake before any physical attempt. The old prepaid hour stays redeemed; this was a separate explicitly offered public demonstration.
+
+## session-29-T07
+Time: Day 35, 10:10 -> Day 35, 10:20
+Simulated player: I ask the public clerk whether the contractor inquiry has reached a final criminal verdict yet.
+GM: The clerk reports that the documentary repair-account review is complete but the question of criminal intent has not reached a final verdict. The old private GM fact is not substituted for a public adjudication.
+
+## session-29-T08
+Time: Day 35, 10:20 -> Day 35, 10:40
+Simulated player: I stop here, with the finite job finished and no automatic extension to another fourteen days.
+GM: Mara returns to the shelter with twelve personal crowns. No additional daily inspection contract begins, and no future wage is accrued without a new offer and acceptance.
+
+OOC Simulated operator: End this session and make one full save. Actual learning is welcome, but no automatic level or perpetual wage should appear.
+
+OOC GM: Feedback received as a synthetic statement. Preserve the stated decisions and unfinished matters; no automatic Freeform XP, rest, money or time transition applies.
+
+OOC GM: Full save verified: sluice-save-037. Source audit pending until its separately authored report is checked.
+
