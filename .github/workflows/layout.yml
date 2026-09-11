@@ -1,0 +1,21 @@
+name: Repository layout workspace
+on:
+  push:
+    branches: [work/game-docs-separation-20260911]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 877ab697ce96c2c937df5a6ccb53bb8f5568811b
+          persist-credentials: false
+      - name: Export the inspected public source
+        run: git archive --format=zip HEAD > "$RUNNER_TEMP/rpg-current.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rpg-layout-source
+          path: ${{ runner.temp }}/rpg-current.zip
+          retention-days: 1
