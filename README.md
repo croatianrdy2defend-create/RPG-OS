@@ -11,6 +11,16 @@ The intended setup is simple: a PC, an internet connection, a capable AI subscri
 
 I originally made it for myself. I shared it because other people might want the same experience—but have entirely different adventures in mind.
 
+## Published playtest: 30 sessions, findings, and transcripts
+
+**The Ninth Sluice / Afterwater** follows one campaign through an initial ten-session test and twenty further sessions: **30 condensed sessions and 260 recorded player/GM exchanges**, using RPG OS **v0.9.5** and the bundled Freeform engine.
+
+**[Read the detailed playtest report](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/TEST_REPORTS/2026-09-11-synthetic-campaign/REPORT.md)** · **[Read all 30 sessions](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/TEST_REPORTS/2026-09-11-synthetic-campaign/transcripts/README.md)** · **[Browse the test and evidence](https://github.com/croatianrdy2defend-create/RPG-OS/tree/main/TEST_REPORTS)**
+
+The report covers what held up, what failed, deliberately corrupted saves, conversation-backed checks, review misses, and recommendations. [Methodology](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/TEST_REPORTS/2026-09-11-synthetic-campaign/TEST_PROTOCOL.md) and [mechanism coverage](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/TEST_REPORTS/2026-09-11-synthetic-campaign/COVERAGE.md) show how the test was conducted and what remains untested.
+
+> **Evidence limits:** AI-authored, instrumented, non-blind play—not human sessions or an independent-model study. These v0.9.5 findings informed v0.9.6; they are not a new campaign test of v0.9.6. GitHub contains all 30 published play bodies and selected evidence, not every working save and audit bundle. Test materials stay outside the fresh-install ZIP; the links above open the published repository.
+
 ## Choose the experience
 
 Perhaps you want a tightly guided adventure: a clear mission, prepared turning points, and a few sessions packed with action. Perhaps you want an open sandbox where you can explore, settle somewhere, pursue an ambition, or abandon yesterday’s plan for something more interesting.
@@ -129,7 +139,7 @@ RPG OS helps an LLM run a persistent solo RPG campaign using ordinary Markdown f
 </td></tr>
 </table>
 
-[Get v0.9.6](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.6) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.6_CHANGES.md) · [Verification](VERIFICATION.md)
+[Get v0.9.6](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/v0.9.6) · [Quick start](QUICKSTART.md) · [Installation](INSTALLATION.md) · [Everyday commands](COMMANDS.md) · [Release notes](V0.9.6_CHANGES.md) · [Verification](VERIFICATION.md) · [Published playtest](#published-playtest-30-sessions-findings-and-transcripts)
 
 **v0.9.0 added:** optional tools for exact source passages, scoped full-text search, immutable transcript capture, selected before/after save snapshots and citation checks. A separate model or human can reconcile prior canon, session evidence and the resulting save. The code verifies bytes and report evidence; semantic judgments remain fallible. Later releases preserve those tools and refine independent-agent establishment and persistence. See [the illustrated workflow](MECHANICS.md#exact-retrieval-and-evidence-audits) and [v0.9.0 release notes](V0.9.0_CHANGES.md).
 
