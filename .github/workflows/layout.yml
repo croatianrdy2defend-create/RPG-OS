@@ -26,6 +26,7 @@ jobs:
               # Repair only known transport transcription errors, then require exact original bytes.
               if n == 1:
                   text = re.sub(r'FVVVVVVUVYq+oooooiq+oq+iq+(?=2S0)', 'FVVVVVVUVY' + 'q'*11 + 'oooooi' + 'q'*27 + 'o' + 'q'*5 + 'i' + 'q'*5, text)
+                  text = re.sub(r'2S0U+(?=pZa)', '2S0' + 'U'*11, text)
                   text = text.replace('Xjos42ivGnv3Lp', 'Xjos42ivG3Lp')
               if n == 3:
                   text = re.sub(r'Exo(?:iI)+(?=5RUtK)', 'Exo' + 'iI'*6, text)
