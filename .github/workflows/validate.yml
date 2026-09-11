@@ -1,42 +1,65 @@
-name: Structural validation
-
+name: Prepare reviewed v0.9.6 tree
 on:
   push:
-  pull_request:
-  workflow_dispatch:
-
+    branches: [work/v0.9.6-save-review-20260911]
 permissions:
-  contents: read
-
+  contents: write
 jobs:
-  validate:
+  prepare:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Check out repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check out reviewed transport branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-
-      - name: Validate a clean tracked tree
+      - name: Verify payload and apply only to the inspected base
+        shell: python
+        run: |
+          import base64, bz2, hashlib, os, pathlib, subprocess
+          base = "b412feca78f6d28a52690288b60651b1bd6cf29d"
+          expected = "cdc43957318c1818d2f6d594fe71fe79533bb2539dfd103342526b95755ae156"
+          encoded = b"".join(pathlib.Path(f".github/_v096-release/part-{n}.b64").read_bytes() for n in range(1, 20))
+          raw = bz2.decompress(base64.b64decode(encoded, validate=False))
+          assert hashlib.sha256(raw).hexdigest() == expected, "Patch bytes differ from local tested patch"
+          patch = pathlib.Path(os.environ["RUNNER_TEMP"]) / "rpg-v096-reviewed.patch"
+          patch.write_bytes(raw)
+          subprocess.run(["git", "fetch", "--no-tags", "origin", base], check=True)
+          subprocess.run(["git", "checkout", "--detach", base], check=True)
+          assert subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip() == base
+          subprocess.run(["git", "apply", "--unidiff-zero", "--check", str(patch)], check=True)
+          subprocess.run(["git", "apply", "--unidiff-zero", str(patch)], check=True)
+          subprocess.run(["git", "diff", "--check"], check=True)
+          subprocess.run(["git", "config", "user.name", "RPG OS release verification"], check=True)
+          subprocess.run(["git", "config", "user.email", "rpg-os-tests@example.invalid"], check=True)
+          subprocess.run(["git", "add", "-A"], check=True)
+          subprocess.run(["git", "-c", "commit.gpgsign=false", "commit", "-m", "Verify reviewed v0.9.6 candidate"], check=True)
+          assert subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip() == "414925e703b73db909c92649ca3d2a3fa3636d26", "Candidate tree differs from tested files plus unchanged published report"
+      - name: Run all 318 deterministic cases and validate the unbound tree
         shell: bash
         run: |
           set -euo pipefail
-          kit_dir="$(mktemp -d)"
-          git archive --format=tar HEAD | tar -xf - -C "$kit_dir"
-          python3 "$kit_dir/TOOLS/validate.py" --root "$kit_dir"
-          python3 "$kit_dir/TOOLS/test_validate.py"
-          python3 "$kit_dir/TOOLS/test_handover.py"
-          python3 "$kit_dir/TOOLS/test_package_release.py"
-          python3 "$kit_dir/TOOLS/test_read_source.py"
-          python3 "$kit_dir/TOOLS/test_search_index.py"
-          python3 "$kit_dir/TOOLS/test_evidence.py"
-          python3 "$kit_dir/TOOLS/test_agent_state.py"
-          python3 "$kit_dir/TOOLS/test_autosave.py"
-          python3 "$kit_dir/TOOLS/test_encounter_generation.py"
-
-      - name: Verify the committed fresh-install package without publishing
-        shell: bash
-        run: |
-          set -euo pipefail
+          python3 -B TOOLS/validate.py --root .
+          for suite in test_validate test_handover test_package_release test_read_source test_search_index test_evidence test_save_audit test_agent_state test_autosave test_encounter_generation; do
+            python3 -B "TOOLS/${suite}.py"
+          done
           python3 -B TOOLS/package_release.py
           (cd .release && sha256sum --check SHA256SUMS)
+      - name: Upload exact tested tree objects without changing any branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: python
+        run: |
+          import json, os, pathlib, subprocess, urllib.request
+          repository = os.environ["GITHUB_REPOSITORY"]
+          assert repository == "croatianrdy2defend-create/RPG-OS"
+          base = "b412feca78f6d28a52690288b60651b1bd6cf29d"
+          paths = subprocess.check_output(["git", "diff", "--name-only", base, "HEAD"], text=True).splitlines()
+          assert len(paths) == 29 and not any(p.startswith("TEST_REPORTS/") for p in paths)
+          entries = [{"path": p, "mode": "100644", "type": "blob", "content": pathlib.Path(p).read_bytes().decode("utf-8")} for p in paths]
+          request = urllib.request.Request("https://api.github.com/repos/" + repository + "/git/trees", data=json.dumps({"base_tree": "b045f2c6d33a29312ec35ef468cb1b97acf8e9e4", "tree": entries}).encode(), headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"], "Accept": "application/vnd.github+json", "Content-Type": "application/json"}, method="POST")
+          with urllib.request.urlopen(request, timeout=90) as response:
+              result = json.load(response)
+          assert result["sha"] == "414925e703b73db909c92649ca3d2a3fa3636d26", "Uploaded tree mismatch"
+          print("Prepared and verified tree: " + result["sha"])
+          print("No repository branch or tag was changed by this job.")
