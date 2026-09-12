@@ -86,6 +86,8 @@ Include the session routine within the same existing agreement sections:
 
 These are responsibilities within the five sections, not a sixth clause or three additional approvals. Feedback grants no new PC control, invented history, population weighting or silently accepted agreement change.
 
+Within that same proposal, describe routine execution through the next meaningful reserved decision, closer attention to chosen experiences, concise maintenance notices, and feedback expressed as practical GM conduct. Propose a bounded permission to reorganize growing current records losslessly under `ADMIN/CLOSE_CONTRACT.md#Reorganize growing current records` when needed, preserving facts, qualifications, history and working routes; the operator may omit it. It adds no PLAY writes, periodic maintenance quota, mandatory file or separate setup interview. Existing campaigns keep their accepted grants until explicitly recalibrated.
+
 Read `MODULES/_CONTRACT.md`, `ENGINE/_CONTRACT.md`, and `INSTANCE/_SCHEMA.md` before finalizing. POLICY retains `## Voice` and `## Campaign defaults` as setup proposals. Accepted presentation goes in the run contract; accepted stronger module limits go in SAFETY. POLICY is cold during PLAY.
 
 Ordinary explicit acceptance of the displayed proposal suffices; no magic phrase is required. Re-present only material revisions or unresolved choices. A request to begin can accept a complete unambiguous proposal, but cannot fill missing grants or values. Unaccepted alternatives remain drafts.

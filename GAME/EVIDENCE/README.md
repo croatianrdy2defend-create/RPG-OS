@@ -14,6 +14,8 @@ Use `ADMIN/EVIDENCE_AUDIT.md` for capture, scoped semantic review, coverage and 
 
 ## Tiered save reviews (v0.9.6)
 
+The v0.9.7 evidence helper also offers `metadata-template` for correctly typed, initially unknown caller claims and `citation` for exact original lines from a verified frozen bundle. See `ADMIN/EVIDENCE_AUDIT.md` for usage and limits. These commands do not supply source selection, a reviewer verdict or new capture permission.
+
 The recommended selected policy is `tiered`: checkpoints remain lightweight, full saves use the existing bounded source-first review. `every-save` explicitly adds source review to checkpoints; an explicit one-off request does not change the standing policy. Ordinary lightweight autosave writes no raw transcript. Authorized source review can capture under this store even for a checkpoint, without publishing ARCHIVE evidence or advancing evidence_through.
 
 `TOOLS/evidence.py` adds `save-review-plan`, read-only `save-diff`, `prepare-save-audit` and `check-save-audit`. They bind selected save identities, source stopping point, declared write/removal set and exact resulting bytes to an externally authored review. They do not detect semantic corruption automatically. Existing captures and general audit bundles remain compatible. Review artifacts are operational provenance, never another memory system or an authority to repair canon. See ADMIN/EVIDENCE_AUDIT.md for executable examples, schema, incomplete-source handling and separate source-coherence declarations.

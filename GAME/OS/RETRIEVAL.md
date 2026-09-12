@@ -1,4 +1,4 @@
-# RPG OS v0.9.5 targeted reference
+# RPG OS v0.9.7 targeted reference
 
 Cold lookup guide for LAW's Establish stage. Open when an identified task needs a record and its route is unclear. Direct pointers already available may be followed immediately.
 
@@ -31,6 +31,8 @@ Identify the fact or procedure needed next. Reuse already loaded source material
 Check corrections when their scope could affect the question. Saving places useful correction pointers in Relevant records. If a relevant correction route is absent, inspect the compact correction register.
 
 ## Missing routes and bounded search
+
+Use a current owner's explicit section or subordinate route before loading its unrelated detail. A compact cue must retain enough scope and source to distinguish current authority from historical evidence. Repeated difficulty retrieving needed facts can justify proposing the protected current-record maintenance in `ADMIN/CLOSE_CONTRACT.md`; it does not authorize a search-wide rewrite, abandonment of old knowledge or a new compulsory index.
 
 If pointers or indexes cannot locate a specifically needed record, targeted filename or text search is allowed in the relevant campaign area. Identify the subject, restrict the directory and terms, inspect matching context, and stop when sufficient authority is found. Search results are pointers, not established truth. Do not scan unrelated lore or rosters to choose an encounter.
 

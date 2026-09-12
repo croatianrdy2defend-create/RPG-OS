@@ -1,6 +1,6 @@
 # RPG OS — playable game files
 
-**Version 0.9.6.** This folder is a standalone, unbound game kit. It contains the GM's operating rules, the Freeform engine, blank campaign records, saving/recovery procedures and optional runtime tools. Explanatory articles, playtest campaigns, developer tests and build automation are deliberately elsewhere.
+**Version 0.9.7.** This folder is a standalone, unbound game kit. It contains the GM's operating rules, the Freeform engine, blank campaign records, saving/recovery procedures and optional runtime tools. Explanatory articles, playtest campaigns, developer tests and build automation are deliberately elsewhere.
 
 ## Start a new campaign
 

@@ -2,6 +2,17 @@
 
 All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
 
+## v0.9.7 — practical pacing and long-campaign maintenance (2026-09-12)
+
+- Shorter autosave notices and clearer early-trigger significance; existing cadence, pressure, warning, override and full-current-state requirements remain selected.
+- More direct execution of declared routine and substantive portrayal of chosen experiences, preserving meaningful player decisions and actual interruptions.
+- Targeted save edits with focused attribution, chronology, possession, knowledge, assent and once-only checks; source-first omission review remains distinct from byte diffs.
+- Protected, separately authorized current-record partitioning with retained facts, evidence, consequences, preimages and verified routes; no automatic periodic compaction or new mandatory index.
+- Operational preparation and concrete feedback follow-through in existing session procedures, with matching NEW GAME, depth and Quick start guidance.
+- Evidence metadata and exact-citation helpers; portable escaped JSON output without altering source bytes or weakening verification. Added deterministic regression cases; behavioral improvement and long-campaign reliability remain unproven.
+
+See [release notes](releases/V0.9.7_CHANGES.md) and [verification](VERIFICATION.md).
+
 ## v0.9.6 — tiered, source-bound save review (2026-09-11)
 
 - **2026-09-12, same-version update — Campaign spirit:** NEW GAME, Quick start, optional depth and LOAD translate player experience priorities into accepted practical GM guidance under the existing Campaign promise. Ordinary GM judgment, session preparation and feedback use that guidance within established facts, rules and player control. No aesthetic default, forced scene, new required field or legacy retrofit; added NOT RUN behavioral cases. Version remains 0.9.6.

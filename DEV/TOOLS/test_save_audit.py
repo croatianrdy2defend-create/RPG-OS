@@ -62,6 +62,13 @@ class SaveReviewTests(unittest.TestCase):
         lines = (self.bundle / prefix / ref["path"]).read_bytes().decode().splitlines(keepends=True)
         return {**ref, "start_line": first, "end_line": last, "quote": "".join(lines[first - 1:last])}
 
+    def test_generated_citation_honors_selected_save_boundary(self):
+        self.prepare()
+        quote = evidence.citation(self.bundle, "capture", "source.txt", 1, 2)
+        self.assertEqual(quote["quote"], "".join(self.raw.read_bytes().decode().splitlines(keepends=True)[:2]))
+        with self.assertRaisesRegex(evidence.EvidenceError, "after selected save boundary"):
+            evidence.citation(self.bundle, "capture", "source.txt", 2, 3)
+
     def completed(self, consistency="consistent"):
         report = evidence.report_template(self.bundle)
         report["review_status"] = "completed"

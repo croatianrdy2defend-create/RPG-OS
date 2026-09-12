@@ -1,4 +1,4 @@
-# ADMIN — Optional announced autosave (v0.9.2)
+# ADMIN — Optional announced autosave (v0.9.7)
 
 Autosave is off unless explicitly accepted in the campaign agreement. This is a foreground, turn-driven permission to invoke the existing complete-present CHECKPOINT, not a second save format or a background service. PLAY remains READ-ONLY; the actual writes occur in ADMIN/CLOSE_CONTRACT.md with ADMIN/RECOVERY.md protection. No background worker, wall-clock timer, private scratch layer or universal host capability is supplied. Installing/upgrading the kit does not enable it in any campaign.
 
@@ -23,9 +23,13 @@ With unsaved state, any selected trigger may schedule one checkpoint:
 - Cadence: 15 completed PLAY replies since bind/verified persistence. Count replies containing resolved/portrayed play, not tool calls, OOC discussion, warnings alone or maintenance replies. Retain the observed count in working conversation; do not claim an exact count if unavailable.
 - Context pressure: at least 65% from actual model-visible host telemetry or an explicit operator-reported reading. This is an early-warning convention intended to leave room before roughly 70%, not a measured safety guarantee. The player's visible meter need not be visible to the model. Unknown percentage stays unknown; never estimate it from conversation length or claim to monitor an unavailable UI.
 
+Apply the selected early triggers to their significance, not merely the existence of a new fact. A new location, ordinary appointment, small purchase, incidental update or roll is not individually sufficient. A consequential trigger protects significant unsaved progress or a material change affecting continuing choices, resources, knowledge, relationships or processes; a substantial boundary completes or changes a meaningful activity with such progress. A materially important instance of an otherwise routine category can qualify. Coalesce eligible changes at the next announced operation, keep the accepted cadence/pressure triggers, and preserve all current state when saving. No per-turn trigger ledger or private-state write is added. Existing explicitly broader or custom campaign grants require accepted recalibration before narrowing them.
+
 Coalesce all triggers and changed facts into a single pending notice. Give no additional notice for the same pending operation. Use a generic OOC message with no private fact, entity name or hidden trigger:
 
-> OOC — Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say “checkpoint now” or “delay autosave.”
+> OOC — Checkpoint after the next play response; “delay autosave” postpones it.
+
+Explain manual-save/disable rights, the outgoing-save-before-switch convention and the checkpoint's evidence limit at initial selection or when relevant. Repeat that guidance only on request or a material change; it need not accompany every ordinary notice. These shorter notices change no switching, source-preservation or review requirement.
 
 The notice is delivered one response before automatic execution. Never warn and automatically save in that same response, even under high reported pressure. Wait for the next user input; there is no unattended continuation. An OOC acknowledgment alone need not create fictional time or a PC action. Explicit “checkpoint now” or “save now” can execute immediately under the manual procedure. If pressure is already acute, recommend saving now rather than requiring another fictional turn; do not bypass the operator's authority.
 
@@ -44,6 +48,8 @@ Use ordinary identity/revision/parent rules and commit_kind `checkpoint`. Copy a
 Use CLOSE_CONTRACT's shared review policy: `tiered` keeps ordinary checkpoints lightweight; `every-save` or a one-off checkpoint audit selects the more expensive source-first review. Finish the completed action's location, participation, resource, obligation and goal updates before compilation. A checkpoint never resolves a pending choice. Do not reread the whole transcript at every cadence trigger or silently describe a deferred review as completed. If a requested source review cannot fit safely, preserve available progress/source with incomplete coverage and no repeated audit loop; clear physical-save scheduling after verified persistence, not after a fabricated semantic PASS. Existing notice, cadence and context-pressure latching remain unchanged.
 
 A scheduled decision is not a completed save. Clear the pending notice, dirty set and cadence only after actual verification; keep a handled context-pressure episode latched as described above. Briefly report the checkpoint id, retained evidence boundary and any material source limitation, without spoilers. Do not claim “lossless,” “all hidden facts recovered,” or “model switching is safe” from a structural pass or self-check. No fictional time passes and no extra turn is portrayed after the save.
+
+Ordinary report format: `OOC — Checkpoint verified: <save_id>. History remains archived through <evidence_through>.` Use `none` when no history is archived. Add a short qualification for an actual source gap, failed/incomplete review or materially changed limitation. A routine lightweight readback is not a semantic PASS; explain its standing meaning once rather than repeating a lecture. Custom accepted reporting requirements still apply.
 
 If a write/readback fails, retain the recovery marker, preserve the notice, and stop ordinary play for recovery. Do not reset the cadence, report success, silently retry in a loop or start another autosave. After recovery, reconcile whether the operation completed or was rolled back before deciding anything further. If writes are unavailable, report that and use the existing INSTALLATION export workflow; a warning or promised export is not persistence.
 

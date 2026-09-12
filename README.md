@@ -5,11 +5,11 @@
 
 ## Just want to play?
 
-### [Download the playable game files only — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.6/RPG_OS_v0.9.6_Game.zip)
+### [Download the playable game files only — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip)
 
-This is the standalone **RPG OS v0.9.6** game kit: the operating rules, Freeform engine, blank campaign records, essential setup/save procedures and optional runtime tools. **No architecture essay, mechanics explainer, playtest transcripts, release-history collection, developer tests or GitHub automation is included.**
+This is the standalone **RPG OS v0.9.7** game kit: the operating rules, Freeform engine, blank campaign records, essential setup/save procedures and optional runtime tools. **No architecture essay, mechanics explainer, playtest transcripts, release-history collection, developer tests or GitHub automation is included.**
 
-[Browse game files](GAME/README.md) · [Quick start](GAME/QUICKSTART.md) · [Installation](GAME/INSTALLATION.md) · [Game-only release and checksums](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.6)
+[Browse game files](GAME/README.md) · [Quick start](GAME/QUICKSTART.md) · [Installation](GAME/INSTALLATION.md) · [Game-only release and checksums](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7)
 
 > GitHub's green **Code → Download ZIP** downloads the whole repository. Use the game-only download above when you only want to play. After extraction, use the folder containing `OS/AGENTS.md` as the campaign workspace.
 
@@ -34,7 +34,7 @@ The report covers successes, failures, deliberately corrupted saves, conversatio
 
 [Why I built RPG OS](DOCS/OVERVIEW.md) · [Architecture](DOCS/ARCHITECTURE.md) · [How the mechanics work](DOCS/MECHANICS.md) · [Host compatibility](DOCS/HOST_CONTRACT.md) · [Verification](DOCS/VERIFICATION.md)
 
-**The software remains v0.9.6.** The `game-v0.9.6` release is a separated distribution of the game files, not a new rules version. Earlier release tags and downloads remain unchanged. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
+**Current software: v0.9.7.** This release improves routine pacing, save operation, current-record maintenance and evidence tooling. [Release changes](DOCS/releases/V0.9.7_CHANGES.md). The `game-v0.9.7` release contains only the playable files. Earlier release tags and downloads remain unchanged. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
 
 For an existing campaign, keep a complete backup and use the [protected upgrade procedure](GAME/ADMIN/UPGRADE_V08.md). Never overwrite live campaign records with blank installation templates.
 

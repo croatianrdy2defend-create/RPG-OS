@@ -1,8 +1,8 @@
-# Quick start — v0.9.6 experimental
+# Quick start — v0.9.7 experimental
 
 ## Prepare one campaign folder
 
-Download the [v0.9.6 game-only download](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.6), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform as a selectable engine. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
+Download the [v0.9.7 game-only download](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7), extract its package into a dedicated folder and give your GM access. The public kit has no world or character yet and bundles only Freeform as a selectable engine. Keep a separate copy for each campaign. See [Installation](INSTALLATION.md) for manual export when the host cannot write directly, or [Upgrade an existing campaign](ADMIN/UPGRADE_V08.md).
 
 ## Start
 
@@ -11,6 +11,8 @@ Say:
 > Open OS/AGENTS.md. Help me start a new RPG campaign. Follow ADMIN/NEW_GAME.md, including Neutrality before worldbuilding and Campaign spirit, and use Quick start. Ask only what you need next.
 
 Share what you want to enjoy about playing, or what mattered in a memorable scene or reference. The GM follows [Campaign spirit](ADMIN/NEW_GAME.md#campaign-spirit) to propose practical guidance in the existing agreement, reusing what you already supplied. You can refine it or leave it open to discover through play. Accepted priorities guide preparation and ordinary GM choices, and the usual end feedback can refine their application. They require no extra questionnaire or predetermined scenes and outcomes.
+
+The same proposal covers carrying out routine you have authorized, giving your chosen experiences enough substance, brief save notices, and practical responses to feedback. It may also permit careful reorganization of growing current records while preserving their facts and history. None of this requires another setup interview or changes an existing campaign's permissions merely by installing an update.
 
 For the GM: read and apply [Neutrality before worldbuilding](ADMIN/NEW_GAME.md#neutrality-before-worldbuilding) before the first world, lore or opening proposal. This applies at every setup depth. The standard [session routine](ADMIN/SESSION.md) also belongs in the normal proposal: relevant preparation at begin/resume and feedback plus consolidation at an explicit ending. Examples and visual references supply no generation weights; the requested premise and supported sources govern the draft.
 
@@ -50,7 +52,7 @@ Keep the current model/reasoning setting until the outgoing save is verified. Th
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.6.
+An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.7.
 
 Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 

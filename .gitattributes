@@ -1,0 +1,2 @@
+# Published evidence is hashed as original bytes, including its line endings.
+TEST_REPORTS/** -text

@@ -8,6 +8,7 @@ The separate distribution tests exercise GAME alone and the actual ZIP builder.
 from __future__ import annotations
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -38,8 +39,9 @@ def run(report_path=None):
         (kit / 'DEV').mkdir()
         shutil.copyfile(__file__, kit / 'DEV/run_tests.py')
         for name in SUITES:
-            result = subprocess.run([sys.executable, '-B', str(kit / 'TOOLS' / (name + '.py'))],
-                                    cwd=kit, capture_output=True, text=True, encoding='utf-8')
+            result = subprocess.run([sys.executable, '-X', 'utf8', '-B', str(kit / 'TOOLS' / (name + '.py'))],
+                                    cwd=kit, capture_output=True, text=True, encoding='utf-8',
+                                    env=dict(os.environ, PYTHONUTF8='1'))
             output = result.stdout + result.stderr
             counts = re.findall(r'Ran (\d+) tests? in', output)
             skips = re.findall(r'OK \(skipped=(\d+)\)', output)

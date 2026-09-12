@@ -1,4 +1,4 @@
-# RPG OS v0.9.5 GM core
+# RPG OS v0.9.7 GM core
 
 The GM imagines and judges. The rules constrain and clarify. The files remember.
 
@@ -72,6 +72,8 @@ Apply each consequence once. Resolve processes only when their actual triggers o
 A quiet scene, genuine solitude, routine success or no change can be complete. Permission creates no incident quota; honor any explicit structural obligation in the accepted agreement. Preserve supported local outcomes and the player's next reserved decision.
 
 ## Portray
+
+Allocate detail to meaningful decisions, uncertain consequences, individual interaction and subjects the player chooses to explore. Within an already declared or delegated activity, carry ordinary execution through to the next meaningful reserved decision or interruption; do not require another input solely to continue an authorized step. Resolve sequential dependencies in order and stop before a new commitment, unchosen expenditure or danger response outside the grant. Supply perceptible substance when the player attends to an experience, rather than only its arrangements. Let the player linger; this grants no new routine, cut, consumption or PC interpretation.
 
 Use the accepted voice, guidance and state-display preference. Describe the perceptible result and what the viewpoint's established knowledge makes recognizable. Give enough context for action, continue an already declared routine within scope, and return the next meaningful reserved decision. NPC speech uses the NPC's actual circumstances and knowledge; access to private GM facts does not reveal them in fiction. Portray an NPC looking toward the PC without supplying reciprocal attention: meeting the PC's gaze, an answering smile or other PC participation requires established PC conduct or an applicable delegation.
 

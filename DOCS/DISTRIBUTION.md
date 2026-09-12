@@ -1,10 +1,10 @@
 # Game-only distribution and repository layout
 
-**11 September 2026. Software version remains 0.9.6.** This is an organization and distribution change, not a new rules version or a new campaign playtest.
+**Current download: v0.9.7 (12 September 2026).** See [the release changes](releases/V0.9.7_CHANGES.md). The repository separation described below was introduced on 11 September under v0.9.6; its historical verification remains identified separately. Distribution checks are not campaign playtests.
 
 ## Choose what to download
 
-[Download the game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.6/RPG_OS_v0.9.6_Game.zip). The [separate distribution release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.6) also includes SHA-256 checksums and a file manifest. Earlier `v0.9.6` release assets and tags are not replaced.
+[Download the game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip). The [separate distribution release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7) also includes SHA-256 checksums and a file manifest. Earlier `v0.9.6` release assets and tags are not replaced.
 
 GitHub's **Code → Download ZIP** remains a complete repository download. GitHub's automatically generated source-code archives also contain the repository. The explicitly named `_Game.zip` asset is the smaller playable download.
 
@@ -20,7 +20,7 @@ Markdown is also the format of the game itself: `GAME/OS/LAW.md` and the saving 
 
 ## Workspaces and existing campaigns
 
-The folder containing `OS/AGENTS.md` is the campaign workspace. Inside a full checkout that folder is GAME; in the playable download it is the extracted `RPG_OS_v0.9.6` folder. Saved routes retain their existing names such as `INSTANCE/NOW.md`. Do not add a `GAME/` prefix inside a save or point the loader at the parent repository.
+The folder containing `OS/AGENTS.md` is the campaign workspace. Inside a full checkout that folder is GAME; in the playable download it is the extracted `RPG_OS_v0.9.7` folder. Saved routes retain their existing names such as `INSTANCE/NOW.md`. Do not add a `GAME/` prefix inside a save or point the loader at the parent repository.
 
 Existing campaigns are not automatically moved, reset or upgraded. Never extract blank `INSTANCE`, `ARCHIVE` or module templates over live files. Use the [protected upgrade procedure](../GAME/ADMIN/UPGRADE_V08.md) on a separate copy when applying program changes. Old optional documentation can remain in an existing campaign; absence of those optional documents is no longer a structural failure.
 
@@ -32,7 +32,7 @@ The new developer packager reads the committed GAME subtree, verifies it against
 
 Package output is reproducible for identical GAME bytes. A documentation-only commit changes the manifest's source-commit attribution but does not change the playable ZIP. The `game-v<version>` distribution uses its own tag and never overwrites the historical `v<version>` release. Publishing a different playable tree under an existing distribution tag is refused.
 
-## Verification performed during preparation
+## Historical verification of the v0.9.6 repository separation
 
 The standalone game folder passed its own structural validation with no documentation or developer folder present. The retained regression suites completed **318 cases: 314 passed, four platform-specific cases skipped, zero failures**. A separate **15-case distribution suite passed**, exercising actual standalone validation, local game links, exact contents, reproducibility, missing files, bound-state rejection, unsafe path modes, dirty sources, untracked-file exclusion and non-overwriting output. These are software and packaging tests, not new AI gameplay or proof of flawless memory.
 

@@ -29,6 +29,6 @@ The existing regression suites predate the repository split and use paths such a
 
 The distribution workflow reads GAME/VERSION, runs tests, builds the standalone kit and publishes a separate `game-v<version>` tag with versioned `_Game.zip`, checksum and manifest assets. Existing tags and assets are not replaced. The original v0.9.6 full-kit release remains available as historical material; the homepage points to the game-only distribution.
 
-This reorganization does not change game rules or the software version. The next actual game-version release must update GAME/VERSION and its matching documentation. Source commits, byte integrity, simulated regression coverage and real play observations remain separate claims.
+The earlier repository reorganization kept v0.9.6. The current game release is v0.9.7; future releases must update GAME/VERSION and matching documentation. Source commits, byte integrity, simulated regression coverage and real play observations remain separate claims.
 
 Code and automation are [MIT licensed](LICENSE). See the [contribution guide](../DOCS/CONTRIBUTING.md) for evidence standards.

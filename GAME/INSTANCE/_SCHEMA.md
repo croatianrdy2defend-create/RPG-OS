@@ -1,4 +1,4 @@
-# INSTANCE schema — v0.9.6
+# INSTANCE schema — v0.9.7
 
 Cold ADMIN reference. An INSTANCE is one campaign run. The accepted agreement, current state, administrative session continuity, historical evidence, derivative preparation and optional review notes have different jobs. Normal PLAY does not load this schema.
 
@@ -102,6 +102,8 @@ Existing v0.7 agreements missing these clauses receive focused supplementation t
 ## Current records and compilation
 
 One current authority per value. This is a semantic check, not something a table shape can prove.
+
+Keep the resume entry useful for the present. Detailed current knowledge and operative individual/system facts may use explicitly routed subordinate records; completed event sequences belong to surviving evidence where its fidelity suffices. Preserve the causes, qualifications and consequences that still matter, and the routes needed to recover detail. Growth does not authorize lossy summarization during ordinary saving. Use `ADMIN/CLOSE_CONTRACT.md#Reorganize growing current records` for separately authorized protected partitioning and route verification; unchanged detailed authority is otherwise carried forward.
 
 | Information | Current home |
 |---|---|

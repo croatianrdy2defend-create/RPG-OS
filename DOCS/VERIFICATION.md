@@ -1,5 +1,13 @@
 # RPG OS experimental verification
 
+## v0.9.7 — practical pacing and maintenance, 12 September 2026
+
+Local Windows verification completed **327 regression cases: 318 passed, nine platform-specific skips, zero failures** across the ten retained suites. This includes nine new metadata/citation cases. All **15 standalone distribution tests passed**, and the unbound GAME directory passed structural validation with no findings and stable bytes. The first full run exposed default Windows text decoding in child test processes; the runner now explicitly enables UTF-8 for those processes and their children. The final complete rerun passed.
+
+Published-evidence verification passed for its existing 48 hashed files, 30 recorded sessions, 260 exchanges and 27 checked transcript citations. Initial checkout line-ending conversion was corrected from the unchanged committed blobs; `.gitattributes` now preserves original TEST_REPORTS bytes on checkout. No published transcript, finding or evidence manifest was revised.
+
+The new helper cases check correctly typed metadata with unknown completeness, rejection before capture creation, exact original citations across source sides, mixed line endings and Unicode, tampering, missing sources, unsafe ranges/routes, legacy-encoding CLI output and the selected save boundary. These results do not establish semantic accuracy or player enjoyment. Pacing improvement, feedback uptake and fresh-GM resumption after record partition remain **NOT RUN behavioral observations for this release**; see [release notes](releases/V0.9.7_CHANGES.md). No new campaign simulation is claimed.
+
 ## Campaign spirit — same-version v0.9.6 update, 12 September 2026
 
 Local Windows checks of the public source patch: standalone GAME structural validation passed with no findings; the ten retained regression suites covered 318 cases, with 309 passing and nine platform-specific skips after a targeted retry. The first evidence-suite run had two temporary-directory cleanup errors (WinError 145); rerunning that unchanged suite passed. All 15 standalone distribution tests passed. Published-record verification passed after restoring exact committed line endings in the Windows checkout; the published evidence itself is unchanged.

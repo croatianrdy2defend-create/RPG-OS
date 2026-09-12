@@ -233,6 +233,14 @@ def validate_claims(claims):
     return claims
 
 
+def capture_metadata_template():
+    """Editable caller claims, with no assertion of export completeness."""
+    return validate_claims({"campaign_id": "", "save_id": "",
+                            "message_boundary": {"first": "", "last": "", "description": ""},
+                            "conversation_complete": None, "gaps": [],
+                            "notes": "", "source_description": ""})
+
+
 def source_layout(data, source_format):
     try:
         text = data.decode("utf-8")
@@ -518,6 +526,28 @@ def ref_key(value):
     route(value.get("path"))
     require(isinstance(value.get("sha256"), str) and HEX.fullmatch(value["sha256"]), "invalid source reference hash")
     return value["source"], value["path"], value["sha256"]
+
+
+def citation(bundle, source, path, start_line, end_line):
+    """Extract an original-line citation; no review or delivery claim is made."""
+    route(path)
+    require(source in ("prior", "current", "capture"), "invalid citation source")
+    frozen = check_bundle(bundle)
+    matches = [ref for ref in source_references(frozen)
+               if ref["source"] == source and ref["path"] == path]
+    require(len(matches) == 1, "citation source is not available in this frozen bundle")
+    ref = matches[0]
+    relative = f"capture/{path}" if source == "capture" else f"sources/{source}/{path}"
+    original = document(Path(frozen["bundle"]), relative, ref["sha256"])
+    lines = original["lines"]
+    require(type(start_line) is int and type(end_line) is int
+            and 1 <= start_line <= end_line <= len(lines), "invalid original line range")
+    binding = frozen["manifest"].get("save_binding")
+    if source == "capture" and binding and binding["state_saved_through"]["basis"] == "capture_lines":
+        require(end_line <= binding["state_saved_through"]["end_line"],
+                "citation uses play after selected save boundary")
+    return {**ref, "start_line": start_line, "end_line": end_line,
+            "quote": "".join(lines[start_line - 1:end_line])}
 
 
 def check_report(bundle, report_file, delivery_receipt=None):
@@ -952,6 +982,7 @@ def check_save_audit(bundle, report_file, saved, delivery_receipt=None):
 def parser():
     result = argparse.ArgumentParser(description=__doc__)
     commands = result.add_subparsers(dest="command", required=True)
+    commands.add_parser("metadata-template", help="Emit editable capture metadata with unknown completeness")
     capture = commands.add_parser("import", help="Copy exact supplied UTF-8 bytes into a new capture")
     capture.add_argument("--input", required=True, help="Real caller-supplied text file")
     capture.add_argument("--output", required=True, help="New capture folder (never overwritten)")
@@ -974,6 +1005,12 @@ def parser():
     prepare.add_argument("--output", required=True)
     template = commands.add_parser("report-template", help="Emit a pending report for an external model/human to complete")
     template.add_argument("--bundle", required=True)
+    quote = commands.add_parser("citation", help="Emit exact original lines from a verified frozen bundle; no review claim")
+    quote.add_argument("--bundle", required=True)
+    quote.add_argument("--source", choices=("prior", "current", "capture"), required=True)
+    quote.add_argument("--path", required=True)
+    quote.add_argument("--start-line", type=int, required=True)
+    quote.add_argument("--end-line", type=int, required=True)
     report = commands.add_parser("check-report", help="Check an externally authored report; never certify semantic truth or perform repairs")
     report.add_argument("--bundle", required=True)
     report.add_argument("--report", required=True)
@@ -1006,7 +1043,11 @@ def parser():
 def main(argv=None):
     args = parser().parse_args(argv)
     try:
-        if args.command == "import":
+        if args.command == "metadata-template":
+            value = capture_metadata_template()
+        elif args.command == "citation":
+            value = citation(args.bundle, args.source, args.path, args.start_line, args.end_line)
+        elif args.command == "import":
             value = import_capture(args.input, args.output, args.format, read_json(args.metadata) if args.metadata else None)
         elif args.command == "pending":
             value = pending_capture(args.output, read_json(args.metadata) if args.metadata else None)
@@ -1029,10 +1070,12 @@ def main(argv=None):
             value = check_save_audit(args.bundle, args.report, args.saved, args.delivery_receipt)
         else:
             value = check_report(args.bundle, args.report, args.delivery_receipt)
-        print(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False))
+        # ASCII JSON escapes round-trip all Unicode and original line endings even
+        # when the host's redirected stdout uses a legacy Windows encoding.
+        print(json.dumps(value, ensure_ascii=True, indent=2, allow_nan=False))
         return 2 if value.get("status") == "pending_review" or (args.command == "check-save-audit" and value.get("review_status") == "pending") else 0
     except (EvidenceError, OSError, ValueError, TypeError, KeyError) as exc:
-        print(json.dumps({"status": "invalid", "error": str(exc), "semantic_review": "not_performed"}, ensure_ascii=False))
+        print(json.dumps({"status": "invalid", "error": str(exc), "semantic_review": "not_performed"}, ensure_ascii=True))
         return 1
 
 

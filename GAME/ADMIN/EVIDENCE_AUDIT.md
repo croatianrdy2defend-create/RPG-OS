@@ -1,4 +1,4 @@
-# Evidence capture and campaign consistency audit — v0.9.6
+# Evidence capture and campaign consistency audit — v0.9.7
 
 Cold maintenance procedure for a requested source capture, consistency check or selected audit-on-save option. Ordinary `AUDIT` of tool activity remains an observed-actions report; a request to compare campaign state against evidence selects this procedure. Do not begin fiction, resolve an open outcome, or change current records while auditing.
 
@@ -53,6 +53,16 @@ This validates supported report structure, frozen-source hashes and citation tex
 
 ## Complete the report template
 
+Use `python -X utf8 -B TOOLS/evidence.py metadata-template` for editable capture claims. `notes` and `source_description` are strings; `gaps` is a list of strings; completeness starts `null` (unknown). Fill only actual claims and save the JSON as UTF-8 before passing it to `import --metadata`. An empty template is neither an export nor proof that no gaps exist. Avoid rebuilding a valid metadata structure from memory at every save.
+
+Use the read-only `citation` command for exact original-line references from a verified frozen bundle:
+
+```sh
+python -X utf8 -B TOOLS/evidence.py citation --bundle C:/RPG_SUPPORT/audit-session-001 --source capture --path source.txt --start-line 1 --end-line 2
+```
+
+Select an actual indexed source/path and inclusive range. Output is the citation object expected by the report: source, path, hash, line range and exact quote. It preserves original line endings and Unicode; it rejects unavailable or altered bundle sources, invalid ranges and capture lines beyond a bound save's endpoint. It does not select relevant evidence, write a report, certify reading/comprehension or perform semantic review. CLI JSON uses ASCII escapes so legacy Windows stdout also preserves the values; input/capture bytes remain UTF-8 and unmodified. Parse/save JSON with explicit encoding instead of silently normalizing source text.
+
 Keep the generated identity, bundle/capture references and evidence-boundary fields unchanged. Write the completed JSON report outside the bundle. The supported review fields are:
 
 | Field | Values and meaning |
@@ -89,6 +99,8 @@ A reviewed baseline references a specific report, exact source revisions, time b
 CLOSE_CONTRACT owns the common save route. An explicit request selects review once; retain a standing choice prospectively through the existing agreement/recalibration procedure. `tiered` is the recommended opt-in: lightweight checkpoints and bounded source-first review on full saves/session ends/accepted returns. `every-save` explicitly adds that review to checkpoints. `off`/absence disables only the additional formal review; ordinary faithful compilation and write checks remain. Legacy full-save grants retain their original scope. Capture, review and repair permission remain distinct. No mandatory new agreement clause, automatic enablement or new campaign truth store is introduced.
 
 Lightweight checking does not prepare a capture/bundle or ask a model to independently extract the transcript. It checks the completed action and affected records with available working evidence, plus selected diff/metadata/readback. Its record says no transcript-grounded review performed. Source review uses the existing source-first steps above; widening the routes does not improve the reviewer's judgment by itself.
+
+Prioritize source-grounded comparison of changed identity, attribution, chronology, location/possession, knowledge, assent and once-only effects. Inspect apparently unrelated rewrites for accidental drift. Keep the source-first extraction of consequential developments independent of the proposed edit list so a wholly omitted change can still be found. Reuse sufficient verified source and existing captures; neither a larger bundle nor repeated same-context review is a substitute for this comparison. Record actual omissions or limits in the existing report, without an extra universal checklist.
 
 Bound source reviews to the selected save, relevant earlier evidence and actual available context. Do not repeatedly reread the entire campaign. Reuse exact captures/prior reviewed facts with their limits; expand to original evidence when a claim depends on it. At accepted periodic full-save/end-session maintenance, sample some older evidence including obligations no longer visible in current open-matters lists. This is a selected spot-check, not a claim to review all history. Host/token/time budgets and actual pacing need measurement in independent live play. When budget, source or reviewer is unavailable, record incomplete/deferred scope and preserve progress rather than pretending the review ran, looping retries or forcing more play.
 
