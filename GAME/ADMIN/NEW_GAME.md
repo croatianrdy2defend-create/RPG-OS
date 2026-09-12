@@ -28,6 +28,16 @@ Quick, Guided and Detailed all include the standard beginning/resumption prepara
 
 These are setup preferences, not runtime modes. World depth, character detail, bookkeeping precision, and mechanics are independent. A quick campaign may use a complete tactical sheet; a detailed world may use Freeform. Do not repeat already answered depth questions.
 
+## Campaign spirit
+
+Discover what the player wants to make this campaign satisfying, and translate it into practical GM guidance. Reuse supplied preferences, memorable moments, references or desired challenges. When useful, ask what mattered about them; the same example can support different interpretations. In Quick start, propose a concise reading with the ordinary proposal. Guided and Detailed may explore it further at the chosen pace. Already answered, declined or deliberately open preferences need no extra interview; discovering priorities through play is valid. No particular genre, emotional register or kind of enjoyment is the default.
+
+Distill the proposed priorities into a compact paragraph under **Campaign promise**. Connect each important priority to useful GM decisions about opportunities, attention, portrayal, pacing or continuing consequences. State what the GM should support in practice; a mood label alone may be insufficient. Clarify competing priorities only where they would materially change play. Put actual prose implications in Presentation and any additional authority in its existing agreement section, without duplicating the whole statement. Keep optional reference scenes outside the resident agreement with an exact route only when useful; label them as preference evidence, not campaign canon or templates to reproduce.
+
+Show this interpretation in the same reviewable proposal. Distinguish the player's stated preference from the GM's inference and accept only what the player agrees to. A reference does not import its people, events, outcomes or population weights. No separate confirmation, sixth section, named clause, score or campaign file is required. Preserve accepted spirit in the bound agreement so a fresh GM can use it without the setup conversation or cold POLICY.
+
+During play, these accepted priorities guide judgment among plausible choices within existing authority. They do not alter established facts, sources, resolution or player control, require every scene to serve every priority, or force an emotion or outcome. Preserve appropriate variety, quiet and genuine success. Use the existing session preparation and feedback routine to revisit their practical effect. A single enthusiastic response or PC action does not silently change the agreement; material revisions use RECALIBRATE. Existing campaigns keep their accepted priorities in their current wording, with no mandatory retrofit or invented spirit where none was agreed.
+
 ## Build the playable minimum
 
 Follow the player's starting point rather than a fixed question order. Establish the following with as few exchanges as practical. Open `ADMIN/CAMPAIGN_BUILD.md` for selected world/system depth and `ADMIN/CHARACTER_BUILD.md` for character work.

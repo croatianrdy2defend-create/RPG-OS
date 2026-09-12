@@ -1,5 +1,11 @@
 # RPG OS experimental verification
 
+## Campaign spirit — same-version v0.9.6 update, 12 September 2026
+
+Local Windows checks of the public source patch: standalone GAME structural validation passed with no findings; the ten retained regression suites covered 318 cases, with 309 passing and nine platform-specific skips after a targeted retry. The first evidence-suite run had two temporary-directory cleanup errors (WinError 145); rerunning that unchanged suite passed. All 15 standalone distribution tests passed. Published-record verification passed after restoring exact committed line endings in the Windows checkout; the published evidence itself is unchanged.
+
+The change connects accepted experience priorities to setup, ordinary GM judgment, preparation and feedback through existing agreement sections. No schema requirement, engine code, save template, campaign state or VERSION value changed. The seven added [campaign spirit cases](ADMIN/TEST_SESSION.md#campaign-spirit-cases--same-version-v096-addition) are **NOT RUN**. These file, regression and publication-integrity checks do not demonstrate model compliance, improved enjoyment or long-campaign reliability.
+
 ## Game-only distribution separation — 11 September 2026
 
 Version remains 0.9.6. The standalone GAME directory passes its own structural validator without DOCS, DEV or TEST_REPORTS. All 318 retained regression cases completed (314 passed, four platform-specific skips, zero failures); the separate 15-case distribution suite passed. Existing regressions run in an explicitly assembled developer fixture; distribution tests separately inspect the actual game-only layout and ZIP builder. Published-record verification preserves 30 sessions, 260 exchanges, 48 hashed files and the original review limitations. This is packaging/integrity evidence, not new gameplay or semantic-review performance.

@@ -14,6 +14,8 @@ The optional portrayal and investigation notes below help only when recurring pe
 
 ## The actual agreement
 
+Develop selected detail in light of [Campaign spirit](NEW_GAME.md#campaign-spirit): the player's accepted experience priorities and their practical GM implications. Reuse the setup interpretation; optional depth supplies no new aesthetic default or separate approval round.
+
 Return material decisions to the five-section run proposal: Campaign promise, Player control, GM initiative, Time and transitions, Presentation. Retain the required named clauses from NEW_GAME in their assigned sections: Play form, Retcon, Form selection, Cuts, Structure disclosure. They are short readable terms within the existing proposal, not five additional interview passes. Include what may be authored, applicable conditions/limits, what must proceed once established, and actual routine/cut grants. Do not infer a grant from a genre or label.
 
 The operator may choose a form or separately delegate its selection and withholding of structural information. Keep the control record truthful about the accepted authority. Under delegated opacity, review the envelope and constraints without forcing disclosure of the concealed choice; private plot alone is not opacity permission. Agreed fixed destinations/outcomes are legitimate within their stated scope, but do not justify fake open checks or reserved PC decisions.

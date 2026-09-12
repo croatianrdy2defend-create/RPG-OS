@@ -49,7 +49,7 @@ Keep the brief concise and stable across scenes. No named cast roster, current m
 
 New POLICY files retain `## Voice` and `## Campaign defaults`. Voice proposes portrayal; Campaign defaults proposes the five run-agreement areas:
 
-- Campaign promise, fit, exclusions, source/fidelity expectations, and `Play form:`.
+- Campaign promise, fit, exclusions, source/fidelity expectations, and `Play form:`. Proposed campaign spirit connects experience priorities to practical GM decisions using `ADMIN/NEW_GAME.md#campaign-spirit`; acceptance and its runtime home remain the run agreement, with no new required field or aesthetic default.
 - Player control, proposed routine grants, and `Retcon:`.
 - GM initiative: permitted kinds, conditions, obligations, limits, and `Form selection:`.
 - Time and transitions: declared-sequence continuation, stopping points, and `Cuts:`.

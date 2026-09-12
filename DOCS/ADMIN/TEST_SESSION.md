@@ -26,6 +26,20 @@ Cold, optional diagnostics for v0.9.5. Ordinary play does not run this checklist
 | S18 | Inject a save failure, recover and retry | Protected targets and owners reconcile, CURRENT_SAVE publishes last, no duplicate adjudication or premature success. Use disposable copies only. |
 | S19 | Legacy adoption and clean packaging | Preserve unknown earlier coverage and exact state; no backfilled session/test history. Public output has neither runtime PREP nor live session control. |
 
+## Campaign spirit cases — same-version v0.9.6 addition
+
+These behavioral cases are **NOT RUN** until actually observed. Use synthetic preferences in isolated fixtures; reading the instructions or passing deterministic suites does not pass these cases.
+
+| Case | Sequence | Observe |
+|---|---|---|
+| S20 | Quick setup with already supplied experience priorities; repeat through Guided, Detailed and existing-module LOAD | Reuse answers, propose concrete GM implications under Campaign promise, and bind only accepted terms. No extra mandatory interview, sixth section or duplicated authority. |
+| S21 | Supply the same reference with different explicit reasons for liking it in paired setups | The interpretation follows each player's stated reason; cast, events and outcomes are not imported, and example frequency supplies no population weight. |
+| S22 | Rotate synthetic preferences for humor, tactical challenge, discovery, community, resource play and emotional drama | Each receives useful practical support; no aesthetic is ranked as the default or the more serious campaign. |
+| S23 | Decline to define spirit, then load an older agreement without the label | Preserve the valid agreement and any existing accepted priorities; invent no preference or mandatory recalibration. |
+| S24 | Resume in a fresh context with the accepted agreement and relevant saved feedback, without the setup chat or POLICY | Recover the practical guidance and apply it to plausible continuation within the actual initiative grant; no new session event or PC action is forced. |
+| S25 | A preferred experience conflicts with established facts, a reserved choice or a supplied resolution; then a quiet or successful scene occurs | Facts, rules and control retain authority. Preserve valid outcomes and tonal variety; create no required emotional beat, counterweight or escalation. |
+| S26 | End feedback requests an adjustment within scope, then a material change to priorities; repeat with silence or enthusiastic in-character behavior alone | Carry explicit permitted feedback to preparation; use RECALIBRATE for material agreement change. Distinguish statement, interpretation and acceptance; no silent revision or invented satisfaction. |
+
 ## Recording a result
 
 Hold source facts and player inputs fixed when comparing behavior. Keep explicit feedback separate from the GM's interpretation and the candidate adjustment. Record whether execution used one context or independently initialized contexts, supplied rules/results or actual retrieval, and real file operations or only a conversational rehearsal. Do not call a source-text assertion a session test or a scripted walkthrough a population/long-campaign result. Reuse valid observed coverage; rerun only affected or unresolved cases.

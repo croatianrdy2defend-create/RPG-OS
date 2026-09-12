@@ -4,6 +4,7 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 ## v0.9.6 — tiered, source-bound save review (2026-09-11)
 
+- **2026-09-12, same-version update — Campaign spirit:** NEW GAME, Quick start, optional depth and LOAD translate player experience priorities into accepted practical GM guidance under the existing Campaign promise. Ordinary GM judgment, session preparation and feedback use that guidance within established facts, rules and player control. No aesthetic default, forced scene, new required field or legacy retrofit; added NOT RUN behavioral cases. Version remains 0.9.6.
 - Unified saving routes under the existing procedure while keeping cheap checkpoints: recommended opt-in `tiered` uses bounded source review at full saves; explicit `every-save` includes checkpoints.
 - Separated state-saved, history-archived and review-covered boundaries; added optional administrative provenance without new required save metadata or a second world-state store.
 - Added selected diff/save-binding/readback commands to the existing evidence helper, including changed-candidate rejection, explicit removal checks and honest missing-source handling.
