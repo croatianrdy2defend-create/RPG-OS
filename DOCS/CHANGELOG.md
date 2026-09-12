@@ -4,6 +4,7 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 ## v0.9.7 — practical pacing and long-campaign maintenance (2026-09-12)
 
+- **Same-version documentation update — beginner onboarding:** Added a prominent homepage/README walkthrough and detailed beginner guide for downloading, opening a local campaign folder, setup, play, feedback, saving, resumption, backups and common problems. Includes a documented Codex desktop route and manual-export alternative. Game files, rules, existing campaigns and released game ZIP remain unchanged; no new host certification is claimed.
 - Shorter autosave notices and clearer early-trigger significance; existing cadence, pressure, warning, override and full-current-state requirements remain selected.
 - More direct execution of declared routine and substantive portrayal of chosen experiences, preserving meaningful player decisions and actual interruptions.
 - Targeted save edits with focused attribution, chronology, possession, knowledge, assent and once-only checks; source-first omission review remains distinct from byte diffs.

@@ -3,11 +3,56 @@
 
 **Persistent solo role-playing with an AI game master.** Build a world, choose your character, play through conversation, and return to a campaign whose history lives in readable files.
 
-## Just want to play?
+## Start your first campaign
+
+**New to GitHub or AI agents? Start here. No programming is required.** RPG OS is a folder of instructions and campaign records. You talk to an AI game master; it uses those files to run the game and save your progress. There is no separate RPG OS application to launch.
+
+**[Full beginner guide: download, setup, play, save and return](DOCS/BEGINNER_GUIDE.md)** — includes an example setup conversation and help with common problems.
 
 ### [Download the playable game files only — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip)
 
-This is the standalone **RPG OS v0.9.7** game kit: the operating rules, Freeform engine, blank campaign records, essential setup/save procedures and optional runtime tools. **No architecture essay, mechanics explainer, playtest transcripts, release-history collection, developer tests or GitHub automation is included.**
+This is the standalone **RPG OS v0.9.7** kit. It includes a simple Freeform rules engine and blank campaign records, ready for your own world and character. RPG OS is free to download; your AI application's access requirements and usage costs are separate.
+
+### 1. Download and extract
+
+Download the ZIP above. On Windows, right-click it and choose **Extract All**; on macOS, double-click it. Put the extracted folder somewhere you can find again, such as Documents. Open it until you can see **OS**, **ADMIN**, **INSTANCE** and **MODULES** together. That is your campaign folder. Keep the whole folder together and use a separate copy for each campaign.
+
+### 2. Open that folder in an AI application
+
+Use an AI application that can **read and update local files**. One concrete route is **Codex on desktop**. OpenAI's current documentation calls this Codex in the ChatGPT desktop app; older app versions may be labelled Codex. Install through the [official desktop setup guide](https://learn.chatgpt.com/docs/quickstart), sign in with an account that has Codex access, and select Codex if the app shows a product selector.
+
+Add your extracted campaign folder as a **local project** and start a chat in that project. In the current interface, **Edit project → Add folder** attaches a folder; make the campaign folder primary if several are attached. A project is simply the app's way of giving chats access to your files. [Official folder instructions](https://learn.chatgpt.com/docs/projects#use-local-projects-for-folders-and-codebases).
+
+Use that same folder for play and saving. Uploading a ZIP to an ordinary chat may provide reading access without the ability to update your campaign; [the beginner guide explains the alternatives](DOCS/BEGINNER_GUIDE.md#can-i-use-another-ai-app-or-a-browser-chat).
+
+### 3. Paste this starting message
+
+```text
+Open OS/AGENTS.md in this campaign folder. Help me start a new RPG campaign.
+Follow ADMIN/NEW_GAME.md, including Neutrality before worldbuilding and
+Campaign spirit, and use Quick start. Ask only what you need next.
+Check the available file access and tell me if you cannot save changes here.
+```
+
+The AI should help you choose the world, character, rules, tone and what you want from play. Describe what interests you; you can also ask it to propose options. If you have no preferred rules, ask for the included **Freeform** engine. Review its setup summary, request changes or say you accept it, and let it finish and verify the initial save. Then say **“Begin the campaign.”**
+
+### 4. Play by talking
+
+Describe what your character says or tries: “I ask what happened,” “I look around,” or “I get ready and head to work.” The GM describes the world and resolves the response. You can ask for more detail, faster pacing, a rules explanation or a correction in ordinary language. You do not need to edit the files yourself.
+
+### 5. Save, stop and come back
+
+To save while continuing, say **“Save the campaign.”** To finish playing, say **“End the session, take my feedback, and save the campaign.”** Wait for confirmation that the files were written and checked before closing the chat. Autosave is optional; if you want it, ask the GM to enable it during setup.
+
+Next time, open the **same updated campaign folder**, start a new chat in its project and paste:
+
+```text
+Open OS/AGENTS.md and continue my saved campaign. Resume from the saved point.
+```
+
+Keep only one chat actively playing a campaign. After a verified save, copy the entire campaign folder to a separate backup location. Your progress lives in the updated folder; extracting another fresh kit starts with blank records.
+
+**Stuck? [Read the step-by-step guide and troubleshooting](DOCS/BEGINNER_GUIDE.md).** If asking for help, mention your AI app, model, the step you reached and the exact error or response.
 
 [Browse game files](GAME/README.md) · [Quick start](GAME/QUICKSTART.md) · [Installation](GAME/INSTALLATION.md) · [Game-only release and checksums](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7)
 

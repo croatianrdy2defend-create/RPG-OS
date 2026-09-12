@@ -4,6 +4,7 @@ The playable kit is in [GAME/](../GAME/README.md). **Nothing in this documentati
 
 | Read about | Document |
 |---|---|
+| Your first campaign, with no programming knowledge | [Beginner guide](BEGINNER_GUIDE.md) and [homepage walkthrough](../README.md#start-your-first-campaign) |
 | The idea and intended experience | [Project overview](OVERVIEW.md) |
 | How the system is organized | [Architecture](ARCHITECTURE.md) |
 | Mechanics, diagrams and worked examples | [How RPG OS works](MECHANICS.md) |
