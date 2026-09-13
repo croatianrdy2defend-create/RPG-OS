@@ -950,7 +950,7 @@ def prepare_save_audit(prior, current, capture, output, boundary_file, selected=
     return prepare_audit(prior, current, capture, output, common, prior_selected, current_selected, save_boundary=request)
 
 
-def check_save_audit(bundle, report_file, saved, delivery_receipt=None):
+def check_save_audit(bundle, report_file, saved, delivery_receipt=None, proposed=None):
     """Read-only final comparison. Success is byte matching, not semantic approval."""
     frozen = check_bundle(bundle)
     require("save_binding" in frozen["manifest"], "bundle is not save-bound")
@@ -960,13 +960,21 @@ def check_save_audit(bundle, report_file, saved, delivery_receipt=None):
     binding = frozen["manifest"]["save_binding"]
     root = checked_absolute(saved, directory=True)
     matched = []
+    before_publication = proposed is not None
+    proposed = {} if proposed is None else proposed
+    require(isinstance(proposed, dict) and all(isinstance(v, bytes) for v in proposed.values()),
+            "proposed save must contain exact affected-file bytes")
     for source in frozen["manifest"]["sources"]:
-        if source["side"] == "current":
+        if before_publication and source["side"] == "prior":
             require(sha(read_bytes(rooted(root, source["path"]))) == source["sha256"],
+                    f"prior review dependency changed before publication: {source['path']}")
+        if source["side"] == "current":
+            actual = proposed[source['path']] if source['path'] in proposed else read_bytes(rooted(root, source['path']))
+            require(sha(actual) == source["sha256"],
                     f"saved file differs from reviewed version: {source['path']}")
             matched.append(source["path"])
     for path in binding["removed_paths"]:
-        require(_optional_bytes(root, path) is None, f"reviewed removal not applied: {path}")
+        require(path not in proposed and _optional_bytes(root, path) is None, f"reviewed removal not applied: {path}")
     return {"status": "selected_saved_bytes_verified", "save_id": binding["current_save"]["save_id"],
             "matched_paths": matched, "removed_paths_verified": binding["removed_paths"],
             "state_saved_through": binding["state_saved_through"], "history_archived_through": binding["history_archived_through"],

@@ -136,8 +136,10 @@ class AgentInstructionTests(unittest.TestCase):
         introduction = self.agent.split("\n## ", 1)[0]
         self.assertIn("not a permanent profile", normalized(introduction))
         self.assertRegex(normalized(introduction), r"\bpermission\b.*\bwrite\b.*\bplay\b")
-        self.assertIn("play remains read-only", normalized(
-            section(self.agent, "Retain, save and transfer honestly")))
+        retention = normalized(section(self.agent, "Retain, save and transfer honestly"))
+        self.assertIn("no private dossier write", retention)
+        self.assertIn("one short factual note", retention)
+        self.assertIn("without per-turn state reads", retention)
         self.assertIn("play creates no files here", normalized(read("INSTANCE/PEOPLE/README.md")))
         # Deliberately keep the existing prose-schema regression: required
         # behavioral coverage does not make five persisted fields compulsory.

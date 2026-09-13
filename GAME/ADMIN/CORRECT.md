@@ -29,6 +29,8 @@ Presentation choices do not establish universal laws of NPC conduct or fictional
 
 ## Persist when requested or already authorized
 
+Under the [write-only log](PLAY_PERSISTENCE.md), a clear current-play correction can be stated briefly in a later note while preserving the original. Apply the accepted correction to working state without a per-turn file audit. At ADMIN checkpoint/save, reconcile its affected consequences and compile once; a correction is not another payment, injury or fictional counter-event. A requested saved-record repair still uses this protected procedure and preserves unaffected source. Legacy journal reconciliation, if actually needed, remains ADMIN work rather than the normal play loop.
+
 A request to correct a saved record authorizes the necessary narrow durable repair. If the correction is only to current conversation, keep it in working context and include it at the next explicit save; state its unsaved status only when material. Do not claim a limit or correction will survive fresh chat until its files are written.
 
 For a durable correction or a rewind allowed by Retcon, use the full Save procedure in ADMIN/CLOSE_CONTRACT.md and its recovery protection. Include all accepted still-unsaved present changes so the new save does not lose unaffected play. Change only the selected current authorities actually affected, a compact CORRECTIONS entry where future use needs it, necessary routes, and new evidence. Record whether this was error repair or an authorized valid-outcome rewind. Do not replay already-saved transitions or make a counter-event to repair an accounting error.

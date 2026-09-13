@@ -302,7 +302,7 @@ class LexicalIndexTests(unittest.TestCase):
         self.assertEqual([], result["added"] + result["deleted"] + result["changed"])
         self.assertTrue(loaded)
         self.assertTrue(all(index.classify_source(relative)[0] == "current" for relative in loaded))
-        self.assertEqual("ready", fetched["cache_freshness"]["status"])
+        self.assertEqual("not_rechecked", fetched["cache_freshness"]["status"])
         history = index.search(self.root, self.db, "observatory", "history")
         self.assertEqual("stale", history["status"])
         self.assertEqual("history", history["freshness_scope"])
@@ -329,6 +329,23 @@ class LexicalIndexTests(unittest.TestCase):
         self.write("INSTANCE/new.md", "A new unrelated record.\n")
         self.assertEqual("stale", index.index_status(self.root, self.db)["status"])
         self.assertEqual("verified", index.fetch_candidate(self.root, self.db, candidate)["status"])
+
+    def test_fetch_never_scans_unrelated_collection(self) -> None:
+        self.build()
+        candidate = self.candidate("capacity")
+        with patch.object(index, "collect_sources", side_effect=AssertionError("collection read")), \
+             patch.object(index, "_walk_sources", side_effect=AssertionError("collection walk")):
+            fetched = index.fetch_candidate(self.root, self.db, candidate)
+        self.assertEqual("verified", fetched["status"])
+        self.assertIsNone(fetched["cache_freshness"]["fresh"])
+        self.assertTrue(fetched["source_revision_verified"])
+
+    def test_search_walks_collection_once(self) -> None:
+        self.build()
+        with patch.object(index, "_walk_sources", wraps=index._walk_sources) as walk:
+            result = index.search(self.root, self.db, "capacity")
+        self.assertEqual("ready", result["status"])
+        self.assertEqual(1, walk.call_count)
 
     def test_fetch_refuses_deleted_sources_and_obsolete_generations(self) -> None:
         self.build()

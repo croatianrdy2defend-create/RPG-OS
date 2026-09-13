@@ -30,6 +30,13 @@ CURRENT_SAVE_FIELDS = (
     "save_parent", "commit_kind", "archive_ref", "evidence_through",
     "safety_state", "datetime", "place",
 )
+JOURNAL_SAVE_FIELDS = {
+    'journal_stream', 'journal_through', 'journal_head', 'journal_head_sha256',
+    'journal_head_receipt_sha256', 'journal_archive_through', 'journal_archive_head',
+    'journal_archive_sha256', 'journal_archive_receipt_sha256',
+    'play_log_through', 'play_log_prefix_sha256',
+    'play_log_archive_through', 'play_log_archive_prefix_sha256',
+}
 SAVE_SECTIONS = (
     "Situation", "Character state", "Open matters", "Active processes", "Relevant records",
 )
@@ -61,6 +68,11 @@ REQUIRED_FILES = (
     "OS/LAW.md",
     "OS/RETRIEVAL.md",
     "OS/AGENT_STATE.md",
+    "ADMIN/INCREMENTAL_SAVE.md",
+    "ADMIN/PLAY_PERSISTENCE.md",
+    "TOOLS/persistence.py",
+    "TOOLS/codex_exchange.py",
+    "TOOLS/play_log.py",
     "ENGINE/_CONTRACT.md",
     "ENGINE/freeform.md",
     "MODULES/_CONTRACT.md",
@@ -508,7 +520,19 @@ def extract_frontmatter(text: str) -> tuple[dict[str, str], list[str]]:
     return values, errors
 
 
-def snapshot_tree(root: Path) -> tuple[dict[str, str], str]:
+SNAPSHOT_TREES = {"OS", "ADMIN", "ENGINE", "INSTANCE", "MODULES", "ARCHIVE", "EVIDENCE", "RECOVERY", "HANDOVER", "TOOLS"}
+SNAPSHOT_TEXT = {".md", ".markdown", ".txt", ".text", ".json", ".jsonl", ".py", ".yaml", ".yml", ".toml", ".csv"}
+SNAPSHOT_SKIP = {".work", ".git", ".codex", ".agents", ".release", "__pycache__"}
+
+
+def snapshot_tree(root: Path, scope: str = "workspace") -> tuple[dict[str, str], str]:
+    """Hash selected campaign text by default at the CLI; keep full-tree API compatibility.
+
+    Authoritative scope records binary paths/types, but does not read their
+    contents. It is a structural check, not a backup or whole-workspace proof.
+    """
+    if scope not in {"authoritative", "workspace"}:
+        raise ValueError("unknown snapshot scope")
     entries: dict[str, str] = {}
 
     def walk_error(error: OSError) -> None:
@@ -521,6 +545,9 @@ def snapshot_tree(root: Path) -> tuple[dict[str, str], str]:
             base = Path(directory)
             retained: list[str] = []
             for name in dirnames:
+                if scope == "authoritative" and (name in SNAPSHOT_SKIP or
+                        (base == root and name not in SNAPSHOT_TREES)):
+                    continue
                 path = base / name
                 relative = path.relative_to(root).as_posix() + "/"
                 if path.is_symlink():
@@ -537,6 +564,9 @@ def snapshot_tree(root: Path) -> tuple[dict[str, str], str]:
                     continue
                 if not path.is_file():
                     entries[relative] = "S:special"
+                    continue
+                if scope == "authoritative" and path.suffix.casefold() not in SNAPSHOT_TEXT and path.name not in {"VERSION", "LICENSE", ".gitignore", ".gitattributes"}:
+                    entries[relative] = "B:content-not-hashed"
                     continue
                 data = path.read_bytes()
                 entries[relative] = f"F:{len(data)}:{sha256_bytes(data)}"
@@ -705,6 +735,8 @@ class Validator:
             return None
         values: dict[str, str] = {}
         allowed = set(fields)
+        if code == 'SAVE':
+            allowed.update(JOURNAL_SAVE_FIELDS)
         for row in rows:
             field = strip_code_ticks(row["field"]).strip()
             value = strip_code_ticks(row["value"]).strip()
@@ -2458,6 +2490,43 @@ class Validator:
         self.check_module()
         self.check_safety()
         self.check_archive()
+        self.check_incremental_journal()
+
+    def check_incremental_journal(self) -> None:
+        """Check the optional journal without equating baseline PASS with current truth."""
+        if not (self.root / 'INSTANCE/JOURNAL/HEAD.json').exists():
+            contract_text = self.read_text(self.root / 'INSTANCE/CAMPAIGN_CONTRACT.md') or ''
+            if ('incremental persistence: enabled' in contract_text.lower() or
+                    'incremental recording: write-only-log' in contract_text.lower()):
+                self.add('ERROR', 'JOURNAL_MISSING', 'INSTANCE/JOURNAL/HEAD.json',
+                         'Enabled agreement requires its preserved journal; do not initialize over missing history')
+            return
+        if (self.root / 'RECOVERY/ACTIVE.md').exists():
+            return  # Owning protected recovery must finish before reading the overlay.
+        try:
+            import importlib.util
+            helper_path = Path(__file__).with_name('persistence.py')
+            target_path = self.root / 'TOOLS/persistence.py'
+            if not target_path.is_file() or helper_path.read_bytes() != target_path.read_bytes():
+                self.add('INCOMPLETE', 'JOURNAL_HELPER_IDENTITY', 'TOOLS/persistence.py',
+                         'Matched incremental helper required; do not certify a stale baseline')
+                return
+            spec = importlib.util.spec_from_file_location('rpg_journal_validator', helper_path)
+            helper = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(helper)
+            observed = helper.status(self.root)
+            self.metrics['incremental_persistence'] = observed
+            if observed['pending']:
+                self.add('INCOMPLETE', 'JOURNAL_DELIVERY_PENDING', 'INSTANCE/JOURNAL/HEAD.json',
+                         'Prepared response is recoverable but not committed; verify actual completion before dependent PLAY')
+            if observed.get('uncompiled_note_count', 0):
+                self.add('INCOMPLETE', 'PLAY_LOG_UNCOMPILED', 'INSTANCE/PLAY_LOG.jsonl',
+                         'Working notes exist beyond the compiled save; baseline checks do not certify those outcomes until checkpoint compilation')
+            if observed['committed_seq'] > observed['consolidated_through']:
+                self.add('INCOMPLETE', 'JOURNAL_EFFECTIVE_VIEW', 'INSTANCE/JOURNAL/HEAD.json',
+                         'Pending committed changes passed journal integrity; baseline structural checks do not certify all effective routes. Use helper reads and validate after checkpoint')
+        except Exception as exc:
+            self.add('ERROR', 'JOURNAL_INVALID', 'INSTANCE/JOURNAL/HEAD.json', str(exc))
 
 
 def sorted_findings(findings: Iterable[Finding]) -> list[Finding]:
@@ -2515,7 +2584,7 @@ def make_report(
             "result": structural_result,
             "provenance": "SCRIPT-VERIFIED",
             "coverage": [
-                "required playable files including agent-state, upgrade procedures and source/search/evidence tools; explanatory documents and developer tests are not campaign dependencies; executed/target validator identity, whole-tree path types/case, and observed LAW digest (no immutable hash requirement)",
+                "required playable files including agent-state, upgrade procedures and source/search/evidence tools; explanatory documents and developer tests are not campaign dependencies; executed/target validator identity, selected-snapshot path types/case, and observed LAW digest (no immutable hash requirement)",
                 "CURRENT_SAVE metadata/readable sections, optional Session continuity table, commit/evidence boundary, explicit record routes, PC overlay, and candidate residue",
                 "accepted Campaign Contract identity, binding, revision, required readable terms and five named clause locations/counts/content presence, and candidate residue",
                 "optional cold Bearing provenance and staleness warnings; active recovery and handover marker presence (handover package integrity requires its separate checker)",
@@ -2614,6 +2683,8 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Read-only structural validator for RPG OS")
     parser.add_argument("--root", type=Path, default=default_root, help="RPG_OS root (default: parent of TOOLS)")
     parser.add_argument("--json", action="store_true", help="emit JSON to stdout")
+    parser.add_argument("--snapshot-scope", choices=("authoritative", "workspace"), default="authoritative",
+                        help="text in campaign trees (default), or explicit whole-workspace byte stability")
     return parser.parse_args(argv)
 
 
@@ -2638,7 +2709,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             raise ValidationExecutionError(f"root is not a directory: {root}")
         executed_validator_path = Path(__file__).resolve()
         executed_validator_hash = sha256_bytes(executed_validator_path.read_bytes())
-        initial_snapshot, initial_digest = snapshot_tree(root)
+        initial_snapshot, initial_digest = snapshot_tree(root, args.snapshot_scope)
         initial_target_descriptor = initial_snapshot.get("TOOLS/validate.py", "")
         target_validator_initial_hash = (
             initial_target_descriptor.rpartition(":")[2]
@@ -2647,7 +2718,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         )
         validator = Validator(root)
         validator.run(initial_snapshot)
-        final_snapshot, final_digest = snapshot_tree(root)
+        final_snapshot, final_digest = snapshot_tree(root, args.snapshot_scope)
         stable = initial_snapshot == final_snapshot
         if not stable:
             validator.add("INCOMPLETE", "TREE_CHANGED_DURING_VALIDATION", ".", "tree contents or paths changed while validation ran")
@@ -2689,6 +2760,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     except Exception as exc:
         report = execution_failure_report(root, str(exc))
         exit_code = 2
+    report["snapshot_scope"] = args.snapshot_scope
+    report["snapshot_exclusions"] = ([] if args.snapshot_scope == "workspace" else
+        ["development/cache directories", "other root directories", "binary file contents (paths/types retained)"])
     if args.json:
         print(json.dumps(report, indent=2, sort_keys=True, ensure_ascii=True))
     else:

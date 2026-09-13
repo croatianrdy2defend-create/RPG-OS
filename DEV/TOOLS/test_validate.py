@@ -806,6 +806,33 @@ class StructuralValidationTests(unittest.TestCase):
         self.assertTrue(report["target_validator_matches_executed"])
         self.assertEqual("NOT RUN", report["host_observation"]["result"])
         self.assertEqual("NOT CHECKED", report["semantic"]["result"])
+        self.assertEqual("authoritative", report["snapshot_scope"])
+
+    def test_scoped_snapshot_ignores_development_and_binary_content(self) -> None:
+        self.bind()
+        self.write(".work/large-copy/INSTANCE/NOW.md", "old fixture")
+        self.write("MODULES/brine/map.png", "old binary")
+        before, _ = validate.snapshot_tree(self.root, "authoritative")
+        full_before, _ = validate.snapshot_tree(self.root, "workspace")
+        self.write(".work/large-copy/INSTANCE/NOW.md", "new fixture")
+        self.write("MODULES/brine/map.png", "new binary contents")
+        after, _ = validate.snapshot_tree(self.root, "authoritative")
+        full_after, _ = validate.snapshot_tree(self.root, "workspace")
+        self.assertEqual(before, after)
+        self.assertNotEqual(full_before, full_after)
+        self.write("INSTANCE/NOW.md", "changed current fact")
+        changed, _ = validate.snapshot_tree(self.root, "authoritative")
+        self.assertNotEqual(after, changed)
+
+    def test_explicit_workspace_snapshot_reports_no_exclusions(self) -> None:
+        self.bind()
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            code = validate.main(["--root", str(self.root), "--json", "--snapshot-scope", "workspace"])
+        report = json.loads(output.getvalue())
+        self.assertEqual(0, code, report["findings"])
+        self.assertEqual("workspace", report["snapshot_scope"])
+        self.assertEqual([], report["snapshot_exclusions"])
 
     def test_target_validator_mismatch_has_valid_diagnostic_fields(self) -> None:
         self.bind()

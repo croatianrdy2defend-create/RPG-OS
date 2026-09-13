@@ -1,5 +1,7 @@
 # Validation and behavioral fixtures — v0.8.2 experimental
 
+The v0.9.7 write-only persistence regressions cover no-read appends, save/log origin identity, exact source export, review/correction bindings, interrupted publication and restored-host continuation. These are synthetic storage checks; they do not measure GM response time, enjoyment or semantic detection reliability.
+
 This is a cold test specification, not GM doctrine. A structural PASS, a well-formed archive, or AUDIT self-report does not prove competent play. Do not preload fixtures during normal PLAY. All tests use isolated campaign copies; never bind, reset, or damage an existing campaign to create a fixture.
 
 ## v0.9.6 save-review checks

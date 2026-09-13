@@ -2,6 +2,8 @@
 
 Cold tool contract for a requested lookup, audit or host configuration check. Direct source pointers remain the first route. These helpers are optional standard-library Python tools; ordinary file access remains usable when they are unavailable. They do not adjudicate fiction, discover encounters for the GM, or write campaign state.
 
+Under the [write-only play log](PLAY_PERSISTENCE.md), ongoing play uses context and appends its brief outcome without invoking these tools. Fresh boot reads compiled records and uncompiled notes once. Exact-source lookup remains available for a specifically missing consequential fact or materially applicable rule; a baseline file does not erase known post-save changes. Delivery receipts from an old journal or an explicit evidence audit are ADMIN material, not a new routine requirement.
+
 ## Exact source reader
 
 `TOOLS/read_source.py` reads the selected source file, not an indexed copy. Use `--help` for the installed interface. From a campaign folder:

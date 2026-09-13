@@ -62,13 +62,6 @@ class SaveReviewTests(unittest.TestCase):
         lines = (self.bundle / prefix / ref["path"]).read_bytes().decode().splitlines(keepends=True)
         return {**ref, "start_line": first, "end_line": last, "quote": "".join(lines[first - 1:last])}
 
-    def test_generated_citation_honors_selected_save_boundary(self):
-        self.prepare()
-        quote = evidence.citation(self.bundle, "capture", "source.txt", 1, 2)
-        self.assertEqual(quote["quote"], "".join(self.raw.read_bytes().decode().splitlines(keepends=True)[:2]))
-        with self.assertRaisesRegex(evidence.EvidenceError, "after selected save boundary"):
-            evidence.citation(self.bundle, "capture", "source.txt", 2, 3)
-
     def completed(self, consistency="consistent"):
         report = evidence.report_template(self.bundle)
         report["review_status"] = "completed"
@@ -328,6 +321,15 @@ class SaveReviewTests(unittest.TestCase):
         self.write(self.report_file, self.completed())
         self.assertEqual(self.cli("check-save-audit", "--bundle", self.bundle, "--report", self.report_file, "--saved", self.current)[0], 0)
 
+    def test_generated_citation_honors_selected_save_boundary(self):
+        self.prepare()
+        quote = evidence.citation(self.bundle, "capture", "source.txt", 1, 2)
+        self.assertEqual(quote["quote"], "".join(self.raw.read_bytes().decode().splitlines(keepends=True)[:2]))
+        with self.assertRaisesRegex(evidence.EvidenceError, "after selected save boundary"):
+            evidence.citation(self.bundle, "capture", "source.txt", 2, 3)
+
+
+
 
 class ProtocolTests(unittest.TestCase):
     def test_every_saving_route_names_shared_policy(self):
@@ -340,18 +342,28 @@ class ProtocolTests(unittest.TestCase):
     def test_autosave_capture_exception_is_explicit(self):
         text = (ROOT / "ADMIN/AUTOSAVE.md").read_text()
         self.assertNotIn("create no archive bodies, indexes, ledgers or raw transcript through autosave", text)
-        self.assertIn("Ordinary lightweight autosave creates no raw transcript", text)
-        self.assertIn("Exception:", text)
+        self.assertIn("ADMIN/CLOSE_CONTRACT.md", text)
+        owner = (ROOT / "ADMIN/CLOSE_CONTRACT.md").read_text()
+        self.assertIn("CHECKPOINT", owner)
+        self.assertIn("Lightweight", owner)
+        self.assertIn("every-save", owner)
+        self.assertIn("source review", owner)
 
     def test_review_quality_and_cost_are_explicit(self):
         text = (ROOT / "ADMIN/EVIDENCE_AUDIT.md").read_text()
-        for phrase in ("blind spots", "cost", "does not establish a semantic detection rate", "source_coherence", "Lightweight"):
+        for phrase in ("blind spots", "cost", "does not establish a semantic detection rate", "source_coherence"):
             self.assertIn(phrase, text)
+        self.assertIn("Lightweight means no transcript-grounded review boundary",
+                      (ROOT / "ADMIN/CLOSE_CONTRACT.md").read_text())
 
     def test_workflows_run_new_suite(self):
         for path in (".github/workflows/validate.yml", ".github/workflows/release.yml"):
-            self.assertIn("DEV/run_tests.py", (ROOT / path).read_text())
-            self.assertIn("test_save_audit", (ROOT / "DEV/run_tests.py").read_text())
+            runner = ROOT / "DEV/run_tests.py"
+            if runner.exists():
+                self.assertIn("DEV/run_tests.py", (ROOT / path).read_text())
+                self.assertIn("test_save_audit", runner.read_text())
+            else:
+                self.assertIn("TOOLS/test_save_audit.py", (ROOT / path).read_text())
 
 
 if __name__ == "__main__":

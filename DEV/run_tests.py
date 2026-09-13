@@ -18,9 +18,7 @@ import tempfile
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent.parent
-SUITES = ('test_validate', 'test_handover', 'test_package_release',
-          'test_read_source', 'test_search_index', 'test_evidence',
-          'test_save_audit', 'test_agent_state', 'test_autosave', 'test_encounter_generation')
+SUITES = ('test_agent_state', 'test_autosave', 'test_codex_exchange', 'test_encounter_generation', 'test_evidence', 'test_handover', 'test_package_release', 'test_persistence', 'test_persistence_delivery', 'test_persistence_edits', 'test_persistence_fastresume', 'test_persistence_log', 'test_play_log', 'test_read_source', 'test_save_audit', 'test_search_index', 'test_validate')
 
 
 def run(report_path=None):

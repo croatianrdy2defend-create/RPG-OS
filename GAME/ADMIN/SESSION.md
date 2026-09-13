@@ -8,6 +8,8 @@ Use CURRENT_SAVE's administrative Session continuity section for session identit
 
 Respect pending RECOVERY and HANDOVER before performing source-side work. Do not start an operation merely because this file was read. A receiving GM follows SCENE_HANDOVER's separate authority and preserves the transferred session identity.
 
+With the selected [write-only log](PLAY_PERSISTENCE.md), fresh resumption reads compiled records and uncompiled notes once; ongoing play uses context. At actual session ending, reconcile notes with available conversation during ADMIN compilation and preserve feedback/wrap-up effects in the full-save plan. Notes and checkpoints do not reset the session or create another award/feedback obligation. Actual feedback source remains distinct from fictional evidence. No per-turn delivery confirmation or repeated file inspection is required.
+
 ## Begin or resume
 
 1. Complete normal BOOTSTRAP loading. Preserve the exact fictional moment, ongoing declaration, active encounter state and reserved decision. This procedure grants no PC action, time advance, process tick or new disclosure.

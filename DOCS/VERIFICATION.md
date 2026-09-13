@@ -1,5 +1,15 @@
 # RPG OS experimental verification
 
+## Same-version maintenance — 13 September 2026
+
+The v0.9.7 maintenance candidate passed the complete unbound developer runner: **477 cases, 467 passed, 10 skipped**, with no failed suites. The **15 standalone distribution tests passed**, including independent GAME validation, exact committed packaging and private-path rejection. The existing published 30-session evidence integrity check also passed; no new campaign was simulated.
+
+Focused fixtures reject stale save/log origins, empty or mismatched completed reviews, altered selected prior dependencies, and malformed correction references. Complete full-save publication recovered its exact reviewed bytes after interruption. A copied campaign continued from a local archived boundary when its former host source disappeared, preserving the explicit limitation about later unavailable messages. These checks do not perform semantic judgment or establish session-100 reliability.
+
+For 10/20 new source turns, export used **one stable snapshot and one parse per source**, down from 12/22 snapshots in the earlier fixture. Read bytes were 31,588/60,168 versus 379,056/1,323,696. Normal append remains write-only; fetch verifies its selected source; default structural snapshots cover declared campaign text, while `--snapshot-scope workspace` retains complete workspace byte checks. These are measured storage operations, not a promise about model response time.
+
+Earlier test runs retained in development records include a stale documentation assertion after procedure consolidation; it was corrected before the passing unbound run. Existing release tags/assets and published playtest evidence were not rewritten. Current main contains the maintenance changes and VERSION remains 0.9.7.
+
 ## v0.9.7 — practical pacing and maintenance, 12 September 2026
 
 Local Windows verification completed **327 regression cases: 318 passed, nine platform-specific skips, zero failures** across the ten retained suites. This includes nine new metadata/citation cases. All **15 standalone distribution tests passed**, and the unbound GAME directory passed structural validation with no findings and stable bytes. The first full run exposed default Windows text decoding in child test processes; the runner now explicitly enables UTF-8 for those processes and their children. The final complete rerun passed.

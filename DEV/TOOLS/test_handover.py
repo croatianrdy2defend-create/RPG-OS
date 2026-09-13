@@ -110,7 +110,7 @@ class HandoverTests(unittest.TestCase):
         self.assertEqual(before, after)
 
     def test_snapshot_recipe_excludes_non_campaign_trees(self):
-        for name in ("RECOVERY", "HANDOVER", ".release", ".work", "output", "TOOLS"):
+        for name in ("RECOVERY", "HANDOVER", ".release", ".work", "output", "TOOLS", "EVIDENCE"):
             self.write(f"{name}/not-in-closure.md", "excluded")
         output = io.StringIO()
         with contextlib.redirect_stdout(output):
@@ -118,6 +118,96 @@ class HandoverTests(unittest.TestCase):
         self.assertEqual(code, 0)
         result = json.loads(output.getvalue())
         self.assertEqual(result["snapshot_files"], self.outgoing["snapshot_files"])
+
+    def log_fixture(self, reviewed=False):
+        self.write("INSTANCE/JOURNAL/HEAD.json", json.dumps({
+            "schema": "rpg-journal-v2", "recording": "write-only-log",
+            "published_save_ids": ["save-1"],
+            "public_source_anchor": {"path": "ARCHIVE/sessions/save-1/01_record.md"},
+            "public_source_floor": {"source_ref": {"path": "Z:/unavailable/host.jsonl"}}}))
+        self.write("INSTANCE/PLAY_LOG.jsonl", "")
+        self.write("ARCHIVE/sessions/save-1/01_record.md", "Retained original public source.")
+        for name in handover.LOG_RUNTIME:
+            self.write("TOOLS/" + name, "# synthetic runtime dependency\n")
+        self.write("TOOLS/test_unrelated.py", "excluded test")
+        self.write("EVIDENCE/unrelated/private.txt", "excluded unrelated evidence")
+        review = {"status": "incomplete"}
+        if reviewed:
+            review = {"status": "complete", "receipt": {
+                "bundle": "EVIDENCE/reviews/save-1",
+                "report": "EVIDENCE/reviews/save-1/report.json",
+                "report_sha256": "a" * 64,
+                "delivery_receipt": "EVIDENCE/delivery/save-1.jsonl"}}
+            self.write("EVIDENCE/reviews/save-1/bundle.json", "{}")
+            self.write("EVIDENCE/reviews/save-1/capture/source.txt", "Exact retained source.")
+            self.write("EVIDENCE/reviews/save-1/report.json", "{}")
+            self.write("EVIDENCE/delivery/save-1.jsonl", "{}\n")
+        self.write("EVIDENCE/incremental-reviews/save-1.json", json.dumps({"review": review}))
+
+    def test_log_snapshot_carries_runtime_and_exact_retained_review_dependencies(self):
+        self.log_fixture(reviewed=True)
+        files = handover.snapshot(self.root)
+        for name in handover.LOG_RUNTIME:
+            self.assertIn("TOOLS/" + name, files)
+        for path in ("EVIDENCE/incremental-reviews/save-1.json",
+                     "EVIDENCE/reviews/save-1/bundle.json",
+                     "EVIDENCE/reviews/save-1/capture/source.txt",
+                     "EVIDENCE/reviews/save-1/report.json",
+                     "EVIDENCE/delivery/save-1.jsonl",
+                     "ARCHIVE/sessions/save-1/01_record.md"):
+            self.assertIn(path, files)
+        self.assertNotIn("TOOLS/test_unrelated.py", files)
+        self.assertNotIn("EVIDENCE/unrelated/private.txt", files)
+        self.outgoing["snapshot_files"] = files
+        self.flush_outgoing()
+        code, result = self.run_cli()
+        self.assertEqual(code, 0, result)
+        self.write("EVIDENCE/reviews/save-1/capture/source.txt", "Changed after freeze.")
+        self.assert_invalid("snapshot hash mismatch")
+
+    def test_log_snapshot_requires_runtime_even_without_complete_review(self):
+        self.log_fixture()
+        self.assertIn("EVIDENCE/incremental-reviews/save-1.json", handover.snapshot(self.root))
+        with mock.patch.object(handover, "safe_path", wraps=handover.safe_path) as access:
+            handover.snapshot(self.root)
+        self.assertFalse(any("unavailable" in str(call) for call in access.call_args_list))
+        (self.root / "TOOLS/play_log.py").unlink()
+        with self.assertRaisesRegex(handover.Invalid, "missing path"):
+            handover.snapshot(self.root)
+
+    def test_log_snapshot_refuses_missing_referenced_review_dependency(self):
+        self.log_fixture(reviewed=True)
+        (self.root / "EVIDENCE/reviews/save-1/report.json").unlink()
+        with self.assertRaisesRegex(handover.Invalid, "missing path"):
+            handover.snapshot(self.root)
+
+    def test_log_snapshot_refuses_unsafe_or_nonretained_review_dependency(self):
+        self.log_fixture(reviewed=True)
+        receipt_path = "EVIDENCE/incremental-reviews/save-1.json"
+        original = json.loads((self.root / receipt_path).read_text(encoding="utf-8"))
+        for path in ("../outside", "Z:/host/source", "RECOVERY/private", "EVIDENCE"):
+            with self.subTest(path=path):
+                changed = json.loads(json.dumps(original))
+                changed["review"]["receipt"]["bundle"] = path
+                self.write(receipt_path, json.dumps(changed))
+                with self.assertRaises(handover.Invalid):
+                    handover.snapshot(self.root)
+
+    def test_log_snapshot_requires_explicit_current_review_route(self):
+        self.log_fixture()
+        self.write("INSTANCE/CURRENT_SAVE.md", "| save_id | save-2 |\n"
+                   "Review: `EVIDENCE/incremental-reviews/missing.json`.\n")
+        with self.assertRaisesRegex(handover.Invalid, "missing path"):
+            handover.snapshot(self.root)
+
+    def test_legacy_journal_keeps_original_snapshot_recipe(self):
+        self.write("INSTANCE/JOURNAL/HEAD.json", json.dumps({"schema": "rpg-journal-v1"}))
+        self.write("TOOLS/persistence.py", "not selected")
+        self.write("EVIDENCE/incremental-reviews/save-1.json", "not selected")
+        files = handover.snapshot(self.root)
+        self.assertIn("INSTANCE/JOURNAL/HEAD.json", files)
+        self.assertNotIn("TOOLS/persistence.py", files)
+        self.assertNotIn("EVIDENCE/incremental-reviews/save-1.json", files)
 
     def test_stale_base_save(self):
         self.write("INSTANCE/CURRENT_SAVE.md", "| campaign_id | campaign-1 |\n| save_id | save-2 |\n")

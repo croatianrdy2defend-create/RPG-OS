@@ -4,6 +4,11 @@ All notable RPG OS prototype releases and design milestones are recorded here. T
 
 ## v0.9.7 — practical pacing and long-campaign maintenance (2026-09-12)
 
+- **2026-09-13, same-version continuity and performance update:** Optional write-only PLAY notes, checkpoint compilation and source-reviewed full saves now have separate, bounded jobs. Normal logging appends one or two outcome sentences with no persistence reads or per-turn verification. Installation enables neither logging nor autosave.
+- Full-save completion requires the existing source-bound review evidence; stale compilation bases are rejected. Original public wording and specific correction links are retained, while delivery remains distinct from accepted fiction. Archived source boundaries and required handover dependencies survive host-file moves with explicit source limitations where needed.
+- Saving selects one helper or manual executor. Setup, cadence resumption and reusable instructions are consolidated. Source export reuses one stable parse per source within an operation; passage fetch verifies the selected source; routine validation hashes its declared campaign-text scope, with whole-workspace checking still available explicitly.
+- Version remains **v0.9.7**. Earlier tagged downloads are preserved; use the current `main` GAME files for these changes. Existing campaigns require protected program updates and retain their accepted recording policy and records. Regression checks establish storage behavior, not guaranteed response latency or long-campaign semantic reliability.
+
 - **Same-version documentation update — beginner onboarding:** Added a prominent homepage/README walkthrough and detailed beginner guide for downloading, opening a local campaign folder, setup, play, feedback, saving, resumption, backups and common problems. Includes a documented Codex desktop route and manual-export alternative. Game files, rules, existing campaigns and released game ZIP remain unchanged; no new host certification is claimed.
 - Shorter autosave notices and clearer early-trigger significance; existing cadence, pressure, warning, override and full-current-state requirements remain selected.
 - More direct execution of declared routine and substantive portrayal of chosen experiences, preserving meaningful player decisions and actual interruptions.

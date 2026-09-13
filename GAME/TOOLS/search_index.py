@@ -100,6 +100,21 @@ def _scope(scope: str) -> str:
     return scope
 
 
+def _selected_route(root: Path, relative: str) -> None:
+    """Enforce path and nested-root policy without enumerating a collection."""
+    selected = root / relative
+    for ancestor in reversed(selected.parents):
+        if ancestor == root or root not in ancestor.parents:
+            continue
+        _no_link(ancestor)
+        if len(ancestor.relative_to(root).parts) > 1:
+            names = {child.name.casefold() for child in ancestor.iterdir()}
+            if {"instance", "os"} <= names:
+                raise SearchError("Candidate is inside a nested campaign root.", "scope_denied")
+    if not stat.S_ISREG(_no_link(selected).st_mode):
+        raise SearchError("Candidate is not a regular source file.", "scope_denied")
+
+
 def classify_source(relative: str) -> tuple[str, str] | None:
     """Strict allowlist; unknown locations never become current state."""
     if not isinstance(relative, str) or "\\" in relative:
@@ -441,7 +456,8 @@ def _open_database(root: Path, path: Path) -> tuple[sqlite3.Connection, dict]:
         raise
 
 
-def _freshness(root: Path, connection: sqlite3.Connection, metadata: dict, scope: str = "all") -> dict:
+def _freshness(root: Path, connection: sqlite3.Connection, metadata: dict, scope: str = "all",
+               eligible: set[str] | None = None) -> dict:
     stored = dict(connection.execute("SELECT path, sha256 FROM sources WHERE ? = 'all' OR scope = ?", (scope, scope)))
     try:
         documents, skipped = collect_sources(root, scope)
@@ -449,6 +465,8 @@ def _freshness(root: Path, connection: sqlite3.Connection, metadata: dict, scope
         return {"status": "unknown", "fresh": False, "freshness_scope": scope,
                 "message": f"Source freshness in scope {scope!r} could not be verified: {exc}. " + FALLBACK}
     actual = _source_set(documents)
+    if eligible is not None:
+        eligible.update(actual)
     added = sorted(actual.keys() - stored.keys())
     deleted = sorted(stored.keys() - actual.keys())
     changed = sorted(path for path in actual.keys() & stored.keys() if actual[path] != stored[path])
@@ -503,9 +521,8 @@ def search(root: str | Path, db: str | Path, query: str,
         root = _root(root)
         path = _db_path(root, db)
         connection, metadata = _open_database(root, path)
-        freshness = _freshness(root, connection, metadata, scope)
-        eligible, _ = _walk_sources(root, scope)
-        eligible = set(eligible)
+        eligible: set[str] = set()
+        freshness = _freshness(root, connection, metadata, scope, eligible)
         rows = connection.execute("""
             SELECT sections.id, sections.path, sections.section_id, sections.heading,
                    sections.heading_path, sections.start_line, sections.end_line,
@@ -524,7 +541,12 @@ def search(root: str | Path, db: str | Path, query: str,
             if classify_source(relative) != (source_scope, source_class):
                 raise SearchError("Database contains an out-of-policy source route.", "corrupt")
             if relative not in eligible:
-                continue
+                if freshness["status"] != "unknown":
+                    continue
+                try:
+                    _selected_route(root, relative)
+                except (SearchError, OSError):
+                    continue
             candidates.append({
                 "candidate_id": row_id, "root_id": metadata["root_id"],
                 "generation": metadata["generation"], "path": relative,
@@ -584,10 +606,14 @@ def fetch_candidate(root: str | Path, db: str | Path, candidate: dict,
             raise SearchError("Candidate path is outside the supported source policy.", "scope_denied")
         if scope != "all" and source_scope != scope:
             raise SearchError(f"Candidate scope {source_scope!r} is not selected scope {scope!r}.", "scope_denied")
-        eligible, _ = _walk_sources(root, scope)
-        if relative not in eligible:
-            raise SearchError("Candidate is no longer an eligible source in this root and scope.", "scope_denied")
-        freshness = _freshness(root, connection, metadata, scope)
+        # Check just this route's ancestors. A newly nested campaign must still
+        # be refused, without walking or hashing unrelated source collections.
+        try:
+            _selected_route(root, relative)
+        except OSError as exc:
+            raise SearchError(f"Candidate source is unavailable: {exc}", "scope_denied") from exc
+        freshness = {"status": "not_rechecked", "fresh": None, "freshness_scope": scope,
+                     "message": "Fetch verifies only this source revision; use search/status for collection freshness."}
         document = read_source.load_document(root, relative, expected_sha256=digest)
         if document["root_id"] != metadata["root_id"]:
             raise SearchError("Source root identity changed.", "wrong_root")

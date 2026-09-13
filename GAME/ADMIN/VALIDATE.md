@@ -4,14 +4,16 @@ VALIDATE is read-only ADMIN work. It inspects an explicitly selected RPG_OS tree
 
 ## Run
 
-When Python is available, run the validator supplied with the target kit:
+With Python, run the target kit’s validator:
 
 ```text
 python -B TOOLS/validate.py --root .
 python -B TOOLS/validate.py --root . --json
 ```
 
-`VALIDATE-v3.2.1` writes no report or repair. JSON and readable results go to standard output. If an operator wants a saved report, save it outside the tree being measured after the run; creating a report inside that tree during validation changes the measurement.
+The validator reports to standard output without writes. Default `--snapshot-scope authoritative` measures the declared campaign/program text scope, excluding development/cache areas and binary contents while retaining eligible paths/types. Use `--snapshot-scope workspace` for a full-workspace byte snapshot. Save requested reports after the run, outside the measured scope.
+
+The [write-only play log](PLAY_PERSISTENCE.md) adds no per-turn validation. During this explicitly selected ADMIN task, inspect its actual compiled prefix/binding and preserve uncompiled notes as working material; a structural PASS cannot certify note completeness, reply delivery or semantic interpretation. Any legacy journal integrity check is a separate ADMIN scope. Check a stable boundary without a concurrent writer.
 
 Scene handovers have an optional separate integrity checker: `python -B TOOLS/handover.py check --root . --package HANDOVER/<id>`; add `--return` when checking SCENE_RETURN.md. `python -B TOOLS/handover.py snapshot --root .` emits the outgoing snapshot recipe. These commands are read-only. Normal VALIDATE does not certify a handover's identities, source coverage, matching snapshot or return; consult the separate report and `ADMIN/SCENE_HANDOVER.md`. Its synthetic tests run with the developer-only handover suite (see https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/DEV/README.md).
 
@@ -36,7 +38,7 @@ Result: NOT CHECKED
 
 SCRIPT-VERIFIED means this script actually ran. Its output identifies the executed and target validator bytes, observed LAW digest, initial and final tree digests, and findings. Different executed/target validator bytes or a tree changed during the run make coverage incomplete. An observed LAW digest is provenance, not an immutable required prompt hash. A validator upgrade may legitimately accompany a core rewrite.
 
-The tree digest includes scanned paths, file bytes, directory entries and link targets. It is a point-in-time observation, not certification of future correctness. A warning is not proof that the warned condition is harmless.
+The tree digest identifies the selected snapshot scope and observed eligible paths, types, directory/link data and content coverage. An authoritative-scope digest does not certify unmeasured binary bytes. Its observation is temporary; assess reported warnings.
 
 ## Structural coverage
 
@@ -52,7 +54,7 @@ The script checks:
 - Archive index/session/source reachability, literal evidence identifiers, duplicate routes and stable heading scope. Existing hierarchical-scene-v1 routes remain supported. One coherent episode body is valid; there is no shard-count quota. Optional ledgers are checked only when present.
 - Optional cold BEARING provenance/staleness as warnings. There is no mandatory seven-section layout or normal boot dependency.
 - Any existing RECOVERY/ACTIVE.md as a pending recovery error, even if its text says complete. Successful recovery/completion removes the active marker only after verification and retains the operation record/preimages. Empty unindexed session directories remain orphan errors. Restoring an interrupted operation includes exact nonrecursive removal of its recorded, verified operation-created directories only when empty; see ADMIN/RECOVERY.md. The validator does not perform recovery.
-- Initial/final tree and executed-validator stability.
+- Initial/final selected-scope tree and executed-validator stability; the report names content exclusions.
 - Active handover marker presence: a bound campaign receives `HANDOVER_PAUSED` as a warning requiring the dedicated handover check; an unbound kit receives `HANDOVER_UNBOUND` as an error. This presence check does not validate the package or authorize resumption.
 
 v0.8 adds no mandatory NPC fields, stance vector or new current-state owner. Existing PEOPLE prose, NOW processes and KNOWN knowledge records remain valid without conversion into a new schema. Their explicit routes and applicable existing structural rules are checked; the meaning, initialization and causal changes of agent state are not.

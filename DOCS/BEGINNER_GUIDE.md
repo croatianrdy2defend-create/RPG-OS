@@ -4,7 +4,7 @@
 
 ## What am I installing?
 
-RPG OS is a collection of readable instructions and campaign files. An AI acts as the game master: you describe your character's choices, it portrays the world and resolves events, and it writes campaign records when you save. Those records let a later chat recover the saved situation and relevant history.
+RPG OS is a collection of readable instructions and campaign files. An AI acts as the game master: you describe your character's choices, it portrays the world and resolves events, and it writes campaign records when you save. If selected during setup, a tiny write-only note also retains each exchange between saves. Those records let a later chat recover the saved situation and relevant history.
 
 You install or open an **AI application** and give it the **RPG OS campaign folder**. RPG OS itself has no executable, account, server or installation command. You do not need to clone a Git repository or run the developer tests.
 
@@ -20,10 +20,10 @@ For Codex, signing in with ChatGPT uses your account's Codex access; API-key sig
 
 ## Step 1: Get the game files
 
-1. **[Download RPG OS v0.9.7 — Game ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip).** You can also find it under Assets on the [release page](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7).
+1. **[Download the latest RPG OS files — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/archive/refs/heads/main.zip).** This includes the same-version v0.9.7 saving fixes. The older tagged game-only download remains the original build.
 2. Extract the ZIP. Windows: right-click → **Extract All**. macOS: double-click. On other systems, use your file manager's extract function.
-3. Put the extracted folder in a location you can find again, such as Documents. You can rename it to your campaign's name.
-4. Open it until these folders appear together:
+3. Open **RPG-OS-main**, then copy its **GAME** folder to a location you can find again, such as Documents. Rename that copy to your campaign's name.
+4. Open your copied GAME folder until these folders appear together:
 
 ```text
 Your campaign folder/       ← open THIS folder in the AI app

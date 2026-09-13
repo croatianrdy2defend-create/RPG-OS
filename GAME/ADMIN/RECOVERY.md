@@ -2,6 +2,10 @@
 
 Cold procedure for any operation that changes campaign files: bind, Save/CHECKPOINT, correction, agreement change, review, upgrade, or repair. One model and readable/writable files are sufficient. No script, database, background service, filesystem transaction, or automatic rollback is assumed.
 
+The selected [write-only play log](PLAY_PERSISTENCE.md) performs its append without this per-turn procedure. Its ADMIN helper protects changed records and compiled-log cursor together under [INCREMENTAL_SAVE](INCREMENTAL_SAVE.md); do not duplicate that protection with the manual steps below. If ACTIVE names a helper-owned publication, inspect its recorded target and use `recover --action finish|restore`, then verify the result before PLAY. Preserve retained input and unresolved append ambiguity; do not clear a helper marker manually or reroll. The remaining steps are the manual executor for operations without a compatible helper.
+
+An actual legacy `INSTANCE/JOURNAL/PREPARE_INTENT.json` or unresolved old batch uses [LEGACY_INCREMENTAL_SAVE](LEGACY_INCREMENTAL_SAVE.md) for one-time recovery/migration. Preserve its source and actual results; do not erase unknown work or restart its former per-turn protocol after migration. Such legacy material is not created or inspected by an ordinary write-only-log reply.
+
 ## Before changes
 
 1. Check the exact path `RECOVERY/ACTIVE.md`. If present, resolve that operation below before starting another. Never choose whichever campaign file looks newest.

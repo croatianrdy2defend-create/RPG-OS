@@ -20,6 +20,8 @@ import stat
 
 
 TREES = ("OS", "ADMIN", "ENGINE", "MODULES", "INSTANCE", "ARCHIVE")
+LOG_RUNTIME = ("persistence.py", "play_log.py", "codex_exchange.py", "evidence.py",
+               "read_source.py", "handover.py")
 GM_SECTIONS = ("Manifest", "Stop point", "Current state", "People and relationships",
                "Private state and processes", "Pending decisions and uncertainty",
                "Source map", "Receiving GM instructions")
@@ -136,6 +138,59 @@ def children(path):
         raise Incomplete(f"cannot list {path}: {exc}") from None
 
 
+def log_dependencies(root):
+    """The selected log runtime and retained review proofs, never host transcripts."""
+    head_path = "INSTANCE/JOURNAL/HEAD.json"
+    if not os.path.lexists(root / head_path):
+        return set()
+
+    def object_at(relative):
+        try:
+            value = json.loads(text_file(safe_path(root, relative)), object_pairs_hook=unique_object)
+        except (ValueError, TypeError) as exc:
+            raise Invalid(f"invalid retained JSON {relative}: {exc}") from None
+        require(isinstance(value, dict), f"expected JSON object: {relative}")
+        return value
+
+    head = object_at(head_path)
+    if head.get("schema") != "rpg-journal-v2" or head.get("recording") != "write-only-log":
+        return set()
+    selected = {"TOOLS/" + name for name in LOG_RUNTIME}
+    current = text_file(safe_path(root, "INSTANCE/CURRENT_SAVE.md"))
+    # Required explicit routes remain required even when their file is missing.
+    reviews = set(re.findall(r"EVIDENCE/incremental-reviews/([A-Za-z0-9._-]+\.json)", current))
+    published = head.get("published_save_ids", [])
+    require(isinstance(published, list), "journal published_save_ids must be a list")
+    for save_id in published:
+        name = portable_id(save_id, "published save id") + ".json"
+        if os.path.lexists(root / "EVIDENCE/incremental-reviews" / name):
+            reviews.add(name)
+    for name in sorted(reviews):
+        relative = "EVIDENCE/incremental-reviews/" + name
+        record = object_at(relative)
+        selected.add(relative)
+        review = record.get("review", {})
+        require(isinstance(review, dict), f"malformed retained review: {relative}")
+        receipt = review.get("receipt")
+        if receipt is None:
+            continue
+        require(isinstance(receipt, dict), f"malformed review receipt: {relative}")
+        for key in ("bundle", "report", "delivery_receipt"):
+            dependency = receipt.get(key)
+            if dependency is None and key == "delivery_receipt":
+                continue
+            parts = route(dependency).parts
+            require(len(parts) > 1 and parts[0] == "EVIDENCE",
+                    f"handover review {key} must be retained under EVIDENCE")
+            path = safe_path(root, dependency)
+            require(path.is_dir() if key == "bundle" else path.is_file(),
+                    f"invalid retained review {key}: {dependency}")
+            selected.add(dependency)
+    # Public-source anchors are already retained by ARCHIVE; the legacy floor
+    # proof is under INSTANCE/JOURNAL. Never follow their old external host paths.
+    return selected
+
+
 def snapshot(root):
     files = {}
     seen = set()
@@ -161,6 +216,12 @@ def snapshot(root):
         if path.suffix.lower() == ".md":
             require(not stat.S_ISDIR(no_link(path).st_mode), f"root markdown is a directory: {path.name}")
             visit(path)
+    included = []
+    for relative in sorted(log_dependencies(root)):
+        path = safe_path(root, relative)
+        if not any(path.is_relative_to(parent) for parent in included):
+            visit(path)
+            included.append(path)
     return dict(sorted(files.items()))
 
 

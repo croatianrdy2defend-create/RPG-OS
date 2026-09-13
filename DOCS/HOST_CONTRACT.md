@@ -1,4 +1,14 @@
-# RPG OS host contract — 0.9.x, revision 1
+# RPG OS host contract — 0.9.x, revision 1 with local write-only-log addendum
+
+## Local write-only-log addendum — 2026-09-13
+
+The selected v0.9.7 write-only method follows [PLAY_PERSISTENCE](../GAME/ADMIN/PLAY_PERSISTENCE.md). The ordinary persistence action is one append of one or two factual sentences through `TOOLS/play_log.py`. It performs no per-turn persistence reads, owner/hash checks, source matching, cross-examination, delivery confirmation, document patches or readback. Ongoing play uses conversation context; a fresh boot reads compiled records and uncompiled notes once.
+
+A note is working material, not a complete transcript, semantic certificate or proof that its accompanying reply was delivered. An anticipated outcome may be written immediately before delivery; interrupted/revised ambiguity is reconciled once at the next ADMIN checkpoint/save using actual available conversation. Original source preserves complete dialogue. A real append failure is reported plainly without blind retry or a fabricated success claim.
+
+ADMIN checkpoints compile actual changes into existing canonical owners in one bounded pass and protect the compiled-log cursor with those writes. Full SAVE retains explicitly labelled original public source where supported and performs selected bounded source review independently of notes. Original OOC is evidence of what was said, not accepted fiction; corrections retain their source references. END SESSION handles feedback and due mechanics. Storage cannot certify interpretation or completeness.
+
+Back up the log, current records, original source and retained recovery/legacy material. The former prepared/confirmed journal remains [legacy ADMIN material](../GAME/ADMIN/LEGACY_INCREMENTAL_SAVE.md) for migration, source retention and compatible saving; it is not the current PLAY protocol. Installation selects no campaign policy. The revision-1 baseline below retains its existing source, authority and protected-publication meanings, subject to this narrowly selected append exception.
 
 ## 1. Scope
 
@@ -24,7 +34,7 @@ Accepted unsaved play already governs the current fiction; saving makes it durab
 
 **Save persists the established present. It does not happen to the fiction.** [CHECKPOINT](../GAME/ADMIN/CLOSE_CONTRACT.md) preserves the complete present while retaining `archive_ref` and `evidence_through`; full SAVE/CLOSE also preserves available accepted evidence and reports gaps. Neither advances fictional time, resolves a pending PC choice, generates dialogue or triggers consequences merely by occurring. Due fictional procedures remain the GM's separate responsibility.
 
-Writes require an explicit request or accepted policy. The [announced-autosave policy](../GAME/ADMIN/AUTOSAVE.md) remains optional: advance notice, permitted triggers, overrides, blocking conditions and verification still apply. Its checkpoint does not replace CLOSE. A host cannot enable it, invent telemetry, remove the notice, or start idle/background saves merely because it can. Ordinary PLAY remains read-only; authorized persistence enters ADMIN.
+Writes require an explicit request or accepted policy. The [announced-autosave policy](../GAME/ADMIN/AUTOSAVE.md) remains optional: advance notice, permitted triggers, overrides, blocking conditions and verification still apply. Its checkpoint does not replace CLOSE. A host cannot enable it, invent telemetry, remove the notice, or start idle/background saves merely because it can. The selected write-only log permits its single short append during PLAY; canonical compilation and checking remain ADMIN work.
 
 ## 3. Accelerate
 

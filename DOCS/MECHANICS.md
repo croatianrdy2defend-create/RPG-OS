@@ -1,10 +1,12 @@
 # How RPG OS works
 
-RPG OS v0.9.6 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
+RPG OS v0.9.7 is an experimental file protocol for running a roleplaying campaign with an LLM. The model portrays the world and adjudicates play; readable Markdown records preserve the agreement, present state, rules, and evidence needed to continue across chats.
 
 It is not a trained model, background server, autonomous simulation, or replacement for a rules engine. Its procedures tell a capable host how to use ordinary files. The model still has to read the right source, make sound judgments, and perform the agreed operations correctly.
 
 This guide explains the mechanics behind [Quick start](../GAME/QUICKSTART.md). For compact technical ownership notes, see [Architecture](ARCHITECTURE.md); the linked operating files contain the full procedures.
+
+**Optional write-only recording:** the selected [write-only play log](../GAME/ADMIN/PLAY_PERSISTENCE.md) appends one or two outcome sentences and leaves ongoing play in context. It performs no turn-level persistence reads, cross-checks or delivery protocol. ADMIN checkpoints compile actual changes from notes/conversation once; full SAVE additionally preserves original source and bounded review. Notes are working material, not complete dialogue or proof of delivery. Baseline examples below describe ordinary file-mode play unless stated; older trial reports do not describe this replacement workflow.
 
 The worked scenes below are original fictional illustrations, not campaign records or observed playtests. Each supplies its own situation; examples do not share a world unless stated. Unless a scene demonstrates initialization, its participants already have an established encounter basis. **Player** and **GM** show what a chat can look like. The accompanying explanations reveal selected facts for the reader; ordinary narration does not print a private-state worksheet. Any displayed dice are fixed illustration inputs, not claims that a randomizer was used. Read these cases for explanation only. Their subjects, repetition and descriptive detail supply no generation weights or defaults; worldbuilding follows [NEW GAME’s neutrality rule](../GAME/ADMIN/NEW_GAME.md#neutrality-before-worldbuilding), and PLAY follows the governing source procedures.
 
@@ -467,7 +469,7 @@ In a separate Freeform library scene, announced autosave is enabled and an accep
 
 > **GM:** The archivist places the closed folio on the desk. “You can read it here. Nothing leaves this room.”
 >
-> **GM, OOC:** Checkpoint due after the next completed play turn. Keep the current model/reasoning setting until the save is verified. You may say “checkpoint now” or “delay autosave.”
+> **GM, OOC:** Checkpoint after the next play response; “delay autosave” postpones it.
 >
 > **Player:** I open the folio and read the first page.
 >

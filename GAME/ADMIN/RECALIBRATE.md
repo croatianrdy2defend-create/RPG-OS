@@ -23,6 +23,12 @@ Changes apply from acceptance forward. They do not rewrite earlier PC choices, o
 
 An off-premise proposal is handled OOC by agreeing a return, recalibration, or ending; do not enforce the old premise with fabricated world barriers. Recalibration alone does not reverse a prior valid ironman outcome. Any separate retrospective change requires its own explicit treatment under the accepted Retcon policy and correction procedure.
 
+## Optional write-only play log
+
+Only explicit selection enables [PLAY_PERSISTENCE](PLAY_PERSISTENCE.md). Preserve the five agreement sections and accepted checkpoint cadence. Put `Incremental recording: write-only-log` and its one-or-two-sentence append in GM initiative; retain checkpoint deferral and save-before-switch under Time and transitions. Ordinary PLAY performs no persistence read, hash check, cross-examination, delivery confirmation or owner patch. Notes support ADMIN compilation; original source supports full saving. Already accepted concrete wording needs no repeated permission.
+
+When migrating a legacy prepared/confirmed journal, reconcile its actual outstanding state and preserve source once through [INCREMENTAL_SAVE](INCREMENTAL_SAVE.md)'s ADMIN migration path before changing bindings. This is not a new ordinary-turn duty. Preserve logs and original evidence when changing or disabling the method; compile outstanding accepted changes before an incompatible transition. Immediate operator limits still apply while durable administrative handling is resolved.
+
 ## Optional announced autosave
 
 Use `ADMIN/AUTOSAVE.md` when the operator explicitly enables, disables or changes the policy. Put the actual permission and selected triggers in GM initiative, concise notices in Presentation, and the save-before-switch/no-fictional-time convention in Time and transitions. No sixth required clause, new campaign field or separate state owner is added. An absent policy stays off; accepting the documented standard policy needs no additional interview. Disabling takes effect immediately while its durable agreement change follows the protected procedure.

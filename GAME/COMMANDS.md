@@ -21,11 +21,12 @@ Use the actual meaning of the request: “close the session for today” ends it
 | Request | Meaning |
 |---|---|
 | CHECKPOINT | Save the present only; historical evidence since the last complete save remains unarchived |
+| Enable the short play log | Select [one write-only outcome note per exchange](ADMIN/PLAY_PERSISTENCE.md); compilation/checking remain ADMIN save work |
 | Enable standard announced autosave | Select [the optional policy](ADMIN/AUTOSAVE.md) through setup/recalibration; warning precedes the existing protected checkpoint |
 | Delay / resume autosave | Suspend a pending automatic checkpoint; reannounce before automatic execution resumes |
 | Disable autosave | Revoke automatic persistence and record the prospective agreement change |
 | Checkpoint now / save now | Run the requested manual present-only/full save; supersede the pending autosave |
-| Prepare a scene handover / SCENE HANDOVER | Pause the current scene; checkpoint its state and export available conversation plus the GM briefing |
+| Prepare a scene handover / SCENE HANDOVER | Pause at the current boundary; preserve state/source and export the GM briefing |
 | Receive this handover | Become the receiving GM for the named package and continue with the player at its pending decision |
 | Prepare the scene return | Receiving GM records non-graphic events, consequences, private changes and the next decision |
 | Import this scene return / RETURN SCENE | Check the matching starting state, save accepted changes once and resume |
@@ -45,4 +46,4 @@ A clear acceptance of a displayed proposal is enough. No special acceptance toke
 
 Technical identifiers in a save confirmation support recovery. You do not need to memorize them.
 
-Independent NPC state is part of ordinary play; no "generate stance" command or recurring reminder is required. Newly established facts remain unsaved until an authorized persistence operation completes. Autosave stays off unless selected and never runs while the chat is idle. Keep the current model/reasoning setting until the outgoing save is verified. A checkpoint preserves state, not new exact dialogue; use full CLOSE or the existing handover before discarding source. See [Real-campaign playtesting](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/DOCS/ADMIN/PLAYTEST_V08.md) for optional session and incident notes.
+Independent NPC state is part of ordinary play; no recurring "generate stance" command is needed. The selected write-only log appends one short factual outcome without file inspection or a delivery protocol. Reuse established NPC fields and note only substantive changes. ADMIN checkpoints compile actual state; full SAVE preserves remaining available original source. Autosave remains separately selected, and appending resets no cadence. Keep the outgoing source until full saving or the actual handover preserves its available evidence. See [Real-campaign playtesting](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/DOCS/ADMIN/PLAYTEST_V08.md) for optional notes.

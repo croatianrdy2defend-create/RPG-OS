@@ -166,12 +166,13 @@ class ProtocolTests(unittest.TestCase):
     def test_protocol_safeguards(self):
         body = self.read("ADMIN/AUTOSAVE.md")
         for phrase in ("off unless explicitly accepted", "one response before", "15 completed PLAY replies",
-                       "65%", "operator-reported", "not fictional safety", "No background",
+                       "65%", "operator-reported", "not fictional safety", "not a background service",
                        "complete present", "archive_ref", "evidence_through", "CURRENT_SAVE last",
-                       "full CLOSE", "not a guarantee", "do not reconstruct", "READ-ONLY",
+                       "full CLOSE", "not a guarantee", "do not reconstruct", "play changes no canonical files",
                        "RECOVERY/ACTIVE.md", "HANDOVER/ACTIVE.md", "delay autosave", "context_handled"):
             with self.subTest(phrase=phrase):
-                self.assertIn(phrase.casefold(), body.casefold())
+                owner = self.read("ADMIN/CLOSE_CONTRACT.md") if phrase == "CURRENT_SAVE last" else body
+                self.assertIn(phrase.casefold(), owner.casefold())
 
     def test_runtime_routes_are_integrated(self):
         # Bound campaigns may replace README; check the actual runtime routes.
@@ -182,8 +183,11 @@ class ProtocolTests(unittest.TestCase):
 
     def test_both_workflows_execute_new_suite(self):
         for path in (".github/workflows/validate.yml", ".github/workflows/release.yml"):
-            self.assertIn("DEV/run_tests.py", self.read(path))
-            self.assertIn("test_autosave", self.read("DEV/run_tests.py"))
+            if (ROOT / "DEV/run_tests.py").exists():
+                self.assertIn("DEV/run_tests.py", self.read(path))
+                self.assertIn("test_autosave", self.read("DEV/run_tests.py"))
+            else:
+                self.assertIn("TOOLS/test_autosave.py", self.read(path))
 
     def test_behavioral_cases_honestly_unrun(self):
         body = self.read("ADMIN/TEST_AUTOSAVE.md")

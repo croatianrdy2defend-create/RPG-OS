@@ -4,6 +4,10 @@ Cold lookup guide for LAW's Establish stage. Open when an identified task needs 
 
 ## Find enough authority
 
+For the selected write-only log, follow `ADMIN/PLAY_PERSISTENCE.md`. Fresh boot reads compiled state and uncompiled notes once; ongoing PLAY uses working context. Appending creates no persistence lookup, owner read, hash check, source match or confirmation requirement. Do not run the legacy journal reader on ordinary turns. A specifically missing consequential fact still uses its narrow source; compiled files alone may predate known post-save play, and a working note does not overrule the actual conversation.
+
+For mechanics, identify a material present consequence, uncertainty, operative modifier or actual selected trigger before retrieving a rule. A descriptive keyword or possible calculation is insufficient. Do not search PDFs to prove no effect from uneventful routine. Preserve relevant factual inputs and use the exact applicable procedure when established quantity, condition, timing or risk makes resolution due; missing essential rules then remain a real retrieval requirement.
+
 Identify the fact or procedure needed next. Reuse already loaded source material when its coverage is sufficient. Before authoring a fact beyond that coverage whose form is governed by canon, retrieve the narrow governing source. A module-prescribed first-focused-portrayal guide must supply applicable coverage before the first focused physical description or closer observation; a general brief does not substitute for that specified guidance. Use the smallest relevant passage that settles the question, and reuse sufficient loaded guide coverage without a repeated full-source read. Ordinary eligible detail remains authorable under LAW; an unavailable established fact or required rule remains a source gap.
 
 | Need | Route |

@@ -96,89 +96,6 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(result["manifest"]["byte_coverage"]["source_line_count"], 3)
         self.assertIn(b"OOC: Do not resolve the scene.\r\nGM: Waiting.", source)
 
-    def test_metadata_template_is_valid_without_claiming_completeness(self):
-        paths = set(self.root.rglob("*"))
-        code, claims = self.run_cli("metadata-template")
-        self.assertEqual(code, 0)
-        self.assertEqual(set(self.root.rglob("*")), paths)
-        self.assertIsNone(claims["conversation_complete"])
-        self.assertEqual(claims["notes"], "")
-        self.assertEqual(claims["gaps"], [])
-        self.assertEqual(evidence.validate_claims(claims), claims)
-        claims["source_description"] = "Synthetic supplied excerpt, not a host export."
-        result = self.imported(claims)
-        self.assertEqual(result["conversation_completeness"], "unverified_caller_claim")
-
-    def test_metadata_notes_list_is_rejected_before_capture_creation(self):
-        claims = evidence.capture_metadata_template()
-        claims["notes"] = ["This must be text, not a list."]
-        metadata = self.root / "metadata.json"
-        self.write_json(metadata, claims)
-        code, result = self.run_cli("import", "--input", self.raw,
-                                    "--output", self.capture, "--metadata", metadata)
-        self.assertEqual(code, 1)
-        self.assertIn("notes must be text", result["error"])
-        self.assertFalse(self.capture.exists())
-
-    def test_generated_citations_match_all_sources_and_pass_existing_checker(self):
-        self.frozen()
-        report = self.completed_report()
-        generated = []
-        for ref in report["source_coverage"]["indexed_sources"]:
-            generated.append(evidence.citation(self.bundle, ref["source"], ref["path"], 1, 2))
-            self.assertEqual(generated[-1], self.citation(ref, 1, 2))
-        report["record_consistency"]["citations"] = generated
-        self.assertEqual(self.check_written(report)["status"], "report_structure_verified")
-
-    def test_citation_preserves_mixed_endings_and_unicode_separator(self):
-        original = "first\u2028still first\r\nČekaj\nlast\r".encode("utf-8")
-        self.raw.write_bytes(original)
-        self.frozen()
-        code, result = self.run_cli("citation", "--bundle", self.bundle, "--source", "capture",
-                                    "--path", "source.txt", "--start-line", 1, "--end-line", 3)
-        self.assertEqual(code, 0)
-        self.assertEqual(result["quote"].encode("utf-8"), original)
-        self.assertEqual(result["sha256"], evidence.sha(original))
-        self.assertEqual((self.bundle / "capture/source.txt").read_bytes(), original)
-
-    def test_citation_rejects_invalid_range_unselected_path_and_traversal(self):
-        self.frozen()
-        for source, path, start, end in (
-            ("capture", "source.txt", 0, 1), ("capture", "source.txt", 2, 1),
-            ("capture", "source.txt", 1, 99), ("capture", "source.txt", True, 1),
-            ("current", "WORLD/missing.md", 1, 1), ("current", "../OS/RULE.md", 1, 1),
-            ("invented", "source.txt", 1, 1),
-        ):
-            with self.subTest(source=source, path=path, start=start, end=end):
-                with self.assertRaises(evidence.EvidenceError):
-                    evidence.citation(self.bundle, source, path, start, end)
-
-    def test_citation_refuses_tampered_frozen_source(self):
-        self.frozen()
-        target = self.bundle / "sources/current/OS/RULE.md"
-        target.write_bytes(target.read_bytes() + b"Changed after freezing.\n")
-        with self.assertRaises(evidence.EvidenceError):
-            evidence.citation(self.bundle, "current", "OS/RULE.md", 1, 1)
-
-    def test_pending_capture_cannot_supply_a_citation(self):
-        evidence.pending_capture(self.capture)
-        evidence.prepare_audit(self.prior, self.current, self.capture, self.bundle, selected=["OS/RULE.md"])
-        with self.assertRaisesRegex(evidence.EvidenceError, "not available"):
-            evidence.citation(self.bundle, "capture", "source.txt", 1, 1)
-
-    def test_cli_unicode_citation_and_error_work_with_ascii_stdout(self):
-        self.frozen()
-        environment = dict(os.environ, PYTHONIOENCODING="ascii")
-        command = [sys.executable, "-B", evidence.__file__, "citation", "--bundle", str(self.bundle),
-                   "--source", "capture", "--path", "source.txt", "--start-line", "1", "--end-line", "1"]
-        result = subprocess.run(command, capture_output=True, env=environment)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(json.loads(result.stdout.decode("ascii"))["quote"], "Player: Čekaj.\r\n")
-        command[command.index("source.txt")] = "Č-missing.txt"
-        invalid = subprocess.run(command, capture_output=True, env=environment)
-        self.assertEqual(invalid.returncode, 1, invalid.stderr)
-        self.assertEqual(json.loads(invalid.stdout.decode("ascii"))["status"], "invalid")
-
     def test_partial_gaps_are_claims_not_byte_loss(self):
         result = self.imported({"conversation_complete": False, "gaps": ["Earlier messages unavailable."]})
         self.assertEqual(result["exact_bytes_verified"], self.raw.stat().st_size)
@@ -556,6 +473,98 @@ class EvidenceTests(unittest.TestCase):
         code, result = self.run_cli("import", "--input", self.raw, "--output", self.capture)
         self.assertEqual(code, 1)
         self.assertEqual(result["status"], "invalid")
+
+    def test_metadata_template_is_valid_without_claiming_completeness(self):
+        paths = set(self.root.rglob("*"))
+        code, claims = self.run_cli("metadata-template")
+        self.assertEqual(code, 0)
+        self.assertEqual(set(self.root.rglob("*")), paths)
+        self.assertIsNone(claims["conversation_complete"])
+        self.assertEqual(claims["notes"], "")
+        self.assertEqual(claims["gaps"], [])
+        self.assertEqual(evidence.validate_claims(claims), claims)
+        claims["source_description"] = "Synthetic supplied excerpt, not a host export."
+        result = self.imported(claims)
+        self.assertEqual(result["conversation_completeness"], "unverified_caller_claim")
+
+
+    def test_metadata_notes_list_is_rejected_before_capture_creation(self):
+        claims = evidence.capture_metadata_template()
+        claims["notes"] = ["This must be text, not a list."]
+        metadata = self.root / "metadata.json"
+        self.write_json(metadata, claims)
+        code, result = self.run_cli("import", "--input", self.raw,
+                                    "--output", self.capture, "--metadata", metadata)
+        self.assertEqual(code, 1)
+        self.assertIn("notes must be text", result["error"])
+        self.assertFalse(self.capture.exists())
+
+
+    def test_generated_citations_match_all_sources_and_pass_existing_checker(self):
+        self.frozen()
+        report = self.completed_report()
+        generated = []
+        for ref in report["source_coverage"]["indexed_sources"]:
+            generated.append(evidence.citation(self.bundle, ref["source"], ref["path"], 1, 2))
+            self.assertEqual(generated[-1], self.citation(ref, 1, 2))
+        report["record_consistency"]["citations"] = generated
+        self.assertEqual(self.check_written(report)["status"], "report_structure_verified")
+
+
+    def test_citation_preserves_mixed_endings_and_unicode_separator(self):
+        original = "first\u2028still first\r\nČekaj\nlast\r".encode("utf-8")
+        self.raw.write_bytes(original)
+        self.frozen()
+        code, result = self.run_cli("citation", "--bundle", self.bundle, "--source", "capture",
+                                    "--path", "source.txt", "--start-line", 1, "--end-line", 3)
+        self.assertEqual(code, 0)
+        self.assertEqual(result["quote"].encode("utf-8"), original)
+        self.assertEqual(result["sha256"], evidence.sha(original))
+        self.assertEqual((self.bundle / "capture/source.txt").read_bytes(), original)
+
+
+    def test_citation_rejects_invalid_range_unselected_path_and_traversal(self):
+        self.frozen()
+        for source, path, start, end in (
+            ("capture", "source.txt", 0, 1), ("capture", "source.txt", 2, 1),
+            ("capture", "source.txt", 1, 99), ("capture", "source.txt", True, 1),
+            ("current", "WORLD/missing.md", 1, 1), ("current", "../OS/RULE.md", 1, 1),
+            ("invented", "source.txt", 1, 1),
+        ):
+            with self.subTest(source=source, path=path, start=start, end=end):
+                with self.assertRaises(evidence.EvidenceError):
+                    evidence.citation(self.bundle, source, path, start, end)
+
+
+    def test_citation_refuses_tampered_frozen_source(self):
+        self.frozen()
+        target = self.bundle / "sources/current/OS/RULE.md"
+        target.write_bytes(target.read_bytes() + b"Changed after freezing.\n")
+        with self.assertRaises(evidence.EvidenceError):
+            evidence.citation(self.bundle, "current", "OS/RULE.md", 1, 1)
+
+
+    def test_pending_capture_cannot_supply_a_citation(self):
+        evidence.pending_capture(self.capture)
+        evidence.prepare_audit(self.prior, self.current, self.capture, self.bundle, selected=["OS/RULE.md"])
+        with self.assertRaisesRegex(evidence.EvidenceError, "not available"):
+            evidence.citation(self.bundle, "capture", "source.txt", 1, 1)
+
+
+    def test_cli_unicode_citation_and_error_work_with_ascii_stdout(self):
+        self.frozen()
+        environment = dict(os.environ, PYTHONIOENCODING="ascii")
+        command = [sys.executable, "-B", evidence.__file__, "citation", "--bundle", str(self.bundle),
+                   "--source", "capture", "--path", "source.txt", "--start-line", "1", "--end-line", "1"]
+        result = subprocess.run(command, capture_output=True, env=environment)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout.decode("ascii"))["quote"], "Player: Čekaj.\r\n")
+        command[command.index("source.txt")] = "Č-missing.txt"
+        invalid = subprocess.run(command, capture_output=True, env=environment)
+        self.assertEqual(invalid.returncode, 1, invalid.stderr)
+        self.assertEqual(json.loads(invalid.stdout.decode("ascii"))["status"], "invalid")
+
+
 
 
 if __name__ == "__main__":

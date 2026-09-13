@@ -2,7 +2,9 @@
 
 ## Operating environment
 
-One LLM acts as GM and file operator in an ordinary workspace. Conversation is temporary working memory. Markdown files preserve accepted records. Scripts are optional development tools, never required runtime components.
+One LLM acts as GM and file operator in an ordinary workspace. Conversation is working memory; Markdown files preserve compiled accepted records. The selected [write-only log](../GAME/ADMIN/PLAY_PERSISTENCE.md) uses `TOOLS/play_log.py` for one short append per gameplay exchange. It does not read or patch canonical records during ordinary turns.
+
+The selected method stores concise working notes at `INSTANCE/PLAY_LOG.jsonl`. Fresh boot loads compiled records and uncompiled notes once; ongoing play uses context. ADMIN checkpoints reconcile notes/actual conversation and compile changed owners in one bounded pass while protecting the compiled-log cursor. Full saves archive remaining original source and perform selected bounded review. The old prepared/confirmed journal and its tools remain only for ADMIN compatibility, source retention and saving/migration. There is no ordinary-turn resume/prepare/confirm, hash cache or delivery cross-examination. Short notes are not a full transcript or proof of delivery.
 
 The architecture optimizes the amount of relevant material the GM must reconcile during play. Disk size alone is not the target.
 
@@ -84,7 +86,7 @@ Priorities and constraints establish the entity's own current aim, drive, direct
 
 Fixed opening state belongs to its selected MODULE T0 authority. Current temporary encounter state uses one optional `Active encounter state` block in NOW; entry membership means active. PEOPLE retains durable individual and relationship facts; shared controllers retain one actual system owner. Reuse state through attention gaps and update affected values on relevant events. Genuine deactivation releases inconsequential temporary state, with fresh incidental return allowed within surviving facts. Preserve consequences and unresolved matters; missing required active state remains a gap. Expiry changes current authority at its actual time, never deletes historical evidence or invents old causes. This is a logical working-context policy, not erasure of earlier chat tokens; no private scratch writes, new runtime, roster or automatic per-contact save is introduced.
 
-New state in ordinary PLAY is conversational and best-effort until saved. Authorized persistence compiles the complete accepted present through existing recovery; it does not provide an invisible write on each NPC decision. An authorized setup can establish a small recorded private opening. A result unavailable after interruption is an explicit gap; recovery provenance is not an alternative live-state layer. The earlier automatic protected-establishment experiment is not implemented; the separately accepted whole-present announced-autosave policy introduced in v0.9.2 remains available below.
+New state in ordinary PLAY is maintained in context; the selected write-only log retains a brief factual outcome without document compilation or checking. ADMIN persistence compiles the complete accepted present through protected recovery. An authorized setup can establish a small recorded private opening. A result unavailable after interruption remains an explicit gap, and a note is not proof of delivery. Earlier prepared/confirmed journal trials are retained historical material; the separately accepted whole-present autosave policy remains available below.
 
 ## Session preparation and feedback
 
@@ -96,7 +98,7 @@ CURRENT_SAVE's optional administrative Session continuity owns identity and pend
 
 SAVE/bare CLOSE performs a complete save. An explicit END SESSION invokes ADMIN/SESSION.md for consolidation, feedback and genuinely due engine procedures, then that full save; immediate stopping can preserve unfinished closure. No second save type is added. Current-save metadata carries the latest present identity separately from the latest archived evidence boundary. CHECKPOINT changes the former while retaining the latter.
 
-The operator/model preserves preimages, records affected files and newly created directories with their prior existence, marks the operation active, writes the selected records and evidence, checks them, and publishes CURRENT_SAVE last. Restoration removes only verified operation-created empty directories after file reconciliation, using exact nonrecursive removal. Recovery reconciles an interrupted set before resumption. This is a recoverability convention, not an atomic transaction or an independent consistency engine.
+CLOSE_CONTRACT selects one publication executor: the compatible helper or the protected manual fallback. Both preserve preimages, affected paths/directories, the active-operation barrier, intended writes and readback; helper use does not repeat the manual transaction. Recovery reconciles interrupted changes before resumption, including exact removal of verified operation-created empty directories when restoring. These storage checks do not establish semantic completeness.
 
 The optional [announced-autosave policy](../GAME/ADMIN/AUTOSAVE.md) invokes that existing CHECKPOINT after accepted permission and advance notice. It does not add a save format, background service or private-state owner. Recovery, active handover and an in-progress write block concurrent execution. Installation alone leaves it off, and a checkpoint still does not archive new dialogue or replace full CLOSE before source access is discarded.
 
@@ -104,7 +106,7 @@ A coherent episode can occupy one evidence body. Split scenes or records when th
 
 ## Scene handover
 
-The optional scene-handover-v1 extension wraps CHECKPOINT with two transport files: ordered available CONVERSATION and a GM_STATE briefing containing the exact stop point, established public/private state, source map and frozen workspace hashes. It does not change save commit kinds or archive semantics. Normal startup checks HANDOVER/ACTIVE once after recovery; a present marker pauses source play and routes to the cold handover procedure. No marker or package is created merely by installing the feature.
+The optional scene-handover-v1 extension preserves the transfer present through the selected save path, reusing an exact already-saved boundary. Its two transport files carry available CONVERSATION and a GM_STATE briefing with the stop point, established public/private state, source map and frozen workspace hashes. Normal startup checks HANDOVER/ACTIVE after recovery; its presence pauses source play and routes to the cold procedure. Installation creates no transfer.
 
 The receiving GM is explicitly selected, continues with the player from the pending decision, and returns a factual non-graphic account plus state changes. A matching-base check and retained imported/cancelled receipt prevent stale or repeated application. Source authorities have one writer; imports use protected full save and retain honest evidence gaps. This is procedural coordination with an optional read-only integrity checker, not a filesystem lock or transfer of model-internal context. Full engine/module/current-state hashes are pinned for this temporary transfer only; ordinary startup remains as described below.
 

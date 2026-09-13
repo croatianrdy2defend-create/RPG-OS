@@ -99,5 +99,18 @@
   "V0.9.6_CHANGES.md": "DOCS/releases/V0.9.6_CHANGES.md",
   "VERIFICATION.md": "DOCS/VERIFICATION.md",
   "VERSION": "GAME/VERSION",
-  "V0.9.7_CHANGES.md": "DOCS/releases/V0.9.7_CHANGES.md"
+  "V0.9.7_CHANGES.md": "DOCS/releases/V0.9.7_CHANGES.md",
+  "ADMIN/INCREMENTAL_SAVE.md": "GAME/ADMIN/INCREMENTAL_SAVE.md",
+  "ADMIN/LEGACY_INCREMENTAL_SAVE.md": "GAME/ADMIN/LEGACY_INCREMENTAL_SAVE.md",
+  "ADMIN/PLAY_PERSISTENCE.md": "GAME/ADMIN/PLAY_PERSISTENCE.md",
+  "TOOLS/persistence.py": "GAME/TOOLS/persistence.py",
+  "TOOLS/play_log.py": "GAME/TOOLS/play_log.py",
+  "TOOLS/codex_exchange.py": "GAME/TOOLS/codex_exchange.py",
+  "TOOLS/test_codex_exchange.py": "DEV/TOOLS/test_codex_exchange.py",
+  "TOOLS/test_persistence.py": "DEV/TOOLS/test_persistence.py",
+  "TOOLS/test_persistence_delivery.py": "DEV/TOOLS/test_persistence_delivery.py",
+  "TOOLS/test_persistence_edits.py": "DEV/TOOLS/test_persistence_edits.py",
+  "TOOLS/test_persistence_fastresume.py": "DEV/TOOLS/test_persistence_fastresume.py",
+  "TOOLS/test_persistence_log.py": "DEV/TOOLS/test_persistence_log.py",
+  "TOOLS/test_play_log.py": "DEV/TOOLS/test_play_log.py"
 }
