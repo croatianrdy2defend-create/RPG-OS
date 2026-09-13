@@ -9,6 +9,27 @@
 
 **[Full beginner guide: download, setup, play, save and return](DOCS/BEGINNER_GUIDE.md)** — includes an example setup conversation and help with common problems.
 
+### Alternative: ask your AI agent to set it up
+
+If you already use an AI agent, you can give it this repository link and ask for help with installation. An agent running Claude, GPT, or another capable model can read the instructions, help prepare the campaign folder, and guide you through setup. Paste:
+
+```text
+Help me install RPG OS and create my first campaign:
+https://github.com/croatianrdy2defend-create/RPG-OS
+
+Read the repository README and DOCS/BEGINNER_GUIDE.md, and follow their
+current installation instructions. Help me make a separate campaign copy
+of the GAME folder and give this chat access to read and save its files.
+Handle the setup steps you can, and walk me through anything I must do
+myself. Keep any existing campaign files intact.
+
+Once the folder is ready, open its OS/AGENTS.md and help me start a new
+campaign using Quick start. Check file access and tell me clearly if
+you cannot save changes.
+```
+
+What it can do directly depends on the app's browser, file and terminal access. It may prepare the files itself or guide you through downloading them and attaching the folder. [More about agent-assisted installation](DOCS/BEGINNER_GUIDE.md#ask-your-ai-agent-to-help-with-installation). The manual walkthrough below remains available.
+
 ### [Download the latest files — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/archive/refs/heads/main.zip)
 
 The current **RPG OS v0.9.7** files include the 13 September continuity and saving fixes. Extract this repository ZIP and use its **GAME** subfolder as your campaign folder. It includes a simple Freeform rules engine and blank campaign records, ready for your own world and character. RPG OS is free to download; your AI application's access requirements and usage costs are separate.

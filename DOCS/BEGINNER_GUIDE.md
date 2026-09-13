@@ -18,6 +18,35 @@ The public kit is a fresh start with the Freeform rules engine. It contains no p
 
 For Codex, signing in with ChatGPT uses your account's Codex access; API-key sign-in is a separate usage-billed option. **This beginner route does not require an API key.** [Official sign-in explanation](https://learn.chatgpt.com/docs/auth).
 
+## Ask your AI agent to help with installation
+
+If you already have an AI agent, start by giving it the [RPG OS repository link](https://github.com/croatianrdy2defend-create/RPG-OS) and asking it to help. You can use an agent running Claude, GPT, or another capable model; the application determines which setup steps it can perform.
+
+Paste this request into your agent:
+
+```text
+Help me install RPG OS and create my first campaign:
+https://github.com/croatianrdy2defend-create/RPG-OS
+
+Read the repository README and DOCS/BEGINNER_GUIDE.md, and follow their
+current installation instructions. Help me make a separate campaign copy
+of the GAME folder and give this chat access to read and save its files.
+Handle the setup steps you can, and walk me through anything I must do
+myself. Keep any existing campaign files intact.
+
+Once the folder is ready, open its OS/AGENTS.md and help me start a new
+campaign using Quick start. Check file access and tell me clearly if
+you cannot save changes.
+```
+
+Tell it your operating system and which AI application you want to play in if it cannot determine them. It should read the repository's current instructions, identify the playable **GAME** folder, and help you put a separate campaign copy somewhere you can find again. It can then guide you through connecting that folder, checking access, and starting the new-game conversation.
+
+An agent with suitable browser, file and terminal tools may be able to download, extract and prepare the folder for you. App installation, sign-in or granting folder access may still need your input. If it cannot perform a step, ask it for the exact action you need to take, then let it continue from there.
+
+**The GitHub link starts the setup conversation; your own editable campaign folder holds your progress.** Ask the agent to show which folder it will use and confirm that it can read and save files there. Keep existing campaigns intact and use a fresh copy for a new game.
+
+Once setup is complete, review and accept the campaign proposal as described in [Step 3](#step-3-start-setup), then begin play. You can also follow the manual steps below from the beginning, or use them whenever you need to do a step yourself.
+
 ## Step 1: Get the game files
 
 1. **[Download the latest RPG OS files — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/archive/refs/heads/main.zip).** This includes the same-version v0.9.7 saving fixes. The older tagged game-only download remains the original build.
@@ -41,7 +70,7 @@ Your campaign folder/       ← open THIS folder in the AI app
 
 Keep all included files and folders together. The `.md` files are ordinary text documents; the extension stands for Markdown. You do not have to read or edit them to begin.
 
-If you used GitHub's green **Code → Download ZIP**, you downloaded the entire development repository. Its **GAME** folder contains the playable kit. You may use that folder, or download the smaller game ZIP above. The documentation, tests and development tools are optional reading outside the game kit.
+If you used GitHub's green **Code → Download ZIP**, you downloaded the entire development repository. Its **GAME** folder contains the playable kit. Copy that GAME folder for your campaign as described above. The documentation, tests and development tools are optional reading outside the game kit.
 
 ## Step 2: Give the AI access to your campaign
 
@@ -154,7 +183,7 @@ Say: **“Use the existing RPG OS files to GM a campaign for me. Follow OS/AGENT
 
 ### I only pasted the GitHub link
 
-That points to the public starting kit. It does not give the AI a durable, editable copy of your own campaign. Download and extract the kit, then connect the resulting folder as described above.
+Ask the agent to help install it using the [agent-assisted setup prompt](#ask-your-ai-agent-to-help-with-installation). The link points to the public starting kit; it does not by itself give the AI a durable, editable copy of your campaign. The agent still needs to help you prepare and connect that folder, or guide you through the manual steps if its tools cannot do so.
 
 ### Something still does not work
 
