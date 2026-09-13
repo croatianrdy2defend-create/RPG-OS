@@ -104,4 +104,14 @@ The report covers successes, failures, deliberately corrupted saves, conversatio
 
 For an existing campaign, keep a complete backup and use the [protected upgrade procedure](GAME/ADMIN/UPGRADE_V08.md). Never overwrite live campaign records with blank installation templates.
 
-RPG OS by [croatianrdy2defend-create](https://github.com/croatianrdy2defend-create). [Contributing](CONTRIBUTING.md). Original protocol/documentation: [CC BY 4.0](LICENSE); code and automation: MIT, with licenses included alongside the code. No rights in third-party game settings or content are granted.
+## Credits & acknowledgements
+
+**Project author and maintainer:** [croatianrdy2defend-create](https://github.com/croatianrdy2defend-create). Developed through iterative campaign work and LLM-assisted design and review. [Contributing](CONTRIBUTING.md).
+
+**Design reference — [Claude Corpus Engine](https://github.com/galliard5/claude-corpus-engine)** by [galliard5](https://github.com/galliard5).
+
+Comparing the two systems and exchanging design ideas informed RPG OS's [optional preparation work in v0.7.2](DOCS/releases/V0.7.2_CHANGES.md) and its later [source-access and evidence-audit design in v0.9.0](DOCS/releases/V0.9.0_CHANGES.md). Claude Corpus Engine's approach to navigating large campaign corpora provided useful lessons that RPG OS adapted within its own file structure and authority model.
+
+Thanks to galliard5 for sharing his work and the constructive exchange. Both projects have incorporated lessons from the comparison; [Claude Corpus Engine acknowledges RPG OS in turn](https://github.com/galliard5/claude-corpus-engine#credits--acknowledgements). This credit recognizes design influence and discussion; the projects retain their own implementations.
+
+Original protocol/documentation: [CC BY 4.0](LICENSE); code and automation: MIT, with licenses included alongside the code. No rights in third-party game settings or content are granted.
