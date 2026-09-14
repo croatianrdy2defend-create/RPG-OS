@@ -32,6 +32,18 @@ jobs:
           p.write_text(text, encoding='utf-8')
           PY
           python3 -B DEV/patch_default_persistence.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('DEV/TOOLS/test_autosave.py')
+          text = p.read_text(encoding='utf-8')
+          old = '        self.assertEqual(result.warned_at, 15)'
+          assert text.count(old) == 1
+          text = text.replace(old, '        self.assertEqual(result.warned_at, 20)', 1)
+          old = '                 dict(warned_at=16), dict(warned_at=True),'
+          assert text.count(old) == 1
+          text = text.replace(old, '                 dict(warned_at=21), dict(warned_at=True),', 1)
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: Validate standalone game
         run: python3 -B GAME/TOOLS/validate.py --root GAME
       - name: Run regressions
