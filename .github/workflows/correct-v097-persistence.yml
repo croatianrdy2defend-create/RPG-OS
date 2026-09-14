@@ -29,7 +29,6 @@ jobs:
                   raise SystemExit(f'{path}: expected {count} occurrence(s), found {actual}: {old[:100]!r}')
               p.write_text(text.replace(old, new, count), encoding='utf-8')
 
-          # Keep the software version at v0.9.7. This is a small same-version behavior/default update.
           assert Path('GAME/VERSION').read_text(encoding='utf-8').strip() == '0.9.7'
 
           replace(
@@ -115,24 +114,45 @@ jobs:
               '## v0.9.7 — practical pacing and long-campaign maintenance (2026-09-12)\n\n- **2026-09-14, same-version persistence-default update:** New campaigns now propose the existing write-only PLAY log by default and announced CHECKPOINTs every 20 completed PLAY replies. END SESSION SAVE remains the full-save boundary. Players can decline or customize either during setup; existing bound campaigns keep their accepted persistence policy unless recalibrated. Version remains **v0.9.7**.\n'
           )
 
-          # Update cadence regression expectations while preserving agreement-gated autosave semantics.
-          replace('DEV/TOOLS/test_autosave.py', 'return replace(Observation(enabled=True, dirty=True, turn=15, turns_since_save=15), **changes)', 'return replace(Observation(enabled=True, dirty=True, turn=20, turns_since_save=20), **changes)')
-          replace('DEV/TOOLS/test_autosave.py', '("warn", 15)', '("warn", 20)', count=1)
-          replace('DEV/TOOLS/test_autosave.py', 'self.sample(warned_at=15)', 'self.sample(warned_at=20)', count=3)
-          replace('DEV/TOOLS/test_autosave.py', 'self.sample(turn=16, warned_at=15)', 'self.sample(turn=21, warned_at=20)', count=2)
-          replace('DEV/TOOLS/test_autosave.py', 'turns_since_save=15', 'turns_since_save=20', count=2)
-          replace('DEV/TOOLS/test_autosave.py', 'dict(warned_at=16)', 'dict(warned_at=21)')
-          replace('DEV/TOOLS/test_autosave.py', 'o = self.sample(interval=20)', 'o = self.sample(interval=25)')
-          replace('DEV/TOOLS/test_autosave.py', '"15 completed PLAY replies"', '"20 completed PLAY replies"')
-          replace('DEV/TOOLS/test_autosave.py', 'Observation(enabled=True, dirty=True, turn=16, turns_since_save=16, warned_at=15)', 'Observation(enabled=True, dirty=True, turn=21, turns_since_save=21, warned_at=20)')
-
-          # New-game default is exercised explicitly; legacy/default scheduler state remains off without a bound grant.
-          p = Path('DEV/TOOLS/test_autosave.py')
-          text = p.read_text(encoding='utf-8')
+          # Exact cadence regression updates. Keep raw scheduler default disabled; NEW_GAME supplies the default agreement grant.
+          test_path = Path('DEV/TOOLS/test_autosave.py')
+          text = test_path.read_text(encoding='utf-8')
+          fixes = {
+              '        return replace(Observation(enabled=True, dirty=True, turn=15, turns_since_save=15), **changes)':
+                  '        return replace(Observation(enabled=True, dirty=True, turn=20, turns_since_save=20), **changes)',
+              '        self.assertEqual((warning.action, warning.warned_at), ("warn", 15))':
+                  '        self.assertEqual((warning.action, warning.warned_at), ("warn", 20))',
+              '        self.assertEqual(decide(self.sample(warned_at=15)).action, "wait")':
+                  '        self.assertEqual(decide(self.sample(warned_at=20)).action, "wait")',
+              '        self.assertEqual(decide(self.sample(turn=16, warned_at=15)).action, "checkpoint")':
+                  '        self.assertEqual(decide(self.sample(turn=21, warned_at=20)).action, "checkpoint")',
+              '        self.assertEqual(decide(replace(o, turns_since_save=15)).action, "warn")':
+                  '        self.assertEqual(decide(replace(o, turns_since_save=20)).action, "warn")',
+              '            self.assertEqual(decide(self.sample(warned_at=15)).action, "wait")':
+                  '            self.assertEqual(decide(self.sample(warned_at=20)).action, "wait")',
+              '        o = self.sample(turn=16, warned_at=15)':
+                  '        o = self.sample(turn=21, warned_at=20)',
+              '        self.assertEqual(result.warned_at, 15)':
+                  '        self.assertEqual(result.warned_at, 20)',
+              '        self.assertEqual(o.turns_since_save, 15)':
+                  '        self.assertEqual(o.turns_since_save, 20)',
+              '                 dict(warned_at=16), dict(warned_at=True),':
+                  '                 dict(warned_at=21), dict(warned_at=True),',
+              '        o = self.sample(interval=20)':
+                  '        o = self.sample(interval=25)',
+              '"15 completed PLAY replies"':
+                  '"20 completed PLAY replies"',
+              '        decision = decide(Observation(enabled=True, dirty=True, turn=16, turns_since_save=16, warned_at=15))':
+                  '        decision = decide(Observation(enabled=True, dirty=True, turn=21, turns_since_save=21, warned_at=20))',
+          }
+          for old, new in fixes.items():
+              if text.count(old) != 1:
+                  raise SystemExit(f'DEV/TOOLS/test_autosave.py: expected one occurrence, found {text.count(old)}: {old!r}')
+              text = text.replace(old, new, 1)
           needle = '    def test_runtime_routes_are_integrated(self):\n'
           assert text.count(needle) == 1
           addition = '''    def test_new_game_proposes_standard_persistence_defaults(self):\n        body = self.read("ADMIN/NEW_GAME.md")\n        self.assertIn("standard persistence profile by default", body)\n        self.assertIn("20-completed-PLAY-reply cadence", body)\n        self.assertIn("Incremental recording: write-only-log", body)\n\n'''
-          p.write_text(text.replace(needle, addition + needle, 1), encoding='utf-8')
+          test_path.write_text(text.replace(needle, addition + needle, 1), encoding='utf-8')
           PY
       - name: Validate standalone game
         run: python3 -B GAME/TOOLS/validate.py --root GAME
