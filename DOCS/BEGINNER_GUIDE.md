@@ -143,7 +143,7 @@ To finish the session:
 
 **Wait for the save confirmation before closing the chat.** It should identify the save and say what was actually written and verified, including any relevant limitation or unfinished step. “I will save” is a promise to act, not confirmation that it happened.
 
-New v0.9.8 campaigns default to a tiny write-only outcome note after each completed PLAY response and an announced CHECKPOINT every 20 completed PLAY replies. You can decline either during setup or disable/customize them later through recalibration. Checkpointing is not a background service. A checkpoint protects the current state but does not archive new exact dialogue. Use a full **Save** before leaving a chat or changing your GM/model/reasoning setting. [Save and switching details](../GAME/INSTALLATION.md#continuing-with-another-model).
+New campaigns default to a tiny write-only outcome note after each completed PLAY response and an announced CHECKPOINT every 20 completed PLAY replies. You can decline either during setup or disable/customize them later through recalibration. Checkpointing is not a background service. A checkpoint protects the current state but does not archive new exact dialogue. Use a full **Save** before leaving a chat or changing your GM/model/reasoning setting. [Save and switching details](../GAME/INSTALLATION.md#continuing-with-another-model).
 
 ## Step 6: Continue next time
 
@@ -195,4 +195,4 @@ Share your operating system, AI application, model/reasoning setting if known, t
 
 [In-game Quick start](../GAME/QUICKSTART.md) · [Installation and alternate workflows](../GAME/INSTALLATION.md) · [Everyday requests](../GAME/COMMANDS.md) · [Optional playtest guidance](ADMIN/PLAYTEST_V08.md)
 
-This guide explains the existing v0.9.8 workflow. It does not change game rules, turn on optional policies or certify every AI host. Desktop labels and sign-in instructions were checked against the linked official OpenAI documentation on 12 September 2026. The beginner instructions still need feedback from first-time users.
+This guide explains the existing v0.9.7 workflow. It does not change game rules, turn on optional policies or certify every AI host. Desktop labels and sign-in instructions were checked against the linked official OpenAI documentation on 12 September 2026. The beginner instructions still need feedback from first-time users.

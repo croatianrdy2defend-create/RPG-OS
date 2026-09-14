@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only reference scheduler for RPG OS's standard announced checkpoint protocol.
+"""Read-only reference scheduler for RPG OS's opt-in autosave protocol.
 
 One JSON observation on stdin; one decision on stdout. No campaign reads,
 file writes, model calls, timers, randomness, or save execution. A host may
@@ -18,8 +18,8 @@ sys.dont_write_bytecode = True
 
 @dataclass(frozen=True)
 class Observation:
-    # Fresh v0.9.8 campaigns accept this by default; bound/legacy campaigns override from their agreement.
-    enabled: bool = True
+    # This must come from the accepted agreement, never from a suggested policy.
+    enabled: bool = False
     dirty: bool = False
     # Monotonic completed PLAY replies in this conversation; OOC/tool calls do not count.
     turn: int = 0

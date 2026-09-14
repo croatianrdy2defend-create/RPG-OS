@@ -1,8 +1,8 @@
 # RPG OS — playable game files
 
-Current `main` includes **v0.9.8** default incremental logging and 20-reply announced checkpoints for new campaigns. Older tagged game ZIPs retain their original bytes.
+Current `main` includes the **v0.9.7** saving and continuity fixes plus the 14 September same-version persistence-default update: short PLAY logging by default for new campaigns and announced checkpoints every 20 completed PLAY replies. Older tagged game ZIPs retain their original bytes.
 
-**Version 0.9.8.** This folder is a standalone, unbound game kit. It contains the GM's operating rules, the Freeform engine, blank campaign records, saving/recovery procedures and optional runtime tools. Explanatory articles, playtest campaigns, developer tests and build automation are deliberately elsewhere.
+**Version 0.9.7.** This folder is a standalone, unbound game kit. It contains the GM's operating rules, the Freeform engine, blank campaign records, saving/recovery procedures and optional runtime tools. Explanatory articles, playtest campaigns, developer tests and build automation are deliberately elsewhere.
 
 ## Start a new campaign
 

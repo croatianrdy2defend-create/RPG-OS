@@ -1,8 +1,8 @@
-# ADMIN — Standard announced checkpointing (v0.9.8)
+# ADMIN — Optional announced autosave (v0.9.7)
 
-PLAY changes no canonical files between saves; the standard new-campaign persistence profile selects the [write-only play log](PLAY_PERSISTENCE.md), which permits only one short append after each completed PLAY reply.
+PLAY changes no canonical files between saves; a separately selected write-only log permits only its short append.
 
-For new v0.9.8 campaigns, setup proposes announced checkpointing and the write-only play log by default. Accepting the compact campaign proposal selects both unless the operator declines or customizes them. Existing bound campaigns keep their previously accepted persistence policy; absence of an autosave grant in a legacy agreement remains off. Announced checkpointing invokes the protected complete-present ADMIN CHECKPOINT, not a background service or general PLAY write grant. The log performs one short append without persistence reads or checking. Either default may be disabled prospectively through setup or RECALIBRATE.
+Autosave is off unless explicitly accepted in the campaign agreement. It invokes the protected complete-present ADMIN CHECKPOINT, not a background service or general PLAY write grant. The separately selected [write-only play log](PLAY_PERSISTENCE.md) performs one short append without persistence reads or checking. Autosave alone does not enable that log. Installation enables neither policy.
 
 Cadence counts **completed PLAY replies since the last checkpoint**. Preserve the accepted campaign cadence. Appending a note resets no count; deferring a checkpoint does not disable that append. Use the observed conversation count, without reading the log or checking delivery every turn. At CHECKPOINT reconcile uncompiled notes and actual play once, then publish through ADMIN/CLOSE_CONTRACT and the working-log plan. An uncertain count stays uncertain; it does not create a delivery protocol or unattended save.
 
@@ -20,7 +20,7 @@ Put the brief warning/report preference in Presentation and the unchanged fictio
 
 Evaluate at a completed response boundary. Establish dirty state from actual accepted changes since the last verified save, including current private facts; merely reading a file, opening a host tool panel, speculating, or repeating an unchanged resolved attempt is not a change. Do not generate a fact to justify a save.
 
-With unsaved state, the standard new-campaign profile schedules on the 20-reply cadence. A campaign may separately accept any of the early triggers below; if selected, they can schedule a checkpoint before cadence:
+With unsaved state, the standard policy schedules on the 20-reply cadence. A campaign may separately accept any of the early triggers below; if selected, they can schedule a checkpoint before cadence:
 
 - Consequential state: a material private determination needed for continuing play, obligation/relationship change, meaningful injury/resource/status change, discovery, active process or real random result needed later. Merely activating, updating or expiring an incidental baseline is not a new automatic checkpoint trigger. Routine shopping, transient extras and inconsequential texture need no individual save; once any accepted save trigger fires, the checkpoint still preserves the complete current active set.
 - Substantial scene boundary: an actual transition already reached under the agreement; never end a scene just to save.

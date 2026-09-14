@@ -1,4 +1,4 @@
-# Quick start — v0.9.8 experimental
+# Quick start — v0.9.7 experimental
 
 New campaigns default to a [write-only play log](ADMIN/PLAY_PERSISTENCE.md) that appends one or two outcome sentences after each completed PLAY response, plus announced CHECKPOINTs every 20 completed PLAY replies. Fresh boot reads compiled state and uncompiled notes once; checkpoints compile changes, and full SAVE preserves remaining source and selected review. Keep complete backups. You can disable or customize either persistence default during setup or later through recalibration.
 
@@ -52,7 +52,7 @@ Keep the current model/reasoning setting until the outgoing save is verified. Th
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.8.
+An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.7.
 
 Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 
