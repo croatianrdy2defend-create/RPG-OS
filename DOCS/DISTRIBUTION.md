@@ -1,10 +1,10 @@
 # Game-only distribution and repository layout
 
-**Current download: v0.9.7 (12 September 2026).** See [the release changes](releases/V0.9.7_CHANGES.md). The repository separation described below was introduced on 11 September under v0.9.6; its historical verification remains identified separately. Distribution checks are not campaign playtests.
+**Current download: v0.9.7 current build (14 September 2026).** See [the release changes](releases/V0.9.7_CHANGES.md). The repository separation described below was introduced on 11 September under v0.9.6; its historical verification remains identified separately. Distribution checks are not campaign playtests.
 
 ## Choose what to download
 
-[Download the game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip). The [separate distribution release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7) also includes SHA-256 checksums and a file manifest. Earlier `v0.9.6` release assets and tags are not replaced.
+[Download the current game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7-r2/RPG_OS_v0.9.7_Game.zip). The [current distribution release](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7-r2) also includes SHA-256 checksums and a file manifest. `r2` is a packaging revision only; the software version remains **v0.9.7**. The original `game-v0.9.7` release remains a frozen earlier build, and earlier version assets and tags are not replaced.
 
 GitHub's **Code → Download ZIP** remains a complete repository download. GitHub's automatically generated source-code archives also contain the repository. The explicitly named `_Game.zip` asset is the smaller playable download.
 
@@ -30,7 +30,7 @@ The runtime validator now checks actual playable dependencies instead of requiri
 
 The new developer packager reads the committed GAME subtree, verifies it against the explicitly reviewed `DEV/game_files.json` inventory, checks exact extracted bytes and runs the extracted game's own validator. New unreviewed paths, missing operating files, links, duplicate inventory entries, tracked working changes, nonempty campaign templates and existing output collisions are rejected. Untracked files never enter the committed export. Runtime helpers are included; developer test and release scripts are not.
 
-Package output is reproducible for identical GAME bytes. A documentation-only commit changes the manifest's source-commit attribution but does not change the playable ZIP. The `game-v<version>` distribution uses its own tag and never overwrites the historical `v<version>` release. Publishing a different playable tree under an existing distribution tag is refused.
+Package output is reproducible for identical GAME bytes. A documentation-only commit changes the manifest's source-commit attribution but does not change the playable ZIP. Distribution tags never replace historical release bytes; when the playable tree changes without a software-version bump, a distribution-revision tag such as `game-v0.9.7-r2` is used instead.
 
 ## Historical verification of the v0.9.6 repository separation
 
