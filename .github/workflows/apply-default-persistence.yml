@@ -36,12 +36,14 @@ jobs:
           from pathlib import Path
           p = Path('DEV/TOOLS/test_autosave.py')
           text = p.read_text(encoding='utf-8')
-          old = '        self.assertEqual(result.warned_at, 15)'
-          assert text.count(old) == 1
-          text = text.replace(old, '        self.assertEqual(result.warned_at, 20)', 1)
-          old = '                 dict(warned_at=16), dict(warned_at=True),'
-          assert text.count(old) == 1
-          text = text.replace(old, '                 dict(warned_at=21), dict(warned_at=True),', 1)
+          fixes = {
+              '        self.assertEqual(result.warned_at, 15)': '        self.assertEqual(result.warned_at, 20)',
+              '        self.assertEqual(o.turns_since_save, 15)': '        self.assertEqual(o.turns_since_save, 20)',
+              '                 dict(warned_at=16), dict(warned_at=True),': '                 dict(warned_at=21), dict(warned_at=True),',
+          }
+          for old, new in fixes.items():
+              assert text.count(old) == 1, old
+              text = text.replace(old, new, 1)
           p.write_text(text, encoding='utf-8')
           PY
       - name: Validate standalone game
