@@ -24,12 +24,8 @@ class SchedulerTests(unittest.TestCase):
     def sample(self, **changes):
         return replace(Observation(enabled=True, dirty=True, turn=20, turns_since_save=20), **changes)
 
-    def test_default_enabled_for_fresh_profile(self):
-        self.assertTrue(Observation().enabled)
-        self.assertEqual(decide(Observation(dirty=True, turn=20, turns_since_save=20)).action, "warn")
-
-    def test_explicit_disable_still_wins(self):
-        self.assertEqual(decide(Observation(enabled=False, dirty=True, consequential=True)).reason, "disabled")
+    def test_default_off(self):
+        self.assertEqual(decide(Observation(dirty=True, consequential=True)).reason, "disabled")
 
     def test_clean_state_never_creates_empty_autosaves(self):
         self.assertEqual(decide(self.sample(dirty=False, context_percent=99, context_source="host")).action, "none")
@@ -169,7 +165,7 @@ class ProtocolTests(unittest.TestCase):
 
     def test_protocol_safeguards(self):
         body = self.read("ADMIN/AUTOSAVE.md")
-        for phrase in ("new v0.9.8 campaigns", "one response before", "20 completed PLAY replies",
+        for phrase in ("off unless explicitly accepted", "one response before", "20 completed PLAY replies",
                        "65%", "operator-reported", "not fictional safety", "not a background service",
                        "complete present", "archive_ref", "evidence_through", "CURRENT_SAVE last",
                        "full CLOSE", "not a guarantee", "do not reconstruct", "play changes no canonical files",
@@ -177,6 +173,12 @@ class ProtocolTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 owner = self.read("ADMIN/CLOSE_CONTRACT.md") if phrase == "CURRENT_SAVE last" else body
                 self.assertIn(phrase.casefold(), owner.casefold())
+
+    def test_new_game_proposes_standard_persistence_defaults(self):
+        body = self.read("ADMIN/NEW_GAME.md")
+        self.assertIn("standard persistence profile by default", body)
+        self.assertIn("20-completed-PLAY-reply cadence", body)
+        self.assertIn("Incremental recording: write-only-log", body)
 
     def test_runtime_routes_are_integrated(self):
         # Bound campaigns may replace README; check the actual runtime routes.

@@ -2,16 +2,9 @@
 
 All notable RPG OS prototype releases and design milestones are recorded here. The project is in public testing; version labels describe protocol releases, not proof of long-campaign reliability.
 
-## v0.9.8 — default incremental persistence (2026-09-14)
-
-- New campaigns default to the one/two-sentence write-only outcome log after every completed PLAY response.
-- New campaigns default to announced CHECKPOINTs every 20 completed PLAY replies; optional early triggers remain separately selectable.
-- END SESSION SAVE continues to perform feedback/wrap-up followed by a full save.
-- Existing campaigns keep their accepted persistence settings unless explicitly recalibrated.
-
-See [release notes](releases/V0.9.8_CHANGES.md).
-
 ## v0.9.7 — practical pacing and long-campaign maintenance (2026-09-12)
+
+- **2026-09-14, same-version persistence-default update:** New campaigns now propose the existing write-only PLAY log by default and announced CHECKPOINTs every 20 completed PLAY replies. END SESSION SAVE remains the full-save boundary. Players can decline or customize either during setup; existing bound campaigns keep their accepted persistence policy unless recalibrated. Version remains **v0.9.7**.
 
 - **2026-09-13, same-version continuity and performance update:** Optional write-only PLAY notes, checkpoint compilation and source-reviewed full saves now have separate, bounded jobs. Normal logging appends one or two outcome sentences with no persistence reads or per-turn verification. Installation enables neither logging nor autosave.
 - Full-save completion requires the existing source-bound review evidence; stale compilation bases are rejected. Original public wording and specific correction links are retained, while delivery remains distinct from accepted fiction. Archived source boundaries and required handover dependencies survive host-file moves with explicit source limitations where needed.

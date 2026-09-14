@@ -41,9 +41,10 @@ jobs:
           remote_tag="$(git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}")"
           if [ -n "$remote_tag" ]; then
             git fetch --no-tags origin "refs/tags/$tag:refs/tags/$tag"
-            test "$(git rev-parse "$tag:GAME")" = "$(git rev-parse HEAD:GAME)" || {
-              echo 'Existing game distribution contains different files; do not replace it.' >&2; exit 1;
-            }
+            if [ "$(git rev-parse "$tag:GAME")" != "$(git rev-parse HEAD:GAME)" ]; then
+              echo "Existing $tag is a frozen earlier same-version distribution; leaving it unchanged."
+              exit 0
+            fi
           fi
           if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > "$RUNNER_TEMP/existing-game.json" 2> "$RUNNER_TEMP/game-error.txt"; then
             test -n "$remote_tag"

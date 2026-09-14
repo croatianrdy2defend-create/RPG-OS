@@ -112,6 +112,5 @@
   "TOOLS/test_persistence_edits.py": "DEV/TOOLS/test_persistence_edits.py",
   "TOOLS/test_persistence_fastresume.py": "DEV/TOOLS/test_persistence_fastresume.py",
   "TOOLS/test_persistence_log.py": "DEV/TOOLS/test_persistence_log.py",
-  "TOOLS/test_play_log.py": "DEV/TOOLS/test_play_log.py",
-  "V0.9.8_CHANGES.md": "DOCS/releases/V0.9.8_CHANGES.md"
+  "TOOLS/test_play_log.py": "DEV/TOOLS/test_play_log.py"
 }
