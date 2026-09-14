@@ -1,0 +1,64 @@
+name: Publish refreshed v0.9.7 game-only build
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-v097-r2.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Verify same software version
+        run: test "$(cat GAME/VERSION)" = "0.9.7"
+      - name: Run regressions
+        run: python3 -B DEV/run_tests.py
+      - name: Test standalone distribution
+        run: python3 -B DEV/test_distribution.py
+      - name: Build game-only package
+        run: |
+          python3 -B DEV/package_game.py
+          (cd .release && sha256sum --check RPG_OS_v0.9.7_Game.SHA256SUMS)
+      - name: Publish refreshed same-version build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="game-v0.9.7-r2"
+          prefix="RPG_OS_v0.9.7_Game"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "$tag already exists; refusing to replace it." >&2
+            exit 1
+          fi
+          cat > "$RUNNER_TEMP/notes.md" <<EOF
+          # RPG OS v0.9.7 — current game-only build
+
+          Same software version, refreshed distribution. This build includes the current v0.9.7 same-version fixes, including the default tiny PLAY log for new campaigns and announced checkpoints every 20 completed PLAY replies.
+
+          This is a distribution revision only; RPG OS remains software version 0.9.7. The original game-v0.9.7 release remains a frozen earlier build.
+
+          Source commit: $GITHUB_SHA
+          EOF
+          gh release create "$tag" \
+            ".release/$prefix.zip" \
+            ".release/$prefix.SHA256SUMS" \
+            ".release/$prefix.manifest.json" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "RPG OS v0.9.7 — Game files only (current build)" \
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            --latest
+      - name: Remove accidental v0.9.8 distribution
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view game-v0.9.8 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release delete game-v0.9.8 --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes
+          fi
