@@ -49,10 +49,10 @@ Once setup is complete, review and accept the campaign proposal as described in 
 
 ## Step 1: Get the game files
 
-1. **[Download the latest RPG OS files — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/archive/refs/heads/main.zip).** This includes the same-version v0.9.7 saving fixes. The older tagged game-only download remains the original build.
+1. **[Download the current RPG OS v0.9.7 game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7-r2/RPG_OS_v0.9.7_Game.zip).** This small archive contains only the playable files; you do not need the full GitHub repository.
 2. Extract the ZIP. Windows: right-click → **Extract All**. macOS: double-click. On other systems, use your file manager's extract function.
-3. Open **RPG-OS-main**, then copy its **GAME** folder to a location you can find again, such as Documents. Rename that copy to your campaign's name.
-4. Open your copied GAME folder until these folders appear together:
+3. Move or copy the extracted **RPG_OS_v0.9.7** folder to a location you can find again, such as Documents, and rename that copy to your campaign's name if you want.
+4. Open that folder until these folders appear together:
 
 ```text
 Your campaign folder/       ← open THIS folder in the AI app
@@ -70,7 +70,7 @@ Your campaign folder/       ← open THIS folder in the AI app
 
 Keep all included files and folders together. The `.md` files are ordinary text documents; the extension stands for Markdown. You do not have to read or edit them to begin.
 
-If you used GitHub's green **Code → Download ZIP**, you downloaded the entire development repository. Its **GAME** folder contains the playable kit. Copy that GAME folder for your campaign as described above. The documentation, tests and development tools are optional reading outside the game kit.
+If you use GitHub's green **Code → Download ZIP**, GitHub will still download the entire development repository. That works, but ordinary players should use the [game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7-r2/RPG_OS_v0.9.7_Game.zip) above instead.
 
 ## Step 2: Give the AI access to your campaign
 

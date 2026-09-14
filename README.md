@@ -30,13 +30,13 @@ you cannot save changes.
 
 What it can do directly depends on the app's browser, file and terminal access. It may prepare the files itself or guide you through downloading them and attaching the folder. [More about agent-assisted installation](DOCS/BEGINNER_GUIDE.md#ask-your-ai-agent-to-help-with-installation). The manual walkthrough below remains available.
 
-### [Download the latest files — ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/archive/refs/heads/main.zip)
+### [Download RPG OS v0.9.7 — game files only](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7-r2/RPG_OS_v0.9.7_Game.zip)
 
-The current **RPG OS v0.9.7** files include the 13 September continuity and saving fixes. Extract this repository ZIP and use its **GAME** subfolder as your campaign folder. It includes a simple Freeform rules engine and blank campaign records, ready for your own world and character. RPG OS is free to download; your AI application's access requirements and usage costs are separate.
+This is the current **game-only** v0.9.7 build. It contains the playable RPG OS files, including the same-version saving/persistence fixes, without the repository documentation, playtest archive or developer tooling. RPG OS is free to download; your AI application's access requirements and usage costs are separate.
 
 ### 1. Download and extract
 
-Download the ZIP above. On Windows, right-click it and choose **Extract All**; on macOS, double-click it. Put the extracted folder somewhere you can find again, such as Documents. Open the extracted **RPG-OS-main → GAME** folder, where **OS**, **ADMIN**, **INSTANCE** and **MODULES** appear together. That is your campaign folder. Keep the whole folder together and use a separate copy for each campaign.
+Download the ZIP above. On Windows, right-click it and choose **Extract All**; on macOS, double-click it. Put the extracted **RPG_OS_v0.9.7** folder somewhere you can find again, such as Documents. Open that folder, where **OS**, **ADMIN**, **INSTANCE** and **MODULES** appear together. That is your campaign folder. Keep the whole folder together and use a separate copy for each campaign.
 
 ### 2. Open that folder in an AI application
 
@@ -77,9 +77,9 @@ Keep only one chat actively playing a campaign. After a verified save, copy the 
 
 **Stuck? [Read the step-by-step guide and troubleshooting](DOCS/BEGINNER_GUIDE.md).** If asking for help, mention your AI app, model, the step you reached and the exact error or response.
 
-[Browse game files](GAME/README.md) · [Quick start](GAME/QUICKSTART.md) · [Installation](GAME/INSTALLATION.md) · [Game-only release and checksums](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7)
+[Browse game files](GAME/README.md) · [Quick start](GAME/QUICKSTART.md) · [Installation](GAME/INSTALLATION.md) · [Game-only release and checksums](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7-r2)
 
-> GitHub's green **Code → Download ZIP** downloads the whole repository. For the latest same-version fixes, open **GAME** inside that extraction. The older [frozen game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7/RPG_OS_v0.9.7_Game.zip) remains available for its original build. After extraction, use the folder containing `OS/AGENTS.md` as the campaign workspace.
+> GitHub's green **Code → Download ZIP** downloads the whole development repository. Players normally want the [current game-only ZIP](https://github.com/croatianrdy2defend-create/RPG-OS/releases/download/game-v0.9.7-r2/RPG_OS_v0.9.7_Game.zip) instead. The original `game-v0.9.7` asset remains a frozen earlier build.
 
 ## Three separate places
 
@@ -102,7 +102,7 @@ The report covers successes, failures, deliberately corrupted saves, conversatio
 
 [Why I built RPG OS](DOCS/OVERVIEW.md) · [Architecture](DOCS/ARCHITECTURE.md) · [How the mechanics work](DOCS/MECHANICS.md) · [Host compatibility](DOCS/HOST_CONTRACT.md) · [Verification](DOCS/VERIFICATION.md)
 
-**Current software: v0.9.7.** This release improves routine pacing, save operation, current-record maintenance and evidence tooling. [Release changes](DOCS/releases/V0.9.7_CHANGES.md). The earlier `game-v0.9.7` release contains the original playable build; current `main` includes the same-version fixes. Earlier release tags and downloads remain unchanged. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
+**Current software: v0.9.7.** This release improves routine pacing, save operation, current-record maintenance and evidence tooling. [Release changes](DOCS/releases/V0.9.7_CHANGES.md). The current game-only distribution is [`game-v0.9.7-r2`](https://github.com/croatianrdy2defend-create/RPG-OS/releases/tag/game-v0.9.7-r2); `r2` is a packaging revision, not a software-version bump. The original `game-v0.9.7` asset remains a frozen earlier build. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
 
 For an existing campaign, keep a complete backup and use the [protected upgrade procedure](GAME/ADMIN/UPGRADE_V08.md). Never overwrite live campaign records with blank installation templates.
 
