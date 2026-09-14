@@ -20,10 +20,16 @@ jobs:
           from pathlib import Path
           p = Path('DEV/patch_default_persistence.py')
           text = p.read_text(encoding='utf-8')
-          old = "replace('DEV/TOOLS/test_autosave.py', 'self.sample(warned_at=15)', 'self.sample(warned_at=20)', count=3)"
-          new = "replace('DEV/TOOLS/test_autosave.py', 'self.sample(warned_at=15)', 'self.sample(warned_at=20)', count=2)"
-          assert old in text
-          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          fixes = {
+              "replace('DEV/TOOLS/test_autosave.py', 'self.sample(warned_at=15)', 'self.sample(warned_at=20)', count=3)":
+              "replace('DEV/TOOLS/test_autosave.py', 'self.sample(warned_at=15)', 'self.sample(warned_at=20)', count=2)",
+              "replace('DEV/TOOLS/test_autosave.py', 'self.sample(turn=16, warned_at=15)', 'self.sample(turn=21, warned_at=20)', count=4)":
+              "replace('DEV/TOOLS/test_autosave.py', 'self.sample(turn=16, warned_at=15)', 'self.sample(turn=21, warned_at=20)', count=2)",
+          }
+          for old, new in fixes.items():
+              assert old in text, old
+              text = text.replace(old, new, 1)
+          p.write_text(text, encoding='utf-8')
           PY
           python3 -B DEV/patch_default_persistence.py
       - name: Validate standalone game
