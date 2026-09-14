@@ -24,7 +24,7 @@ Offer these once unless the request already establishes the desired depth:
 - **Guided:** develop the premise, agreement, world, character, and opening through short adaptive clusters.
 - **Detailed:** let the player select domains and develop those in stages. Stop or defer optional depth whenever requested.
 
-Quick, Guided and Detailed all include the standard beginning/resumption preparation and end-of-session feedback routine in `ADMIN/SESSION.md`. Setup depth does not select whether the GM performs these duties. No separate feedback interview is required.
+Quick, Guided and Detailed all include the standard preparation, brief command reminders and feedback-before-save routine in `ADMIN/SESSION.md`. Setup depth does not select whether the GM performs these duties. Explain that END SESSION SAVE stops play, takes feedback or an explicit skip, then saves the permitted adjustments for next time; SAVE alone keeps the session open. No separate setup interview is required.
 
 Explain saving in the compact proposal. Default protected saves and any accepted autosave/review policies remain. If requested, propose the [write-only play log](PLAY_PERSISTENCE.md): one or two outcome sentences appended each turn, ADMIN compilation at the accepted checkpoint cadence, and source archiving/selected review at full SAVE. It adds no routine file checking or delivery protocol; notes are working material, not a full transcript. Record `Incremental recording: write-only-log` in the same accepted agreement and use the actual compatible host setup after bind. No extra interview or automatic world-generation setting is required.
 
@@ -80,9 +80,9 @@ Compile the accepted generation permission and scope into GM initiative, its act
 
 Include the session routine within the same existing agreement sections:
 
-- **GM initiative:** recover relevant causes, commitments, consequences and explicit feedback at begin/resume; prepare useful continuation within the granted authority. At an explicit ending, consolidate developments, invite or reuse feedback, handle actually due engine procedures and preserve useful preparation.
+- **GM initiative:** recover relevant causes, commitments, consequences and explicit feedback at begin/resume; prepare useful continuation within the granted authority. At an explicit ending, receive or explicitly skip closing feedback, incorporate permitted adjustments, consolidate developments, handle actually due engine procedures and preserve useful preparation before the full save.
 - **Time and transitions:** one play session may span chats, saves and handovers. SAVE/bare CLOSE preserves progress; an explicit ending invokes SESSION and its full save. Neither boundary advances fictional time without an actual selected rule or accepted transition.
-- **Presentation:** use a brief public recap when useful and a short end feedback invitation; the player may answer or decline. Preserve the actual disposition, use relevant feedback in subsequent preparation, and identify unresolved adjustments. Keep private preparation out of ordinary narration within real host visibility limits.
+- **Presentation:** use a brief public recap when useful and short OOC command reminders at session start and end: SAVE, CHECKPOINT, END SESSION SAVE, and ordinary requests for corrections, pacing/rules or available commands. Take closing feedback before saving; wait for the reply or an explicit skip, with SESSION's explicit immediate-save/source-risk exceptions. Preserve the actual disposition and useful adjustments for next preparation. Keep private preparation out of ordinary narration within real host visibility limits.
 
 These are responsibilities within the five sections, not a sixth clause or three additional approvals. Feedback grants no new PC control, invented history, population weighting or silently accepted agreement change.
 

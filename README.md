@@ -63,13 +63,15 @@ Describe what your character says or tries: “I ask what happened,” “I look
 
 ### 5. Save, stop and come back
 
-To save while continuing, say **“Save the campaign.”** To finish playing, say **“End the session, take my feedback, and save the campaign.”** Wait for confirmation that the files were written and checked before closing the chat. Autosave and brief write-only PLAY notes are separate optional setup choices. A note does not replace a verified save.
+To save while continuing, say **“Save the campaign”** or **SAVE**. To finish playing, say **END SESSION SAVE** (or **“End the session, take my feedback, and save the campaign.”**). The GM stops play, waits for your feedback or explicit skip, incorporates permitted adjustments for next time, then saves automatically; no second SAVE command is needed. If you need it to save immediately without waiting for feedback, say so. Wait for confirmation that the files were written and checked before closing the chat. Autosave and brief write-only PLAY notes are separate optional setup choices. A note does not replace a verified save.
 
 Next time, open the **same updated campaign folder**, start a new chat in its project and paste:
 
 ```text
 Open OS/AGENTS.md and continue my saved campaign. Resume from the saved point.
 ```
+
+The GM gives a short command reminder at session start and end. During play you can use **SAVE**, **CHECKPOINT** (current records only), **END SESSION SAVE**, or ordinary OOC requests for corrections, pacing/rules and [available commands](GAME/COMMANDS.md).
 
 Keep only one chat actively playing a campaign. After a verified save, copy the entire campaign folder to a separate backup location. Your progress lives in the updated folder; extracting another fresh kit starts with blank records.
 

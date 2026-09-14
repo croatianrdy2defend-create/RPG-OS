@@ -32,7 +32,7 @@ Exact PC values, detailed lore, subsystem bodies, and historical evidence remain
 | Start a new game / NEW GAME | `ADMIN/NEW_GAME.md` |
 | Use an existing module / LOAD MODULE | `ADMIN/LOAD.md` |
 | Save / bare CLOSE | `ADMIN/CLOSE_CONTRACT.md` |
-| End the session / save and end / END SESSION | `ADMIN/SESSION.md`, including the full save |
+| End the session / save and end / END SESSION SAVE | `ADMIN/SESSION.md`: feedback or explicit skip before the full save |
 | Quick present-only save / CHECKPOINT | Checkpoint section in that procedure |
 | Enable/disable autosave, delay/resume a pending autosave | `ADMIN/AUTOSAVE.md`; persistent policy changes use `ADMIN/RECALIBRATE.md` |
 | Enable the short write-only play log | `ADMIN/PLAY_PERSISTENCE.md`; selected setup/migration and save plans use `ADMIN/INCREMENTAL_SAVE.md` and `ADMIN/RECALIBRATE.md` |

@@ -127,6 +127,8 @@ The GM portrays the response and applies the selected rules. Outcomes follow tho
 
 You can also speak out of character: **“OOC: slow down and let this conversation play out,” “Summarize the routine part,”** or **“That detail contradicts what happened earlier.”** You do not need special commands or to edit the records yourself.
 
+At session start and end, the GM briefly reminds you about **SAVE**, **CHECKPOINT** (current records only), **END SESSION SAVE** and ordinary OOC requests. You can ask “What commands can I use?” at any time; the [command guide](../GAME/COMMANDS.md) lists the options.
+
 ## Step 5: Save and end a session
 
 To save without ending play:
@@ -135,9 +137,9 @@ To save without ending play:
 
 To finish the session:
 
-> End the session, take my feedback, and save the campaign.
+> END SESSION SAVE
 
-Tell the GM what worked, what felt awkward and what you want more or less of. You may decline feedback or stop immediately; say so if needed. The GM should perform the applicable wrap-up and save the current state and available history.
+“End the session, take my feedback, and save the campaign” means the same thing. The GM stops fiction and asks for feedback before saving. Tell it what worked, what felt awkward and what you want more or less of, or say “skip feedback”. It waits for your reply, explains and incorporates permitted adjustments for next time, then performs the applicable wrap-up and saves the current state and available history. You do not need to issue SAVE again. If you need it to save immediately without waiting for feedback, say so; unfinished feedback remains identified.
 
 **Wait for the save confirmation before closing the chat.** It should identify the save and say what was actually written and verified, including any relevant limitation or unfinished step. “I will save” is a promise to act, not confirmation that it happened.
 

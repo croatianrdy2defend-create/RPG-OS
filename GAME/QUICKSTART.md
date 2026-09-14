@@ -32,11 +32,13 @@ In a fresh chat with the campaign folder available:
 
 At a stopping point:
 
-> Save the campaign and end the session.
+> END SESSION SAVE
 
-Say “Save the campaign” to preserve progress without ending the play session. “Save the campaign and end the session” adds wrap-up, applicable engine procedures and the GM's brief feedback invitation. You may answer or decline feedback. If you need to stop immediately, say so; the GM saves with unfinished feedback identified. Wait for a verified full-save confirmation before discarding the chat; an unanswered feedback question is not that confirmation. A checkpoint preserves the complete present but creates no new exact archive evidence. A manual export becomes a workspace save only after installation and verification.
+Say “Save the campaign” or `SAVE` to preserve progress without ending the play session. `END SESSION SAVE` (or “Save the campaign and end the session”) stops fiction, takes your feedback or explicit skip, then performs wrap-up and saves the permitted adjustments for next time. The GM waits for your feedback reply before that save; you do not need to issue SAVE again. If you need saving immediately without further discussion, say so; unfinished feedback is identified. Wait for a verified full-save confirmation before discarding the chat; an unanswered feedback question is not that confirmation. A checkpoint preserves the complete present but creates no new exact archive evidence. A manual export becomes a workspace save only after installation and verification.
 
 An optional [worked save-and-resume example](https://github.com/croatianrdy2defend-create/RPG-OS/blob/main/DOCS/ADMIN/PORTRAYAL_EXAMPLES.md#saving-and-resuming-an-unfinished-exchange) shows how the next choice stays pending. Retrieve it only when an illustration is useful; it supplies no setup or campaign facts.
+
+The GM gives a short command reminder at session start and end: `SAVE`, `CHECKPOINT` (current records only), `END SESSION SAVE`, and ordinary OOC requests for corrections, pacing/rules or available commands. See [Everyday requests](COMMANDS.md).
 
 ## Optional announced autosave
 
