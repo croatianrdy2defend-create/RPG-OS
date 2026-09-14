@@ -1,0 +1,34 @@
+name: Apply default persistence patch
+on:
+  push:
+    branches: [feature/default-persistence-0.9.8]
+permissions:
+  contents: write
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Apply v0.9.8 persistence defaults
+        run: python3 -B DEV/patch_default_persistence.py
+      - name: Validate standalone game
+        run: python3 -B GAME/TOOLS/validate.py --root GAME
+      - name: Run regressions
+        run: python3 -B DEV/run_tests.py --report .release/regressions.json
+      - name: Test standalone distribution
+        run: python3 -B DEV/test_distribution.py
+      - name: Remove migration helper and commit result
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm DEV/patch_default_persistence.py .github/workflows/apply-default-persistence.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git diff --cached --check
+          git commit -m 'feat: default incremental persistence for new campaigns'
+          git push origin HEAD:feature/default-persistence-0.9.8
