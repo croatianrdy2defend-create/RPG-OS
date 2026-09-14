@@ -2,7 +2,11 @@ name: Publish standalone game-only download
 on:
   push:
     branches: [main]
-    paths: [GAME/VERSION]
+    paths:
+      - 'GAME/**'
+      - 'DEV/game_files.json'
+      - 'DEV/package_game.py'
+      - '.github/workflows/release.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,7 +32,7 @@ jobs:
         run: |
           python3 -B DEV/package_game.py
           (cd .release && sha256sum --check RPG_OS_v*_Game.SHA256SUMS)
-      - name: Publish separate game-only assets without replacing historical releases
+      - name: Preserve immutable versioned game release
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -39,15 +43,18 @@ jobs:
           tag="game-v$version"
           prefix="RPG_OS_v${version}_Game"
           remote_tag="$(git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}")"
+          same_tree=false
+
           if [ -n "$remote_tag" ]; then
             git fetch --no-tags origin "refs/tags/$tag:refs/tags/$tag"
-            test "$(git rev-parse "$tag:GAME")" = "$(git rev-parse HEAD:GAME)" || {
-              echo 'Existing game distribution contains different files; do not replace it.' >&2; exit 1;
-            }
+            if [ "$(git rev-parse "$tag:GAME")" = "$(git rev-parse HEAD:GAME)" ]; then
+              same_tree=true
+            fi
           fi
+
           if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag" > "$RUNNER_TEMP/existing-game.json" 2> "$RUNNER_TEMP/game-error.txt"; then
-            test -n "$remote_tag"
-            python3 - "$RUNNER_TEMP/existing-game.json" "$prefix" <<'PY'
+            if [ "$same_tree" = true ]; then
+              python3 - "$RUNNER_TEMP/existing-game.json" "$prefix" <<'PY'
           import hashlib, json, pathlib, sys
           release = json.loads(pathlib.Path(sys.argv[1]).read_text())
           prefix = sys.argv[2]
@@ -59,16 +66,71 @@ jobs:
                   digest = 'sha256:' + hashlib.sha256(pathlib.Path('.release', prefix + ext).read_bytes()).hexdigest()
                   assert assets[0].get('digest') == digest, 'Existing asset bytes differ; refusing replacement'
           PY
-            echo "Distribution $tag already exists for the same playable tree; unchanged."
-            exit 0
-          elif ! grep -q 'HTTP 404' "$RUNNER_TEMP/game-error.txt"; then
-            cat "$RUNNER_TEMP/game-error.txt" >&2; exit 1
+              echo "Historical distribution $tag already matches this playable tree; unchanged."
+            else
+              echo "Historical distribution $tag belongs to an earlier same-version playable tree; preserving it unchanged."
+            fi
+          elif grep -q 'HTTP 404' "$RUNNER_TEMP/game-error.txt"; then
+            if [ -z "$remote_tag" ] || [ "$same_tree" = true ]; then
+              printf '%s\n\n' "# RPG OS v$version — playable files only" \
+                'This is the immutable game-only distribution for this versioned playable tree.' \
+                'It excludes explanatory documentation, published playtests, developer tests and repository automation.' \
+                'Extract the ZIP and use the folder containing OS/AGENTS.md as the campaign workspace.' \
+                "Software version: $version. Source commit: $GITHUB_SHA." > "$RUNNER_TEMP/versioned-game-notes.md"
+              gh release create "$tag" ".release/$prefix.zip" ".release/$prefix.SHA256SUMS" ".release/$prefix.manifest.json" \
+                --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "RPG OS v$version — Game files only" \
+                --notes-file "$RUNNER_TEMP/versioned-game-notes.md"
+            else
+              echo "Version tag $tag points to a different playable tree; refusing to create a misleading historical release."
+            fi
+          else
+            cat "$RUNNER_TEMP/game-error.txt" >&2
+            exit 1
           fi
-          printf '%s\n\n' "# RPG OS v$version — playable files only" \
-            'This standalone download excludes explanatory documentation, published playtests, developer tests and repository automation. Essential GM operating instructions and optional runtime tools remain included.' \
-            'Extract the ZIP and use the folder containing OS/AGENTS.md as the campaign workspace. Never overwrite a live campaign with blank installation records.' \
-            "Software version: $version. Source commit: $GITHUB_SHA. This is a separated distribution; older version tags and assets are not replaced." \
-            '[Documentation](https://github.com/croatianrdy2defend-create/RPG-OS/tree/main/DOCS) · [Playtests](https://github.com/croatianrdy2defend-create/RPG-OS/tree/main/TEST_REPORTS)' > "$RUNNER_TEMP/game-notes.md"
-          gh release create "$tag" ".release/$prefix.zip" ".release/$prefix.SHA256SUMS" ".release/$prefix.manifest.json" \
-            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "RPG OS v$version — Game files only" \
-            --notes-file "$RUNNER_TEMP/game-notes.md" --latest
+      - name: Publish current game-only download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(cat GAME/VERSION)"
+          prefix="RPG_OS_v${version}_Game"
+          latest_tag="game-latest"
+
+          cp ".release/$prefix.zip" .release/RPG_OS_Game.zip
+          (cd .release && sha256sum RPG_OS_Game.zip > RPG_OS_Game.SHA256SUMS)
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          version = Path('GAME/VERSION').read_text(encoding='utf-8').strip()
+          source = Path(f'.release/RPG_OS_v{version}_Game.manifest.json')
+          data = json.loads(source.read_text(encoding='utf-8'))
+          data['archive'] = 'RPG_OS_Game.zip'
+          data['distribution'] = 'game-latest'
+          Path('.release/RPG_OS_Game.manifest.json').write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
+          PY
+
+          printf '%s\n\n' '# RPG OS — latest playable game files' \
+            'This is the current standalone playable package built from the GAME subtree on main.' \
+            'It excludes DOCS, TEST_REPORTS, DEV and repository automation.' \
+            'Extract the ZIP and use the RPG_OS_v*/ folder containing OS/AGENTS.md as the campaign workspace.' \
+            "Software version: $version. Exact source commit: $GITHUB_SHA." \
+            'The game-latest tag and these three assets are intentionally updated when the playable GAME tree changes. Historical game-v<version> releases remain frozen.' \
+            '[Documentation](https://github.com/croatianrdy2defend-create/RPG-OS/tree/main/DOCS) · [Playtests](https://github.com/croatianrdy2defend-create/RPG-OS/tree/main/TEST_REPORTS)' > "$RUNNER_TEMP/latest-game-notes.md"
+
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$latest_tag" > /dev/null 2>&1; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/git/refs/tags/$latest_tag" -f sha="$GITHUB_SHA" -F force=true > /dev/null
+          else
+            gh api -X POST "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$latest_tag" -f sha="$GITHUB_SHA" > /dev/null
+          fi
+
+          if gh api "repos/$GITHUB_REPOSITORY/releases/tags/$latest_tag" > /dev/null 2>&1; then
+            gh release upload "$latest_tag" .release/RPG_OS_Game.zip .release/RPG_OS_Game.SHA256SUMS .release/RPG_OS_Game.manifest.json \
+              --repo "$GITHUB_REPOSITORY" --clobber
+            gh release edit "$latest_tag" --repo "$GITHUB_REPOSITORY" \
+              --title "RPG OS — Latest playable game files (v$version)" --notes-file "$RUNNER_TEMP/latest-game-notes.md"
+          else
+            gh release create "$latest_tag" .release/RPG_OS_Game.zip .release/RPG_OS_Game.SHA256SUMS .release/RPG_OS_Game.manifest.json \
+              --repo "$GITHUB_REPOSITORY" --title "RPG OS — Latest playable game files (v$version)" \
+              --notes-file "$RUNNER_TEMP/latest-game-notes.md"
+          fi
