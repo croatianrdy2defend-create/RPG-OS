@@ -1,6 +1,6 @@
-# Quick start — v0.9.7 experimental
+# Quick start — v0.9.8 experimental
 
-An opt-in [write-only play log](ADMIN/PLAY_PERSISTENCE.md) appends one or two outcome sentences per exchange without routine persistence checks. Fresh boot reads compiled state and uncompiled notes once; checkpoints compile changes at the accepted cadence, and full SAVE preserves remaining source and selected review. Keep complete backups. Installation enables no policy.
+New campaigns default to a [write-only play log](ADMIN/PLAY_PERSISTENCE.md) that appends one or two outcome sentences after each completed PLAY response, plus announced CHECKPOINTs every 20 completed PLAY replies. Fresh boot reads compiled state and uncompiled notes once; checkpoints compile changes, and full SAVE preserves remaining source and selected review. Keep complete backups. You can disable or customize either persistence default during setup or later through recalibration.
 
 ## Prepare one campaign folder
 
@@ -40,11 +40,11 @@ An optional [worked save-and-resume example](https://github.com/croatianrdy2defe
 
 The GM gives a short command reminder at session start and end: `SAVE`, `CHECKPOINT` (current records only), `END SESSION SAVE`, and ordinary OOC requests for corrections, pacing/rules or available commands. See [Everyday requests](COMMANDS.md).
 
-## Optional announced autosave
+## Standard persistence defaults
 
-Say: “Enable the standard announced autosave policy in ADMIN/AUTOSAVE.md for this campaign.” The GM records the accepted policy through setup or recalibration; installation alone leaves it off.
+For a new campaign, the compact setup proposal includes the short write-only log and announced checkpointing by default. The log adds one or two concise factual outcome sentences after every completed PLAY response. The standard checkpoint cadence is **20 completed PLAY replies** since verified persistence, with one generic warning before the checkpoint on the following eligible response. Nothing runs unattended.
 
-The standard policy warns after consequential unsaved state or substantial scene boundaries, after 15 completed PLAY replies, or at a supported context reading of at least 65%. The meter must actually be accessible or reported by you. One generic warning precedes a checkpoint after the next completed play turn. Several triggers coalesce; nothing runs unattended. “Checkpoint now,” “save now,” “delay autosave,” “resume autosave” and “disable autosave” remain available.
+You may decline either default during setup, or later say “disable autosave” / request recalibration of incremental recording. “Checkpoint now,” “save now,” “delay autosave” and “resume autosave” remain available. Additional early checkpoint triggers for consequential state, scene boundaries or supported context pressure are opt-in rather than part of the standard cadence.
 
 Keep the current model/reasoning setting until the outgoing save is verified. The checkpoint does not preserve new exact dialogue and cannot guarantee host memory transfer. Before discarding the chat or source access, perform full CLOSE or the applicable handover. Saving or switching retains the same play session unless you also end it. See [Autosave](ADMIN/AUTOSAVE.md).
 
@@ -52,7 +52,7 @@ Keep the current model/reasoning setting until the outgoing save is verified. Th
 
 Explain a mistake or request a change in ordinary language. Changing the approach does not silently rewrite established events or people. Later deepening may add current state, but an unexplained hidden cause behind an earlier portrayal remains unresolved unless independently established through the governing source/procedure.
 
-An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.7.
+An existing campaign keeps its accepted generation and resolution methods after a program update. Select the encounter helper or fallback prospectively through [Recalibrate](ADMIN/RECALIBRATE.md) when desired and compatible; a diceless campaign does not acquire dice merely by installing v0.9.8.
 
 Save with the outgoing model before changing model or reasoning strength, then give the next GM the same updated folder and have it reload. For a mid-scene transfer, say:
 

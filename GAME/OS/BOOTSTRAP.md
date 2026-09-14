@@ -1,4 +1,4 @@
-# RPG OS v0.9.7 startup
+# RPG OS v0.9.8 startup
 
 Load a campaign when asked to run, resume, or set one up. Development and review requests do not start PLAY.
 
@@ -13,7 +13,7 @@ Load a campaign when asked to run, resume, or set one up. Development and review
 5. Check that the bound ENGINE entrypoint and `pc_record` exist without preloading their bodies. The engine resolves to exactly one of `ENGINE/<engine>.md` or `ENGINE/<engine>/ENGINE.md`. Safe ids start with a letter/digit and contain only letters/digits/dot/underscore/hyphen; no traversal or absolute path. Follow only campaign-local record paths.
 6. Read `MODULES/<module>/SETTING_BRIEF.md`. Its identity must match and its world orientation must be usable. Require `safety_state` to be exactly `floor-only` or `active`; a missing/invalid flag requires repair. Read `INSTANCE/SAFETY.md` when active; that requires real limits. Presentation is already accepted in the agreement. Do not load POLICY or Bearing during ordinary startup.
 7. Orient to Situation, Character state, Open matters, Active processes, and Relevant records, plus the administrative Session continuity section when present. The latter distinguishes active, closing and ended play; `none` means not started and absence means legacy/unrecorded, not an unpaid award. Follow private watch or other detailed pointers only when the present task calls for them. Resolve essential conflicts before fiction; harmless extra metadata or heading order alone need not prevent play.
-8. Only if the accepted agreement explicitly enables autosave, follow `ADMIN/AUTOSAVE.md` for its cadence and advance notice. Absent policy means off, not a missing required field. Keep the count since checkpoint; zero requires no uncompiled PLAY span. Recover any pending count once at boot. Working log lines are not verified delivered-reply counts: retain uncertainty when source/count is unavailable rather than adding a confirmation protocol. Recovery and handover still take priority. No context-meter access is assumed.
+8. Follow the persistence policy actually recorded in the accepted agreement. New v0.9.8 campaigns normally record the standard write-only log plus announced 20-reply checkpoint cadence during setup unless the operator declined or customized them. Existing/legacy campaigns with no autosave grant remain off; absence is not a missing required field. Keep the count since checkpoint; zero requires no uncompiled PLAY span. Recover any pending count once at boot. Working log lines are not verified delivered-reply counts: retain uncertainty when source/count is unavailable rather than adding a confirmation protocol. Recovery and handover still take priority. No context-meter access is assumed.
 
 ## Respond
 

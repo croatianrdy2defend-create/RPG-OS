@@ -63,7 +63,7 @@ Describe what your character says or tries: “I ask what happened,” “I look
 
 ### 5. Save, stop and come back
 
-To save while continuing, say **“Save the campaign”** or **SAVE**. To finish playing, say **END SESSION SAVE** (or **“End the session, take my feedback, and save the campaign.”**). The GM stops play, waits for your feedback or explicit skip, incorporates permitted adjustments for next time, then saves automatically; no second SAVE command is needed. If you need it to save immediately without waiting for feedback, say so. Wait for confirmation that the files were written and checked before closing the chat. Autosave and brief write-only PLAY notes are separate optional setup choices. A note does not replace a verified save.
+To save while continuing, say **“Save the campaign”** or **SAVE**. To finish playing, say **END SESSION SAVE** (or **“End the session, take my feedback, and save the campaign.”**). The GM stops play, waits for your feedback or explicit skip, incorporates permitted adjustments for next time, then saves automatically; no second SAVE command is needed. If you need it to save immediately without waiting for feedback, say so. Wait for confirmation that the files were written and checked before closing the chat. New v0.9.8 campaigns default to a brief write-only PLAY note after each completed play response and an announced CHECKPOINT every 20 completed PLAY replies. You can disable or customize either during setup or recalibration. A note does not replace a verified save.
 
 Next time, open the **same updated campaign folder**, start a new chat in its project and paste:
 
@@ -102,7 +102,7 @@ The report covers successes, failures, deliberately corrupted saves, conversatio
 
 [Why I built RPG OS](DOCS/OVERVIEW.md) · [Architecture](DOCS/ARCHITECTURE.md) · [How the mechanics work](DOCS/MECHANICS.md) · [Host compatibility](DOCS/HOST_CONTRACT.md) · [Verification](DOCS/VERIFICATION.md)
 
-**Current software: v0.9.7.** This release improves routine pacing, save operation, current-record maintenance and evidence tooling. [Release changes](DOCS/releases/V0.9.7_CHANGES.md). The earlier `game-v0.9.7` release contains the original playable build; current `main` includes the same-version fixes. Earlier release tags and downloads remain unchanged. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
+**Current software: v0.9.8.** This release improves routine pacing, save operation, current-record maintenance and evidence tooling. [Release changes](DOCS/releases/V0.9.8_CHANGES.md). The earlier `game-v0.9.7` release contains the original playable build; current `main` includes the same-version fixes. Earlier release tags and downloads remain unchanged. [What moved and how the smaller package is checked](DOCS/DISTRIBUTION.md).
 
 For an existing campaign, keep a complete backup and use the [protected upgrade procedure](GAME/ADMIN/UPGRADE_V08.md). Never overwrite live campaign records with blank installation templates.
 

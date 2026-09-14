@@ -1,8 +1,8 @@
 # PLAY — One short write-only note
 
-Use only when the agreement selects `Incremental recording: write-only-log`. Continue from working conversation; do not inspect persistence files each turn.
+New v0.9.8 campaigns select `Incremental recording: write-only-log` by default unless the operator declines or customizes it in the campaign proposal. Existing bound campaigns use it only when their agreement selects it. Continue from working conversation; do not inspect persistence files each turn.
 
-After resolving the declaration, append **one or two concise sentences** describing what actually happened:
+After each completed PLAY response, once the declaration is resolved, append **one or two concise sentences** describing what actually happened:
 
 ```text
 python -X utf8 -B TOOLS/play_log.py --root . append --text "<brief factual outcome>"
@@ -16,4 +16,4 @@ Keep consequential changed circumstances, time/resources, knowledge, commitments
 
 At a fresh boot, read compiled state and uncompiled notes once with `play_log.py --root . read`, then use context during ongoing play. A specifically missing fact or actual material mechanical question can require its narrow source; ordinary portrayal or an incidental keyword does not trigger rulebook research merely to prove no change. Selected rules still apply at their real triggers.
 
-CHECKPOINT is ADMIN work: compile actual changes at the accepted checkpoint cadence. Preserve deferral and meaningful earlier triggers. Full SAVE additionally archives remaining available source and performs the selected bounded review. END SESSION retains actual feedback and due mechanics. The short log supports those operations; it is neither a complete transcript nor a verified full save. Installation alone enables nothing.
+CHECKPOINT is ADMIN work: compile actual changes at the accepted checkpoint cadence. Preserve deferral and meaningful earlier triggers. Full SAVE additionally archives remaining available source and performs the selected bounded review. END SESSION retains actual feedback and due mechanics. The short log supports those operations; it is neither a complete transcript nor a verified full save. A new campaign proposes it by default; installing v0.9.8 over an existing campaign does not silently change that campaign's accepted policy.

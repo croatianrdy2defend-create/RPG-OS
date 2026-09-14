@@ -22,19 +22,23 @@ ROOT = Path(__file__).resolve().parent.parent
 
 class SchedulerTests(unittest.TestCase):
     def sample(self, **changes):
-        return replace(Observation(enabled=True, dirty=True, turn=15, turns_since_save=15), **changes)
+        return replace(Observation(enabled=True, dirty=True, turn=20, turns_since_save=20), **changes)
 
-    def test_default_off(self):
-        self.assertEqual(decide(Observation(dirty=True, consequential=True)).reason, "disabled")
+    def test_default_enabled_for_fresh_profile(self):
+        self.assertTrue(Observation().enabled)
+        self.assertEqual(decide(Observation(dirty=True, turn=20, turns_since_save=20)).action, "warn")
+
+    def test_explicit_disable_still_wins(self):
+        self.assertEqual(decide(Observation(enabled=False, dirty=True, consequential=True)).reason, "disabled")
 
     def test_clean_state_never_creates_empty_autosaves(self):
         self.assertEqual(decide(self.sample(dirty=False, context_percent=99, context_source="host")).action, "none")
 
     def test_interval_warns_before_saving(self):
         warning = decide(self.sample())
-        self.assertEqual((warning.action, warning.warned_at), ("warn", 15))
-        self.assertEqual(decide(self.sample(warned_at=15)).action, "wait")
-        self.assertEqual(decide(self.sample(turn=16, warned_at=15)).action, "checkpoint")
+        self.assertEqual((warning.action, warning.warned_at), ("warn", 20))
+        self.assertEqual(decide(self.sample(warned_at=20)).action, "wait")
+        self.assertEqual(decide(self.sample(turn=21, warned_at=20)).action, "checkpoint")
 
     def test_each_event_trigger_warns(self):
         for changes in ({"consequential": True}, {"scene_boundary": True}):
@@ -54,7 +58,7 @@ class SchedulerTests(unittest.TestCase):
         o = self.sample(turns_since_save=1, context_percent=70, context_source="host", context_handled=True)
         self.assertEqual(decide(o).action, "none")
         self.assertEqual(decide(replace(o, consequential=True)).action, "warn")
-        self.assertEqual(decide(replace(o, turns_since_save=15)).action, "warn")
+        self.assertEqual(decide(replace(o, turns_since_save=20)).action, "warn")
 
     def test_context_episode_rearms_only_when_caller_observes_reset(self):
         low = self.sample(turns_since_save=1, context_percent=60, context_source="operator", context_handled=False)
@@ -70,7 +74,7 @@ class SchedulerTests(unittest.TestCase):
 
     def test_ooc_and_tool_calls_do_not_advance_notice_turn(self):
         for _ in range(4):
-            self.assertEqual(decide(self.sample(warned_at=15)).action, "wait")
+            self.assertEqual(decide(self.sample(warned_at=20)).action, "wait")
 
     def test_operator_deferral_always_wins_over_auto_pressure(self):
         self.assertEqual(decide(self.sample(deferred=True, context_percent=100, context_source="host")).action, "deferred")
@@ -104,12 +108,12 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual((result.action, result.warned_at), ("wait", 14))
 
     def test_eligible_checkpoint_is_not_a_verified_save(self):
-        o = self.sample(turn=16, warned_at=15)
+        o = self.sample(turn=21, warned_at=20)
         result = decide(o)
         self.assertEqual(result.action, "checkpoint")
-        self.assertEqual(result.warned_at, 15)
+        self.assertEqual(result.warned_at, 20)
         self.assertTrue(o.dirty)
-        self.assertEqual(o.turns_since_save, 15)
+        self.assertEqual(o.turns_since_save, 20)
 
     def test_failure_blocks_and_preserves_pending_notice(self):
         result = decide(self.sample(turn=16, warned_at=15, recovery_active=True))
@@ -121,7 +125,7 @@ class SchedulerTests(unittest.TestCase):
 
     def test_bad_values_are_rejected(self):
         cases = [dict(enabled="false"), dict(turn=-1), dict(turn=True), dict(interval=0),
-                 dict(warned_at=16), dict(warned_at=True), dict(context_percent=float("nan"), context_source="host"),
+                 dict(warned_at=21), dict(warned_at=True), dict(context_percent=float("nan"), context_source="host"),
                  dict(context_percent=101, context_source="host"), dict(context_percent=70),
                  dict(context_source="host"), dict(context_source="estimate", context_percent=70),
                  dict(context_threshold=0), dict(manual="save"), dict(safe_boundary=1),
@@ -138,7 +142,7 @@ class SchedulerTests(unittest.TestCase):
             json.loads('{"enabled":false,"enabled":true}', object_pairs_hook=unique_object)
 
     def test_roundtrip_and_custom_interval(self):
-        o = self.sample(interval=20)
+        o = self.sample(interval=25)
         self.assertEqual(from_mapping(asdict(o)), o)
         self.assertEqual(decide(o).action, "none")
 
@@ -165,7 +169,7 @@ class ProtocolTests(unittest.TestCase):
 
     def test_protocol_safeguards(self):
         body = self.read("ADMIN/AUTOSAVE.md")
-        for phrase in ("off unless explicitly accepted", "one response before", "15 completed PLAY replies",
+        for phrase in ("new v0.9.8 campaigns", "one response before", "20 completed PLAY replies",
                        "65%", "operator-reported", "not fictional safety", "not a background service",
                        "complete present", "archive_ref", "evidence_through", "CURRENT_SAVE last",
                        "full CLOSE", "not a guarantee", "do not reconstruct", "play changes no canonical files",
@@ -234,7 +238,7 @@ class PersistenceIntegrationTests(unittest.TestCase):
         prior_time = fixture.save["datetime"]
         pending = "The player has not decided which outlet to inspect. No time passes at this checkpoint."
         fixture.save_sections["Situation"] = pending
-        decision = decide(Observation(enabled=True, dirty=True, turn=16, turns_since_save=16, warned_at=15))
+        decision = decide(Observation(enabled=True, dirty=True, turn=21, turns_since_save=21, warned_at=20))
         self.assertEqual(decision.action, "checkpoint")
         fixture.save.update(save_id="save-03", save_rev="3", save_parent="save-02", commit_kind="checkpoint")
         fixture.flush()
